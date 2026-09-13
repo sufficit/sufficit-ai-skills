@@ -1,0 +1,1546 @@
+{
+  "schemaVersion": 1,
+  "catalogEntries": 151,
+  "sources": [
+    {
+      "id": "android",
+      "repository": "https://github.com/android/skills",
+      "revision": "ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6",
+      "author": "Google LLC",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "google",
+      "repository": "https://github.com/google/skills",
+      "revision": "f36c9ebe9658ee9f98bf83ad0fe97f747abb743c",
+      "author": "Google LLC",
+      "license": "Apache-2.0"
+    },
+    {
+      "id": "sufficit-ui",
+      "repository": "https://github.com/sufficit/sufficit-blazor-ui",
+      "revision": "e42e6449659028625b8f6cf645e535ad95bdaa8b",
+      "author": "Sufficit",
+      "license": "MIT-0"
+    },
+    {
+      "id": "sufficit-genius",
+      "repository": "https://github.com/sufficit/sufficit-ai-genius-skills",
+      "revision": "e31f0f044fe011a4df06f47973145aa55ae90c13",
+      "author": "Sufficit",
+      "license": "MIT-0"
+    }
+  ],
+  "skills": [
+    {
+      "id": "android-adaptive",
+      "name": "adaptive",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/jetpack-compose/adaptive",
+      "path": "skills/android/jetpack-compose/adaptive",
+      "contentSha256": "b89e20cc9311fb996200cd2a4c96fd0ae2618b3727ad57d969e137b46dcb2fd0"
+    },
+    {
+      "id": "android-agp-9-upgrade",
+      "name": "agp-9-upgrade",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/build-system/agp/agp-9-upgrade",
+      "path": "skills/android/build-system/agp/agp-9-upgrade",
+      "contentSha256": "5e734532a2ec270712c05fc31f27033824b370410d49fc6094ea866d5cac01f4"
+    },
+    {
+      "id": "android-android-cli",
+      "name": "android-cli",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/devtools/android-cli",
+      "path": "skills/android/devtools/android-cli",
+      "contentSha256": "b20d4001a5f99591aff6d23b19a772a53ea35a835021008269a25fadb2daea79"
+    },
+    {
+      "id": "android-android-intent-security",
+      "name": "android-intent-security",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/security/android-intent-security",
+      "path": "skills/android/security/android-intent-security",
+      "contentSha256": "0896ae4df0458546187fd44148b706d3d5d544d62c9fecde5402d114fbd37d66"
+    },
+    {
+      "id": "android-android-profiler",
+      "name": "android-profiler",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/profilers/android-profiler",
+      "path": "skills/android/profilers/android-profiler",
+      "contentSha256": "c6c41d3ebb6fb62b07ce300541964a13c96611ad100ca8d8dc90cd38ae74e9f3"
+    },
+    {
+      "id": "android-appfunctions",
+      "name": "appfunctions",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/device-ai/appfunctions",
+      "path": "skills/android/device-ai/appfunctions",
+      "contentSha256": "ef078e904e3e23286b481c9fd5e13532ee3269e2e30d9e67803d8bfb5a8a28c0"
+    },
+    {
+      "id": "android-camerax",
+      "name": "camerax",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/camera/camerax",
+      "path": "skills/android/camera/camerax",
+      "contentSha256": "8730d70a5ee60f36a112e46209456c24a59de97e0a3701764fc6bab0188655db"
+    },
+    {
+      "id": "android-display-glasses-with-jetpack-compose-glimmer",
+      "name": "display-glasses-with-jetpack-compose-glimmer",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/xr/display-glasses-with-jetpack-compose-glimmer",
+      "path": "skills/android/xr/display-glasses-with-jetpack-compose-glimmer",
+      "contentSha256": "fae307e01b76f7d4b5c0f2236186405c865d873bd102f61ad34188732da7032a"
+    },
+    {
+      "id": "android-edge-to-edge",
+      "name": "edge-to-edge",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/system/edge-to-edge",
+      "path": "skills/android/system/edge-to-edge",
+      "contentSha256": "8300e5fa02c088801f8cfc1ab7d1f472fa3d251e8fc90c3a721072599a36a81c"
+    },
+    {
+      "id": "android-engage-sdk-integration",
+      "name": "engage-sdk-integration",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/play/engage-sdk-integration",
+      "path": "skills/android/play/engage-sdk-integration",
+      "contentSha256": "e3c9341de082747adc83a7b3eb33ac3ea433a0e04da8033473497d74b8fa741d"
+    },
+    {
+      "id": "android-leanback-to-compose-tv-migration",
+      "name": "leanback-to-compose-tv-migration",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/tv/leanback-to-compose-tv-migration",
+      "path": "skills/android/tv/leanback-to-compose-tv-migration",
+      "contentSha256": "2f70dfaedbc7beada50b1510027adb57b60ebd69ebf6a69c1b9011db892523a7"
+    },
+    {
+      "id": "android-media3-cast-integration",
+      "name": "media3-cast-integration",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/media/media3-cast-integration",
+      "path": "skills/android/media/media3-cast-integration",
+      "contentSha256": "1854ed4c3f36b29caeabbeddec830c4ed88d85c1f9c8b116169bfda853751223"
+    },
+    {
+      "id": "android-migrate-xml-views-to-jetpack-compose",
+      "name": "migrate-xml-views-to-jetpack-compose",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/jetpack-compose/migration/migrate-xml-views-to-jetpack-compose",
+      "path": "skills/android/jetpack-compose/migration/migrate-xml-views-to-jetpack-compose",
+      "contentSha256": "5e402805af87b9ec359b88bff0df1af9dc7a11cad504fa8b089c93b05eff8bc8"
+    },
+    {
+      "id": "android-navigation-3",
+      "name": "navigation-3",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/navigation/navigation-3",
+      "path": "skills/android/navigation/navigation-3",
+      "contentSha256": "671efbccede791c6a9241bb4de4a784d40bd939efb96af2571e8d0406e890709"
+    },
+    {
+      "id": "android-play-billing-library-version-upgrade",
+      "name": "play-billing-library-version-upgrade",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/play/play-billing-library-version-upgrade",
+      "path": "skills/android/play/play-billing-library-version-upgrade",
+      "contentSha256": "2f9ecb4724e246d85d550cd2e4a8c57458ec65fce4ba1562e3c542e8e91a2b96"
+    },
+    {
+      "id": "android-play-policy-insights",
+      "name": "play-policy-insights",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/play/play-policy-insights",
+      "path": "skills/android/play/play-policy-insights",
+      "contentSha256": "81c47dd9984785ee9f83bbc0580dacf91c709e90e57d0d7d4d983cd5545f73d1"
+    },
+    {
+      "id": "android-r8-analyzer",
+      "name": "r8-analyzer",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/performance/r8-analyzer",
+      "path": "skills/android/performance/r8-analyzer",
+      "contentSha256": "eac2160695200b69d0a1ddf73e5d5b5cc4e7142e77cb0fa8ab41cf212f6725e7"
+    },
+    {
+      "id": "android-restore-credentials",
+      "name": "restore-credentials",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/identity/restore-credentials",
+      "path": "skills/android/identity/restore-credentials",
+      "contentSha256": "5d108caa3ce8907205697e8319c3d727e5600a4f9884980acc284a6425cbb6d3"
+    },
+    {
+      "id": "android-styles",
+      "name": "styles",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/jetpack-compose/theming/styles",
+      "path": "skills/android/jetpack-compose/theming/styles",
+      "contentSha256": "634506ed315b47b65dd2679e006cf29fde173f3d176b1c1ba60d8d17d25088e4"
+    },
+    {
+      "id": "android-testing-setup",
+      "name": "testing-setup",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/testing/testing-setup",
+      "path": "skills/android/testing/testing-setup",
+      "contentSha256": "e20d4c8d7d1dbb75b5c9fe6c8544151fbcd66bd577b737146f3f7d301f7d4aac"
+    },
+    {
+      "id": "android-verified-email",
+      "name": "verified-email",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/identity/verified-email",
+      "path": "skills/android/identity/verified-email",
+      "contentSha256": "3b576abf336f3174fd81192f9783a832ec8dd5e0044f099a30d5b60618963768"
+    },
+    {
+      "id": "android-wear-compose-m3",
+      "name": "wear-compose-m3",
+      "sourceId": "android",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/wear/wear-compose-m3",
+      "path": "skills/android/wear/wear-compose-m3",
+      "contentSha256": "f8878e457e1738bce57a8b009598362a06206ae2cf6e9766cccd4c522130bd05"
+    },
+    {
+      "id": "github-cli",
+      "name": "github-cli",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-genius-skills/tree/e31f0f044fe011a4df06f47973145aa55ae90c13/skills/github-cli",
+      "path": "skills/sufficit/github-cli",
+      "contentSha256": "3d4ab0f0697a1ef442860afb33639144ae5110fc557531fb009501151d2f81f6"
+    },
+    {
+      "id": "google-agent-platform-alert-configuration",
+      "name": "agent-platform-alert-configuration",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-alert-configuration",
+      "path": "skills/google/cloud/agent-platform-alert-configuration",
+      "contentSha256": "cddd6ee72020d1dc62bd70ba5199d597120ca103050e20529a9d57ef6bf2399f"
+    },
+    {
+      "id": "google-agent-platform-deploy",
+      "name": "agent-platform-deploy",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-deploy",
+      "path": "skills/google/cloud/agent-platform-deploy",
+      "contentSha256": "cd2bf89a2980eecd32069fdf1b9cc67ee67afe2864d4daa3bb74405cc4e68333"
+    },
+    {
+      "id": "google-agent-platform-endpoint-management",
+      "name": "agent-platform-endpoint-management",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-endpoint-management",
+      "path": "skills/google/cloud/agent-platform-endpoint-management",
+      "contentSha256": "e8de39594019841016522ac5e2afb77abf3ee35ab2fca1f13748e07c31f31fef"
+    },
+    {
+      "id": "google-agent-platform-eval-flywheel",
+      "name": "agent-platform-eval-flywheel",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-eval-flywheel",
+      "path": "skills/google/cloud/agent-platform-eval-flywheel",
+      "contentSha256": "2d9f5c87e7ff9e4e1733519463da96f96a2c4f6dfee9c2fc9804db0c0e5eedf1"
+    },
+    {
+      "id": "google-agent-platform-inference",
+      "name": "agent-platform-inference",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-inference",
+      "path": "skills/google/cloud/agent-platform-inference",
+      "contentSha256": "5bf59749e474fcf30c3707ecbb0158faa0314dc5b2fa4f93cd91d8279da771cb"
+    },
+    {
+      "id": "google-agent-platform-migrate-from-ai-studio",
+      "name": "agent-platform-migrate-from-ai-studio",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-migrate-from-ai-studio",
+      "path": "skills/google/cloud/agent-platform-migrate-from-ai-studio",
+      "contentSha256": "e0ced0c0f157a9b7a5727f89f7b76dd3038d2357a0c2f0a0247428c3f79f3087"
+    },
+    {
+      "id": "google-agent-platform-model-registry",
+      "name": "agent-platform-model-registry",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-model-registry",
+      "path": "skills/google/cloud/agent-platform-model-registry",
+      "contentSha256": "980ec082ed33dac753fcddda06bded801da59a2b946d847d5ee720ef8923d58f"
+    },
+    {
+      "id": "google-agent-platform-prompt-management",
+      "name": "agent-platform-prompt-management",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-prompt-management",
+      "path": "skills/google/cloud/agent-platform-prompt-management",
+      "contentSha256": "7c537e46677d618b1feddcdd62ec98fb4335b05527c4e1ec2695c83addf23f1e"
+    },
+    {
+      "id": "google-agent-platform-rag-engine-management",
+      "name": "agent-platform-rag-engine-management",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-rag-engine-management",
+      "path": "skills/google/cloud/agent-platform-rag-engine-management",
+      "contentSha256": "cddcc30462d5e2b60589c3043a130fe3ff5110d65fea8aa94259a6d65675bd6d"
+    },
+    {
+      "id": "google-agent-platform-skill-registry",
+      "name": "agent-platform-skill-registry",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-skill-registry",
+      "path": "skills/google/cloud/agent-platform-skill-registry",
+      "contentSha256": "b1b9cf62089c6f75b1f857d7e4aebd0a6881bc865adbf900d42293c5d820d23a"
+    },
+    {
+      "id": "google-agent-platform-troubleshooting",
+      "name": "agent-platform-troubleshooting",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-troubleshooting",
+      "path": "skills/google/cloud/agent-platform-troubleshooting",
+      "contentSha256": "ed7c3d9cb66a25a841f32adb1decb6baf06485112ac41d3c12a8ee5fc34e72e2"
+    },
+    {
+      "id": "google-agent-platform-tuning",
+      "name": "agent-platform-tuning",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-tuning",
+      "path": "skills/google/cloud/agent-platform-tuning",
+      "contentSha256": "9f132cfbd26be2a525987403201e67395e93f837358e9aa17c36adc760dea481"
+    },
+    {
+      "id": "google-agent-platform-tuning-management",
+      "name": "agent-platform-tuning-management",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/agent-platform-tuning-management",
+      "path": "skills/google/cloud/agent-platform-tuning-management",
+      "contentSha256": "afd8b44c13d76fbfa83548889ab062c8df07f4c4881c4e4a1738c57407beb2ff"
+    },
+    {
+      "id": "google-alloydb-basics",
+      "name": "alloydb-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/alloydb-basics",
+      "path": "skills/google/cloud/alloydb-basics",
+      "contentSha256": "bc071f440f53bdaf2748c3a727891663803dca6edc33b27e4d75bd35ab0f638d"
+    },
+    {
+      "id": "google-application-design-center-design-deploy",
+      "name": "application-design-center-design-deploy",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/application-design-center-design-deploy",
+      "path": "skills/google/cloud/application-design-center-design-deploy",
+      "contentSha256": "706bb82b9b4962826be037adbb0680e1f2584910112df472d02d46d6533933f3"
+    },
+    {
+      "id": "google-bigquery-ai-ml",
+      "name": "bigquery-ai-ml",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/bigquery-ai-ml",
+      "path": "skills/google/cloud/bigquery-ai-ml",
+      "contentSha256": "0a89e3d1fd2b15628ee775ff5d1e99c5c7d0b2b7d5fdc065a484db5462e9c0a9"
+    },
+    {
+      "id": "google-bigquery-basics",
+      "name": "bigquery-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/bigquery-basics",
+      "path": "skills/google/cloud/bigquery-basics",
+      "contentSha256": "124ab10d5fec0372ef6787094f5310d40c1e89ef62cc449eb63d5a628cca1a6c"
+    },
+    {
+      "id": "google-bigquery-bigframes",
+      "name": "bigquery-bigframes",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/bigquery-bigframes",
+      "path": "skills/google/cloud/bigquery-bigframes",
+      "contentSha256": "0b737f0ab4f7ee8ad8edec9abf68b0379298948cd98a999acc45720d432d18a0"
+    },
+    {
+      "id": "google-bigtable-basics",
+      "name": "bigtable-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/bigtable-basics",
+      "path": "skills/google/cloud/bigtable-basics",
+      "contentSha256": "cb506b58b7669f2ed61c5356aca5deb73b70c252c6a806d667dce81cb66bc864"
+    },
+    {
+      "id": "google-cloud-build-basics",
+      "name": "cloud-build-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-build-basics",
+      "path": "skills/google/cloud/cloud-build-basics",
+      "contentSha256": "eec655c3743f36a1754281d1c2a7854b348463a9bf6103332e4d64ea3c88740c"
+    },
+    {
+      "id": "google-cloud-databases-onboarding",
+      "name": "cloud-databases-onboarding",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-databases-onboarding",
+      "path": "skills/google/cloud/cloud-databases-onboarding",
+      "contentSha256": "a8dd8879c301dfb235650c6970ab3f3396f6556bb79d030dfe4ddbe25356abba"
+    },
+    {
+      "id": "google-cloud-logging-configuration-basics",
+      "name": "cloud-logging-configuration-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-logging-configuration-basics",
+      "path": "skills/google/cloud/cloud-logging-configuration-basics",
+      "contentSha256": "c97cdbb057dd316cf1b8d1a0d3963399d2436663242b43f2544e16df4d1aaace"
+    },
+    {
+      "id": "google-cloud-logging-cross-project-configuration",
+      "name": "cloud-logging-cross-project-configuration",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-logging-cross-project-configuration",
+      "path": "skills/google/cloud/cloud-logging-cross-project-configuration",
+      "contentSha256": "c1e311968edd5484778e69e83d5b08465deba5df8b4c25c2e6eb70b10a4c4d87"
+    },
+    {
+      "id": "google-cloud-logging-query-generation",
+      "name": "cloud-logging-query-generation",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-logging-query-generation",
+      "path": "skills/google/cloud/cloud-logging-query-generation",
+      "contentSha256": "21c7fea3564e6ecc399af05aaea397a3fbf81bab24a49f0b446db82fa657c7e0"
+    },
+    {
+      "id": "google-cloud-monitoring-chart-generation",
+      "name": "cloud-monitoring-chart-generation",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-monitoring-chart-generation",
+      "path": "skills/google/cloud/cloud-monitoring-chart-generation",
+      "contentSha256": "307ab9cba00d1498fd8f87eed64d9fb8dad2addad9b861b5c89d34e851f10d2f"
+    },
+    {
+      "id": "google-cloud-monitoring-list-time-series-request",
+      "name": "cloud-monitoring-list-time-series-request",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-monitoring-list-time-series-request",
+      "path": "skills/google/cloud/cloud-monitoring-list-time-series-request",
+      "contentSha256": "3b739373446160cb58587baf8fea4a2151e03641a16bd233c5c4736d0d785a20"
+    },
+    {
+      "id": "google-cloud-monitoring-metric-selection",
+      "name": "cloud-monitoring-metric-selection",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-monitoring-metric-selection",
+      "path": "skills/google/cloud/cloud-monitoring-metric-selection",
+      "contentSha256": "a5dcc297352e54a4bcafe7b418f933cd7ea06e7ebc03b1e31cf8e01cd93d9e62"
+    },
+    {
+      "id": "google-cloud-monitoring-promql-query",
+      "name": "cloud-monitoring-promql-query",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-monitoring-promql-query",
+      "path": "skills/google/cloud/cloud-monitoring-promql-query",
+      "contentSha256": "d75809ae0fc996a750ad478392846b73a6b697c7fd1a70f0b43c09020a252989"
+    },
+    {
+      "id": "google-cloud-run-basics",
+      "name": "cloud-run-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-run-basics",
+      "path": "skills/google/cloud/cloud-run-basics",
+      "contentSha256": "e2c4dfcb1d3655162bd0045659427034b42fa62474abecc67c7feff185d289e7"
+    },
+    {
+      "id": "google-cloud-sql-basics",
+      "name": "cloud-sql-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/cloud-sql-basics",
+      "path": "skills/google/cloud/cloud-sql-basics",
+      "contentSha256": "d8f8eda8b74f21f7a8bd6ead5bb346a48cd7a4b930d502fb5cab60e8b01b5db3"
+    },
+    {
+      "id": "google-data-manager-api-audience-ingestion",
+      "name": "data-manager-api-audience-ingestion",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/data-manager-api-audience-ingestion",
+      "path": "skills/google/ads/data-manager-api-audience-ingestion",
+      "contentSha256": "96b0dd4b3777691e682677cfa8e0472d3c947c5e32979a30c9393faf56af5c18"
+    },
+    {
+      "id": "google-data-manager-api-event-ingestion",
+      "name": "data-manager-api-event-ingestion",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/data-manager-api-event-ingestion",
+      "path": "skills/google/ads/data-manager-api-event-ingestion",
+      "contentSha256": "5f0c9d1102a3e289480d7dfb597f67b5fc512e2e3dbd55db8ad637e5a4435bcf"
+    },
+    {
+      "id": "google-data-manager-api-setup",
+      "name": "data-manager-api-setup",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/data-manager-api-setup",
+      "path": "skills/google/ads/data-manager-api-setup",
+      "contentSha256": "521ef46663cd30437ca249fc7523242d940c2bea9dd39d916f868da78b0f8b13"
+    },
+    {
+      "id": "google-datalineage-bigquery-asset-impact-analysis",
+      "name": "datalineage-bigquery-asset-impact-analysis",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/datalineage-bigquery-asset-impact-analysis",
+      "path": "skills/google/cloud/datalineage-bigquery-asset-impact-analysis",
+      "contentSha256": "9955cefabaa48e0a86d36d467e5cbfe2b29bc5259419917ff1bd0cf113ad42d9"
+    },
+    {
+      "id": "google-datalineage-summary",
+      "name": "datalineage-summary",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/datalineage-summary",
+      "path": "skills/google/cloud/datalineage-summary",
+      "contentSha256": "dff96e75704784ae08b59deb36f1fe5e0e106a89ffba1dec796ee4cafeb612db"
+    },
+    {
+      "id": "google-detection-engineering-coverage-evaluation",
+      "name": "detection-engineering-coverage-evaluation",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/detection-engineering-coverage-evaluation",
+      "path": "skills/google/cloud/detection-engineering-coverage-evaluation",
+      "contentSha256": "bf857ee32d7ae077cf56bfcc754a8b441ffa6b8543430328b0d4e07dee4fffe8"
+    },
+    {
+      "id": "google-developer-device-platform-basics",
+      "name": "developer-device-platform-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/developer-device-platform-basics",
+      "path": "skills/google/cloud/developer-device-platform-basics",
+      "contentSha256": "a1615852c6e4f8dfdbeafe4fd886957dfa987e9e8ea8df6850cf7f20d95f4d9e"
+    },
+    {
+      "id": "google-developing-genkit-dart",
+      "name": "developing-genkit-dart",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/genkit-dart",
+      "path": "skills/google/cloud/genkit-dart",
+      "contentSha256": "035526270f891a95b74fd6ee46368dd1ce4fda702f64df27fe7a6fb7ba98ffe0"
+    },
+    {
+      "id": "google-developing-genkit-go",
+      "name": "developing-genkit-go",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/genkit-go",
+      "path": "skills/google/cloud/genkit-go",
+      "contentSha256": "3559c372faa716733f166880ad6cbf7cb3517049a487159c0e1d0a63c32adaa7"
+    },
+    {
+      "id": "google-developing-genkit-js",
+      "name": "developing-genkit-js",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/genkit-js",
+      "path": "skills/google/cloud/genkit-js",
+      "contentSha256": "5084c21905a22760826ed4752ee7a9395fe1dd4e7150bebd64098add67854ee3"
+    },
+    {
+      "id": "google-developing-genkit-python",
+      "name": "developing-genkit-python",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/genkit-python",
+      "path": "skills/google/cloud/genkit-python",
+      "contentSha256": "3bd2403dfc7ef9949f70e3b1b00935975ff0e9ab8f0e4d7ccd655c9b159ef2a1"
+    },
+    {
+      "id": "google-finding-google-skills",
+      "name": "finding-google-skills",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/developers/finding-google-skills",
+      "path": "skills/google/developers/finding-google-skills",
+      "contentSha256": "3475096f1b5a502b8595f293a7a27c6ac80a04175c4062de5040b5bcf9d30454"
+    },
+    {
+      "id": "google-firebase-basics",
+      "name": "firebase-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/firebase-basics",
+      "path": "skills/google/cloud/firebase-basics",
+      "contentSha256": "9f71f69830c5a31a8d4b168feb969569d58be718b84298642dbe9e739056b836"
+    },
+    {
+      "id": "google-gcloud",
+      "name": "gcloud",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gcloud",
+      "path": "skills/google/cloud/gcloud",
+      "contentSha256": "205f831bb17e937fc1eea66ca6e4a357fc0d528c73ed697a4affa9818bcccf12"
+    },
+    {
+      "id": "google-gemini-agents-api",
+      "name": "gemini-agents-api",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gemini-agents-api",
+      "path": "skills/google/cloud/gemini-agents-api",
+      "contentSha256": "962c6d7b2bcd7c47836f8f5a416fb016cd63067e2d4d79a5c1b0d4d8cb3c9aa1"
+    },
+    {
+      "id": "google-gemini-api",
+      "name": "gemini-api",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gemini-api",
+      "path": "skills/google/cloud/gemini-api",
+      "contentSha256": "460da40d9d8e28a20c7c0ee2d22f93afe2150c6b06d6b352088d55c0099e14fc"
+    },
+    {
+      "id": "google-gemini-interactions-api",
+      "name": "gemini-interactions-api",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gemini-interactions-api",
+      "path": "skills/google/cloud/gemini-interactions-api",
+      "contentSha256": "b000baa7b0ec7c4f098a6834f2c176f885f143a522e79ccb5cc9ab241ec6b416"
+    },
+    {
+      "id": "google-gemini-live-api",
+      "name": "gemini-live-api",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gemini-live-api",
+      "path": "skills/google/cloud/gemini-live-api",
+      "contentSha256": "aa29dacab1140fafb74a9d374b1ae70caf144607894fc58268fefe77647a34d9"
+    },
+    {
+      "id": "google-gke-ai-troubleshooting-handle-disruption-gpu-tpu",
+      "name": "gke-ai-troubleshooting-handle-disruption-gpu-tpu",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-ai-troubleshooting-handle-disruption-gpu-tpu",
+      "path": "skills/google/cloud/gke-ai-troubleshooting-handle-disruption-gpu-tpu",
+      "contentSha256": "97e9a146de390ab50293ea04c462e099a92e3c28c24d13c1c4184e4e1a56b161"
+    },
+    {
+      "id": "google-gke-ai-troubleshooting-jobset-interruption",
+      "name": "gke-ai-troubleshooting-jobset-interruption",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-ai-troubleshooting-jobset-interruption",
+      "path": "skills/google/cloud/gke-ai-troubleshooting-jobset-interruption",
+      "contentSha256": "68399b03a590bb9a062bd3417f7ed365686aeac67c423d28d964f9f9eb5eaa4f"
+    },
+    {
+      "id": "google-gke-ai-troubleshooting-tpu-dynamic-slices-monitoring",
+      "name": "gke-ai-troubleshooting-tpu-dynamic-slices-monitoring",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-ai-troubleshooting-tpu-dynamic-slices-monitoring",
+      "path": "skills/google/cloud/gke-ai-troubleshooting-tpu-dynamic-slices-monitoring",
+      "contentSha256": "725459326160fd61d21b4edc7ba30fbadb098c16425335b53c046803532eb286"
+    },
+    {
+      "id": "google-gke-ai-troubleshooting-tpu-metrics-monitoring",
+      "name": "gke-ai-troubleshooting-tpu-metrics-monitoring",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-ai-troubleshooting-tpu-metrics-monitoring",
+      "path": "skills/google/cloud/gke-ai-troubleshooting-tpu-metrics-monitoring",
+      "contentSha256": "9fd80f9ec27838fd7a29821d2f6d6b360356906a3b853bf9a18712f041ae3ff3"
+    },
+    {
+      "id": "google-gke-ai-troubleshooting-tpu-vbar-oom",
+      "name": "gke-ai-troubleshooting-tpu-vbar-oom",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-ai-troubleshooting-tpu-vbar-oom",
+      "path": "skills/google/cloud/gke-ai-troubleshooting-tpu-vbar-oom",
+      "contentSha256": "79f8c7a37a9c3d539e33ae3f0b7adf6fe674eb7d70a41482e78645c9f65d7660"
+    },
+    {
+      "id": "google-gke-alert-configuration",
+      "name": "gke-alert-configuration",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-alert-configuration",
+      "path": "skills/google/cloud/gke-alert-configuration",
+      "contentSha256": "3c5bb63eb311d2ee3f31e6e9dbd1e6f8d0ed3bb286f43d726bcbacf4fcf88906"
+    },
+    {
+      "id": "google-gke-app-onboarding",
+      "name": "gke-app-onboarding",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-app-onboarding",
+      "path": "skills/google/cloud/gke-app-onboarding",
+      "contentSha256": "a96941b78cd3b22309f360ee490159a808410b85c74e5a8b5f237f06d5a05ad6"
+    },
+    {
+      "id": "google-gke-backup-dr",
+      "name": "gke-backup-dr",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-backup-dr",
+      "path": "skills/google/cloud/gke-backup-dr",
+      "contentSha256": "c3e95678af8ddf0ba6a0c576b95c57e3335b470469408ee03c30f07fe88659da"
+    },
+    {
+      "id": "google-gke-basics",
+      "name": "gke-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-basics",
+      "path": "skills/google/cloud/gke-basics",
+      "contentSha256": "a5fac67100dd8224981f5907dd33f5d32f35d104cc44846d4e2a4a230b5e6c48"
+    },
+    {
+      "id": "google-gke-batch-hpc",
+      "name": "gke-batch-hpc",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-batch-hpc",
+      "path": "skills/google/cloud/gke-batch-hpc",
+      "contentSha256": "ad3cf93d38153141a1d212f07497c342818738dd4a36de6e379926f0cbbc7462"
+    },
+    {
+      "id": "google-gke-cluster-autoscaler",
+      "name": "gke-cluster-autoscaler",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-cluster-autoscaler",
+      "path": "skills/google/cloud/gke-cluster-autoscaler",
+      "contentSha256": "b422d2fe8146e588a4a5991322f1c1a2399b5659e88c21fcbe7f428812add20c"
+    },
+    {
+      "id": "google-gke-cluster-creation",
+      "name": "gke-cluster-creation",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-cluster-creation",
+      "path": "skills/google/cloud/gke-cluster-creation",
+      "contentSha256": "76e4fe0e0016b390827460d04c9b6f50b8616582a54b052db7a73e19afb63188"
+    },
+    {
+      "id": "google-gke-compute-classes",
+      "name": "gke-compute-classes",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-compute-classes",
+      "path": "skills/google/cloud/gke-compute-classes",
+      "contentSha256": "23bee3fca4484196b9b6e7b4dfbe30265c89ddf4148a8158c2ed3e3de80077f0"
+    },
+    {
+      "id": "google-gke-cost-analysis",
+      "name": "gke-cost-analysis",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-cost-analysis",
+      "path": "skills/google/cloud/gke-cost-analysis",
+      "contentSha256": "8314e3876711ec706b39217e53f7f2b558df1321c5ca861d087030633c2058aa"
+    },
+    {
+      "id": "google-gke-cost-optimization",
+      "name": "gke-cost-optimization",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-cost-optimization",
+      "path": "skills/google/cloud/gke-cost-optimization",
+      "contentSha256": "4809bd960712229fce74b17595888377a5f0aa1f77e04d16244b576127d75046"
+    },
+    {
+      "id": "google-gke-custom-golden-image-discovery",
+      "name": "gke-custom-golden-image-discovery",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-custom-golden-image-discovery",
+      "path": "skills/google/cloud/gke-custom-golden-image-discovery",
+      "contentSha256": "717bbe928066292c8b1f2ddd80c1aff60d9e7c93efcbb97a0b00c42a112b404b"
+    },
+    {
+      "id": "google-gke-golden-path",
+      "name": "gke-golden-path",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-golden-path",
+      "path": "skills/google/cloud/gke-golden-path",
+      "contentSha256": "c99dd05a02ac4c3578631504019404f2ba5be7eed2b9518a0e8d9498c283d5d5"
+    },
+    {
+      "id": "google-gke-inference",
+      "name": "gke-inference",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-inference",
+      "path": "skills/google/cloud/gke-inference",
+      "contentSha256": "1b57563f67520384bcfc3c5e53be5e7d41abad6a13d2e64751baa3a0b52c15c9"
+    },
+    {
+      "id": "google-gke-manifest-generation",
+      "name": "gke-manifest-generation",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-manifest-generation",
+      "path": "skills/google/cloud/gke-manifest-generation",
+      "contentSha256": "0f1848528d67db26d7a80b465f6f2f6eba11a7583ff458c1e5f41e094592f20b"
+    },
+    {
+      "id": "google-gke-multitenancy",
+      "name": "gke-multitenancy",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-multitenancy",
+      "path": "skills/google/cloud/gke-multitenancy",
+      "contentSha256": "b086dc3f197b1b4fdb2e43d162b146219604b981c8a97fc82a617a2e7b0be4f5"
+    },
+    {
+      "id": "google-gke-networking",
+      "name": "gke-networking",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-networking",
+      "path": "skills/google/cloud/gke-networking",
+      "contentSha256": "9929def15d1cb56ef7f55c17dafa66f674830bf43f5232e592a3df0fdf5da1a9"
+    },
+    {
+      "id": "google-gke-observability",
+      "name": "gke-observability",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-observability",
+      "path": "skills/google/cloud/gke-observability",
+      "contentSha256": "77416866df5e777c9281082af41f7166a01308da58b829c4b1f1c75f31ccedad"
+    },
+    {
+      "id": "google-gke-platform-security",
+      "name": "gke-platform-security",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-platform-security",
+      "path": "skills/google/cloud/gke-platform-security",
+      "contentSha256": "5f60ab3fe16bb2b0434ac80c6294e91e9e31144707e3b9bd43d3b6f88f0558df"
+    },
+    {
+      "id": "google-gke-productionize",
+      "name": "gke-productionize",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-productionize",
+      "path": "skills/google/cloud/gke-productionize",
+      "contentSha256": "ddbd3b60f1a922059a348cebfe7dcf613c2f6afc6d0a57e8cdc62abbf1ce324f"
+    },
+    {
+      "id": "google-gke-reliability",
+      "name": "gke-reliability",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-reliability",
+      "path": "skills/google/cloud/gke-reliability",
+      "contentSha256": "3e6ea08837c13dde0c9f5035b11320f10bd10b77ab23881b722d9c2a9b99c175"
+    },
+    {
+      "id": "google-gke-service-networking",
+      "name": "gke-service-networking",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-service-networking",
+      "path": "skills/google/cloud/gke-service-networking",
+      "contentSha256": "08f305a48bf38163169a90d3892881dc2507394cd3106f52d9b30b272229c863"
+    },
+    {
+      "id": "google-gke-storage",
+      "name": "gke-storage",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-storage",
+      "path": "skills/google/cloud/gke-storage",
+      "contentSha256": "ad46243d2b2399810f062f03d2ffc14540d8067237d59b0af0fcc1f37c322f70"
+    },
+    {
+      "id": "google-gke-upgrades",
+      "name": "gke-upgrades",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-upgrades",
+      "path": "skills/google/cloud/gke-upgrades",
+      "contentSha256": "be2edefb6aa7f54dfb9a9825162b89cd10a1f540fb9b7b4909ba2d21cc057933"
+    },
+    {
+      "id": "google-gke-workload-scaling",
+      "name": "gke-workload-scaling",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-workload-scaling",
+      "path": "skills/google/cloud/gke-workload-scaling",
+      "contentSha256": "5d76bf9a77f96a9ce061730f2b55fbefc8658249a2c3d131bde7e42d5edc11d8"
+    },
+    {
+      "id": "google-gke-workload-security",
+      "name": "gke-workload-security",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-workload-security",
+      "path": "skills/google/cloud/gke-workload-security",
+      "contentSha256": "ecb47186b464acf36f3ca6d0f273b2af1a3a92d203b956074e746d86e0df436c"
+    },
+    {
+      "id": "google-gke-workload-troubleshooting",
+      "name": "gke-workload-troubleshooting",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/gke-workload-troubleshooting",
+      "path": "skills/google/cloud/gke-workload-troubleshooting",
+      "contentSha256": "122829cfb7149e8847a2e1d47e100fae8980c53e34244fd972d09fe6103e232d"
+    },
+    {
+      "id": "google-google-ads-api-account-diagnostics",
+      "name": "google-ads-api-account-diagnostics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/google-ads-api-account-diagnostics",
+      "path": "skills/google/ads/google-ads-api-account-diagnostics",
+      "contentSha256": "5f7f26b827f21d3d57d9f779c5dc93db50b6e65747ef41fe9e41db878f19d622"
+    },
+    {
+      "id": "google-google-ads-api-mcp-setup",
+      "name": "google-ads-api-mcp-setup",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/google-ads-api-mcp-setup",
+      "path": "skills/google/ads/google-ads-api-mcp-setup",
+      "contentSha256": "3d188233b953b81cdbf94a1d891a5f570e740f5f0c8467f35febe94c55579bee"
+    },
+    {
+      "id": "google-google-ads-api-quickstart",
+      "name": "google-ads-api-quickstart",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/google-ads-api-quickstart",
+      "path": "skills/google/ads/google-ads-api-quickstart",
+      "contentSha256": "157c07605ef0717841d9bd9ea3274437f38b538b9a034b633e11c2cec623d63b"
+    },
+    {
+      "id": "google-google-agents-cli-onboarding",
+      "name": "google-agents-cli-onboarding",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-agents-cli-onboarding",
+      "path": "skills/google/cloud/google-agents-cli-onboarding",
+      "contentSha256": "53fcd5ba97df53334e200b16e86a623f4cde4708d2f731f0ea5a24db94ea4397"
+    },
+    {
+      "id": "google-google-analytics-admin-api-basics",
+      "name": "google-analytics-admin-api-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/analytics/google-analytics-admin-api-basics",
+      "path": "skills/google/analytics/google-analytics-admin-api-basics",
+      "contentSha256": "b4339fc9fd4891655c3f57e0117eaf488924395c03ea228af8a08dfb2295b680"
+    },
+    {
+      "id": "google-google-analytics-data-api-basics",
+      "name": "google-analytics-data-api-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/analytics/google-analytics-data-api-basics",
+      "path": "skills/google/analytics/google-analytics-data-api-basics",
+      "contentSha256": "98c0c5b5415a8a3d12ae6743094b0e59c3fc42b2351895624601c107e0984ecf"
+    },
+    {
+      "id": "google-google-cloud-filestore-autoscale",
+      "name": "google-cloud-filestore-autoscale",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-filestore-autoscale",
+      "path": "skills/google/cloud/google-cloud-filestore-autoscale",
+      "contentSha256": "c883feebc770b86714a2a5f889d75aae1adfaa033c448e9499b9b8399700067d"
+    },
+    {
+      "id": "google-google-cloud-global-frontend-configuration",
+      "name": "google-cloud-global-frontend-configuration",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-global-frontend-configuration",
+      "path": "skills/google/cloud/google-cloud-global-frontend-configuration",
+      "contentSha256": "30c345f1387ac08ef4254037efde52012e05cf86c135395da932782857d526a5"
+    },
+    {
+      "id": "google-google-cloud-networking-observability",
+      "name": "google-cloud-networking-observability",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-networking-observability",
+      "path": "skills/google/cloud/google-cloud-networking-observability",
+      "contentSha256": "508f9bafa08e4109795ccc5fb8355f039e952680cdc4fb02dbe1e0c06bd84678"
+    },
+    {
+      "id": "google-google-cloud-recipe-auth",
+      "name": "google-cloud-recipe-auth",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-recipe-auth",
+      "path": "skills/google/cloud/google-cloud-recipe-auth",
+      "contentSha256": "873d1877fd32b8fe1fee9a85ec96b45f45247d585ee003de3d270c119452e7b9"
+    },
+    {
+      "id": "google-google-cloud-recipe-foundation-builder",
+      "name": "google-cloud-recipe-foundation-builder",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-recipe-foundation-builder",
+      "path": "skills/google/cloud/google-cloud-recipe-foundation-builder",
+      "contentSha256": "190f70c086b63c235b078106afc35d8d8aeca273868cf25617836b0d98f4aae0"
+    },
+    {
+      "id": "google-google-cloud-recipe-onboarding",
+      "name": "google-cloud-recipe-onboarding",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-recipe-onboarding",
+      "path": "skills/google/cloud/google-cloud-recipe-onboarding",
+      "contentSha256": "868c70265fd00256ee44ffa4c95626de56c6ee9a059f5ba82ec106d533794033"
+    },
+    {
+      "id": "google-google-cloud-scc-query",
+      "name": "google-cloud-scc-query",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-scc-query",
+      "path": "skills/google/cloud/google-cloud-scc-query",
+      "contentSha256": "7a599e46c0fe468ee13087ca75082ae43325f55950a0c0b51db41d651a57d368"
+    },
+    {
+      "id": "google-google-cloud-slo-alert-configuration",
+      "name": "google-cloud-slo-alert-configuration",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-slo-alert-configuration",
+      "path": "skills/google/cloud/google-cloud-slo-alert-configuration",
+      "contentSha256": "a7ba626fd2900b640536611ebf37790366b6dc27c81c2d1856626f255dff2e17"
+    },
+    {
+      "id": "google-google-cloud-solution-agentic-ai-bidirectional-streaming",
+      "name": "google-cloud-solution-agentic-ai-bidirectional-streaming",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-agentic-ai-bidirectional-streaming",
+      "path": "skills/google/cloud/google-cloud-solution-agentic-ai-bidirectional-streaming",
+      "contentSha256": "788a9a273fd23a36340e0771ba400ff32b13e6e5b7a50474dfba9a96b9b97cc4"
+    },
+    {
+      "id": "google-google-cloud-solution-agentic-ai-borderless-data-lakehouse",
+      "name": "google-cloud-solution-agentic-ai-borderless-data-lakehouse",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-agentic-ai-borderless-data-lakehouse",
+      "path": "skills/google/cloud/google-cloud-solution-agentic-ai-borderless-data-lakehouse",
+      "contentSha256": "195434209aba187f4e2ed6236cffcfadabc3e37782ff27583d0ec9ebf9f2aec5"
+    },
+    {
+      "id": "google-google-cloud-solution-agentic-ai-data-science-workflow",
+      "name": "google-cloud-solution-agentic-ai-data-science-workflow",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-agentic-ai-data-science-workflow",
+      "path": "skills/google/cloud/google-cloud-solution-agentic-ai-data-science-workflow",
+      "contentSha256": "e8c853dbd1bf5b6a21e2713949fe2b782d1558a14e903de7a686cde2f54a13d0"
+    },
+    {
+      "id": "google-google-cloud-solution-agentic-analytics-spark-knowledge-catalog",
+      "name": "google-cloud-solution-agentic-analytics-spark-knowledge-catalog",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-agentic-analytics-spark-knowledge-catalog",
+      "path": "skills/google/cloud/google-cloud-solution-agentic-analytics-spark-knowledge-catalog",
+      "contentSha256": "c93694be7b6f655c75e3af6aae60c8f4ff60c09cdcb546368b2d84d62a79373d"
+    },
+    {
+      "id": "google-google-cloud-solution-architecture",
+      "name": "google-cloud-solution-architecture",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-architecture",
+      "path": "skills/google/cloud/google-cloud-solution-architecture",
+      "contentSha256": "3b23d50066b5645f344303f0b89a6ffe78a98ef1a165ea95bd5da4c7276e8502"
+    },
+    {
+      "id": "google-google-cloud-solution-build-deploy-agents",
+      "name": "google-cloud-solution-build-deploy-agents",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-build-deploy-agents",
+      "path": "skills/google/cloud/google-cloud-solution-build-deploy-agents",
+      "contentSha256": "009897fc3e0273416cffb94604818c64fa4ff5af6bc3be24c2333887925f8a86"
+    },
+    {
+      "id": "google-google-cloud-solution-guided-gke-ai-migration",
+      "name": "google-cloud-solution-guided-gke-ai-migration",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-guided-gke-ai-migration",
+      "path": "skills/google/cloud/google-cloud-solution-guided-gke-ai-migration",
+      "contentSha256": "18e90fcf8b352a499a03978fa0c16092bf4b18677c89d32ab03eef23cc3a1e13"
+    },
+    {
+      "id": "google-google-cloud-solution-hybrid-search-alloydb",
+      "name": "google-cloud-solution-hybrid-search-alloydb",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-hybrid-search-alloydb",
+      "path": "skills/google/cloud/google-cloud-solution-hybrid-search-alloydb",
+      "contentSha256": "ef90e9e29fa413f6e3a91af03f041b6fe5beddc10abed5f4d4b84ffaa9df9d20"
+    },
+    {
+      "id": "google-google-cloud-solution-multi-agent-security",
+      "name": "google-cloud-solution-multi-agent-security",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-multi-agent-security",
+      "path": "skills/google/cloud/google-cloud-solution-multi-agent-security",
+      "contentSha256": "0d5778b1827fd1ef4290e5af8fad34e176bc3acc90a3c4a0a384e57a28f605bd"
+    },
+    {
+      "id": "google-google-cloud-solution-n-tier-serverless-web-app",
+      "name": "google-cloud-solution-n-tier-serverless-web-app",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-n-tier-serverless-web-app",
+      "path": "skills/google/cloud/google-cloud-solution-n-tier-serverless-web-app",
+      "contentSha256": "95c8b2e3d036bcd105dd226e42da666cf7598045d2cb7535f634e221cab6c7ea"
+    },
+    {
+      "id": "google-google-cloud-solution-rag-enterprise-search-gke-sqldb",
+      "name": "google-cloud-solution-rag-enterprise-search-gke-sqldb",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-solution-rag-enterprise-search-gke-sqldb",
+      "path": "skills/google/cloud/google-cloud-solution-rag-enterprise-search-gke-sqldb",
+      "contentSha256": "b47a983fee8e50872c1eea8ed2bf77049ba30a3d00c96d5c0bba040341008d06"
+    },
+    {
+      "id": "google-google-cloud-storage-basics",
+      "name": "google-cloud-storage-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-storage-basics",
+      "path": "skills/google/cloud/google-cloud-storage-basics",
+      "contentSha256": "5668f727b6e10792d9cd88e4f85a72900d5bb30a28c0ca8ed3d7c81d8905c096"
+    },
+    {
+      "id": "google-google-cloud-storage-fuse",
+      "name": "google-cloud-storage-fuse",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-storage-fuse",
+      "path": "skills/google/cloud/google-cloud-storage-fuse",
+      "contentSha256": "947017fb6e083b20e395b45c39bcd43fc8c27b7171c965ff2bf747dd217cd55d"
+    },
+    {
+      "id": "google-google-cloud-waf-cost-optimization",
+      "name": "google-cloud-waf-cost-optimization",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-waf-cost-optimization",
+      "path": "skills/google/cloud/google-cloud-waf-cost-optimization",
+      "contentSha256": "972b4b107c23722d8aaa7fc1b971083f3b164fa4aaf90e2cb29f402bf985e1a3"
+    },
+    {
+      "id": "google-google-cloud-waf-operational-excellence",
+      "name": "google-cloud-waf-operational-excellence",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-waf-operational-excellence",
+      "path": "skills/google/cloud/google-cloud-waf-operational-excellence",
+      "contentSha256": "85be01471ea4e087e5917a7a809e5a2de29d20287bfcd61e39525133faa903fd"
+    },
+    {
+      "id": "google-google-cloud-waf-performance-optimization",
+      "name": "google-cloud-waf-performance-optimization",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-waf-performance-optimization",
+      "path": "skills/google/cloud/google-cloud-waf-performance-optimization",
+      "contentSha256": "2896022d6bbb9368a39a784e2a14e4bfd1fa9c26dd91f892ade94f342ab2b169"
+    },
+    {
+      "id": "google-google-cloud-waf-reliability",
+      "name": "google-cloud-waf-reliability",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-waf-reliability",
+      "path": "skills/google/cloud/google-cloud-waf-reliability",
+      "contentSha256": "fb0062bcf892590a298029f7e174bf5924bd09ea36d56bf035047ebe171140e7"
+    },
+    {
+      "id": "google-google-cloud-waf-security",
+      "name": "google-cloud-waf-security",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-waf-security",
+      "path": "skills/google/cloud/google-cloud-waf-security",
+      "contentSha256": "0f891814f17a46d01e9939b2e38d7ab21271fe3982563eb1cd6df6cefd537f76"
+    },
+    {
+      "id": "google-google-cloud-waf-sustainability",
+      "name": "google-cloud-waf-sustainability",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/google-cloud-waf-sustainability",
+      "path": "skills/google/cloud/google-cloud-waf-sustainability",
+      "contentSha256": "814832d65f51c85331771cfb25ba1bca1edd051e129400c97499c05a38edfd6d"
+    },
+    {
+      "id": "google-google-mobile-ads-android-migrate-to-next-gen",
+      "name": "google-mobile-ads-android-migrate-to-next-gen",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/google-mobile-ads-android-migrate-to-next-gen",
+      "path": "skills/google/ads/google-mobile-ads-android-migrate-to-next-gen",
+      "contentSha256": "e389cc8267515ad4cc577bb1fa0ee77d69f1a422f0c81a941ed0742639b5939f"
+    },
+    {
+      "id": "google-google-mobile-ads-banner",
+      "name": "google-mobile-ads-banner",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/google-mobile-ads-banner",
+      "path": "skills/google/ads/google-mobile-ads-banner",
+      "contentSha256": "c7b693fb31e35edd3f44c4aec4ea9a5461b788795b2fa053ae315a6879441359"
+    },
+    {
+      "id": "google-google-mobile-ads-get-started",
+      "name": "google-mobile-ads-get-started",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/google-mobile-ads-get-started",
+      "path": "skills/google/ads/google-mobile-ads-get-started",
+      "contentSha256": "a6810bf961e4338c154967ed4eef8a29f88c846b8dadfad2a2989ebb7adbdae6"
+    },
+    {
+      "id": "google-google-mobile-ads-interstitial",
+      "name": "google-mobile-ads-interstitial",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/google-mobile-ads-interstitial",
+      "path": "skills/google/ads/google-mobile-ads-interstitial",
+      "contentSha256": "ed6531299131f2d4a84c4583a21bb6028d9a2f94726de974768398e5ff4fd09a"
+    },
+    {
+      "id": "google-google-mobile-ads-rewarded",
+      "name": "google-mobile-ads-rewarded",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/google-mobile-ads-rewarded",
+      "path": "skills/google/ads/google-mobile-ads-rewarded",
+      "contentSha256": "85b06a3a9f0083c2c711518f61873bb928946befe87d3a14ef4d43a545c3e22d"
+    },
+    {
+      "id": "google-iam-helper-for-policy-simulator",
+      "name": "iam-helper-for-policy-simulator",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/iam-helper-for-policy-simulator",
+      "path": "skills/google/cloud/iam-helper-for-policy-simulator",
+      "contentSha256": "c011c918e4815121e3abb481d7159b76bd98991ba0b5fb9626eca0c137e62b4f"
+    },
+    {
+      "id": "google-iam-helper-for-privileged-access-management",
+      "name": "iam-helper-for-privileged-access-management",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/iam-helper-for-privileged-access-management",
+      "path": "skills/google/cloud/iam-helper-for-privileged-access-management",
+      "contentSha256": "f5b6b7f09248a9fecb8d574ff201ecb2a5921a925b732bc072d5ea6ea9471b31"
+    },
+    {
+      "id": "google-ima-dai-sdk",
+      "name": "ima-dai-sdk",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/ima-dai-sdk",
+      "path": "skills/google/ads/ima-dai-sdk",
+      "contentSha256": "850c9f6d869d7d7e6fb09ba5eee2d74bbb5a7c112d0d03d79f2d782a690efbca"
+    },
+    {
+      "id": "google-ima-sdk-client-side",
+      "name": "ima-sdk-client-side",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/ads/ima-sdk-client-side",
+      "path": "skills/google/ads/ima-sdk-client-side",
+      "contentSha256": "6b1ac833e8ef70ac5218454e2ec6c2d46fa1735e3a21d6ef12fc70a6416e0379"
+    },
+    {
+      "id": "google-managed-airflow-dag-authoring",
+      "name": "managed-airflow-dag-authoring",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/managed-airflow-dag-authoring",
+      "path": "skills/google/cloud/managed-airflow-dag-authoring",
+      "contentSha256": "061f6cd79464781c8d95e504808311fc56fab541b4e86932ae16a5afe5be7106"
+    },
+    {
+      "id": "google-managed-airflow-dag-troubleshooting",
+      "name": "managed-airflow-dag-troubleshooting",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/managed-airflow-dag-troubleshooting",
+      "path": "skills/google/cloud/managed-airflow-dag-troubleshooting",
+      "contentSha256": "81e91c5fdda88d7a878e78003a68477f5044b1342b4f5dcc15f3fc028e547802"
+    },
+    {
+      "id": "google-managed-airflow-migrations",
+      "name": "managed-airflow-migrations",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/managed-airflow-migrations",
+      "path": "skills/google/cloud/managed-airflow-migrations",
+      "contentSha256": "d121b7ed81a4b0b8c97c2730bcfcf95298d5bb95b73a63feab35abf5cfe3051d"
+    },
+    {
+      "id": "google-retrieving-developer-knowledge",
+      "name": "retrieving-developer-knowledge",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/developers/retrieving-developer-knowledge",
+      "path": "skills/google/developers/retrieving-developer-knowledge",
+      "contentSha256": "34fda4bfe1ece41ced5156c92c53af792028146a8cef1c4aa3e959abd663dfed"
+    },
+    {
+      "id": "google-spanner-basics",
+      "name": "spanner-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/spanner-basics",
+      "path": "skills/google/cloud/spanner-basics",
+      "contentSha256": "92ce64b7fbc69170e801e4ac20ce12f73f015ba40342fb3dff3c7f7772082a25"
+    },
+    {
+      "id": "google-workload-manager-basics",
+      "name": "workload-manager-basics",
+      "sourceId": "google",
+      "author": "Google LLC",
+      "license": "Apache-2.0",
+      "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/workload-manager-basics",
+      "path": "skills/google/cloud/workload-manager-basics",
+      "contentSha256": "b8b703fdd3672f7d1aef1b92b476bcd67202ced5bb9b0c54174d3da3347f8bac"
+    },
+    {
+      "id": "sufficit-frontend",
+      "name": "sufficit-frontend",
+      "sourceId": "sufficit-ui",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
+      "path": "skills/sufficit/sufficit-frontend",
+      "contentSha256": "66976da0a09fec11afd4f8168014d41105bbefe7518aca43cbc3e749c480de30"
+    }
+  ]
+}

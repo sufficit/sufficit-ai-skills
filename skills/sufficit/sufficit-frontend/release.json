@@ -1,0 +1,7 @@
+{
+  "name": "sufficit-frontend",
+  "version": "1.0.1",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/sufficit/sufficit-frontend",
+  "license": "MIT-0"
+}
