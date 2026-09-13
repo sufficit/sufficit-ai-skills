@@ -18,3 +18,25 @@ jobs:
           python-version: "3.13"
       - name: Validate packages
         run: python3 scripts/validate.py
+
+  notify-genius:
+    # After main moves with valid packages, ask the Genius repository to pin and
+    # publish this exact revision in its skill catalog.
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch Genius skill catalog sync
+        env:
+          GH_TOKEN: ${{ secrets.GENIUS_SKILL_SYNC_TOKEN }}
+          REVISION: ${{ github.sha }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::warning::GENIUS_SKILL_SYNC_TOKEN is not configured; Genius will pick this revision up on its hourly sync."
+            exit 0
+          fi
+          gh workflow run skill-catalog-sync.yml \
+            --repo sufficit/sufficit-ai-genius \
+            --ref main \
+            -f revision="$REVISION"
+          echo "Dispatched Genius skill catalog sync for $REVISION"
