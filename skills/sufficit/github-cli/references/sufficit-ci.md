@@ -86,20 +86,45 @@ disparo. Um push de correção normalmente cria outra execução; confirme antes
 
 O CI compartilhado tem runners separados por plataforma. No Genius, o contrato atual é:
 
-- Linux geral: `[self-hosted, Linux, X64, openclaw-ci, ci-primary]`;
-- Windows: `[self-hosted, Windows, X64, windows-ci, ci-primary]`;
-- macOS/iOS: `[self-hosted, macOS, X64, macos-ci, ci-primary]`.
+| Plataforma | Labels pedidas pelo workflow | Runner primário do Genius |
+|---|---|---|
+| Linux | `self-hosted, Linux, X64, openclaw-ci, ci-primary` | `linux-ci-genius-contigencia` |
+| Windows | `self-hosted, Windows, X64, windows-ci, ci-primary` | `windows-ci-contigencia` |
+| macOS/iOS | `self-hosted, macOS, X64, macos-ci, ci-primary` | `macos-ci` |
 
 `openclaw-ci` é uma label histórica; ela não identifica sozinha a máquina real. `ci-primary`
 seleciona o destino preferencial e deve existir em somente um runner compatível por plataforma e
 repositório. Outros repositórios podem usar combinações diferentes, portanto leia `runs-on` no
 workflow antes de diagnosticar.
 
+Esse mapa identifica o destino primário de `sufficit/sufficit-ai-genius`, não autoriza acesso ao
+host. O workflow seleciona labels, não o nome do runner. Um runner legado ou reserva sem
+`ci-primary` não satisfaz um job que exige essa label e não deve ser apresentado como o servidor
+correto. Sempre consulte a API, pois estado, capacidade e failover mudam sem alterar esta skill.
+
 Se a conta tiver permissão administrativa, consulte o estado sem revelar credenciais:
 
 ```json
 ["api", "repos/owner/repo/actions/runners", "--jq", ".runners[] | {name,status,busy,labels:[.labels[].name]}"]
 ```
+
+Cruze as labels do job com as labels retornadas pela API:
+
+- `online` e `busy=true` significa que o runner correto está saudável e executando outro job;
+  acompanhe a fila, sem pedir restauração do servidor;
+- `online` e livre, mas um job permanece na fila, exige conferência do `runs-on`, do escopo do
+  runner e de concorrência do workflow;
+- `offline` só bloqueia o job quando esse runner é o único que satisfaz todas as labels exigidas;
+- um runner reserva offline e sem `ci-primary` não explica a falha de um job primário;
+- um job que chegou a executar e terminou com falha exige leitura dos logs; isso não prova que o
+  servidor está fora do ar.
+
+Não ofereça “aprovar sem o check” como solução automática para indisponibilidade do runner. Se o
+check for obrigatório, preserve-o. Quando o primário estiver temporariamente offline, registre a
+falha operacional com as evidências disponíveis, acompanhe seu retorno em intervalos moderados e
+reexecute apenas os jobs com falha assim que houver runner compatível online. Encaminhe ao operador
+somente quando a API comprovar ausência persistente de capacidade compatível ou quando for preciso
+alterar host, registro ou labels; isso é uma ação operacional, não uma decisão de produto do usuário.
 
 O agente de desenvolvimento/revisão não deve reiniciar hosts, alterar labels, registrar runner ou
 usar acesso administrativo apenas para destravar um PR. Quando houver falha de infraestrutura,
