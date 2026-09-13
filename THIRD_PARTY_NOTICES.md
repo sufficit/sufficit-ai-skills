@@ -1,0 +1,28 @@
+# Avisos de terceiros
+
+Este repositório espelha pacotes públicos usados pelo catálogo do Sufficit AI
+Genius. A origem e o digest de cada pacote estão em
+[`catalog/import-manifest.json`](catalog/import-manifest.json).
+
+## Android Skills
+
+- Autor: Google LLC
+- Origem: <https://github.com/android/skills>
+- Revisão importada: `ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6`
+- Licença: [Apache License 2.0](licenses/android-skills-Apache-2.0.txt)
+
+## Google Skills
+
+- Autor: Google LLC
+- Origem: <https://github.com/google/skills>
+- Revisão importada: `f36c9ebe9658ee9f98bf83ad0fe97f747abb743c`
+- Licença: [Apache License 2.0](licenses/google-skills-Apache-2.0.txt)
+
+## Skills Sufficit
+
+- Autor: Sufficit
+- Origem: repositórios Sufficit indicados no manifesto de importação
+- Licença: [MIT-0](licenses/sufficit-skills-MIT-0.txt)
+
+Os nomes e conteúdos de terceiros permanecem atribuídos aos respectivos
+autores. A inclusão neste espelho não altera suas licenças.
