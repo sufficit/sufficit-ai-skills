@@ -2,7 +2,7 @@
 name: meta-app-review
 description: Aprova apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e opera o Business Manager. Use para criar ou configurar app num portfólio, pedir acesso avançado a permissões como whatsapp_business_management, whatsapp_business_messaging, pages_messaging e business_management, gravar os screencasts exigidos, conectar Página ou conta do WhatsApp Business a uma plataforma, ou diagnosticar webhooks, Facebook Login for Business, números de WhatsApp e erros da Graph API nesses fluxos.
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
 ---
 
 # Meta App Review

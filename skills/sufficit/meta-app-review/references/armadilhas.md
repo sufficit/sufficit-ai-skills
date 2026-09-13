@@ -55,3 +55,8 @@ app novo e espere.
 Ao abrir a janela de consentimento, o Android pode descartar a aba de trás por memória; ao
 voltar, a resposta do login se perde e o fluxo reinicia. Refaça o login (a segunda vez é rápida,
 "você já vinculou").
+
+## Três travas escondidas no fim do envio
+- `pages_messaging`: além do texto de reprodução, há um seletor "Selecione uma Página"; o item só conclui com a Página escolhida.
+- Com todas as permissões em "Editar", a seção "Uso permitido" continua sem marca até clicar "Avançar" dentro dela.
+- O diálogo final tem uma caixa de aceite dos Termos da Plataforma; sem marcar, o botão "Enviar" do diálogo fica desabilitado e o clique não faz nada.
