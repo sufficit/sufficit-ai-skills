@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 151,
+  "catalogEntries": 152,
   "sources": [
     {
       "id": "android",
@@ -1531,6 +1531,16 @@
       "upstreamSource": "https://github.com/google/skills/tree/f36c9ebe9658ee9f98bf83ad0fe97f747abb743c/skills/cloud/workload-manager-basics",
       "path": "skills/google/cloud/workload-manager-basics",
       "contentSha256": "b8b703fdd3672f7d1aef1b92b476bcd67202ced5bb9b0c54174d3da3347f8bac"
+    },
+    {
+      "id": "meta-app-review",
+      "name": "meta-app-review",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review",
+      "path": "skills/sufficit/meta-app-review",
+      "contentSha256": "829c3db7182bcc8c6f41af452016c9743a64c11843324a58bbd514f3eb1f2922"
     },
     {
       "id": "sufficit-frontend",

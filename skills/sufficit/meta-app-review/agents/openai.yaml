@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meta App Review"
+  short_description: "Aprova app da Meta e opera o Business Manager"
+  default_prompt: "Leve este app da Meta até o envio para análise: confira o que falta, prepare textos e screencasts e faça as chamadas de API de teste."

@@ -2065,6 +2065,24 @@
       "sourceId": "google"
     },
     {
+      "id": "meta-app-review",
+      "name": "meta-app-review",
+      "description": "Aprova apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e opera o Business Manager: o que é só interface, ordem do envio, screencasts, chamadas de API de teste e erros que enganam. Versão 1.0.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review",
+      "tags": [
+        "meta",
+        "facebook",
+        "whatsapp",
+        "messenger",
+        "app-review",
+        "business-manager",
+        "graph-api"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius"
+    },
+    {
       "id": "sufficit-frontend",
       "name": "sufficit-frontend",
       "description": "Implementa e refina interfaces web com tokens, componentes reutilizáveis e validação no navegador; integra Blazor/SUI e pode complementar Impeccable. Versão 1.0.1.",
