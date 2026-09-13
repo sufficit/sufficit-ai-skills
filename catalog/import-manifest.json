@@ -260,7 +260,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-genius-skills/tree/e31f0f044fe011a4df06f47973145aa55ae90c13/skills/github-cli",
       "path": "skills/sufficit/github-cli",
-      "contentSha256": "3d4ab0f0697a1ef442860afb33639144ae5110fc557531fb009501151d2f81f6"
+      "contentSha256": "2fa1db31e21548e387e47fda30ff38c3a2fa7e33db8004a3c8ec222fe14687d3"
     },
     {
       "id": "google-agent-platform-alert-configuration",

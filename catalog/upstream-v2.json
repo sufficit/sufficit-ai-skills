@@ -398,7 +398,7 @@
     {
       "id": "github-cli",
       "name": "github-cli",
-      "description": "Opera issues, pull requests, revisões, CI, Actions, releases e anexos do GitHub pelo gh estruturado do Genius, com autorização segura do Sufficit Identity. Versão 1.1.0.",
+      "description": "Opera issues, pull requests, revisões, CI, Actions, releases e anexos do GitHub pelo gh estruturado do Genius, com autorização segura do Sufficit Identity. Versão 1.2.0.",
       "source": "https://github.com/sufficit/sufficit-ai-genius-skills/tree/e31f0f044fe011a4df06f47973145aa55ae90c13/skills/github-cli",
       "tags": [
         "github",
