@@ -37,7 +37,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-09-14T15:34:31Z",
+  "updatedAt": "2026-09-14T16:30:52Z",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2110,7 +2110,7 @@
     {
       "id": "sufficit-api",
       "name": "sufficit-api",
-      "description": "Consulta e gerencia a API corporativa Sufficit como o usuário autenticado, começando por carteiras, créditos, vales e contatos, com descoberta pelo OpenAPI vivo. Versão 1.0.0.",
+      "description": "Consulta e gerencia a API corporativa Sufficit como o usuário autenticado, começando por carteiras, créditos, vales e contatos, com descoberta pelo OpenAPI vivo. Versão 1.0.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "tags": [
         "sufficit",

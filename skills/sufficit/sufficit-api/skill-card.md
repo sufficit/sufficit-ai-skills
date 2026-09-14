@@ -3,7 +3,7 @@
 Gestão da API corporativa como o usuário autenticado, começando por créditos,
 vales e contatos, com descoberta pelo OpenAPI implantado.
 
-Versão: **1.0.0** · Sufficit · MIT-0
+Versão: **1.0.1** · Sufficit · MIT-0
 
 Leia [SKILL.md](SKILL.md) para aplicar a skill.
 
