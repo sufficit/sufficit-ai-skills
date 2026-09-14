@@ -28,9 +28,16 @@
       "revision": "e31f0f044fe011a4df06f47973145aa55ae90c13",
       "author": "Sufficit",
       "license": "MIT-0"
+    },
+    {
+      "id": "refero",
+      "repository": "https://github.com/referodesign/refero_skill",
+      "revision": "a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d",
+      "author": "Refero",
+      "license": "MIT"
     }
   ],
-  "updatedAt": "2026-09-13T03:01:14Z",
+  "updatedAt": "2026-09-13T22:45:00Z",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2081,6 +2088,24 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius"
+    },
+    {
+      "id": "refero-design",
+      "name": "refero-design",
+      "description": "Conduz design de interface e de produto por pesquisa: trava referências antes de implementar, registra cada decisão com a fonte que a sustenta e recusa os padrões médios que um modelo produz sozinho. Versão 1.0.2.",
+      "source": "https://github.com/referodesign/refero_skill/tree/a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d/skills/refero-design",
+      "tags": [
+        "design",
+        "ui",
+        "product-design",
+        "typography",
+        "color",
+        "motion",
+        "anti-ai-slop"
+      ],
+      "author": "Refero",
+      "license": "MIT",
+      "sourceId": "refero"
     },
     {
       "id": "sufficit-frontend",

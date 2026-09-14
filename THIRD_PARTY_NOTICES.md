@@ -18,6 +18,13 @@ Genius. A origem e o digest de cada pacote estão em
 - Revisão importada: `f36c9ebe9658ee9f98bf83ad0fe97f747abb743c`
 - Licença: [Apache License 2.0](licenses/google-skills-Apache-2.0.txt)
 
+## Refero Skill
+
+- Autor: Refero
+- Origem: <https://github.com/referodesign/refero_skill>
+- Revisão importada: `a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d`
+- Licença: [MIT](licenses/refero-skill-MIT.txt)
+
 ## Skills Sufficit
 
 - Autor: Sufficit

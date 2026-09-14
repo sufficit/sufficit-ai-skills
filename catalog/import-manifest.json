@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 152,
+  "catalogEntries": 153,
   "sources": [
     {
       "id": "android",
@@ -29,6 +29,13 @@
       "revision": "e31f0f044fe011a4df06f47973145aa55ae90c13",
       "author": "Sufficit",
       "license": "MIT-0"
+    },
+    {
+      "id": "refero",
+      "repository": "https://github.com/referodesign/refero_skill",
+      "revision": "a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d",
+      "author": "Refero",
+      "license": "MIT"
     }
   ],
   "skills": [
@@ -1541,6 +1548,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review",
       "path": "skills/sufficit/meta-app-review",
       "contentSha256": "581ebae1701a5b9f5be13a0008e9e4d93fbd2d9c9b961136ac83637c21ef6761"
+    },
+    {
+      "id": "refero-design",
+      "name": "refero-design",
+      "sourceId": "refero",
+      "author": "Refero",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/referodesign/refero_skill/tree/a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d/skills/refero-design",
+      "path": "skills/refero/refero-design",
+      "contentSha256": "7aed94d69d9f0af16ce17c372e986a31540a5304e63b204f186d5a0ded8b6d5a"
     },
     {
       "id": "sufficit-frontend",
