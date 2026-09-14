@@ -99,6 +99,45 @@ consultar a API:
 
 Publicar apenas cria a oferta; não lança ainda o benefício na carteira.
 
+## Entregar um vale avulso por link
+
+Quando o usuário pedir para **compartilhar, enviar ou entregar um vale por link**,
+não faça o resgate gerencial. O vale precisa ter sido publicado com `contextId` e
+`productId` específicos; essa vinculação garante que quem possuir o link não possa
+trocar o beneficiário nem o serviço. Depois de confirmar o vale pelo GUID retornado
+na lista, descubra e execute:
+
+```http
+POST /Finance/Credits/Vouchers/{id}/Share
+```
+
+A operação não recebe body. A resposta contém `voucherId`, `url` e `expiresUtc`.
+Entregue ao usuário a `url` completa e a validade humanizada. O endereço tem o
+formato `/v/{token}` no Checkout e funciona como credencial portadora: não revele o
+token em logs, diagnósticos ou para terceiros além do destinatário/canal solicitado.
+
+Gerar o link não resgata o vale. O cliente abre a página do Checkout, confere o
+benefício, pode copiar o mesmo link e confirma a aplicação. O Checkout usa a
+integração privada do Endpoints; não tente reproduzir esse resgate com `curl`, banco
+ou outra rota. Não abra nem clique em “Aplicar vale” para testar, pois isso causaria
+a mutação real. Verifique sem consumo relendo `GET /Finance/Credits/Vouchers` e
+confirmando que o GUID, destinatário, produto, estado e validade ainda correspondem
+ao pedido.
+
+Vales globais, sem produto, desativados, ainda não iniciados ou expirados não podem
+gerar esse link. Como vales publicados são imutáveis, não tente completar a
+vinculação de um vale existente: com autorização explícita, publique outro vale
+vinculado e desative o incorreto quando necessário. Após resposta incerta do
+`Share`, releia o vale e repita a mesma operação pelo mesmo GUID; nunca publique uma
+segunda campanha apenas para obter outra URL.
+
+Distinga a intenção:
+
+- “aplique/conceda/lance agora” usa o resgate gerencial descrito abaixo;
+- “gere/compartilhe/envie um link” usa `Share` e deixa a confirmação para o cliente;
+- quando as duas ações forem pedidas juntas, esclareça qual delas deve efetivar o
+  benefício, pois resgatar antes torna o link apenas uma consulta de vale já usado.
+
 ## Aplicar crédito promocional
 
 Quando o usuário pedir para **lançar, conceder ou aplicar** um crédito presente,

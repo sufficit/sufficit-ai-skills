@@ -2,7 +2,7 @@
 name: sufficit-api
 description: Consulta e gerencia recursos da API corporativa Sufficit como o usuário autenticado. Use para localizar e operar dados empresariais, começando por carteiras, créditos, vales e contatos. Não use para alterar código-fonte, acessar banco diretamente ou inventar rotas fora do OpenAPI implantado.
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # Sufficit API
