@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sufficit API"
+  short_description: "Gerencia créditos, vales e contatos Sufficit"
+  default_prompt: "Use $sufficit-api para consultar ou gerenciar meus créditos, vales e contatos pela API da Sufficit."
