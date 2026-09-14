@@ -22,4 +22,8 @@ outro contexto quando a carteira não existe.
 
 ## Publicação
 
-Pendente de registro após push e sincronização do catálogo Genius.
+- Skill publicada em `main` na revisão `24ded8e`.
+- Workflow de validação aprovado.
+- Genius fixou essa revisão no commit `df3338a`, validou o contrato e publicou os
+  catálogos v1 e v2 no armazenamento público.
+- O workflow confirmou que a revisão publicada é exatamente `24ded8e`.
