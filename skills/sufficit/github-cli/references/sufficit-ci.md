@@ -15,8 +15,9 @@ Consulte nesta ordem:
 4. checks, jobs, etapas, logs e artefatos da execução no GitHub;
 5. estado dos runners, somente se o job estiver aguardando infraestrutura.
 
-O workflow do próprio repositório vence qualquer exemplo desta referência. Algumas bases
-Sufficit antigas ainda selecionam apenas `openclaw-ci`; não altere labels por associação de nome.
+O workflow do próprio repositório vence qualquer exemplo desta referência. A label Linux
+padrão é `aireset-ci` (renomeada de `openclaw-ci` em 2026-09-18); não altere labels por
+associação de nome.
 
 ## Diagnóstico autônomo
 
@@ -88,11 +89,12 @@ O CI compartilhado tem runners separados por plataforma. No Genius, o contrato a
 
 | Plataforma | Labels pedidas pelo workflow | Runner primário do Genius |
 |---|---|---|
-| Linux | `self-hosted, Linux, X64, openclaw-ci, ci-primary` | `linux-ci-genius-contigencia` |
+| Linux | `self-hosted, Linux, X64, aireset-ci, ci-primary` | `linux-ci-genius-contigencia` |
 | Windows | `self-hosted, Windows, X64, windows-ci, ci-primary` | `windows-ci-contigencia` |
 | macOS/iOS | `self-hosted, macOS, X64, macos-ci, ci-primary` | `macos-ci` |
 
-`openclaw-ci` é uma label histórica; ela não identifica sozinha a máquina real. `ci-primary`
+`aireset-ci` nomeia o provedor do host (aireset); ela não identifica sozinha a máquina real.
+Até 2026-09-18 chamava-se `openclaw-ci`, herança do host antigo openclaw-server. `ci-primary`
 seleciona o destino preferencial e deve existir em somente um runner compatível por plataforma e
 repositório. Outros repositórios podem usar combinações diferentes, portanto leia `runs-on` no
 workflow antes de diagnosticar.
