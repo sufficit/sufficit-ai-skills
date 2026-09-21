@@ -2,7 +2,7 @@
 name: meta-app-review
 description: Aprova apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e opera o Business Manager. Use para criar ou configurar app num portfólio, pedir acesso avançado a permissões como whatsapp_business_management, whatsapp_business_messaging, pages_messaging e business_management, gravar os screencasts exigidos, conectar Página ou conta do WhatsApp Business a uma plataforma, ou diagnosticar webhooks, Facebook Login for Business, números de WhatsApp e erros da Graph API nesses fluxos.
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # Meta App Review
@@ -71,8 +71,14 @@ Chamadas por permissão em [chamadas de API](references/chamadas-api.md).
 | `Register endpoint is not available for SMB businesses` | número em coexistência com o app WhatsApp Business |
 | `(#131030) Recipient phone number not in allowed list` | número de teste só envia a destinatários cadastrados |
 | webhook inscrito e nenhum evento chega | app de outro business; só o dono do ativo recebe |
+| `141011` no APP (`can_receive_call_sip: BLOCKED`) | cliente não compartilhou a WABA com o business do app |
+| `138025` | servidor SIP não gravado no número com o token deste app |
+| "<app> não pode integrar clientes no momento" | integração de Provedor de Tecnologia não concluída |
+| "Parece que esse app não está disponível" com `dialog_source=fedcm` | FedCM do Chrome perdeu o `config_id` |
 
-Diagnóstico completo em [armadilhas](references/armadilhas.md).
+Diagnóstico completo em [armadilhas](references/armadilhas.md). Chamadas do WhatsApp por SIP para
+números de clientes (quem compartilha o quê, saúde que atrasa, separar chamadas de mensagens):
+[chamadas por SIP](references/whatsapp-calling-sip.md).
 
 ## Segurança
 

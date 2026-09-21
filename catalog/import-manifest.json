@@ -267,7 +267,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-genius-skills/tree/e31f0f044fe011a4df06f47973145aa55ae90c13/skills/github-cli",
       "path": "skills/sufficit/github-cli",
-      "contentSha256": "2fa1db31e21548e387e47fda30ff38c3a2fa7e33db8004a3c8ec222fe14687d3"
+      "contentSha256": "81ea4acedb799e1819dcd3318f1641d4d0c71233dd849b13e95d25bcd8845a98"
     },
     {
       "id": "google-agent-platform-alert-configuration",
@@ -1547,7 +1547,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review",
       "path": "skills/sufficit/meta-app-review",
-      "contentSha256": "581ebae1701a5b9f5be13a0008e9e4d93fbd2d9c9b961136ac83637c21ef6761"
+      "contentSha256": "0c341f42ea4106cc55341da762fcc194f9c7581b3182f14aed07406c18cd82ab"
     },
     {
       "id": "refero-design",

@@ -2,7 +2,7 @@
 
 Aprovação de apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e operação do Business Manager: o que é só interface, ordem do envio, screencasts, chamadas de API de teste e erros que enganam.
 
-Versão: **1.0.1** · Sufficit · MIT-0
+Versão: **1.0.2** · Sufficit · MIT-0
 
 Leia [SKILL.md](SKILL.md) para aplicar a skill.
 
