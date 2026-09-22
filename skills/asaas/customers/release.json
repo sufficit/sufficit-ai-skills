@@ -1,6 +1,6 @@
 {
   "name": "asaas-customers",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/asaas/customers",
   "license": "MIT-0"

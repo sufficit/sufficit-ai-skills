@@ -39,6 +39,11 @@ da prefeitura e **não existem para serem criados**: "criar serviço novo" não
 
 `asaas_invoices_list` executa um `GET` fixo em `/v3/invoices` com filtros
 opcionais (cliente, cobrança, status, período) e paginação. Somente leitura.
+Cada nota já chega com **quem a recebeu**: o campo `customer` traz o cliente
+resolvido (`id`, `name`, `personType`, `document` — CNPJ completo e formatado,
+CPF nos 3 primeiros dígitos); se um cliente não pôde ser resolvido, o id vem
+solto na nota e listado em `unresolvedCustomerIds`, com orientação para
+consultar `asaas_customers_list` antes de afirmar quem recebeu.
 Traduza status para linguagem simples: SCHEDULED = agendada, SYNCHRONIZED =
 enviada à prefeitura, AUTHORIZED = emitida, CANCELED = cancelada, ERROR =
 falhou. Contrato completo em

@@ -21,11 +21,20 @@ documento emitido, oriente o painel do ASAAS.
 ## Resultado de sucesso
 
 `provider: "asaas"`, `environment: "production"`, `query` (o pedido e
-`returned`), `totalCount`, `hasNext`, `invoices[]` e `writesPerformed: false`.
+`returned`), `totalCount`, `hasNext`, `invoices[]`, `writesPerformed: false`.
 
 Cada nota traz: `id`, `status`, `statusDescription`, `type`, `number`,
 `serviceDescription` (até 200 caracteres), `value`, `deductions`,
 `effectiveDate`, `observations`, `customer`, `payment`, `installment`.
+
+O campo `customer` traz o cliente **resolvido** pela ferramenta (uma leitura
+extra por id distinto de cliente, no máximo 30 por página): um objeto com
+`id`, `name`, `personType` e `document` — CNPJ completo e formatado
+(registro público), CPF limitado aos 3 primeiros dígitos. Quando a resolução
+não é possível (cliente removido, falha de leitura), a nota traz o id solto
+do provedor e o id aparece em `unresolvedCustomerIds`, acompanhado de
+`guidance` apontando para `asaas_customers_list`. Nunca afirme para quem a
+nota foi emitida a partir de um id não resolvido.
 
 ## Leitura de status para o usuário
 

@@ -4,8 +4,9 @@ A ferramenta `asaas_customers_list` consulta `/v3/customers` na conta de
 produção, injetando a chave `personal/asaas/production/api-key` apenas no
 cabeçalho `access_token`. O resultado só contém campos projetados e
 sanitizados: telefones, endereços, observações e referências externas não
-entram no contexto do modelo, e o CPF/CNPJ chega mascarado nos 3 últimos
-dígitos.
+entram no contexto do modelo. O documento segue a política de identificação:
+CNPJ chega completo e formatado (registro público, ex. `27.506.088/7001-24`);
+CPF chega limitado aos 3 primeiros dígitos (ex. `390.***.***-**`).
 
 ## Argumentos
 
@@ -29,8 +30,9 @@ dígitos.
 | `credentialReference` | `personal/asaas/production/api-key` |
 
 Cada item de `customers[]` traz, quando existe no provedor: `id`, `name`
-(truncado em 80 caracteres), `personType`, `email` e `document` mascarado
-(`***` + 3 últimos dígitos; documentos curtos chegam como `***`). Campos
+(truncado em 80 caracteres), `personType`, `email` e `document` (CNPJ
+completo e formatado; CPF nos 3 primeiros dígitos; outros formatos chegam
+como `***`). Campos
 ausentes chegam como `null`.
 
 ## Tipos de pessoa
@@ -65,5 +67,6 @@ operação de escrita para diagnosticar a consulta.
 Se o usuário der um nome, repasse em `name` sem alterar; a correspondência é
 por contenção no provedor. Sem nome, liste a primeira página e ofereça
 avançar com `offset` enquanto `hasNext` for verdadeiro, até esgotar
-`totalCount` ou o pedido do usuário. O documento mascarado serve para o
-usuário confirmar qual cliente é — nunca o use para deduzir o número completo.
+`totalCount` ou o pedido do usuário. O documento serve para o usuário
+confirmar qual cliente é — no caso de CPF, nunca tente deduzir o número
+completo a partir dos 3 primeiros dígitos.

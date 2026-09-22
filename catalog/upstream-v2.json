@@ -437,7 +437,7 @@
     {
       "id": "asaas-customers",
       "name": "asaas-customers",
-      "description": "Consulta, busca e cadastra clientes reais da conta de produção do ASAAS (nome, e-mail, tipo de pessoa, documento mascarado nos 3 últimos dígitos) pelas ferramentas asaas_customers_list e asaas_customers_create do Sufficit AI Genius. O cadastro exige aprovação explícita e sempre consulta duplicatas (CPF/CNPJ, e-mail, nome) antes de escrever. Versão 0.2.0.",
+      "description": "Consulta, busca e cadastra clientes reais da conta de produção do ASAAS (nome, e-mail, tipo de pessoa, CNPJ completo ou CPF nos 3 primeiros dígitos) pelas ferramentas asaas_customers_list e asaas_customers_create do Sufficit AI Genius. O cadastro exige aprovação explícita e sempre consulta duplicatas (CPF/CNPJ, e-mail, nome) antes de escrever. Versão 0.3.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers",
       "tags": [
         "asaas",
@@ -453,7 +453,7 @@
     {
       "id": "asaas-invoices",
       "name": "asaas-invoices",
-      "description": "Emite e consulta notas fiscais de serviço (NFS-e) da conta de produção do ASAAS pelas ferramentas asaas_invoices_list, asaas_services_list e asaas_invoices_create do Sufficit AI Genius. Toda emissão é vinculada a um serviço municipal JÁ EXISTENTE (não existe criar serviço), com deduplicação e aprovação explícita. Versão 0.1.0.",
+      "description": "Emite e consulta notas fiscais de serviço (NFS-e) da conta de produção do ASAAS pelas ferramentas asaas_invoices_list, asaas_services_list e asaas_invoices_create do Sufficit AI Genius. Toda emissão é vinculada a um serviço municipal JÁ EXISTENTE (não existe criar serviço), com deduplicação e aprovação explícita. A listagem identifica o cliente de cada nota (nome e documento: CNPJ completo, CPF nos 3 primeiros dígitos). Versão 0.2.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "tags": [
         "asaas",

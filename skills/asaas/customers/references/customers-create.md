@@ -6,7 +6,8 @@ executa a regra **consultar antes de escrever em código**: antes do POST ela
 consulta `/v3/customers` por documento, e-mail e nome, e se recusa a escrever
 quando encontra duplicatas. A chave `personal/asaas/production/api-key` sai do
 Vault direto para o cabeçalho `access_token`; a resposta chega sanitizada com
-o documento mascarado nos 3 últimos dígitos.
+o documento sob a política de identificação (CNPJ completo; CPF nos 3
+primeiros dígitos).
 
 ## Quando usar
 
@@ -42,7 +43,7 @@ um erro. Nenhum POST aconteceu.
 | --- | --- |
 | `created` | `true` |
 | `writesPerformed` | `true` |
-| `customer` | Cliente criado sanitizado (`id`, `name`, `personType`, `email`, `document` mascarado) |
+| `customer` | Cliente criado sanitizado (`id`, `name`, `personType`, `email`, `document` sob a política de identificação) |
 | `dedupPerformed` | `true` — a consulta de duplicatas rodou antes da escrita |
 | `credentialReference` | `personal/asaas/production/api-key` |
 
@@ -68,7 +69,7 @@ asaas_customers_create (name, cpfCnpj?, email?)
         ├─ duplicate_document ──► use o cliente existente
         ├─ possible_duplicate ──► pergunte ao usuário
         │                              └─ confirmou? repita com confirmedDistinct=true
-        └─ card de aprovação ──► created:true ──► reporte com documento mascarado
+        └─ card de aprovação ──► created:true ──► reporte com documento (CNPJ completo / CPF 3 primeiros)
 ```
 
 Nunca contorne uma recusa chamando a API por outro caminho; a recusa é a

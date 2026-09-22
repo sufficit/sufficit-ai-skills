@@ -1,6 +1,6 @@
 ---
 name: asaas-customers
-description: Consulta, busca e cadastra clientes na conta de produção do ASAAS (nome, e-mail, documento mascarado) pelas ferramentas asaas_customers_list e asaas_customers_create do Sufficit AI Genius. Consultas são somente leitura; cadastro exige confirmação do usuário e sempre verifica duplicatas antes de escrever.
+description: Consulta, busca e cadastra clientes na conta de produção do ASAAS (nome, e-mail, tipo de pessoa, CNPJ completo ou CPF nos 3 primeiros dígitos) pelas ferramentas asaas_customers_list e asaas_customers_create do Sufficit AI Genius. Consultas são somente leitura; cadastro exige confirmação do usuário e sempre verifica duplicatas antes de escrever.
 ---
 
 # Clientes ASAAS de produção
@@ -30,9 +30,11 @@ Considere o resultado confiável somente quando indicar `provider: "asaas"`,
 [references/customers-list.md](references/customers-list.md).
 
 Traduza `personType` para linguagem simples: FISICA = pessoa física,
-JURIDICA = empresa. O documento chega sempre mascarado nos 3 últimos dígitos
-(ex.: `***705`) — nunca tente adivinhar ou completar o número. Para contas
-grandes, percorra as páginas com `offset` enquanto `hasNext` for verdadeiro;
+JURIDICA = empresa. O documento segue a política de identificação: um CNPJ
+(empresa) chega completo e formatado (ex.: `27.506.088/7001-24`), porque é
+dado público de registro; um CPF chega limitado aos 3 primeiros dígitos
+(ex.: `390.***.***-**`) — nunca tente adivinhar ou completar o número.
+Para contas grandes, percorra as páginas com `offset` enquanto `hasNext` for verdadeiro;
 não prometa "todos" de uma vez, o limite por página é 30.
 
 ## Cadastro de cliente novo — consultar antes de escrever
@@ -54,7 +56,8 @@ o cliente já existe — e você deve conduzir a conversa no mesmo espírito:
    produção e exige aprovação explícita na conversa. Nunca prometa o cadastro
    como automático.
 4. **Reporte com honestidade**: em sucesso, o resultado traz o cliente criado
-   com documento mascarado. Em timeout, consulte se o cadastro aconteceu antes
+   com o documento sob a política de identificação (CNPJ completo; CPF nos 3
+   primeiros dígitos). Em timeout, consulte se o cadastro aconteceu antes
    de tentar de novo — a própria mensagem da falha orienta isso.
 
 Detalhes completos de argumentos, recusas e códigos de falha:
@@ -62,7 +65,8 @@ Detalhes completos de argumentos, recusas e códigos de falha:
 
 ## Limites honestos
 
-- As respostas trazem id, nome, tipo de pessoa, e-mail e documento mascarado.
+- As respostas trazem id, nome, tipo de pessoa, e-mail e documento (CNPJ
+  completo; CPF nos 3 primeiros dígitos).
   Telefone, endereço, observações e referências externas não entram no
   contexto do modelo. Se o usuário precisar desses dados, oriente o painel
   do ASAAS.
