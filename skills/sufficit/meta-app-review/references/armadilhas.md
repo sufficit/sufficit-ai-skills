@@ -8,6 +8,16 @@
 Diagnóstico: `GET /{asset}/subscribed_apps` **com o token de página/WABA do app que você quer
 conferir**; com token de outro app a resposta só mostra a inscrição dele mesmo.
 
+## override de webhook dá `(#200) Permissions error`
+`POST /{waba}/subscribed_apps` com `override_callback_uri` (ou `webhook_configuration` no número)
+recusa com `#200` mesmo com `business_management`, WABA com acesso total e verificação do
+destino funcionando — e **a inscrição sem override passa a valer** mesmo assim (o evento vai para
+o callback padrão do app). Causa encontrada: o **usuário do sistema dono do token não tinha papel
+no app** (só "instalar o app" ao gerar token não basta). Configurações do negócio → Apps → o app →
+Atribuir pessoas → o usuário do sistema → **Gerenciar app**. Depois disso o mesmo token grava o
+override. `POST /{app}/assigned_users` não existe na API: só pela interface.
+Relato parecido (outra causa: WABA no portfólio do cliente): chatwoot fazer-ai #568.
+
 ## verificação de rede não é o problema (quase nunca)
 Antes de culpar MTU/firewall: os GET de verificação da Meta são pequenos e passam; POST de
 evento é maior. Prove com `POST` de 4 KB de fora e `tcpdump` filtrando as faixas da Meta

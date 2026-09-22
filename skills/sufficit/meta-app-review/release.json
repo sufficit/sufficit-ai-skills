@@ -1,6 +1,6 @@
 {
   "name": "meta-app-review",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/sufficit/meta-app-review",
   "license": "MIT-0"

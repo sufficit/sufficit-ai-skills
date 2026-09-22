@@ -59,6 +59,13 @@ precisa estar
 2. inscrita com `override_callback_uri` apontando para um receptor que só confirma e descarta.
 
 Sem isso, as mensagens de um cliente cuja mensageria é de um concorrente chegam à sua plataforma.
+
+**Padrão mais seguro (adotado na Sufficit):** o callback **padrão** do app aponta para um receptor
+que só responde a verificação e descarta (200 sem ler o corpo), e cada WABA de cliente de
+mensageria recebe `override_callback_uri` para a plataforma. Assim, qualquer WABA inscrita sem
+override — cliente só de voz, cliente 2a novo, conta de teste — nunca entrega mensagens a ninguém.
+Para gravar override o usuário do sistema do token precisa ter papel no app (ver
+[armadilhas](armadilhas.md), `#200`).
 Registre no onboarding de voz se o cliente é 2a ou 2b.
 
 Se não der para garantir essa regra, use dois apps no mesmo business (um só de voz, sem campos
