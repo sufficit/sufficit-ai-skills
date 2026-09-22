@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 155,
+  "catalogEntries": 156,
   "sources": [
     {
       "id": "android",
@@ -258,6 +258,16 @@
       "upstreamSource": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/wear/wear-compose-m3",
       "path": "skills/android/wear/wear-compose-m3",
       "contentSha256": "f8878e457e1738bce57a8b009598362a06206ae2cf6e9766cccd4c522130bd05"
+    },
+    {
+      "id": "asaas-connection",
+      "name": "asaas-connection",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/connection",
+      "path": "skills/asaas/connection",
+      "contentSha256": "cd382c039b1d46a0935b2247beb7f18bde9384491435d27ae31da7ce057fc4ab"
     },
     {
       "id": "github-cli",

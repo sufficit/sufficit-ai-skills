@@ -1,0 +1,4 @@
+interface:
+  display_name: "ASAAS"
+  short_description: "Conecta e testa a conta real do ASAAS pelo Vault"
+  default_prompt: "Conecte minha conta ASAAS e confirme que a autenticação de produção funciona sem expor a chave."

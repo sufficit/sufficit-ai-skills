@@ -37,7 +37,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-09-22T14:44:14Z",
+  "updatedAt": "2026-09-22T15:53:08Z",
   "skills": [
     {
       "id": "android-adaptive",
@@ -401,6 +401,22 @@
       "author": "Google LLC",
       "license": "Apache-2.0",
       "sourceId": "android"
+    },
+    {
+      "id": "asaas-connection",
+      "name": "asaas-connection",
+      "description": "Conecta e testa a conta de produção do ASAAS a partir da chave guardada no Vault pessoal do Sufficit Identity, usando o teste somente leitura asaas_connection_test do Sufficit AI Genius. Versão 0.1.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/connection",
+      "tags": [
+        "asaas",
+        "vault",
+        "conexao",
+        "producao",
+        "somente-leitura"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius"
     },
     {
       "id": "github-cli",
