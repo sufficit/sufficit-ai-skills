@@ -13,7 +13,7 @@ Uma plataforma pode usar o mesmo app Meta para dois produtos:
 
 | | 1. Mensagens + chamadas | 2a. Só voz, mensagens em concorrente | 2b. Só voz |
 |---|---|---|---|
-| Config de login | cadastro incorporado (número novo) | Geral + token de usuário com `business_management`, `whatsapp_business_management`, `whatsapp_business_messaging` | cadastro incorporado (novo) ou Geral (existente) |
+| Config de login (ver abaixo) | cadastro incorporado | Geral + token de usuário | cadastro incorporado (novo) ou Geral (existente) |
 | WABA compartilhada com o business do app | automático no cadastro incorporado | **o cliente atribui você como parceiro** | automático (novo) / manual (existente) |
 | Webhook de mensagens | ligado, apontando para a plataforma | **desligado** | desligado |
 | SIP no número, gravado com o token do app | sim | sim | sim |
@@ -24,6 +24,25 @@ No 2a, sem o compartilhamento de parceiro a Meta marca o app como `BLOCKED` para
 No 2b o número ainda precisa estar na Cloud API (`CONNECTED`, nome aprovado, registrado com
 `POST /{phone_id}/register`). Mensagens que chegarem nesse número ficam sem destino; combine isso
 com o cliente.
+
+## Uma config de login por cenário
+
+Crie uma configuração de Facebook Login for Business por cenário, mesmo que duas fiquem iguais
+para a Meta — dá para rastrear quem entrou por onde e mudar um cenário sem afetar o outro:
+
+| Cenário | Variação | Token | Ativos / produto |
+|---|---|---|---|
+| 1. Mensagens + chamadas | Cadastro incorporado do WhatsApp | usuário do sistema, expiração **Nunca** | Contas do WhatsApp; produto só **WhatsApp Cloud API** |
+| 2a. Só voz, mensagens em concorrente | Geral | **usuário** (age em nome do cliente) | nenhum; permissões `business_management`, `whatsapp_business_management`, `whatsapp_business_messaging` |
+| 2b. Só voz | Cadastro incorporado do WhatsApp | usuário do sistema, expiração **Nunca** | Contas do WhatsApp; produto só **WhatsApp Cloud API** |
+
+Armadilhas ao criar no painel (Login do Facebook para Empresas → Configurações → Criar):
+
+- marcar "WhatsApp Cloud API" pode marcar junto "API de Mensagens de Marketing" — desmarque;
+- a expiração padrão do token é 60 dias; escolha **Nunca** para não precisar reautorizar;
+- o cadastro incorporado mostra números já ativos em outro provedor como "Não qualificado" — para
+  eles use a config Geral (2a) e o compartilhamento de parceiro;
+- a edição de uma config existente para no passo de produtos; para ver o resto, crie outra.
 
 ## Webhook é do app, não do cliente
 
@@ -44,6 +63,3 @@ Registre no onboarding de voz se o cliente é 2a ou 2b.
 
 Se não der para garantir essa regra, use dois apps no mesmo business (um só de voz, sem campos
 de webhook de WABA); cada um precisa das próprias aprovações, domínios do SDK e configs.
-
-Tokens do cadastro incorporado (usuário do sistema do modelo) vencem em 60 dias: planeje a
-renovação ou troque por token permanente de usuário do sistema do seu business.
