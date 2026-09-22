@@ -1,0 +1,4 @@
+interface:
+  display_name: "ASAAS Clientes"
+  short_description: "Lista clientes reais do ASAAS em linguagem simples"
+  default_prompt: "Quem são os meus clientes cadastrados no ASAAS?"
