@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 154,
+  "catalogEntries": 155,
   "sources": [
     {
       "id": "android",
@@ -1578,6 +1578,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
       "path": "skills/sufficit/sufficit-frontend",
       "contentSha256": "66976da0a09fec11afd4f8168014d41105bbefe7518aca43cbc3e749c480de30"
+    },
+    {
+      "id": "svg-vectorization",
+      "name": "svg-vectorization",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/images/svg-vectorization",
+      "path": "skills/images/svg-vectorization",
+      "contentSha256": "e0eafeb27de08d0bacf2f382b6292f0f58ea0517c9a05ad02f5b0f02a3a74720"
     }
   ]
 }

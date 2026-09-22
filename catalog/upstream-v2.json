@@ -37,7 +37,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-09-14T16:30:52Z",
+  "updatedAt": "2026-09-22T14:44:14Z",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2140,6 +2140,24 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-ui"
+    },
+    {
+      "id": "svg-vectorization",
+      "name": "svg-vectorization",
+      "description": "Vectorizes transparent-background PNG icons and logos into faithful two-layer SVGs (gradient silhouette + brand accent), traced from real pixels and validated by IoU against the original image before deployment. Version 1.0.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/images/svg-vectorization",
+      "tags": [
+        "svg",
+        "vectorization",
+        "png",
+        "icon",
+        "logo",
+        "image-tracing",
+        "iou"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius"
     }
   ]
 }
