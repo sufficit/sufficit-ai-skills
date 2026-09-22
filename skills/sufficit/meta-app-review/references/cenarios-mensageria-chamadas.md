@@ -25,17 +25,25 @@ No 2b o número ainda precisa estar na Cloud API (`CONNECTED`, nome aprovado, re
 `POST /{phone_id}/register`). Mensagens que chegarem nesse número ficam sem destino; combine isso
 com o cliente.
 
-## O conflito: webhook é do app, não do cliente
+## Webhook é do app, não do cliente
 
 Os campos de webhook de WABA (`messages`, `calls`) valem para **todas** as WABAs em que o app está
-inscrito. Se o mesmo app atende o cenário 1 (campos ligados) e o 2a, **as mensagens do cliente 2a
-vão parar na sua plataforma** — as de um cliente cuja mensageria é de um concorrente.
+inscrito.
 
-- **Recomendado:** dois apps no mesmo business — um só para voz (webhook de WABA sem campos) e
-  outro para mensagens + chamadas. Cada um precisa das próprias aprovações, domínios do SDK e
-  configs de login.
-- **Alternativa:** um app só, com `override_callback_uri` em cada WABA de cliente 2a apontando para
-  um receptor que descarta. Funciona, mas um esquecimento vaza mensagens.
+**Um app só funciona** quando todo cliente do cenário 1 é cliente de mensageria da própria
+plataforma (não usa outro sistema) — receber as mensagens dele é o objetivo. A única regra é para
+o **2a**: antes de ligar `messages` no app, cada WABA de cliente com mensageria em concorrente
+precisa estar
+
+1. **desinscrita** do app (`DELETE /{waba}/subscribed_apps`) — para SIP o que libera a chamada é o
+   compartilhamento de parceiro; confirme com uma ligação que a inscrição não é necessária; **ou**
+2. inscrita com `override_callback_uri` apontando para um receptor que só confirma e descarta.
+
+Sem isso, as mensagens de um cliente cuja mensageria é de um concorrente chegam à sua plataforma.
+Registre no onboarding de voz se o cliente é 2a ou 2b.
+
+Se não der para garantir essa regra, use dois apps no mesmo business (um só de voz, sem campos
+de webhook de WABA); cada um precisa das próprias aprovações, domínios do SDK e configs.
 
 Tokens do cadastro incorporado (usuário do sistema do modelo) vencem em 60 dias: planeje a
 renovação ou troque por token permanente de usuário do sistema do seu business.

@@ -2074,7 +2074,7 @@
     {
       "id": "meta-app-review",
       "name": "meta-app-review",
-      "description": "Aprova apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e opera o Business Manager: o que é só interface, ordem do envio, screencasts, chamadas de API de teste e erros que enganam. Versão 1.0.3.",
+      "description": "Aprova apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e opera o Business Manager: o que é só interface, ordem do envio, screencasts, chamadas de API de teste e erros que enganam. Versão 1.0.4.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review",
       "tags": [
         "meta",
