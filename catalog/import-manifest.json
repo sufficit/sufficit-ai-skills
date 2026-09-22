@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 156,
+  "catalogEntries": 157,
   "sources": [
     {
       "id": "android",
@@ -268,6 +268,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/connection",
       "path": "skills/asaas/connection",
       "contentSha256": "cd382c039b1d46a0935b2247beb7f18bde9384491435d27ae31da7ce057fc4ab"
+    },
+    {
+      "id": "asaas-payments",
+      "name": "asaas-payments",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
+      "path": "skills/asaas/payments",
+      "contentSha256": "29a5f6a720788318fd069837b52eacbb4200234128aa7c781e824dd548ff5e2a"
     },
     {
       "id": "github-cli",

@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado das 156 skills publicadas no catálogo v2 do
+Espelho público e versionado das 157 skills publicadas no catálogo v2 do
 Sufficit AI Genius. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
 conteúdo importado.
@@ -14,7 +14,7 @@ conteúdo importado.
 | Refero | 1 | `referodesign/refero_skill`, MIT |
 | Sufficit | 4 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
-| Asaas | 1 | Sufficit, MIT-0 |
+| Asaas | 2 | Sufficit, MIT-0 |
 
 As skills ficam em [`skills/android`](skills/android),
 [`skills/asaas`](skills/asaas),

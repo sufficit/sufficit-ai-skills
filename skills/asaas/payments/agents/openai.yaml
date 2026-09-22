@@ -1,0 +1,4 @@
+interface:
+  display_name: "ASAAS Cobranças"
+  short_description: "Lista cobranças reais do ASAAS em linguagem simples"
+  default_prompt: "Quais são as minhas cobranças vencidas no ASAAS?"

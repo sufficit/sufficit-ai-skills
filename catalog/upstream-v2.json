@@ -37,7 +37,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-09-22T15:53:08Z",
+  "updatedAt": "2026-09-22T17:10:35Z",
   "skills": [
     {
       "id": "android-adaptive",
@@ -411,6 +411,22 @@
         "asaas",
         "vault",
         "conexao",
+        "producao",
+        "somente-leitura"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius"
+    },
+    {
+      "id": "asaas-payments",
+      "name": "asaas-payments",
+      "description": "Lista e consulta cobranças reais da conta de produção do ASAAS (vencidas, recebidas, aguardando pagamento) pela ferramenta somente leitura asaas_payments_list do Sufficit AI Genius, com resultado sanitizado sem URLs de fatura ou dados pessoais. Versão 0.1.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
+      "tags": [
+        "asaas",
+        "cobrancas",
+        "financeiro",
         "producao",
         "somente-leitura"
       ],
