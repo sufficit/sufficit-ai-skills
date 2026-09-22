@@ -37,7 +37,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-09-22T18:17:38Z",
+  "updatedAt": "2026-09-22T19:52:15Z",
   "skills": [
     {
       "id": "android-adaptive",
@@ -437,14 +437,30 @@
     {
       "id": "asaas-customers",
       "name": "asaas-customers",
-      "description": "Lista e encontra clientes reais da conta de produção do ASAAS (nome, e-mail, tipo de pessoa, documento mascarado nos 3 últimos dígitos) pela ferramenta somente leitura asaas_customers_list do Sufficit AI Genius. Versão 0.1.0.",
+      "description": "Consulta, busca e cadastra clientes reais da conta de produção do ASAAS (nome, e-mail, tipo de pessoa, documento mascarado nos 3 últimos dígitos) pelas ferramentas asaas_customers_list e asaas_customers_create do Sufficit AI Genius. O cadastro exige aprovação explícita e sempre consulta duplicatas (CPF/CNPJ, e-mail, nome) antes de escrever. Versão 0.2.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers",
       "tags": [
         "asaas",
         "clientes",
         "financeiro",
         "producao",
-        "somente-leitura"
+        "cadastro"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius"
+    },
+    {
+      "id": "asaas-invoices",
+      "name": "asaas-invoices",
+      "description": "Emite e consulta notas fiscais de serviço (NFS-e) da conta de produção do ASAAS pelas ferramentas asaas_invoices_list, asaas_services_list e asaas_invoices_create do Sufficit AI Genius. Toda emissão é vinculada a um serviço municipal JÁ EXISTENTE (não existe criar serviço), com deduplicação e aprovação explícita. Versão 0.1.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
+      "tags": [
+        "asaas",
+        "notas-fiscais",
+        "financeiro",
+        "producao",
+        "nfse"
       ],
       "author": "Sufficit",
       "license": "MIT-0",

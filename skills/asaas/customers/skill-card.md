@@ -1,8 +1,8 @@
 # asaas-customers
 
-Lista e encontra clientes da conta de produção do ASAAS pelo teste somente leitura `asaas_customers_list` do Sufficit AI Genius, com documento mascarado e campos sanitizados.
+Consulta, busca e cadastra clientes da conta de produção do ASAAS pelas ferramentas somente leitura `asaas_customers_list` e `asaas_customers_create` do Sufficit AI Genius, com documento mascarado, campos sanitizados e cadastro protegido por deduplicação e aprovação explícita.
 
-Versão: **0.1.0** · Sufficit · MIT-0
+Versão: **0.2.0** · Sufficit · MIT-0
 
 Leia [SKILL.md](SKILL.md) para aplicar a skill.
 

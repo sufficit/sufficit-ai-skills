@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 158,
+  "catalogEntries": 159,
   "sources": [
     {
       "id": "android",
@@ -287,7 +287,17 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers",
       "path": "skills/asaas/customers",
-      "contentSha256": "391b9e35c628b8ef5c4f2fed63713422b1af2e1cbda6c2a961865944de261881"
+      "contentSha256": "484ad6f8b8f5386e9479eeccb3871363624bc6f855f180c89a4e9befca11e156"
+    },
+    {
+      "id": "asaas-invoices",
+      "name": "asaas-invoices",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
+      "path": "skills/asaas/invoices",
+      "contentSha256": "6133f080c810dee4468508bc6852740ada7c534c4f443a87e0eb75c964b88764"
     },
     {
       "id": "github-cli",

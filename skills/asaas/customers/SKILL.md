@@ -1,12 +1,12 @@
 ---
 name: asaas-customers
-description: Lista e encontra clientes da conta de produção do ASAAS (nome, e-mail, documento mascarado) pela ferramenta asaas_customers_list do Sufficit AI Genius. Use quando o usuário pedir para ver, buscar ou conferir clientes cadastrados no ASAAS; somente leitura, sem criar ou alterar nada.
+description: Consulta, busca e cadastra clientes na conta de produção do ASAAS (nome, e-mail, documento mascarado) pelas ferramentas asaas_customers_list e asaas_customers_create do Sufficit AI Genius. Consultas são somente leitura; cadastro exige confirmação do usuário e sempre verifica duplicatas antes de escrever.
 ---
 
 # Clientes ASAAS de produção
 
-Use esta orientação quando o usuário pedir para ver, listar, buscar ou
-conferir clientes, contatos ou pagadores cadastrados no ASAAS.
+Use esta orientação quando o usuário pedir para ver, listar, buscar, conferir
+ou **cadastrar** clientes no ASAAS.
 
 ## Credencial
 
@@ -22,8 +22,8 @@ conferir clientes, contatos ou pagadores cadastrados no ASAAS.
 ## Consulta de clientes
 
 Descubra e use `asaas_customers_list`. Ela executa um `GET` fixo em
-`/v3/customers` com filtro opcional de nome e paginação. É somente leitura:
-não cria, altera nem remove cliente nenhum.
+`/v3/customers` com filtros opcionais de nome, e-mail e documento (CPF/CNPJ)
+e paginação. É somente leitura: não cria, altera nem remove cliente nenhum.
 
 Considere o resultado confiável somente quando indicar `provider: "asaas"`,
 `environment: "production"` e `writesPerformed: false`. Em caso de falha, siga
@@ -35,19 +35,47 @@ JURIDICA = empresa. O documento chega sempre mascarado nos 3 últimos dígitos
 grandes, percorra as páginas com `offset` enquanto `hasNext` for verdadeiro;
 não prometa "todos" de uma vez, o limite por página é 30.
 
+## Cadastro de cliente novo — consultar antes de escrever
+
+Só cadastre quando o usuário **pedir explicitamente** o cadastro (ex.: "cadastra
+um cliente novo"). Antes de qualquer escrita, a própria ferramenta consulta se
+o cliente já existe — e você deve conduzir a conversa no mesmo espírito:
+
+1. **Recolha os dados essenciais**: nome completo e, se o usuário tiver,
+   CPF/CNPJ e e-mail. Não peça mais que isso e nunca invente dados.
+2. **Deixe a ferramenta deduplicar**: `asaas_customers_create` consulta por
+   documento, e-mail e nome antes de escrever.
+   - Documento que já existe: a ferramenta **recusa sempre** e devolve o
+     candidato existente. Use o cliente existente; não insistir.
+   - E-mail ou nome parecido: a ferramenta recusa com os candidatos e pede
+     confirmação. Só repita com `confirmedDistinct: true` depois que o
+     **usuário** confirmar que é um cliente diferente.
+3. **Aguarde o card de aprovação**: o cadastro é uma escrita real na conta de
+   produção e exige aprovação explícita na conversa. Nunca prometa o cadastro
+   como automático.
+4. **Reporte com honestidade**: em sucesso, o resultado traz o cliente criado
+   com documento mascarado. Em timeout, consulte se o cadastro aconteceu antes
+   de tentar de novo — a própria mensagem da falha orienta isso.
+
+Detalhes completos de argumentos, recusas e códigos de falha:
+[references/customers-create.md](references/customers-create.md).
+
 ## Limites honestos
 
-- O resultado traz id, nome, tipo de pessoa, e-mail e documento mascarado.
+- As respostas trazem id, nome, tipo de pessoa, e-mail e documento mascarado.
   Telefone, endereço, observações e referências externas não entram no
   contexto do modelo. Se o usuário precisar desses dados, oriente o painel
   do ASAAS.
-- Não há como criar, editar ou remover cliente por aqui. Se o usuário pedir,
-  explique que por enquanto a integração é de consulta e ofereça o painel.
+- O cadastro envia apenas nome, CPF/CNPJ e e-mail — endereço, telefone e
+  outros campos ficam para o painel do ASAAS.
+- Não há como editar ou remover cliente por aqui. Se o usuário pedir,
+  explique o limite e ofereça o painel.
 
 ## Quando a ferramenta não existe
 
-Se `asaas_customers_list` não estiver disponível, o plugin ASAAS está
-desabilitado ou esta versão do Genius ainda não o oferece. Oriente o usuário
-a ativar o plugin ASAAS nas extensões do Genius ou atualizar o aplicativo.
-Não contorne a ausência chamando a API por shell, script ou outra ferramenta:
-a chave de produção não pode transitar pelo prompt.
+Se `asaas_customers_list` ou `asaas_customers_create` não estiverem
+disponíveis, o plugin ASAAS está desabilitado ou esta versão do Genius ainda
+não as oferece. Oriente o usuário a ativar o plugin ASAAS nas extensões do
+Genius ou atualizar o aplicativo. Não contorne a ausência chamando a API por
+shell, script ou outra ferramenta: a chave de produção não pode transitar
+pelo prompt.
