@@ -2,7 +2,7 @@
 name: meta-app-review
 description: Aprova apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e opera o Business Manager. Use para criar ou configurar app num portfólio, pedir acesso avançado a permissões como whatsapp_business_management, whatsapp_business_messaging, pages_messaging e business_management, gravar os screencasts exigidos, conectar Página ou conta do WhatsApp Business a uma plataforma, ou diagnosticar webhooks, Facebook Login for Business, números de WhatsApp e erros da Graph API nesses fluxos.
 metadata:
-  version: "1.0.2"
+  version: "1.0.3"
 ---
 
 # Meta App Review
@@ -78,7 +78,9 @@ Chamadas por permissão em [chamadas de API](references/chamadas-api.md).
 
 Diagnóstico completo em [armadilhas](references/armadilhas.md). Chamadas do WhatsApp por SIP para
 números de clientes (quem compartilha o quê, saúde que atrasa, separar chamadas de mensagens):
-[chamadas por SIP](references/whatsapp-calling-sip.md).
+[chamadas por SIP](references/whatsapp-calling-sip.md). Um app para mensagens + chamadas e para só voz
+(clientes com mensageria em concorrente ou só voz), e o conflito de webhook entre eles:
+[cenários](references/cenarios-mensageria-chamadas.md).
 
 ## Segurança
 
