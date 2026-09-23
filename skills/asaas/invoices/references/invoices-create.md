@@ -72,7 +72,7 @@ usuário pede a nota
         │
         ▼
 descobrir origem (payment/installment/customer) e serviço
-(histórico de notas + catálogo municipal — JAMAIS criar serviço)
+(histórico de notas + catálogo de serviços — a emissão NUNCA cria serviço)
         │
         ▼
 asaas_invoices_create (origem, valor, descrição, data, serviço)

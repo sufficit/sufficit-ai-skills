@@ -4,12 +4,21 @@ A ferramenta `asaas_services_list` consulta `/v3/fiscalInfo/services` — o
 catálogo de serviços municipais que a prefeitura disponibiliza para a conta
 de produção. Somente leitura (`writesPerformed: false`).
 
-## Não existe criação de serviço
+## Emitir nota nunca cria serviço
 
-O catálogo vem da prefeitura. Não há endpoint, botão ou fluxo para criar um
-serviço — e a skill jamais deve tratar "criar serviço novo" como opção. Se o
-catálogo não tem o que serve à nota, a decisão é do usuário (outro serviço
-existente, ou o código correto com a contabilidade).
+A emissão sempre se vincula a um serviço já cadastrado: a skill jamais cria um
+serviço como efeito colateral de um pedido de nota, e jamais inventa código.
+Se o catálogo não tem o que serve à nota, a decisão é do usuário (outro
+serviço existente, ou o código correto com a contabilidade).
+
+## Criação a pedido explícito do usuário
+
+Criar serviço é ato separado e legítimo **quando o usuário pede isso
+diretamente**. A API pública do ASAAS, porém, expõe apenas a leitura deste
+catálogo — não há `POST`/`PUT`/`DELETE` de serviço municipal. Nesse caso,
+oriente o painel (**Notas Fiscais › Configurações › Serviços › Adicionar
+Serviço**) e ofereça listar os serviços existentes antes, para evitar
+duplicatas. Não trate o pedido como proibido, e não simule a criação.
 
 ## Argumentos
 

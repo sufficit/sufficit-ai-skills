@@ -1,6 +1,6 @@
 ---
 name: asaas-invoices
-description: Emite e consulta notas fiscais de serviço (NFS-e) da conta de produção do ASAAS pelas ferramentas asaas_invoices_list, asaas_services_list e asaas_invoices_create do Sufficit AI Genius. Toda emissão é vinculada a um serviço JÁ EXISTENTE — consultar antes de escrever, nunca criar serviço novo, sempre confirmar com o usuário.
+description: Emite e consulta notas fiscais de serviço (NFS-e) da conta de produção do ASAAS pelas ferramentas asaas_invoices_list, asaas_services_list e asaas_invoices_create do Sufficit AI Genius. Toda emissão é vinculada a um serviço JÁ EXISTENTE — emitir nota nunca cria serviço; criar serviço só a pedido explícito do usuário, e pelo painel, porque a API não oferece esse caminho. Consultar antes de escrever, sempre confirmar com o usuário.
 ---
 
 # Notas fiscais de serviço ASAAS de produção
@@ -18,9 +18,12 @@ conferir notas fiscais (NFS-e) no ASAAS.
 
 ## Regra de ouro: a nota nasce vinculada a um serviço existente
 
-Uma nota fiscal de serviço **precisa** de um serviço. Serviços municipais vêm
-da prefeitura e **não existem para serem criados**: "criar serviço novo" não
-é uma opção — nem sua, nem do usuário por acidente. Antes de qualquer emissão:
+Uma nota fiscal de serviço **precisa** de um serviço. **Emitir nota nunca cria
+serviço**: a emissão sempre se vincula a um serviço que já existe na conta —
+jamais invente um serviço, jamais crie um como efeito colateral de um pedido
+de nota. Criar um serviço novo é um ato separado, que só acontece quando o
+usuário **pede isso explicitamente** (ver "Quando o usuário pede um serviço
+novo"). Antes de qualquer emissão:
 
 1. **Descubra o serviço padrão da conta**: consulte o histórico com
    `asaas_invoices_list` e veja qual `serviceDescription` a conta costuma
@@ -73,11 +76,29 @@ Detalhes completos: [references/invoices-create.md](references/invoices-create.m
 
 ## Consulta de serviços municipais
 
-`asaas_services_list` lê o catálogo da prefeitura (`GET /v3/fiscalInfo/services`)
-com filtro opcional de descrição. O resultado lembra: **não existe criação de
-serviço**. Use para escolher o serviço certo; contas do Portal Nacional não
-têm lista e o código vem do usuário. Contrato em
+`asaas_services_list` lê o catálogo de serviços da conta
+(`GET /v3/fiscalInfo/services`) com filtro opcional de descrição. O resultado
+lembra: **emitir nota nunca cria serviço**. Use para escolher o serviço certo;
+contas do Portal Nacional não têm lista e o código vem do usuário. Contrato em
 [references/services-list.md](references/services-list.md).
+
+## Quando o usuário pede um serviço novo
+
+Se — e somente se — o usuário pedir **explicitamente** para cadastrar um
+serviço novo ("cadastra um serviço", "cria o serviço X"), trate como pedido
+legítimo, não como desvio. Mas a API pública do ASAAS **não oferece** criação,
+edição ou exclusão de serviço: o único endpoint fiscal de serviços é a
+listagem. Então:
+
+1. Não recuse o pedido como se fosse proibido — é permitido, só não é
+   automatizável pela API.
+2. Oriente o caminho real: painel do ASAAS em **Notas Fiscais › Configurações
+   › Serviços › Adicionar Serviço** (código municipal, ISS e descrição).
+3. Ofereça ajuda no que é automatizável: listar os serviços já cadastrados
+   para conferir se o desejado já existe (evita duplicatas, comuns nessa tela)
+   e, depois que o usuário cadastrar, usar o serviço na emissão.
+
+Nunca invente um endpoint de criação nem finja ter criado um serviço.
 
 ## Limites honestos
 
