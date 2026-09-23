@@ -57,9 +57,9 @@ nota foi emitida a partir de um id não resolvido.
 | `asaas_vault_sign_in_required` / `asaas_key_missing` / `asaas_key_invalid` / `asaas_credential_rejected` | Fluxo de credencial padrão das skills ASAAS. |
 | `asaas_provider_unavailable` / `asaas_transport_failed` / `asaas_timeout` / `asaas_vault_*` | Repita conforme marcado repetível. |
 
-## Uso para descobrir o serviço padrão
+## Uso para conversar sobre os serviços da conta
 
 Sem filtros, a primeira página mostra as notas recentes da conta; a
-`serviceDescription` repetida indica o serviço padrão que a conta emite.
-Combine com `asaas_services_list` para achar o `id` municipal antes de
-qualquer emissão.
+`serviceDescription` repetida mostra o que a conta costuma emitir. Combine
+com `asaas_services_list` para conferir o cadastro — mas a emissão **não**
+envia serviço: os valores vêm do cadastro de serviços da conta.

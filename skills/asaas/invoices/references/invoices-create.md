@@ -10,10 +10,11 @@ por cliente+valor+data antes do POST.
 1. O usuário pediu explicitamente a nota.
 2. A origem é conhecida: `payment` (cobrança), `installment` (parcelamento)
    ou `customer` (nota avulsa) — **exatamente uma**.
-3. O serviço **não precisa ser informado**: os dados fiscais vêm do cadastro
-   de serviços da conta. Omita `municipalServiceId` e `municipalServiceCode`.
-   Só envie um deles quando o usuário escolher explicitamente outro serviço
-   para aquela nota.
+3. O serviço **não deve ser informado**: os valores (código municipal, ISS)
+   vêm do cadastro de serviços da conta. Omita `municipalServiceId` e
+   `municipalServiceCode`. Só envie um deles quando o usuário escolher
+   explicitamente outro serviço para aquela nota. Se o provedor recusar a
+   nota, trate o motivo com o usuário; nunca adivinhe código.
 
 ## Argumentos
 
@@ -29,11 +30,13 @@ por cliente+valor+data antes do POST.
 | `observations` | string | não | Observações impressas; até 200 caracteres. |
 | `confirmedDistinct` | boolean | não | `true` só após o usuário confirmar colisão cliente+valor+data como nota distinta. |
 
-Serviço e impostos vêm do **cadastro de serviços da conta**: omitindo
-`municipalServiceId` e `municipalServiceCode`, o provedor aplica o serviço
-cadastrado. `taxes` nunca é enviado — segue a configuração fiscal da conta.
-Enviar os dois campos de serviço ao mesmo tempo devolve
-`asaas_invoices_create_invalid_arguments` sem nenhum POST.
+Serviço e impostos pertencem ao **cadastro de serviços da conta**: a emissão
+não envia `municipalServiceId`, `municipalServiceCode` nem `taxes` — os
+valores vêm do cadastro (regra da conta; o schema do `POST /v3/invoices` não
+lista os campos de serviço como obrigatórios). Enviar os dois campos de
+serviço ao mesmo tempo devolve `asaas_invoices_create_invalid_arguments` sem
+nenhum POST. Se o provedor recusar a nota por serviço ou imposto, a recusa
+traz o motivo dele: trate com o usuário, nunca preencha por conta própria.
 
 ## Recusas (escrita não realizada)
 
@@ -63,7 +66,7 @@ depois (AUTHORIZED).
 
 | Código | Ação |
 | --- | --- |
-| `asaas_invoices_create_invalid_arguments` | Origem ausente/duplicada, serviço ausente/duplicado, valor/datas inválidos. Corrija; nada foi chamado. |
+| `asaas_invoices_create_invalid_arguments` | Origem ausente/duplicada, os dois campos de serviço ao mesmo tempo, valor/datas inválidos. Corrija; nada foi chamado. |
 | `asaas_invoices_create_rejected` | Provedor recusou (mensagem traz código+descrição, ex.: serviço municipal inválido). Corrija com o usuário. |
 | `asaas_invoices_create_unexpected` | Agendou mas a resposta veio estranha; consulte a lista de notas para confirmar. |
 | `asaas_timeout` | **Consulte se a nota foi criada antes de repetir.** |
@@ -75,11 +78,11 @@ depois (AUTHORIZED).
 usuário pede a nota
         │
         ▼
-descobrir origem (payment/installment/customer) e serviço
-(histórico de notas + catálogo de serviços — a emissão NUNCA cria serviço)
+descobrir origem (payment/installment/customer)
+(a emissão NÃO especifica serviço — valores vêm do cadastro da conta)
         │
         ▼
-asaas_invoices_create (origem, valor, descrição, data, serviço)
+asaas_invoices_create (origem, valor, descrição, data)
         │
         ├─ duplicate_payment ──► use a nota existente
         ├─ possible_duplicate ──► confirme com o usuário

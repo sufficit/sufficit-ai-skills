@@ -22,9 +22,13 @@ Dados fiscais — código municipal do serviço, alíquota de ISS, descrição
 padrão — moram no **cadastro de serviços da conta** (no painel: Notas Fiscais
 › Configurações › Serviços). A emissão apenas **usa** esse cadastro.
 
-Por isso, ao emitir: **não especifique o serviço**. O contrato do provedor
-(`InvoiceSaveRequestDTO`) **não exige** `municipalServiceId` nem
-`municipalServiceCode`; omitindo os dois, o ASAAS aplica o serviço cadastrado
+Por isso, ao emitir: **não especifique o serviço**. O contrato do
+`POST /v3/invoices` não lista `municipalServiceId` nem
+`municipalServiceCode` como obrigatórios, e os valores fiscais (código
+municipal, ISS) pertencem ao **cadastro de serviços da conta** — regra da
+conta: a emissão não envia serviço. Se o provedor recusar a nota, a recusa
+vem com o motivo do provedor: trate com o usuário, nunca adivinhe um código.
+
 na conta. Consequências práticas:
 
 - **Nunca peça um código de serviço ao usuário só para emitir uma nota.** Se
@@ -69,9 +73,11 @@ Só emita quando o usuário **pedir explicitamente** a nota. A ferramenta
    combinação de cliente + valor + data recusa até o usuário confirmar
    (`confirmedDistinct`). Recusa não é erro — apresente a nota existente.
 3. **Serviço: não especifique**. Omita `municipalServiceId` e
-   `municipalServiceCode` para que o serviço cadastrado na conta seja
-   aplicado. Só envie um deles (nunca os dois) quando o usuário escolher
-   explicitamente um serviço específico para aquela nota.
+   `municipalServiceCode` — os valores vêm do cadastro de serviços da conta.
+   Só envie um deles (nunca os dois) quando o usuário escolher
+   explicitamente um serviço específico para aquela nota. Se o provedor
+   recusar a nota por falta de serviço, trate a recusa com o usuário — nunca
+   adivinhe código.
 4. **Aprovação explícita**: a emissão é escrita real na produção e mostra card
    de aprovação na conversa.
 5. **Honestidade sobre o processamento**: agendar inicia o fluxo, mas a
