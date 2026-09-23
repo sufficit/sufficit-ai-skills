@@ -32,17 +32,19 @@ por cliente+valor+data antes do POST.
 | `confirmedDistinct` | boolean | não | `true` só após o usuário confirmar colisão cliente+valor+data como nota distinta. |
 
 Serviço e impostos: a emissão não envia `municipalServiceId`,
-`municipalServiceCode` nem `taxes` — regra da conta, com os valores fiscais
-no cadastro de serviços. Nota de honestidade sobre a documentação oficial
+`municipalServiceCode` nem `taxes` — os detalhes do serviço são **auto
+preenchidos pelo cadastro de serviços e pela configuração fiscal da conta**
+quando não especificados (regra combinada com o dono). A documentação oficial
 ([guia](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico) e
-[referência do endpoint](https://docs.asaas.com/reference/agendar-nota-fiscal)):
-o texto orienta enviar `municipalServiceId` ou `municipalServiceCode`, e o
-OpenAPI **não** lista nenhum dos dois como obrigatório — os dois fatos juntos
-não provam preenchimento automático na omissão. O schema marca
-`serviceDescription` como obrigatório. A primeira emissão real confirma o
-comportamento do provedor; recusa vem com o motivo dele. Enviar os dois campos
-de serviço ao mesmo tempo devolve `asaas_invoices_create_invalid_arguments`
-sem nenhum POST, e nenhuma recusa se preencha às cegas: trate com o usuário.
+[referência do endpoint](https://docs.asaas.com/reference/agendar-nota-fiscal))
+sustenta a omissão: o schema **não** lista `municipalServiceId`/
+`municipalServiceCode` como obrigatórios e declara os preenchimentos
+automáticos de `municipalServiceName` (usa o código) e de
+`pisCofinsRetentionType` (calculado pelo Asaas); a narrativa do guia, para
+integrações genéricas, pede id ou código sem descrever o auto preenchimento
+pela conta. Enviar os dois campos de serviço ao mesmo tempo devolve
+`asaas_invoices_create_invalid_arguments` sem nenhum POST, e nenhuma recusa se
+preenche às cegas: apresente o motivo real do provedor e reporte à equipe.
 
 ## Recusas (escrita não realizada)
 

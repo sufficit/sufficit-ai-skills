@@ -37,7 +37,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-09-23T13:21:13Z",
+  "updatedAt": "2026-09-23T14:17:21Z",
   "skills": [
     {
       "id": "android-adaptive",
@@ -453,7 +453,7 @@
     {
       "id": "asaas-invoices",
       "name": "asaas-invoices",
-      "description": "Consulta e agenda NFS-e de produção do ASAAS (asaas_invoices_list, asaas_services_list, asaas_invoices_create) e cancela com asaas_invoices_cancel quando disponível, sempre com consult-before-write, deduplicação e aprovação explícita. Diferencia a descrição impressa na nota (serviceDescription) do enquadramento municipal: nesta conta a emissão não envia municipalServiceId/municipalServiceCode por padrão; o agente nunca pede código ao usuário só para emitir nem promete preenchimento automático não documentado — recusa do provedor é tratada com o motivo real e reportada. Emitir nota NUNCA cria serviço; criar serviço é ato separado, só a pedido explícito e pelo painel do ASAAS (a API pública não expõe criação). A skill linka a documentação oficial da API Asaas (guia, referência e índice llms.txt) com regra de verificação antes de presumir obrigação ou default. Versão 0.5.0.",
+      "description": "Consulta e agenda NFS-e de produção do ASAAS (asaas_invoices_list, asaas_services_list, asaas_invoices_create) e cancela com asaas_invoices_cancel quando disponível, sempre com consult-before-write, deduplicação e aprovação explícita. Detalhes do serviço (código municipal, ISS, nome fiscal) são auto preenchidos pelo cadastro da conta quando não especificados: o agente nunca pede código municipal ao usuário, nunca invente código nem prometa preenchimento não documentado — recusa do provedor é tratada com o motivo real e reportada à equipe. A descrição impressa na nota (serviceDescription) é campo próprio e vem do usuário; emitir nota NUNCA cria serviço, criar serviço é só a pedido explícito e pelo painel do ASAAS (a API pública não expõe criação). Documentação oficial da API Asaas linkada (guia, referência e índice llms.txt), com regra de verificação antes de presumir obrigação e reporte de divergências. Versão 0.5.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "tags": [
         "asaas",

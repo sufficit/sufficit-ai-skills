@@ -47,9 +47,9 @@ serviços municipais não habilitado") — não é falha sua. A orientação ofi
 ([guia](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico)) é
 obter o código no Portal Nacional ou com a contabilidade e usá-lo em
 `municipalServiceCode` quando um serviço específico for necessário. Na regra
-operacional desta conta a emissão segue sem os campos municipais; se o
-provedor recusar, apresente o motivo real e reporte à equipe. Nunca adivinhe
-código.
+operacional desta conta a emissão segue sem os campos municipais — os
+detalhes do serviço são auto preenchidos pelo cadastro; se o provedor
+recusar, apresente o motivo real e reporte à equipe. Nunca adivinhe código.
 
 ## Códigos de falha
 

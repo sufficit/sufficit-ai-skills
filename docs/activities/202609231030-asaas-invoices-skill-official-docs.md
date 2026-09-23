@@ -1,4 +1,4 @@
-# Skill asaas-invoices 0.5.0 — documentação oficial, descrição vs serviço municipal — 2026-09-23
+# Skill asaas-invoices — documentação oficial, descrição vs serviço municipal — 2026-09-23
 
 ## Pedido
 
@@ -35,12 +35,27 @@ O que a documentação **afirma**:
   (`invoiceSettings` por assinatura); não é default de nota avulsa.
 
 O que a documentação **não afirma** (limite honesto): que a omissão dos campos
-de serviço faz o provedor preencher código/ISS a partir do cadastro de serviços
+de serviço faz o provedor preenher código/ISS a partir do cadastro de serviços
 da conta, nem que `serviceDescription` (obrigatória no schema) seja
-preenchida automaticamente. A alegação de autopreenchimento **não pôde ser
-confirmada** na documentação. A regra operacional da conta (emitir sem os
-campos municipais; recusa tratada com o motivo real do provedor) permanece;
-a primeira emissão real confirmará o comportamento em produção.
+preenchida automaticamente.
+
+## Confirmação do dono e decisão final (mesmo dia)
+
+O usuário confirmou: **"esses detalhes dos serviços, caso não especificado,
+são auto preenchidos"** — ouvidos na prática da conta dele — e pediu que a
+skill afirme isso como regra principal, com o link da documentação oficial
+para o agente se virar com o usuário final e reportar problemas. Releitura
+das páginas (guia, FAQ, schema OpenAPI, configuração fiscal) manteve os fatos
+acima e acrescentou: o schema marca `taxes`, `observations` e `deductions`
+como obrigatórios — e a conta emite sem enviá-los (preenchidos pela
+configuração fiscal do cadastro), o que reforça que o schema de referência não
+reflete os defaults aplicados a contas configuradas. Decisão: a skill 0.5.1
+passa a declarar o auto preenchimento dos detalhes do serviço (código
+municipal, ISS, nome fiscal) pelo cadastro da conta como **regra da conta,
+combinada com o dono**, sustentada pela documentação nos pontos verificáveis
+(omissão aceita pelo contrato; preenchimentos automáticos documentados de
+`municipalServiceName` e `pisCofinsRetentionType`), com instrução de reporte
+à equipe se o provedor recusar.
 
 ## Mudanças na skill (0.4.1 → 0.5.0)
 

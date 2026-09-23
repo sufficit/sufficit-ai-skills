@@ -1,6 +1,6 @@
 ---
 name: asaas-invoices
-description: Consulta e agenda NFS-e de produção do ASAAS com asaas_invoices_list, asaas_services_list e asaas_invoices_create; cancelamento com asaas_invoices_cancel somente se disponível. Consulte documentação oficial para os campos fiscais, diferencie descrição da nota de código municipal, não invente serviço nem prometa preenchimento automático não comprovado. Consulte antes de escrever e obtenha aprovação.
+description: Consulta e agenda NFS-e de produção do ASAAS com asaas_invoices_list, asaas_services_list e asaas_invoices_create; cancelamento com asaas_invoices_cancel quando disponível. Detalhes do serviço (código municipal, ISS, nome fiscal) são auto preenchidos pelo cadastro da conta quando não especificados: nunca peça código municipal ao usuário e nunca invente código; a descrição impressa da nota é campo próprio e vem do usuário. Documentação oficial linkada na seção Fonte oficial: verifique-a antes de presumir obrigação e reporte divergências/recusas à equipe. Consulte antes de escrever e obtenha aprovação.
 ---
 
 # Notas fiscais de serviço ASAAS de produção
@@ -41,24 +41,35 @@ Há duas informações diferentes: `serviceDescription` é a **descrição impre
 na nota**; `municipalServiceId`/`municipalServiceCode` identificam o
 **enquadramento municipal**. A primeira não vira automaticamente a segunda.
 
-O [guia oficial](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico)
-e a [referência do agendamento](https://docs.asaas.com/reference/agendar-nota-fiscal)
-orientam enviar o `municipalServiceId` da lista municipal **ou** o
-`municipalServiceCode` validado com prefeitura/contabilidade (Portal Nacional:
-código). No OpenAPI, nenhum dos dois consta da lista `required` do schema,
-mas **isso não prova preenchimento automático** quando ambos são omitidos.
-O schema marca `serviceDescription` como obrigatório; só documenta fallback
-de `municipalServiceName` para `municipalServiceCode` quando o nome é omitido.
-A emissão automática de **assinaturas** é outro fluxo, configurado por
-assinatura: não implica default para uma nota avulsa.
+**Regra desta conta, combinada com o dono: os detalhes do serviço — código
+municipal, ISS e nome fiscal — são auto preenchidos a partir do cadastro de
+serviços da conta (painel: Notas Fiscais › Configurações › Serviços) sempre
+que a emissão não os especificar.** Por isso a ferramenta omite
+`municipalServiceId` e `municipalServiceCode` por padrão, o agente nunca
+pede código municipal ao usuário e nenhum código, ISS ou alíquota é
+inventado; emitir nota nunca cria serviço nem cadastro novo.
 
-O usuário informa que, **na sua conta**, dados fiscais e serviços já estão
-cadastrados no painel (Notas Fiscais › Configurações › Serviços). A ferramenta
-atual deixa os campos municipais fora do POST por padrão: é uma **regra
-operacional da conta, ainda não garantida pela documentação da API**. Não
-chame isso de garantia do Asaas. Não invente código, ISS, alíquota nem
-serviço; não crie novo cadastro como efeito colateral. Se a API recusar,
-apresente a mensagem real e reporte a divergência à equipe para atualização.
+O que a documentação oficial sustenta (checada em 2026-09-23):
+
+- O schema do [agendamento](https://docs.asaas.com/reference/agendar-nota-fiscal)
+  **não** lista `municipalServiceId` nem `municipalServiceCode` como
+  obrigatórios: omiti-los é aceito pelo contrato. O mesmo schema marca
+  `taxes`, `observations` e `deductions` como obrigatórios — e a conta emite
+  sem enviá-los, preenchidos pela configuração fiscal do cadastro.
+- Preenchimentos automáticos declarados no schema: `municipalServiceName`
+  usa `municipalServiceCode` quando o nome não é informado; e
+  `pisCofinsRetentionType` é calculado pelo Asaas (não envie).
+- A narrativa do [guia](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico),
+  escrita para integrações genéricas, pede `municipalServiceId` **ou**
+  `municipalServiceCode` (Portal Nacional: código) — ela não descreve o auto
+  preenchimento pelo cadastro da conta. O schema valida a omissão; o
+  comportamento da conta é a regra operacional. A emissão automática de
+  **assinaturas** é outro fluxo, configurado por assinatura.
+
+Se o provedor recusar a nota por serviço ou imposto, a recusa traz o motivo
+dele: apresente-o ao usuário em linguagem clara, **reporte à equipe
+responsável pelo plugin/skill** (com o link e a data da checagem, para
+atualizar esta regra) e nunca preencha às cegas.
 
 Para não sobrecarregar o usuário leigo: consulte o histórico de notas e o
 cadastro já disponível. Se houver **uma descrição inequívoca e pertinente**
@@ -98,13 +109,14 @@ Só emita quando o usuário **pedir explicitamente** a nota. A ferramenta
 2. **Deduplicação automática**: cobrança que já tem nota recusa sempre; mesma
    combinação de cliente + valor + data recusa até o usuário confirmar
    (`confirmedDistinct`). Recusa não é erro — apresente a nota existente.
-3. **Serviço municipal: omitido por padrão**. A ferramenta não envia
-   `municipalServiceId` nem `municipalServiceCode` — regra operacional desta
-   conta (ver "Serviço cadastrado versus descrição da nota"). Só envie um
-   deles (nunca os dois) quando o usuário escolher explicitamente um serviço
-   específico para aquela nota. Se o provedor recusar a nota por falta de
-   serviço, apresente o motivo real ao usuário, reporte a divergência à
-   equipe e nunca adivinhe código.
+3. **Serviço municipal: omitido por padrão — auto preenchido pela conta**.
+   A ferramenta não envia `municipalServiceId` nem `municipalServiceCode`:
+   os detalhes (código municipal, ISS, nome fiscal) vêm do cadastro de
+   serviços da conta (ver "Serviço cadastrado versus descrição da nota").
+   Só envie um deles (nunca os dois) quando o usuário escolher
+   explicitamente um serviço específico para aquela nota. Se o provedor
+   recusar a nota por falta de serviço, apresente o motivo real
+   ao usuário, reporte a divergência à equipe e nunca adivinhe código.
 4. **Aprovação explícita**: a emissão é escrita real na produção e mostra card
    de aprovação na conversa.
 5. **Honestidade sobre o processamento**: agendar inicia o fluxo, mas a

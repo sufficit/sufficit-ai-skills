@@ -297,7 +297,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "path": "skills/asaas/invoices",
-      "contentSha256": "856105a8bdf42ffa6382d3bdf067916da8f98f9e200041ae0ae020714a52b741"
+      "contentSha256": "4a998c5514e57d2079a3c3308751e17f55e1bee79c65d7d9e105bff6ac92c55d"
     },
     {
       "id": "github-cli",
