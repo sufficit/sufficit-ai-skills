@@ -10,11 +10,12 @@ por cliente+valor+data antes do POST.
 1. O usuário pediu explicitamente a nota.
 2. A origem é conhecida: `payment` (cobrança), `installment` (parcelamento)
    ou `customer` (nota avulsa) — **exatamente uma**.
-3. O serviço **não deve ser informado**: os valores (código municipal, ISS)
-   vêm do cadastro de serviços da conta. Omita `municipalServiceId` e
-   `municipalServiceCode`. Só envie um deles quando o usuário escolher
-   explicitamente outro serviço para aquela nota. Se o provedor recusar a
-   nota, trate o motivo com o usuário; nunca adivinhe código.
+3. O serviço municipal **não é enviado por padrão** — regra operacional desta
+   conta (ver "Serviço cadastrado versus descrição da nota" no SKILL.md).
+   Omita `municipalServiceId` e `municipalServiceCode`. Só envie um deles
+   quando o usuário escolher explicitamente outro serviço para aquela nota.
+   Se o provedor recusar a nota, apresente o motivo real ao usuário, reporte
+   a divergência à equipe e nunca adivinhe código.
 
 ## Argumentos
 
@@ -30,13 +31,18 @@ por cliente+valor+data antes do POST.
 | `observations` | string | não | Observações impressas; até 200 caracteres. |
 | `confirmedDistinct` | boolean | não | `true` só após o usuário confirmar colisão cliente+valor+data como nota distinta. |
 
-Serviço e impostos pertencem ao **cadastro de serviços da conta**: a emissão
-não envia `municipalServiceId`, `municipalServiceCode` nem `taxes` — os
-valores vêm do cadastro (regra da conta; o schema do `POST /v3/invoices` não
-lista os campos de serviço como obrigatórios). Enviar os dois campos de
-serviço ao mesmo tempo devolve `asaas_invoices_create_invalid_arguments` sem
-nenhum POST. Se o provedor recusar a nota por serviço ou imposto, a recusa
-traz o motivo dele: trate com o usuário, nunca preencha por conta própria.
+Serviço e impostos: a emissão não envia `municipalServiceId`,
+`municipalServiceCode` nem `taxes` — regra da conta, com os valores fiscais
+no cadastro de serviços. Nota de honestidade sobre a documentação oficial
+([guia](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico) e
+[referência do endpoint](https://docs.asaas.com/reference/agendar-nota-fiscal)):
+o texto orienta enviar `municipalServiceId` ou `municipalServiceCode`, e o
+OpenAPI **não** lista nenhum dos dois como obrigatório — os dois fatos juntos
+não provam preenchimento automático na omissão. O schema marca
+`serviceDescription` como obrigatório. A primeira emissão real confirma o
+comportamento do provedor; recusa vem com o motivo dele. Enviar os dois campos
+de serviço ao mesmo tempo devolve `asaas_invoices_create_invalid_arguments`
+sem nenhum POST, e nenhuma recusa se preencha às cegas: trate com o usuário.
 
 ## Recusas (escrita não realizada)
 

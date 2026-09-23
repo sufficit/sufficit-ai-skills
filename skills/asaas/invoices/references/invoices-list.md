@@ -61,5 +61,7 @@ nota foi emitida a partir de um id não resolvido.
 
 Sem filtros, a primeira página mostra as notas recentes da conta; a
 `serviceDescription` repetida mostra o que a conta costuma emitir. Combine
-com `asaas_services_list` para conferir o cadastro — mas a emissão **não**
-envia serviço: os valores vêm do cadastro de serviços da conta.
+com `asaas_services_list` para conferir o cadastro — e lembre que a
+descrição impressa na nota não é o enquadramento municipal: nesta conta a
+emissão não envia os campos municipais (ver SKILL.md, "Serviço cadastrado
+versus descrição da nota").

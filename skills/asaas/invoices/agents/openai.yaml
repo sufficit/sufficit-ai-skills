@@ -1,4 +1,4 @@
 interface:
   display_name: "ASAAS Notas Fiscais"
-  short_description: "Emite NFS-e do ASAAS vinculada a serviço existente, com confirmação"
+  short_description: "Emite, consulta e cancela NFS-e do ASAAS com confirmação"
   default_prompt: "Emite uma nota fiscal de servico para o meu cliente"

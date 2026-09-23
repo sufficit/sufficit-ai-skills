@@ -36,17 +36,20 @@ nota nunca cria serviço nem especifica um), `query`, `totalCount`,
 
 Cada serviço traz: `id`, `description` (código + nome, até 200 caracteres) e
 `issTax`. O `id` só vira `municipalServiceId` na emissão quando o usuário
-escolher explicitamente aquele serviço para a nota; no fluxo normal a emissão
-não informa serviço algum.
+escolher explicitamente aquele serviço para a nota; no fluxo normal desta
+conta a emissão não envia os campos municipais.
 
 ## Contas do Portal Nacional
 
-Contas que emitem pelo Portal Nacional não recebem a lista municipal. Nesse
-cenário a consulta falha com erro do provedor (ex.: "código de serviços
-municipais não habilitado") — não é falha sua, **e não muda a regra**: a
-emissão não especifica serviço; os valores vêm do cadastro de serviços da
-conta. Explique a limitação da consulta e siga; só use um código se o usuário
-espontaneamente informar um para aquela nota.
+Contas que emitem pelo Portal Nacional não recebem a lista municipal pela
+API. Nesse cenário a consulta falha com erro do provedor (ex.: "código de
+serviços municipais não habilitado") — não é falha sua. A orientação oficial
+([guia](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico)) é
+obter o código no Portal Nacional ou com a contabilidade e usá-lo em
+`municipalServiceCode` quando um serviço específico for necessário. Na regra
+operacional desta conta a emissão segue sem os campos municipais; se o
+provedor recusar, apresente o motivo real e reporte à equipe. Nunca adivinhe
+código.
 
 ## Códigos de falha
 
