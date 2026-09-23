@@ -30,20 +30,23 @@ duplicatas. Não trate o pedido como proibido, e não simule a criação.
 
 ## Resultado de sucesso
 
-`provider: "asaas"`, `environment: "production"`, `note` (lembrete de que não
-existe criação de serviço), `query`, `totalCount`, `hasNext`, `services[]` e
-`writesPerformed: false`.
+`provider: "asaas"`, `environment: "production"`, `note` (lembrete de que
+emitir nota nunca cria serviço), `query`, `totalCount`, `hasNext`,
+`services[]` e `writesPerformed: false`.
 
-Cada serviço traz: `id` (use como `municipalServiceId` na emissão),
-`description` (código + nome, até 200 caracteres) e `issTax`.
+Cada serviço traz: `id`, `description` (código + nome, até 200 caracteres) e
+`issTax`. O `id` só vira `municipalServiceId` na emissão quando o usuário
+escolher explicitamente aquele serviço para a nota; no fluxo normal a emissão
+não informa serviço algum.
 
 ## Contas do Portal Nacional
 
 Contas que emitem pelo Portal Nacional não recebem a lista municipal. Nesse
 cenário a consulta falha com erro do provedor (ex.: "código de serviços
-municipais não habilitado") — não é falha sua. O caminho: pedir ao usuário o
-`municipalServiceCode` (com a contabilidade ou no próprio Portal Nacional) e
-usá-lo na emissão.
+municipais não habilitado") — não é falha sua, **e não impede emitir**: a nota
+sai sem `municipalServiceCode`, aplicando o serviço cadastrado na conta.
+Explique a limitação da consulta e siga; só use um código se o usuário
+espontaneamente informar um para aquela nota.
 
 ## Códigos de falha
 

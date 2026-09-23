@@ -1,6 +1,6 @@
 {
   "name": "asaas-invoices",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/asaas/invoices",
   "license": "MIT-0"

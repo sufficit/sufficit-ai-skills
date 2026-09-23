@@ -3,17 +3,17 @@
 A ferramenta `asaas_invoices_create` agenda uma NFS-e nova na conta de
 produção via `POST /v3/invoices`. Ela exige aprovação explícita na conversa e
 executa **consultar antes de escrever em código**: deduplica por cobrança e
-por cliente+valor+data antes do POST, e só aceita serviço municipal
-existente.
+por cliente+valor+data antes do POST.
 
 ## Pré-requisitos (nesta ordem)
 
 1. O usuário pediu explicitamente a nota.
 2. A origem é conhecida: `payment` (cobrança), `installment` (parcelamento)
    ou `customer` (nota avulsa) — **exatamente uma**.
-3. O serviço foi escolhido com o usuário: `municipalServiceId` do catálogo
-   (`asaas_services_list`) **ou** `municipalServiceCode` informado pelo
-   usuário (Portal Nacional) — **exatamente um**.
+3. O serviço **não precisa ser informado**: os dados fiscais vêm do cadastro
+   de serviços da conta. Omita `municipalServiceId` e `municipalServiceCode`.
+   Só envie um deles quando o usuário escolher explicitamente outro serviço
+   para aquela nota.
 
 ## Argumentos
 
@@ -23,13 +23,17 @@ existente.
 | `value` | number | sim | Valor total em reais; entre 0,01 e 999.999.999,99. |
 | `serviceDescription` | string | sim | Descrição impressa na nota; 1 a 200 caracteres. |
 | `effectiveDate` | string | sim | Data de emissão AAAA-MM-DD. |
-| `municipalServiceId` | string | um dos dois | Id do catálogo municipal. |
-| `municipalServiceCode` | string | um dos dois | Código dado pelo usuário (Portal Nacional). |
+| `municipalServiceId` | string | **não** | Id do catálogo; só quando o usuário escolher um serviço específico. Nunca junto com `municipalServiceCode`. |
+| `municipalServiceCode` | string | **não** | Código, só quando o usuário informar um explicitamente. Nunca junto com `municipalServiceId`. |
 | `municipalServiceName` | string | não | Nome do serviço; até 80 caracteres. |
 | `observations` | string | não | Observações impressas; até 200 caracteres. |
 | `confirmedDistinct` | boolean | não | `true` só após o usuário confirmar colisão cliente+valor+data como nota distinta. |
 
-Impostos não são enviados: `taxes` segue a configuração fiscal da conta.
+Serviço e impostos vêm do **cadastro de serviços da conta**: omitindo
+`municipalServiceId` e `municipalServiceCode`, o provedor aplica o serviço
+cadastrado. `taxes` nunca é enviado — segue a configuração fiscal da conta.
+Enviar os dois campos de serviço ao mesmo tempo devolve
+`asaas_invoices_create_invalid_arguments` sem nenhum POST.
 
 ## Recusas (escrita não realizada)
 

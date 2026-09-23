@@ -1,6 +1,6 @@
 ---
 name: asaas-invoices
-description: Emite e consulta notas fiscais de serviço (NFS-e) da conta de produção do ASAAS pelas ferramentas asaas_invoices_list, asaas_services_list e asaas_invoices_create do Sufficit AI Genius. Toda emissão é vinculada a um serviço JÁ EXISTENTE — emitir nota nunca cria serviço; criar serviço só a pedido explícito do usuário, e pelo painel, porque a API não oferece esse caminho. Consultar antes de escrever, sempre confirmar com o usuário.
+description: Emite e consulta notas fiscais de serviço (NFS-e) da conta de produção do ASAAS pelas ferramentas asaas_invoices_list, asaas_services_list e asaas_invoices_create do Sufficit AI Genius. Ao emitir NÃO especifique o serviço — código municipal e ISS vêm do cadastro de serviços da conta; nunca peça código ao usuário só para emitir. Emitir nota nunca cria serviço; criar serviço só a pedido explícito do usuário, e pelo painel, porque a API não oferece esse caminho. Consultar antes de escrever, sempre confirmar com o usuário.
 ---
 
 # Notas fiscais de serviço ASAAS de produção
@@ -16,27 +16,32 @@ conferir notas fiscais (NFS-e) no ASAAS.
   arquivos. Falhas `asaas_key_missing` e `asaas_vault_sign_in_required` seguem
   o mesmo fluxo das demais skills do ASAAS (tela segura de Vault).
 
-## Regra de ouro: a nota nasce vinculada a um serviço existente
+## Regra de ouro: o serviço vem do cadastro da conta, não da emissão
 
-Uma nota fiscal de serviço **precisa** de um serviço. **Emitir nota nunca cria
-serviço**: a emissão sempre se vincula a um serviço que já existe na conta —
-jamais invente um serviço, jamais crie um como efeito colateral de um pedido
-de nota. Criar um serviço novo é um ato separado, que só acontece quando o
-usuário **pede isso explicitamente** (ver "Quando o usuário pede um serviço
-novo"). Antes de qualquer emissão:
+Dados fiscais — código municipal do serviço, alíquota de ISS, descrição
+padrão — moram no **cadastro de serviços da conta** (no painel: Notas Fiscais
+› Configurações › Serviços). A emissão apenas **usa** esse cadastro.
 
-1. **Descubra o serviço padrão da conta**: consulte o histórico com
-   `asaas_invoices_list` e veja qual `serviceDescription` a conta costuma
-   emitir. Essa é a primeira pista do serviço padrão.
-2. **Confirme no catálogo municipal**: use `asaas_services_list` (com filtro
-   `description`, ex.: "1.01" ou "sistemas") para achar o serviço existente e
-   seu `id`.
-3. **Escolha com o usuário**: apresente o serviço encontrado (ou o padrão do
-   histórico) e confirme. Se o usuário não disse nada sobre serviço,
-   **pergunte** — nunca escolha sozinho na primeira vez, nunca invente código.
-4. **Portal Nacional**: se o catálogo municipal não estiver disponível para a
-   conta, o código do serviço vem do usuário (contabilidade/Portal Nacional).
-   Nesse caso use `municipalServiceCode` informado por ele — e só por ele.
+Por isso, ao emitir: **não especifique o serviço**. O contrato do provedor
+(`InvoiceSaveRequestDTO`) **não exige** `municipalServiceId` nem
+`municipalServiceCode`; omitindo os dois, o ASAAS aplica o serviço cadastrado
+na conta. Consequências práticas:
+
+- **Nunca peça um código de serviço ao usuário só para emitir uma nota.** Se
+  você se pegou perguntando "qual o código municipal?", parou de seguir o
+  cadastro da conta.
+- **Nunca invente código.** Se o usuário não escolheu serviço, não envie
+  nenhum dos dois campos.
+- **Só envie o serviço quando o usuário escolher um específico**, dizendo
+  explicitamente que aquela nota sai com outro serviço. Aí use
+  `municipalServiceId` (do `asaas_services_list`) **ou**
+  `municipalServiceCode` (o que o usuário informou) — nunca os dois juntos.
+- **Emitir nota nunca cria serviço.** Criar é ato separado, só a pedido
+  explícito (ver "Quando o usuário pede um serviço novo").
+
+O histórico (`asaas_invoices_list`) e o catálogo (`asaas_services_list`)
+servem para **conferir e conversar** sobre qual serviço a conta costuma usar —
+não para preencher campo de emissão por conta própria.
 
 ## Consulta de notas
 
@@ -63,8 +68,10 @@ Só emita quando o usuário **pedir explicitamente** a nota. A ferramenta
 2. **Deduplicação automática**: cobrança que já tem nota recusa sempre; mesma
    combinação de cliente + valor + data recusa até o usuário confirmar
    (`confirmedDistinct`). Recusa não é erro — apresente a nota existente.
-3. **Serviço obrigatório e existente**: `municipalServiceId` do catálogo OU
-   `municipalServiceCode` dado pelo usuário — exatamente um, nunca ambos.
+3. **Serviço: não especifique**. Omita `municipalServiceId` e
+   `municipalServiceCode` para que o serviço cadastrado na conta seja
+   aplicado. Só envie um deles (nunca os dois) quando o usuário escolher
+   explicitamente um serviço específico para aquela nota.
 4. **Aprovação explícita**: a emissão é escrita real na produção e mostra card
    de aprovação na conversa.
 5. **Honestidade sobre o processamento**: agendar inicia o fluxo, mas a
@@ -78,8 +85,11 @@ Detalhes completos: [references/invoices-create.md](references/invoices-create.m
 
 `asaas_services_list` lê o catálogo de serviços da conta
 (`GET /v3/fiscalInfo/services`) com filtro opcional de descrição. O resultado
-lembra: **emitir nota nunca cria serviço**. Use para escolher o serviço certo;
-contas do Portal Nacional não têm lista e o código vem do usuário. Contrato em
+lembra: **emitir nota nunca cria serviço**. Use para **conferir e conversar**
+sobre os serviços cadastrados (inclusive achar duplicatas) — não para
+preencher campo de emissão: a nota sai sem serviço especificado. Contas do
+Portal Nacional não recebem a lista, e isso **não impede emitir**: o cadastro
+da conta continua valendo. Contrato em
 [references/services-list.md](references/services-list.md).
 
 ## Quando o usuário pede um serviço novo
