@@ -16,6 +16,9 @@ por cliente+valor+data antes do POST.
    quando o usuário escolher explicitamente outro serviço para aquela nota.
    Se o provedor recusar a nota, apresente o motivo real ao usuário, reporte
    a divergência à equipe e nunca adivinhe código.
+   Enviar esses campos **altera o cadastro de serviços da conta** (cria
+   entrada ou muda associação de notas anteriores) — ver "Efeito colateral"
+   abaixo. A omissão é o que protege o cadastro.
 
 ## Argumentos
 
@@ -25,9 +28,9 @@ por cliente+valor+data antes do POST.
 | `value` | number | sim | Valor total em reais; entre 0,01 e 999.999.999,99. |
 | `serviceDescription` | string | sim | Descrição impressa na nota; 1 a 200 caracteres. |
 | `effectiveDate` | string | sim | Data de emissão AAAA-MM-DD. |
-| `municipalServiceId` | string | **não** | Id do catálogo; só quando o usuário escolher um serviço específico. Nunca junto com `municipalServiceCode`. |
-| `municipalServiceCode` | string | **não** | Código, só quando o usuário informar um explicitamente. Nunca junto com `municipalServiceId`. |
-| `municipalServiceName` | string | não | Nome do serviço; até 80 caracteres. |
+| `municipalServiceId` | string | **não** | Id do catálogo; só quando o usuário escolher um serviço específico. Nunca junto com `municipalServiceCode`. Sozinho é recusado pelo provedor: acompanhe de `municipalServiceName`. |
+| `municipalServiceCode` | string | **não** | Código, só quando o usuário informar um explicitamente. Nunca junto com `municipalServiceId`. Sozinho, cria entrada nova no cadastro com o nome igual ao código. |
+| `municipalServiceName` | string | não | Nome do serviço; até 80 caracteres. É a **identidade** do cadastro — use a `description` exata de `asaas_services_list`, nunca um nome montado à mão. |
 | `observations` | string | não | Observações impressas; até 200 caracteres. |
 | `confirmedDistinct` | boolean | não | `true` só após o usuário confirmar colisão cliente+valor+data como nota distinta. |
 
@@ -45,6 +48,32 @@ integrações genéricas, pede id ou código sem descrever o auto preenchimento
 pela conta. Enviar os dois campos de serviço ao mesmo tempo devolve
 `asaas_invoices_create_invalid_arguments` sem nenhum POST, e nenhuma recusa se
 preenche às cegas: apresente o motivo real do provedor e reporte à equipe.
+
+## Efeito colateral dos campos municipais (sandbox, 2026-09-23)
+
+Agendar nota **não é neutro** para o cadastro de serviços da conta. Isto
+reforça a regra de omitir esses campos; não é permissão para usá-los.
+
+| Entrada | Resultado observado |
+| --- | --- |
+| Só `municipalServiceCode` | Aceito. Cria entrada nova com nome igual ao código (ex.: `01.01.01`); `municipalServiceId` volta `null` mesmo quando o código existe no catálogo. |
+| Só `municipalServiceId` | **Recusado** — HTTP 400 `invalid_action`: "O campo municipalServiceName deve ser informado", mesmo com id válido. |
+| `municipalServiceName` já existente + código diferente | Aceito, e a associação muda **retroativamente**: notas anteriores com aquele nome passaram a responder com o código novo. |
+| Código inexistente (`99.99.99`) | Aceito, agendado e **autorizado** no sandbox. A API não valida o código contra o catálogo. |
+
+Três consequências práticas:
+
+- **A identidade do cadastro é o `municipalServiceName`**, não o código.
+  Nomes diferentes viram registros diferentes, ainda que o código coincida.
+- **Quando o usuário escolher um serviço**, prefira o par `municipalServiceId`
+  + `municipalServiceName` com a `description` exata de `asaas_services_list`.
+  É o único caminho que não inventa nome nem cria registro divergente.
+- **HTTP 200 não prova aceitação fiscal.** O sandbox autorizou código
+  inexistente; em produção quem valida é a prefeitura, e a recusa aparece
+  depois, de forma assíncrona.
+
+Entradas criadas por engano só podem ser removidas pelo painel — e serviços
+com nota autorizada aparentemente não são removíveis.
 
 ## Recusas (escrita não realizada)
 

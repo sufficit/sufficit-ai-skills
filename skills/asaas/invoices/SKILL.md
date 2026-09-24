@@ -1,6 +1,6 @@
 ---
 name: asaas-invoices
-description: Consulta e agenda NFS-e de produção do ASAAS com asaas_invoices_list, asaas_services_list e asaas_invoices_create; cancelamento com asaas_invoices_cancel quando disponível. Detalhes do serviço (código municipal, ISS, nome fiscal) são auto preenchidos pelo cadastro da conta quando não especificados: nunca peça código municipal ao usuário e nunca invente código; a descrição impressa da nota é campo próprio e vem do usuário. Documentação oficial linkada na seção Fonte oficial: verifique-a antes de presumir obrigação e reporte divergências/recusas à equipe. Consulte antes de escrever e obtenha aprovação.
+description: Consulta e agenda NFS-e de produção do ASAAS com asaas_invoices_list, asaas_services_list e asaas_invoices_create; cancelamento com asaas_invoices_cancel quando disponível. Detalhes do serviço (código municipal, ISS, nome fiscal) são auto preenchidos pelo cadastro da conta quando não especificados: nunca peça código municipal ao usuário e nunca invente código; a descrição impressa da nota é campo próprio e vem do usuário. Enviar campos municipais tem efeito colateral comprovado no cadastro de serviços da conta (cria entrada nova ou altera a associação de notas já existentes), por isso a omissão é a regra. Documentação oficial linkada na seção Fonte oficial: verifique-a antes de presumir obrigação e reporte divergências/recusas à equipe. Consulte antes de escrever e obtenha aprovação.
 ---
 
 # Notas fiscais de serviço ASAAS de produção
@@ -26,6 +26,26 @@ sem solicitar IDs/códigos que pode obter por conta própria.
   feito, com o motivo, e reporte à equipe responsável pelo plugin/skill para
   atualização. Nunca exponha a chave, CPF integral nem dados sensíveis no
   relato; não contorne o plugin por requisição manual.
+
+## Consultas da conta verificadas — HTTP 200
+
+Em 2026-09-23, duas consultas reais de produção retornaram HTTP 200, sem
+agendar notas nem alterar cadastros:
+
+| Operação | Finalidade | Limite confirmado |
+| --- | --- | --- |
+| `GET /v3/myAccount/commercialInfo` | Identificar o titular e consultar os dados comerciais da conta. | Não identifica o serviço padrão das notas fiscais. |
+| `GET /v3/fiscalInfo/` | Consultar a configuração fiscal existente da conta. | Não retornou a lista de serviços pré-cadastrados nem o identificador do serviço padrão. |
+
+`serviceProvisionCityDefaultType` representa a **cidade padrão da prestação**,
+não o serviço padrão. HTTP 200 nessas consultas não comprova preenchimento
+automático dos campos omitidos no agendamento.
+
+Contratos, campos úteis, fontes oficiais e limites em
+[references/account-reads.md](references/account-reads.md). São capacidades
+verificadas da API: documentá-las aqui não adiciona ferramentas ao plugin.
+Use ferramentas correspondentes somente quando disponíveis; não invente
+nomes nem contorne sua ausência por requisições manuais com a credencial.
 
 ## Credencial
 
@@ -84,6 +104,34 @@ Se o usuário escolher expressamente um serviço municipal específico,
 `municipalServiceId` (se disponível) **ou** `municipalServiceCode` (código
 validado), nunca ambos. Cadastro novo só em pedido explícito do usuário.
 
+### Efeito colateral comprovado dos campos municipais (sandbox, 2026-09-23)
+
+Experimentos controlados em conta **sandbox** mostraram que agendar nota
+**não é neutro** para o cadastro de serviços. Isto reforça a regra de
+omitir os campos municipais; não é permissão para usá-los livremente.
+
+- **A identidade do cadastro é o `municipalServiceName`, não o código.**
+  Nomes diferentes produzem entradas separadas no painel, mesmo com o
+  mesmo código municipal.
+- **Enviar só `municipalServiceCode` cria entrada nova** com o nome igual
+  ao código (ex.: um registro chamado `01.01.01`, sem o texto oficial),
+  poluindo a tela de serviços da conta.
+- **Reutilizar um nome existente com outro código altera a associação
+  retroativamente**: notas já agendadas com aquele nome passaram a
+  responder com o código novo na consulta.
+- **`municipalServiceId` sozinho é recusado** (HTTP 400,
+  `invalid_action`: "O campo municipalServiceName deve ser informado"),
+  inclusive quando o id existe. O par id + nome é obrigatório junto.
+- **O sandbox não valida o código contra o catálogo**: um código
+  inexistente (`99.99.99`) foi aceito, agendado e autorizado, com número
+  e documentos. HTTP 200 ali **não** prova que a prefeitura aceitaria.
+
+Conclusão operacional: quando o usuário escolher um serviço específico,
+prefira o par `municipalServiceId` + `municipalServiceName` usando a
+`description` **exata** de `asaas_services_list`. Nunca monte o nome à mão
+nem envie apenas o código — foi o que gerou entradas divergentes na conta
+de teste. Entradas assim, uma vez criadas, só se removem pelo painel.
+
 ## Consulta de notas
 
 `asaas_invoices_list` executa um `GET` fixo em `/v3/invoices` com filtros
@@ -138,6 +186,19 @@ o código do serviço com o Portal Nacional ou a contabilidade antes de usá-lo.
 A ausência da lista não é falha sua e não autoriza adivinhar código. Contrato em
 [references/services-list.md](references/services-list.md).
 
+Dois cuidados ao conversar sobre essa lista:
+
+- **Catálogo do município ≠ serviços cadastrados da conta.** O endpoint
+  devolve o catálogo que a prefeitura disponibiliza (centenas de itens); a
+  tela **Notas Fiscais › Configurações › Serviços** mostra só os cadastros
+  da conta. Não apresente um como se fosse o outro.
+- **`offset` se comportou como número de página, não como índice** (o
+  deslocamento observado foi `offset × limit`). Paginar somando
+  `offset += limit` pula a maior parte do catálogo e encerra sem erro, com
+  lista vazia e `hasMore: false`. Avance de 1 em 1 e pare quando `hasMore`
+  for `false`. Se um serviço "não aparecer", suspeite da paginação antes de
+  concluir que não existe.
+
 ## Quando o usuário pede um serviço novo
 
 Se — e somente se — o usuário pedir **explicitamente** para cadastrar um
@@ -155,6 +216,13 @@ listagem. Então:
    e, depois que o usuário cadastrar, usar o serviço na emissão.
 
 Nunca invente um endpoint de criação nem finja ter criado um serviço.
+
+**Não use agendamento de nota como atalho para cadastrar serviço.** Os testes
+em sandbox mostraram que enviar campos municipais numa emissão cria ou altera
+entrada no cadastro (ver "Efeito colateral comprovado dos campos municipais").
+Isso não é uma API de criação: emite um documento fiscal real, não permite
+definir ISS de forma confiável e deixa resíduo que só o painel remove. Se o
+usuário quer um serviço novo, o caminho é o painel.
 
 ## Limites honestos
 
