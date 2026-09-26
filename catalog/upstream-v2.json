@@ -35,6 +35,13 @@
       "revision": "a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d",
       "author": "Refero",
       "license": "MIT"
+    },
+    {
+      "id": "mikrotik",
+      "repository": "https://github.com/tikoci/routeros-skills",
+      "revision": "c9802a8713927a6851f5540efe93b95f2b0637b8",
+      "author": "tikoci / Sufficit",
+      "license": "MIT"
     }
   ],
   "updatedAt": "2026-09-23T14:17:21Z",
@@ -2170,6 +2177,16 @@
       "author": "Refero",
       "license": "MIT",
       "sourceId": "refero"
+    },
+    {
+      "id": "routeros-management",
+      "name": "routeros-management",
+      "description": "Administra MikroTik RouterOS v7 e CHR: redes, firewall, NAT, VPN, roteamento, scripts, serviços e backup, com inventário, Safe Mode, rollback e segurança operacional. Versão 1.0.0.",
+      "source": "https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8/routeros-fundamentals",
+      "tags": ["mikrotik", "routeros", "chr", "networking", "firewall", "vpn", "routing", "automation"],
+      "author": "tikoci / Sufficit",
+      "license": "MIT",
+      "sourceId": "mikrotik"
     },
     {
       "id": "sufficit-api",

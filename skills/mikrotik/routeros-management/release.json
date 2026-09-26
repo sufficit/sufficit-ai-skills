@@ -1,0 +1,7 @@
+{
+  "name": "routeros-management",
+  "version": "1.0.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/mikrotik/routeros-management",
+  "license": "MIT"
+}

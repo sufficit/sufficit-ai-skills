@@ -1,7 +1,8 @@
 # Sufficit AI Skills
 
-Espelho público e versionado das 159 skills publicadas no catálogo v2 do
-Sufficit AI Genius. Os pacotes mantêm instruções e recursos sob demanda; o
+Espelho público e versionado de 160 skills preparadas para o catálogo v2 do
+Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
+imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
 conteúdo importado.
 
@@ -12,6 +13,7 @@ conteúdo importado.
 | Android | 22 | `android/skills`, Apache-2.0 |
 | Google | 127 | `google/skills`, Apache-2.0 |
 | Refero | 1 | `referodesign/refero_skill`, MIT |
+| MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
 | Sufficit | 4 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Asaas | 4 | Sufficit, MIT-0 |
@@ -19,7 +21,7 @@ conteúdo importado.
 As skills ficam em [`skills/android`](skills/android),
 [`skills/asaas`](skills/asaas),
 [`skills/google`](skills/google), [`skills/images`](skills/images),
-[`skills/refero`](skills/refero) e
+[`skills/mikrotik`](skills/mikrotik), [`skills/refero`](skills/refero) e
 [`skills/sufficit`](skills/sufficit). O
 snapshot importado está em [`catalog/upstream-v2.json`](catalog/upstream-v2.json)
 e a correspondência verificável em

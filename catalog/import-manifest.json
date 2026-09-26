@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 159,
+  "catalogEntries": 160,
   "sources": [
     {
       "id": "android",
@@ -35,6 +35,13 @@
       "repository": "https://github.com/referodesign/refero_skill",
       "revision": "a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d",
       "author": "Refero",
+      "license": "MIT"
+    },
+    {
+      "id": "mikrotik",
+      "repository": "https://github.com/tikoci/routeros-skills",
+      "revision": "c9802a8713927a6851f5540efe93b95f2b0637b8",
+      "author": "tikoci / Sufficit",
       "license": "MIT"
     }
   ],
@@ -1598,6 +1605,16 @@
       "upstreamSource": "https://github.com/referodesign/refero_skill/tree/a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d/skills/refero-design",
       "path": "skills/refero/refero-design",
       "contentSha256": "7aed94d69d9f0af16ce17c372e986a31540a5304e63b204f186d5a0ded8b6d5a"
+    },
+    {
+      "id": "routeros-management",
+      "name": "routeros-management",
+      "sourceId": "mikrotik",
+      "author": "tikoci / Sufficit",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8/routeros-fundamentals",
+      "path": "skills/mikrotik/routeros-management",
+      "contentSha256": "f3fc9caf205b5554bd3b97527b5d6e4a54617f8ca909bee1af7140723912f301"
     },
     {
       "id": "sufficit-api",
