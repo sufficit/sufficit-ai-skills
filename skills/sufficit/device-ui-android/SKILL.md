@@ -1,6 +1,6 @@
 ---
 name: device-ui-android
-description: Usa a ferramenta device_ui do Sufficit AI Genius em Android (celular/tablet) — controle por acessibilidade (GeniusScreenAccessibilityService), sem teclado físico, sem atalhos de desktop. Use quando o dispositivo for Android, quando device_ui/android_device_control aparecerem, quando precisar imprimir/salvar PDF/compartilhar no Chrome Android, ou quando uma ação por atalho de teclado (key) não tiver efeito num app mobile. Ensina a preferir read_screen/click_element/set_text (seletor semântico) a coordenadas cruas e a atalhos de teclado, e cobre o padrão real de "salvar página em PDF" no Chrome Android (menu ⋮, nunca Ctrl+P).
+description: Usa a ferramenta device_ui do Sufficit AI Genius em Android (celular/tablet) — controle por acessibilidade (GeniusScreenAccessibilityService), sem teclado físico, sem atalhos de desktop. Use quando o dispositivo for Android, quando device_ui/android_device_control aparecerem, quando precisar imprimir/salvar PDF/compartilhar no Chrome Android, ou quando uma ação por atalho de teclado (key) não tiver efeito num app mobile. Ensina a preferir read_screen/click_element/set_text (seletor semântico) a coordenadas cruas e a atalhos de teclado, description=/role= para ícones sem texto, o padrão real de "salvar página em PDF" no Chrome Android (menu ⋮, nunca Ctrl+P, e tocar SALVAR no diálogo final), e a nunca anunciar que uma escrita (Salvar/Baixar/Enviar) terminou sem confirmar o efeito depois do clique — um screenshot do diálogo aberto não é confirmação.
 ---
 
 # device_ui em Android: toque, não teclado
@@ -48,6 +48,19 @@ Depois de qualquer ação, **confira o resultado com `read_screen` de novo**
 antes de assumir que funcionou — `device_ui` não devolve confirmação do que
 aconteceu do lado do app, só que o evento de input foi aceito.
 
+**`screenshot` mostra pixels, não confirma que uma escrita terminou.** Um
+teste real chegou até a caixa de diálogo "Salvar" do Android (nome do arquivo
+preenchido, botão **SALVAR** visível) e parou aí sem tocar o botão — mas o
+turno terminou dizendo ao usuário que o PDF "foi salvo na pasta Downloads".
+Não tinha sido: o arquivo não existia. A causa foi usar `screenshot` pra
+"conferir" e ler a imagem como se um diálogo aberto com os campos certos já
+fosse o resultado — só o que existe é a **intenção** de salvar, ainda não
+executada. Pra qualquer ação que grave algo (Salvar, Baixar, Enviar,
+Confirmar), o clique final tem que acontecer e **o efeito tem que ser
+verificado depois de fechado o diálogo** — o diálogo sumiu e/ou uma
+notificação de download apareceu, não só "a tela parecia certa". Sem essa
+confirmação, diga que a ação ainda está pendente; não anuncie sucesso.
+
 **Ícone sem texto: use `description=`/`role=`, nunca `text=` chutado.** Botões
 como o menu **⋮** não têm rótulo visível — o texto que existe pra eles é a
 descrição de acessibilidade (o que o TalkBack leria em voz alta, ex.:
@@ -74,9 +87,13 @@ Chrome mobile. O caminho real, tocável:
 3. Na tela de impressão, o destino **"Salvar como PDF"** já costuma vir
    selecionado; se não vier, `click_element` no seletor de destino e escolha
    essa opção.
-4. Confirme com `read_screen` que a tela de impressão realmente abriu antes
-   de dizer ao usuário que o PDF foi gerado — se o Chrome não mudou de tela,
-   nada foi salvo, mesmo que a sequência de toques tenha "rodado sem erro".
+4. Chegar nessa tela **não é o fim da tarefa** — ainda falta tocar
+   **SALVAR** no diálogo do Android que pede nome de arquivo e pasta. Dê
+   `click_element` nesse botão também.
+5. Só depois disso confirme: `read_screen` (o diálogo deve ter fechado e
+   voltado pra página) e, se possível, liste os arquivos recentes de
+   Downloads pra confirmar que o nome apareceu. Só então diga ao usuário que
+   o PDF foi salvo — antes disso, a tarefa ainda está em andamento.
 
 Ver [references/android-touch-patterns.md](references/android-touch-patterns.md)
 pra outras armadilhas de navegação Android (digitação, teclado virtual,

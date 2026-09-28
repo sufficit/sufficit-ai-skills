@@ -2253,7 +2253,7 @@
     {
       "id": "device-ui-android",
       "name": "device-ui-android",
-      "description": "Usa device_ui em Android (controle por acessibilidade, GeniusScreenAccessibilityService) do jeito certo: toque via seletor semântico, nunca atalho de teclado de desktop, e description=/role= (não text=) para ícones sem rótulo visível como o menu ⋮. Cobre o padrão real de salvar página em PDF no Chrome Android e armadilhas de navegação validadas em uso real. Versão 0.1.1.",
+      "description": "Usa device_ui em Android (controle por acessibilidade, GeniusScreenAccessibilityService) do jeito certo: toque via seletor semântico, nunca atalho de teclado, description=/role= para ícones sem texto, e nunca anunciar que uma escrita terminou sem confirmar o efeito após o clique final — screenshot de um diálogo aberto não é confirmação. Cobre o padrão real de salvar página em PDF no Chrome Android. Versão 0.2.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android",
       "tags": [
         "android",
