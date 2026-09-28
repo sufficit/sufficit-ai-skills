@@ -2183,7 +2183,16 @@
       "name": "routeros-management",
       "description": "Administra MikroTik RouterOS v7 e CHR: redes, firewall, NAT, VPN, roteamento, scripts, serviços e backup, com inventário, Safe Mode, rollback e segurança operacional. Versão 1.0.0.",
       "source": "https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8/routeros-fundamentals",
-      "tags": ["mikrotik", "routeros", "chr", "networking", "firewall", "vpn", "routing", "automation"],
+      "tags": [
+        "mikrotik",
+        "routeros",
+        "chr",
+        "networking",
+        "firewall",
+        "vpn",
+        "routing",
+        "automation"
+      ],
       "author": "tikoci / Sufficit",
       "license": "MIT",
       "sourceId": "mikrotik"
@@ -2203,7 +2212,8 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "d51c3dfe119b1d771a05991ab0530308e986a872d5e354495fbb97ecdc0da4c8"
     },
     {
       "id": "sufficit-frontend",
@@ -2235,6 +2245,23 @@
         "logo",
         "image-tracing",
         "iou"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius"
+    },
+    {
+      "id": "playwright-mcp",
+      "name": "playwright-mcp",
+      "description": "Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store \"Playwright MCP Bridge\") como automação web opcional do Sufficit AI Genius, além do navegador nativo do usuário, e ensina a reconhecer se está instalado e a orientar o cadastro. Versão 0.1.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
+      "tags": [
+        "playwright",
+        "mcp",
+        "browser",
+        "automation",
+        "headless",
+        "chrome-extension"
       ],
       "author": "Sufficit",
       "license": "MIT-0",
