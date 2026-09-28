@@ -1,0 +1,7 @@
+{
+  "name": "device-ui-android",
+  "version": "0.1.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/sufficit/device-ui-android",
+  "license": "MIT-0"
+}

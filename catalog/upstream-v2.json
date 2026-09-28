@@ -2251,6 +2251,23 @@
       "sourceId": "sufficit-genius"
     },
     {
+      "id": "device-ui-android",
+      "name": "device-ui-android",
+      "description": "Usa device_ui em Android (controle por acessibilidade, GeniusScreenAccessibilityService) do jeito certo: toque via seletor semântico, nunca atalho de teclado de desktop. Cobre o padrão real de salvar página em PDF no Chrome Android (menu ⋮) e armadilhas de navegação validadas em uso real. Versão 0.1.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android",
+      "tags": [
+        "android",
+        "accessibility",
+        "device-ui",
+        "chrome",
+        "touch",
+        "mobile"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius"
+    },
+    {
       "id": "playwright-mcp",
       "name": "playwright-mcp",
       "description": "Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store \"Playwright Extension\", internamente \"Playwright MCP Bridge\") como automação web opcional do Sufficit AI Genius — em desktop via stdio local, e no Genius mobile/tablet obrigatoriamente via http contra um servidor hospedado. O agente cadastra/habilita/desabilita/remove o servidor com mcp_server_add/mcp_server_set_enabled/mcp_server_remove, sem depender da UI. Versão 0.3.0.",
