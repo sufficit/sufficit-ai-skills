@@ -1,9 +1,35 @@
 # Cadastro do Playwright MCP no Genius
 
-O Genius já suporta servidores MCP cadastrados pelo próprio usuário em
-**Extensões → Integrações → MCP → Adicionar servidor personalizado** — não é
-preciso plugin nem edição de arquivo de configuração para usar o Playwright
-MCP. O transporte muda conforme o dispositivo: **desktop usa `stdio`** (esta
+O Genius suporta servidores MCP customizados sem plugin nem edição de arquivo
+de configuração. Desde 2026-09-28 o **próprio agente cadastra**, chamando a
+ferramenta `mcp_server_add` — as tabelas abaixo (`Campos do cadastro`) mapeiam
+direto para os argumentos JSON da chamada: `Nome`→`name`, `Transporte`→
+`transport`, `Comando`→`command`, `Argumentos`→`arguments` (array),
+`Variáveis de ambiente`→`environment` (objeto), `Endpoint`→`endpoint`. Exemplo
+para o modo isolado em desktop:
+
+```json
+{
+  "name": "playwright",
+  "transport": "stdio",
+  "command": "npx",
+  "arguments": ["-y", "@playwright/mcp@<versão fixa>", "--headless"],
+  "environment": { "NPM_CONFIG_LOGLEVEL": "silent" }
+}
+```
+
+Depois de chamar `mcp_server_add`, confira `connected`/`error` no retorno —
+não assuma sucesso só porque a chamada não lançou exceção. Para habilitar,
+desabilitar ou remover um servidor já cadastrado (pelo usuário ou por você
+mesmo antes), use `mcp_server_set_enabled` (`server`, `enabled`) e
+`mcp_server_remove` (`server`) — `server` aceita o id ou o nome.
+
+Se essas três ferramentas não estiverem na sua lista, esta versão do Genius é
+anterior a essa funcionalidade: só nesse caso oriente o cadastro manual em
+**Extensões → Catálogo → Adicionar servidor personalizado**, usando os mesmos
+campos das tabelas abaixo.
+
+O transporte muda conforme o dispositivo: **desktop usa `stdio`** (esta
 seção); **Genius mobile/tablet exige `http`** contra um servidor hospedado —
 ver [Genius mobile/tablet](#genius-mobiletablet-cadastro-por-http) mais
 abaixo, é uma seção separada porque o cadastro é bem diferente.
@@ -120,7 +146,11 @@ compatibilidade com clientes MCP antigos.
 
 Sem comando, sem argumentos, sem variável de ambiente — isso tudo já foi
 decidido na hora de subir o processo no host. O Genius mobile só precisa da
-URL.
+URL. Via `mcp_server_add`, a chamada fica só:
+
+```json
+{ "name": "playwright", "transport": "http", "endpoint": "http://<ip-interno-de-vpn>:8931/mcp" }
+```
 
 ### ⚠️ Segurança: este endpoint não tem autenticação própria
 

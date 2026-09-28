@@ -2253,7 +2253,7 @@
     {
       "id": "playwright-mcp",
       "name": "playwright-mcp",
-      "description": "Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store \"Playwright Extension\", internamente \"Playwright MCP Bridge\") como automação web opcional do Sufficit AI Genius — em desktop via stdio local, e no Genius mobile/tablet obrigatoriamente via http contra um servidor hospedado, com alerta de segurança sobre a falta de autenticação nesse endpoint. Versão 0.2.0.",
+      "description": "Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store \"Playwright Extension\", internamente \"Playwright MCP Bridge\") como automação web opcional do Sufficit AI Genius — em desktop via stdio local, e no Genius mobile/tablet obrigatoriamente via http contra um servidor hospedado. O agente cadastra/habilita/desabilita/remove o servidor com mcp_server_add/mcp_server_set_enabled/mcp_server_remove, sem depender da UI. Versão 0.3.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
       "tags": [
         "playwright",

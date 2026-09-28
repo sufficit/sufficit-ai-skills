@@ -1,6 +1,6 @@
 ---
 name: playwright-mcp
-description: Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store "Playwright Extension"/"Playwright MCP Bridge") como caminho opcional de automação web do Sufficit AI Genius, além do navegador nativo do usuário — em desktop via stdio local, e no Genius mobile/tablet obrigatoriamente via http contra um servidor hospedado, já que mobile não suporta stdio. Use quando o usuário mencionar Playwright, MCP Bridge, automação headless, scraping isolado, o agente do Genius no tablet/celular, ou quando a tarefa web exigir rede/console, PDF, múltiplas abas, upload de arquivo ou snapshot de acessibilidade que o browser_* nativo do Genius não oferece. Também ensina a reconhecer se o servidor e a extensão estão instalados e a orientar o cadastro quando não estiverem.
+description: Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store "Playwright Extension"/"Playwright MCP Bridge") como caminho opcional de automação web do Sufficit AI Genius, além do navegador nativo do usuário — em desktop via stdio local, e no Genius mobile/tablet obrigatoriamente via http contra um servidor hospedado, já que mobile não suporta stdio. O próprio agente cadastra/habilita/desabilita/remove o servidor chamando mcp_server_add, mcp_server_set_enabled e mcp_server_remove diretamente — não precisa guiar o usuário pela tela de Extensões, exceto em builds antigos do Genius sem essas ferramentas. Use quando o usuário mencionar Playwright, MCP Bridge, automação headless, scraping isolado, o agente do Genius no tablet/celular, ou quando a tarefa web exigir rede/console, PDF, múltiplas abas, upload de arquivo ou snapshot de acessibilidade que o browser_* nativo do Genius não oferece.
 ---
 
 # Playwright MCP e Playwright MCP Bridge
@@ -10,12 +10,21 @@ extensão MV3 nativa force-installed (`browser_navigate`, `browser_get_page`,
 `browser_find`, `browser_click`, `browser_type` — ver `TOOLS-BROWSER.md`).
 Isso é o caminho padrão, sem cadastro nenhum.
 
-O Playwright MCP é um **segundo caminho, opcional**, que o próprio usuário
-cadastra em **Extensões → Integrações → MCP → Adicionar servidor
-personalizado**. Ele expõe ferramentas `mcp__<nome-do-servidor>__*` com
-capacidades que o `browser_*` nativo não tem: árvore de acessibilidade
-estruturada, múltiplas abas simultâneas, upload de arquivo, captura de
-rede/console, exportação em PDF, drag-and-drop.
+O Playwright MCP é um **segundo caminho, opcional**. Ele expõe ferramentas
+`mcp__<nome-do-servidor>__*` com capacidades que o `browser_*` nativo não tem:
+árvore de acessibilidade estruturada, múltiplas abas simultâneas, upload de
+arquivo, captura de rede/console, exportação em PDF, drag-and-drop.
+
+**Cadastro é self-service — use as ferramentas, não guie o usuário pela tela.**
+Desde a adição de `mcp_server_add`/`mcp_server_set_enabled`/`mcp_server_remove`
+(2026-09-28), o próprio agente cadastra, habilita, desabilita e remove
+servidores MCP chamando essas ferramentas diretamente — não é mais preciso
+mandar o usuário abrir Extensões → Catálogo → Adicionar servidor personalizado.
+Se o usuário pedir "liga o Playwright" ou similar, **chame `mcp_server_add`
+você mesmo** com os valores de [references/setup.md](references/setup.md); só
+oriente a tela manual se essas ferramentas não estiverem na sua lista (ver
+"Quando a ferramenta não existe" abaixo — normalmente significa build antigo
+do Genius, anterior a essa funcionalidade).
 
 ## Dois modos de navegação
 
@@ -69,14 +78,24 @@ use HTTP`). Isso muda o cadastro conforme o dispositivo:
 
 ## Quando a ferramenta não existe
 
-Se nenhuma ferramenta `mcp__playwright*__*` estiver disponível, explique que é
-uma integração opcional e oriente o cadastro: **Genius → Extensões →
-Integrações → MCP → Adicionar servidor personalizado**, usando exatamente os
-valores de [references/setup.md](references/setup.md) (comando, argumentos,
-variáveis de ambiente, nome). Não invente flags, não rode `npx` fora do Genius
-para "testar" em nome do usuário, e não use os `browser_*` nativos como
-substituto silencioso da lacuna — se a tarefa realmente precisa do Playwright,
-diga isso com clareza e ajude no cadastro.
+Primeiro, distinga os dois níveis de ausência:
+
+1. **`mcp_server_add` presente, mas nenhuma ferramenta `mcp__playwright*__*`:**
+   o Playwright MCP em si só não foi cadastrado ainda. Chame `mcp_server_add`
+   você mesmo com os valores de [references/setup.md](references/setup.md) —
+   não peça permissão para o usuário navegar até uma tela; isso é exatamente o
+   que essa ferramenta existe para evitar. Depois de chamar, confira
+   `connected`/`error` no resultado antes de declarar sucesso.
+2. **Nem `mcp_server_add` existe:** esta versão do Genius é anterior à
+   funcionalidade de autogestão de MCP (2026-09-28). Só nesse caso oriente o
+   cadastro manual: **Genius → Extensões → Catálogo → Adicionar servidor
+   personalizado**, com os mesmos valores de
+   [references/setup.md](references/setup.md), ou sugira atualizar o Genius.
+
+Em ambos os casos: não invente flags, não rode `npx` fora do Genius para
+"testar" em nome do usuário, e não use os `browser_*` nativos como substituto
+silencioso da lacuna — se a tarefa realmente precisa do Playwright, diga isso
+com clareza.
 
 ## Quando preferir os `browser_*` nativos em vez do Playwright
 
