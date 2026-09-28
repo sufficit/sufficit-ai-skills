@@ -48,16 +48,29 @@ Depois de qualquer ação, **confira o resultado com `read_screen` de novo**
 antes de assumir que funcionou — `device_ui` não devolve confirmação do que
 aconteceu do lado do app, só que o evento de input foi aceito.
 
+**Ícone sem texto: use `description=`/`role=`, nunca `text=` chutado.** Botões
+como o menu **⋮** não têm rótulo visível — o texto que existe pra eles é a
+descrição de acessibilidade (o que o TalkBack leria em voz alta, ex.:
+"Personalizar e controlar o Google Chrome" ou "Mais opções"), não um texto na
+tela. Um teste real confirmou o erro comum aqui: pedir `click_element` com um
+seletor de texto chutado (ou vago demais) pra esse tipo de ícone clica no
+elemento errado sem dar erro nenhum — o `device_ui` aceita o clique
+normalmente, só que no botão vizinho. **Sempre rode `read_screen` e confira o
+`description`/`role` exatos do ícone antes de montar o seletor** — não tente
+adivinhar o texto de um botão que não tem texto.
+
 ## Salvar/compartilhar página como PDF no Chrome Android
 
 Não existe atalho de teclado nem opção de "exportar PDF" direta na barra do
 Chrome mobile. O caminho real, tocável:
 
-1. `click_element` no menu **⋮** (três pontinhos, canto superior direito da
-   barra de endereço do Chrome).
-2. `click_element` em **Compartilhar** ou **Imprimir** (o rótulo exato varia
-   por versão do Chrome/idioma — use `read_screen` pra confirmar o texto
-   antes de clicar, não adivinhe).
+1. `read_screen` na barra do Chrome e identifique o `description`/`role` real
+   do menu **⋮** (três pontinhos, canto superior direito) — não monte o
+   seletor de cabeça, ele é um ícone sem texto (ver seção acima). Só depois
+   dê `click_element` nele.
+2. `read_screen` de novo (o menu que abriu é conteúdo novo) e `click_element`
+   em **Compartilhar** ou **Imprimir** (o rótulo exato varia por versão do
+   Chrome/idioma — confirme o texto real antes de clicar, não adivinhe).
 3. Na tela de impressão, o destino **"Salvar como PDF"** já costuma vir
    selecionado; se não vier, `click_element` no seletor de destino e escolha
    essa opção.
