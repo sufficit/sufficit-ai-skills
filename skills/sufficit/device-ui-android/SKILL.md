@@ -84,6 +84,15 @@ Chrome mobile. O caminho real, tocável:
 2. `read_screen` de novo (o menu que abriu é conteúdo novo) e `click_element`
    em **Compartilhar** ou **Imprimir** (o rótulo exato varia por versão do
    Chrome/idioma — confirme o texto real antes de clicar, não adivinhe).
+   **O painel de compartilhar e a tela de impressão são do sistema Android,
+   fora do processo do Chrome** — num teste real, `click_element` em
+   **Imprimir** dentro desse painel funcionou (a chamada devolveu sucesso),
+   mas a leitura seguinte não encontrou a tela de impressão esperada e o
+   Chrome apareceu de volta na página normal, como se o clique não tivesse
+   efeito nenhum. Se isso acontecer, não repita a mesma sequência sem
+   mudança — primeiro `read_screen` sozinho, sem nenhuma ação junto, pra dar
+   tempo da árvore de acessibilidade do painel do sistema realmente
+   atualizar antes de decidir o próximo clique.
 3. Na tela de impressão, o destino **"Salvar como PDF"** já costuma vir
    selecionado; se não vier, `click_element` no seletor de destino e escolha
    essa opção.
