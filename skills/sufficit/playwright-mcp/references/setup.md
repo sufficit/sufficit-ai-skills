@@ -42,6 +42,18 @@ lento e mais chance de ruído no `stdout`. Uma versão fixa (`@0.x.y`) evita ess
 consulta e mantém o processo silencioso de fato.
 `NPM_CONFIG_LOGLEVEL=silent` é a segunda camada de proteção contra ruído.
 
+Validado ao vivo em 2026-09-28 (pacote `@playwright/mcp`, versão estável na
+época **0.0.82** — confira a atual com `npm view @playwright/mcp version`, ela
+muda com frequência): rodando o servidor já instalado localmente (sem passar
+pelo `npx`, que é o pior caso de ruído), o handshake `initialize` completou,
+`tools/list` devolveu **25 ferramentas** — bem mais que as 5 do `browser_*`
+nativo do Genius, incluindo `browser_console_messages`,
+`browser_handle_dialog`, `browser_emulate_media`, `browser_evaluate`,
+`browser_file_upload` e `browser_drop`, capacidades que o `browser_*` nativo
+não tem — e uma chamada real de `browser_navigate` (headless, contra
+`github.com/sufficit`) voltou com o resultado esperado. **Zero linhas fora do
+JSON-RPC no `stdout`** durante todo o teste.
+
 ### Isolado x bridge — não confunda os dois
 
 `--headless` sobe um Chromium **isolado** que o próprio Playwright baixa e
@@ -52,16 +64,29 @@ numa aba que o usuário já está usando, com a sessão real dele.
 
 ## Extensão do Chrome Web Store (só para o modo bridge)
 
-1. O usuário instala **"Playwright MCP Bridge"** na Chrome Web Store:
+1. O usuário instala a extensão na Chrome Web Store:
    `https://chromewebstore.google.com/detail/mmlmfjhmonkocbjadbfplnigmagldckm`.
+   **Dois nomes, mesma extensão** (conferido ao vivo em 2026-09-28): a
+   listagem da loja mostra **"Playwright Extension"** — é esse o nome que
+   aparece no título da página e no botão "Add to Chrome". Depois de instalada
+   e conectada, a própria barra de aviso do Chrome ("esta extensão está
+   depurando o navegador") mostra o nome interno do manifest: **"Playwright
+   MCP Bridge"**. Se o usuário disser que só achou "Playwright Extension" na
+   loja, é a mesma coisa — não mande procurar de novo por "MCP Bridge".
 2. Diferente da extensão própria do Genius (essa é force-installed
    automaticamente pela política gerenciada — ver `TOOLS-BROWSER.md` no
-   repositório `sufficit-ai-genius`), a Playwright MCP Bridge **não se conecta
+   repositório `sufficit-ai-genius`), essa extensão **não se conecta
    sozinha**: o usuário precisa clicar no ícone dela na aba que quer
    compartilhar, a cada aba nova que o agente for usar.
 3. Sem esse clique, a primeira chamada de ferramenta do lado bridge (por
    exemplo, navegar) fica pendente ou retorna um erro pedindo a conexão — não
    é um problema no cadastro do servidor MCP em si.
+4. **Sinal de que está funcionando:** a barra do Chrome mostrando "'Playwright
+   MCP Bridge' started debugging this browser" (ou o texto equivalente em
+   português) na aba compartilhada **é o comportamento esperado**, não um
+   alerta de segurança nem sinal de extensão maliciosa — é o próprio Chrome
+   avisando que uma extensão está com a API de debugger anexada à aba, exatamente
+   o mecanismo que permite o modo bridge funcionar.
 
 ## Sintoma → causa → ação
 

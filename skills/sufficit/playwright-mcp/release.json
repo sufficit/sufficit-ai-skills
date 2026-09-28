@@ -1,6 +1,6 @@
 {
   "name": "playwright-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/sufficit/playwright-mcp",
   "license": "MIT-0"
