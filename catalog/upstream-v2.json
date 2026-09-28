@@ -2253,7 +2253,7 @@
     {
       "id": "playwright-mcp",
       "name": "playwright-mcp",
-      "description": "Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store \"Playwright Extension\", internamente \"Playwright MCP Bridge\") como automação web opcional do Sufficit AI Genius, além do navegador nativo do usuário, e ensina a reconhecer se está instalado e a orientar o cadastro. Versão 0.1.1.",
+      "description": "Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store \"Playwright Extension\", internamente \"Playwright MCP Bridge\") como automação web opcional do Sufficit AI Genius — em desktop via stdio local, e no Genius mobile/tablet obrigatoriamente via http contra um servidor hospedado, com alerta de segurança sobre a falta de autenticação nesse endpoint. Versão 0.2.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
       "tags": [
         "playwright",
@@ -2261,7 +2261,9 @@
         "browser",
         "automation",
         "headless",
-        "chrome-extension"
+        "chrome-extension",
+        "mobile",
+        "http"
       ],
       "author": "Sufficit",
       "license": "MIT-0",

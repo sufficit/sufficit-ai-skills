@@ -1,11 +1,16 @@
 # Cadastro do Playwright MCP no Genius
 
-O Genius já suporta servidores MCP `stdio` (comando local) cadastrados pelo
-próprio usuário em **Extensões → Integrações → MCP → Adicionar servidor
-personalizado** — não é preciso plugin nem edição de arquivo de configuração
-para usar o Playwright MCP.
+O Genius já suporta servidores MCP cadastrados pelo próprio usuário em
+**Extensões → Integrações → MCP → Adicionar servidor personalizado** — não é
+preciso plugin nem edição de arquivo de configuração para usar o Playwright
+MCP. O transporte muda conforme o dispositivo: **desktop usa `stdio`** (esta
+seção); **Genius mobile/tablet exige `http`** contra um servidor hospedado —
+ver [Genius mobile/tablet](#genius-mobiletablet-cadastro-por-http) mais
+abaixo, é uma seção separada porque o cadastro é bem diferente.
 
-## Pré-requisito: Node.js
+## Desktop: cadastro `stdio`
+
+### Pré-requisito: Node.js
 
 `npx` vem junto do Node.js. Sem Node instalado no host onde o Genius roda, o
 processo do servidor nem sobe (erro típico ao tentar conectar: `spawn npx
@@ -16,7 +21,7 @@ Genius antes de tentar de novo.
 interativo quando o processo é criado sem invocar um shell. Use `npx.cmd`
 como comando, não `npx`.
 
-## Campos do cadastro
+### Campos do cadastro
 
 | Campo | Isolado/silencioso | Bridge (navegador real) |
 | --- | --- | --- |
@@ -62,6 +67,86 @@ login, sem cookies, sem histórico do usuário. `--extension` **não** sobe
 navegador nenhum: o servidor espera a extensão da Chrome Web Store conectar
 numa aba que o usuário já está usando, com a sessão real dele.
 
+## Genius mobile/tablet: cadastro por `http`
+
+**Por que não dá pra copiar o cadastro `stdio` do desktop:** o Genius recusa
+`stdio` em mobile por design — não existe processo local para o app subir
+dentro do Android/iOS. O agente do Genius que roda no tablet só enxerga o
+Playwright se houver um servidor Playwright MCP **já rodando, de forma
+persistente, em algum host sempre ligado** e alcançável pela rede — o desktop
+do usuário, um notebook, ou um servidor Sufficit. Esse host que sobe o
+processo com Node/`npx`; o tablet só conecta em `http`.
+
+### Subir o servidor em modo `http`/SSE
+
+No host que vai ficar sempre ligado (ex.: `systemd`, ou qualquer supervisor de
+processo — não é um comando pra rodar manualmente toda vez):
+
+```bash
+npx -y @playwright/mcp@<versão fixa> --headless --isolated \
+  --port 8931 --host <ip-interno-de-vpn>
+```
+
+**Validado ao vivo em 2026-09-28**: ao subir com `--port`, o processo imprime
+no start (uma única vez, no início — não é ruído contínuo no `stdout` do
+protocolo):
+
+```
+Listening on http://localhost:8931
+Put this in your client config:
+{
+  "mcpServers": {
+    "playwright": { "url": "http://localhost:8931/mcp" }
+  }
+}
+For legacy SSE transport support, you can use the /sse endpoint instead.
+```
+
+Testei o handshake HTTP completo contra esse endpoint (o mesmo que o
+`HttpClientTransport` do Genius fala — Streamable HTTP com fallback SSE,
+`AutoDetect`): `initialize` devolveu `Mcp-Session-Id` no cabeçalho da
+resposta, `tools/list` trouxe as mesmas 25 ferramentas do teste por `stdio`, e
+um `browser_navigate` real contra `github.com/sufficit` funcionou. O endpoint
+`/mcp` é o correto para o cadastro no Genius; `/sse` existe só como
+compatibilidade com clientes MCP antigos.
+
+### Campos do cadastro no Genius mobile
+
+| Campo | Valor |
+| --- | --- |
+| Nome | `playwright` (ou `playwright-bridge` se este host também tiver `--extension` — ver abaixo) |
+| Transporte | `http` |
+| Endpoint | `http://<ip-interno-de-vpn>:8931/mcp` |
+
+Sem comando, sem argumentos, sem variável de ambiente — isso tudo já foi
+decidido na hora de subir o processo no host. O Genius mobile só precisa da
+URL.
+
+### ⚠️ Segurança: este endpoint não tem autenticação própria
+
+Conferido no `--help` do pacote: não existe flag de token, bearer ou senha
+para o transporte `http`. Quem alcançar `<host>:<porta>/mcp` pela rede
+controla um navegador real **sem pedir nada** — inclusive `browser_evaluate`
+(executa JavaScript arbitrário na página) e `browser_file_upload`. `--allowed-
+hosts`/`--allowed-origins` restringem para onde o *navegador* pode navegar,
+não quem pode *falar com o servidor* — não são controle de acesso ao MCP.
+
+**Nunca** bind em `0.0.0.0` numa rede exposta à internet ou compartilhada com
+quem não deveria ter esse controle. Bind só na interface de VPN/Tailscale do
+host (não `0.0.0.0` solto), e cadastre no tablet o IP dessa VPN — não um IP
+público. Trate a URL completa (host:porta) como segredo equivalente a uma
+senha: quem a tiver, controla o navegador daquele host.
+
+### Modo bridge (`--extension`) a partir do mobile
+
+Se o host que sobe o servidor `--port` também usar `--extension` (em vez de
+`--headless`), o tablet consegue acionar o navegador **desktop** desse host
+através do Playwright MCP — mas continua sendo o navegador do desktop que é
+controlado, nunca o Chrome do próprio tablet (Chrome mobile não roda
+extensões). Deixe isso claro para o usuário antes de configurar: "bridge no
+mobile" quer dizer "o tablet manda o computador tal abrir e mexer no
+navegador dele", não "o tablet ganha um navegador Playwright próprio".
+
 ## Extensão do Chrome Web Store (só para o modo bridge)
 
 1. O usuário instala a extensão na Chrome Web Store:
@@ -96,6 +181,8 @@ numa aba que o usuário já está usando, com a sessão real dele.
 | Ferramentas presentes, mas a chamada trava ou erra no modo bridge | Extensão não instalada, ou instalada mas não clicada na aba alvo | Orientar a instalação (link acima) e o clique do ícone na aba certa |
 | Ferramentas presentes, mas a chamada trava ou erra no modo `--headless` | Primeiro download do Chromium do Playwright ainda em curso, ou faltam dependências de sistema do Chromium no host (comum em Linux mínimo) | Aguardar a primeira execução terminar; se persistir em Linux, faltam bibliotecas do sistema que o Chromium exige |
 | Conexão cai logo depois de cadastrar | Ruído em `stdout` (versão `@latest` sem `NPM_CONFIG_LOGLEVEL`) corrompendo o quadro `stdio` | Trocar para versão fixa e adicionar a variável de ambiente da tabela acima |
+| Cadastro `stdio` funciona no desktop mas o mesmo cadastro falha no Genius mobile | Mobile não suporta `stdio` — erro esperado, não é falha de configuração | Cadastrar o mobile por `http` contra um servidor `--port` já rodando em host sempre ligado (ver seção mobile/tablet acima); nunca tentar `stdio` no app mobile |
+| Genius mobile não conecta no servidor `http` | Servidor não está rodando, porta/IP errados, firewall bloqueando, ou o servidor está bindado só em `localhost` do outro host (inalcançável pela rede) | Confirmar que o processo está ativo no host, que `--host` não é `localhost`/`127.0.0.1` (precisa ser a interface de rede/VPN), e que a porta está liberada só para a VPN — nunca abrir para a internet |
 
 Falhas de rede/spawn podem ser tentadas de novo uma vez, com um instante de
 espera. Falhas que dependem de ação do usuário (instalar Node, instalar a

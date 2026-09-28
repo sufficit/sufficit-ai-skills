@@ -1,6 +1,6 @@
 ---
 name: playwright-mcp
-description: Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store "Playwright MCP Bridge") como caminho opcional de automação web do Sufficit AI Genius, além do navegador nativo do usuário. Use quando o usuário mencionar Playwright, MCP Bridge, automação headless, scraping isolado, ou quando a tarefa web exigir rede/console, PDF, múltiplas abas, upload de arquivo ou snapshot de acessibilidade que o browser_* nativo do Genius não oferece. Também ensina a reconhecer se o servidor e a extensão estão instalados e a orientar o cadastro quando não estiverem.
+description: Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store "Playwright Extension"/"Playwright MCP Bridge") como caminho opcional de automação web do Sufficit AI Genius, além do navegador nativo do usuário — em desktop via stdio local, e no Genius mobile/tablet obrigatoriamente via http contra um servidor hospedado, já que mobile não suporta stdio. Use quando o usuário mencionar Playwright, MCP Bridge, automação headless, scraping isolado, o agente do Genius no tablet/celular, ou quando a tarefa web exigir rede/console, PDF, múltiplas abas, upload de arquivo ou snapshot de acessibilidade que o browser_* nativo do Genius não oferece. Também ensina a reconhecer se o servidor e a extensão estão instalados e a orientar o cadastro quando não estiverem.
 ---
 
 # Playwright MCP e Playwright MCP Bridge
@@ -17,7 +17,7 @@ capacidades que o `browser_*` nativo não tem: árvore de acessibilidade
 estruturada, múltiplas abas simultâneas, upload de arquivo, captura de
 rede/console, exportação em PDF, drag-and-drop.
 
-## Dois modos, dois cadastros diferentes
+## Dois modos de navegação
 
 1. **Isolado e silencioso** (`--headless`): processo Playwright próprio, sem
    nenhum login do usuário — mesma família de propósito do `CdpBrowserToolset`
@@ -25,10 +25,31 @@ rede/console, exportação em PDF, drag-and-drop.
    ferramentas mais ricas. Use para scraping ou verificação automatizada que
    **não deve tocar** as abas nem as sessões reais do usuário.
 2. **Bridge para o navegador real** (`--extension`): o processo Playwright
-   anexa numa aba real do Chrome/Edge do usuário através da extensão da Chrome
-   Web Store **"Playwright MCP Bridge"**. É uma via alternativa à extensão
-   própria do Genius — só compensa quando a tarefa precisa de uma capacidade
-   do Playwright que o `browser_*` nativo não tem. Não é o caminho padrão.
+   anexa numa aba real de um Chrome/Edge **desktop** através da extensão da
+   Chrome Web Store listada como **"Playwright Extension"** (nome interno do
+   manifest: "Playwright MCP Bridge" — ver [references/setup.md](references/setup.md)).
+   É uma via alternativa à extensão própria do Genius — só compensa quando a
+   tarefa precisa de uma capacidade do Playwright que o `browser_*` nativo não
+   tem. Não é o caminho padrão. **Este modo sempre controla o navegador de um
+   computador desktop** — não existe extensão de navegador em Chrome mobile,
+   então não há "bridge" para o próprio Chrome do tablet/celular.
+
+## Desktop x mobile: transporte diferente, cadastro diferente
+
+**O Genius mobile (tablet/celular) não suporta MCP por `stdio`** — o próprio
+código do Genius recusa essa combinação (`MCP stdio is unavailable on mobile;
+use HTTP`). Isso muda o cadastro conforme o dispositivo:
+
+- **Genius desktop:** cadastra o servidor como `stdio`, comando `npx`, e o
+  Genius sobe o processo Playwright localmente sob demanda. Zero infra extra.
+- **Genius mobile (o agente rodando no tablet):** não existe processo local
+  para subir. O servidor Playwright MCP precisa estar **rodando de forma
+  persistente em algum host sempre ligado** (o desktop do usuário, um
+  notebook, um servidor Sufficit) com `--port`, e o cadastro no tablet aponta
+  para esse endereço por `http`, não por `stdio`. Ver
+  [references/setup.md](references/setup.md) para o endereço exato do
+  endpoint (validado ao vivo) e o alerta de segurança sobre expor esse
+  servidor na rede — **ele não tem autenticação própria**.
 
 ## Como reconhecer se está configurado
 
@@ -70,5 +91,8 @@ real do usuário, use o modo `--headless`.
 ## Referências
 
 - [references/setup.md](references/setup.md) — cadastro exato dos dois modos
-  (campos, Node/`npx`, Windows), por que fixar versão e silenciar o stdout,
-  link da extensão na Chrome Web Store, e tabela de sintomas → causa → ação.
+  em desktop (campos, Node/`npx`, Windows, por que fixar versão e silenciar o
+  stdout), o cadastro por `http` obrigatório no Genius mobile/tablet contra um
+  servidor hospedado (endpoint validado ao vivo, alerta de segurança sobre
+  falta de autenticação), link da extensão na Chrome Web Store, e tabela de
+  sintomas → causa → ação.
