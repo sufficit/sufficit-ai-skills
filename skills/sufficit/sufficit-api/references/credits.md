@@ -140,9 +140,21 @@ Distinga a intenção:
 
 ## Aplicar crédito promocional
 
-Quando o usuário pedir para **lançar, conceder ou aplicar** um crédito presente,
-complete as duas escritas: publique o vale fixo e depois use
-`POST /Finance/Credits/Vouchers/{id}/Redeem` com:
+> **Regra obrigatória de aceite:** crédito promocional (vale de valor fixo ou
+> percentual) **não tem efeito imediato**. O cliente precisa aceitar o benefício
+> antes de ele valer. Sempre que você inserir/conceder esse tipo de crédito, o
+> passo final é **obrigatório**: encaminhar ao cliente o **link de aceite** gerado
+> por `POST /Finance/Credits/Vouchers/{id}/Share` (veja a seção "Entregar um vale
+> avulso por link" acima). Não encerre a concessão só com o resgate gerencial —
+> sem o link de aceite o cliente não recebe o benefício.
+
+Quando o usuário pedir para **lançar, conceder ou aplicar** um crédito promocional,
+o fluxo completo é:
+
+1. **Descubra** o produto (`GET /Finance/Credits/Products`) e o contexto
+   (`POST /Contact/Search`).
+2. **Publique** o vale (`POST /Finance/Credits/Vouchers`) — a oferta é imutável.
+3. **Resgate** para a carteira do cliente (`POST /Finance/Credits/Vouchers/{id}/Redeem`):
 
 ```json
 {
@@ -152,10 +164,19 @@ complete as duas escritas: publique o vale fixo e depois use
 }
 ```
 
+4. **Gere e entregue o link de aceite** (`POST /Finance/Credits/Vouchers/{id}/Share`)
+   e envie a `url` completa ao cliente pelo canal solicitado. Este é o passo que
+>   efetiva o aceite; sem ele o benefício fica pendente.
+
 Gere uma chave opaca e estável para a concessão e reutilize-a somente ao repetir a
 mesma tentativa. Depois, consulte `GET /Finance/Credits/Account` e confirme o
 benefício pelo `voucherId` e por `remainingUnits`. Não descreva `fixedUnits` como
 saldo pago: ele é benefício promocional consumido antes de `MoneyUnits`.
+
+**Importante:** não resgate gerencialmente antes de entregar o link se a intenção
+for que o próprio cliente aceite; resgatar antes torna o link apenas uma consulta
+de vale já usado. Quando o pedido for ambíguo entre "conceder agora" e "deixar o
+cliente aceitar", esclareça antes de escrever.
 
 Se o resgate informar carteira inexistente, não publique outro vale e não escolha
 outro contexto. Informe que o contato ainda não aderiu ao produto ou que a carteira
