@@ -1,6 +1,6 @@
 ---
 name: device-ui-android
-description: Usa a ferramenta device_ui do Sufficit AI Genius em Android (celular/tablet) — controle por acessibilidade (GeniusScreenAccessibilityService), sem teclado físico, sem atalhos de desktop. Use quando o dispositivo for Android, quando device_ui/android_device_control aparecerem, quando precisar imprimir/salvar PDF/compartilhar no Chrome Android, ou quando uma ação por atalho de teclado (key) não tiver efeito num app mobile. Ensina a preferir read_screen/click_element/set_text (seletor semântico) a coordenadas cruas e a atalhos de teclado, description=/role= para ícones sem texto, o padrão real de "salvar página em PDF" no Chrome Android (menu ⋮, nunca Ctrl+P, e tocar SALVAR no diálogo final), e a nunca anunciar que uma escrita (Salvar/Baixar/Enviar) terminou sem confirmar o efeito depois do clique — um screenshot do diálogo aberto não é confirmação.
+description: Para sites no Android use o navegador embutido browser_* (lê a página como dados, sem screenshot); device_ui só para apps nativos ou sessão logada do Chrome do usuário. Usa a ferramenta device_ui do Sufficit AI Genius em Android (celular/tablet) — controle por acessibilidade (GeniusScreenAccessibilityService), sem teclado físico, sem atalhos de desktop. Use quando o dispositivo for Android, quando device_ui/android_device_control aparecerem, quando precisar imprimir/salvar PDF/compartilhar no Chrome Android, ou quando uma ação por atalho de teclado (key) não tiver efeito num app mobile. Ensina a preferir read_screen/click_element/set_text (seletor semântico) a coordenadas cruas e a atalhos de teclado, description=/role= para ícones sem texto, o padrão real de "salvar página em PDF" no Chrome Android (menu ⋮, nunca Ctrl+P, e tocar SALVAR no diálogo final), e a nunca anunciar que uma escrita (Salvar/Baixar/Enviar) terminou sem confirmar o efeito depois do clique — um screenshot do diálogo aberto não é confirmação.
 ---
 
 # device_ui em Android: toque, não teclado
@@ -12,6 +12,25 @@ do agente pra "agir como o usuário" no Android quando não existe API
 estruturada pra tarefa (`browser_*` nativo do Genius é desktop-only — MV3 não
 roda em Chrome Android, ponto final de plataforma, não é algo que dê pra
 contornar com outra extensão).
+
+## Site? Use `browser_*`, não `device_ui`
+
+Desde a versão 0.133 o Genius Android tem **navegador próprio embutido**
+(`browser_navigate`, `browser_get_page`, `browser_find`, `browser_click`,
+`browser_type` com `submit`, `browser_back`). Ele lê a página como dados —
+contatos, títulos, texto e elementos com seletor CSS — sem screenshot e sem
+Acessibilidade. Em teste real no tablet, pedidos como "telefone do site X" e
+"preço mais barato no Mercado Livre usando a busca de lá" foram resolvidos em
+1–2 minutos com ele; os mesmos pedidos via `device_ui` no Chrome levaram
+dezenas de toques e falharam.
+
+- Qualquer tarefa **em um site** (ler, buscar no site, clicar, preencher,
+  comparar preço): `browser_*` primeiro.
+- `web_search` só para descobrir **qual** site/URL abrir.
+- `device_ui` fica para **apps nativos** e para quando a tarefa exige a
+  **sessão logada do Chrome do próprio usuário** — o navegador embutido tem
+  cookies separados e não tem os logins dele. Se a página pedir login,
+  diga isso ao usuário em vez de trocar de ferramenta em silêncio.
 
 ## Verifique antes de usar
 

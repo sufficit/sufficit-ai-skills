@@ -1654,7 +1654,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android",
       "path": "skills/sufficit/device-ui-android",
-      "contentSha256": "0787ea49d63062394ef43b4f3bd3a068cd71e99d9a665504556e383444760b5a"
+      "contentSha256": "48ef344db2399997942b0ecdb2e942448e9e7df76de437cffdb40f7092dc7c7e"
     },
     {
       "id": "playwright-mcp",
