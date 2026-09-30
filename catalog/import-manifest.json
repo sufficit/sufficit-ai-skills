@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 162,
+  "catalogEntries": 163,
   "sources": [
     {
       "id": "android",
@@ -1665,6 +1665,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
       "path": "skills/sufficit/playwright-mcp",
       "contentSha256": "a7ed99258af0bc2504b7dbd1b54bb4b59627532362bc5e184fb35e6578275a61"
+    },
+    {
+      "id": "quepasa-api",
+      "name": "quepasa-api",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
+      "path": "skills/quepasa/api",
+      "contentSha256": "911be5f18df18b654ccf8674b7a037c494171b6630928f6c4621c6c6bad62aa1"
     }
   ]
 }
