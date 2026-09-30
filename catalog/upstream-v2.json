@@ -2289,7 +2289,7 @@
     {
       "id": "quepasa-api",
       "name": "quepasa-api",
-      "description": "Usa a API HTTP do QuePasa (gateway WhatsApp mantido pela Sufficit): envio de texto e mídia, administração de grupos (criar, participantes, nome, descrição, permissões, convites no privado e pedidos de entrada), download de mídia e vCard de contatos, histórico e configuração/leitura de webhooks. Autentica pelo token da sessão (X-QUEPASA-TOKEN) e restringe a chave de usuário (X-QUEPASA-USERKEY) ao seu escopo; inclui armadilhas de produção (success:false com HTTP 200, rotas v5 x legadas, reinício derruba sessões, stream_replaced). Versão 0.1.0.",
+      "description": "Usa a API HTTP do QuePasa (gateway WhatsApp em Go): envio de texto e mídia, administração de grupos (criar, participantes, nome, descrição, permissões, convites no privado e pedidos de entrada), download de mídia e vCard de contatos, histórico e configuração/leitura de webhooks. Autentica pelo token da sessão (X-QUEPASA-TOKEN) e restringe a chave de usuário (X-QUEPASA-USERKEY) ao seu escopo; inclui armadilhas de produção (success:false com HTTP 200, rotas v5 x legadas, reinício derruba sessões, stream_replaced). Versão 0.1.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
       "tags": [
         "quepasa",
