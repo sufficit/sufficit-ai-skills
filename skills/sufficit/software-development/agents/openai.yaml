@@ -1,0 +1,4 @@
+interface:
+  display_name: "Desenvolvimento de software"
+  short_description: "Implemente e valide mudanças com progresso rastreável"
+  default_prompt: "Use $software-development para executar esta mudança, acompanhar o plano e verificar a entrega."

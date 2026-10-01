@@ -44,7 +44,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-09-23T14:17:21Z",
+  "updatedAt": "2026-10-01T20:16:16.390712+00:00",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2302,6 +2302,24 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius"
+    },
+    {
+      "id": "software-development",
+      "name": "software-development",
+      "description": "Executa mudanças de software autorizadas com plano vivo, checkpoints, validação proporcional e registro verificável. Versão 1.0.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
+      "tags": [
+        "software",
+        "development",
+        "implementation",
+        "testing",
+        "planning",
+        "codex"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "1aeb7e719af345e06a5cb7ed99c916fa8f3e62b73cc1bffe833a2aca98a0f93f"
     }
   ]
 }

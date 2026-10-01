@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 163,
+  "catalogEntries": 164,
   "sources": [
     {
       "id": "android",
@@ -1675,6 +1675,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
       "path": "skills/quepasa/api",
       "contentSha256": "b86b160ee0e5c21fbcb103c4271df38de7a133f1a79bd68b2847eb8605e42b23"
+    },
+    {
+      "id": "software-development",
+      "name": "software-development",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
+      "path": "skills/sufficit/software-development",
+      "contentSha256": "1aeb7e719af345e06a5cb7ed99c916fa8f3e62b73cc1bffe833a2aca98a0f93f"
     }
   ]
 }

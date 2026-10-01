@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 163 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 164 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -14,7 +14,7 @@ conteúdo importado.
 | Google | 127 | `google/skills`, Apache-2.0 |
 | Refero | 1 | `referodesign/refero_skill`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
-| Sufficit | 6 | Sufficit, MIT-0 |
+| Sufficit | 7 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Asaas | 4 | Sufficit, MIT-0 |
 | QuePasa | 1 | Sufficit, MIT-0 |
@@ -33,3 +33,6 @@ O catálogo distribuído pelo Genius fixa cada pacote em um commit completo.
 Alterações em `main` não substituem silenciosamente uma versão já revisada ou
 instalada. Consulte [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) para
 autoria e licenças.
+
+A skill `software-development` possui instalação vinculada para Codex e conferência
+de versão remota: [pacote](skills/sufficit/software-development/SKILL.md).
