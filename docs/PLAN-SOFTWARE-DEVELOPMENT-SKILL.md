@@ -5,9 +5,9 @@ no Codex uma skill versionada com conferência explícita de atualizações.
 
 ## Checkpoints
 1. [completed] Inspecionar origem, catálogo, convenções e descoberta do Codex.
-2. [in_progress] Criar pacote 1.0.0 e melhorar instruções; integrar catálogo/digest.
-3. [pending] Implementar instalação vinculada, backup e conferência local/remota; testar isoladamente.
-4. [pending] Validar pacote e CI público; publicar revisão na main canônica.
+2. [completed] Criar pacote 1.0.0 e melhorar instruções; integrar catálogo/digest.
+3. [completed] Implementar instalação vinculada, backup e conferência local/remota; testar isoladamente.
+4. [in_progress] Validar pacote e CI público; publicar revisão na main canônica.
 5. [pending] Migrar instalação real com backup, conferir atualização e descoberta no Codex; registrar entrega.
 
 ## Decisões e limites
@@ -26,3 +26,7 @@ no Codex uma skill versionada com conferência explícita de atualizações.
 - Check distingue current/update-available/modified/unavailable; compara pacote, não apenas HEAD global.
 - Testes sem rede para instalação, atualização disponível, fonte modificada e falha remota.
 - Conferência real da instalação e descoberta no Codex após publicação.
+
+Checkpoint 2: pacote 1.0.0 escrito com plano em docs, pesquisa orientada a incertezas, falhas classificadas e entrega por evidência. Metadados de versão e digest integrados ao catálogo (164 pacotes).
+
+Checkpoint 3: nove testes isolados passaram (migração, backup, idempotência, rollback, integridade, CLI e estados remotos). Validador aprovou os 164 pacotes. CI inclui a mesma suíte.
