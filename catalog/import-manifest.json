@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 164,
+  "catalogEntries": 165,
   "sources": [
     {
       "id": "android",
@@ -42,6 +42,13 @@
       "repository": "https://github.com/tikoci/routeros-skills",
       "revision": "c9802a8713927a6851f5540efe93b95f2b0637b8",
       "author": "tikoci / Sufficit",
+      "license": "MIT"
+    },
+    {
+      "id": "mattpocock",
+      "repository": "https://github.com/mattpocock/skills",
+      "revision": "d81f3a183412e71a5b1e84ca21bc1a35eea03a60",
+      "author": "Matt Pocock",
       "license": "MIT"
     }
   ],
@@ -1685,6 +1692,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
       "path": "skills/sufficit/software-development",
       "contentSha256": "1aeb7e719af345e06a5cb7ed99c916fa8f3e62b73cc1bffe833a2aca98a0f93f"
+    },
+    {
+      "id": "mattpocock-prototype",
+      "name": "prototype",
+      "sourceId": "mattpocock",
+      "author": "Matt Pocock",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/engineering/prototype",
+      "path": "skills/mattpocock/prototype",
+      "contentSha256": "4ac7c70101242825c659a6d4ca6cdefb67c893661f67695d1303490659fe76fd"
     }
   ]
 }
