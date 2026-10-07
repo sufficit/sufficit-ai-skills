@@ -2313,7 +2313,7 @@
     {
       "id": "software-development",
       "name": "software-development",
-      "description": "Executa mudanças de software autorizadas com plano vivo, checkpoints, validação proporcional e registro verificável. Versão 1.0.0.",
+      "description": "Executa mudanças de software autorizadas com plano vivo, checkpoints, validação proporcional e registro verificável. Versão 1.1.0. Inclui renderização Blazor por eventos e componentes com parâmetros estáveis.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
       "tags": [
         "software",
@@ -2326,7 +2326,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "1aeb7e719af345e06a5cb7ed99c916fa8f3e62b73cc1bffe833a2aca98a0f93f"
+      "contentSha256": "5f9e011cc11c7890eef45899cbace16aae2b9d02b33bef68e3fe1675f880c257"
     },
     {
       "id": "mattpocock-prototype",

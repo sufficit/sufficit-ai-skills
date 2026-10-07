@@ -2,7 +2,7 @@
 name: software-development
 description: Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -81,6 +81,14 @@ for missing information, authority or a decision that materially affects the res
 Use the communication mechanism actually supported by the current environment;
 never treat an empty tool response as consent. A real blocker records the failed
 operation, evidence and the safest next action, with remaining checkpoints intact.
+
+### Blazor rendering and event-driven state
+
+For Blazor changes involving lists, streaming or frequently updated state, read
+[Blazor rendering](references/blazor-rendering.md) before choosing component
+boundaries or update scheduling. Check stable parameters, `ShouldRender` and
+fixed cascading values; do not introduce a periodic render timer as the default
+response to UI lag. Measure affected components and preserve event-driven updates.
 
 ## 4. Deliver only what the evidence supports
 
