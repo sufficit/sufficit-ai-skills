@@ -10,6 +10,7 @@ Reproduzir a reclamação antes da correção quando possível; guardar evidênc
 
 ## Conferir
 
+- **Orientação da tarefa:** avaliar a captura e o fluxo sem narração do desenvolvedor. Identificar onde olhar primeiro, o que ler para decidir e qual ação tomar. Conferir se a prioridade e o motivo dos itens são compreensíveis com dados realistas, inclusive no tablet. Se tudo disputar atenção ou o usuário precisar procurar onde começar, revisar a hierarquia; alinhamento correto e detalhes recolhidos não bastam.
 - **Geometria:** distância real entre irmãos, padding, tamanho dos controles/ícones, alinhamento e overflow. Ler o valor computado e a regra vencedora quando houver divergência.
 - **Uso:** foco visível, ordem de tabulação, nome acessível, controles desabilitados, submissão e recuperação nos estados relevantes.
 - **Adaptação:** textos longos, zoom e ponto de quebra representativo quando atingirem a mudança. Rolagem local deliberada é diferente de overflow acidental da página.

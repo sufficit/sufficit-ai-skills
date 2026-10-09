@@ -22,6 +22,20 @@ Distinguir o trabalho solicitado:
 
 Registrar decisões na forma exigida pelo repositório, sem criar um segundo plano quando já houver acompanhamento ativo. Tratar aplicação, commit e publicação conforme o escopo autorizado da tarefa; esta skill não autoriza deploy por si só.
 
+## Definir onde o usuário começa
+
+Antes de compor uma tela nova ou reorganizar uma existente, responder explicitamente:
+
+- **Para onde devo olhar primeiro?** Definir o ponto de atenção principal e fazê-lo se destacar pela posição, proporção, contraste e espaço disponível.
+- **O que devo ler primeiro?** Mostrar primeiro a informação necessária para entender a tarefa atual e decidir; ordenar o restante conforme essa decisão.
+- **Onde devo clicar primeiro?** Tornar evidente a próxima ação adequada ao estado atual, com um rótulo que explique seu resultado.
+
+Usar essas respostas como contrato de composição e de validação, considerando o público e a tarefa da página. Em uma fila de trabalho, destacar o próximo item a tratar, a razão de sua prioridade e a ação disponível. Totais, filtros, orientações, configurações e evidências devem ter destaque proporcional à sua utilidade naquele momento; não apresentar tudo com o mesmo peso visual.
+
+Estados vazios, de erro, de revisão ou sem permissão também precisam orientar a próxima ação possível. Se a decisão depende de informação ausente, mostrar o que precisa ser verificado antes de agir; não inventar uma cobrança ou uma certeza para produzir um botão principal.
+
+Reduzir texto, compactar cartões ou recolher detalhes não comprova clareza. Não impor uma composição única ou uma quantidade fixa de cartões e botões: a hierarquia deve conduzir a tarefa real. Quando o usuário disser que não sabe onde começar, revisar o caminho e a prioridade das informações, além do espaçamento.
+
 ## Escolher direção com referências
 
 Declarar brevemente o caminho principal do usuário, o que fica agrupado, o que precisa de separação e como isso se adapta à largura disponível. Para tela nova, escolher uma direção consistente; evitar combinar estéticas de várias galerias sem relação com o produto.
@@ -42,6 +56,8 @@ Ler apenas os guias pertinentes:
 Preferir a API pública dos componentes existentes. Traduzir a intenção de um exemplo para a stack local; não transportar JSX/Tailwind para Razor ou adicionar outra biblioteca só para reproduzir sua aparência. Consultar o código/API real antes de usar uma propriedade.
 
 ## Verificar o resultado
+
+Em mudanças de composição, conferir primeiro as três perguntas de orientação: onde olhar, o que ler e onde clicar. A tela deve respondê-las sem explicação do desenvolvedor; se as respostas forem ambíguas, revisar a composição mesmo que build, geometria e responsividade estejam corretos.
 
 Escolher casos ligados à mudança. Em problema de espaçamento, medir distâncias e abrir conteúdo expansível; em variantes, comparar dimensões finais; em interação, exercitar teclado e estado. Conferir desktop e móvel quando o produto suporta ambos, além dos temas relevantes. Um build verde não prova aparência; uma captura não prova comportamento.
 

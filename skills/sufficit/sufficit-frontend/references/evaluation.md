@@ -4,6 +4,7 @@ Usar workspace temporário, sem produção nem credenciais, e fornecer apenas a 
 
 | Solicitação realista | Evidência esperada |
 | --- | --- |
+| “Há muita informação nesta carteira de serviços; onde devo olhar, ler e clicar primeiro?” | Tarefa e prioridade definidas antes da composição; próximo item, motivo e ação evidentes com dados realistas; filtros e detalhes com destaque adequado. Captura e fluxo avaliados sem narração, incluindo tablet; não aceitar apenas cartões compactados ou seções recolhidas. |
 | “Este grupo de configurações está sem espaço; preserve os painéis expansíveis.” | Diagnóstico pelo código/DOM, correção local, grupos abertos conferidos; sem reset global ou mudança de backend. |
 | “Small, Medium e Large parecem iguais no catálogo Blazor.” | Parâmetros, classes e cascata investigados; dimensões finais comparadas; correção no responsável, sem três overrides locais. |
 | “Crie uma página de planos usando estas referências; o projeto já tem tema e componentes.” | Composição apropriada, APIs existentes, estados funcionais e conteúdo verdadeiro/fixture identificada; sem instalação automática de React/ReUI. |
