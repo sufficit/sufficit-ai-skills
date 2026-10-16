@@ -1,67 +1,48 @@
-# Lista de notas fiscais ASAAS
+# List of invoices ASAAS
 
-A ferramenta `asaas_invoices_list` consulta `/v3/invoices` na conta de
-produção, injetando a chave `personal/asaas/production/api-key` apenas no
-cabeçalho `access_token`. É somente leitura (`writesPerformed: false`). A
-projeção **nunca** inclui `pdfUrl`, `xmlUrl` ou `validationCode` — para o
-documento emitido, oriente o painel do ASAAS.
+The `asaas_invoices_list` tool consults `/v3/invoices` in the production account by injecting the `personal/asaas/production/api-key` key only into the `access_token` header. It is read-only (`writesPerformed: false`). The projection never includes `pdfUrl`, `xmlUrl` or `validationCode` — for the issued document, direct the ASAAS panel.
 
-## Argumentos
+## Arguments
 
-| Argumento | Tipo | Padrão | Regras |
+| Argument | Type | Default | Rules |
 | --- | --- | --- | --- |
-| `customer` | string | (nenhum) | Filtra pelo id do cliente (`cus_...`); até 64 caracteres. |
-| `payment` | string | (nenhum) | Filtra pelo id da cobrança (`pay_...`). |
-| `status` | string | (nenhum) | Um entre SCHEDULED, SYNCHRONIZED, AUTHORIZED, PROCESSING_CANCELLATION, CANCELED, CANCELLATION_DENIED, ERROR. |
-| `effectiveDateGe` | string | (nenhum) | Início do período de emissão (AAAA-MM-DD). |
-| `effectiveDateLe` | string | (nenhum) | Fim do período de emissão (AAAA-MM-DD). |
-| `limit` | inteiro | `10` | Entre 1 e 30. |
-| `offset` | inteiro | `0` | Não negativo. |
+| `customer` | string | (None) | Filter by client id (`cus_...`); up to 64 characters. |
+| `payment` | string | (None) | Filter by the collection id (`pay_...`). |
+| `status` | string | (None) | One between SCHEDULED, SYNCHRONIZED, AUTHORIZED, PROCESSING_CANCELLATION, CANCELED, CANCELLATION_DENIED, ERROR. |
+| `effectiveDateGe` | string | (None) | Start of the period of issue (YYYY-MM-DD). |
+| `effectiveDateLe` | string | (None) | End of period of issue (YYYY-MM-DD). |
+| `limit` | integer | `10` | Between 1 and 30. |
+| `offset` | integer | `0` | Not negative. |
 
-## Resultado de sucesso
+## Success result
 
-`provider: "asaas"`, `environment: "production"`, `query` (o pedido e
-`returned`), `totalCount`, `hasNext`, `invoices[]`, `writesPerformed: false`.
+`provider: "asaas"`, `environment: "production"`, `query` (the request and `returned`), `totalCount`, `hasNext`, `invoices[]`, `writesPerformed: false`.
 
-Cada nota traz: `id`, `status`, `statusDescription`, `type`, `number`,
-`serviceDescription` (até 200 caracteres), `value`, `deductions`,
-`effectiveDate`, `observations`, `customer`, `payment`, `installment`.
+Each invoice brings: `id`, `status`, `statusDescription`, `type`, `number`, `serviceDescription` (up to 200 characters), `value`, `deductions`, `effectiveDate`, `observations`, `customer`, `payment`, `installment`.
 
-O campo `customer` traz o cliente **resolvido** pela ferramenta (uma leitura
-extra por id distinto de cliente, no máximo 30 por página): um objeto com
-`id`, `name`, `personType` e `document` — CNPJ completo e formatado
-(registro público), CPF limitado aos 3 primeiros dígitos. Quando a resolução
-não é possível (cliente removido, falha de leitura), a nota traz o id solto
-do provedor e o id aparece em `unresolvedCustomerIds`, acompanhado de
-`guidance` apontando para `asaas_customers_list`. Nunca afirme para quem a
-nota foi emitida a partir de um id não resolvido.
+The `customer` field brings the client solved by the tool (an extra customer id reading, no more than 30 per page): an object with `id`, `name`, `personType` and `document` — CNPJ complete and formatted (public record), CPF limited to the first 3 digits. When resolution is not possible (client removed, read failure), the invoice brings the provider's loose id and id appears in `unresolvedCustomerIds`, accompanied by `guidance` pointing to `asaas_customers_list`. Never state to whom the invoice was issued from an unsolved id.
 
-## Leitura de status para o usuário
+## Status reading for user
 
-| Status | Linguagem simples |
+| Status | Simple language |
 | --- | --- |
-| `SCHEDULED` | Agendada — vai ser emitida na data prevista. |
-| `SYNCHRONIZED` | Enviada à prefeitura, aguardando autorização. |
-| `AUTHORIZED` | Emitida (autorizada). |
-| `PROCESSING_CANCELLATION` | Cancelamento em processamento. |
-| `CANCELED` | Cancelada. |
-| `CANCELLATION_DENIED` | Cancelamento negado pela prefeitura. |
-| `ERROR` | Falhou a emissão. |
+| `SCHEDULED` | Scheduled — will be issued on the scheduled date. |
+| `SYNCHRONIZED` | Sent to City Hall, awaiting permission. |
+| `AUTHORIZED` | Issued (allowed). |
+| `PROCESSING_CANCELLATION` | Cancellation in processing. |
+| `CANCELED` | Canceled. |
+| `CANCELLATION_DENIED` | Cancellation denied by the city. |
+| `ERROR` | Issuance failed. |
 
-## Códigos de falha
+## Failure codes
 
-| Código | Ação |
+| Code | Action |
 | --- | --- |
-| `asaas_invoices_invalid_arguments` | Corrija filtros (status permitido, datas AAAA-MM-DD); nada foi chamado. |
-| `asaas_invoices_unexpected` | Resposta fora do formato; informe o usuário e tente uma vez. |
-| `asaas_vault_sign_in_required` / `asaas_key_missing` / `asaas_key_invalid` / `asaas_credential_rejected` | Fluxo de credencial padrão das skills ASAAS. |
-| `asaas_provider_unavailable` / `asaas_transport_failed` / `asaas_timeout` / `asaas_vault_*` | Repita conforme marcado repetível. |
+| `asaas_invoices_invalid_arguments` | Fix filters (status allowed, dates YYYY-MM-DD); nothing has been called. |
+| `asaas_invoices_unexpected` | Response out of format; inform the user and try once. |
+| `asaas_vault_sign_in_required` / `asaas_key_missing` / `asaas_key_invalid` / `asaas_credential_rejected` | Standard credential flow of ASAAS skills. |
+| `asaas_provider_unavailable` / `asaas_transport_failed` / `asaas_timeout` / `asaas_vault_*` | Repeat as marked retryable. |
 
-## Uso para conversar sobre os serviços da conta
+## Use to talk about account services
 
-Sem filtros, a primeira página mostra as notas recentes da conta; a
-`serviceDescription` repetida mostra o que a conta costuma emitir. Combine
-com `asaas_services_list` para conferir o cadastro — e lembre que a
-descrição impressa na nota não é o enquadramento municipal: nesta conta a
-emissão não envia os campos municipais (ver SKILL.md, "Serviço cadastrado
-versus descrição da nota").
+Without filters, the first page shows recent account invoices; the repeated `serviceDescription` shows what the account usually issues. Combine with `asaas_services_list` to check the registration — and remember that the description printed on the invoice is not the municipal framework: in this account the issue does not send the municipal fields (see SKILL.md, "Service registered versus invoice description").

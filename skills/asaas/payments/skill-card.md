@@ -1,9 +1,9 @@
 # asaas-payments
 
-Lista e consulta cobranças da conta de produção do ASAAS pelo teste somente leitura `asaas_payments_list` do Sufficit AI Genius, com campos sanitizados.
+List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas_payments_list in Sufficit AI Genius. Use when the user asks to view, check, or calculate totals for ASAAS charges. Read-only; does not create or modify anything.
 
-Versão: **0.1.0** · Sufficit · MIT-0
+Version: **0.1.1** · Sufficit · MIT-0
 
-Leia [SKILL.md](SKILL.md) para aplicar a skill.
+Read [SKILL.md](SKILL.md) to use this skill.
 
-Fonte: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments).

@@ -1,195 +1,127 @@
-# Créditos e vales
+# Credits and vouchers
 
-## Limite do domínio
+## Domain limit
 
-O Endpoints é a fonte de verdade de produto, carteira, saldo, recarga, benefício,
-vale e ledger. O agente gerencial pode consultar esses dados, administrar vales e
-aplicar um vale publicado a uma carteira conforme suas funções. Não existe rota
-gerencial para apagar movimentos, transferir ou converter saldo, alterar saldo pago
-ou confirmar pagamento. Recarga só vira saldo após recibo confirmado pelo Checkout.
+Endpoints is the real source of product, wallet, balance, top-up, benefit, voucher and ledger. The management agent can consult this data, administer vouchers and apply a published voucher to a wallet according to the user’s roles. There is no management route to delete movements, transfer or convert balance, change paid balance or confirm payment. Recharge only becomes balance after receipt confirmed by Checkout.
 
-Antes de qualquer chamada, pesquise no OpenAPI vivo por `credits`, `voucher`,
-`rules`, `products`, `resources` ou `account`. As rotas abaixo descrevem o contrato atual e
-servem para reconhecer o resultado da descoberta, não para dispensá-la.
+Before any call, search the live OpenAPI by `credits`, `voucher`, `rules`, `products`, `resources` or `account`. The routes below describe the current contract and serve to recognize the outcome of the discovery, not to dismiss it.
 
-## Consultas gerenciais
+## Management consultations
 
-- `GET /Finance/Credits/Rules`: conversão de unidades, origem do `contextId` e
-  operações que formam o fluxo gerencial.
-- `GET /Finance/Credits/Products`: produtos e GUIDs disponíveis.
-- `GET /Finance/Credits/Resources`: recursos cobrados e vínculo com produto.
-- `GET /Finance/Credits/Account?contextId=...&productId=...`: carteira, capacidade
-  de consumir, benefícios ativos, até 50 recargas e até 50 movimentos.
-- `GET /Finance/Credits/Vouchers`: até 200 vales, inclusive desativados.
+- `GET /Finance/Credits/Rules`: unit conversion, origin of `contextId` and operations that form the management flow.
+- `GET /Finance/Credits/Products`: products and GUIDs available.
+- `GET /Finance/Credits/Resources`: billable resources and their product association.
+- `GET /Finance/Credits/Account?contextId=...&productId=...`: wallet, consumption capacity, active benefits, up to 50 top-ups and up to 50 transactions.
+- `GET /Finance/Credits/Vouchers`: up to 200 vouchers, including deactivated.
 
-Resolva primeiro o produto pelo GUID retornado pela API. Nunca salve nome ou título
-como chave. O `contextId` financeiro é exatamente o `id` GUID do contato; **não
-existe outro identificador financeiro**. Quando o usuário nomear uma pessoa ou
-empresa, use `POST /Contact/Search` com `titulo`, `cadastro`, `email` e `phone`.
-Continue sem perguntar quando houver uma única correspondência inequívoca; se houver
-mais de uma, apresente título e GUID para o usuário escolher. Conta ausente não é
-saldo zero: significa que a carteira ainda não foi aberta após adesão ao serviço.
+First resolve the product by GUID returned by API. Never save name or title as key. Financial `contextId` is exactly the `id` GUID of the contact; there is no other financial identifier. When the user appoints a person or company, use `POST /Contact/Search` with `titulo`, `cadastro`, `email` and `phone`. Continue without asking when there is a single unambiguous match; if there is more than one, present title and GUID for the user to choose. Absent account is not zero balance: it means that the wallet has not yet been opened after joining the service.
 
-Valores de carteira e movimentos usam unidades inteiras de alta precisão:
+Wallet values and movements use high-precision integer units:
 
 ```text
-1 BRL = 1.000.000.000 unidades
-valor em BRL = unidades / 1.000.000.000
+1 BRL = 1,000,000,000 units
+amount in BRL = units / 1,000,000,000
 ```
 
-Apresente BRL de forma humanizada, mas conserve as unidades originais quando uma
-conferência financeira exigir precisão. `MoneyUnits` é saldo pago. Benefícios
-promocionais permanecem separados. Movimentos conhecidos incluem `topup`, `usage`
-e `redemption`; `UnchargedUnits` não é dívida.
+Present BRL in a humanized manner, but keep the original units when a financial reconciliation requires precision. `MoneyUnits` is paid balance. Promotional benefits remain separate. Known movements include `topup`, `usage` and `redemption`; `UnchargedUnits` is not debt.
 
-## Publicar um vale
+## Publish a voucher
 
-Use `POST /Finance/Credits/Vouchers` somente após obter produtos, recursos e vales
-atuais e confirmar que não há campanha equivalente. A publicação cria uma oferta
-imutável: não há edição nem exclusão. Uma correção exige desativar a oferta errada e
-publicar outra com novo GUID.
+Use `POST /Finance/Credits/Vouchers` only after obtaining current products, resources and vouchers and confirming that there is no equivalent campaign. The publication creates an immutable offer: there is no editing or exclusion. One correction requires deactivating the wrong offer and publishing another with new GUID.
 
-O corpo `CreditVoucherIssueRequest` aceita os campos abaixo. `id`, `title`,
-`startsUtc` e `endsUtc` são obrigatórios; os demais campos têm as regras descritas:
+The body `CreditVoucherIssueRequest` accepts the fields below. `id`, `title`, `startsUtc` and `endsUtc` are required; the other fields have the rules described:
 
-- `id`: UUID novo e único, gerado por fonte local confiável; nunca reutilizar.
-- `title`: 1 a 120 caracteres, sem controles.
-- `productId`: ausente para elegibilidade global ou GUID do produto.
-- `resourceId`: opcional; quando presente, deve pertencer a `productId`.
-- `contextId`: opcional; quando presente, limita a um contexto GUID.
-- benefício: exatamente um entre `percentage` de 0 a 100, exclusivo de zero, ou
-  `fixedUnits` positivo. Para valor fixo, converta BRL para unidades sem arredondar
-  silenciosamente.
-- `startsUtc` e `endsUtc`: ISO 8601 UTC; fim posterior ao início e ao momento atual.
-- `durationDays`: 1 a 366; o benefício termina no menor prazo entre duração após o
-  resgate e `endsUtc`.
-- `maxRedemptions`: 1 a 100.000; `maxPerContext`: entre 1 e o limite total.
-- `enabled`, `createdBy` e `createdUtc` não pertencem ao pedido: o servidor habilita
-  a oferta e registra o ator e o instante autenticados.
+- `id`: UUID new and unique, generated by reliable local source; never reuse.
+- `title`: 1 to 120 characters, no controls.
+- `productId`: absent for overall eligibility or GUID of the product.
+- `resourceId`: optional; when present, must belong to `productId`.
+- `contextId`: optional; when present, limits to a context GUID.
+- benefit: exactly one between `percentage` greater than 0 and at most 100, or `fixedUnits` positive. For fixed value, convert BRL to units without rounding silently.
+- `startsUtc` and `endsUtc`: ISO 8601 UTC; end after start and current time.
+- `durationDays`: 1 to 366; the benefit ends at the earlier of its duration after redemption and `endsUtc`.
+- `maxRedemptions`: 1 to 100,000; `maxPerContext`: between 1 and the total limit.
+- `enabled`, `createdBy` and `createdUtc` are not request fields: the server enables the offer and registers the authenticated actor and instant.
 
-Escopo global significa elegibilidade, não carteira compartilhada. Cada resgate
-continua preso a um contexto e produto. Vale percentual de recurso não alcança os
-outros recursos. Um uso é um resgate; leituras de consumo posteriores não gastam
-novas utilizações.
+Global scope means eligibility, not shared wallet. Each redemption remains tied to a context and product. A percentage voucher scoped to a resource does not apply to other resources. One use is a redemption; subsequent consumption readings do not spend new uses.
 
-Antes de publicar, resuma para o usuário: título, tipo/valor, produto, recurso,
-contexto, validade, duração e limites. Se qualquer um desses dados materiais não
-estiver determinado, peça-o. Depois da chamada, consulte a lista e confira o GUID e
-os campos persistidos.
+Before publishing, sum up for the user: title, type/value, product, resource, context, validity, duration and limits. If any of these material data is not determined, ask for it. After the call, see the list and check out the GUID and the persisted fields.
 
-Exemplo de vale de R$ 500 para o Cloud Mobile, substituindo os GUIDs e datas após
-consultar a API:
+Example of R$500 voucher for Cloud Mobile, replacing GUIDs and dates after consulting API:
 
 ```json
 {
-  "id": "NOVO-GUID-DO-VALE",
-  "title": "Crédito promocional Cloud Mobile",
+  "id": "NEW-VOUCHER-GUID",
+  "title": "Cloud Mobile promotional credit",
   "productId": "bdd4e0f8-0900-4d90-924f-86e3a929eaa2",
   "resourceId": null,
-  "contextId": "CONTACT-ID-DO-BENEFICIÁRIO",
+  "contextId": "BENEFICIARY-CONTACT-ID",
   "percentage": 0,
   "fixedUnits": 500000000000,
-  "startsUtc": "DATA-UTC-DE-INÍCIO",
-  "endsUtc": "DATA-UTC-DE-FIM",
+  "startsUtc": "START-DATE-UTC",
+  "endsUtc": "END-DATE-UTC",
   "durationDays": 30,
   "maxRedemptions": 1,
   "maxPerContext": 1
 }
 ```
 
-Publicar apenas cria a oferta; não lança ainda o benefício na carteira.
+Publishing only creates the offer; does not yet release the benefit in the wallet.
 
-## Entregar um vale avulso por link
+## Deliver a single voucher by link
 
-Quando o usuário pedir para **compartilhar, enviar ou entregar um vale por link**,
-não faça o resgate gerencial. O vale precisa ter sido publicado com `contextId` e
-`productId` específicos; essa vinculação garante que quem possuir o link não possa
-trocar o beneficiário nem o serviço. Depois de confirmar o vale pelo GUID retornado
-na lista, descubra e execute:
+When the user asks to share, send or deliver a voucher by link, do not redeem through management. The voucher must have been published with specific `contextId` and `productId`; this link ensures that whoever owns the link cannot exchange either the beneficiary or the service. After confirming the voucher by GUID returned in the list, find out and run:
 
 ```http
 POST /Finance/Credits/Vouchers/{id}/Share
 ```
 
-A operação não recebe body. A resposta contém `voucherId`, `url` e `expiresUtc`.
-Entregue ao usuário a `url` completa e a validade humanizada. O endereço tem o
-formato `/v/{token}` no Checkout e funciona como credencial portadora: não revele o
-token em logs, diagnósticos ou para terceiros além do destinatário/canal solicitado.
+The operation takes no request body. The answer contains `voucherId`, `url` and `expiresUtc`. Deliver to the user full `url` and humanized validity. The address has the `/v/{token}` format in Checkout and works as bearer credential: do not disclose the token in logs, diagnoses or third parties beyond the requested recipient/channel.
 
-Gerar o link não resgata o vale. O cliente abre a página do Checkout, confere o
-benefício, pode copiar o mesmo link e confirma a aplicação. O Checkout usa a
-integração privada do Endpoints; não tente reproduzir esse resgate com `curl`, banco
-ou outra rota. Não abra nem clique em “Aplicar vale” para testar, pois isso causaria
-a mutação real. Verifique sem consumo relendo `GET /Finance/Credits/Vouchers` e
-confirmando que o GUID, destinatário, produto, estado e validade ainda correspondem
-ao pedido.
+Generating the link does not redeem the voucher. The client opens the Checkout page, reviews the benefit, can copy the same link and confirms applying it. Checkout uses the private integration of Endpoints; do not reproduce this redemption with `curl`, direct database access, or another endpoint. Do not open or click the literal “Aplicar vale” button to test, as this would cause the real mutation. Verify without consuming the voucher by rereading `GET /Finance/Credits/Vouchers` and confirming that GUID, recipient, product, status and validity still match the request.
 
-Vales globais, sem produto, desativados, ainda não iniciados ou expirados não podem
-gerar esse link. Como vales publicados são imutáveis, não tente completar a
-vinculação de um vale existente: com autorização explícita, publique outro vale
-vinculado e desative o incorreto quando necessário. Após resposta incerta do
-`Share`, releia o vale e repita a mesma operação pelo mesmo GUID; nunca publique uma
-segunda campanha apenas para obter outra URL.
+Global vouchers, no product, disabled, not yet started or expired cannot generate this link. As published vouchers are immutable, do not try to complete the binding of an existing voucher: with explicit authorization, publish another linked voucher and disable the incorrect when necessary. After uncertain `Share` response, reread the voucher and repeat the same operation by the same GUID; never publish a second campaign just to get another URL.
 
-Distinga a intenção:
+Distinguish the intent:
 
-- “aplique/conceda/lance agora” usa o resgate gerencial descrito abaixo;
-- “gere/compartilhe/envie um link” usa `Share` e deixa a confirmação para o cliente;
-- quando as duas ações forem pedidas juntas, esclareça qual delas deve efetivar o
-  benefício, pois resgatar antes torna o link apenas uma consulta de vale já usado.
+- “apply/grant/credit now” uses the management redemption described below;
+- “generate/share/send a link” uses `Share` and leaves confirmation to the client;
+- when the two actions are requested together, clarify which one should effect the benefit, as rescuing before makes the link only a query of already used voucher.
 
-## Aplicar crédito promocional
+## Apply promotional credit
 
-> **Regra obrigatória de aceite:** crédito promocional (vale de valor fixo ou
-> percentual) **não tem efeito imediato**. O cliente precisa aceitar o benefício
-> antes de ele valer. Sempre que você inserir/conceder esse tipo de crédito, o
-> passo final é **obrigatório**: encaminhar ao cliente o **link de aceite** gerado
-> por `POST /Finance/Credits/Vouchers/{id}/Share` (veja a seção "Entregar um vale
-> avulso por link" acima). Não encerre a concessão só com o resgate gerencial —
-> sem o link de aceite o cliente não recebe o benefício.
+> Compulsory rule of acceptance: promotional credit (fixed value or
+> percentage) has no immediate effect. The customer must accept the benefit
+> before it takes effect. Whenever you enter/grant this type of credit, the
+> final step is mandatory: forward the generated acceptance link to the client
+> by `POST /Finance/Credits/Vouchers/{id}/Share` (see section "Delivery a Voucher
+> single voucher by link" above). Do not close the grant only with the management redemption —
+> without the link to accept the client does not receive the benefit.
 
-Quando o usuário pedir para **lançar, conceder ou aplicar** um crédito promocional,
-o fluxo completo é:
+When the user asks to launch, grant or apply a promotional credit, the full flow is:
 
-1. **Descubra** o produto (`GET /Finance/Credits/Products`) e o contexto
-   (`POST /Contact/Search`).
-2. **Publique** o vale (`POST /Finance/Credits/Vouchers`) — a oferta é imutável.
-3. **Resgate** para a carteira do cliente (`POST /Finance/Credits/Vouchers/{id}/Redeem`):
+1. Discover the product (`GET /Finance/Credits/Products`) and context (`POST /Contact/Search`).
+2. Publish the voucher (`POST /Finance/Credits/Vouchers`) — the offer is unchangeable.
+3. Redeem for customer wallet (`POST /Finance/Credits/Vouchers/{id}/Redeem`):
 
 ```json
 {
-  "contextId": "CONTACT-ID-DO-BENEFICIÁRIO",
-  "productId": "GUID-DO-PRODUTO",
-  "idempotencyKey": "chave-estável-desta-concessão"
+  "contextId": "BENEFICIARY-CONTACT-ID",
+  "productId": "PRODUCT-GUID",
+  "idempotencyKey": "stable-key-for-this-grant"
 }
 ```
 
-4. **Gere e entregue o link de aceite** (`POST /Finance/Credits/Vouchers/{id}/Share`)
-   e envie a `url` completa ao cliente pelo canal solicitado. Este é o passo que
->   efetiva o aceite; sem ele o benefício fica pendente.
+4. Generate and deliver the acceptance link (`POST /Finance/Credits/Vouchers/{id}/Share`) and send the complete `url` to the customer via the requested channel. This is the step that
+    enables effective acceptance; without it the benefit remains pending.
 
-Gere uma chave opaca e estável para a concessão e reutilize-a somente ao repetir a
-mesma tentativa. Depois, consulte `GET /Finance/Credits/Account` e confirme o
-benefício pelo `voucherId` e por `remainingUnits`. Não descreva `fixedUnits` como
-saldo pago: ele é benefício promocional consumido antes de `MoneyUnits`.
+Generate an opaque and stable key for the grant and reuse it only by repeating the same attempt. Then consult `GET /Finance/Credits/Account` and confirm the benefit by `voucherId` and `remainingUnits`. Do not describe `fixedUnits` as paid balance: it is a promotional benefit consumed before `MoneyUnits`.
 
-**Importante:** não resgate gerencialmente antes de entregar o link se a intenção
-for que o próprio cliente aceite; resgatar antes torna o link apenas uma consulta
-de vale já usado. Quando o pedido for ambíguo entre "conceder agora" e "deixar o
-cliente aceitar", esclareça antes de escrever.
+Important: do not redeem through management before delivering the link if the intention is for the customer to accept; redeem first makes the link just a used voucher query. When the request is ambiguous between "granting now" and "letting the client accept", clarify before writing.
 
-Se o resgate informar carteira inexistente, não publique outro vale e não escolha
-outro contexto. Informe que o contato ainda não aderiu ao produto ou que a carteira
-não foi aberta. Em resposta ambígua, consulte conta e vales antes de repetir.
+If the redemption informs non-existent wallet, do not publish another voucher and do not choose another context. Tell the user that the contact has not yet joined the product or that the wallet has not been opened. In ambiguous response, see account and vouchers before repeating.
 
-## Desativar um vale
+## Deactivate a Voucher
 
-`POST /Finance/Credits/Vouchers/{id}/Disable` impede novos resgates, mas não revoga
-benefícios já concedidos. Não há reativação nessa API. Resolva o vale por GUID,
-mostre o título e o estado atual e só execute quando o pedido identificar claramente
-essa campanha. Resposta repetida para um vale já desativado é idempotente; valide a
-lista depois da chamada.
+`POST /Finance/Credits/Vouchers/{id}/Disable` prevents new redemptions, but does not revoke benefits already granted. There's no reactivation on this API. Resolve the voucher by GUID, show the title and current status and only execute when the request clearly identifies that campaign. Repeated response to an already disabled voucher is idempotent; validate the list after call.
 
-Se o pedido for apagar vale, estornar recarga, alterar saldo pago, transferir crédito
-ou revogar benefício já resgatado, explique que o contrato atual não oferece essa
-operação. Não improvise com outro endpoint nem altere banco diretamente.
+If the order is to delete voucher, reload, change balance paid, transfer credit or revoke benefit already redeemed, explain that the current contract does not offer this operation. Do not improvise with another endpoint or modify the database directly.

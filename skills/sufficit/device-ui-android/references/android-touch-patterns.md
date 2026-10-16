@@ -1,47 +1,23 @@
-# Armadilhas de navegação Android por device_ui
+# Android Navigation Traps by device_ui
 
-Lições de uso real de `device_ui`/Acessibilidade em Android — não hipóteses.
+Real use lessons from `device_ui`/Accessibility on Android — not hypotheses.
 
-## Coordenada crua quebra quando o layout muda; seletor não
+## Raw coordinate breaks when layout changes; selector does not
 
-O teclado virtual ocupa boa parte da tela quando abre, e o conteúdo rola pra
-compensar — qualquer `coordinate` calculada antes disso pode não apontar mais
-pro elemento certo depois. `click_element`/`set_text` com seletor semântico
-não sofrem esse problema: resolvem contra a árvore de acessibilidade atual,
-não contra pixel fixo. É o motivo principal pra preferir seletor a
-coordenada, além de ser mais legível.
+The virtual keyboard occupies much of the screen when it opens, and the content scrolls to compensate — any `coordinate` calculated before that may not point to the right element later. `click_element`/`set_text` with semantic selector do not suffer this problem: they resolve against the current accessibility tree, not against fixed pixel. It's the main reason to prefer selector to coordinate, besides being more readable.
 
-## `type` simula tecla por tecla; `set_text` não
+## `type` simulates key by key; `set_text` not
 
-A ação `type` manda eventos de teclado em sequência — em campos com
-autocompletar/sugestão ativos, isso pode colidir com o corretor do teclado e
-perder ou trocar caracteres, sobretudo em campos que reagem a cada tecla
-(busca com sugestões, campos com máscara). Quando o seletor do campo é
-conhecido, `set_text` escreve o valor de uma vez, sem essa corrida. Reserve
-`type` para quando não há seletor de campo confiável.
+The `type` action sends keyboard events in sequence — in fields with active autocomplete/suggestion, this can collide with the keyboard autocorrect and lose or change characters, especially in fields that react to each key (search with suggestions, fields with mask). When the field selector is known, `set_text` writes the value at once without this race. Reserve `type` for when there is no reliable field selector.
 
-## BACK é contextual — não é "fechar teclado" garantido
+## BACK is contextual — it is not "closing keyboard" guaranteed
 
-A tecla/gesto BACK do Android faz coisas diferentes dependendo do que está
-focado: fecha o teclado se ele estiver aberto, senão navega a página/app pra
-trás. Se você já fechou o teclado por outro meio (ex.: tocar fora do campo) e
-manda BACK "pra garantir", o resultado pode ser sair da tela ou perder
-conteúdo de formulário não salvo. Confirme com `read_screen` se o teclado
-ainda está visível antes de decidir se BACK é seguro ali.
+The BACK key/gesture of Android does different things depending on what is focused: close the keyboard if it is open, or browse the page/app back. If you have already closed the keyboard by other means (e.g. tapping outside the field) and sends BACK "to ensure", the result may be to leave the screen or lose unsaved form content. Confirm with `read_screen` that the keyboard is still visible before deciding whether BACK is safe there.
 
-## Trocar de app no meio da tarefa: leia de novo, não assuma
+## Switch app in the middle of the task: read again, do not assume
 
-`device_ui` enxerga só o que está em primeiro plano no momento da chamada. Se
-a tarefa exige abrir um app (Chrome, por exemplo) a partir de outro (o
-próprio Genius), a leitura de tela anterior (do Genius) não vale mais assim
-que o Chrome assume a tela — `read_screen` de novo antes de continuar
-clicando, mesmo que a sequência pareça óbvia.
+`device_ui` sees only what is in the foreground at the time of call. If the task requires opening an app (Chrome, for example) from another (Genius itself), the previous screen reading (Genius) is no longer valid as soon as Chrome takes over the screen — `read_screen` again before continuing by clicking, even if the sequence seems obvious.
 
-## Depois de agir, confirme o efeito
+## After acting, confirm the effect
 
-`device_ui` devolve confirmação de que o evento de input foi aceito, não de
-que o app reagiu como esperado (mesmo padrão de `type`/`key` no restante do
-Genius: "input events accepted; target reaction is not observable"). Depois
-de um `click_element` que deveria abrir uma tela, menu ou diálogo, chame
-`read_screen` e confirme que o elemento esperado apareceu antes de reportar
-sucesso ao usuário — não apenas que a chamada não deu erro.
+`device_ui` returns confirmation that the input event was accepted, not that the app reacted as expected (even `type`/`key` standard in the rest of Genius: "input events accepted; target reaction is not observable"). After a `click_element` that should open a screen, menu or dialogue, call `read_screen` and confirm that the expected element appeared before reporting success to the user — not only that the call did not fail.

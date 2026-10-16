@@ -1,4 +1,4 @@
 interface:
-  display_name: "ASAAS Clientes"
-  short_description: "Consulta e cadastra clientes reais do ASAAS em linguagem simples"
-  default_prompt: "Cadastra um cliente novo no Asaas: Maria Oliveira, CPF 390.533.447-05, maria@exemplo.com"
+  display_name: ASAAS Customers
+  short_description: Query and register ASAAS customers
+  default_prompt: Register a new customer in ASAAS using the details I provide.

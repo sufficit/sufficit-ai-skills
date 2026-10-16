@@ -1,128 +1,94 @@
-# Emissão (agendamento) de nota fiscal ASAAS
+# Issue (scheduled) of invoice ASAAS
 
-A ferramenta `asaas_invoices_create` agenda uma NFS-e nova na conta de
-produção via `POST /v3/invoices`. Ela exige aprovação explícita na conversa e
-executa **consultar antes de escrever em código**: deduplica por cobrança e
-por cliente+valor+data antes do POST.
+The `asaas_invoices_create` tool schedules a new NFS-e in the production account via `POST /v3/invoices`. It requires explicit approval in the conversation and performs consult before writing in code: deduplicates per charge and per client+value+date before POST.
 
-## Pré-requisitos (nesta ordem)
+## Prerequisites (in this order)
 
-1. O usuário pediu explicitamente a nota.
-2. A origem é conhecida: `payment` (cobrança), `installment` (parcelamento)
-   ou `customer` (nota avulsa) — **exatamente uma**.
-3. O serviço municipal **não é enviado por padrão** — regra operacional desta
-   conta (ver "Serviço cadastrado versus descrição da nota" no SKILL.md).
-   Omita `municipalServiceId` e `municipalServiceCode`. Só envie um deles
-   quando o usuário escolher explicitamente outro serviço para aquela nota.
-   Se o provedor recusar a nota, apresente o motivo real ao usuário, reporte
-   a divergência à equipe e nunca adivinhe código.
-   Enviar esses campos **altera o cadastro de serviços da conta** (cria
-   entrada ou muda associação de notas anteriores) — ver "Efeito colateral"
-   abaixo. A omissão é o que protege o cadastro.
+1. The user explicitly asked for the invoice.
+2. The origin is known: `payment` (charge), `installment` (installment plan) or `customer` (standalone invoice) — exactly one.
+3. The municipal service is not sent by default — operating rule of this account (see "Service registered versus invoice description" in SKILL.md). Omit `municipalServiceId` and `municipalServiceCode`. Only send one of them when the user explicitly chooses another service for that invoice. If the provider refuses the invoice, present the actual reason to the user, report the divergence to the team and never guess code. Sending these fields changes the account service registration (creates entry or changes previous invoice association) — see "Side effect" below. The omission is what protects the record.
 
-## Argumentos
+## Arguments
 
-| Argumento | Tipo | Obrigatório | Regras |
+| Argument | Type | Mandatory | Rules |
 | --- | --- | --- | --- |
-| `customer` / `payment` / `installment` | string | exatamente um | Ids ASAAS (`cus_...`, `pay_...`). |
-| `value` | number | sim | Valor total em reais; entre 0,01 e 999.999.999,99. |
-| `serviceDescription` | string | sim | Descrição impressa na nota; 1 a 200 caracteres. |
-| `effectiveDate` | string | sim | Data de emissão AAAA-MM-DD. |
-| `municipalServiceId` | string | **não** | Id do catálogo; só quando o usuário escolher um serviço específico. Nunca junto com `municipalServiceCode`. Sozinho é recusado pelo provedor: acompanhe de `municipalServiceName`. |
-| `municipalServiceCode` | string | **não** | Código, só quando o usuário informar um explicitamente. Nunca junto com `municipalServiceId`. Sozinho, cria entrada nova no cadastro com o nome igual ao código. |
-| `municipalServiceName` | string | não | Nome do serviço; até 80 caracteres. É a **identidade** do cadastro — use a `description` exata de `asaas_services_list`, nunca um nome montado à mão. |
-| `observations` | string | não | Observações impressas; até 200 caracteres. |
-| `confirmedDistinct` | boolean | não | `true` só após o usuário confirmar colisão cliente+valor+data como nota distinta. |
+| `customer` / `payment` / `installment` | string | exactly one | Ids ASAAS (`cus_...`, `pay_...`). |
+| `value` | number | yes | Total amount in BRL; between 0.01 and 999,999,999.99. |
+| `serviceDescription` | string | yes | Description printed on invoice; 1 to 200 characters. |
+| `effectiveDate` | string | yes | Date of issue YYYY-MM-DD. |
+| `municipalServiceId` | string | no | Catalog id; only when the user chooses a specific service. Never along with `municipalServiceCode`. Alone, it is rejected by the provider: also provide `municipalServiceName`. |
+| `municipalServiceCode` | string | no | Code, only when the user explicitly reports one. Never along with `municipalServiceId`. Alone, it creates new entry into the register with the same name as the code. |
+| `municipalServiceName` | string | no | Service name; up to 80 characters. It is the identity of the registration — use the exact `description` of `asaas_services_list`, never a hand-mounted name. |
+| `observations` | string | no | Printed observations; up to 200 characters. |
+| `confirmedDistinct` | boolean | no | `true` only after user confirms customer collision+value+date as distinct invoice. |
 
-Serviço e impostos: a emissão não envia `municipalServiceId`,
-`municipalServiceCode` nem `taxes` — os detalhes do serviço são **auto
-preenchidos pelo cadastro de serviços e pela configuração fiscal da conta**
-quando não especificados (regra combinada com o dono). A documentação oficial
-([guia](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico) e
-[referência do endpoint](https://docs.asaas.com/reference/agendar-nota-fiscal))
-sustenta a omissão: o schema **não** lista `municipalServiceId`/
-`municipalServiceCode` como obrigatórios e declara os preenchimentos
-automáticos de `municipalServiceName` (usa o código) e de
-`pisCofinsRetentionType` (calculado pelo Asaas); a narrativa do guia, para
-integrações genéricas, pede id ou código sem descrever o auto preenchimento
-pela conta. Enviar os dois campos de serviço ao mesmo tempo devolve
-`asaas_invoices_create_invalid_arguments` sem nenhum POST, e nenhuma recusa se
-preenche às cegas: apresente o motivo real do provedor e reporte à equipe.
+Service and taxes: The issue does not send `municipalServiceId`, `municipalServiceCode` or `taxes` — the service details are auto filled in by the service registration and by the tax configuration of the account when not specified (rule combined with the owner). The official documentation ([guide](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico) and [endpoint reference](https://docs.asaas.com/reference/agendar-nota-fiscal)] supports the omission: the schema does not list `municipalServiceId`/ `municipalServiceCode` as mandatory and declares the automatic fillings of `municipalServiceName` (uses the code) and `pisCofinsRetentionType` (calculated by Asaas); the guide narrative, for generic integrations, asks for id or code without describing the auto fill in by the account. Send the two service fields at the same time returns `asaas_invoices_create_invalid_arguments` without any POST, and no refusal fills in blind: present the provider's real motive and report to the team.
 
-## Efeito colateral dos campos municipais (sandbox, 2026-09-23)
+## Collateral effect of municipal fields (sandbox, 2026-09-23)
 
-Agendar nota **não é neutro** para o cadastro de serviços da conta. Isto
-reforça a regra de omitir esses campos; não é permissão para usá-los.
+Schedule invoice is not neutral for account service registration. This reinforces the rule of omitting these fields; it is not permission to use them.
 
-| Entrada | Resultado observado |
+| Entry | Observed result |
 | --- | --- |
-| Só `municipalServiceCode` | Aceito. Cria entrada nova com nome igual ao código (ex.: `01.01.01`); `municipalServiceId` volta `null` mesmo quando o código existe no catálogo. |
-| Só `municipalServiceId` | **Recusado** — HTTP 400 `invalid_action`: "O campo municipalServiceName deve ser informado", mesmo com id válido. |
-| `municipalServiceName` já existente + código diferente | Aceito, e a associação muda **retroativamente**: notas anteriores com aquele nome passaram a responder com o código novo. |
-| Código inexistente (`99.99.99`) | Aceito, agendado e **autorizado** no sandbox. A API não valida o código contra o catálogo. |
+| Only `municipalServiceCode` | Accepted. Creates a new entry with code-like name (e.g. `01.01.01`); `municipalServiceId` returns `null` even when the code exists in the catalog. |
+| Only `municipalServiceId` | Refused — HTTP 400 `invalid_action`: "O campo municipalServiceName deve ser informado" (the municipalServiceName field is required), even with valid id. |
+| `municipalServiceName` already existing + different code | Accepted, and the association changes retroactively: previous invoices with that name began to respond with the new code. |
+| Nonexistent code (`99.99.99`) | Accepted, scheduled and authorized in the sandbox. API does not validate the code against the catalogue. |
 
-Três consequências práticas:
+Three practical consequences:
 
-- **A identidade do cadastro é o `municipalServiceName`**, não o código.
-  Nomes diferentes viram registros diferentes, ainda que o código coincida.
-- **Quando o usuário escolher um serviço**, prefira o par `municipalServiceId`
-  + `municipalServiceName` com a `description` exata de `asaas_services_list`.
-  É o único caminho que não inventa nome nem cria registro divergente.
-- **HTTP 200 não prova aceitação fiscal.** O sandbox autorizou código
-  inexistente; em produção quem valida é a prefeitura, e a recusa aparece
-  depois, de forma assíncrona.
+- The identity of the record is `municipalServiceName`, not the code. Different names have seen different records, even though the code matches.
+- When the user chooses a service, prefer the `municipalServiceId` pair
+  + `municipalServiceName` with the exact `description` of `asaas_services_list`. It's the only way that doesn't invent a name or create a divergent record.
+- HTTP 200 does not prove tax acceptance. Sandbox authorized nonexistent code; in production who validates is the municipality, and the refusal appears later, in an asynchronous way.
 
-Entradas criadas por engano só podem ser removidas pelo painel — e serviços
-com nota autorizada aparentemente não são removíveis.
+Entries created by mistake can only be removed by the panel — and services with an authorized invoice are apparently not removable.
 
-## Recusas (escrita não realizada)
+## Refusals (no write performed)
 
-Resultado com `scheduled: false` e `writesPerformed: false` é recusa, não
-erro. Nenhum POST aconteceu.
+Result with `scheduled: false` and `writesPerformed: false` is refusal, not error. No POST happened.
 
-| `reason` | Causa | Conduta |
+| `reason` | Cause | Conduct |
 | --- | --- | --- |
-| `duplicate_payment` | A cobrança já tem nota fiscal. | Use a nota existente devolvida. Nunca insista, nem com `confirmedDistinct`. |
-| `possible_duplicate` | Mesmo cliente, valor e data de nota existente. | Apresente a nota existente; só repita com `confirmedDistinct: true` se o usuário confirmar que é outra nota. |
+| `duplicate_payment` | The billing already has a tax bill. | Use the existing invoice returned. Never insist, not even with `confirmedDistinct`. |
+| `possible_duplicate` | Same customer, value and date of existing invoice. | Present the existing invoice; only repeat with `confirmedDistinct: true` if the user confirms that it is another invoice. |
 
-## Resultado de sucesso
+## Success result
 
-| Campo | Valor |
+| Field | Value |
 | --- | --- |
 | `scheduled` | `true` |
 | `writesPerformed` | `true` |
-| `emissionIsAsync` | `true` — agendar inicia o fluxo; autorização vem depois |
-| `invoice` | Nota sanitizada (`id`, `status` SCHEDULED, `value`, `effectiveDate`, ids vinculados; sem URLs) |
+| `emissionIsAsync` | `true` — Schedule starts the flow; authorization comes later |
+| `invoice` | Sanitized invoice (`id`, `status` SCHEDULED, `value`, `effectiveDate`, linked ids; no URLs) |
 | `dedupPerformed` | `true` |
 
-**Sempre reporte honestamente**: "nota agendada; a emissão está em
-processamento pela prefeitura". Autorização se confirma consultando o status
-depois (AUTHORIZED).
+Always report honestly: "scheduled invoice; the issue is in processing by the city." Authorization is confirmed by consulting the status later (AUTHORIZED).
 
-## Códigos de falha
+## Failure codes
 
-| Código | Ação |
+| Code | Action |
 | --- | --- |
-| `asaas_invoices_create_invalid_arguments` | Origem ausente/duplicada, os dois campos de serviço ao mesmo tempo, valor/datas inválidos. Corrija; nada foi chamado. |
-| `asaas_invoices_create_rejected` | Provedor recusou (mensagem traz código+descrição, ex.: serviço municipal inválido). Corrija com o usuário. |
-| `asaas_invoices_create_unexpected` | Agendou mas a resposta veio estranha; consulte a lista de notas para confirmar. |
-| `asaas_timeout` | **Consulte se a nota foi criada antes de repetir.** |
-| Demais (`asaas_vault_*`, `asaas_credential_rejected`, `asaas_provider_unavailable`, `asaas_transport_failed`) | Fluxo padrão das skills ASAAS. |
+| `asaas_invoices_create_invalid_arguments` | Absent/duplicated origin, both service fields at the same time, invalid value/dates. Correct; nothing was called. |
+| `asaas_invoices_create_rejected` | Provider refused (message brings code+description, e.g. invalid municipal service). Correct with the user. |
+| `asaas_invoices_create_unexpected` | Scheduled but the answer came strange; refer to the list of invoices to confirm. |
+| `asaas_timeout` | See if the invoice was created before repeating. |
+| Other failures (`asaas_vault_*`, `asaas_credential_rejected`, `asaas_provider_unavailable`, `asaas_transport_failed`) | Standard flow of ASAAS skills. |
 
-## Fluxo recomendado
+## Recommended flow
 
 ```
-usuário pede a nota
+user requests an invoice
         │
         ▼
-descobrir origem (payment/installment/customer)
-(a emissão NÃO especifica serviço — valores vêm do cadastro da conta)
+resolve origin (payment/installment/customer)
+(issuance does NOT specify a service; values come from account configuration)
         │
         ▼
-asaas_invoices_create (origem, valor, descrição, data)
+asaas_invoices_create (origin, amount, description, date)
         │
-        ├─ duplicate_payment ──► use a nota existente
-        ├─ possible_duplicate ──► confirme com o usuário
-        │                             └─ confirmou? confirmedDistinct=true
-        └─ card de aprovação ──► scheduled:true ──► "agendada, emissão em processamento"
+        ├─ duplicate_payment ──► use the existing invoice
+        ├─ possible_duplicate ──► confirm with the user
+        │                             └─ confirmed? confirmedDistinct=true
+        └─ approval card ──► scheduled:true ──► "scheduled; issuance is being processed"
 ```

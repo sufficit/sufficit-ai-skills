@@ -1,22 +1,22 @@
-# Fontes e adaptação
+# Sources and adaptation
 
-Referências consultadas em 2026-09-08. Síntese e critérios próprios da Sufficit; nenhum pacote, template ou catálogo externo é redistribuído aqui. Antes de importar código, conferir licença do artefato e compatibilidade da versão escolhida. Exemplos públicos não tornam toda a coleção livre.
+References consulted on 2026-09-08. Sufficit's own synthesis and criteria; no package, template or external catalogue is redistributed here. Before importing code, check the artifact license and compatibility of the chosen version. Public examples do not make the whole collection free.
 
-| Fonte | O que observar | Como usar nesta skill |
+| Source | What to Watch | How to use in this skill |
 | --- | --- | --- |
-| [Open Props](https://open-props.style/) e [repositório oficial](https://github.com/argyleink/open-props) | Custom properties para espaço, tipografia, cores, sombras e movimento; adoção por conjuntos | Aproveitar uma base de tokens se o projeto precisar; mapear papéis semânticos ao tema local. Conferir valores, não equivalência de sufixos numéricos. |
-| [VibePrompts](https://vibeprompts.dev/) | Composições e exemplos de interface; [tabela com toolbar](https://vibeprompts.dev/dashboards/dashboards-data-table-with-toolbar/) inclui busca, ordenação e estado sem resultados | Extrair tarefa, hierarquia e estados. Escrever a implementação na stack do projeto e verificar semântica/teclado; um preview não prova acessibilidade. |
-| [ReUI: introdução](https://reui.io/docs) e [estilos](https://reui.io/docs/styling) | Composição de primitivas em exemplos e blocos; papéis semânticos de estado | Conferir API e infraestrutura antes de adotar. Exemplos React/shadcn não são componentes Blazor. Componentes/exemplos abertos e materiais Pro têm condições distintas. |
-| [DesignSystems.one: fundamentos](https://www.designsystems.one/foundations) e [espaçamento](https://www.designsystems.one/foundations/spacing) | Relações entre fundamentos, densidade e aplicação consistente | Usar a comparação para justificar escolhas; preservar escala e identidade locais. O catálogo é referência editorial, não norma de conformidade. |
-| [Design System Checklist](https://github.com/ardakaracizmeli/design-system-checklist) | Organização em linguagem, fundamentos, componentes e manutenção, disponível em [src/data](https://github.com/ardakaracizmeli/design-system-checklist/tree/master/src/data) | Selecionar critérios aplicáveis e registrar evidência. Não exigir completar um design system inteiro para corrigir uma tela. |
+| [Open Props](https://open-props.style/) and [official repository](https://github.com/argyleink/open-props) | Custom properties for space, typography, colors, shadows and motion; adoption by sets | Take advantage of a token base if the project needs to; map semantic roles to the local theme. Check values, not numerical suffix equivalence. |
+| [ VibePrompts](https://vibeprompts.dev/) | Interface compositions and examples; [table with toolbar](https://vibeprompts.dev/dashboards/dashboards-data-table-with-toolbar/) includes search, sorting and state without results | Extract task, hierarchy and states. Write the implementation in the project stack and check semantics/keyboard; a preview does not prove accessibility. |
+| [REUI: introduction](https://reui.io/docs) and [styles](https://reui.io/docs/styling) | Composition of primitives in examples and blocks; state semantic roles | Check API and infrastructure before adopting. React/shadcn examples are not Blazor components. Open components/examples and materials Pro have different conditions. |
+| [DesignSystems.one: foundations](https://www.designsystems.one/foundations) and [spacing](https://www.designsystems.one/foundations/spacing) | Relationships between fundamentals, density and consistent application | Use comparison to justify choices; preserve local scale and identity. The catalogue is an editorial reference, not a compliance standard. |
+| [Design System Checklist](https://github.com/ardakaracizmeli/design-system-checklist) | Organisation in language, fundamentals, components and maintenance, available in [src/data](https://github.com/ardakaracizmeli/design-system-checklist/tree/master/src/data) | Select applicable criteria and register evidence. Do not require completing an entire design system to fix a screen. |
 
-## Escolher sem acumular dependências
+## Choose without hoarding dependencies
 
-1. Partir da lacuna observada no projeto; pesquisar um exemplo diretamente relacionado, não todo o catálogo.
-2. Registrar o padrão útil e o que precisa mudar para atender dados, marca, stack e acessibilidade locais.
-3. Preferir código/API já existentes. Só adotar dependência quando o ganho justificar build, peso, manutenção e licença.
-4. Fixar a versão aprovada pelo projeto e testar o artefato de produção. Links sem versão são referências de consulta, não instruções de CDN para produção.
+1. Start from the gap observed in the project; search for a directly related example, not the entire catalog.
+2. Register the useful pattern and what you need to change to meet local data, brand, stack and accessibility.
+3. Prefer existing code/API. Only adopt dependency when the gain justifies build, weight, maintenance and license.
+4. Pin the version approved by the project and test the production artifact. Unversioned links are query references, not CDN instructions for production.
 
-Open Props declara MIT. Na consulta, a raiz de Design System Checklist não apresentava arquivo de licença explícito; o README se descreve como open-source, o que sozinho não determina condições de redistribuição. ReUI distingue materiais gratuitos e pagos. Para VibePrompts e DesignSystems.one, usamos links e análise própria, sem reproduzir seus catálogos ou presumir uma licença de código.
+Open Props declares MIT. In the query, the Design System Checklist root did not have explicit license file; README is described as open-source, which alone does not determine redistribution conditions. REUI distinguishes free and paid materials. For VibePrompts and DesignSystems.one, we use links and own analysis, without reproducing their catalogs or assuming a code license.
 
-Se uma fonte estiver indisponível, continuar com o contexto local e declarar a limitação da consulta. Não afirmar que a referência foi examinada se só foi visto um snippet de busca.
+If a source is unavailable, continue with the local context and declare the limitation of the query. Do not state that the reference was examined if only a search snippet was seen.

@@ -1,79 +1,44 @@
-# Consultas de leitura da conta ASAAS
+# Account reading queries ASAAS
 
-Estas duas operações foram verificadas na conta de produção da Sufficit em
-2026-09-23 e retornaram **HTTP 200**. O registro descreve consultas reais,
-não apenas os códigos de sucesso previstos no schema. Nenhuma nota foi
-agendada e nenhum cadastro foi alterado durante a verificação.
+These two operations were verified in the production account of Sufficit in 2026-09-23 and returned HTTP 200. The record describes actual consultations, not just the success codes provided in schema. No invoices were scheduled and no records were changed during the verification.
 
-## Dados comerciais — identificar a conta
+## Trade data — identify the account
 
 ```http
 GET https://api.asaas.com/v3/myAccount/commercialInfo
 ```
 
-- Finalidade: identificar o titular e consultar os dados comerciais atuais.
-- Campos úteis para identificação: `companyName`, `name` e `personType`.
-- Resultado observado: HTTP 200; a identidade comercial confirmou a conta
-  da Sufficit. Não confunda essa identificação com a identificação do
-  tomador de uma nota.
-- Esta consulta **não identifica o serviço padrão** de Notas Fiscais ›
-  Configurações › Serviços.
-- Fonte: [Recuperar dados comerciais](https://docs.asaas.com/reference/recuperar-dados-comerciais).
+- Purpose: to identify the holder and consult current commercial data.
+- Useful fields for identification: `companyName`, `name` and `personType`.
+- Observed result: HTTP 200; commercial identity confirmed Sufficit account. Do not confuse this identification with the identification of the recipient of an invoice.
+- This query does not identify the standard Tax Invoices service › Settings › Services.
+- Source: [Recovering commercial data](https://docs.asaas.com/reference/recuperar-dados-comerciais).
 
-## Informações fiscais — consultar a configuração existente
+## Tax information — see existing configuration
 
 ```http
 GET https://api.asaas.com/v3/fiscalInfo/
 ```
 
-- Finalidade: consultar a configuração fiscal atual antes de tirar
-  conclusões sobre a conta ou propor alterações.
-- Resultado observado: HTTP 200, com `object: "customerFiscalInfo"`.
-- Campos retornados relevantes: `simplesNacional`, `cnae`,
-  `specialTaxRegime`, `serviceListItem`, `nbsCode`,
-  `nationalPortalTaxCalculationRegime` e `serviceProvisionCityDefaultType`.
-  Valores podem ser nulos ou vazios; não complete nem interprete como uma
-  escolha fiscal sem evidência.
-- `serviceProvisionCityDefaultType` representa a **cidade padrão da
-  prestação**, não o serviço padrão. Retornou `null` na consulta observada.
-- A resposta observada **não trouxe a lista dos serviços pré-cadastrados
-  do painel nem o identificador do serviço marcado como padrão**.
-- Segundo a documentação, HTTP 404 significa que não há configuração fiscal
-  cadastrada. Informe a ausência; consultar não autoriza criar configuração.
-- Fonte: [Recuperar informações fiscais](https://docs.asaas.com/reference/recuperar-informacoes-fiscais).
+- Purpose: consult the current tax configuration before drawing conclusions on the account or proposing changes.
+- Result observed: HTTP 200, with `object: "customerFiscalInfo"`.
+- Relevant returned fields: `simplesNacional`, `cnae`, `specialTaxRegime`, `serviceListItem`, `nbsCode`, `nationalPortalTaxCalculationRegime` and `serviceProvisionCityDefaultType`. Values can be null or void; do not complete or interpret as a fiscal choice without evidence.
+- `serviceProvisionCityDefaultType` represents the default city of the provision, not the standard service. Returned `null` in the observed query.
+- The observed response did not bring the list of pre-registered services of the panel or the service identifier marked as standard.
+- According to documentation, HTTP 404 means that there is no tax configuration registered. Notify absence; consult does not authorize setting up.
+- Source: [Retrieve tax information](https://docs.asaas.com/reference/recuperar-informacoes-fiscais).
 
-## Limites da evidência
+## Evidence Limits
 
-HTTP 200 confirma que a consulta foi atendida, não que todos os dados
-necessários à emissão estão disponíveis ou que algum serviço foi escolhido.
-Essas leituras não comprovam preenchimento automático de campos omitidos
-no agendamento e não autorizam emitir uma nota para descobrir o padrão.
+HTTP 200 confirms that the query has been attended, not that all the data required for the issue is available or that some service has been chosen. These readings do not confirm automatic filling of fields omitted in the scheduling and do not authorize issuing an invoice to find the pattern.
 
-`GET /v3/fiscalInfo/services` é outra operação: lista serviços **municipais**,
-não os serviços pré-cadastrados no painel. Na mesma investigação retornou
-HTTP 400, com a mensagem "O código de serviços municipais não está habilitado
-para esta conta." Não o registre como consulta bem-sucedida e não interprete
-essa recusa como ausência de serviços cadastrados no painel.
+`GET /v3/fiscalInfo/services` is another operation: list municipal services, not pre-registered services in the panel. In the same investigation returned HTTP 400, with the message "The city service code is not enabled for this account." Do not register it as a successful query and do not interpret this refusal as the absence of services registered in the panel.
 
-## Uso no Genius e proteção de dados
+## Use in Genius and data protection
 
-- Estes endpoints são capacidades verificadas da **API do Asaas**. A inclusão
-  desta referência na skill **não implementa ferramentas novas no plugin**.
-  Na versão inspecionada em 2026-09-23, não havia ferramentas dedicadas a
-  essas duas consultas; `asaas_connection_test` consulta `/v3/myAccount/status`
-  e não substitui nenhuma delas.
-- Descubra se a versão em uso oferece ferramentas correspondentes. Se não
-  oferecer, informe o limite e reporte a necessidade à equipe do plugin;
-  não invente nomes de ferramentas nem finja que executou a consulta.
-- Execute somente leitura, sem body. Não use POST/PUT nem agende uma nota
-  como parte da consulta. Não altere configurações para resolver uma recusa.
-- A autenticação deve ficar no host confiável, pela referência de Vault
-  `personal/asaas/production/api-key`. Não contorne a ausência de ferramenta
-  por shell/script nem peça a chave ao usuário na conversa.
-- Nunca exponha credenciais, cabeçalhos de autenticação ou o corpo bruto da
-  resposta. Apresente somente os campos necessários à pergunta, respeitando
-  a política de dados pessoais das skills ASAAS. Não copie para a skill
-  pública dados privados retornados pela conta.
-- Um HTTP 200 observado nesta conta e data não garante sucesso em outras
-  contas ou consultas futuras. Relate o status e o motivo reais de cada
-  execução, sem alterar a conta ou repetir automaticamente recusas.
+- These endpoints are API verified capabilities of Asaas. The inclusion of this reference in the skill does not implement new tools in the plugin. In the version inspected in 2026-09-23, there were no tools dedicated to these two queries; `asaas_connection_test` consult `/v3/myAccount/status` and does not replace any of them.
+- Find out if the version in use offers matching tools. If not, please inform the limit and report the need to the plugin team; do not invent tool names or pretend to run the query.
+- Run read-only, no body. Do not use POST/PUT or book an invoice as part of the query. Do not change settings to resolve a refusal.
+- Authentication must stay in the trusted host, by reference of Vault `personal/asaas/production/api-key`. Do not bypass the lack of tool by shell/script or ask the user for the key in the conversation.
+- Never expose credentials, authentication headers or the raw body of the answer. Present only the fields necessary for the question, respecting the personal data policy of the ASAAS skills. Do not copy to public skill private data returned by account.
+- A HTTP 200 observed in this account and date does not guarantee success in other future accounts or queries. Report the actual status and motive of each execution, without changing the account or automatically repeating refusals.

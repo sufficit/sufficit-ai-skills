@@ -1,7 +1,7 @@
 # routeros-management
 
-Skill para planejar, inspecionar e operar MikroTik RouterOS v7/CHR com CLI e REST: redes, firewall, NAT, roteamento, VPN, contas, scripts, backups e atualizações. Não contém credenciais nem conecta por conta própria; mudanças em produção requerem autorização e rollback.
+Administer MikroTik RouterOS v7 and CHR with CLI, SSH and REST; diagnose interfaces, IP, DHCP, DNS, routing, firewall, NAT, VPN, Wi-Fi, services, scripts, backup and updates, with controlled change and validation. Use when the user mentions MikroTik, RouterOS, WinBox, CHR, /ip, /interface or /system. Adapted from tikoci/routeros-skills; the package includes upstream attribution and license.
 
-Versão: **1.0.0** · tikoci / Sufficit (adaptação) · MIT
+Version: **1.0.1** · tikoci / Sufficit (adaptation) · MIT
 
-Leia [SKILL.md](SKILL.md) antes de operar. Adaptada de [tikoci/routeros-skills](https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8) com melhorias de segurança operacional, gestão de segredos, Safe Mode, inventário e verificação pós-mudança.
+Read [SKILL.md](SKILL.md) to use this skill.

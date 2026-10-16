@@ -1,92 +1,74 @@
 ---
 name: meta-app-review
-description: Aprova apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e opera o Business Manager. Use para criar ou configurar app num portfólio, pedir acesso avançado a permissões como whatsapp_business_management, whatsapp_business_messaging, pages_messaging e business_management, gravar os screencasts exigidos, conectar Página ou conta do WhatsApp Business a uma plataforma, ou diagnosticar webhooks, Facebook Login for Business, números de WhatsApp e erros da Graph API nesses fluxos.
+description: "Prepare Meta apps (WhatsApp, Messenger, Instagram) for App Review and operate Business Manager. Use to create or configure app in a portfolio, request advanced access to permissions like whatsapp_business_management, whatsapp_business_messaging, pages_messaging and business_management, record required screencasts, connect Page or WhatsApp Business account to a platform, or diagnose webhooks, Facebook Login for Business, WhatsApp numbers and Graph API errors in these streams."
 metadata:
-  version: "1.0.6"
+  version: "1.0.7"
 ---
 
 # Meta App Review
 
-Levar um app da Meta até o envio para análise sem perder dias com respostas enganosas. Os
-detalhes ficam em `references/` e devem ser lidos só quando o passo exigir.
+Prepare a Meta app for review submission while avoiding misleading responses. Details are in `references/` and should be read only when the step requires.
 
-## A regra que mais custa tempo
+## The rule that costs the most time
 
-Boa parte do que decide a aprovação só existe na interface, e a Graph API devolve `success`
-para operações que não produzem efeito. Separe antes de automatizar:
+Much of what decides approval only exists in the interface, and Graph API returns `success` for operations that do not produce effect. Separate before automating:
 
-| Só na interface (developers.facebook.com) | Por API |
+| Only in the interface (developers.facebook.com) | By API |
 |---|---|
-| criar, renomear e vincular o app a um portfólio | configurações básicas, depois de ligar o acesso por API em Configurações > Avançado |
-| produtos, casos de uso e permissões | webhooks do app (`POST /{app}/subscriptions`) |
-| configurações do Facebook Login for Business (geram o `config_id`) | inscrever o app no ativo (`POST /{ativo}/subscribed_apps`) |
-| domínios do SDK de JavaScript e URIs de redirecionamento | registrar número (`POST /{phone}/register`) |
-| destinatários do número de teste | enviar mensagens, ler templates, `debug_token` |
-| tornar-se Tech Provider e enviar para análise | tokens de usuário do sistema |
+| create, rename and link the app to a portfolio | Basic settings after connecting API access in Settings > Advanced |
+| products, use cases and permissions | app webhooks (`POST /{app}/subscriptions`) |
+| Facebook settings Login for Business (generate `config_id`) | subscribe the app to an asset (`POST /{ativo}/subscribed_apps`) |
+| JavaScript SDK domains and redirect URIs | register number (`POST /{phone}/register`) |
+| addressees of the test number | send messages, read templates, `debug_token` |
+| become Tech Provider and send for analysis | system user tokens |
 
-## Ordem que funciona
+## Order that works
 
-1. Business verificado (`verification_status: verified`); sem isso não há acesso avançado.
-2. App e ativos (WABA, Página) no mesmo business. Webhook só é entregue ao app do business
-   dono do ativo — ver [armadilhas](references/armadilhas.md).
-3. Configuração básica completa: ícone 1024x1024, política de privacidade, termos, instruções
-   de exclusão de dados, categoria. Aproveite um app já aprovado quando houver.
-4. Casos de uso e permissões, que começam em acesso padrão ("Pronto para teste").
-5. **Tech Provider**. A própria Meta avisa que é irreversível. Peça confirmação explícita do
-   responsável antes de aceitar.
-6. **Uso permitido**, por permissão: descrição, screencast, chamada de API de teste e aceite.
-7. **Tratamento de dados** e **instruções para o analista**, com uma conta de teste funcional.
-8. Enviar. Depois de enviado não é possível editar nem cancelar.
+1. Business verified (`verification_status: verified`); without this there is no advanced access.
+2. App and assets (WABA, Page) in the same business. Webhook is only delivered to the business app owner of the asset — see [traps](references/pitfalls.md).
+3. Complete basic configuration: icon 1024x1024, privacy policy, terms, data deletion instructions, category. Reuse an already approved app when available.
+4. Use cases and permissions, which begin in standard access ("Ready for testing").
+5. Tech Provider. Meta itself warns that it is irreversible. Ask for explicit confirmation from the person responsible before accepting.
+6. Allowed usage, per permission: description, screencast, test API call and acceptance.
+7. Data processing and instructions for the analyst with a functional test account.
+8. Send. After submission, editing and cancellation are unavailable.
 
-Caminhos de tela e o conteúdo de cada seção: [fluxo de aprovação](references/fluxo-aprovacao.md).
+Screen paths and content of each section: [approval flow](references/approval-workflow.md).
 
-## O que trava o botão de envio
+## Enable the submission button
 
-"Enviar para análise" fica desabilitado enquanto uma permissão mostrar
-**"0 de 1 chamada(s) de API obrigatória(s)"**. Faça uma chamada típica de cada permissão com
-token do app analisado — de escrita quando a permissão permite escrever — e aguarde: a Meta
-informa até 24 horas para o contador refletir. Repreencher o formulário não adianta.
-Chamadas por permissão em [chamadas de API](references/chamadas-api.md).
+"Send for analysis" is disabled as long as a permission shows "0 out of 1 call(s) of mandatory API(s)". Make a typical call of each permission with token from the analyzed app — writing when permission allows you to write — and wait: Meta informs up to 24 hours for the counter to reflect. Filling out the form again does not help. Calls for permission in [API calls](references/api-calls.md).
 
 ## Screencasts
 
-- Mostre o fluxo real do produto, do ponto de vista do usuário, com legendas em inglês que
-  nomeiem a permissão em uso. Um mesmo vídeo pode atender várias permissões.
-- Corte os trechos em que a tela fica vazia carregando.
-- Não grave dados pessoais de terceiros (listas de conversas, contatos). Se aparecerem, pare e
-  apague o arquivo.
-- Anexar arquivo por arrastar e soltar via script pode não salvar; use o seletor de arquivos real.
-  Receitas em [automação da interface](references/automacao-ui.md).
+- Show the actual flow of the product, from the user's point of view, with English subtitles that name the permission in use. The same video can meet multiple permissions.
+- Cut footage where clicks leave the screen blank.
+- Do not record third party personal data (conversation lists, contacts). If they show up, stop and delete the file.
+- Attaching file to drag and drop via script may not save; use the actual file selector. Recipes in [interface automation](references/ui-automation.md).
 
-## Erros que enganam
+## Mistakes that deceive
 
-| Mensagem | Causa real |
+| Message | Real Cause |
 |---|---|
-| "Este app precisa pelo menos de uma supported permission" | app com Facebook Login for Business: o diálogo aceita `config_id`, não `scope` |
-| "A opção JSSDK não está ativada" | ligar "Entrar com o SDK do JavaScript" e cadastrar o domínio |
-| "O domínio dessa URL não está incluído nos domínios do app" | modo estrito ligado sem a URL em "URIs de redirecionamento do OAuth válidos" |
-| `(#10) Changing app settings through API calls has been disabled` | ligar o acesso por API em Configurações > Avançado |
-| `(#100) Invalid parameter` ao responder no Messenger | `MESSAGE_TAG` dentro da janela de 24h; usar `messaging_type: RESPONSE` |
-| `(#133010) Account not registered` | número sem registro na Cloud API ou coexistência desfeita |
-| `Register endpoint is not available for SMB businesses` | número em coexistência com o app WhatsApp Business |
-| `(#131030) Recipient phone number not in allowed list` | número de teste só envia a destinatários cadastrados |
-| webhook inscrito e nenhum evento chega | app de outro business; só o dono do ativo recebe |
-| `141011` no APP (`can_receive_call_sip: BLOCKED`) | cliente não compartilhou a WABA com o business do app |
-| `138025` | servidor SIP não gravado no número com o token deste app |
-| "<app> não pode integrar clientes no momento" | integração de Provedor de Tecnologia não concluída |
-| "Parece que esse app não está disponível" com `dialog_source=fedcm` | FedCM do Chrome perdeu o `config_id` |
+| "This app needs at least a supported permission" | app with Facebook Login for Business: dialogue accepts `config_id`, not `scope` |
+| "JSSDK option is not enabled" | enable "Entrar com o SDK do JavaScript" and register domain |
+| "The domain of this URL is not included in the app domains" | strict mode enabled without URL in "valid OAuth redirecting URIs" |
+| `(#10) Changing app settings through API calls has been disabled` | enable API access to Settings > Advanced |
+| `(#100) Invalid parameter` when responding in Messenger | `MESSAGE_TAG` inside the 24h window; use `messaging_type: RESPONSE` |
+| `(#133010) Account not registered` | Unregistered number in Cloud API or undone coexistence |
+| `Register endpoint is not available for SMB businesses` | number in coexistence with WhatsApp app Business |
+| `(#131030) Recipient phone number not in allowed list` | test number only sends to registered recipients |
+| registered webhook and no event arrives | app from another business; only the owner of the asset receives |
+| `141011` in APP (`can_receive_call_sip: BLOCKED`) | client did not share WABA with the app business |
+| `138025` | SIP server not saved to the number with the token of this app |
+| "<app> cannot integrate customers at the moment" | incomplete Tech Provider onboarding |
+| "It seems that this app is not available" with `dialog_source=fedcm` | Chrome FedCM lost `config_id` |
 
-Diagnóstico completo em [armadilhas](references/armadilhas.md). Chamadas do WhatsApp por SIP para
-números de clientes (quem compartilha o quê, saúde que atrasa, separar chamadas de mensagens):
-[chamadas por SIP](references/whatsapp-calling-sip.md). Um app para mensagens + chamadas e para só voz
-(clientes com mensageria em concorrente ou só voz), e a regra de webhook para um app só:
-[cenários](references/cenarios-mensageria-chamadas.md).
+Complete diagnosis in [traps](references/pitfalls.md). WhatsApp calls by SIP for customer numbers (who shares what, delayed health status, separate calls from messages): [SIP calling](references/whatsapp-calling-sip.md). An app for messages + calls and for voice only (clients with message in competitor or voice only), and the webhook rule for one app only: [messaging and calling scenarios](references/messaging-and-calling-scenarios.md).
 
-## Segurança
+## Security
 
-- Credenciais de teste do analista ficam em armazenamento restrito, nunca na conversa.
-- Tech Provider, envio para análise e declarações de tratamento de dados são decisões do
-  responsável pelo app: confirme antes.
-- Não altere segurança de contas pessoais, não crie PIN e não vincule navegadores a contas
-  gerenciadas ao conduzir a interface.
-- Registre as mudanças temporárias feitas para gravar ou testar e desfaça-as ao terminar.
+- Analyst test credentials stay in restricted storage, never in conversation.
+- Tech Provider, sending for analysis and data processing declarations are decisions of the app's controller: obtain confirmation beforehand.
+- Do not change security of personal accounts, do not create PIN and do not link browsers to managed accounts when conducting the interface.
+- Log the temporary changes made to record or test and undo them when finished.

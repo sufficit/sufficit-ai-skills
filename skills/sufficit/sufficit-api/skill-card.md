@@ -1,10 +1,9 @@
 # sufficit-api
 
-Gestão da API corporativa como o usuário autenticado, começando por créditos,
-vales e contatos, com descoberta pelo OpenAPI implantado.
+Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, vouchers and contacts. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI.
 
-Versão: **1.0.2** · Sufficit · MIT-0
+Version: **1.0.3** · Sufficit · MIT-0
 
-Leia [SKILL.md](SKILL.md) para aplicar a skill.
+Read [SKILL.md](SKILL.md) to use this skill.
 
-Fonte: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api).

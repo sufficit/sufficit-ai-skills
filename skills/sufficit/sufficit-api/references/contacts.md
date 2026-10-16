@@ -1,37 +1,31 @@
-# Contatos
+# Contacts
 
-## Identidade e descoberta
+## Identity and discovery
 
-Contatos são identificados exclusivamente por GUID. Pesquise no OpenAPI vivo por
-`contact search`, `contact attribute`, `contact important` ou `contact delete`
-antes de chamar. Use o contexto do usuário autenticado por padrão; informe
-`contextId` somente quando o usuário escolheu claramente outro contexto que ele
-tem permissão para gerir.
+Contacts are identified exclusively by GUID. Search the live OpenAPI by `contact search`, `contact attribute`, `contact important` or `contact delete` before calling. Use the default authenticated user context; inform `contextId` only when the user has clearly chosen another context he is allowed to manage.
 
-As chaves usuais de atributo são:
+The usual attribute keys are:
 
-| Informação | `key` | Uso de `value` e `description` |
+| Information | `key` | Use of `value` and `description` |
 | --- | --- | --- |
-| Nome/título | `titulo` | nome em `value` |
-| E-mail | `email` | endereço em `value`; rótulo opcional em `description` |
-| Telefone | `phone` | número em `value`; tipo como `cellular` ou `business` em `description` |
-| CPF/CNPJ | `cadastro` | documento em `value` |
-| Marcador | `marcador` | categoria em `value`; marcador em `description` |
-| Proprietário | `idproprietario` | vínculo gerido pelo servidor na criação |
+| Name/title | `titulo` | name in `value` |
+| Email | `email` | `value` address; optional `description` label |
+| Telephone | `phone` | `value`; type as `cellular` or `business` in `description` |
+| CPF/CNPJ | `cadastro` | `value` document |
+| Tag | `marcador` | category in `value`; tag label in `description` |
+| Owner | `idproprietario` | link managed by server in creation |
 
-Não invente chaves para dados conhecidos. Preserve a grafia recebida em atributos
-customizados existentes.
+Do not invent keys for known data. Preserve the received spelling in existing custom attributes.
 
-## Pesquisar e conferir
+## Search and check
 
-Prefira `POST /Contact/Search`, pois aceita filtros e projeção de atributos. Uma
-pesquisa textual típica tem esta forma, adaptada ao contexto e ao pedido:
+Prefer `POST /Contact/Search` as it accepts filters and attribute projection. A typical text search has this form, adapted to the context and request:
 
 ```json
 {
-  "contextId": "GUID-DO-CONTEXTO",
+  "contextId": "CONTEXT-GUID",
   "value": {
-    "text": "termo",
+    "text": "search term",
     "exactmatch": false,
     "keys": ["titulo", "email", "phone", "cadastro"]
   },
@@ -40,55 +34,32 @@ pesquisa textual típica tem esta forma, adaptada ao contexto e ao pedido:
 }
 ```
 
-Para um GUID conhecido, use `contactId` e limite 1. Resposta `204` significa que
-nada foi encontrado no escopo consultado. Não conclua que o contato não existe em
-todos os contextos e não amplie a busca sem autorização.
+For a known GUID, use `contactId` and limit 1. Answer `204` means that nothing was found in the scope consulted. Do not conclude that contact does not exist in all contexts and does not extend the search without authorization.
 
-Antes de alterar, marcar ou excluir, recupere o contato e confirme GUID, título e o
-atributo relevante. Se nome, telefone ou e-mail corresponder a várias pessoas,
-apresente as opções e não escolha sozinho.
+Before changing, mark or delete, recover the contact and confirm GUID, title and relevant attribute. If name, phone number or email matches multiple people, present the options and do not choose by yourself.
 
-## Criar e atualizar
+## Create and update
 
-`POST /Contact` cria quando `id` é o GUID vazio e atualiza quando recebe um GUID
-existente. O corpo contém `attributes`, cada um com `key`, `value` e
-`description`. Na criação, o servidor gera o GUID e adiciona o proprietário da
-sessão. Inclua pelo menos `titulo` e somente os dados solicitados.
+`POST /Contact` creates when `id` is the empty GUID and updates when it receives an existing GUID. The body contains `attributes`, each with `key`, `value` and `description`. In creation, the server generates GUID and adds the session owner. Include at least `titulo` and only the requested data.
 
-Para editar um atributo isolado, prefira
-`POST /Contact/Attribute?contactid=...` com corpo como:
+To edit an isolated attribute, prefer `POST /Contact/Attribute?contactid=...` with body as:
 
 ```json
 {
   "key": "email",
-  "value": "pessoa@example.com",
-  "description": "trabalho"
+  "value": "person@example.com",
+  "description": "work"
 }
 ```
 
-Essa operação identifica um atributo pela combinação de `key` e `description`.
-Leia o valor existente antes: mudar a descrição pode criar outro atributo em vez
-de renomear o anterior. Para remoção pontual, descubra e use
-`DELETE /Contact/Attribute` com `contactid`, `key` e `description` exatos. Não use
-valor vazio como atalho para exclusão.
+This operation identifies an attribute by combining `key` and `description`. Read the existing value before: changing the description can create another attribute instead of renaming the previous one. To remove a specific attribute, discover and use `DELETE /Contact/Attribute` with exact `contactid`, `key` and `description`. Do not use empty value as shortcut for deletion.
 
-Quando a atualização integral por `POST /Contact` for necessária, preserve os
-atributos existentes que não fazem parte do pedido. O endpoint adiciona ou altera
-os atributos enviados, mas o agente não deve tratar uma resposta curta como prova
-de que toda a ficha permanece correta; releia o contato após a escrita.
+When full update by `POST /Contact` is required, preserve existing attributes that are not part of the request. The endpoint adds or changes the attributes sent, but the agent should not treat a short answer as proof that the entire record remains correct; rereads the contact after writing.
 
-## Importância e exclusão
+## Importance and deletion
 
-`POST /Contact/Important` recebe `contactid`, `status` e uma descrição opcional.
-Marcar como importante protege o contato contra exclusão comum. Ao remover uma
-marcação, use a mesma descrição quando ela existir e valide o estado depois.
+`POST /Contact/Important` receives `contactid`, `status` and an optional description. Marking as important protects contact against ordinary deletion. When removing the important flag, use the same description when it exists and validate the state afterwards.
 
-`DELETE /Contact?contactid=...` remove permanentemente todos os atributos do
-contato. Execute apenas quando o usuário pedir exclusão, depois de uma leitura
-imediata que confirme o alvo exato. Informe que é permanente e obtenha confirmação
-se o pedido inicial não demonstrar ciência disso. Não remova automaticamente a
-marcação de importante para fazer a exclusão passar. Administradores podem ignorar
-essa proteção no servidor, portanto a conferência prévia continua obrigatória.
+`DELETE /Contact?contactid=...` permanently removes all contact attributes. Run only when the user requests deletion after an immediate reading that confirms the exact target. Inform that it is permanent and obtain confirmation if the initial request does not demonstrate knowledge of it. Do not automatically remove the important mark to make the deletion pass. Administrators may ignore this protection on the server, so the prior verification remains mandatory.
 
-Após qualquer escrita, faça nova pesquisa pelo GUID e reporte o estado observado.
-Minimize CPF/CNPJ, telefones, endereços e e-mails na resposta ao usuário.
+After any writing, do a new search by GUID and report the observed state. Minimize CPF/CNPJ, phones, addresses and emails in the user response.

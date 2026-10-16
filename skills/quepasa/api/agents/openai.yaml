@@ -1,4 +1,4 @@
 interface:
-  display_name: "QuePasa API"
-  short_description: "Envia mensagens e administra grupos WhatsApp pelo QuePasa"
-  default_prompt: "Use $quepasa-api para enviar uma mensagem ou administrar um grupo de WhatsApp pelo QuePasa com o token da sessão."
+  display_name: QuePasa API
+  short_description: Send messages and manage WhatsApp groups through QuePasa
+  default_prompt: Use $quepasa-api to send a message or manage a WhatsApp group using the session token.

@@ -1,9 +1,9 @@
 # asaas-connection
 
-Conecta e testa a conta de produção do ASAAS com a chave guardada no Vault pessoal, por meio do teste somente leitura `asaas_connection_test` do Sufficit AI Genius.
+Securely connect and test the ASAAS production account using the key stored in the user's Sufficit Identity Vault and the asaas_connection_test tool in Sufficit AI Genius. Use when the user asks to connect, continue, check, or test ASAAS. The test is read-only and creates no charge, payment, or customer.
 
-Versão: **0.1.0** · Sufficit · MIT-0
+Version: **0.1.1** · Sufficit · MIT-0
 
-Leia [SKILL.md](SKILL.md) para aplicar a skill.
+Read [SKILL.md](SKILL.md) to use this skill.
 
-Fonte: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/connection).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/connection).

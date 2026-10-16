@@ -1,46 +1,26 @@
 ---
 name: asaas-connection
-description: Conecta e testa com segurança a conta de produção do ASAAS a partir da chave guardada no Vault pessoal do Sufficit Identity, usando a ferramenta asaas_connection_test do Sufficit AI Genius. Use quando o usuário pedir para conectar, continuar, verificar ou testar o ASAAS; o teste é somente leitura e não cria cobrança, pagamento ou cliente.
+description: "Securely connect and test the ASAAS production account using the key stored in the user's Sufficit Identity Vault and the asaas_connection_test tool in Sufficit AI Genius. Use when the user asks to connect, continue, check, or test ASAAS. The test is read-only and creates no charge, payment, or customer."
 ---
 
-# Conexão ASAAS de produção
+# ASAAS production connection
 
-Use esta orientação quando o usuário pedir para conectar, continuar, verificar
-ou testar a conta real do ASAAS.
+Use this guidance when the user asks to connect, continue, verify, or test the real ASAAS account.
 
-## Credencial
+## Credential
 
-- A referência canônica é `personal/asaas/production/api-key` no Vault pessoal
-  do Sufficit Identity.
-- Nunca peça que a chave seja colada na conversa, nunca a inclua em argumento
-  de ferramenta, comando, script ou arquivo e nunca mostre cabeçalhos, token,
-  corpo do provedor ou dados da conta.
-- Se a entrada não existir, use a ferramenta de preparação de Vault do Genius
-  (`vault_prepare_entry`) para preparar exatamente essa referência e entregue
-  ao usuário a tela segura para colar e salvar a chave. Depois que ele disser
-  que salvou, teste a conexão sem pedir o segredo novamente.
+- The canonical reference is `personal/asaas/production/api-key` in the user's Sufficit Identity Vault.
+- Never ask the user to paste the key into the conversation. Never include it in tool arguments, commands, scripts, or files. Never display headers, tokens, the provider response body, or account data.
+- If the entry is missing, use the Genius Vault preparation tool (`vault_prepare_entry`) to prepare exactly this reference. Give the user the secure screen to paste and save the key. Once the user says it is saved, test the connection without asking for the secret again.
 
-## Teste de conexão
+## Connection test
 
-Descubra e use `asaas_connection_test`. Essa ferramenta resolve a chave dentro
-do host confiável, executa uma única requisição
-`GET https://api.asaas.com/v3/myAccount/status` e não segue redirecionamentos
-nem lê o corpo da resposta. Ela não cria cobrança, pagamento ou cliente e não
-altera a conta.
+Discover and use `asaas_connection_test`. This tool resolves the key inside the trusted host, makes a single `GET https://api.asaas.com/v3/myAccount/status` request, and neither follows redirects nor reads the response body. It creates no charge, payment, or customer and does not modify the account.
 
-Considere o teste concluído somente quando o resultado indicar
-`connected: true`, `authenticated: true`, HTTP 200 e `writesPerformed: false`.
-Informe isso em linguagem simples.
+Consider the test complete only when the result reports `connected: true`, `authenticated: true`, HTTP 200, and `writesPerformed: false`. Report this in plain language.
 
-Em falha, identifique o código retornado e siga
-[references/connection-test.md](references/connection-test.md). Não tente
-outra rota, não repita automaticamente falhas não repetíveis e nunca realize
-uma operação financeira para "confirmar" a conexão.
+On failure, identify the returned code and follow [references/connection-test.md](references/connection-test.md). Do not try another endpoint, automatically retry non-retryable failures, or perform a financial operation to "confirm" connectivity.
 
-## Quando a ferramenta não existe
+## Tool unavailable
 
-Se `asaas_connection_test` não estiver disponível, o plugin ASAAS está
-desabilitado ou esta versão do Genius ainda não o oferece. Oriente o usuário a
-ativar o plugin ASAAS nas extensões do Genius ou a atualizar o aplicativo. Não
-contorne a ausência chamando a API do ASAAS por shell, script ou outra
-ferramenta: a chave de produção não pode transitar pelo prompt.
+If `asaas_connection_test` is unavailable, the ASAAS plugin is disabled or this version of Genius does not provide it yet. Ask the user to enable the ASAAS plugin in Genius extensions or update the application. Do not bypass the tool by calling the ASAAS API through a shell, script, or another tool: the production key must not enter the prompt.

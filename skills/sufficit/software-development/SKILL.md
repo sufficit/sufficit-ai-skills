@@ -2,7 +2,7 @@
 name: software-development
 description: Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization.
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---

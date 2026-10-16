@@ -1,121 +1,67 @@
-# Cadastro do Playwright MCP no Genius
+# Playwright MCP registration in Genius
 
-O Genius suporta servidores MCP customizados sem plugin nem edição de arquivo
-de configuração. Desde 2026-09-28 o **próprio agente cadastra**, chamando a
-ferramenta `mcp_server_add` — as tabelas abaixo (`Campos do cadastro`) mapeiam
-direto para os argumentos JSON da chamada: `Nome`→`name`, `Transporte`→
-`transport`, `Comando`→`command`, `Argumentos`→`arguments` (array),
-`Variáveis de ambiente`→`environment` (objeto), `Endpoint`→`endpoint`. Exemplo
-para o modo isolado em desktop:
+Genius supports custom MCP servers without plugin or configuration file editing. Since 2026-09-28, the agent registers servers directly by calling `mcp_server_add` — the tables below (`Campos do cadastro`) map directly to the JSON call arguments: `Nome`→`name`, `Transporte`→ `transport`, `Comando`→`command`, `Argumentos`→`arguments` (array), `Variáveis de ambiente`→`environment` (object), `Endpoint`→`endpoint`. Example for desktop isolated mode:
 
 ```json
 {
   "name": "playwright",
   "transport": "stdio",
   "command": "npx",
-  "arguments": ["-y", "@playwright/mcp@<versão fixa>", "--headless"],
+  "arguments": ["-y", "@playwright/mcp@<pinned-version>", "--headless"],
   "environment": { "NPM_CONFIG_LOGLEVEL": "silent" }
 }
 ```
 
-Depois de chamar `mcp_server_add`, confira `connected`/`error` no retorno —
-não assuma sucesso só porque a chamada não lançou exceção. Para habilitar,
-desabilitar ou remover um servidor já cadastrado (pelo usuário ou por você
-mesmo antes), use `mcp_server_set_enabled` (`server`, `enabled`) e
-`mcp_server_remove` (`server`) — `server` aceita o id ou o nome.
+After calling `mcp_server_add`, check out `connected`/`error` on return — do not report success merely because the call raised no exception. To enable, disable or remove a server already registered (by the user or yourself before), use `mcp_server_set_enabled` (`server`, `enabled`) and `mcp_server_remove` (`server`) — `server` accepts the id or name.
 
-Se essas três ferramentas não estiverem na sua lista, esta versão do Genius é
-anterior a essa funcionalidade: só nesse caso oriente o cadastro manual em
-**Extensões → Catálogo → Adicionar servidor personalizado**, usando os mesmos
-campos das tabelas abaixo.
+If these three tools are not in your list, this version of Genius precedes this functionality: only in this case guide the manual registration in Extensions → Catalog → Add custom server using the same fields in the tables below.
 
-O transporte muda conforme o dispositivo: **desktop usa `stdio`** (esta
-seção); **Genius mobile/tablet exige `http`** contra um servidor hospedado —
-ver [Genius mobile/tablet](#genius-mobiletablet-cadastro-por-http) mais
-abaixo, é uma seção separada porque o cadastro é bem diferente.
+Transport depends on the device: desktop uses `stdio`; mobile/tablet requires `http` to a hosted server. See [mobile/tablet registration](#genius-mobiletablet-registration-by-http).
 
-## Desktop: cadastro `stdio`
+## Desktop: registration `stdio`
 
-### Pré-requisito: Node.js
+### Prerequisite: Node.js
 
-`npx` vem junto do Node.js. Sem Node instalado no host onde o Genius roda, o
-processo do servidor nem sobe (erro típico ao tentar conectar: `spawn npx
-ENOENT`). Nesse caso, oriente o usuário a instalar o Node.js LTS e reabrir o
-Genius antes de tentar de novo.
+`npx` comes with Node.js. Without Node installed on the host where Genius runs, the server process does not start (typical error when trying to connect: `spawn npx ENOENT`). In this case, guide the user to install Node.js LTS and reopen Genius before attempting again.
 
-**Windows:** o `.cmd` do `npx` não é resolvido do mesmo jeito que num shell
-interativo quando o processo é criado sem invocar um shell. Use `npx.cmd`
-como comando, não `npx`.
+Windows: `.cmd` from `npx` is not resolved in the same way as an interactive shell when the process is created without invoking a shell. Use `npx.cmd` as command, not `npx`.
 
-### Campos do cadastro
+### Registration fields
 
-| Campo | Isolado/silencioso | Bridge (navegador real) |
+| Field | Isolated/silent | Bridge |
 | --- | --- | --- |
-| Nome | `playwright` | `playwright-bridge` |
-| Transporte | `stdio` | `stdio` |
-| Comando | `npx` (Windows: `npx.cmd`) | `npx` (Windows: `npx.cmd`) |
-| Argumentos | `-y`, `@playwright/mcp@<versão fixa>`, `--headless` | `-y`, `@playwright/mcp@<versão fixa>`, `--extension` |
-| Variáveis de ambiente | `NPM_CONFIG_LOGLEVEL=silent` | `NPM_CONFIG_LOGLEVEL=silent` |
+| Name | `playwright` | `playwright-bridge` |
+| Transport | `stdio` | `stdio` |
+| Command | `npx` (Windows: `npx.cmd`) | `npx` (Windows: `npx.cmd`) |
+| Arguments | `-y`, `@playwright/mcp@<pinned-version>`, `--headless` | `-y`, `@playwright/mcp@<pinned-version>`, `--extension` |
+| Environment variables | `NPM_CONFIG_LOGLEVEL=silent` | `NPM_CONFIG_LOGLEVEL=silent` |
 
-Use nomes diferentes para os dois cadastros: as ferramentas ficam com prefixo
-`mcp__playwright__*` e `mcp__playwright-bridge__*`, o que deixa claro qual
-delas está sendo chamada. Antes de montar os argumentos, confirme o nome
-exato das flags na versão instalada (`npx @playwright/mcp@<versão> --help`) —
-elas podem mudar entre versões do pacote.
+Use different names for both entries: the tools are prefixed `mcp__playwright__*` and `mcp__playwright-bridge__*`, which makes it clear which one is being called. Before constructing the arguments, confirm the exact name of the flags in the installed version (`npx @playwright/mcp@<version> --help`) — they can change between package versions.
 
-### Por que fixar a versão em vez de `@latest`
+### Why pin the version instead of `@latest`
 
-O transporte `stdio` é JSON-RPC linha a linha sobre `stdout`: qualquer texto
-extra que o `npm`/`npx` jogue em `stdout` (aviso de atualização, resolução de
-versão) corrompe o quadro da mensagem e derruba a conexão logo na primeira
-troca. `@latest` faz o `npx` consultar o registro do npm a cada início — mais
-lento e mais chance de ruído no `stdout`. Uma versão fixa (`@0.x.y`) evita essa
-consulta e mantém o processo silencioso de fato.
-`NPM_CONFIG_LOGLEVEL=silent` é a segunda camada de proteção contra ruído.
+The `stdio` transport is JSON-RPC line-by-line over `stdout`: any extra text that the `npm`/`npx` writes to `stdout` (refresh notice, version resolution) corrupts the message frame and drops the connection at the first exchange. `@latest` makes `npx` see the npm registry at each start — slower and more likely to noise in `stdout`. A fixed version (`@0.x.y`) avoids this query and keeps the process quiet. `NPM_CONFIG_LOGLEVEL=silent` is the second noise protection layer.
 
-Validado ao vivo em 2026-09-28 (pacote `@playwright/mcp`, versão estável na
-época **0.0.82** — confira a atual com `npm view @playwright/mcp version`, ela
-muda com frequência): rodando o servidor já instalado localmente (sem passar
-pelo `npx`, que é o pior caso de ruído), o handshake `initialize` completou,
-`tools/list` devolveu **25 ferramentas** — bem mais que as 5 do `browser_*`
-nativo do Genius, incluindo `browser_console_messages`,
-`browser_handle_dialog`, `browser_emulate_media`, `browser_evaluate`,
-`browser_file_upload` e `browser_drop`, capacidades que o `browser_*` nativo
-não tem — e uma chamada real de `browser_navigate` (headless, contra
-`github.com/sufficit`) voltou com o resultado esperado. **Zero linhas fora do
-JSON-RPC no `stdout`** durante todo o teste.
+Live validation on 2026-09-28 used `@playwright/mcp` 0.0.82, then the stable version. Check the current version with `npm view @playwright/mcp version`. Running the locally installed server without `npx`, the `initialize` handshake completed and `tools/list` returned 25 tools, compared with five native Genius `browser_*` tools. Additional capabilities included `browser_console_messages`, `browser_handle_dialog`, `browser_emulate_media`, `browser_evaluate`, `browser_file_upload`, and `browser_drop`. A real headless `browser_navigate` call to `github.com/sufficit` returned the expected result. No non-JSON-RPC lines appeared on `stdout`.
 
-### Isolado x bridge — não confunda os dois
+### Isolated x bridge — do not confuse the two
 
-`--headless` sobe um Chromium **isolado** que o próprio Playwright baixa e
-gerencia (a primeira execução pode demorar por causa do download) — sem
-login, sem cookies, sem histórico do usuário. `--extension` **não** sobe
-navegador nenhum: o servidor espera a extensão da Chrome Web Store conectar
-numa aba que o usuário já está usando, com a sessão real dele.
+`--headless` starts an isolated Chromium that Playwright itself downloads and manages (the first run may take time because of the download) — no login, no cookies, no user history. `--extension` does not start any browser: the server expects the Chrome Web Store extension to connect to a tab that the user is already using, with its actual session.
 
-## Genius mobile/tablet: cadastro por `http`
+## Genius mobile/tablet: registration by `http`
 
-**Por que não dá pra copiar o cadastro `stdio` do desktop:** o Genius recusa
-`stdio` em mobile por design — não existe processo local para o app subir
-dentro do Android/iOS. O agente do Genius que roda no tablet só enxerga o
-Playwright se houver um servidor Playwright MCP **já rodando, de forma
-persistente, em algum host sempre ligado** e alcançável pela rede — o desktop
-do usuário, um notebook, ou um servidor Sufficit. Esse host que sobe o
-processo com Node/`npx`; o tablet só conecta em `http`.
+Why can't you copy the `stdio` registry from the desktop: Genius rejects `stdio` in mobile per design — there is no local process for the app to start inside Android/iOS. The Genius agent running on the tablet only sees Playwright if there is a Playwright server MCP already running persistently on some host always connected and reachable over the network — the user's desktop, a notebook, or a Sufficit server. This host starts the process with Node/`npx`; the tablet only connects to `http`.
 
-### Subir o servidor em modo `http`/SSE
+### Start the server in `http`/SSE mode
 
-No host que vai ficar sempre ligado (ex.: `systemd`, ou qualquer supervisor de
-processo — não é um comando pra rodar manualmente toda vez):
+In the host that will always stay on (e.g. `systemd`, or any process supervisor — it is not a command to run manually every time):
 
 ```bash
-npx -y @playwright/mcp@<versão fixa> --headless --isolated \
-  --port 8931 --host <ip-interno-de-vpn>
+npx -y @playwright/mcp@<pinned-version> --headless --isolated \
+  --port 8931 --host <internal-vpn-ip>
 ```
 
-**Validado ao vivo em 2026-09-28**: ao subir com `--port`, o processo imprime
-no start (uma única vez, no início — não é ruído contínuo no `stdout` do
-protocolo):
+Live-validated in 2026-09-28: Up with `--port`, the process prints on the start (one time at the beginning — it is not continuous noise in the `stdout` of the protocol):
 
 ```
 Listening on http://localhost:8931
@@ -128,93 +74,48 @@ Put this in your client config:
 For legacy SSE transport support, you can use the /sse endpoint instead.
 ```
 
-Testei o handshake HTTP completo contra esse endpoint (o mesmo que o
-`HttpClientTransport` do Genius fala — Streamable HTTP com fallback SSE,
-`AutoDetect`): `initialize` devolveu `Mcp-Session-Id` no cabeçalho da
-resposta, `tools/list` trouxe as mesmas 25 ferramentas do teste por `stdio`, e
-um `browser_navigate` real contra `github.com/sufficit` funcionou. O endpoint
-`/mcp` é o correto para o cadastro no Genius; `/sse` existe só como
-compatibilidade com clientes MCP antigos.
+I tested the full HTTP handshake against this endpoint (the same as `HttpClientTransport` Genius speaks — Streamable HTTP with fallback SSE, `AutoDetect`): `initialize` returned `Mcp-Session-Id` to the response header, `tools/list` brought the same 25 test tools by `stdio`, and a real `browser_navigate` against `github.com/sufficit` worked. The `/mcp` endpoint is the correct one for registration in Genius; `/sse` exists only as compatibility with older MCP clients.
 
-### Campos do cadastro no Genius mobile
+### Registration fields in Genius mobile
 
-| Campo | Valor |
+| Field | Value |
 | --- | --- |
-| Nome | `playwright` (ou `playwright-bridge` se este host também tiver `--extension` — ver abaixo) |
-| Transporte | `http` |
-| Endpoint | `http://<ip-interno-de-vpn>:8931/mcp` |
+| Name | `playwright` (or `playwright-bridge` if this host also has `--extension` — see below) |
+| Transport | `http` |
+| Endpoint | `http://<internal-vpn-ip>:8931/mcp` |
 
-Sem comando, sem argumentos, sem variável de ambiente — isso tudo já foi
-decidido na hora de subir o processo no host. O Genius mobile só precisa da
-URL. Via `mcp_server_add`, a chamada fica só:
+No command, no arguments, no environment variable — all of this has already been decided by the time of starting the process in the host. Genius mobile only needs URL. Via `mcp_server_add`, the call is only:
 
 ```json
-{ "name": "playwright", "transport": "http", "endpoint": "http://<ip-interno-de-vpn>:8931/mcp" }
+{ "name": "playwright", "transport": "http", "endpoint": "http://<internal-vpn-ip>:8931/mcp" }
 ```
 
-### ⚠️ Segurança: este endpoint não tem autenticação própria
+### Network access: no built-in authentication
 
-Conferido no `--help` do pacote: não existe flag de token, bearer ou senha
-para o transporte `http`. Quem alcançar `<host>:<porta>/mcp` pela rede
-controla um navegador real **sem pedir nada** — inclusive `browser_evaluate`
-(executa JavaScript arbitrário na página) e `browser_file_upload`. `--allowed-
-hosts`/`--allowed-origins` restringem para onde o *navegador* pode navegar,
-não quem pode *falar com o servidor* — não são controle de acesso ao MCP.
+Checked in the `--help` package: no token flag, bearer or password for `http` transport. Whoever reaches `<host>:<port>/mcp` over the network controls a real browser without asking for anything — including `browser_evaluate` (executes arbitrary JavaScript on the page) and `browser_file_upload`. `--allowed-hosts`/`--allowed-origins` restrict where the browser can navigate, not who can talk to the server — they are not access control to MCP.
 
-**Nunca** bind em `0.0.0.0` numa rede exposta à internet ou compartilhada com
-quem não deveria ter esse controle. Bind só na interface de VPN/Tailscale do
-host (não `0.0.0.0` solto), e cadastre no tablet o IP dessa VPN — não um IP
-público. Trate a URL completa (host:porta) como segredo equivalente a uma
-senha: quem a tiver, controla o navegador daquele host.
+Never bind on `0.0.0.0` on a network exposed to the internet or shared with those who should not have that control. Bind only on the host VPN/Tailscale interface (not `0.0.0.0` loose), and register on the tablet the IP of this VPN — not a public IP. Treat the full URL (host:port) as a password-equivalent secret: whoever has it controls that host's browser.
 
-### Modo bridge (`--extension`) a partir do mobile
+### Bridge mode (`--extension`) from mobile
 
-Se o host que sobe o servidor `--port` também usar `--extension` (em vez de
-`--headless`), o tablet consegue acionar o navegador **desktop** desse host
-através do Playwright MCP — mas continua sendo o navegador do desktop que é
-controlado, nunca o Chrome do próprio tablet (Chrome mobile não roda
-extensões). Deixe isso claro para o usuário antes de configurar: "bridge no
-mobile" quer dizer "o tablet manda o computador tal abrir e mexer no
-navegador dele", não "o tablet ganha um navegador Playwright próprio".
+If the host that runs the `--port` server also uses `--extension` (instead of `--headless`), the tablet can trigger the desktop browser of this host via Playwright MCP — but it remains the desktop browser that is controlled, never Chrome of the tablet itself (Chrome mobile does not run extensions). Make this clear to the user before setting up: "bridge on mobile" means "the tablet tells the computer to open and touch his browser", not "the tablet gets its own Playwright browser".
 
-## Extensão do Chrome Web Store (só para o modo bridge)
+## Chrome Web Store Extension (bridge mode only)
 
-1. O usuário instala a extensão na Chrome Web Store:
-   `https://chromewebstore.google.com/detail/mmlmfjhmonkocbjadbfplnigmagldckm`.
-   **Dois nomes, mesma extensão** (conferido ao vivo em 2026-09-28): a
-   listagem da loja mostra **"Playwright Extension"** — é esse o nome que
-   aparece no título da página e no botão "Add to Chrome". Depois de instalada
-   e conectada, a própria barra de aviso do Chrome ("esta extensão está
-   depurando o navegador") mostra o nome interno do manifest: **"Playwright
-   MCP Bridge"**. Se o usuário disser que só achou "Playwright Extension" na
-   loja, é a mesma coisa — não mande procurar de novo por "MCP Bridge".
-2. Diferente da extensão própria do Genius (essa é force-installed
-   automaticamente pela política gerenciada — ver `TOOLS-BROWSER.md` no
-   repositório `sufficit-ai-genius`), essa extensão **não se conecta
-   sozinha**: o usuário precisa clicar no ícone dela na aba que quer
-   compartilhar, a cada aba nova que o agente for usar.
-3. Sem esse clique, a primeira chamada de ferramenta do lado bridge (por
-   exemplo, navegar) fica pendente ou retorna um erro pedindo a conexão — não
-   é um problema no cadastro do servidor MCP em si.
-4. **Sinal de que está funcionando:** a barra do Chrome mostrando "'Playwright
-   MCP Bridge' started debugging this browser" (ou o texto equivalente em
-   português) na aba compartilhada **é o comportamento esperado**, não um
-   alerta de segurança nem sinal de extensão maliciosa — é o próprio Chrome
-   avisando que uma extensão está com a API de debugger anexada à aba, exatamente
-   o mecanismo que permite o modo bridge funcionar.
+1. The user installs the extension in the Chrome Web Store: `https://chromewebstore.google.com/detail/mmlmfjhmonkocbjadbfplnigmagldckm`. Two names, the same extension (referred to live in 2026-09-28): the store listing shows "Playwright Extension" — that's the name that appears in the page title and the "Add to Chrome" button. Once installed and connected, the Chrome warning bar itself ("this extension is debugging the browser") shows the internal name of the manifest: "Playwright MCP Bridge". If the user says he only found "Playwright Extension" in the store, it's the same thing — don't send for "MCP Bridge" again.
+2. Unlike Genius's own extension (this is force-installed automatically by managed policy — see `TOOLS-BROWSER.md` in the `sufficit-ai-genius` repository), this extension does not connect on its own: the user needs to click on its icon in the tab he wants to share with each new tab the agent uses.
+3. Without this click, the first bridge-side tool call (e.g. navigate) is pending or returns an error asking for the connection — it is not a problem in the registry of the MCP server itself.
+4. Sign that it is working: the Chrome bar showing "'Playwright MCP Bridge' started debugging this browser" (or equivalent text in Portuguese) in the shared tab is the expected behavior, not a security alert or malicious extension signal — it is Chrome itself warning that an extension is with the API debugger attached to the tab, exactly the mechanism that allows bridge mode to work.
 
-## Sintoma → causa → ação
+## Symptoms → causes → action
 
-| Sintoma | Causa provável | O que fazer |
+| Symptoms | Probable cause | What to do |
 | --- | --- | --- |
-| Nenhuma ferramenta `mcp__playwright*__*` na lista | Servidor não cadastrado, desabilitado, ou falhou ao conectar | Conferir em Extensões → Integrações → MCP o estado/erro do servidor; se o erro citar `spawn ... ENOENT`, falta Node/`npx` no PATH do host que roda o Genius |
-| Ferramentas presentes, mas a chamada trava ou erra no modo bridge | Extensão não instalada, ou instalada mas não clicada na aba alvo | Orientar a instalação (link acima) e o clique do ícone na aba certa |
-| Ferramentas presentes, mas a chamada trava ou erra no modo `--headless` | Primeiro download do Chromium do Playwright ainda em curso, ou faltam dependências de sistema do Chromium no host (comum em Linux mínimo) | Aguardar a primeira execução terminar; se persistir em Linux, faltam bibliotecas do sistema que o Chromium exige |
-| Conexão cai logo depois de cadastrar | Ruído em `stdout` (versão `@latest` sem `NPM_CONFIG_LOGLEVEL`) corrompendo o quadro `stdio` | Trocar para versão fixa e adicionar a variável de ambiente da tabela acima |
-| Cadastro `stdio` funciona no desktop mas o mesmo cadastro falha no Genius mobile | Mobile não suporta `stdio` — erro esperado, não é falha de configuração | Cadastrar o mobile por `http` contra um servidor `--port` já rodando em host sempre ligado (ver seção mobile/tablet acima); nunca tentar `stdio` no app mobile |
-| Genius mobile não conecta no servidor `http` | Servidor não está rodando, porta/IP errados, firewall bloqueando, ou o servidor está bindado só em `localhost` do outro host (inalcançável pela rede) | Confirmar que o processo está ativo no host, que `--host` não é `localhost`/`127.0.0.1` (precisa ser a interface de rede/VPN), e que a porta está liberada só para a VPN — nunca abrir para a internet |
+| No `mcp__playwright*__*` tool in the list | Server not registered, disabled, or failed to connect | Check Extensions → Integrations → MCP the status/error of the server; if the error cites `spawn ... ENOENT`, Node/`npx` is missing in the PATH of the host running Genius |
+| Tools present, but the call hangs or fails in bridge mode | Extension not installed, or installed but not clicked on target tab | Orient installation (link above) and icon click on the right tab |
+| Tools present, but the call hangs or fails in mode `--headless` | First Chromium download from Playwright is still ongoing, or Chromium system dependencies are missing from the host (common on minimum Linux) | Wait for the first run to end; if you persist on Linux, there are missing system libraries that Chromium requires |
+| Connection falls right after registration | `stdout` noise (version `@latest` without `NPM_CONFIG_LOGLEVEL`) corrupting the `stdio` frame | Switch to fixed version and add the environment variable from the table above |
+| `stdio` register works on desktop but the same registration fails on Genius mobile | Mobile does not support `stdio` — expected error, not configuration failure | Register mobile by `http` against a `--port` server already running on host always connected (see mobile/tablet section above); never try `stdio` in mobile app |
+| Genius mobile does not connect on `http` server | Server is not running, wrong port/IP, blocking firewall, or the server is bounded only in `localhost` of the other host (unreachable over the network) | Confirm that the process is active in the host, that `--host` is not `localhost`/`127.0.0.1` (needs to be the network interface/VPN), and that the port is released only to VPN — never open to the internet |
 
-Falhas de rede/spawn podem ser tentadas de novo uma vez, com um instante de
-espera. Falhas que dependem de ação do usuário (instalar Node, instalar a
-extensão, clicar o ícone) não se resolvem repetindo a chamada — explique o
-passo que falta antes de tentar de novo.
+Network/spawn failures can be tried again with a moment of waiting. Failures that depend on user action (install Node, install extension, click icon) do not resolve by repeating the call — explain the missing step before trying again.

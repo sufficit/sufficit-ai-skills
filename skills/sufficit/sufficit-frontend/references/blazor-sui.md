@@ -1,29 +1,29 @@
-# Blazor e Sufficit.Blazor.UI
+# Blazor and Sufficit.Blazor.UI
 
-Confirmar os nomes, parâmetros e comandos no checkout atual; este guia descreve decisões, não congela uma versão da SUI.
+Confirm names, parameters and commands in the current checkout; this guide describes decisions, does not freeze a version of SUI.
 
-## Antes de alterar
+## Before changing
 
-- Inspecionar `.csproj`, arquivos de build e lock/pins: o consumidor usa NuGet, referência de projeto ou checkout fixado? Identificar a versão efetiva.
-- Ler componente Razor, code-behind, tema, CSS de origem e arquivos gerados. Descobrir ordem de carregamento, CSS isolation, seletor raiz do tema e módulos JS associados.
-- Procurar no catálogo e no código o componente padrão. Um `<select>` paralelo não reproduz automaticamente a API, o tema e os estados do seletor da biblioteca.
+- Inspect `.csproj`, build files and lock/pins: does the consumer use NuGet, project reference or fixed checkout? Identify effective version.
+- Read Razor component, code-behind, theme, source CSS and generated files. Discover loading order, CSS isolation, theme root selector and associated JS modules.
+- Browse the standard component in the catalog and code. A parallel `<select>` does not automatically reproduce the API, the theme and the library selector states.
 
-## Resolver no nível responsável
+## Solve at responsible level
 
-Se apenas uma feature mistura classes com significados diferentes, corrigir composição local. Se uma propriedade pública não produz seu efeito em vários consumidores, corrigir a biblioteca, seus exemplos e teste de regressão, dentro do escopo autorizado. Não mascarar um defeito de tamanho global com CSS mais específico em cada aplicação.
+If only a feature mixes classes with different meanings, correct local composition. If a public property does not have its effect on multiple consumers, correct the library, its examples and regression test, within the authorized scope. Do not mask a global size defect with more specific CSS in each application.
 
-Usar tokens e componentes SUI disponíveis. Se um exemplo usa React/Tailwind, portar o comportamento e a estrutura; não introduzir essas dependências em Blazor. Evitar seletores que dependam de detalhes internos quando houver API pública de personalização. Em CSS isolation, verificar onde o atributo de escopo realmente aparece antes de recorrer a `::deep`.
+Use available SUI components and tokens. If an example uses React/Tailwind, port the behavior and structure; do not introduce these dependencies into Blazor. Avoid selectors that depend on internal details when there is public customization API. In CSS isolation, check where the scope attribute actually appears before resorting to `::deep`.
 
-## Renderização e integração
+## Rendering and integration
 
-Preservar binding, callbacks, validação, estado e descarte de recursos. Não usar manipulação DOM para substituir estado que o Blazor controla. JS interop deve respeitar a disponibilidade do DOM e o modo de renderização real; um componente prerenderizado não prova que sua interação foi inicializada.
+Preserve binding, callbacks, validation, status and disposal of resources. Do not use DOM manipulation to replace the state Blazor controls. JS interop must respect the availability of DOM and the actual rendering mode; a prerendered component does not prove that its interaction has been initiated.
 
-Em seleção/abas/dialogs, exercitar foco e teclado, não apenas clique. Para navegação, conservar URLs profundas e parâmetros de contexto necessários. Em Blazor Server, distinguir um problema visual de circuito desconectado ou módulo JS incompatível.
+In selection/tabs/dialogs, exercise focus and keyboard, do not just click. For navigation, keep deep URLs and context parameters required. In Blazor Server, distinguish visual defects from a disconnected circuit or incompatible JS module.
 
-## Build e entrega
+## Build and delivery
 
-Alterar fonte de CSS e regenerar bundles pelo comando do repositório, se houver; conferir o resultado gerado. Não declarar conclusão após mudar só uma cópia que o app não carrega. Executar build na configuração relevante, verificações da biblioteca e consumidor afetado conforme o contrato.
+Change source of CSS and regenerate bundles by repository command if any; check the generated result. Do not declare conclusion after changing only one copy that the app does not load. Run build in relevant configuration, library checks and affected consumer as per contract.
 
-Se a entrega incluir atualização do consumidor, alinhar pacote/pin e validar o artefato com essa dependência. Se não incluir, informar que a melhoria ainda não chegou ao consumidor. Para publicação autorizada, conferir cache de CSS/JS, base path, static web assets e compatibilidade de módulos com sessões abertas. Usar o mecanismo de fingerprint/versionamento do projeto quando disponível, sem exigir query string manual em todos os assets.
+If delivery includes customer update, align package/pin and validate the artifact with this dependency. If not, please inform the consumer that the improvement has not yet reached the consumer. For authorized publication, check CSS/JS cache, path base, static web assets and module compatibility with open sessions. Use the project fingerprint/version mechanism when available, without requiring manual query strings on all assets.
 
-Reinício de serviço, atualização de pacote e deploy são ações distintas; registrar somente as efetivamente realizadas. Usar fixture para testes de ações que alterariam recursos reais e declarar essa limitação.
+Service restart, package update and deploy are distinct actions; record only those effectively performed. Use fixture for actions testing that would change real resources and declare this limitation.

@@ -1,13 +1,10 @@
-# Teste de conexão ASAAS
+# Connection test ASAAS
 
-A ferramenta `asaas_connection_test` não aceita argumentos. Ela resolve
-`personal/asaas/production/api-key` no Vault pessoal, injeta a chave apenas no
-cabeçalho `access_token` de uma requisição feita pelo host confiável e nunca
-devolve a chave, o corpo do provedor ou dados da conta.
+The `asaas_connection_test` tool does not accept arguments. It resolves `personal/asaas/production/api-key` in personal Vault, injects the key only into the `access_token` header of a request made by the trusted host and never returns the key, the provider response body or account data.
 
-## Resultado de sucesso
+## Success result
 
-| Campo | Valor |
+| Field | Value |
 | --- | --- |
 | `connected` | `true` |
 | `authenticated` | `true` |
@@ -19,26 +16,22 @@ devolve a chave, o corpo do provedor ou dados da conta.
 | `credentialReference` | `personal/asaas/production/api-key` |
 | `writesPerformed` | `false` |
 
-Informe ao usuário, em linguagem simples, que a conta está conectada e que o
-teste não alterou nada na conta.
+Inform the user, in simple language, that the account is connected and that the test has not changed anything in the account.
 
-## Códigos de falha
+## Failure codes
 
-| Código | Significado | Ação |
+| Code | Meaning | Action |
 | --- | --- | --- |
-| `asaas_vault_sign_in_required` | O usuário não está autenticado no Sufficit Identity. | Peça para entrar na conta Sufficit e repita o teste. |
-| `asaas_key_missing` | A entrada ainda não existe ou está vazia no Vault. | Prepare `personal/asaas/production/api-key` com a tela segura de Vault e repita depois de o usuário salvar a chave. |
-| `asaas_key_invalid` | A chave salva tem formato inválido para autenticação HTTP. | Peça ao usuário para gerar uma nova chave no painel do ASAAS e salvar na mesma entrada do Vault. |
-| `asaas_credential_rejected` | O ASAAS rejeitou a chave (HTTP 401/403). | A chave está errada ou foi revogada; peça uma chave válida, salve no Vault e repita uma única vez. |
-| `asaas_provider_unavailable` | O ASAAS respondeu, mas não concluiu o teste. | Falha do provedor; informe o usuário e, se marcada repetível, refaça o teste após uma espera. |
-| `asaas_transport_failed` | A API de produção não foi alcançada. | Problema de rede; verifique a conexão e repita. |
-| `asaas_timeout` | O teste excedeu o tempo limite. | Repita uma vez; se persistir, trate como indisponibilidade. |
-| `asaas_vault_timeout` | O acesso ao Vault excedeu o tempo limite. | Repita uma vez; se persistir, trate como indisponibilidade do Identity. |
-| `asaas_vault_unavailable` | O Vault não pôde ser acessado. | Indisponibilidade do Identity; tente novamente depois. |
+| `asaas_vault_sign_in_required` | The user is not logged into Sufficit Identity. | Ask to enter the Sufficit account and repeat the test. |
+| `asaas_key_missing` | Entry does not yet exist or is empty in Vault. | Prepare `personal/asaas/production/api-key` with Vault safe screen and repeat after the user saves the key. |
+| `asaas_key_invalid` | The saved key has invalid format for HTTP authentication. | Ask the user to generate a new key in the ASAAS panel and save to the same Vault input. |
+| `asaas_credential_rejected` | ASAAS rejected the key (HTTP 401/403). | The key is wrong or has been revoked; ask for a valid key, save to Vault and repeat once. |
+| `asaas_provider_unavailable` | ASAAS responded, but did not complete the test. | Provider failure; inform the user and, if checked retryable, retest after a wait. |
+| `asaas_transport_failed` | The production API was not achieved. | Network problem; check the connection and repeat. |
+| `asaas_timeout` | The test exceeded the time limit. | Repeat once; if it persists, treat as unavailability. |
+| `asaas_vault_timeout` | Access to Vault exceeded the time limit. | Repeat once; if persistent, treat as unavailability of Identity. |
+| `asaas_vault_unavailable` | Vault couldn't be accessed. | Unavailability of Identity; try again later. |
 
-Falhas marcadas como repetíveis no resultado podem ser tentadas de novo com
-parcimônia: uma nova tentativa, aguardando um instante. Falhas não repetíveis
-exigem uma ação do usuário antes de qualquer nova chamada.
+Failures marked as retryable in the result can be attempted again with parsimony: a new attempt, waiting for an instant. Non-retryable failures require user action before any new call.
 
-Nunca use uma operação de escrita — criar cobrança, pagamento, cliente ou
-qualquer alteração — para diagnosticar a conexão.
+Never use a writing operation — create billing, payment, customer or any change — to diagnose the connection.

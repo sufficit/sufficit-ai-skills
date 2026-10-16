@@ -1,31 +1,31 @@
-# Sistema visual aplicado
+# Visual system applied
 
-## Tokens e temas
+## Tokens and themes
 
-Inventariar os valores realmente carregados antes de criar tokens. Separar, quando útil ao sistema, valor primitivo (cor/medida), papel semântico (superfície/texto/ação) e necessidade específica do componente. Não introduzir três camadas de aliases para resolver um único gap.
+Inventory the values actually loaded before creating tokens. Separate, when useful to the system, primitive value (color/measure), semantic role (surface/text/action) and specific component need. Do not insert three layers of aliases to solve a single gap.
 
-Um mesmo sufixo não significa a mesma medida entre bibliotecas: `space-5` pode ser 20px num sistema e 24px em outro. Conferir valor computado, escala do tema e consumidor. Mapear por papel e medida pretendida.
+The same suffix does not mean the same measure between libraries: `space-5` can be 20px on one system and 24px on another. Check computed value, theme scale and consumer. Map by role and desired measure.
 
-Open Props é uma opção de fundação, não um tema obrigatório. Se adotado, importar apenas os conjuntos úteis pelo pipeline do projeto. Normalização e estilos de elementos podem afetar controles existentes: conferir a cascata antes de incluí-los. Não adicionar um reset global em uma correção local. Validar o suporte a recursos como custom media no build/navegadores-alvo; uma variável CSS não substitui uma condição de media query.
+Open Props is a foundation option, not a mandatory theme. If adopted, import only the useful sets by the project pipeline. Normalization and element styles can affect existing controls: check the cascade before including them. Do not add a global reset to a local fix. Validate resource support as a custom media in the built/target browsers; a CSS variable does not replace a media query condition.
 
-Temas compartilham estrutura, mas podem precisar de pares diferentes de fundo/texto/borda/foco. Usar os papéis existentes também em hover, seleção, avisos e sobreposições; não inverter cores cegamente. Não copiar uma paleta de galeria por parecer semelhante à marca.
+Themes share structure, but may need different background/text/edge/focus pairs. Use existing roles also in hover, selection, warnings and overlays; do not invert colors blindly. Do not copy a gallery palette because it looks similar to the brand.
 
-## Espaçamento e composição
+## Spacing and composition
 
-Distinguir três relações: interior de um controle; itens do mesmo assunto; separação entre assuntos. Escolher os intervalos na escala local. Espaço antes de um novo subtítulo deve comunicar a mudança de assunto, não colá-lo à última linha anterior.
+Distinguishing three relationships: within a control; items of the same subject; separation between subjects. Choose intervals from the local scale. Space before a new subtitle must communicate the subject change, not attach it to the last previous line.
 
-Usar `gap` quando o contêiner define a relação entre irmãos; padding delimita área interna e margem separa blocos independentes. Observar colapso de margens, `min-width`, alinhamento e quebra. Classes para uma pilha simples não devem herdar acidentalmente o contrato de um accordion, grade ou card.
+Use `gap` when the container defines the relationship between siblings; padding delimits internal area and margin separates independent blocks. Observe margin collapse, `min-width`, alignment and break. Classes for a simple stack should not accidentally inherit the contract of an accordion, grid or card.
 
-Manter densidade adequada à tarefa: ferramentas operacionais podem ser compactas sem amontoar controles; páginas de apresentação podem ter mais espaço sem esconder a ação. Não impor o mesmo layout de cards a todos os assuntos. Tipografia e proximidade devem explicar a organização antes da decoração.
+Maintaining proper density to the task: operating tools can be compact without stacking controls; presentation pages can have more space without hiding the action. Do not impose the same card layout on all subjects. Typography and proximity should explain the organization before decoration.
 
-## Adaptação
+## Adaptation
 
-Escolher breakpoints pelo conteúdo e convenções do projeto. Em grades, permitir que a coluna caiba na largura disponível; em flex, conferir tamanho mínimo dos filhos. Textos técnicos longos, traduções e zoom podem exigir quebra ou rolagem local deliberada.
+Choose breakpoints for project content and conventions. In grids, allow the column to fit in the available width; in flex, check minimum child size. Long technical texts, translations and zoom may require deliberate local breaking or scrolling.
 
-Ao transformar tabela em lista compacta, conservar campos necessários, ações, filtros e paginação. Não esconder uma função para fazer o layout caber. Um controle deve continuar operável por teclado e toque; a área clicável pode superar o tamanho visual do ícone. Escala visual e tamanho do alvo são contratos distintos.
+When turning table into compact list, save required fields, actions, filters and pagination. Do not hide a function to make the layout fit. A control should remain keyboard operable and touch; the clickable area can surpass the visual size of the icon. Visual scale and target size are distinct contracts.
 
-## Movimento e desempenho
+## Movement and performance
 
-Usar movimento para explicar mudança de estado, entrada de conteúdo ou relação espacial. Preferir duração e easing do projeto, evitando animar todos os blocos por padrão. `prefers-reduced-motion` deve deixar conteúdo imediatamente utilizável e preservar feedback funcional.
+Use motion to explain state change, content entry or spatial relationship. Prefer project duration and easing by avoiding animating all blocks by default. `prefers-reduced-motion` should leave content immediately usable and preserve functional feedback.
 
-Antes de usar animação contínua, blur, sombras extensas ou transições de layout, avaliar custo de pintura/composição em dispositivo representativo. Reservar espaço para mídia/fontes e estados de carregamento para evitar saltos. Medir antes/depois quando a tarefa envolver desempenho; limites de bundle e renderização vêm do projeto, não de um número universal desta skill.
+Before using continuous animation, blur, extensive shadows or layout transitions, evaluate painting/composition cost on representative device. Save space for media/fonts and loading states to avoid jumping. Measure before/after when the task involves performance; bundle and rendering limits come from the project, not from a universal number of this skill.

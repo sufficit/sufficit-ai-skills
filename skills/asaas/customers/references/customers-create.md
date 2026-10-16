@@ -1,76 +1,64 @@
-# Cadastro de cliente ASAAS
+# Client Registration ASAAS
 
-A ferramenta `asaas_customers_create` cadastra um cliente novo na conta de
-produção. Ela exige aprovação explícita na conversa (card de aprovação) e
-executa a regra **consultar antes de escrever em código**: antes do POST ela
-consulta `/v3/customers` por documento, e-mail e nome, e se recusa a escrever
-quando encontra duplicatas. A chave `personal/asaas/production/api-key` sai do
-Vault direto para o cabeçalho `access_token`; a resposta chega sanitizada com
-o documento sob a política de identificação (CNPJ completo; CPF nos 3
-primeiros dígitos).
+The `asaas_customers_create` tool registers a new customer in the production account. It requires explicit approval in the conversation (approval card) and executes the rule consult before writing in code: before POST it consults `/v3/customers` per document, email and name, and refuses to write when it finds duplicates. The `personal/asaas/production/api-key` key exits the direct Vault to the `access_token` header; the answer arrives sanitized with the document under the identification policy (CNPJ complete; CPF in the first 3 digits).
 
-## Quando usar
+## When to use
 
-Somente quando o usuário pediu explicitamente para cadastrar um cliente novo.
-Não ofereça o cadastro por iniciativa própria e nunca cadastre como efeito
-colateral de outra tarefa.
+Only when the user explicitly asked to register a new client. Do not offer the registration on your own initiative and never register as a side effect of another task.
 
-## Argumentos
+## Arguments
 
-| Argumento | Tipo | Obrigatório | Regras |
+| Argument | Type | Mandatory | Rules |
 | --- | --- | --- | --- |
-| `name` | string | sim | Nome do cliente; 1 a 80 caracteres. |
-| `cpfCnpj` | string | não | CPF (11 dígitos) ou CNPJ (14 dígitos); pontuação é ignorada. |
-| `email` | string | não | E-mail; até 64 caracteres. |
-| `confirmedDistinct` | boolean | não | `true` somente quando o usuário já confirmou que a colisão de nome/e-mail é outro cliente. Nunca sobreponde uma coincidência de documento. |
+| `name` | string | yes | Client name; 1 to 80 characters. |
+| `cpfCnpj` | string | no | CPF (11 digits) or CNPJ (14 digits); punctuation is ignored. |
+| `email` | string | no | E-mail; up to 64 characters. |
+| `confirmedDistinct` | boolean | no | `true` only when the user has confirmed that the name/e-mail collision is another client. Never overrides a document match. |
 
-O envio ao provedor leva apenas `name`, `cpfCnpj` (dígitos) e `email` — nada
-mais. Endereço, telefone e complemento ficam para o painel do ASAAS.
+Sending to the provider takes only `name`, `cpfCnpj` (digits) and `email` — nothing more. Address, telephone and supplement are for the ASAAS panel.
 
-## Recusas (escrita não realizada)
+## Refusals (no write performed)
 
-O resultado com `created: false` e `writesPerformed: false` é uma recusa, não
-um erro. Nenhum POST aconteceu.
+The result with `created: false` and `writesPerformed: false` is a refusal, not an error. No POST happened.
 
-| `reason` | Causa | Conduta |
+| `reason` | Cause | Conduct |
 | --- | --- | --- |
-| `duplicate_document` | Já existe cliente com o CPF/CNPJ informado. | Use o cliente existente devolvido em `existingCustomer`. Não repita a criação, nem com `confirmedDistinct`. |
-| `possible_duplicate` | Colisão de e-mail ou nome sem confirmação. | Apresente os candidatos (`dedupMatches`) e pergunte ao usuário. Só repita com `confirmedDistinct: true` se ele confirmar que é outro cliente. |
+| `duplicate_document` | There is already a client with the informed CPF/CNPJ. | Use the existing client returned in `existingCustomer`. Do not repeat creation with `confirmedDistinct`. |
+| `possible_duplicate` | E-mail collision or name without confirmation. | Introduce candidates (`dedupMatches`) and ask the user. Only repeat with `confirmedDistinct: true` if it confirms that it is another client. |
 
-## Resultado de sucesso
+## Success result
 
-| Campo | Valor |
+| Field | Value |
 | --- | --- |
 | `created` | `true` |
 | `writesPerformed` | `true` |
-| `customer` | Cliente criado sanitizado (`id`, `name`, `personType`, `email`, `document` sob a política de identificação) |
-| `dedupPerformed` | `true` — a consulta de duplicatas rodou antes da escrita |
+| `customer` | Client created sanitized (`id`, `name`, `personType`, `email`, `document` under the identification policy) |
+| `dedupPerformed` | `true` — the duplicate query ran before writing |
 | `credentialReference` | `personal/asaas/production/api-key` |
 
-## Códigos de falha
+## Failure codes
 
-| Código | Significado | Ação |
+| Code | Meaning | Action |
 | --- | --- | --- |
-| `asaas_customers_create_invalid_arguments` | Nome vazio/longo, documento fora de 11/14 dígitos, e-mail longo. | Corrija os argumentos e repita; nada foi chamado. |
-| `asaas_customers_create_rejected` | O ASAAS recusou o cadastro (ex.: CPF inválido). | A mensagem traz código e descrição do provedor; corrija com o usuário e tente de novo. |
-| `asaas_customers_create_unexpected` | Criação confirmada, mas resposta em formato inesperado. | Consulte a lista de clientes para confirmar o estado real. |
-| `asaas_timeout` | Tempo limite excedido. | **Consulte se o cliente já foi criado antes de repetir**; a escrita pode ter acontecido. |
-| `asaas_credential_rejected` | Chave rejeitada (401/403). | Peça chave válida e salve no Vault. |
-| `asaas_provider_unavailable` / `asaas_transport_failed` / `asaas_vault_*` | Falhas compartilhadas das demais ferramentas ASAAS. | Siga a mesma conduta da consulta. |
+| `asaas_customers_create_invalid_arguments` | Empty/long name, document out of 11/14 digits, long email. | Correct arguments and repeat; nothing has been called. |
+| `asaas_customers_create_rejected` | ASAAS refused registration (e.g. invalid CPF). | The message brings code and description of the provider; correct with the user and try again. |
+| `asaas_customers_create_unexpected` | Creation confirmed, but response in unexpected format. | See the client list to confirm the actual status. |
+| `asaas_timeout` | Time limit exceeded. | See if the client has been created before repeating; writing may have happened. |
+| `asaas_credential_rejected` | Key rejected (401/403). | Ask valid key and save in Vault. |
+| `asaas_provider_unavailable` / `asaas_transport_failed` / `asaas_vault_*` | Shared failures of other ASAAS tools. | Follow the same conduct as the consultation. |
 
-## Fluxo recomendado
+## Recommended flow
 
 ```
-usuário pede cadastro
+user requests registration
         │
         ▼
 asaas_customers_create (name, cpfCnpj?, email?)
         │
-        ├─ duplicate_document ──► use o cliente existente
-        ├─ possible_duplicate ──► pergunte ao usuário
-        │                              └─ confirmou? repita com confirmedDistinct=true
-        └─ card de aprovação ──► created:true ──► reporte com documento (CNPJ completo / CPF 3 primeiros)
+        ├─ duplicate_document ──► use the existing customer
+        ├─ possible_duplicate ──► ask the user
+        │                              └─ confirmed? retry with confirmedDistinct=true
+        └─ approval card ──► created:true ──► report with document (full CNPJ / first 3 CPF digits)
 ```
 
-Nunca contorne uma recusa chamando a API por outro caminho; a recusa é a
-ferramenta protegendo a conta de produção contra duplicatas.
+Never bypass a refusal by calling API another way; refusal is the tool protecting the production account from duplicates.

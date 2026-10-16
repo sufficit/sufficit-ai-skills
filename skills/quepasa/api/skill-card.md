@@ -1,9 +1,9 @@
 # quepasa-api
 
-Ensina o Sufficit AI Genius a usar a API HTTP do QuePasa (gateway WhatsApp): enviar mensagens e mídia, administrar grupos e convites, baixar mídia e contatos compartilhados, consultar histórico e configurar/interpretar webhooks, com o token da sessão e as armadilhas vividas em produção.
+Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa.
 
-Versão: **0.1.0** · Sufficit · MIT-0
+Version: **0.1.1** · Sufficit · MIT-0
 
-Leia [SKILL.md](SKILL.md) para aplicar a skill.
+Read [SKILL.md](SKILL.md) to use this skill.
 
-Fonte: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api).

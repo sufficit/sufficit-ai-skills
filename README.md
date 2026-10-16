@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 164 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 166 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -13,8 +13,9 @@ conteúdo importado.
 | Android | 22 | `android/skills`, Apache-2.0 |
 | Google | 127 | `google/skills`, Apache-2.0 |
 | Refero | 1 | `referodesign/refero_skill`, MIT |
+| Matt Pocock | 1 | `mattpocock/skills`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
-| Sufficit | 7 | Sufficit, MIT-0 |
+| Sufficit | 8 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Asaas | 4 | Sufficit, MIT-0 |
 | QuePasa | 1 | Sufficit, MIT-0 |
@@ -36,3 +37,15 @@ autoria e licenças.
 
 A skill `software-development` possui instalação vinculada para Codex e conferência
 de versão remota: [pacote](skills/sufficit/software-development/SKILL.md).
+
+A skill [`clear-technical-writing`](skills/sufficit/clear-technical-writing/SKILL.md) orienta escrita técnica
+clara, com adaptação em português e distinção entre revisão editorial e conformidade
+com o padrão inglês. É uma adaptação independente da Sufficit.
+
+## Skill language
+
+Write all skill instructions, supporting documentation, cards, and agent metadata
+in English. Catalog descriptions must also be English. Preserve API identifiers,
+commands, and exact UI labels or provider messages when translating would make
+instructions inaccurate; explain those literals in English. This package-language
+rule does not override a user's requested response language.

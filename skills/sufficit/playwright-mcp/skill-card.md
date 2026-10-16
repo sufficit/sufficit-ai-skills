@@ -1,9 +1,9 @@
 # playwright-mcp
 
-Ensina o Sufficit AI Genius a usar o Playwright MCP como automação web opcional — modo isolado/silencioso (`--headless`) e modo bridge (`--extension` + extensão "Playwright Extension"/"Playwright MCP Bridge" da Chrome Web Store) — em desktop via `stdio` local e no Genius mobile/tablet via `http` contra um servidor hospedado. O próprio agente cadastra/habilita/desabilita/remove o servidor com `mcp_server_add`/`mcp_server_set_enabled`/`mcp_server_remove`, sem depender da UI de Extensões.
+Configure and use Playwright MCP as an optional Sufficit AI Genius browser automation path, with isolated --headless mode or --extension bridge mode. Desktop uses local stdio; mobile/tablet requires http to a hosted server. Manage registration directly with mcp_server_add, mcp_server_set_enabled, and mcp_server_remove. Use for Playwright, MCP Bridge, isolated scraping, or capabilities missing from native browser_* tools, such as network/console capture, PDF, multiple tabs, file upload, or accessibility snapshots.
 
-Versão: **0.3.0** · Sufficit · MIT-0
+Version: **0.3.1** · Sufficit · MIT-0
 
-Leia [SKILL.md](SKILL.md) para aplicar a skill.
+Read [SKILL.md](SKILL.md) to use this skill.
 
-Fonte: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp).

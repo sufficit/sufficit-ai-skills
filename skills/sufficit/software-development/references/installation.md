@@ -1,69 +1,41 @@
-# Instalação vinculada e conferência
+# Linked installation and verification
 
-Fonte canônica: https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development.
-A versão da skill é independente da versão do Codex. `release.json` e
-`metadata.version` devem coincidir; o catálogo registra o SHA-256 do pacote completo.
+Canonical source: https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development. The skill version is independent of the version of Codex. `release.json` and `metadata.version` must match; the catalog records the full package SHA-256.
 
-## Instalar no Codex
+## Install in Codex
 
-Use o checkout canônico revisado e limpo, não uma worktree temporária:
+Use reviewed and clean canonical checkout, not a temporary worktree:
 
 ```sh
 python3 skills/sufficit/software-development/scripts/manage.py install
-# Somente para migrar uma cópia antiga já revisada:
+# Only when migrating an old copy that has already been reviewed:
 python3 skills/sufficit/software-development/scripts/manage.py install --migrate-existing
 python3 skills/sufficit/software-development/scripts/manage.py check --remote
 ```
 
-O destino é `$CODEX_HOME/skills/software-development`, ou
-`$HOME/.codex/skills/software-development`. `--codex-home /pasta` permite testar
-isoladamente. A instalação é um symlink para a pasta canônica; a cópia antiga é
-preservada em `skill-backups/` fora da descoberta de skills. Links para outra
-origem são recusados. O recibo em `skill-installations/software-development.json`
-registra versão inicial, revisão Git, digest, origem, destino e backup.
+The destination is `$CODEX_HOME/skills/software-development`, or `$HOME/.codex/skills/software-development`. `--codex-home /directory` allows testing alone. The installation is a symlink to the canonical folder; the old copy is preserved in `skill-backups/` outside the discovery of skills. Links to another source are refused. The receipt in `skill-installations/software-development.json` records initial version, Git revision, digest, origin, destination and backup.
 
-O helper próprio é usado porque o instalador padrão do Codex copia o pacote sem
-manter esse vínculo. O Codex suporta diretórios de skills ligados por symlink:
-https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills.
-Nesta instalação se preserva a raiz `.codex/skills` já utilizada pelo cliente;
-outros ambientes podem usar `.agents/skills`, conforme a configuração/discovery
-local. Não criar duas entradas com o mesmo nome em raízes diferentes.
+The helper itself is used because the default Codex installer copies the package without maintaining this link. Codex supports symlink-connected skill directories: https://learn.chatgpt.com/docs/build-skills#where-codex-loads-local-skills. This installation preserves the root `.codex/skills` already used by the client; other environments can use `.agents/skills` according to local configuration/discovery. Do not create two entries with the same name on different roots.
 
-## Conferir e atualizar
+## Check and update
 
-`check` verifica vínculo, versão e digest contra o manifesto local. `check --remote`
-consulta o SHA atual de `main` e lê release/manifesto nesse SHA imutável, com timeouts.
-Não roda pull, não troca de branch e não altera arquivos. Sem rede, retorna estado
-remoto `unavailable`, não uma confirmação falsa de atualização. É executado uma vez
-por sessão quando a skill é usada; não há timer/daemon instalado.
+`check` checks link, version and digest against the local manifest. `check --remote` consults the current SHA of `main` and reads release/manifest in this immutable SHA with timeouts. Doesn't run pull, doesn't change branches and doesn't change files. Without network, it returns remote state `unavailable`, not a false update confirmation. It runs once per session when the skill is used; there is no timer/daemon installed.
 
-Estados remotos: `current`, `update-available`, `local-ahead`, `version-conflict` ou
-`unavailable`. `current` compara o pacote, não apenas o commit global do repositório.
-Mudanças em outra skill não produzem um falso aviso. Um mesmo SemVer com digest
-diferente é conflito de versão e precisa ser investigado.
+Remote states: `current`, `update-available`, `local-ahead`, `version-conflict` or `unavailable`. `current` compares the package, not just the global repository commit. Changes in another skill do not produce a false warning. A same SemVer with different digest is version conflict and needs to be investigated.
 
-Quando uma atualização for desejada e autorizada:
+When an update is desired and authorised:
 
 ```sh
 git fetch origin main
 git diff HEAD..origin/main -- skills/sufficit/software-development catalog/import-manifest.json
-# Conferir Git limpo e ausência de divergência antes de avançar o checkout.
+# Confirm a clean Git state and no divergence before advancing the checkout.
 git merge --ff-only origin/main
 python3 skills/sufficit/software-development/scripts/manage.py install
 python3 skills/sufficit/software-development/scripts/manage.py check --remote
 ```
 
-Como a instalação é ligada, avançar ou editar o checkout muda os arquivos visíveis
-no Codex. Mantenha o checkout canônico em main e desenvolva a skill em worktree
-separada. O recibo registra a instalação/atualização explícita, não cada leitura.
-O checker detecta conteúdo local alterado ou divergência do digest e não o substitui.
-Novas instruções ficam disponíveis na próxima descoberta/turno; a conferência em
-disco não prova que um turno já em execução as recarregou.
+Because the installation is linked, advancing or editing the checkout changes the files visible in Codex. Keep the canonical checkout in main and develop the skill in separate worktree. The receipt records the explicit installation/update, not each reading. The checker detects altered local content or digest divergence and does not replace it. New instructions are available at the next discovery/turn; a disk check does not prove that a running turn has reloaded them.
 
-## Manter uma release
+## Maintain a release
 
-Atualize `release.json`, `metadata.version` e a descrição versionada do catálogo;
-recalcule o digest com `scripts/validate.py::digest` nos dois manifests. Rode
-`python3 scripts/validate.py`, os testes do gerenciador e o validador de skill.
-Publique a revisão e confira novamente a versão remota. Não edite a cópia instalada
-como se fosse independente: o symlink altera a fonte.
+Update `release.json`, `metadata.version` and the versioned description of the catalog; recalculate the digest with `scripts/validate.py::digest` in both manifests. Run `python3 scripts/validate.py`, the manager tests and the skill validator. Publish the revision and recheck the remote version. Do not edit the installed copy as if it were independent: the symlink changes the source.

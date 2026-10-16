@@ -1,4 +1,4 @@
 interface:
-  display_name: "ASAAS"
-  short_description: "Conecta e testa a conta real do ASAAS pelo Vault"
-  default_prompt: "Conecte minha conta ASAAS e confirme que a autenticação de produção funciona sem expor a chave."
+  display_name: ASAAS Connection
+  short_description: Connect and test ASAAS through the personal Vault
+  default_prompt: Connect my ASAAS account and verify production authentication without exposing the key.

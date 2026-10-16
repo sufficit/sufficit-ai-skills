@@ -1,247 +1,111 @@
 ---
 name: asaas-invoices
-description: Consulta e agenda NFS-e de produção do ASAAS com asaas_invoices_list, asaas_services_list e asaas_invoices_create; cancelamento com asaas_invoices_cancel quando disponível. Detalhes do serviço (código municipal, ISS, nome fiscal) são auto preenchidos pelo cadastro da conta quando não especificados: nunca peça código municipal ao usuário e nunca invente código; a descrição impressa da nota é campo próprio e vem do usuário. Enviar campos municipais tem efeito colateral comprovado no cadastro de serviços da conta (cria entrada nova ou altera a associação de notas já existentes), por isso a omissão é a regra. Documentação oficial linkada na seção Fonte oficial: verifique-a antes de presumir obrigação e reporte divergências/recusas à equipe. Consulte antes de escrever e obtenha aprovação.
+description: "Query and schedule production ASAAS NFS-e invoices with asaas_invoices_list, asaas_services_list, and asaas_invoices_create; cancel with asaas_invoices_cancel when available. Omit municipal service fields by default so account configuration supplies them. Never ask the user for a municipal code or invent one. Invoice descriptions come from the user. Municipal fields can create service entries or change existing invoice associations. Consult official documentation before assuming requirements, report discrepancies, query before writing, and obtain approval."
 ---
 
-# Notas fiscais de serviço ASAAS de produção
+# ASAAS production service invoices
 
-Use esta orientação quando o usuário pedir para emitir, agendar, ver,
-conferir ou cancelar notas fiscais (NFS-e) no ASAAS. Fale com o usuário em
-termos leigos; procure cadastro e configuração com ferramentas de leitura,
-sem solicitar IDs/códigos que pode obter por conta própria.
+Use when the user asks to issue, schedule, view, check, or cancel ASAAS service invoices (NFS-e). Use plain language with the user. Query existing records and configuration rather than asking for IDs or codes you can retrieve.
 
-## Fonte oficial e atualização
+## Official sources and updates
 
-- Índice completo, inclusive alterações futuras: [documentação oficial da API
-  Asaas](https://docs.asaas.com/llms.txt).
-- Fluxo fiscal: [Introdução — Notas Fiscais](https://docs.asaas.com/docs/notas-fiscais)
-  e [Emitindo NFS-e](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico).
-- Contratos do [agendamento (`POST /v3/invoices`)](https://docs.asaas.com/reference/agendar-nota-fiscal),
-  [listagem de notas](https://docs.asaas.com/reference/listar-notas-fiscais)
-  e [cancelamento](https://docs.asaas.com/reference/cancelar-uma-nota-fiscal).
-- A documentação evolui: antes de concluir que um campo é obrigatório ou
-  presumir um padrão da conta, verifique o guia **e** o schema/erros do endpoint.
-  Havendo divergência, limite da ferramenta, mudança de contrato, recusa da
-  prefeitura ou informação fiscal ausente, diga ao usuário o que foi ou não
-  feito, com o motivo, e reporte à equipe responsável pelo plugin/skill para
-  atualização. Nunca exponha a chave, CPF integral nem dados sensíveis no
-  relato; não contorne o plugin por requisição manual.
+- Complete index, including future changes: [official Asaas API documentation](https://docs.asaas.com/llms.txt).
+- Tax workflow: [invoice introduction](https://docs.asaas.com/docs/notas-fiscais) and [issuing NFS-e](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico).
+- Contracts for [scheduling (`POST /v3/invoices`)](https://docs.asaas.com/reference/agendar-nota-fiscal), [listing invoices](https://docs.asaas.com/reference/listar-notas-fiscais), and [cancellation](https://docs.asaas.com/reference/cancelar-uma-nota-fiscal).
+- Documentation changes. Check both the guide and endpoint schema/errors before treating a field as required or assuming an account default. For discrepancies, tool limitations, contract changes, municipal rejection, or missing tax data, tell the user what was and was not done and why. Report the issue to the plugin/skill maintainers for an update. Never expose the key, full CPF, or sensitive data in that report, and do not bypass the plugin with manual requests.
 
-## Consultas da conta verificadas — HTTP 200
+## Verified account queries: HTTP 200
 
-Em 2026-09-23, duas consultas reais de produção retornaram HTTP 200, sem
-agendar notas nem alterar cadastros:
+On 2026-09-23, two real production queries returned HTTP 200 without scheduling invoices or modifying records:
 
-| Operação | Finalidade | Limite confirmado |
+| Operation | Purpose | Confirmed limitation |
 | --- | --- | --- |
-| `GET /v3/myAccount/commercialInfo` | Identificar o titular e consultar os dados comerciais da conta. | Não identifica o serviço padrão das notas fiscais. |
-| `GET /v3/fiscalInfo/` | Consultar a configuração fiscal existente da conta. | Não retornou a lista de serviços pré-cadastrados nem o identificador do serviço padrão. |
+| `GET /v3/myAccount/commercialInfo` | Identify the account holder and query commercial details. | Does not identify the default invoice service. |
+| `GET /v3/fiscalInfo/` | Query existing account tax configuration. | Did not return registered services or the default service ID. |
 
-`serviceProvisionCityDefaultType` representa a **cidade padrão da prestação**,
-não o serviço padrão. HTTP 200 nessas consultas não comprova preenchimento
-automático dos campos omitidos no agendamento.
+`serviceProvisionCityDefaultType` represents the default city of service provision, not the default service. HTTP 200 from these queries does not prove automatic completion of fields omitted when scheduling.
 
-Contratos, campos úteis, fontes oficiais e limites em
-[references/account-reads.md](references/account-reads.md). São capacidades
-verificadas da API: documentá-las aqui não adiciona ferramentas ao plugin.
-Use ferramentas correspondentes somente quando disponíveis; não invente
-nomes nem contorne sua ausência por requisições manuais com a credencial.
+See [references/account-reads.md](references/account-reads.md) for contracts, useful fields, sources, and limitations. These are verified API capabilities; documenting them does not add tools to the plugin. Use corresponding tools only when available. Do not invent tool names or bypass missing tools with manual authenticated requests.
 
-## Credencial
+## Credential
 
-- As ferramentas resolvem sozinhas a chave em `personal/asaas/production/api-key`
-  no Vault pessoal do Sufficit Identity.
-- Nunca peça a chave na conversa e nunca a inclua em argumentos, comandos ou
-  arquivos. Falhas `asaas_key_missing` e `asaas_vault_sign_in_required` seguem
-  o mesmo fluxo das demais skills do ASAAS (tela segura de Vault).
+- Tools resolve `personal/asaas/production/api-key` in the user's Sufficit Identity Vault.
+- Never request the key in chat or put it in arguments, commands, or files. Handle `asaas_key_missing` and `asaas_vault_sign_in_required` through the same secure Vault screen flow as the other ASAAS skills.
 
-## Serviço cadastrado versus descrição da nota
+## Registered service versus invoice description
 
-Há duas informações diferentes: `serviceDescription` é a **descrição impressa
-na nota**; `municipalServiceId`/`municipalServiceCode` identificam o
-**enquadramento municipal**. A primeira não vira automaticamente a segunda.
+`serviceDescription` is the description printed on the invoice. `municipalServiceId`/`municipalServiceCode` identify the municipal service classification. The former does not automatically become the latter.
 
-**Regra desta conta, combinada com o dono: os detalhes do serviço — código
-municipal, ISS e nome fiscal — são auto preenchidos a partir do cadastro de
-serviços da conta (painel: Notas Fiscais › Configurações › Serviços) sempre
-que a emissão não os especificar.** Por isso a ferramenta omite
-`municipalServiceId` e `municipalServiceCode` por padrão, o agente nunca
-pede código municipal ao usuário e nenhum código, ISS ou alíquota é
-inventado; emitir nota nunca cria serviço nem cadastro novo.
+The account owner's operational rule is that service details (municipal code, ISS, and tax name) are filled from the account service registration when omitted. The dashboard path is `Notas Fiscais › Configurações › Serviços`. Therefore, omit `municipalServiceId` and `municipalServiceCode` by default. Never ask the user for a municipal code or invent a code, ISS, or tax rate. Do not create a service or registration as part of issuing an invoice.
 
-O que a documentação oficial sustenta (checada em 2026-09-23):
+Official documentation checked on 2026-09-23 establishes the following:
 
-- O schema do [agendamento](https://docs.asaas.com/reference/agendar-nota-fiscal)
-  **não** lista `municipalServiceId` nem `municipalServiceCode` como
-  obrigatórios: omiti-los é aceito pelo contrato. O mesmo schema marca
-  `taxes`, `observations` e `deductions` como obrigatórios — e a conta emite
-  sem enviá-los, preenchidos pela configuração fiscal do cadastro.
-- Preenchimentos automáticos declarados no schema: `municipalServiceName`
-  usa `municipalServiceCode` quando o nome não é informado; e
-  `pisCofinsRetentionType` é calculado pelo Asaas (não envie).
-- A narrativa do [guia](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico),
-  escrita para integrações genéricas, pede `municipalServiceId` **ou**
-  `municipalServiceCode` (Portal Nacional: código) — ela não descreve o auto
-  preenchimento pelo cadastro da conta. O schema valida a omissão; o
-  comportamento da conta é a regra operacional. A emissão automática de
-  **assinaturas** é outro fluxo, configurado por assinatura.
+- The [scheduling schema](https://docs.asaas.com/reference/agendar-nota-fiscal) does not require `municipalServiceId` or `municipalServiceCode`, so omission is accepted by the contract. It marks `taxes`, `observations`, and `deductions` as required, although this account issues invoices without sending them, using its registered tax configuration.
+- Documented automatic values: `municipalServiceName` uses `municipalServiceCode` when the name is absent; Asaas calculates `pisCofinsRetentionType` (do not send it).
+- The [guide](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico), intended for generic integrations, asks for `municipalServiceId` or `municipalServiceCode` (code for National Portal accounts). It does not describe account-based automatic completion. The schema permits omission; the account behavior is the operational rule. Automatic subscription invoicing is a separate flow configured per subscription.
 
-Se o provedor recusar a nota por serviço ou imposto, a recusa traz o motivo
-dele: apresente-o ao usuário em linguagem clara, **reporte à equipe
-responsável pelo plugin/skill** (com o link e a data da checagem, para
-atualizar esta regra) e nunca preencha às cegas.
+If the provider rejects an invoice because of its service or tax details, present the actual reason in plain language. Report it to the plugin/skill maintainers with the source link and check date so this rule can be updated. Never fill fields blindly.
 
-Para não sobrecarregar o usuário leigo: consulte o histórico de notas e o
-cadastro já disponível. Se houver **uma descrição inequívoca e pertinente**
-à prestação atual, apresente-a ao usuário como proposta para a nota, com
-valor, destinatário e data, e peça confirmação **antes** do card de escrita.
-Uma descrição de cliente/serviço anterior é apenas referência: não prova que
-o mesmo serviço foi prestado agora. Se houver opções ou não houver evidência,
-pergunte *qual foi o serviço prestado*, sem pedir código técnico. Não use
-"serviço de teste" como descrição fictícia de operação fiscal real.
+To reduce the user's burden, query invoice history and existing records. If one description is unambiguous and relevant to the current service, propose it with the amount, recipient, and date, and obtain confirmation before the write approval card. A previous description is only a reference; it does not prove that the same service was provided now. If evidence is missing or several choices exist, ask what service was provided without requesting a technical code. Never use a fictional "test service" description for a real tax transaction.
 
-Se o usuário escolher expressamente um serviço municipal específico,
-`municipalServiceId` (se disponível) **ou** `municipalServiceCode` (código
-validado), nunca ambos. Cadastro novo só em pedido explícito do usuário.
+If the user explicitly chooses a specific municipal service, use `municipalServiceId` (if available) or `municipalServiceCode` (validated), never both. New registration requires an explicit request.
 
-### Efeito colateral comprovado dos campos municipais (sandbox, 2026-09-23)
+### Proven municipal-field side effects (sandbox, 2026-09-23)
 
-Experimentos controlados em conta **sandbox** mostraram que agendar nota
-**não é neutro** para o cadastro de serviços. Isto reforça a regra de
-omitir os campos municipais; não é permissão para usá-los livremente.
+Controlled sandbox experiments showed that scheduling an invoice can modify service registration. This reinforces omission as the default; it does not authorize unrestricted use of these fields.
 
-- **A identidade do cadastro é o `municipalServiceName`, não o código.**
-  Nomes diferentes produzem entradas separadas no painel, mesmo com o
-  mesmo código municipal.
-- **Enviar só `municipalServiceCode` cria entrada nova** com o nome igual
-  ao código (ex.: um registro chamado `01.01.01`, sem o texto oficial),
-  poluindo a tela de serviços da conta.
-- **Reutilizar um nome existente com outro código altera a associação
-  retroativamente**: notas já agendadas com aquele nome passaram a
-  responder com o código novo na consulta.
-- **`municipalServiceId` sozinho é recusado** (HTTP 400,
-  `invalid_action`: "O campo municipalServiceName deve ser informado"),
-  inclusive quando o id existe. O par id + nome é obrigatório junto.
-- **O sandbox não valida o código contra o catálogo**: um código
-  inexistente (`99.99.99`) foi aceito, agendado e autorizado, com número
-  e documentos. HTTP 200 ali **não** prova que a prefeitura aceitaria.
+- Service registration identity is `municipalServiceName`, not the code. Different names create separate dashboard entries even with the same municipal code.
+- Sending only `municipalServiceCode` creates a new entry named after that code, such as `01.01.01`, without the official description.
+- Reusing an existing name with a different code retroactively changes associations: queries for previously scheduled invoices with that name returned the new code.
+- `municipalServiceId` alone is rejected even when the ID exists: HTTP 400, `invalid_action`, literal message "O campo municipalServiceName deve ser informado". The ID and name must be supplied together.
+- The sandbox does not validate codes against the catalog. The nonexistent code `99.99.99` was accepted, scheduled, and authorized with an invoice number and documents. HTTP 200 there does not prove that a municipality would accept it.
 
-Conclusão operacional: quando o usuário escolher um serviço específico,
-prefira o par `municipalServiceId` + `municipalServiceName` usando a
-`description` **exata** de `asaas_services_list`. Nunca monte o nome à mão
-nem envie apenas o código — foi o que gerou entradas divergentes na conta
-de teste. Entradas assim, uma vez criadas, só se removem pelo painel.
+When the user chooses a specific service, prefer `municipalServiceId` + `municipalServiceName`, using the exact `description` returned by `asaas_services_list`. Never construct a name manually or send only the code; these produced divergent test-account entries, removable only through the dashboard.
 
-## Consulta de notas
+## Query invoices
 
-`asaas_invoices_list` executa um `GET` fixo em `/v3/invoices` com filtros
-opcionais (cliente, cobrança, status, período) e paginação. Somente leitura.
-Cada nota já chega com **quem a recebeu**: o campo `customer` traz o cliente
-resolvido (`id`, `name`, `personType`, `document` — CNPJ completo e formatado,
-CPF nos 3 primeiros dígitos); se um cliente não pôde ser resolvido, o id vem
-solto na nota e listado em `unresolvedCustomerIds`, com orientação para
-consultar `asaas_customers_list` antes de afirmar quem recebeu.
-Traduza status para linguagem simples: SCHEDULED = agendada, SYNCHRONIZED =
-enviada à prefeitura, AUTHORIZED = emitida, CANCELED = cancelada, ERROR =
-falhou. Contrato completo em
-[references/invoices-list.md](references/invoices-list.md).
+`asaas_invoices_list` makes a fixed read-only `GET` request to `/v3/invoices`, with optional customer, charge, status, date-range filters and pagination. Each invoice includes its recipient: `customer` contains the resolved `id`, `name`, `personType`, and `document` (full formatted CNPJ, first three CPF digits). An unresolved customer remains an ID on the invoice and appears in `unresolvedCustomerIds`. Query `asaas_customers_list` before identifying that recipient.
 
-## Emissão de nota nova — consultar antes de escrever
+Explain statuses plainly: SCHEDULED = scheduled, SYNCHRONIZED = sent to the municipality, AUTHORIZED = issued, CANCELED = canceled, ERROR = failed. Full contract: [references/invoices-list.md](references/invoices-list.md).
 
-Só emita quando o usuário **pedir explicitamente** a nota. A ferramenta
-`asaas_invoices_create` agenda a NFS-e e protege a conta em código:
+## Issue a new invoice: query before writing
 
-1. **Origem exatamente uma**: cobrança (`payment`), parcelamento
-   (`installment`) ou cliente (`customer`, nota avulsa). Se o usuário falou de
-   uma cobrança, descubra o `pay_...` antes; de um cliente, o `cus_...`.
-2. **Deduplicação automática**: cobrança que já tem nota recusa sempre; mesma
-   combinação de cliente + valor + data recusa até o usuário confirmar
-   (`confirmedDistinct`). Recusa não é erro — apresente a nota existente.
-3. **Serviço municipal: omitido por padrão — auto preenchido pela conta**.
-   A ferramenta não envia `municipalServiceId` nem `municipalServiceCode`:
-   os detalhes (código municipal, ISS, nome fiscal) vêm do cadastro de
-   serviços da conta (ver "Serviço cadastrado versus descrição da nota").
-   Só envie um deles (nunca os dois) quando o usuário escolher
-   explicitamente um serviço específico para aquela nota. Se o provedor
-   recusar a nota por falta de serviço, apresente o motivo real
-   ao usuário, reporte a divergência à equipe e nunca adivinhe código.
-4. **Aprovação explícita**: a emissão é escrita real na produção e mostra card
-   de aprovação na conversa.
-5. **Honestidade sobre o processamento**: agendar inicia o fluxo, mas a
-   autorização pela prefeitura é assíncrona. Diga "nota agendada, a emissão
-   foi para processamento" — nunca prometa autorização imediata. Para
-   confirmar depois, consulte pelo id e veja o status.
+Issue only when explicitly requested. `asaas_invoices_create` schedules the NFS-e and enforces these protections:
 
-Detalhes completos: [references/invoices-create.md](references/invoices-create.md).
+1. Exactly one origin: charge (`payment`), installment plan (`installment`), or customer (`customer`, standalone invoice). Resolve `pay_...` for a charge or `cus_...` for a customer before writing.
+2. Automatic deduplication: a charge with an existing invoice is always rejected. The same customer + amount + date is rejected until the user confirms (`confirmedDistinct`). Rejection is not a failure; present the existing invoice.
+3. Municipal service fields are omitted by default; the account supplies the municipal code, ISS, and tax name. Send only one of `municipalServiceId` or `municipalServiceCode` when the user explicitly chooses a specific service. If the provider rejects missing service details, present the actual reason, report the discrepancy, and never guess a code.
+4. Explicit approval: issuance writes to production and displays an approval card in the conversation.
+5. Accurate processing status: scheduling starts the flow, but municipal authorization is asynchronous. Say "invoice scheduled; issuance is being processed", not that authorization is immediate. Query by ID to confirm the later status.
 
-## Consulta de serviços municipais
+Details: [references/invoices-create.md](references/invoices-create.md).
 
-`asaas_services_list` lê o catálogo de serviços da conta
-(`GET /v3/fiscalInfo/services`) com filtro opcional de descrição. O resultado
-lembra: **emitir nota nunca cria serviço**. Use para **conferir e conversar**
-sobre os serviços cadastrados (inclusive achar duplicatas) — não para
-preencher campo de emissão por conta própria. Contas do Portal Nacional não
-recebem a lista pela API; nesses casos a orientação oficial é obter e validar
-o código do serviço com o Portal Nacional ou a contabilidade antes de usá-lo.
-A ausência da lista não é falha sua e não autoriza adivinhar código. Contrato em
-[references/services-list.md](references/services-list.md).
+## Query municipal services
 
-Dois cuidados ao conversar sobre essa lista:
+`asaas_services_list` reads the service catalog (`GET /v3/fiscalInfo/services`) with optional description filtering. Its result reinforces the rule that issuing an invoice must not create a service. Use it to inspect and discuss services, including duplicates; do not populate issuance fields on your own. National Portal accounts do not receive this list through the API. Official guidance is to obtain and validate the service code with the National Portal or the accountant before using it. Missing results do not authorize guessing. See [references/services-list.md](references/services-list.md).
 
-- **Catálogo do município ≠ serviços cadastrados da conta.** O endpoint
-  devolve o catálogo que a prefeitura disponibiliza (centenas de itens); a
-  tela **Notas Fiscais › Configurações › Serviços** mostra só os cadastros
-  da conta. Não apresente um como se fosse o outro.
-- **`offset` se comportou como número de página, não como índice** (o
-  deslocamento observado foi `offset × limit`). Paginar somando
-  `offset += limit` pula a maior parte do catálogo e encerra sem erro, com
-  lista vazia e `hasMore: false`. Avance de 1 em 1 e pare quando `hasMore`
-  for `false`. Se um serviço "não aparecer", suspeite da paginação antes de
-  concluir que não existe.
+Two distinctions matter:
 
-## Quando o usuário pede um serviço novo
+- The municipal catalog is not the account's registered-service list. The endpoint returns hundreds of municipal items; `Notas Fiscais › Configurações › Serviços` displays only account registrations. Do not present one as the other.
+- Observed `offset` behavior was a page number, not an item index: displacement was `offset × limit`. Adding `offset += limit` skips most entries and can end without error, with an empty list and `hasMore: false`. Increment by 1 and stop when `hasMore` is `false`. Investigate pagination before concluding that a service is missing.
 
-Se — e somente se — o usuário pedir **explicitamente** para cadastrar um
-serviço novo ("cadastra um serviço", "cria o serviço X"), trate como pedido
-legítimo, não como desvio. Mas a API pública do ASAAS **não oferece** criação,
-edição ou exclusão de serviço: o único endpoint fiscal de serviços é a
-listagem. Então:
+## Requests to register a service
 
-1. Não recuse o pedido como se fosse proibido — é permitido, só não é
-   automatizável pela API.
-2. Oriente o caminho real: painel do ASAAS em **Notas Fiscais › Configurações
-   › Serviços › Adicionar Serviço** (código municipal, ISS e descrição).
-3. Ofereça ajuda no que é automatizável: listar os serviços já cadastrados
-   para conferir se o desejado já existe (evita duplicatas, comuns nessa tela)
-   e, depois que o usuário cadastrar, usar o serviço na emissão.
+Treat an explicit request to register a new service as legitimate. However, the public ASAAS API offers only service listing, not creation, editing, or deletion.
 
-Nunca invente um endpoint de criação nem finja ter criado um serviço.
+1. Explain that registration is allowed but cannot be automated through this API.
+2. Direct the user to `Notas Fiscais › Configurações › Serviços › Adicionar Serviço` in the ASAAS dashboard (municipal code, ISS, and description).
+3. Help with available operations: list services to find possible duplicates and, after the user registers the service, use it for issuance.
 
-**Não use agendamento de nota como atalho para cadastrar serviço.** Os testes
-em sandbox mostraram que enviar campos municipais numa emissão cria ou altera
-entrada no cadastro (ver "Efeito colateral comprovado dos campos municipais").
-Isso não é uma API de criação: emite um documento fiscal real, não permite
-definir ISS de forma confiável e deixa resíduo que só o painel remove. Se o
-usuário quer um serviço novo, o caminho é o painel.
+Never invent a creation endpoint or claim to have created a service. Do not use invoice scheduling as a registration shortcut: it issues a real tax document, cannot reliably set ISS, and leaves entries removable only through the dashboard.
 
-## Limites honestos
+## Limits
 
-- A resposta nunca traz PDF/XML nem código de verificação; para o documento
-  em si, oriente o painel do ASAAS.
-- Não há atualização nem antecipação de nota por aqui. Para esses casos,
-  oriente o painel do ASAAS.
-- Cancelamento: se a ferramenta `asaas_invoices_cancel` existir nesta versão
-  do plugin, ela consulta a nota antes, exige aprovação explícita e reporta o
-  status real — `PROCESSING_CANCELLATION` **não** é cancelada, e a prefeitura
-  pode negar (`CANCELLATION_DENIED`). Contrato em
-  [references/invoices-cancel.md](references/invoices-cancel.md). Sem a
-  ferramenta, explique o limite e ofereça o painel.
-- Impostos (`taxes`) seguem a configuração da conta; a ferramenta não envia
-  alíquotas próprias.
+- Responses exclude PDF/XML and verification codes. Use the ASAAS dashboard for the documents.
+- Invoice updates and early issuance are unavailable here; direct the user to the dashboard.
+- If `asaas_invoices_cancel` is available, it reads the invoice first, requires explicit approval, and reports the actual status. `PROCESSING_CANCELLATION` does not mean canceled; the municipality can reject it (`CANCELLATION_DENIED`). See [references/invoices-cancel.md](references/invoices-cancel.md). Without the tool, explain the limitation and direct the user to the dashboard.
+- `taxes` follow account configuration; the tool does not send custom rates.
 
-## Quando a ferramenta não existe
+## Tools unavailable
 
-Se as ferramentas de nota não estiverem disponíveis, o plugin ASAAS está
-desabilitado ou esta versão do Genius ainda não as oferece. Oriente ativar o
-plugin ou atualizar o aplicativo. Não contorne chamando a API por shell ou
-script: a chave de produção não pode transitar pelo prompt.
+If invoice tools are unavailable, the ASAAS plugin is disabled or the Genius version does not provide them yet. Ask the user to enable the plugin or update the application. Do not bypass it through a shell or script: the production key must not enter the prompt.

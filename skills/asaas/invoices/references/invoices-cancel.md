@@ -1,64 +1,51 @@
-# Cancelamento de nota fiscal ASAAS
+# Cancellation of the invoice ASAAS
 
-A ferramenta `asaas_invoices_cancel` solicita o cancelamento de uma NFS-e na
-conta de produção via `POST /v3/invoices/{id}/cancel`
-([referência oficial](https://docs.asaas.com/reference/cancelar-uma-nota-fiscal)).
-Ela só cancela: nunca emite e nunca altera dados da nota.
+The `asaas_invoices_cancel` tool requests cancellation of a NFS-e in the production account via `POST /v3/invoices/{id}/cancel` ([official reference](https://docs.asaas.com/reference/cancelar-uma-nota-fiscal)). It just cancels: never issues and never changes invoice data.
 
-## Pré-requisitos (nesta ordem)
+## Prerequisites (in this order)
 
-1. O usuário pediu **explicitamente** cancelar (cancelar, anular, desfazer).
-2. O alvo é um id `inv_...` obtido de `asaas_invoices_list` — nunca um número
-   lido no papel da nota, nunca um palpite.
-3. A ferramenta consulta a nota **antes** de escrever: recusa quando não há
-   nada a cancelar, e o card de aprovação mostra o que será cancelado.
-4. Aprovação explícita na conversa: o cancelamento é **irreversível**.
+1. The user explicitly asked to cancel (cancel, cancel, undo).
+2. The target is an id `inv_...` obtained from `asaas_invoices_list` — never a number read on invoice paper, never a guess.
+3. The tool consults the invoice before writing: refuses when there is nothing to cancel, and the approval card shows what will be cancelled.
+4. Explicit approval in conversation: cancellation is irreversible.
 
-## Argumentos
+## Arguments
 
-| Argumento | Tipo | Obrigatório | Regras |
+| Argument | Type | Mandatory | Rules |
 | --- | --- | --- | --- |
-| `invoice` | string | sim | Id ASAAS da nota (`inv_...`), conforme `asaas_invoices_list`. |
+| `invoice` | string | yes | Invoice Id ASAAS (`inv_...`), according to `asaas_invoices_list`. |
 
-## Recusas (escrita não realizada)
+## Refusals (no write performed)
 
-`canceled: false` com `writesPerformed: false` é recusa, não erro. Nenhum
-POST aconteceu.
+`canceled: false` with `writesPerformed: false` is refusal, not error. No POST happened.
 
-| `reason` | Causa | Conduta |
+| `reason` | Cause | Conduct |
 | --- | --- | --- |
-| `already_canceled` | A nota já está cancelada. | Informe o usuário; nada a fazer. |
-| `cancellation_in_progress` | Cancelamento já está em processamento. | Aguarde o resultado; não repita. |
-| `cancellation_denied` | A prefeitura já negou este cancelamento. | Explique que resolver depende da prefeitura. |
-| `not_cancellable` | Estado não permite cancelar (ex.: `ERROR`). | Informe o status real ao usuário. |
+| `already_canceled` | The bill's already canceled. | Inform the user; nothing to do. |
+| `cancellation_in_progress` | Cancellation is already in processing. | Wait for the result; do not repeat. |
+| `cancellation_denied` | The city has already denied this cancellation. | Explain it's up to the city. |
+| `not_cancellable` | Status does not allow to cancel (e.g. `ERROR`). | Inform the user of the actual status. |
 
-## Resultado de sucesso
+## Success result
 
-| Campo | Valor |
+| Field | Value |
 | --- | --- |
-| `cancellationRequested` | `true` — o pedido foi aceito pelo ASAAS. |
-| `canceled` | `true` **somente** se o status retornado for `CANCELED`. |
-| `cancellationIsFinal` | `true` só com `CANCELED`. |
-| `cancellationIsAsync` | `true` quando ainda não é final. |
-| `previousStatus` | Status da nota antes do pedido. |
-| `invoice` | Projeção sanitizada da nota (sem URLs/código de verificação). |
+| `cancellationRequested` | `true` — the request has been accepted by ASAAS. |
+| `canceled` | `true` only if the status returned is `CANCELED`. |
+| `cancellationIsFinal` | `true` only with `CANCELED`. |
+| `cancellationIsAsync` | `true` when it's not final yet. |
+| `previousStatus` | Invoice status before request. |
+| `invoice` | Sanitized invoice projection (without URLs/check code). |
 
-**Honestidade obrigatória**: `PROCESSING_CANCELLATION` significa "pedido
-aceito, prefeitura processando" — não diga que a nota foi cancelada. A
-prefeitura pode negar (`CANCELLATION_DENIED`) e nem todo município permite
-cancelamento automático pela integração (opção `supportsCancellation` nas
-configurações municipais). Eventos oficiais do fluxo:
-`INVOICE_PROCESSING_CANCELLATION`, `INVOICE_CANCELED`,
-`INVOICE_CANCELLATION_DENIED`. Para confirmar depois, consulte a nota e
-reporte o status real.
+Compulsory honesty: `PROCESSING_CANCELLATION` means "accepted request, municipality processing" — don't say the invoice has been cancelled. The city may deny (`CANCELLATION_DENIED`) and not every municipality allows automatic cancellation by integration (option `supportsCancellation` in municipal settings). Official flow events: `INVOICE_PROCESSING_CANCELLATION`, `INVOICE_CANCELED`, `INVOICE_CANCELLATION_DENIED`. To confirm later, see the invoice and report the actual status.
 
-## Códigos de falha
+## Failure codes
 
-| Código | Ação |
+| Code | Action |
 | --- | --- |
-| `asaas_invoices_cancel_invalid_arguments` | Id ausente/inválido; nada foi chamado. |
-| `asaas_invoices_cancel_not_found` | Id não existe: liste as notas (`asaas_invoices_list`) e use o id retornado. |
-| `asaas_invoices_cancel_rejected` | Provedor recusou (mensagem traz código+descrição). |
-| `asaas_invoices_cancel_unexpected` | Resposta em formato estranho: consulte a nota antes de repetir. |
-| `asaas_timeout` | **Consulte a nota antes de repetir.** |
-| Demais (`asaas_vault_*`, `asaas_credential_rejected`, `asaas_provider_unavailable`, `asaas_transport_failed`) | Fluxo padrão das skills ASAAS. |
+| `asaas_invoices_cancel_invalid_arguments` | Absent/invalid id; nothing was called. |
+| `asaas_invoices_cancel_not_found` | Id does not exist: list the invoices (`asaas_invoices_list`) and use the returned id. |
+| `asaas_invoices_cancel_rejected` | Provider refused (message brings code+description). |
+| `asaas_invoices_cancel_unexpected` | Strange response: refer to the invoice before repeating. |
+| `asaas_timeout` | See the invoice before repeating. |
+| Other failures (`asaas_vault_*`, `asaas_credential_rejected`, `asaas_provider_unavailable`, `asaas_transport_failed`) | Standard flow of ASAAS skills. |

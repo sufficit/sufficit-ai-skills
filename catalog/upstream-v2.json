@@ -51,12 +51,12 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-10-01T20:16:16.390712+00:00",
+  "updatedAt": "2026-10-16T19:52:33.771605+00:00",
   "skills": [
     {
       "id": "android-adaptive",
       "name": "adaptive",
-      "description": "Adapta interfaces Compose a celulares, tablets, dobráveis, desktop, TV, Auto e XR.",
+      "description": "Adapt Compose interfaces to phones, tablets, foldables, desktop, TV, Auto, and XR.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/jetpack-compose/adaptive",
       "tags": [
         "android",
@@ -73,7 +73,7 @@
     {
       "id": "android-agp-9-upgrade",
       "name": "agp-9-upgrade",
-      "description": "Migra projetos Android para o Android Gradle Plugin 9 e sua nova DSL.",
+      "description": "Migrate Android projects to Android Gradle Plugin 9 and its new DSL.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/build-system/agp/agp-9-upgrade",
       "tags": [
         "android",
@@ -89,7 +89,7 @@
     {
       "id": "android-android-cli",
       "name": "android-cli",
-      "description": "Instala e opera o Android CLI para projetos, SDKs, emuladores e dispositivos.",
+      "description": "Install and operate the Android CLI for projects, SDKs, emulators, and devices.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/devtools/android-cli",
       "tags": [
         "android",
@@ -106,7 +106,7 @@
     {
       "id": "android-android-intent-security",
       "name": "android-intent-security",
-      "description": "Audita e corrige riscos de segurança em Intents e componentes Android.",
+      "description": "Audit and fix Intent security risks in Android components.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/security/android-intent-security",
       "tags": [
         "android",
@@ -122,7 +122,7 @@
     {
       "id": "android-android-profiler",
       "name": "android-profiler",
-      "description": "Grava e analisa traces, memória, inicialização, jank e gargalos Android.",
+      "description": "Record and analyze Android traces, memory, startup, jank, and performance bottlenecks.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/profilers/android-profiler",
       "tags": [
         "android",
@@ -139,7 +139,7 @@
     {
       "id": "android-appfunctions",
       "name": "appfunctions",
-      "description": "Expõe fluxos de aplicativos Android como AppFunctions descobertas e acionadas por agentes.",
+      "description": "Expose Android app workflows as AppFunctions discoverable and callable by agents.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/device-ai/appfunctions",
       "tags": [
         "android",
@@ -156,7 +156,7 @@
     {
       "id": "android-camerax",
       "name": "camerax",
-      "description": "Orienta implementação, migração e diagnóstico de câmera Android com CameraX.",
+      "description": "Implement, migrate, and troubleshoot Android cameras with CameraX.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/camera/camerax",
       "tags": [
         "android",
@@ -173,7 +173,7 @@
     {
       "id": "android-display-glasses-with-jetpack-compose-glimmer",
       "name": "display-glasses-with-jetpack-compose-glimmer",
-      "description": "Desenvolve experiências Android XR para óculos usando Jetpack Compose Glimmer.",
+      "description": "Build Android XR display-glasses experiences using Jetpack Compose Glimmer.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/xr/display-glasses-with-jetpack-compose-glimmer",
       "tags": [
         "android",
@@ -189,7 +189,7 @@
     {
       "id": "android-edge-to-edge",
       "name": "edge-to-edge",
-      "description": "Migra Compose para edge-to-edge e corrige barras do sistema, IME e insets.",
+      "description": "Migrate Compose to edge-to-edge and fix system bars, IME, and insets.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/system/edge-to-edge",
       "tags": [
         "android",
@@ -206,7 +206,7 @@
     {
       "id": "android-engage-sdk-integration",
       "name": "engage-sdk-integration",
-      "description": "Integra, depura e corrige implementações do Google Play Engage SDK.",
+      "description": "Integrate, debug, and fix Google Play Engage SDK implementations.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/play/engage-sdk-integration",
       "tags": [
         "android",
@@ -222,7 +222,7 @@
     {
       "id": "android-leanback-to-compose-tv-migration",
       "name": "leanback-to-compose-tv-migration",
-      "description": "Migra aplicativos Android TV de Leanback e Views para Compose for TV.",
+      "description": "Migrate Android TV apps from Leanback and Views to Compose for TV.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/tv/leanback-to-compose-tv-migration",
       "tags": [
         "android",
@@ -239,7 +239,7 @@
     {
       "id": "android-media3-cast-integration",
       "name": "media3-cast-integration",
-      "description": "Adiciona Google Cast a aplicativos Android usando Jetpack Media3.",
+      "description": "Add Google Cast to Android apps using Jetpack Media3.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/media/media3-cast-integration",
       "tags": [
         "android",
@@ -255,7 +255,7 @@
     {
       "id": "android-migrate-xml-views-to-jetpack-compose",
       "name": "migrate-xml-views-to-jetpack-compose",
-      "description": "Migra telas Android XML Views para Jetpack Compose de forma incremental e validada.",
+      "description": "Incrementally migrate Android XML Views to Jetpack Compose with validation.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/jetpack-compose/migration/migrate-xml-views-to-jetpack-compose",
       "tags": [
         "android",
@@ -272,7 +272,7 @@
     {
       "id": "android-navigation-3",
       "name": "navigation-3",
-      "description": "Instala, migra e implementa padrões de navegação com Jetpack Navigation 3.",
+      "description": "Install, migrate, and implement navigation patterns with Jetpack Navigation 3.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/navigation/navigation-3",
       "tags": [
         "android",
@@ -289,7 +289,7 @@
     {
       "id": "android-play-billing-library-version-upgrade",
       "name": "play-billing-library-version-upgrade",
-      "description": "Migra projetos para a versão estável mais recente da Google Play Billing Library.",
+      "description": "Upgrade projects to the latest stable Google Play Billing Library.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/play/play-billing-library-version-upgrade",
       "tags": [
         "android",
@@ -305,7 +305,7 @@
     {
       "id": "android-play-policy-insights",
       "name": "play-policy-insights",
-      "description": "Audita aplicativos contra políticas, declarações e requisitos de segurança da Google Play.",
+      "description": "Audit apps against Google Play policies, declarations, and security requirements.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/play/play-policy-insights",
       "tags": [
         "android",
@@ -322,7 +322,7 @@
     {
       "id": "android-r8-analyzer",
       "name": "r8-analyzer",
-      "description": "Analisa regras R8 e ProGuard para reduzir tamanho e remover regras redundantes.",
+      "description": "Analyze R8 and ProGuard rules to reduce size and remove redundant rules.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/performance/r8-analyzer",
       "tags": [
         "android",
@@ -338,7 +338,7 @@
     {
       "id": "android-restore-credentials",
       "name": "restore-credentials",
-      "description": "Implementa restauração segura de credenciais e login silencioso em novos dispositivos.",
+      "description": "Implement secure credential restoration and silent sign-in on new devices.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/identity/restore-credentials",
       "tags": [
         "android",
@@ -354,7 +354,7 @@
     {
       "id": "android-styles",
       "name": "styles",
-      "description": "Integra a API experimental de Styles do Jetpack Compose a temas e componentes.",
+      "description": "Integrate the experimental Jetpack Compose Styles API with themes and components.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/jetpack-compose/theming/styles",
       "tags": [
         "android",
@@ -370,7 +370,7 @@
     {
       "id": "android-testing-setup",
       "name": "testing-setup",
-      "description": "Cria estratégia e infraestrutura para testes unitários, UI, screenshots e ponta a ponta.",
+      "description": "Create a strategy and infrastructure for unit, UI, screenshot, and end-to-end tests.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/testing/testing-setup",
       "tags": [
         "android",
@@ -387,7 +387,7 @@
     {
       "id": "android-verified-email",
       "name": "verified-email",
-      "description": "Implementa obtenção de e-mail verificado sem OTP com Credential Manager.",
+      "description": "Implement verified email retrieval without OTP using Credential Manager.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/identity/verified-email",
       "tags": [
         "android",
@@ -403,7 +403,7 @@
     {
       "id": "android-wear-compose-m3",
       "name": "wear-compose-m3",
-      "description": "Cria e migra interfaces Wear OS com Compose Material 3.",
+      "description": "Create and migrate Wear OS interfaces with Compose Material 3.",
       "source": "https://github.com/android/skills/tree/ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6/wear/wear-compose-m3",
       "tags": [
         "android",
@@ -419,7 +419,7 @@
     {
       "id": "asaas-connection",
       "name": "asaas-connection",
-      "description": "Conecta e testa a conta de produção do ASAAS a partir da chave guardada no Vault pessoal do Sufficit Identity, usando o teste somente leitura asaas_connection_test do Sufficit AI Genius. Versão 0.1.0.",
+      "description": "Securely connect and test the ASAAS production account using the key stored in the user's Sufficit Identity Vault and the asaas_connection_test tool in Sufficit AI Genius. Use when the user asks to connect, continue, check, or test ASAAS. The test is read-only and creates no charge, payment, or customer. Version 0.1.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/connection",
       "tags": [
         "asaas",
@@ -430,12 +430,13 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "2abf9853d881d371ae87b3f04d23f46ce5942136e38b795e5ca3e5291f62cbf0"
     },
     {
       "id": "asaas-payments",
       "name": "asaas-payments",
-      "description": "Lista e consulta cobranças reais da conta de produção do ASAAS (vencidas, recebidas, aguardando pagamento) pela ferramenta somente leitura asaas_payments_list do Sufficit AI Genius, com resultado sanitizado sem URLs de fatura ou dados pessoais. Versão 0.1.0.",
+      "description": "List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas_payments_list in Sufficit AI Genius. Use when the user asks to view, check, or calculate totals for ASAAS charges. Read-only; does not create or modify anything. Version 0.1.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
       "tags": [
         "asaas",
@@ -446,12 +447,13 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "3ec75df6c737d39850d687ddc670940bf692634ea973d6503b92e0dd5fe79411"
     },
     {
       "id": "asaas-customers",
       "name": "asaas-customers",
-      "description": "Consulta, busca e cadastra clientes reais da conta de produção do ASAAS (nome, e-mail, tipo de pessoa, CNPJ completo ou CPF nos 3 primeiros dígitos) pelas ferramentas asaas_customers_list e asaas_customers_create do Sufficit AI Genius. O cadastro exige aprovação explícita e sempre consulta duplicatas (CPF/CNPJ, e-mail, nome) antes de escrever. Versão 0.3.0.",
+      "description": "Query, search, and register customers in the ASAAS production account using asaas_customers_list and asaas_customers_create in Sufficit AI Genius. Exposes name, email, person type, full CNPJ, or only the first three CPF digits. Queries are read-only; registration requires user confirmation and checks duplicates before writing. Version 0.3.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers",
       "tags": [
         "asaas",
@@ -462,12 +464,13 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "86d390c01c4f3bb9039bbdab7d9f21ea3fec6ed729f67c75ce8803ca383adb2b"
     },
     {
       "id": "asaas-invoices",
       "name": "asaas-invoices",
-      "description": "Consulta e agenda NFS-e de produção do ASAAS (asaas_invoices_list, asaas_services_list, asaas_invoices_create) e cancela com asaas_invoices_cancel quando disponível, sempre com consult-before-write, deduplicação e aprovação explícita. Detalhes do serviço (código municipal, ISS, nome fiscal) são auto preenchidos pelo cadastro da conta quando não especificados: o agente nunca pede código municipal ao usuário, nunca invente código nem prometa preenchimento não documentado — recusa do provedor é tratada com o motivo real e reportada à equipe. A descrição impressa na nota (serviceDescription) é campo próprio e vem do usuário; emitir nota NUNCA cria serviço, criar serviço é só a pedido explícito e pelo painel do ASAAS (a API pública não expõe criação). Documentação oficial da API Asaas linkada (guia, referência e índice llms.txt), com regra de verificação antes de presumir obrigação e reporte de divergências. Inclui referência às consultas GET /v3/myAccount/commercialInfo e GET /v3/fiscalInfo/ verificadas com HTTP 200, seus campos e limites; elas não identificam o serviço padrão do painel nem representam novas ferramentas do plugin. Versão 0.5.2.",
+      "description": "Query and schedule production ASAAS NFS-e invoices with asaas_invoices_list, asaas_services_list, and asaas_invoices_create; cancel with asaas_invoices_cancel when available. Omit municipal service fields by default so account configuration supplies them. Never ask the user for a municipal code or invent one. Invoice descriptions come from the user. Municipal fields can create service entries or change existing invoice associations. Consult official documentation before assuming requirements, report discrepancies, query before writing, and obtain approval. Version 0.6.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "tags": [
         "asaas",
@@ -478,12 +481,13 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "77ec0a41ffb9608810e9e3f87289d719d7d8c8e53933cfe40b02d5b891bc3443"
     },
     {
       "id": "github-cli",
       "name": "github-cli",
-      "description": "Opera issues, pull requests, revisões, CI, Actions, releases e anexos do GitHub pelo gh estruturado do Genius, com autorização segura do Sufficit Identity. Versão 1.2.0.",
+      "description": "Operate GitHub repositories and CI through the structured github_cli tool in Sufficit AI Genius. Use to query or modify issues, pull requests, and reviews; diagnose or monitor workflows and Actions; call the API with gh; manage releases; or download attachments. Version 1.2.1.",
       "source": "https://github.com/sufficit/sufficit-ai-genius-skills/tree/e31f0f044fe011a4df06f47973145aa55ae90c13/skills/github-cli",
       "tags": [
         "github",
@@ -496,7 +500,8 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "7e8f0312b8e310a6b205be8249e0dfacfd97f7da3c5033c0083a37ffd606b502"
     },
     {
       "id": "google-agent-platform-alert-configuration",
@@ -2152,7 +2157,7 @@
     {
       "id": "meta-app-review",
       "name": "meta-app-review",
-      "description": "Aprova apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e opera o Business Manager: o que é só interface, ordem do envio, screencasts, chamadas de API de teste e erros que enganam. Versão 1.0.6.",
+      "description": "Prepare Meta apps (WhatsApp, Messenger, Instagram) for App Review and operate Business Manager. Use to create or configure app in a portfolio, request advanced access to permissions like whatsapp_business_management, whatsapp_business_messaging, pages_messaging and business_management, record required screencasts, connect Page or WhatsApp Business account to a platform, or diagnose webhooks, Facebook Login for Business, WhatsApp numbers and Graph API errors in these streams. Version 1.0.7.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review",
       "tags": [
         "meta",
@@ -2165,12 +2170,13 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "3b8bc88b85d1aed6efc8b793be84c9c133cc83d0e16e89d119cb691b1e04e45f"
     },
     {
       "id": "refero-design",
       "name": "refero-design",
-      "description": "Conduz design de interface e de produto por pesquisa: trava referências antes de implementar, registra cada decisão com a fonte que a sustenta e recusa os padrões médios que um modelo produz sozinho. Versão 1.0.2.",
+      "description": "Research-driven interface and product design with locked references, traceable decisions, and bundled typography, color, motion, and craft guidance. Version 1.0.3.",
       "source": "https://github.com/referodesign/refero_skill/tree/a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d/skills/refero-design",
       "tags": [
         "design",
@@ -2183,12 +2189,13 @@
       ],
       "author": "Refero",
       "license": "MIT",
-      "sourceId": "refero"
+      "sourceId": "refero",
+      "contentSha256": "1693726e46efc472f342fe4cd8652d6c226d8c42f63bd47487ccaecb4ac9f960"
     },
     {
       "id": "routeros-management",
       "name": "routeros-management",
-      "description": "Administra MikroTik RouterOS v7 e CHR: redes, firewall, NAT, VPN, roteamento, scripts, serviços e backup, com inventário, Safe Mode, rollback e segurança operacional. Versão 1.0.0.",
+      "description": "Administer MikroTik RouterOS v7 and CHR with CLI, SSH and REST; diagnose interfaces, IP, DHCP, DNS, routing, firewall, NAT, VPN, Wi-Fi, services, scripts, backup and updates, with controlled change and validation. Use when the user mentions MikroTik, RouterOS, WinBox, CHR, /ip, /interface or /system. Version 1.0.1.",
       "source": "https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8/routeros-fundamentals",
       "tags": [
         "mikrotik",
@@ -2202,12 +2209,13 @@
       ],
       "author": "tikoci / Sufficit",
       "license": "MIT",
-      "sourceId": "mikrotik"
+      "sourceId": "mikrotik",
+      "contentSha256": "25deb9836eaa15909979f2ea8c8c819fbaf9e4486d423ee382638783cd76aaee"
     },
     {
       "id": "sufficit-api",
       "name": "sufficit-api",
-      "description": "Consulta e gerencia a API corporativa Sufficit como o usuário autenticado, começando por carteiras, créditos, vales e contatos, com descoberta pelo OpenAPI vivo. Versão 1.0.2.",
+      "description": "Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, vouchers and contacts. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI. Version 1.0.3.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "tags": [
         "sufficit",
@@ -2220,12 +2228,12 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "d51c3dfe119b1d771a05991ab0530308e986a872d5e354495fbb97ecdc0da4c8"
+      "contentSha256": "36cf768eb0970bbb32755aad57d6c775f5ce2bc6c6832973d751ed61b5383e70"
     },
     {
       "id": "sufficit-frontend",
       "name": "sufficit-frontend",
-      "description": "Implementa e refina interfaces web com tokens, componentes reutilizáveis e validação no navegador; integra Blazor/SUI e pode complementar Impeccable. Versão 1.0.1.",
+      "description": "Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when requested to turn visual references into functional screens, fix layout/themes or evolve a design system. It does not apply to the isolated backend or the native UI Android/iOS. Version 1.0.2.",
       "source": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
       "tags": [
         "sufficit",
@@ -2237,7 +2245,8 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-ui"
+      "sourceId": "sufficit-ui",
+      "contentSha256": "f5e3f089267e4decd73c70bd38a1b57bb185d0f7c7619351cf0da4ce2dd9c05c"
     },
     {
       "id": "svg-vectorization",
@@ -2260,7 +2269,7 @@
     {
       "id": "device-ui-android",
       "name": "device-ui-android",
-      "description": "Para sites no Android usa o navegador embutido browser_* (página como dados, sem screenshot); device_ui (acessibilidade) só para apps nativos ou sessão logada do Chrome do usuário, com toque semântico, description=/role= para ícones e confirmação do efeito antes de anunciar sucesso. Versão 0.3.0.",
+      "description": "Use the built-in browser_* tools for Android websites and device_ui for native apps or the user's signed-in Chrome session. Operate Sufficit AI Genius Android accessibility controls with read_screen, click_element, and set_text rather than desktop shortcuts or raw coordinates. Use for Android interaction, device_ui/android_device_control, printing, saving PDFs, sharing, or ineffective key actions. Discover description=/role= selectors for unlabeled icons and verify the final effect of every Save/Download/Send action. Version 0.3.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android",
       "tags": [
         "android",
@@ -2272,12 +2281,13 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "427e57166fce10d3478671f8e89deb4c7ec30b5d3967a73c9fc47c6886949505"
     },
     {
       "id": "playwright-mcp",
       "name": "playwright-mcp",
-      "description": "Usa o Playwright MCP (modo isolado/silencioso --headless ou modo bridge --extension com a extensão Chrome Web Store \"Playwright Extension\", internamente \"Playwright MCP Bridge\") como automação web opcional do Sufficit AI Genius — em desktop via stdio local, e no Genius mobile/tablet obrigatoriamente via http contra um servidor hospedado. O agente cadastra/habilita/desabilita/remove o servidor com mcp_server_add/mcp_server_set_enabled/mcp_server_remove, sem depender da UI. Versão 0.3.0.",
+      "description": "Configure and use Playwright MCP as an optional Sufficit AI Genius browser automation path, with isolated --headless mode or --extension bridge mode. Desktop uses local stdio; mobile/tablet requires http to a hosted server. Manage registration directly with mcp_server_add, mcp_server_set_enabled, and mcp_server_remove. Use for Playwright, MCP Bridge, isolated scraping, or capabilities missing from native browser_* tools, such as network/console capture, PDF, multiple tabs, file upload, or accessibility snapshots. Version 0.3.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
       "tags": [
         "playwright",
@@ -2291,12 +2301,13 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "431de963038e25afb0ecb44f98d1df1085873b23b5db7737d8640edc389305d6"
     },
     {
       "id": "quepasa-api",
       "name": "quepasa-api",
-      "description": "Usa a API HTTP do QuePasa (gateway WhatsApp em Go): envio de texto e mídia, administração de grupos (criar, participantes, nome, descrição, permissões, convites no privado e pedidos de entrada), download de mídia e vCard de contatos, histórico e configuração/leitura de webhooks. Autentica pelo token da sessão (X-QUEPASA-TOKEN) e restringe a chave de usuário (X-QUEPASA-USERKEY) ao seu escopo; inclui armadilhas de produção (success:false com HTTP 200, rotas v5 x legadas, reinício derruba sessões, stream_replaced). Versão 0.1.0.",
+      "description": "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa. Version 0.1.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
       "tags": [
         "quepasa",
@@ -2308,12 +2319,13 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "contentSha256": "d09c8662c1df0b9caeaedb836167047ab588f121b20d4a134819546bd3268319"
     },
     {
       "id": "software-development",
       "name": "software-development",
-      "description": "Executa mudanças de software autorizadas com plano vivo, checkpoints, validação proporcional e registro verificável. Versão 1.1.0. Inclui renderização Blazor por eventos e componentes com parâmetros estáveis.",
+      "description": "Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization. Version 1.1.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
       "tags": [
         "software",
@@ -2326,7 +2338,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "5f9e011cc11c7890eef45899cbace16aae2b9d02b33bef68e3fe1675f880c257"
+      "contentSha256": "2da3540eb30929aa13b2c8875acdbf3e9b4de57cdb00a4c48aace3ea06a688ec"
     },
     {
       "id": "mattpocock-prototype",
@@ -2335,6 +2347,24 @@
       "author": "Matt Pocock",
       "license": "MIT",
       "source": "https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/engineering/prototype"
+    },
+    {
+      "id": "clear-technical-writing",
+      "name": "clear-technical-writing",
+      "description": "Write and revise documentation, procedures and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Do not automatically apply this style to creative writing or any future conversation.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
+      "tags": [
+        "sufficit",
+        "writing",
+        "documentation",
+        "ste",
+        "technical-english",
+        "portuguese"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "ec9a9aa585e051c02312b1c00cf105359b5810468194b6c2d78e0c4c30cb5cad"
     }
   ],
   "catalogEntries": 165

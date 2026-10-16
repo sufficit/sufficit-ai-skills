@@ -40,3 +40,12 @@ Genius. A origem e o digest de cada pacote estão em
 
 Os nomes e conteúdos de terceiros permanecem atribuídos aos respectivos
 autores. A inclusão neste espelho não altera suas licenças.
+
+## Local English-language adaptations
+
+Sufficit translated package instructions, supporting references, and discovery
+metadata into English in October 2026. Upstream author, license, source URL, and
+pinned revision remain unchanged. Updated package versions and content digests
+identify these local adaptations; they do not claim a new upstream release.
+The Refero change translates its Sufficit-maintained discovery card; its upstream
+English instructions and reference materials remain unchanged.

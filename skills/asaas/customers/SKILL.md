@@ -1,85 +1,45 @@
 ---
 name: asaas-customers
-description: Consulta, busca e cadastra clientes na conta de produção do ASAAS (nome, e-mail, tipo de pessoa, CNPJ completo ou CPF nos 3 primeiros dígitos) pelas ferramentas asaas_customers_list e asaas_customers_create do Sufficit AI Genius. Consultas são somente leitura; cadastro exige confirmação do usuário e sempre verifica duplicatas antes de escrever.
+description: "Query, search, and register customers in the ASAAS production account using asaas_customers_list and asaas_customers_create in Sufficit AI Genius. Exposes name, email, person type, full CNPJ, or only the first three CPF digits. Queries are read-only; registration requires user confirmation and checks duplicates before writing."
 ---
 
-# Clientes ASAAS de produção
+# ASAAS production customers
 
-Use esta orientação quando o usuário pedir para ver, listar, buscar, conferir
-ou **cadastrar** clientes no ASAAS.
+Use when the user asks to view, list, search, check, or register ASAAS customers.
 
-## Credencial
+## Credential
 
-- A ferramenta resolve sozinha a chave em `personal/asaas/production/api-key`
-  no Vault pessoal do Sufficit Identity.
-- Nunca peça a chave na conversa e nunca a inclua em argumentos, comandos ou
-  arquivos.
-- Se o resultado indicar `asaas_key_missing`, prepare exatamente essa entrada
-  com a ferramenta de preparo de Vault do Genius (`vault_prepare_entry`) e
-  entregue a tela segura para o usuário colar e salvar. Se indicar
-  `asaas_vault_sign_in_required`, peça para entrar na conta Sufficit.
+- The tool resolves `personal/asaas/production/api-key` in the user's Sufficit Identity Vault.
+- Never request the key in the conversation or include it in arguments, commands, or files.
+- For `asaas_key_missing`, prepare this exact entry with `vault_prepare_entry` and provide the secure screen for the user to paste and save the key. For `asaas_vault_sign_in_required`, ask the user to sign in to their Sufficit account.
 
-## Consulta de clientes
+## Query customers
 
-Descubra e use `asaas_customers_list`. Ela executa um `GET` fixo em
-`/v3/customers` com filtros opcionais de nome, e-mail e documento (CPF/CNPJ)
-e paginação. É somente leitura: não cria, altera nem remove cliente nenhum.
+Discover and use `asaas_customers_list`. It makes a fixed `GET` request to `/v3/customers`, with optional name, email, CPF/CNPJ filters and pagination. It is read-only: no customer is created, modified, or removed.
 
-Considere o resultado confiável somente quando indicar `provider: "asaas"`,
-`environment: "production"` e `writesPerformed: false`. Em caso de falha, siga
-[references/customers-list.md](references/customers-list.md).
+Trust the result only when it reports `provider: "asaas"`, `environment: "production"`, and `writesPerformed: false`. Follow [references/customers-list.md](references/customers-list.md) for failures.
 
-Traduza `personType` para linguagem simples: FISICA = pessoa física,
-JURIDICA = empresa. O documento segue a política de identificação: um CNPJ
-(empresa) chega completo e formatado (ex.: `27.506.088/7001-24`), porque é
-dado público de registro; um CPF chega limitado aos 3 primeiros dígitos
-(ex.: `390.***.***-**`) — nunca tente adivinhar ou completar o número.
-Para contas grandes, percorra as páginas com `offset` enquanto `hasNext` for verdadeiro;
-não prometa "todos" de uma vez, o limite por página é 30.
+Explain `personType` in plain language: FISICA = individual, JURIDICA = company. Under the identification policy, a company CNPJ is returned in full and formatted (for example, `27.506.088/7001-24`) as public registration data. A CPF is limited to its first three digits (for example, `390.***.***-**`); never infer or complete the remaining digits. For large accounts, paginate with `offset` while `hasNext` is true. Do not promise all results in one call; the limit is 30 per page.
 
-## Cadastro de cliente novo — consultar antes de escrever
+## Register a customer: query before writing
 
-Só cadastre quando o usuário **pedir explicitamente** o cadastro (ex.: "cadastra
-um cliente novo"). Antes de qualquer escrita, a própria ferramenta consulta se
-o cliente já existe — e você deve conduzir a conversa no mesmo espírito:
+Register only when the user explicitly requests it, such as "register a new customer". The tool checks whether the customer exists before writing. Follow the same approach in the conversation:
 
-1. **Recolha os dados essenciais**: nome completo e, se o usuário tiver,
-   CPF/CNPJ e e-mail. Não peça mais que isso e nunca invente dados.
-2. **Deixe a ferramenta deduplicar**: `asaas_customers_create` consulta por
-   documento, e-mail e nome antes de escrever.
-   - Documento que já existe: a ferramenta **recusa sempre** e devolve o
-     candidato existente. Use o cliente existente; não insistir.
-   - E-mail ou nome parecido: a ferramenta recusa com os candidatos e pede
-     confirmação. Só repita com `confirmedDistinct: true` depois que o
-     **usuário** confirmar que é um cliente diferente.
-3. **Aguarde o card de aprovação**: o cadastro é uma escrita real na conta de
-   produção e exige aprovação explícita na conversa. Nunca prometa o cadastro
-   como automático.
-4. **Reporte com honestidade**: em sucesso, o resultado traz o cliente criado
-   com o documento sob a política de identificação (CNPJ completo; CPF nos 3
-   primeiros dígitos). Em timeout, consulte se o cadastro aconteceu antes
-   de tentar de novo — a própria mensagem da falha orienta isso.
+1. Collect essential data: full name and, if available, CPF/CNPJ and email. Do not request more or invent values.
+2. Let `asaas_customers_create` check duplicates by document, email, and name.
+   - An existing document always causes rejection and returns the existing candidate. Use that customer; do not insist.
+   - A matching email or similar name returns candidates and requests confirmation. Retry with `confirmedDistinct: true` only after the user confirms that this is a different customer.
+3. Wait for the approval card. Registration writes to the production account and requires explicit approval in the conversation. Do not promise automatic registration.
+4. Report the actual result. Success includes the created customer with the identification policy applied (full CNPJ, first three CPF digits). After a timeout, check whether creation succeeded before retrying; the failure message provides guidance.
 
-Detalhes completos de argumentos, recusas e códigos de falha:
-[references/customers-create.md](references/customers-create.md).
+Arguments, refusals, and failure codes: [references/customers-create.md](references/customers-create.md).
 
-## Limites honestos
+## Limits
 
-- As respostas trazem id, nome, tipo de pessoa, e-mail e documento (CNPJ
-  completo; CPF nos 3 primeiros dígitos).
-  Telefone, endereço, observações e referências externas não entram no
-  contexto do modelo. Se o usuário precisar desses dados, oriente o painel
-  do ASAAS.
-- O cadastro envia apenas nome, CPF/CNPJ e e-mail — endereço, telefone e
-  outros campos ficam para o painel do ASAAS.
-- Não há como editar ou remover cliente por aqui. Se o usuário pedir,
-  explique o limite e ofereça o painel.
+- Results include ID, name, person type, email, and document under the identification policy. Phone, address, invoices, and external references do not enter the model context. Direct the user to the ASAAS dashboard for those fields.
+- Creation sends only name, CPF/CNPJ, and email. Address, phone, and other fields require the dashboard.
+- Editing and removing customers are unavailable here; explain the limitation and direct the user to the dashboard.
 
-## Quando a ferramenta não existe
+## Tool unavailable
 
-Se `asaas_customers_list` ou `asaas_customers_create` não estiverem
-disponíveis, o plugin ASAAS está desabilitado ou esta versão do Genius ainda
-não as oferece. Oriente o usuário a ativar o plugin ASAAS nas extensões do
-Genius ou atualizar o aplicativo. Não contorne a ausência chamando a API por
-shell, script ou outra ferramenta: a chave de produção não pode transitar
-pelo prompt.
+If `asaas_customers_list` or `asaas_customers_create` is unavailable, the ASAAS plugin is disabled or this Genius version does not provide it yet. Ask the user to enable the plugin in Genius extensions or update the application. Do not bypass it through a shell, script, or another tool: the production key must not enter the prompt.

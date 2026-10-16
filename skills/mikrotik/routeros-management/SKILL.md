@@ -1,23 +1,23 @@
 ---
 name: routeros-management
-description: Administra MikroTik RouterOS v7 e CHR com CLI, SSH e REST; diagnostica interfaces, IP, DHCP, DNS, roteamento, firewall, NAT, VPN, Wi-Fi, serviços, scripts, backup e atualizações, com mudança controlada e validação. Use quando o usuário mencionar MikroTik, RouterOS, WinBox, CHR, /ip, /interface ou /system.
+description: "Administer MikroTik RouterOS v7 and CHR with CLI, SSH and REST; diagnose interfaces, IP, DHCP, DNS, routing, firewall, NAT, VPN, Wi-Fi, services, scripts, backup and updates, with controlled change and validation. Use when the user mentions MikroTik, RouterOS, WinBox, CHR, /ip, /interface or /system."
 ---
 
-# Operação MikroTik RouterOS v7
+# Operation MikroTik RouterOS v7
 
-Escopo: RouterOS **7.x**; antes de aplicar sintaxe, confirme versão, arquitetura, pacotes e recursos disponíveis (`/system/resource/print`, `/system/package/print`, `/system/device-mode/print`). RouterOS v6 tem menus e comportamentos diferentes: não execute receitas v7 às cegas. Este documento ensina operação; **não fornece conexão, credenciais ou autorização** para administrar dispositivo algum.
+Scope: RouterOS 7.x; before applying syntax, confirm version, architecture, packages and features available (`/system/resource/print`, `/system/package/print`, `/system/device-mode/print`). RouterOS v6 has different menus and behaviors: do not run v7 recipes blindly. This document teaches operation; does not provide connection, credentials or authorization to administer any device.
 
-## Contrato de operação
+## Operation contract
 
-1. Identifique dispositivo, ambiente, interface de administração, acesso fora de banda, janela e objetivo. Leia o estado primeiro; não assuma nomes de interfaces, WAN/LAN, endereços ou fábrica padrão. Não execute em equipamento de terceiros sem autorização.
-2. Proponha mudança mínima com inventário do estado anterior, comandos exatos, impacto, dependências, verificação e reversão. Peça confirmação explícita para alterar roteadores de produção, principalmente acesso, firewall, rotas, VPN, reset, upgrade ou reboot; não trate leitura como consentimento para escrita.
-3. Antes de mudanças de conectividade: preserve sessão alternativa/OOB, exporte configuração **sem `show-sensitive`**, faça backup binário criptografado com senha armazenada fora do chat quando viável, e estabeleça recuperação testável. Export texto não inclui todas as credenciais/chaves/certificados; backup binário é específico do dispositivo e versão. Não copie artefatos sensíveis para logs ou repositórios.
-4. Na CLI interativa WinBox/SSH use Safe Mode (Ctrl+X ou F4), altere em passos pequenos e teste o acesso antes de sair com Ctrl+X para confirmar. Ctrl+D desfaz. Safe Mode **não é transação universal**: a sessão precisa continuar viva, outras sessões podem interferir e o histórico tem limite; REST/API e scripts não herdam automaticamente o Safe Mode de uma sessão. Para automação remota, prefira alteração em fases, watchdog/rollback independente testado e acesso OOB. Nunca assuma que `/undo` desfaz todo tipo de operação.
-5. Confira estado observado contra objetivo, sem revelar segredos. Se houve perda de conectividade, **pare** e use o plano de recuperação; não dispare comandos repetidos. Registre o que foi alterado e o que não foi verificado.
+1. Identify device, environment, administration interface, out-of-band access, window and target. Read state first; do not assume interface names, WAN/LAN assignments, addresses, or factory defaults. Do not perform on third party equipment without permission.
+2. Propose minimal change with previous status inventory, exact commands, impact, dependencies, verification and reversal. Ask for explicit confirmation to change production routers, mainly access, firewall, routes, VPN, reset, upgrade or reboot; do not treat reading as written consent.
+3. Before connectivity changes: Preserve alternative session/OOB, export configuration without `show-sensitive`, create an encrypted binary backup with password stored outside the chat when feasible, and establish testable recovery. Export text does not include all credentials/keys/certificates; binary backup is device-specific and version-specific. Do not copy sensitive artifacts for logs or repositories.
+4. In CLI interactive WinBox/SSH use Safe Mode (Ctrl+X or F4), change in small steps and test access before leaving with Ctrl+X to confirm. Ctrl+D undoes. Safe Mode is not a universal transaction: the session must remain alive, other sessions may interfere and the history has limits; REST/API and scripts do not automatically inherit Safe Mode from a session. For remote automation, prefer phased changes, independent watchdog/rollback tested and OOB access. Never assume that `/undo` undoes all kinds of operation.
+5. Check out observed state against objective, without revealing secrets. If connectivity has been lost, stop and use the recovery plan; do not fire repeated commands. Log what has been changed and what has not been verified.
 
-## CLI não é Linux
+## CLI is not Linux
 
-SSH abre a CLI do RouterOS, **não bash**: não use `ls`, `apt`, `iptables`, `systemctl`, redirecionamento ou pipes. Caminhos como `/ip/address/print`, `/interface/print`, `/system/resource/print` são menus/comandos; scripts `.rsc` têm sintaxe própria. Exemplos de leitura:
+SSH opens CLI of RouterOS, not Bash: do not use `ls`, `apt`, `iptables`, `systemctl`, redirect or pipe. Paths like `/ip/address/print`, `/interface/print`, `/system/resource/print` are menus/commands; scripts `.rsc` have their own syntax. Examples of reading:
 
 ```routeros
 /system/identity/print
@@ -30,45 +30,45 @@ SSH abre a CLI do RouterOS, **não bash**: não use `ls`, `apt`, `iptables`, `sy
 /log/print where topics~"error"
 ```
 
-`print` mostra números de linha **temporários**: não os use em scripts. `[find ...]` pode retornar zero ou vários IDs; confirme cardinalidade antes de `set/remove`. Use seletores exatos de `name`/`comment` e identifique a propriedade real; IDs `*HEX` podem mudar. Não faça `remove [find]`, `remove [find dynamic=no]` ou limpeza por regex ampla. Marque apenas objetos que a automação possui e reconcilie um por vez. Reexecute scripts apenas depois de confirmar idempotência. Para sintaxe desconhecida, consulte ajuda `?` no menu, versão e [referência oficial](https://manual.mikrotik.com/docs/CLI%20Reference/); não invente propriedades.
+`print` shows temporary line numbers: do not use them in scripts. `[find ...]` can return zero or multiple IDs; confirm cardinality before `set/remove`. Use `name`/`comment` exact selectors and identify the real property; `*HEX` IDs can change. Do not do `remove [find]`, `remove [find dynamic=no]` or wide regex cleaning. Mark only objects that automation has and reconcile one at a time. Reexecute scripts only after confirming idempotency. For unknown syntax, see `?` help in menu, version and [official reference](https://manual.mikrotik.com/docs/CLI%20Reference/); do not invent properties.
 
-## Acesso e interfaces de gestão
+## Access and management interfaces
 
-Prefira SSH com chave ou HTTPS com certificado validado, usuário de menor privilégio e firewall/listas de endereços de gestão; segmente gestão por VLAN/VPN. REST é exposto pelo serviço `www-ssl` (ou `www` sem TLS, não recomendado), em `/rest/` no RouterOS v7; não confunda REST com a **API binária** (`api`/`api-ssl`, portas usualmente 8728/8729). Restrinja `/ip/service`, `/tool/mac-server`, WinBox e neighbor discovery à rede de gestão. Não habilite `www`, API sem TLS ou login com senha vazia para facilitar automação; não use `curl -k`, tokens em argumentos de shell ou export `show-sensitive` em logs. Faça inventário de regras atuais antes de restringir serviços.
+Prefer SSH with key or HTTPS with validated certificate, user of lesser privilege and firewall/management address lists; segment management through VLAN/VPN. REST is exposed by the `www-ssl` service (or `www` without TLS, not recommended), in `/rest/` in RouterOS v7; do not confuse REST with the binary API (`api`/`api-ssl`, ports usually 8728/8729). Restrict `/ip/service`, `/tool/mac-server`, WinBox and neighbor discovery to the management network. Do not enable `www`, API without TLS or login with empty password to facilitate automation; do not use `curl -k`, tokens in shell arguments or export `show-sensitive` in logs. Inventory current rules before restricting services.
 
-REST: `GET /rest/ip/address` lista; `PUT /rest/ip/address` **cria**, `PATCH /rest/ip/address/*ID` atualiza, `DELETE` remove; `POST /rest/<menu>/print` consulta com argumentos/proplist e `POST /rest/<menu>/<command>` executa comandos. `.id` é o identificador interno, não número de linha. Comandos de ação (`reboot`, `reset-configuration`, etc.) não são GET; trate POST como potencialmente mutante. Use cliente HTTPS com verificação de certificado, segredo fora de URL/log, timeout e registro redigido. REST não é transacional: compare antes/depois e execute rollback explícito se necessário.
+REST: `GET /rest/ip/address` list; `PUT /rest/ip/address` creates, `PATCH /rest/ip/address/*ID` update, `DELETE` removes; `POST /rest/<menu>/print` query with arguments/proplist and `POST /rest/<menu>/<command>` executes commands. `.id` is the internal identifier, not the line number. Action commands (`reboot`, `reset-configuration`, etc.) are not GET; treat POST as potentially state-changing. Use HTTPS client with certificate verification, secret outside URL/log, timeout and redacted logging. REST is not transactional: compare before/after and run explicit rollback if necessary.
 
-## Mapa de operação (inspecione antes de configurar)
+## Operation Map (inspect before setting up)
 
-| Área | Inventário inicial | Cuidados e verificação |
+| Area | Initial Inventory | Care and verification |
 | --- | --- | --- |
-| Links/VLAN/bridge/Wi-Fi | `/interface/print detail`, `/interface/bridge/print`, `/interface/bridge/port/print`, `/interface/vlan/print`, menus `wifi`/`wireless` existentes | VLAN filtering, PVID e bridge CPU podem derrubar gestão; Wi-Fi depende de hardware, pacotes e versão. Teste SSID/autenticação e caminho de gestão. |
-| IPv4/IPv6, DHCP, DNS | `/ip/address/print`, `/ipv6/address/print`, `/ip/dhcp-server/print`, `/ip/dhcp-client/print`, `/ip/dns/print` | Verifique pools, leases, gateway, RA/DHCPv6 e resolução de clientes; não abra recursão DNS para Internet. |
-| Rotas e protocolos | `/ip/route/print detail`, `/routing/table/print`, menus `/routing` disponíveis | Confirme tabela/VRF, next-hop, distância, políticas, BGP/OSPF e rota de retorno da gestão; teste failover de ponta a ponta. |
-| Firewall/NAT | `/ip/firewall/filter/print detail`, `/ip/firewall/nat/print detail`, `/ipv6/firewall/filter/print detail` | Regras em ordem; `input` protege roteador, `forward` trânsito; IPv6 tem firewall separado. Preserve established/related e exceção de gestão antes do drop. NAT depende de conntrack; teste ambos os sentidos. |
-| VPN/túneis | `/interface/wireguard/print`, `/ip/ipsec/peer/print`, `/ppp/active/print` conforme pacotes | Confirme peers, Allowed Address, rotas, MTU, DNS, firewall e handshake; nunca exponha chave privada, PSK ou credenciais. |
-| Contas/serviços/certificados | `/user/print`, `/ip/service/print`, `/certificate/print` | Menor privilégio, TLS válido, origem restrita, rotação coordenada; não remova único acesso administrativo. |
-| Observabilidade | `/log/print`, `/tool/ping`, `/tool/traceroute`, `/interface/monitor-traffic`, `/tool/torch` | Cuidado com tráfego sensível e captura; monitoração pode consumir recursos. Compare baseline e erro antes/depois. |
-| Backup/upgrade | `/system/package/print`, `/system/routerboard/print`, `/file/print` | Planeje versão, arquitetura, espaço, compatibilidade, reboot, rollback e acesso físico; não atualize firmware/RouterBOOT automaticamente. |
-| Scripts/automação | `/system/script/print detail`, `/system/scheduler/print detail` | Scripting não é shell; políticas/permissões importam. Não execute snippets não auditados, imports ou downloads remotos. |
+| Links/VLAN/bridge/Wi-Fi | `/interface/print detail`, `/interface/bridge/print`, `/interface/bridge/port/print`, `/interface/vlan/print`, existing `wifi`/`wireless` menus | VLAN filtering, PVID and bridge CPU can disrupt management access; Wi-Fi depends on hardware, packages and version. Test SSID/authentication and management path. |
+| IPv4/IPv6, DHCP, DNS | `/ip/address/print`, `/ipv6/address/print`, `/ip/dhcp-server/print`, `/ip/dhcp-client/print`, `/ip/dns/print` | Check pools, leases, gateway, RA/DHCPv6 and customer resolution; do not open DNS recursion for Internet. |
+| Routes and protocols | `/ip/route/print detail`, `/routing/table/print`, `/routing` menus available | Confirm table/VRF, next-hop, distance, policies, BGP/OSPF and management return route; fail-over test from end to end. |
+| Firewall/NAT | `/ip/firewall/filter/print detail`, `/ip/firewall/nat/print detail`, `/ipv6/firewall/filter/print detail` | Rules in order; `input` protects router, `forward` traffic; IPv6 has separate firewall. Preserve established/related and management exception before drop. NAT depends on conntrack; test both directions. |
+| VPN/tunnels | `/interface/wireguard/print`, `/ip/ipsec/peer/print`, `/ppp/active/print` according to packages | Confirm peer, Allowed Address, Routes, MTU, DNS, firewall and handshake; never expose private key, PSK or credentials. |
+| Accounts/services/certificates | `/user/print`, `/ip/service/print`, `/certificate/print` | Less privilege, valid TLS, restricted origin, coordinated rotation; do not remove only administrative access. |
+| Observability | `/log/print`, `/tool/ping`, `/tool/traceroute`, `/interface/monitor-traffic`, `/tool/torch` | Beware of sensitive traffic and capture; monitoring can consume resources. Compare baseline and error before/after. |
+| Backup/upgrade | `/system/package/print`, `/system/routerboard/print`, `/file/print` | Plan version, architecture, space, compatibility, reboot, rollback and physical access; do not update firmware/RouterBOOT automatically. |
+| Scripts/automation | `/system/script/print detail`, `/system/scheduler/print detail` | Scripting is not shell; policies/permissions matter. Do not perform unaudited snippets, imports or remote downloads. |
 
-## Firewall: sequência e escopo
+## Firewall: sequence and scope
 
-Regras filter são avaliadas de cima para baixo; exceções devem vir antes do drop. `action=log` e ações de address-list podem continuar avaliação. `fasttrack-connection` pode contornar mangle/filas: avalie policy routing e QoS antes de ativar. Para port forwarding, verifique `dstnat` **e** permissão de `forward`, IP do destino, retorno e hairpin se aplicável; publicar serviço aumenta superfície de ataque. Nunca substitua conjunto de regras por template genérico nem misture `/ip/firewall` com `/ipv6/firewall`. Use comentários exclusivos da sua automação e confira a posição de cada regra antes e depois.
+Filter rules are evaluated from top to bottom; exceptions should come before drop. `action=log` and address-list actions can continue evaluation. `fasttrack-connection` can bypass mangle/queues: evaluate policy routing and QoS before activating. For port forwarding, check `dstnat` and permission from `forward`, IP of destination, return and hairpin if applicable; publish service increases attack surface. Never replace rules by generic template or mix `/ip/firewall` with `/ipv6/firewall`. Use unique comments from your automation and check the position of each rule before and after.
 
-## Plano de mudança reutilizável
+## Reusable change plan
 
 ```text
-Alvo e autorização: identidade, versão, ambiente, proprietário, janela
-Estado atual: saídas relevantes (redigidas), rota de gestão, acesso alternativo
-Objetivo e riscos: interfaces/endereços/fluxos impactados
-Pré-condições: versão/pacotes, backup/export, OOB, rollback testado
-Mudança: comandos específicos, em passos menores, com seletores únicos
-Verificação: estado, conexão existente + conexão nova, clientes e monitoramento
-Reversão: comandos para o estado anterior, gatilho, responsável e prazo
-Resultado: aplicado/parcial/não aplicado, evidências sem segredos
+Target and authorization: identity, version, environment, owner, maintenance window
+Current state: relevant redacted output, management route, alternate access
+Objective and risks: affected interfaces, addresses, and flows
+Prerequisites: version/packages, backup/export, OOB, tested rollback
+Change: exact commands, small steps, unique selectors
+Verification: state, existing and new connections, clients, monitoring
+Rollback: commands restoring previous state, trigger, owner, deadline
+Result: applied/partial/not applied, evidence without secrets
 ```
 
-## Fontes e proveniência técnica
+## Sources and technical provenance
 
-Adaptado e ampliado de [tikoci/routeros-skills (MIT, revisão fixa)](https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8), especialmente `routeros-fundamentals`, `routeros-firewall` e `routeros-scripting`; atribuição e licença acompanham este pacote. Consulte sempre a documentação vigente da MikroTik para versão e menu reais: [manual](https://manual.mikrotik.com/docs/introduction/), [Configuration Management/Safe Mode](https://help.mikrotik.com/docs/spaces/ROS/pages/328155/Configuration+Management), [REST API](https://help.mikrotik.com/docs/spaces/ROS/pages/47579162/REST+API), [Firewall](https://help.mikrotik.com/docs/display/ROS/Filter). As páginas antigas `help.mikrotik.com` estão congeladas; priorize o manual novo quando houver divergência.
+Adapted and expanded from [tikoci/routeros-skills (MIT, pinned revision)](https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8), especially `routeros-fundamentals`, `routeros-firewall`, and `routeros-scripting`. Attribution and license are included in this package. Consult current MikroTik documentation for the actual version and menu: [manual](https://manual.mikrotik.com/docs/introduction/), [Configuration Management/Safe Mode](https://help.mikrotik.com/docs/spaces/ROS/pages/328155/Configuration+Management), [REST API](https://help.mikrotik.com/docs/spaces/ROS/pages/47579162/REST+API), and [Firewall](https://help.mikrotik.com/docs/display/ROS/Filter). The old `help.mikrotik.com` pages are frozen; prefer the new manual when they disagree.

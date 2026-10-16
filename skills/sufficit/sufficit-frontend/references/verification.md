@@ -1,29 +1,29 @@
-# Evidência no navegador
+# Evidence in the browser
 
-Escolher a matriz pelo risco e pelo que mudou. Para uma correção de layout comum: estado reportado, largura ampla e estreita, tema afetado e um estado vizinho que compartilha estilos. Para primitiva compartilhada: incluir variantes e consumidor representativo. Não confundir isso com obrigação de auditar todo o produto.
+Choose the matrix for risk and for what has changed. For a common layout correction: reported state, wide and narrow width, affected theme and a neighboring state that shares styles. For shared primitive: include variants and representative consumer. Do not confuse this with obligation to audit the entire product.
 
-## Preparar
+## Ready
 
-Usar o navegador/ferramenta disponível e os comandos do projeto. Aguardar renderização interativa, fontes e transições relevantes antes de medir. Exercitar dados realistas sem executar mutações reais desnecessárias. Se usar fixture, deixar claro o que ela não valida.
+Use the available browser/tool and project commands. Wait for interactive rendering, relevant fonts and transitions before measuring. Exercise realistic data without performing unnecessary real mutations. If you use fixture, make it clear what it does not validate.
 
-Reproduzir a reclamação antes da correção quando possível; guardar evidência comparável. Para spacing, abrir os painéis; para dropdown, abrir o menu e navegar por teclado; para tamanhos, renderizar as variantes lado a lado. Não se satisfazer com screenshot de estados fechados.
+Reproduce the reported problem before correction when possible; store comparable evidence. For spacing, open the panels; for dropdown, open the menu and navigate by keyboard; for sizes, render the variants side by side. Do not satisfy with closed-state screenshot.
 
-## Conferir
+## Check
 
-- **Orientação da tarefa:** avaliar a captura e o fluxo sem narração do desenvolvedor. Identificar onde olhar primeiro, o que ler para decidir e qual ação tomar. Conferir se a prioridade e o motivo dos itens são compreensíveis com dados realistas, inclusive no tablet. Se tudo disputar atenção ou o usuário precisar procurar onde começar, revisar a hierarquia; alinhamento correto e detalhes recolhidos não bastam.
-- **Geometria:** distância real entre irmãos, padding, tamanho dos controles/ícones, alinhamento e overflow. Ler o valor computado e a regra vencedora quando houver divergência.
-- **Uso:** foco visível, ordem de tabulação, nome acessível, controles desabilitados, submissão e recuperação nos estados relevantes.
-- **Adaptação:** textos longos, zoom e ponto de quebra representativo quando atingirem a mudança. Rolagem local deliberada é diferente de overflow acidental da página.
-- **Aparência:** hierarquia, tema, contraste e estados; análise automática de acessibilidade não comprova conformidade completa nem substitui a revisão visual.
-- **Entrega:** mesmo CSS e versão de componentes no artefato testado e no destino, caso publicação faça parte da tarefa. Sem acesso autenticado, health e assets não provam o fluxo autenticado.
+- Task orientation: evaluate the capture and flow without narration of the developer. Identify where to look first, what to read to decide and what action to take. Check whether the priority and reason for the items are understandable with realistic data, including on the tablet. If everything disputes attention or the user needs to look where to start, review the hierarchy; correct alignment and collapsed details are not enough.
+- Geometry: real distance between siblings, padding, size of controls/icons, alignment and overflow. Read the computed value and winning rule when there is divergence.
+- Use: visible focus, tab order, accessible name, disabled controls, submission and recovery in the relevant states.
+- Adaptation: long texts, zoom and representative breakpoint when they reach change. Deliberate local scrolling is different from accidental overflow of the page.
+- Appearance: hierarchy, theme, contrast and states; automatic accessibility analysis does not prove complete compliance or replace the visual review.
+- Delivery: matching CSS and component version in the tested artifact and destination, if publication is part of the task. Without authenticated access, health and assets do not prove authenticated flow.
 
-Não introduzir limiares universais a partir de uma tela. Para contrastes, tamanhos de alvo e conformidade formal, aplicar o padrão exigido pelo projeto e consultar sua fonte normativa atual quando necessário.
+Do not introduce universal thresholds from a screen. For contrasts, target sizes and formal compliance, apply the standard required by the project and consult your current normative source when necessary.
 
-## Medição reutilizável
+## Reusable measurement
 
-[scripts/measure-layout.mjs](../scripts/measure-layout.mjs) é uma função para avaliação **dentro de uma página já aberta**. Não inicia browser, não navega, não altera DOM e não classifica aprovação. Retorna valores de elementos encontrados e a distância vertical entre seletores consecutivos; comparar esses valores com o contrato da tela.
+[scripts/measure-layout.mjs](../scripts/measure-layout.mjs) is a function for evaluation within an already open page. It does not start a browser, navigate, modify the DOM, or decide whether a result passes. Returns values of elements found and vertical distance between consecutive selectors; compare these values with the screen contract.
 
-Exemplo com Playwright já instalado no projeto:
+Example with Playwright already installed in the project:
 
 ```js
 import path from 'node:path';
@@ -35,6 +35,6 @@ const evidence = await page.evaluate(measureLayout, {
 });
 ```
 
-`skillDir` e `page` são fornecidos pelo harness existente; não instalar um segundo harness só para esta função. Seletores ausentes/inválidos e conteúdo sem caixa visível aparecem explicitamente. Uma distância negativa pode significar sobreposição ou layout em colunas; interpretar no contexto. Para listas, o helper usa o primeiro elemento e registra a contagem: seletores ambíguos exigem refino.
+`skillDir` and `page` are provided by the existing harness; do not install a second harness only for this function. Missing/invalid selectors and contents without visible box appear explicitly. A negative distance can mean overlapping or layout in columns; interpreting in context. For lists, the helper uses the first element and records the count: ambiguous selectors require refining.
 
-Guardar screenshots, medidas e resultado dos checks na convenção do projeto. Uma regressão automatizada deve detectar o defeito real (ex.: altura final indiferente ao parâmetro), não espelhar nomes de classes ou aceitar qualquer arquivo de captura existente.
+Save screenshots, measures and result of checks at the project convention. Automated regression should detect the actual defect (e.g. final height unaffected by the parameter), do not mirror class names or accept any existing capture file.

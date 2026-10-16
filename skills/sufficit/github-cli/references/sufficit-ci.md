@@ -1,39 +1,29 @@
-# CI da Sufficit
+# CI Sufficit
 
-Use este fluxo quando um PR, issue ou missão mencionar CI, checks, Actions, runner, build ou
-testes. A conta GitHub conectada ao Genius é o primeiro caminho para diagnóstico. Os manuais de
-infraestrutura são fonte administrativa interna e nunca devem ser copiados para uma resposta,
-issue, log, skill pública ou repositório de produto.
+Use this flow when a PR, issue or mission mention CI, checks, Actions, runner, build or tests. The GitHub account connected to Genius is the first way to diagnose. Infrastructure manuals are internal administrative source and should never be copied for a response, issue, log, public skill or product repository.
 
-## Fontes de verdade
+## Sources of Truth
 
-Consulte nesta ordem:
+See in this order:
 
-1. `AGENTS.md` ou a instrução equivalente do repositório;
-2. `.github/workflows/*.yml` na revisão que executou;
-3. `scripts/ci-local.sh` e scripts chamados por ele;
-4. checks, jobs, etapas, logs e artefatos da execução no GitHub;
-5. estado dos runners, somente se o job estiver aguardando infraestrutura.
+1. `AGENTS.md` or equivalent repository instruction;
+2. `.github/workflows/*.yml` in the revision that ran;
+3. `scripts/ci-local.sh` and scripts it invokes;
+4. checks, jobs, steps, logs and execution artifacts in GitHub;
+5. Runner status, only if the job is waiting for infrastructure.
 
-O workflow do próprio repositório vence qualquer exemplo desta referência. A label Linux
-padrão é `aireset-ci` (renomeada de `openclaw-ci` em 2026-09-18); não altere labels por
-associação de nome.
+The workflow of the repository itself wins any example of this reference. The default Linux label is `aireset-ci` (renamed from `openclaw-ci` on 2026-09-18); do not change labels by name association.
 
-## Diagnóstico autônomo
+## Autonomous diagnosis
 
-1. Leia o PR com `statusCheckRollup`, `headRefOid`, `baseRefName`, `files` e URL.
-2. Para cada check sem sucesso, identifique workflow, execução, job, etapa e horário.
-3. Se o job terminou, leia `--log-failed`; se necessário, consulte o job específico e baixe o
-   artefato de resultado. **Não peça ao humano para colar logs disponíveis no GitHub.**
-4. Leia o diff do PR e os testes alterados, mas não conclua que uma falha é preexistente apenas
-   porque o nome do teste não coincide com os arquivos modificados.
-5. Procure evidência: reproduza na worktree, confira a mesma suíte na base ou compare execuções
-   recentes da branch base. Registre comando, falha e relação causal em poucas linhas.
-6. Tome a próxima ação que já está autorizada: corrigir a regressão, devolver ao autor, repetir
-   uma falha transitória uma vez ou acompanhar o runner. Encaminhe decisão ao humano somente
-   quando restar uma escolha de produto ou risco sem regra no repositório.
+1. Read PR with `statusCheckRollup`, `headRefOid`, `baseRefName`, `files` and URL.
+2. For each unsuccessful check, identify workflow, execution, job, step and time.
+3. If the job is finished, read `--log-failed`; if necessary, see the specific job and download the result artifact. Do not ask the human to paste logs available in GitHub.
+4. Read the PR diff and the changed tests, but do not conclude that a failure is pre-existing only because the test name does not match the modified files.
+5. Look for evidence: reproduce in the worktree, check out the same suite at the base or compare recent executions of the base branch. Record command, failure and causal relationship in few lines.
+6. Take the next action that is already authorized: correct the regression, return to the author, repeat a transient failure once or monitor the runner. Send decision to the human only when there is a choice of product or risk without rule in the repository.
 
-Consultas úteis, sempre como a lista `arguments` de `github_cli`:
+Useful queries, always like the `arguments` list of `github_cli`:
 
 ```json
 ["pr", "view", "536", "--repo", "owner/repo", "--json", "number,title,headRefOid,baseRefName,files,statusCheckRollup,url"]
@@ -51,95 +41,65 @@ Consultas úteis, sempre como a lista `arguments` de `github_cli`:
 ["run", "list", "--repo", "owner/repo", "--branch", "main", "--workflow", "CI", "--limit", "5", "--json", "databaseId,status,conclusion,headSha,createdAt,url"]
 ```
 
-## Classificação e ação
+## Classification and action
 
-| Evidência | Classificação | Próxima ação |
+| Evidence | Classification | Next action |
 |---|---|---|
-| Teste reproduz na branch do PR e passa na base | Regressão do PR | Autor corrige; revisor solicita alteração e devolve a tarefa |
-| Mesmo teste falha na base ou em execução anterior comparável | Falha preexistente comprovada | Vincule a falha existente e aplique a política de merge do repositório |
-| Timeout, download temporário ou serviço externo oscila; nova tentativa não repete | Transitória | Reexecute somente os jobs com falha e acompanhe até terminar |
-| Job fica `queued` e nenhum runner compatível está online/livre | Runner indisponível ou ocupado | Consulte runners/labels; aguarde se ocupado ou encaminhe falha operacional objetiva |
-| Execução foi cancelada | Cancelamento | Determine se foi manual, por concorrência, timeout ou superseded antes de repetir |
-| Logs/API retornam acesso negado | Autorização insuficiente | Informe permissão e endpoint ausentes; não invente diagnóstico |
+| Test reproduces on the PR branch and passes at the base | PR regression | Author fixes; reviewer requests change and returns task |
+| Same test failed base or previous comparable execution | Proven pre-existing failure | Link existing failure and apply repository merge policy |
+| Timeout, temporary download or external service oscillates; new attempt does not repeat | Transient | Reexecute only failed jobs and follow until finished |
+| Job gets `queued` and no compatible runner is online/free | Runner unavailable or busy | See runners/labels; wait if busy or forward objective operational failure |
+| Execution cancelled | Cancellation | Determine whether it was manual, by concurrency, timeout or superseded before repeating |
+| Logs/API return denied access | Insufficient authorisation | Inform permission and endpoint absent; do not invent diagnosis |
 
-Falhas preexistentes não são automaticamente irrelevantes. Verifique se quebram o contrato do
-PR, impedem uma revisão confiável ou ocultam outra regressão. A decisão final segue as regras de
-branch e revisão do repositório.
+Preexisting failures are not automatically irrelevant. Make sure they break the PR contract, prevent a reliable review or hide another regression. The final decision follows the branch rules and revision of the repository.
 
-## Reexecução e acompanhamento
+## Reruns and monitoring
 
-Antes de repetir, consulte o estado atual. Uma chamada de escrita com resultado ambíguo deve ser
-confirmada por nova leitura para evitar execuções duplicadas.
+Before repeating, refer to the current state. A written call with ambiguous result must be confirmed by a new reading to avoid duplicate executions.
 
 ```json
 ["run", "rerun", "34672730158", "--repo", "owner/repo", "--failed"]
 ```
 
-Depois, acompanhe com `run view` até `completed`. Não crie laço rápido: jobs self-hosted podem
-aguardar capacidade e cada instância processa um job por vez. Um job `queued` é espera, não erro.
-Uma falha determinística repetida deve ser corrigida ou devolvida ao responsável, sem novas
-tentativas idênticas.
+Then follow `run view` to `completed`. Do not create a fast loop: self-hosted jobs can wait for capacity and each instance processes one job at a time. A job `queued` is wait, not error. A repeated deterministic failure shall be corrected or returned to the person responsible, without further identical attempts.
 
-Use `workflow run` somente se o YAML declarar `workflow_dispatch` e a solicitação autorizar o
-disparo. Um push de correção normalmente cria outra execução; confirme antes de disparar mais uma.
+Use `workflow run` only if YAML declares `workflow_dispatch` and the request authorizes dispatch. A correction push usually creates another execution; confirm before firing another one.
 
-## Contrato atual dos runners Sufficit
+## Current runners contract Sufficit
 
-O CI compartilhado tem runners separados por plataforma. No Genius, o contrato atual é:
+The shared CI has platform separated runners. In Genius, the current contract is:
 
-| Plataforma | Labels pedidas pelo workflow | Runner primário do Genius |
+| Platform | Labels requested by workflow | Genius Primary Runner |
 |---|---|---|
 | Linux | `self-hosted, Linux, X64, aireset-ci, ci-primary` | `linux-ci-genius-contigencia` |
 | Windows | `self-hosted, Windows, X64, windows-ci, ci-primary` | `windows-ci-contigencia` |
 | macOS/iOS | `self-hosted, macOS, X64, macos-ci, ci-primary` | `macos-ci` |
 
-`aireset-ci` nomeia o provedor do host (aireset); ela não identifica sozinha a máquina real.
-Até 2026-09-18 chamava-se `openclaw-ci`, herança do host antigo openclaw-server. `ci-primary`
-seleciona o destino preferencial e deve existir em somente um runner compatível por plataforma e
-repositório. Outros repositórios podem usar combinações diferentes, portanto leia `runs-on` no
-workflow antes de diagnosticar.
+`aireset-ci` names the host provider (Aireset); it does not identify the real machine alone. Until 2026-09-18 was called `openclaw-ci`, heritage of the former openclaw-server host. `ci-primary` selects the preferred destination and must exist in only one platform and repository compatible runner. Other repositories can use different combinations, so read `runs-on` in the workflow before diagnosing.
 
-Esse mapa identifica o destino primário de `sufficit/sufficit-ai-genius`, não autoriza acesso ao
-host. O workflow seleciona labels, não o nome do runner. Um runner legado ou reserva sem
-`ci-primary` não satisfaz um job que exige essa label e não deve ser apresentado como o servidor
-correto. Sempre consulte a API, pois estado, capacidade e failover mudam sem alterar esta skill.
+This map identifies the primary destination of `sufficit/sufficit-ai-genius`, does not allow access to the host. Workflow selects labels, not runner name. A legacy or reserve runner without `ci-primary` does not satisfy a job that requires this label and should not be presented as the correct server. Always refer to API, as state, capacity and failover change without changing this skill.
 
-Se a conta tiver permissão administrativa, consulte o estado sem revelar credenciais:
+If the account has administrative permission, please refer to the state without revealing credentials:
 
 ```json
 ["api", "repos/owner/repo/actions/runners", "--jq", ".runners[] | {name,status,busy,labels:[.labels[].name]}"]
 ```
 
-Cruze as labels do job com as labels retornadas pela API:
+Cross job labels with labels returned by API:
 
-- `online` e `busy=true` significa que o runner correto está saudável e executando outro job;
-  acompanhe a fila, sem pedir restauração do servidor;
-- `online` e livre, mas um job permanece na fila, exige conferência do `runs-on`, do escopo do
-  runner e de concorrência do workflow;
-- `offline` só bloqueia o job quando esse runner é o único que satisfaz todas as labels exigidas;
-- um runner reserva offline e sem `ci-primary` não explica a falha de um job primário;
-- um job que chegou a executar e terminou com falha exige leitura dos logs; isso não prova que o
-  servidor está fora do ar.
+- `online` and `busy=true` means that the correct runner is healthy and running another job; follow the queue without asking for server restoration;
+- `online` and free, but a job stays in line, requires `runs-on` conference, runner scope and workflow concurrency;
+- `offline` only blocks the job when this runner is the only one that satisfies all required labels;
+- an offline backup runner without `ci-primary` does not explain the failure of a primary job;
+- a job that ran and ended with failure requires reading the logs; this does not prove that the server is offline.
 
-Não ofereça “aprovar sem o check” como solução automática para indisponibilidade do runner. Se o
-check for obrigatório, preserve-o. Quando o primário estiver temporariamente offline, registre a
-falha operacional com as evidências disponíveis, acompanhe seu retorno em intervalos moderados e
-reexecute apenas os jobs com falha assim que houver runner compatível online. Encaminhe ao operador
-somente quando a API comprovar ausência persistente de capacidade compatível ou quando for preciso
-alterar host, registro ou labels; isso é uma ação operacional, não uma decisão de produto do usuário.
+Do not offer “approve without check” as an automatic solution for unavailability of the runner. If the check is mandatory, preserve it. When primary is temporarily offline, record the operational failure with available evidence, monitor its recovery at moderate intervals, and rerun only failed jobs as soon as there is online compatible runner. Escalate to the operator only when API proves persistent absence of compatible capacity or when it is necessary to change hosts, registration or labels; this is an operational action, not a user product decision.
 
-O agente de desenvolvimento/revisão não deve reiniciar hosts, alterar labels, registrar runner ou
-usar acesso administrativo apenas para destravar um PR. Quando houver falha de infraestrutura,
-entregue ao operador: repositório, workflow, run/job, plataforma, labels exigidas, estado observado,
-horário e link. Nunca inclua token de registro, senha, endereço privado ou conteúdo de Vault.
+The development/review agent should not restart hosts, change labels, register runner or use administrative access only to unlock a PR. When there is infrastructure failure, provide the operator with: repository, workflow, run/job, platform, required labels, observed status, time and link. Never include registration token, password, private address or Vault content.
 
-## CI local antes do merge
+## Local CI before merge
 
-Quando o repositório fornecer `scripts/ci-local.sh`, execute-o na worktree limpa antes de concluir.
-Não injete a autorização GitHub no shell. O shell executa a validação local; `github_cli` consulta
-e atualiza o GitHub dentro de seu próprio limite de credencial. Se o repositório exigir um status
-do commit, publique-o pela API somente depois de o comando local terminar com sucesso e conforme
-o processo documentado no próprio repositório.
+When the repository provides `scripts/ci-local.sh`, run it in clean worktree before completing. Do not inject GitHub credentials into the shell. The shell executes local validation; `github_cli` consults and updates GitHub within its own credential limit. If the repository requires a commit status, publish it by API only after the local command has ended successfully and according to the process documented in the repository itself.
 
-Resuma ao humano o resultado em linguagem direta: o que falhou, causa comprovada, relação com o
-PR, ação tomada e estado atual. Não despeje logs, metadados ou comandos completos na conversa.
+Summarize to the human the result in direct language: what failed, proven cause, relationship with PR, action taken and current state. Do not pour complete logs, metadata or commands into the conversation.

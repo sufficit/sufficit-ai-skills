@@ -1,124 +1,71 @@
-# Serviços municipais ASAAS
+# Municipal services ASAAS
 
-A ferramenta `asaas_services_list` consulta `/v3/fiscalInfo/services` — o
-catálogo de serviços municipais que a prefeitura disponibiliza para a conta
-de produção. Somente leitura (`writesPerformed: false`).
+The `asaas_services_list` tool consults `/v3/fiscalInfo/services` — the municipal service catalogue that the city provides for the production account. Read-only (`writesPerformed: false`).
 
-## Emitir nota não cria serviço — porque a emissão omite os campos municipais
+## Making an invoice does not create service — because the issue omits municipal fields
 
-No fluxo desta skill a emissão **não envia** `municipalServiceId` nem
-`municipalServiceCode`, então um pedido de nota nunca produz cadastro novo.
-A skill jamais inventa código. Se o catálogo não tem o que serve à nota, a
-decisão é do usuário (outro serviço existente, ou o código correto com a
-contabilidade).
+In the flow of this skill the issue does not send `municipalServiceId` or `municipalServiceCode`, so an invoice request never produces new registration. The skill never invents code. If the catalogue does not have what the invoice serves, the decision is of the user (another existing service, or the correct code with the accounting).
 
-A garantia vem da omissão, **não** de uma proteção do provedor. Testes
-controlados em conta sandbox (2026-09-23) mostraram que, quando os campos
-municipais **são** enviados, o agendamento tem efeito colateral real no
-cadastro de serviços da conta:
+Guarantee comes from omission, not from provider protection. Controlled tests in sandbox account (2026-09-23) showed that when municipal fields are sent, scheduling has a real side effect on account service registration:
 
-- enviar só `municipalServiceCode` criou entrada nova, com o nome igual ao
-  próprio código (ex.: `01.01.01`, sem o texto oficial do catálogo);
-- reutilizar um `municipalServiceName` existente com outro código alterou a
-  associação **retroativamente**, inclusive para notas já agendadas;
-- a identidade do cadastro é o **nome**, não o código: dois nomes distintos
-  com o mesmo código aparecem como dois registros no painel.
+- send only `municipalServiceCode` created new entry with the same name as the code itself (e.g. `01.01.01` without the official text of the catalog);
+- reuse an existing `municipalServiceName` with another code changed the association retroactively, including for already scheduled invoices;
+- the identity of the registration is the name, not the code: two distinct names with the same code appear as two records in the panel.
 
-Por isso a regra operacional de omitir é também uma proteção do cadastro, e
-não apenas uma conveniência. Entradas criadas assim só se removem pelo painel.
+Therefore, the operational rule of omitting is also a protection of registration, and not just a convenience. Entries created like this only remove through the panel.
 
-## Criação a pedido explícito do usuário
+## Creating on explicit user request
 
-Criar serviço é ato separado e legítimo **quando o usuário pede isso
-diretamente**. A API pública do ASAAS, porém, expõe apenas a leitura deste
-catálogo — não há `POST`/`PUT`/`DELETE` de serviço municipal (`POST` nesta
-rota respondeu HTTP 404 no teste de 2026-09-23). Nesse caso, oriente o painel
-(**Notas Fiscais › Configurações › Serviços › Adicionar Serviço**) e ofereça
-listar os serviços existentes antes, para evitar duplicatas. Não trate o
-pedido como proibido, e não simule a criação.
+Creating service is a separate and legitimate act when the user asks for it directly. The public API of the ASAAS, however, exposes only the reading of this catalogue — there is no `POST`/`PUT`/`DELETE` of municipal service (`POST` on this route answered HTTP 404 in the test of 2026-09-23). In this case, guide the panel (`Notas Fiscais › Configurações › Serviços › Adicionar Serviço`) and offer to list existing services before, to avoid duplicates. Do not treat the application as prohibited, and do not simulate creation.
 
-**Não use agendamento de nota como atalho de cadastro.** Ele até produz
-entrada nova (ver seção anterior), mas emite um documento fiscal real, não
-permite definir ISS de forma confiável e deixa resíduo removível só pelo
-painel. Não é uma API de criação disfarçada.
+Do not use invoice scheduling as a registration shortcut. It even produces new input (see previous section), but emits a real tax document, does not allow to reliably define ISS and leaves residue removable only by the panel. It's not a disguised creation API.
 
-Também não há endpoint público para **editar, excluir, definir padrão ou
-ativar/desativar** serviço: essas ações existem apenas no painel. Não
-prometa fazê-las por ferramenta.
+There is also no public endpoint to edit, delete, set default or enable/disable service: these actions exist only in the panel. Don't promise to do it by tool.
 
-## Argumentos
+## Arguments
 
-| Argumento | Tipo | Padrão | Regras |
+| Argument | Type | Default | Rules |
 | --- | --- | --- | --- |
-| `description` | string | (nenhum) | Filtro por nome/código do serviço (ex.: `1.01`, `sistemas`); até 80 caracteres. Casa **qualquer trecho**, não só o prefixo: `07.` traz também `01.07.01` e `04.07.01`. |
-| `limit` | inteiro | `10` | Entre 1 e 30. |
-| `offset` | inteiro | `0` | Não negativo. Ver a armadilha de paginação abaixo. |
+| `description` | string | (None) | Filter by service name/code (e.g. `1.01`, `sistemas`); up to 80 characters. Matches any substring, not only the prefix: `07.` also brings `01.07.01` and `04.07.01`. |
+| `limit` | integer | `10` | Between 1 and 30. |
+| `offset` | integer | `0` | Not negative. See the pagination trap below. |
 
-## Paginação: `offset` funciona como número de página
+## Page: `offset` works as page number
 
-Testes de 2026-09-23 mostraram que o deslocamento real é `offset × limit`,
-não o índice do primeiro elemento:
+Tests from 2026-09-23 showed that the real displacement is `offset × limit`, not the index of the first element:
 
-- `limit=1&offset=5` e `limit=5&offset=1` devolveram **o mesmo item**;
-- com `limit=100`, as páginas `0`, `1`, `2` e `3` cobriram os 338 itens
-  (100+100+100+38) e `offset=4` veio vazio;
-- por isso `limit=5&offset=100` retorna lista vazia com `hasMore: false`,
-  apesar de `totalCount: 338`.
+- `limit=1&offset=5` and `limit=5&offset=1` returned the same item;
+- with `limit=100`, pages `0`, `1`, `2` and `3` covered the 338 items (100+100+100+38) and `offset=4` came empty;
+- therefore `limit=5&offset=100` returns empty list with `hasMore: false`, despite `totalCount: 338`.
 
-Somar `offset += limit`, o padrão usual, **pula a maior parte do catálogo e
-encerra sem erro**. Avance de 1 em 1 e pare quando `hasMore` for `false`. Se
-um serviço parecer ausente, suspeite da paginação antes de afirmar que não
-existe — e prefira o filtro `description` a varrer páginas.
+Add `offset += limit`, the usual standard, skips most of the catalog and ends without error. Step forward from 1 to 1 and stop when `hasMore` for `false`. If a service appears absent, suspect pagination before claiming it does not exist — and prefer the `description` filter to scan pages.
 
-Comportamento observado neste endpoint; confirme antes de assumir o mesmo em
-outros. O plugin pode normalizar isso: a regra acima descreve a API crua.
+Behavior observed in this endpoint; confirm before assuming the same in others. The plugin can normalize this: the above rule describes the raw API.
 
-## Resultado de sucesso
+## Success result
 
-`provider: "asaas"`, `environment: "production"`, `note` (lembrete: emitir
-nota nunca cria serviço nem especifica um), `query`, `totalCount`,
-`hasNext`, `services[]` e `writesPerformed: false`.
+`provider: "asaas"`, `environment: "production"`, `note` (remember: issuing invoice never creates service or specifies one), `query`, `totalCount`, `hasNext`, `services[]` and `writesPerformed: false`.
 
-Cada serviço traz: `id`, `description` (código + nome, até 200 caracteres) e
-`issTax`. O `id` só vira `municipalServiceId` na emissão quando o usuário
-escolher explicitamente aquele serviço para a nota; no fluxo normal desta
-conta a emissão não envia os campos municipais.
+Each service brings: `id`, `description` (code + name, up to 200 characters) and `issTax`. `id` only turns `municipalServiceId` when the user explicitly chooses that service for the invoice; in the normal flow of this account the issue does not send the municipal fields.
 
-Detalhes observados nos campos (sandbox, 2026-09-23):
+Details observed in the fields (sandbox, 2026-09-23):
 
-- `id` é chave interna sequencial, **sem relação com o código fiscal** (não
-  o derive nem o adivinhe a partir do código).
-- `description` traz `NN.NN.NN - Texto.` — é este valor **exato** que deve ir
-  em `municipalServiceName` quando o usuário escolher o serviço. Nunca monte
-  o nome à mão.
-- `issTax` é alíquota de referência do catálogo e veio `0.0` em todos os
-  itens da conta testada: não a apresente como a tributação real da nota.
-- `municipalServiceId` **sozinho é recusado** no agendamento (HTTP 400,
-  `invalid_action`: "O campo municipalServiceName deve ser informado"),
-  mesmo com id válido. Quando for usar o id, envie o par id + nome.
+- `id` is a sequential internal key, unrelated to the tax code (do not derive or guess it from the code).
+- `description` brings `NN.NN.NN - Texto.` — this is the exact value that should go on `municipalServiceName` when the user chooses the service. Never construct the name yourself.
+- `issTax` is the catalog reference rate and came `0.0` on all items of the account tested: do not present it as the actual invoice tax rate.
+- `municipalServiceId` alone is refused in scheduling (HTTP 400, `invalid_action`: "O campo municipalServiceName deve ser informado" (the municipalServiceName field is required)), even with valid id. When using id, send the id + name pair.
 
-**Catálogo ≠ cadastro da conta.** Este endpoint lista o que a prefeitura
-disponibiliza (centenas de itens); a tela **Notas Fiscais › Configurações ›
-Serviços** mostra apenas os serviços salvos da conta, que é outro conjunto.
-Não descreva um como se fosse o outro ao responder o usuário.
+The municipal catalog is not the account’s registered-service list. This endpoint lists what the city provides (hundreds of items); the Tax Invoices screen › Settings › Services shows only the services saved from the account, which is another set. Do not describe one as being the other when answering the user.
 
-## Contas do Portal Nacional
+## National Portal Accounts
 
-Contas que emitem pelo Portal Nacional não recebem a lista municipal pela
-API. Nesse cenário a consulta falha com erro do provedor (ex.: "código de
-serviços municipais não habilitado") — não é falha sua. A orientação oficial
-([guia](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico)) é
-obter o código no Portal Nacional ou com a contabilidade e usá-lo em
-`municipalServiceCode` quando um serviço específico for necessário. Na regra
-operacional desta conta a emissão segue sem os campos municipais — os
-detalhes do serviço são auto preenchidos pelo cadastro; se o provedor
-recusar, apresente o motivo real e reporte à equipe. Nunca adivinhe código.
+Accounts issued by the National Portal do not receive the municipal list by API. In this scenario the query fails with provider error (e.g. "unenabled municipal service code") — it is not your fault. The official guidance ([Guide](https://docs.asaas.com/docs/emitindo-notas-fiscais-de-servico)) is to obtain the code on the National Portal or with accounting and use it on `municipalServiceCode` when a specific service is needed. In the operational rule of this account the issue goes on without the municipal fields — the service details are auto filled by the registration; if the provider refuses, present the real reason and report to the team. Never guess code.
 
-## Códigos de falha
+## Failure codes
 
-| Código | Ação |
+| Code | Action |
 | --- | --- |
-| `asaas_services_invalid_arguments` | Corrija filtros; nada foi chamado. |
-| `asaas_services_unexpected` | Resposta fora do formato; tente uma vez. |
-| `asaas_provider_unavailable` | Pode ser conta sem lista municipal (Portal Nacional) — trate com o usuário, não repita em loop. |
-| Demais (`asaas_vault_*`, `asaas_credential_rejected`, `asaas_timeout`, `asaas_transport_failed`) | Fluxo padrão das skills ASAAS. |
+| `asaas_services_invalid_arguments` | Fix filters; nothing has been called. |
+| `asaas_services_unexpected` | Response out of format; try once. |
+| `asaas_provider_unavailable` | Can be account without municipal list (Portal Nacional) — deal with the user, do not repeat in loop. |
+| Other failures (`asaas_vault_*`, `asaas_credential_rejected`, `asaas_timeout`, `asaas_transport_failed`) | Standard flow of ASAAS skills. |

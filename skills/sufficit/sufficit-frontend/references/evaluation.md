@@ -1,15 +1,15 @@
-# Avaliação da skill (manutenção)
+# Assessment of skill (maintenance)
 
-Usar workspace temporário, sem produção nem credenciais, e fornecer apenas a solicitação e os artefatos mínimos ao avaliador. Não lhe revelar a solução esperada. Conferir diffs e comportamento; o validador de frontmatter não mede qualidade de decisão.
+Use temporary workspace, without production or credentials, and provide only the request and minimum artifacts to the evaluator. Do not reveal the expected solution. Check diffs and behavior; the frontmatter validator does not measure decision quality.
 
-| Solicitação realista | Evidência esperada |
+| Realistic request | Expected evidence |
 | --- | --- |
-| “Há muita informação nesta carteira de serviços; onde devo olhar, ler e clicar primeiro?” | Tarefa e prioridade definidas antes da composição; próximo item, motivo e ação evidentes com dados realistas; filtros e detalhes com destaque adequado. Captura e fluxo avaliados sem narração, incluindo tablet; não aceitar apenas cartões compactados ou seções recolhidas. |
-| “Este grupo de configurações está sem espaço; preserve os painéis expansíveis.” | Diagnóstico pelo código/DOM, correção local, grupos abertos conferidos; sem reset global ou mudança de backend. |
-| “Small, Medium e Large parecem iguais no catálogo Blazor.” | Parâmetros, classes e cascata investigados; dimensões finais comparadas; correção no responsável, sem três overrides locais. |
-| “Crie uma página de planos usando estas referências; o projeto já tem tema e componentes.” | Composição apropriada, APIs existentes, estados funcionais e conteúdo verdadeiro/fixture identificada; sem instalação automática de React/ReUI. |
-| “Analise o dropdown, ainda não altere código.” | Achados e proposta, sem edições/deploy. |
-| “Use Open Props num projeto sem design system.” | Decisão explícita de imports/tokens e pipeline compatível; sem copiar reset para outra aplicação existente. |
-| “Use esta skill sem Impeccable e sem internet.” | Trabalho a partir dos arquivos locais, sem bloqueio artificial, sem fingir consulta externa. |
+| “There’s a lot of information in this service queue; where should I look, read and click first?” | Task and priority defined before composition; next evident item, motive, and action with realistic data; filters and details with appropriate emphasis. Capture and flow evaluated without narration, including tablet; do not accept only compressed cards or collapsed sections. |
+| “ This set of settings is spaceless; preserve expandable panels.” | Code Diagnosis/DOM, local correction, checked open groups; no global reset or backend change. |
+| “Small, Medium and Large look the same in the Blazor catalog.” | Parameters, classes and cascade investigated; final dimensions compared; correction in the responsible layer, without three local overrides. |
+| “ Create a plan page using these references; the project already has theme and components.” | Appropriate composition, existing APIs, functional states and true/fixture content identified; no automatic React/REUI installation. |
+| “ Analyze dropdown, do not change code yet.” | Findings and proposals, no edits or deployment. |
+| “Use Open Props in a project without design system.” | Explicit decision of imports/tokens and compatible pipeline; without copying reset to another existing application. |
+| “ Use this skill without Impeccable and without internet.” | Work from local files, no artificial blockage, no fake external consultation. |
 
-Uma rodada independente é útil ao mudar o roteamento ou os contratos centrais. Mudanças pequenas não exigem criar uma equipe. Se adicionar scripts, executar casos que exercitem entradas válidas, ausentes e inválidas; checar ausência de efeitos colaterais.
+An independent round is useful when changing routing or central contracts. Small changes don't require creating a team. If you add scripts, run cases that exercise valid, missing and invalid entries; check for no side effects.

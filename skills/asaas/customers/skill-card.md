@@ -1,9 +1,9 @@
 # asaas-customers
 
-Consulta, busca e cadastra clientes da conta de produção do ASAAS pelas ferramentas somente leitura `asaas_customers_list` e `asaas_customers_create` do Sufficit AI Genius, com CNPJ completo ou CPF nos 3 primeiros dígitos, campos sanitizados e cadastro protegido por deduplicação e aprovação explícita.
+Query, search, and register customers in the ASAAS production account using asaas_customers_list and asaas_customers_create in Sufficit AI Genius. Exposes name, email, person type, full CNPJ, or only the first three CPF digits. Queries are read-only; registration requires user confirmation and checks duplicates before writing.
 
-Versão: **0.3.0** · Sufficit · MIT-0
+Version: **0.3.1** · Sufficit · MIT-0
 
-Leia [SKILL.md](SKILL.md) para aplicar a skill.
+Read [SKILL.md](SKILL.md) to use this skill.
 
-Fonte: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers).

@@ -1,9 +1,9 @@
 # device-ui-android
 
-Ensina o Sufficit AI Genius a usar `device_ui` em Android (controle por acessibilidade) do jeito certo: toque via seletor semântico (`read_screen`/`click_element`/`set_text`), nunca atalho de teclado de desktop, description=/role= para ícones sem texto, e nunca anunciar sucesso de uma escrita (Salvar/Baixar/Enviar) sem confirmar o efeito depois do clique final — screenshot mostra pixels, não confirma que a ação terminou. Cobre o padrão real de salvar/compartilhar página em PDF no Chrome Android (menu ⋮) e armadilhas de navegação validadas em uso real.
+Use the built-in browser_* tools for Android websites and device_ui for native apps or the user's signed-in Chrome session. Operate Sufficit AI Genius Android accessibility controls with read_screen, click_element, and set_text rather than desktop shortcuts or raw coordinates. Use for Android interaction, device_ui/android_device_control, printing, saving PDFs, sharing, or ineffective key actions. Discover description=/role= selectors for unlabeled icons and verify the final effect of every Save/Download/Send action.
 
-Versão: **0.3.0** · Sufficit · MIT-0
+Version: **0.3.1** · Sufficit · MIT-0
 
-Leia [SKILL.md](SKILL.md) para aplicar a skill.
+Read [SKILL.md](SKILL.md) to use this skill.
 
-Fonte: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android).

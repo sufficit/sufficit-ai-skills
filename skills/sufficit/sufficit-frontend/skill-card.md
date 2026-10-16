@@ -1,10 +1,9 @@
 # sufficit-frontend
 
-Implementação e refinamento de frontend com tokens, componentes e validação real.
+Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when requested to turn visual references into functional screens, fix layout/themes or evolve a design system. It does not apply to the isolated backend or the native UI Android/iOS.
 
-Versão: **1.0.1** · Sufficit · MIT-0
+Version: **1.0.2** · Sufficit · MIT-0
 
-Leia [SKILL.md](SKILL.md) para aplicar a skill. Funciona de forma independente e pode complementar Impeccable e sui-design quando pertinentes.
+Read [SKILL.md](SKILL.md) to use this skill.
 
-Fonte: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-frontend).
-Para instalar, conferir a versão e atualizar: [guia de distribuição](references/installation.md).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-frontend).

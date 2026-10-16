@@ -1,55 +1,31 @@
 ---
 name: asaas-payments
-description: Lista e consulta cobranças da conta de produção do ASAAS (pagamentos, faturas, vencidas, recebidas) pela ferramenta asaas_payments_list do Sufficit AI Genius. Use quando o usuário pedir para ver, conferir ou somar cobranças do ASAAS; somente leitura, sem criar ou alterar nada.
+description: "List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas_payments_list in Sufficit AI Genius. Use when the user asks to view, check, or calculate totals for ASAAS charges. Read-only; does not create or modify anything."
 ---
 
-# Cobranças ASAAS de produção
+# ASAAS production charges
 
-Use esta orientação quando o usuário pedir para ver, conferir, listar ou somar
-cobranças, pagamentos, faturas ou valores vencidos do ASAAS.
+Use this guidance when the user asks to view, check, list, or total ASAAS charges, payments, invoices, or overdue amounts.
 
-## Credencial
+## Credential
 
-- A ferramenta resolve sozinha a chave em `personal/asaas/production/api-key`
-  no Vault pessoal do Sufficit Identity.
-- Nunca peça a chave na conversa e nunca a inclua em argumentos, comandos ou
-  arquivos.
-- Se o resultado indicar `asaas_key_missing`, prepare exatamente essa entrada
-  com a ferramenta de preparo de Vault do Genius (`vault_prepare_entry`) e
-  entregue a tela segura para o usuário colar e salvar. Se indicar
-  `asaas_vault_sign_in_required`, peça para entrar na conta Sufficit.
+- The tool resolves the key at `personal/asaas/production/api-key` in the user's Sufficit Identity Vault.
+- Never ask for the key in the conversation or include it in arguments, commands, or files.
+- For `asaas_key_missing`, prepare exactly this entry with `vault_prepare_entry` and provide the secure screen for the user to paste and save the key. For `asaas_vault_sign_in_required`, ask the user to sign in to their Sufficit account.
 
-## Consulta de cobranças
+## Query charges
 
-Descubra e use `asaas_payments_list`. Ela executa um `GET` fixo em
-`/v3/payments` com filtro opcional de situação e paginação. É somente leitura:
-não cria, altera nem estorna cobrança nenhuma.
+Discover and use `asaas_payments_list`. It makes a fixed `GET` request to `/v3/payments` with optional status filtering and pagination. It is read-only: it does not create, modify, or refund charges.
 
-Considere o resultado confiável somente quando indicar `provider: "asaas"`,
-`environment: "production"` e `writesPerformed: false`. Em caso de falha, siga
-[references/payments-list.md](references/payments-list.md).
+Trust the result only when it reports `provider: "asaas"`, `environment: "production"`, and `writesPerformed: false`. On failure, follow [references/payments-list.md](references/payments-list.md).
 
-Traduza as situações para linguagem simples: PENDING = aguardando pagamento,
-RECEIVED = recebida, CONFIRMED = recebida e confirmada, OVERDUE = vencida,
-REFUNDED = estornada. Para somar ou contar, use os valores retornados — nunca
-invente números. Se o usuário pedir "todas", percorra as páginas com
-`offset` enquanto `hasNext` for verdadeiro; não tente burlar o limite de 30
-por página.
+Explain statuses in plain language: PENDING = awaiting payment, RECEIVED = received, CONFIRMED = received and confirmed, OVERDUE = overdue, REFUNDED = refunded. Calculate totals and counts from returned values; never invent numbers. If the user requests "all", paginate with `offset` while `hasNext` is true. Do not bypass the limit of 30 items per page.
 
-## Limites honestos
+## Limits
 
-- O resultado traz o identificador do cliente (`customer`), mas não o nome,
-  CPF/CNPJ, e-mail ou telefone: esses dados não entram no contexto do modelo.
-  Se o usuário perguntar quem pagou, diga com naturalidade que a identificação
-  do cliente ainda não está disponível na integração.
-- Não há como criar, editar ou estornar cobrança por aqui. Se o usuário
-  pedir, explique que por enquanto a integração é de consulta e ofereça o
-  painel do ASAAS.
+- Results include the customer identifier (`customer`), but not the name, CPF/CNPJ, email, or phone number; these fields do not enter the model context. If the user asks who paid, explain that customer identification is not yet available in this integration.
+- This tool cannot create, edit, or refund charges. Explain this limitation and direct the user to the ASAAS dashboard when needed.
 
-## Quando a ferramenta não existe
+## Tool unavailable
 
-Se `asaas_payments_list` não estiver disponível, o plugin ASAAS está
-desabilitado ou esta versão do Genius ainda não o oferece. Oriente o usuário a
-ativar o plugin ASAAS nas extensões do Genius ou atualizar o aplicativo. Não
-contorne a ausência chamando a API por shell, script ou outra ferramenta: a
-chave de produção não pode transitar pelo prompt.
+If `asaas_payments_list` is unavailable, the ASAAS plugin is disabled or this version of Genius does not provide it yet. Ask the user to enable the plugin in Genius extensions or update the application. Do not bypass it through a shell, script, or another tool: the production key must not enter the prompt.

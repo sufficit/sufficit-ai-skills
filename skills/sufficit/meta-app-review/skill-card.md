@@ -1,9 +1,9 @@
 # meta-app-review
 
-Aprovação de apps da Meta (WhatsApp, Messenger, Instagram) na Análise do App e operação do Business Manager: o que é só interface, ordem do envio, screencasts, chamadas de API de teste e erros que enganam.
+Prepare Meta apps (WhatsApp, Messenger, Instagram) for App Review and operate Business Manager. Use to create or configure app in a portfolio, request advanced access to permissions like whatsapp_business_management, whatsapp_business_messaging, pages_messaging and business_management, record required screencasts, connect Page or WhatsApp Business account to a platform, or diagnose webhooks, Facebook Login for Business, WhatsApp numbers and Graph API errors in these streams.
 
-Versão: **1.0.6** · Sufficit · MIT-0
+Version: **1.0.7** · Sufficit · MIT-0
 
-Leia [SKILL.md](SKILL.md) para aplicar a skill.
+Read [SKILL.md](SKILL.md) to use this skill.
 
-Fonte: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review).

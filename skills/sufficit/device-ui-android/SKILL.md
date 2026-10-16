@@ -1,128 +1,47 @@
 ---
 name: device-ui-android
-description: Para sites no Android use o navegador embutido browser_* (lê a página como dados, sem screenshot); device_ui só para apps nativos ou sessão logada do Chrome do usuário. Usa a ferramenta device_ui do Sufficit AI Genius em Android (celular/tablet) — controle por acessibilidade (GeniusScreenAccessibilityService), sem teclado físico, sem atalhos de desktop. Use quando o dispositivo for Android, quando device_ui/android_device_control aparecerem, quando precisar imprimir/salvar PDF/compartilhar no Chrome Android, ou quando uma ação por atalho de teclado (key) não tiver efeito num app mobile. Ensina a preferir read_screen/click_element/set_text (seletor semântico) a coordenadas cruas e a atalhos de teclado, description=/role= para ícones sem texto, o padrão real de "salvar página em PDF" no Chrome Android (menu ⋮, nunca Ctrl+P, e tocar SALVAR no diálogo final), e a nunca anunciar que uma escrita (Salvar/Baixar/Enviar) terminou sem confirmar o efeito depois do clique — um screenshot do diálogo aberto não é confirmação.
+description: "Use the built-in browser_* tools for Android websites and device_ui for native apps or the user's signed-in Chrome session. Operate Sufficit AI Genius Android accessibility controls with read_screen, click_element, and set_text rather than desktop shortcuts or raw coordinates. Use for Android interaction, device_ui/android_device_control, printing, saving PDFs, sharing, or ineffective key actions. Discover description=/role= selectors for unlabeled icons and verify the final effect of every Save/Download/Send action."
 ---
 
-# device_ui em Android: toque, não teclado
+# Android device_ui: touch interaction
 
-`device_ui` em Android é a `GeniusScreenAccessibilityService` — a mesma
-Acessibilidade que leitores de tela como o TalkBack usam. Ela enxerga e opera
-**qualquer app em primeiro plano**, Chrome incluso, tela por tela. É o caminho
-do agente pra "agir como o usuário" no Android quando não existe API
-estruturada pra tarefa (`browser_*` nativo do Genius é desktop-only — MV3 não
-roda em Chrome Android, ponto final de plataforma, não é algo que dê pra
-contornar com outra extensão).
+On Android, `device_ui` uses `GeniusScreenAccessibilityService`, the same accessibility system used by screen readers such as TalkBack. It can inspect and operate any foreground app, including Chrome, one screen at a time. Use it to act as the user when no structured API exists. The desktop MV3-based `browser_*` integration does not run in Android Chrome; installing another extension cannot remove that platform limitation.
 
-## Site? Use `browser_*`, não `device_ui`
+## Websites: use the built-in browser
 
-Desde a versão 0.133 o Genius Android tem **navegador próprio embutido**
-(`browser_navigate`, `browser_get_page`, `browser_find`, `browser_click`,
-`browser_type` com `submit`, `browser_back`). Ele lê a página como dados —
-contatos, títulos, texto e elementos com seletor CSS — sem screenshot e sem
-Acessibilidade. Em teste real no tablet, pedidos como "telefone do site X" e
-"preço mais barato no Mercado Livre usando a busca de lá" foram resolvidos em
-1–2 minutos com ele; os mesmos pedidos via `device_ui` no Chrome levaram
-dezenas de toques e falharam.
+Since version 0.133, Genius Android has its own embedded browser: `browser_navigate`, `browser_get_page`, `browser_find`, `browser_click`, `browser_type` with `submit`, and `browser_back`. It reads contacts, titles, text, and CSS-selectable elements as data, without screenshots or Accessibility. Real tablet tests found a site's phone number and the lowest price through Mercado Livre's own search in 1–2 minutes; the same tasks through Chrome `device_ui` required dozens of taps and failed.
 
-- Qualquer tarefa **em um site** (ler, buscar no site, clicar, preencher,
-  comparar preço): `browser_*` primeiro.
-- `web_search` só para descobrir **qual** site/URL abrir.
-- `device_ui` fica para **apps nativos** e para quando a tarefa exige a
-  **sessão logada do Chrome do próprio usuário** — o navegador embutido tem
-  cookies separados e não tem os logins dele. Se a página pedir login,
-  diga isso ao usuário em vez de trocar de ferramenta em silêncio.
+- For website reading, search, clicks, forms, and price comparisons, prefer `browser_*`.
+- Use `web_search` to discover which site or URL to open.
+- Reserve `device_ui` for native apps and tasks requiring the user's signed-in Chrome session. The embedded browser has separate cookies and does not share those logins. If a page requires login, tell the user instead of silently switching tools.
 
-## Verifique antes de usar
+## Check availability
 
-Se `device_ui` não estiver na sua lista de ferramentas, chame
-`android_device_control` com `action=status`. Se vier desabilitado, oriente
-`action=open_settings` (ou `open_app_settings` primeiro em Android 13+, pra
-permitir "configurações restritas" antes de habilitar Acessibilidade — o
-sistema exige esse passo extra pra apps instalados fora da loja). Sem isso
-habilitado pelo usuário, `device_ui` simplesmente não aparece — não existe
-jeito de ativar Acessibilidade por conta própria, é permissão sensível
-protegida pelo próprio Android.
+If `device_ui` is missing, call `android_device_control` with `action=status`. If disabled, direct the user to `action=open_settings`. On Android 13+, `open_app_settings` may be needed first to allow restricted settings for sideloaded apps before enabling Accessibility. The user must enable this Android-protected permission; the agent cannot do so independently.
 
-## Android é toque, não é um desktop pequeno
+## Prefer semantic interaction
 
-**Atalho de teclado não é o caminho.** `Ctrl+P` pra imprimir, `Ctrl+A` pra
-selecionar tudo, `Esc` — são convenções de desktop. Num teste real (Chrome
-Android, GitHub, tentando salvar a página em PDF), a ação `key` com um atalho
-desse tipo **não teve efeito nenhum**: a página continuou exatamente como
-estava, sem abrir diálogo de impressão. Trate `key` como recurso de último
-caso pra teclas de navegação simples (voltar, enter), não como substituto de
-menu.
+Desktop shortcuts are not a substitute for Android menus. In a real Chrome Android test, `key` with `Ctrl+P` did not open printing. `Ctrl+A` and `Esc` are also desktop conventions. Reserve `key` for simple navigation such as Back or Enter when needed.
 
-**O caminho certo é semântico, sempre que der:**
+1. Call `read_screen` to inspect each visible element's text, role, ID, and state.
+2. Use `click_element`/`set_text` with a discovered `label=`, `text=`, `description=`, `id=`, or `role=` selector.
+3. Use `screenshot` when `read_screen` is empty or pixels are necessary, such as for a visual layout check.
+4. Use raw `coordinate` input only as a last resort.
 
-1. `read_screen` primeiro — lista texto, função, id e estado de cada elemento
-   visível. É a forma de "ver" a tela sem imagem.
-2. `click_element`/`set_text` com seletor (`label=`, `text=`, `description=`,
-   `id=`, `role=`) sobre o que `read_screen` encontrou.
-3. `screenshot` só quando `read_screen` vier vazio ou pixels forem realmente
-   necessários (ex.: conferir um layout visual).
-4. Coordenada crua (`coordinate`) é o último recurso, não o primeiro.
+After every action, inspect with `read_screen` again. `device_ui` confirms that input was accepted, not that the app completed the intended operation.
 
-Depois de qualquer ação, **confira o resultado com `read_screen` de novo**
-antes de assumir que funcionou — `device_ui` não devolve confirmação do que
-aconteceu do lado do app, só que o evento de input foi aceito.
+A screenshot of an open Save dialog is not evidence that a file was saved. A real test stopped with the file name entered and the `SALVAR` button visible, then incorrectly reported a saved PDF; the file did not exist. For Save, Download, Send, or Confirm, perform the final click and verify the effect afterward: the dialog closes, a download notification appears, or the resulting file is found. Without confirmation, report the action as pending.
 
-**`screenshot` mostra pixels, não confirma que uma escrita terminou.** Um
-teste real chegou até a caixa de diálogo "Salvar" do Android (nome do arquivo
-preenchido, botão **SALVAR** visível) e parou aí sem tocar o botão — mas o
-turno terminou dizendo ao usuário que o PDF "foi salvo na pasta Downloads".
-Não tinha sido: o arquivo não existia. A causa foi usar `screenshot` pra
-"conferir" e ler a imagem como se um diálogo aberto com os campos certos já
-fosse o resultado — só o que existe é a **intenção** de salvar, ainda não
-executada. Pra qualquer ação que grave algo (Salvar, Baixar, Enviar,
-Confirmar), o clique final tem que acontecer e **o efeito tem que ser
-verificado depois de fechado o diálogo** — o diálogo sumiu e/ou uma
-notificação de download apareceu, não só "a tela parecia certa". Sem essa
-confirmação, diga que a ação ainda está pendente; não anuncie sucesso.
+For an unlabeled icon, use its actual `description=`/`role=`, not guessed `text=`. The ⋮ menu has an accessibility description, such as `Personalizar e controlar o Google Chrome` or `Mais opções`, rather than visible text. A guessed or overly broad text selector can click a neighboring element without reporting an error. Always read the exact accessibility description and role before constructing the selector.
 
-**Ícone sem texto: use `description=`/`role=`, nunca `text=` chutado.** Botões
-como o menu **⋮** não têm rótulo visível — o texto que existe pra eles é a
-descrição de acessibilidade (o que o TalkBack leria em voz alta, ex.:
-"Personalizar e controlar o Google Chrome" ou "Mais opções"), não um texto na
-tela. Um teste real confirmou o erro comum aqui: pedir `click_element` com um
-seletor de texto chutado (ou vago demais) pra esse tipo de ícone clica no
-elemento errado sem dar erro nenhum — o `device_ui` aceita o clique
-normalmente, só que no botão vizinho. **Sempre rode `read_screen` e confira o
-`description`/`role` exatos do ícone antes de montar o seletor** — não tente
-adivinhar o texto de um botão que não tem texto.
+## Save or share a Chrome Android page as PDF
 
-## Salvar/compartilhar página como PDF no Chrome Android
+There is no desktop print shortcut or direct PDF export button on the mobile Chrome toolbar.
 
-Não existe atalho de teclado nem opção de "exportar PDF" direta na barra do
-Chrome mobile. O caminho real, tocável:
+1. Call `read_screen` and identify the actual `description`/`role` of the top-right ⋮ menu. It has no visible label; discover the selector before calling `click_element`.
+2. Read the opened menu and select Share or Print (Portuguese labels may be `Compartilhar` or `Imprimir`). Confirm the actual label for the installed version and language. The share panel and print screen belong to Android, outside Chrome. In a real test, a successful Print click returned to the page instead of exposing the expected print screen. If this happens, do not repeat unchanged clicks. Call `read_screen` alone first to allow the system accessibility tree to update.
+3. In the print screen, select Save as PDF (`Salvar como PDF`) if it is not already selected.
+4. Continue to the Android file-name/folder dialog and click its `SALVAR` button. Reaching the print screen is not completion.
+5. Read the screen again to confirm the dialog closed and, if possible, list recent Downloads files to verify the file name. Only then report that the PDF was saved.
 
-1. `read_screen` na barra do Chrome e identifique o `description`/`role` real
-   do menu **⋮** (três pontinhos, canto superior direito) — não monte o
-   seletor de cabeça, ele é um ícone sem texto (ver seção acima). Só depois
-   dê `click_element` nele.
-2. `read_screen` de novo (o menu que abriu é conteúdo novo) e `click_element`
-   em **Compartilhar** ou **Imprimir** (o rótulo exato varia por versão do
-   Chrome/idioma — confirme o texto real antes de clicar, não adivinhe).
-   **O painel de compartilhar e a tela de impressão são do sistema Android,
-   fora do processo do Chrome** — num teste real, `click_element` em
-   **Imprimir** dentro desse painel funcionou (a chamada devolveu sucesso),
-   mas a leitura seguinte não encontrou a tela de impressão esperada e o
-   Chrome apareceu de volta na página normal, como se o clique não tivesse
-   efeito nenhum. Se isso acontecer, não repita a mesma sequência sem
-   mudança — primeiro `read_screen` sozinho, sem nenhuma ação junto, pra dar
-   tempo da árvore de acessibilidade do painel do sistema realmente
-   atualizar antes de decidir o próximo clique.
-3. Na tela de impressão, o destino **"Salvar como PDF"** já costuma vir
-   selecionado; se não vier, `click_element` no seletor de destino e escolha
-   essa opção.
-4. Chegar nessa tela **não é o fim da tarefa** — ainda falta tocar
-   **SALVAR** no diálogo do Android que pede nome de arquivo e pasta. Dê
-   `click_element` nesse botão também.
-5. Só depois disso confirme: `read_screen` (o diálogo deve ter fechado e
-   voltado pra página) e, se possível, liste os arquivos recentes de
-   Downloads pra confirmar que o nome apareceu. Só então diga ao usuário que
-   o PDF foi salvo — antes disso, a tarefa ainda está em andamento.
-
-Ver [references/android-touch-patterns.md](references/android-touch-patterns.md)
-pra outras armadilhas de navegação Android (digitação, teclado virtual,
-trazer app pra frente no meio de uma leitura de tela).
+See [references/android-touch-patterns.md](references/android-touch-patterns.md) for typing, virtual-keyboard, and foreground-app pitfalls.

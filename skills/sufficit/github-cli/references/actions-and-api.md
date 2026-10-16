@@ -1,10 +1,8 @@
-# Actions, releases e API
+# Actions, releases and API
 
-## Actions e workflows
+## Actions and workflows
 
-Use `run list` para descobrir execuções e `run view` para identificar o job e a etapa que
-falharam. Busque logs somente quando forem necessários; resuma a causa e o trecho relevante.
-Nunca peça ao usuário para copiar o log enquanto a conta conectada puder obtê-lo pelo GitHub.
+Use `run list` to discover executions and `run view` to identify the job and step that failed. Search logs only when needed; summarize the relevant cause and excerpt. Never ask the user to copy the log while the connected account can get it from GitHub.
 
 ```json
 ["run", "list", "--repo", "owner/repo", "--limit", "10", "--json", "databaseId,workflowName,status,conclusion,headBranch,headSha,url,createdAt"]
@@ -18,7 +16,7 @@ Nunca peça ao usuário para copiar o log enquanto a conta conectada puder obtê
 ["run", "view", "123456", "--repo", "owner/repo", "--log-failed"]
 ```
 
-Se o resumo não trouxer o erro, liste os jobs para obter o `databaseId` e consulte o job:
+If the summary does not bring the error, list the jobs to get `databaseId` and see the job:
 
 ```json
 ["run", "view", "123456", "--repo", "owner/repo", "--json", "jobs", "--jq", ".jobs[] | {id: .databaseId, name, status, conclusion, steps}"]
@@ -28,40 +26,30 @@ Se o resumo não trouxer o erro, liste os jobs para obter o `databaseId` e consu
 ["run", "view", "123456", "--repo", "owner/repo", "--job", "987654", "--log-failed"]
 ```
 
-Quando o workflow publicar resultados, descubra e baixe somente o artefato relevante com
-`run download`. Se logs continuarem indisponíveis, informe qual chamada falhou e qual permissão
-está ausente; solicitar uma cópia manual é o último recurso.
+When workflow posts results, find and download only the relevant artifact with `run download`. If logs remain unavailable, please inform which call failed and which permission is missing; requesting a manual copy is the last resort.
 
-Antes de `run rerun`, verifique se a falha parece transitória ou se o código/configuração já
-mudou. Não repita indefinidamente. Disparos com `workflow run` e cancelamentos são alterações
-reais e precisam estar dentro do pedido atual.
+Before `run rerun`, check if the failure seems transient or if the code/configuration has already changed. Don't repeat it indefinitely. Dispatches through `workflow run` and cancellations are real changes and need to be within the current request.
 
-## REST e GraphQL
+## REST and GraphQL
 
-Use `gh api` quando um subcomando de alto nível não oferecer os campos ou a operação. Consulte
-o endpoint correto e passe parâmetros como itens separados. Para leitura REST paginada, use
-`--paginate`; combine com `--slurp` apenas quando precisar de uma coleção única.
+Use `gh api` when a high-level subcommand does not offer the fields or operation. See the correct endpoint and pass parameters as separate items. For paginated REST reads, use `--paginate`; match with `--slurp` only when you need a single collection.
 
 ```json
 ["api", "repos/owner/repo/issues/480/comments", "--paginate", "--jq", ".[] | {id,body,user:.user.login,created_at}"]
 ```
 
-Para payload complexo, crie JSON em arquivo e use `--input`. Não coloque conteúdo multilinha
-em uma expressão de shell e não inclua cabeçalho Authorization: o host já autentica o `gh`.
+For complex payload, create JSON in file and use `--input`. Do not place multiline content in a shell expression and do not include Authorization header: the host already authenticates `gh`.
 
-Use GraphQL para relações que exigiriam muitas chamadas REST. Limite campos e paginação; uma
-consulta ampla pode gerar uma resposta grande demais para a sessão.
+Use GraphQL for relationships that would require many REST calls. Limit fields and pagination; a wide query can generate a response too large for the session.
 
-## Releases e artefatos de Actions
+## Releases and Actions artifacts
 
-Descubra releases antes de baixar e use `release download` com diretório explícito. Para
-artefatos de workflow, use `run download`. Não execute automaticamente binários baixados;
-inspecione tipo, origem e integridade conforme a tarefa.
+Discover releases before downloading and use `release download` with explicit directory. For workflow artifacts, use `run download`. Do not automatically run downloaded binaries; inspect type, origin, and integrity according to task.
 
 ```json
-["release", "download", "v1.2.3", "--repo", "owner/repo", "--dir", "/destino", "--pattern", "*.zip"]
+["release", "download", "v1.2.3", "--repo", "owner/repo", "--dir", "/destination", "--pattern", "*.zip"]
 ```
 
 ```json
-["run", "download", "123456", "--repo", "owner/repo", "--dir", "/destino"]
+["run", "download", "123456", "--repo", "owner/repo", "--dir", "/destination"]
 ```
