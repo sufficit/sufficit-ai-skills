@@ -2346,7 +2346,14 @@
       "sourceId": "mattpocock",
       "author": "Matt Pocock",
       "license": "MIT",
-      "source": "https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/engineering/prototype"
+      "source": "https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/engineering/prototype",
+      "description": "Build a throwaway prototype to answer a design question about state, logic, or UI.",
+      "tags": [
+        "prototyping",
+        "design",
+        "ui",
+        "engineering"
+      ]
     },
     {
       "id": "clear-technical-writing",
