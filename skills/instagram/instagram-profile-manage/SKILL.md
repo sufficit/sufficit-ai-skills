@@ -2,7 +2,7 @@
 name: instagram-profile-manage
 description: Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) through the cheapest working channel - public read, Graph API or the user's logged-in browser - with a confirmed change set and post-change verification. Use when the user asks to apply, update or check Instagram profile items; for deciding what to write use instagram-profile-setup.
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -60,7 +60,9 @@ Preferred flow:
    that window (including 2FA). This window is for the account, not their
    everyday browsing.
 2. Capture the resulting session and store it in the Vault under the account's
-   namespace (e.g. `ai/instagram/<handle>/session`), with its expiry. Reuse it
+   namespace (e.g. `personal/instagram/<handle>/session`, or a shared company
+context; the `ai/` namespace is read-only for a user token, so writes there are
+rejected), with its expiry. Reuse it
    from the Vault on later runs so the user does not log in again until it
    expires.
 3. For a shared company account, keep the login credentials in the Vault too and
