@@ -51,7 +51,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-10-16T19:52:33.771605+00:00",
+  "updatedAt": "2026-10-19T17:33:35.275061+00:00",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2372,7 +2372,41 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "ec9a9aa585e051c02312b1c00cf105359b5810468194b6c2d78e0c4c30cb5cad"
+    },
+    {
+      "id": "instagram-video-download",
+      "name": "instagram-video-download",
+      "description": "Download Instagram Reels and videos from user-supplied Instagram post URLs to local files with yt-dlp and verify their media streams. Use for saving Instagram videos; does not perform transcription, editing or publishing.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-video-download",
+      "tags": [
+        "sufficit",
+        "video",
+        "download",
+        "yt-dlp",
+        "instagram"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "cde99811c20b620fbc072ebbae98ce584be7fd442cd617bb78efc27c05c136ae"
+    },
+    {
+      "id": "video-transcribe",
+      "name": "video-transcribe",
+      "description": "Transcribe the speech of a local video or audio file into a Markdown document with Whisper and ffmpeg. Use when the user asks to transcribe a video, Reel or audio file to text or *.md; does not download, translate or edit media.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-transcribe",
+      "tags": [
+        "sufficit",
+        "video",
+        "transcription",
+        "whisper",
+        "ffmpeg"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
     }
   ],
-  "catalogEntries": 165
+  "catalogEntries": 168
 }

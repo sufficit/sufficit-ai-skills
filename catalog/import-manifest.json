@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 166,
+  "catalogEntries": 168,
   "sources": [
     {
       "id": "android",
@@ -1712,6 +1712,26 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
       "path": "skills/sufficit/clear-technical-writing",
       "contentSha256": "ec9a9aa585e051c02312b1c00cf105359b5810468194b6c2d78e0c4c30cb5cad"
+    },
+    {
+      "id": "instagram-video-download",
+      "name": "instagram-video-download",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-video-download",
+      "path": "skills/instagram/instagram-video-download",
+      "contentSha256": "cde99811c20b620fbc072ebbae98ce584be7fd442cd617bb78efc27c05c136ae"
+    },
+    {
+      "id": "video-transcribe",
+      "name": "video-transcribe",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-transcribe",
+      "path": "skills/videos/video-transcribe",
+      "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
     }
   ]
 }
