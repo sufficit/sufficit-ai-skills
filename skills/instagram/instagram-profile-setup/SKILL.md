@@ -111,4 +111,5 @@ Produce a short report in the user's language:
 
 Verify character limits by counting, and tell the user to confirm current limits
 in the app, since Instagram changes them. Ready-made prompts for each part are in
-[references/prompts.md](references/prompts.md).
+[references/prompts.md](references/prompts.md). To read the live profile or apply
+the approved copy, use [instagram-profile-manage](../instagram-profile-manage/SKILL.md).

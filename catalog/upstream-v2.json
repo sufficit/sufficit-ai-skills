@@ -2422,8 +2422,25 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "e18cf5df3fa02f26e146065a451b7fce3076afa7cedd5775aedb8e270d81c9e4"
+      "contentSha256": "c19d86ea090b62437d538ab3e6b02f713b9155195c2d8caae426a1bd68efbe5f"
+    },
+    {
+      "id": "instagram-profile-manage",
+      "name": "instagram-profile-manage",
+      "description": "Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) through the cheapest working channel - public read, Graph API or the user's logged-in browser - with a confirmed change set and post-change verification. Use when the user asks to apply, update or check Instagram profile items; for deciding what to write use instagram-profile-setup.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-manage",
+      "tags": [
+        "sufficit",
+        "instagram",
+        "social-media",
+        "browser",
+        "automation"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "4330eaf85c0b4610b657063e985ef92d73f3a822e363691b48bb8b62bd2e8f65"
     }
   ],
-  "catalogEntries": 169
+  "catalogEntries": 170
 }

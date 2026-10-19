@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 169 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 170 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -17,7 +17,7 @@ conteúdo importado.
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
 | Sufficit | 8 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
-| Instagram | 2 | Sufficit, MIT-0 |
+| Instagram | 3 | Sufficit, MIT-0 |
 | Videos | 1 | Sufficit, MIT-0 |
 | Asaas | 4 | Sufficit, MIT-0 |
 | QuePasa | 1 | Sufficit, MIT-0 |
@@ -51,7 +51,9 @@ videos locally with yt-dlp and verifies the resulting media streams. The
 [`video-transcribe`](skills/videos/video-transcribe/SKILL.md) skill turns local videos or audio into a
 Markdown transcript with Whisper and ffmpeg. The
 [`instagram-profile-setup`](skills/instagram/instagram-profile-setup/SKILL.md) skill audits and writes
-searchable, converting Instagram business profiles and covers a new account's first steps.
+searchable, converting Instagram business profiles and covers a new account's first steps;
+[`instagram-profile-manage`](skills/instagram/instagram-profile-manage/SKILL.md) reads the live profile and
+applies approved changes through the cheapest working channel.
 
 ## Skill language
 
