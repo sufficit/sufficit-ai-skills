@@ -2,7 +2,7 @@
 name: instagram-profile-manage
 description: Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) through the cheapest working channel - public read, Graph API or the user's logged-in browser - with a confirmed change set and post-change verification. Use when the user asks to apply, update or check Instagram profile items; for deciding what to write use instagram-profile-setup.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -43,18 +43,33 @@ not show bio line breaks reliably, pinned markers, category or contact buttons.
 
 ## Authentication for changes
 
-Changes need the account owner's session. In order of preference:
+Changes need the account owner's session. Most users are non-technical, so make
+it a one-time login and let the Vault hold the result; do not ask a layperson to
+copy cookies or paste tokens. The Vault (Identity vault, encrypted and audited) is
+the only place a captured session or credential may rest.
 
-1. The user's own logged-in browser driven through a sanctioned browser tool
-   (browser extension, embedded browser) where the user can watch.
-2. A dedicated automation browser profile where the user logs in once
-   (including 2FA) and the session persists for later runs.
-3. Credentials stored in the Vault for the company account, used only in that
-   automation profile.
+Preferred flow:
 
-Never copy cookies out of the user's everyday browser profile, never ask for the
-password in chat, and never disable 2FA. If no session is available, deliver a
-ready-to-paste change set and stop.
+1. Open a dedicated automation browser profile and let the user log in once in
+   that window (including 2FA). This window is for the account, not their
+   everyday browsing.
+2. Capture the resulting session and store it in the Vault under the account's
+   namespace (e.g. `ai/instagram/<handle>/session`), with its expiry. Reuse it
+   from the Vault on later runs so the user does not log in again until it
+   expires.
+3. For a shared company account, keep the login credentials in the Vault too and
+   use them only to refresh that session in the automation profile.
+
+Rules that keep it from leaking:
+
+- A session or credential lives in the Vault, never in a loose file, log, shell
+  history, env var, or temporary profile left on disk. If you write it anywhere
+  to use it, delete that copy in the same run.
+- Do not lift the session out of the user's everyday browser profile; have them
+  log into the automation window instead. Never ask for the password in chat and
+  never disable 2FA.
+- If no Vault entry and no login is available, deliver a ready-to-paste change
+  set and stop.
 
 ## Apply a change set
 
