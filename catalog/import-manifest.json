@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 168,
+  "catalogEntries": 169,
   "sources": [
     {
       "id": "android",
@@ -1732,6 +1732,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-transcribe",
       "path": "skills/videos/video-transcribe",
       "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
+    },
+    {
+      "id": "instagram-profile-setup",
+      "name": "instagram-profile-setup",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-setup",
+      "path": "skills/instagram/instagram-profile-setup",
+      "contentSha256": "e18cf5df3fa02f26e146065a451b7fce3076afa7cedd5775aedb8e270d81c9e4"
     }
   ]
 }

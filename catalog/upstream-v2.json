@@ -2406,7 +2406,24 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
+    },
+    {
+      "id": "instagram-profile-setup",
+      "name": "instagram-profile-setup",
+      "description": "Audit and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: account type, name field, bio, link, highlights, pinned posts and first content. Use when the user asks to create, review or improve an Instagram profile or bio; does not post, run ads or automate the account.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-setup",
+      "tags": [
+        "sufficit",
+        "instagram",
+        "marketing",
+        "social-media",
+        "copywriting"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "e18cf5df3fa02f26e146065a451b7fce3076afa7cedd5775aedb8e270d81c9e4"
     }
   ],
-  "catalogEntries": 168
+  "catalogEntries": 169
 }
