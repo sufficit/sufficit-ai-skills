@@ -2,7 +2,7 @@
 name: instagram-profile-setup
 description: Audit and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: account type, name field, bio, link, highlights, pinned posts and first content. Use when the user asks to create, review or improve an Instagram profile or bio; does not post, run ads or automate the account.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -62,6 +62,16 @@ this order and report which step the profile reaches.
    - who is behind it (founder or team introduction).
 7. **Top step: consistent content.** A feed that keeps reinforcing the promise in
    the bio, with clear calls to action, so new visitors keep converting.
+
+## Profiles with more than one product
+
+Keep one umbrella promise in the name field (the two terms customers search,
+e.g. `Brand | VoIP e WhatsApp`). In the bio give each product one line with its
+name and outcome, then shared proof and a single call to action. Give each
+product its own highlight and, when possible, one pinned post; the third pin
+goes to a client case or the team. If the products have separate landing pages,
+add them as extra links after the primary call to action. Do not link a product's
+login page as if it were a sales page.
 
 ## First steps for a new account
 
