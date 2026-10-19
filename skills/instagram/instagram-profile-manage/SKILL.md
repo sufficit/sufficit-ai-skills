@@ -2,7 +2,7 @@
 name: instagram-profile-manage
 description: Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) through the cheapest working channel - public read, Graph API or the user's logged-in browser - with a confirmed change set and post-change verification. Use when the user asks to apply, update or check Instagram profile items; for deciding what to write use instagram-profile-setup.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -20,14 +20,20 @@ do not search for an API that does not exist.
 
 | Item | Read | Change |
 |---|---|---|
-| Name field, bio, link, followers | Public page (no login) or Graph API `GET /{ig-user-id}?fields=name,biography,website` | Logged-in web: `instagram.com/accounts/edit/` (bio, link); name in Accounts Center (rate-limited) |
-| Category, contact buttons | App / logged-in web | App: Edit profile > Contact options / Category |
-| Pinned posts (max 3) | Logged-in grid (pin icon) | Post `...` menu > Pin to profile (web or app) |
-| Highlights | Public page (titles, covers) | App: create from stories/archive, edit cover and title |
+| Bio | Public page or Graph API `GET /{ig-user-id}?fields=biography` | Logged-in web: `instagram.com/accounts/edit/`, Bio textarea + Submit |
+| Name field | Public page (`og:title`) | Logged-in web: Accounts Center > Profiles > the profile > Name (rate-limited: 2 per 14 days) |
+| Link / website | Public page | App only. On web `accounts/edit` the Website field is disabled ("editing links is only available on mobile") |
+| Category, contact buttons | App / logged-in web | App only: Edit profile > Contact options / Category |
+| Pinned posts (max 3) | Logged-in grid (pin icon) | App only in practice: "Pin to your profile" is often absent from the web `...` menu (confirmed missing for a Business account, Oct 2026) |
+| Highlights | Public page (titles, covers) | App only: create from stories/archive, edit cover and title |
 | Posts, Reels, Stories | Graph API / public page | Graph API Content Publishing (`media_type=REELS`/`STORIES`, Business account, Meta app token); else app |
 | Delete or archive posts | Public page | App or logged-in web; never via unofficial APIs |
 
-No API edits bio, name, link, highlights or pins. Do not use unofficial
+On the web, treat only Name (Accounts Center) and Bio as reliably editable;
+link, pins, highlights, contact buttons and category are app-only. Two name
+rules: Instagram rejects its own trademarks ("WhatsApp", "Instagram", "Facebook")
+and the `|` character in the name field, though the bio accepts them. No API
+edits bio, name, link, highlights or pins. Do not use unofficial
 "private API" libraries, bots or bought tools: they violate the terms and get
 accounts restricted.
 
