@@ -2,7 +2,7 @@
 name: quepasa-api
 description: "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa."
 metadata:
-  version: "0.1.3"
+  version: "0.1.4"
 ---
 
 # QuePasa API
@@ -56,6 +56,19 @@ QuePasa exposes a WhatsApp session (one number) per token. This skill teaches th
 - **List pins:** `GET $QUEPASA_URL/api/v5/messages/pin?chatid=<chat>` returns `pins[]` (`messageid`, `pinnedby`, `eventat`, `expiresat`), newest first, only those still in force. WhatsApp has no query for pins: the list is what this session recorded from pin/unpin events since the gateway started tracking them, so an older pin can be missing. Say so when the list is empty.
 - **Pins by others:** a pin/unpin made by anyone arrives on the webhook as `type: "system"` with `inreply` = target and `pin` = `{action, messageid, duration, expiresat}`.
 - These routes exist only in builds newer than `5.26.1016.2016`. An older gateway answers a plain `404 page not found`: report that the gateway needs an update, not that the message or group is missing. Check `GET /api/v5/system/version` when in doubt.
+
+## Vote on a poll
+
+Received polls arrive as `type: "poll"` with `poll` = `{question, options, selections}` (`selections` 0 = any number).
+
+```json
+POST $QUEPASA_URL/api/v5/messages/poll/vote
+{ "messageid": "<poll id>", "options": ["Sunday 16:00"] }
+```
+
+- Choose by `options` (names, case-insensitive) and/or `indexes` (1-based). Both empty removes this account's vote; a new vote replaces the previous one.
+- Vote only when the person you act for asked you to, and say which option you voted.
+- Only polls received or sent while the session was connected can be voted on (the vote is encrypted with the poll's secret). Builds up to `5.26.1016.2016` lack the route (plain `404 page not found`) and deliver polls as unhandled messages.
 
 ## Administer groups
 

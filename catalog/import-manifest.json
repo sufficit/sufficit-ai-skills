@@ -1681,7 +1681,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
       "path": "skills/quepasa/api",
-      "contentSha256": "f8587b18782d10290015a3c1437396edd5b501c2de5c6327cd515e5c69fcafb2"
+      "contentSha256": "659eb73c2f95fc0b878044efa012b304db2192319cb12fee7dd5bbd2a4d1ed45"
     },
     {
       "id": "quepasa-production",
