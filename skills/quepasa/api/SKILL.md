@@ -2,7 +2,7 @@
 name: quepasa-api
 description: "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa."
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # QuePasa API
@@ -41,6 +41,19 @@ QuePasa exposes a WhatsApp session (one number) per token. This skill teaches th
 - `trackid` identifies the system you sent; webhook returns this value and allows you to ignore the echo itself (prevents bot loops).
 - File: same endpoint with `url` (downloaded by the server) or `content` (`data:<mime>;base64,…`) and `fileName`; view fields `poll`, `location`, `contact`, `sticker`, `link` in reference.
 - Confirm `success: true` before telling the user it was sent.
+
+## Pin a message
+
+`POST $QUEPASA_URL/api/v5/messages/pin` with `X-QUEPASA-TOKEN` pins (or unpins) a message for everyone in its chat:
+
+```json
+{ "messageid": "<id>", "action": "pin", "duration": 604800 }
+```
+
+- `action` is `pin` (default) or `unpin`. `duration` is in seconds and must be `86400` (24 h), `604800` (7 days, default) or `2592000` (30 days); it is ignored when unpinning.
+- Only `messageid` identifies the message: it must be in this session's cache (sent or received). The chat and the author come from the cache.
+- In groups the session may need to be an admin, depending on the group's settings; WhatsApp's refusal comes back as `success: false`.
+- The route exists only in builds newer than `5.26.1016.2016`. An older gateway answers a plain `404 page not found`: report that the gateway needs an update, not that the message or group is missing. Check `GET /api/v5/system/version` when in doubt.
 
 ## Administer groups
 

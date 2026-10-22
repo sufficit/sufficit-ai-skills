@@ -40,6 +40,7 @@ Source: QuePasa Swagger specification version `5.26.0922.1322` (55 paths) and th
 | `DELETE` | `/api/v5/messages` | revoke (`messageid`) |
 | `POST` | `/api/v5/messages/retry` | redirect message to webhooks/queues |
 | `POST` / `DELETE` | `/api/v5/messages/react` | react / remove reaction (`chatid`, `messageid`, `emoji`, `fromme`) |
+| `POST` | `/api/v5/messages/pin` | pin / unpin for everyone (`messageid`, `action` = `pin`\|`unpin`, `duration` = `86400`\|`604800`\|`2592000` seconds, default 7 days). Only in builds newer than 5.26.1016.2016; older ones answer a plain `404 page not found` |
 | `POST` | `/api/v5/messages/links` | clickable link card (`chatid`, `url`, `text`, `title`, `description`) |
 | `POST` | `/api/v5/messages/actions` | experimental buttons (1 to 3); WhatsApp Web shows only warning |
 | `POST` | `/api/v5/messages/lid/direct` | direct text for a `…@lid` (test) |
