@@ -2323,6 +2323,24 @@
       "contentSha256": "d09c8662c1df0b9caeaedb836167047ab588f121b20d4a134819546bd3268319"
     },
     {
+      "id": "quepasa-production",
+      "name": "quepasa-production",
+      "description": "Operate Sufficit's production QuePasa (WhatsApp gateway) on Kubernetes — check health, diagnose a session or a failed send, read logs and metrics, re-pair or restart a session, replay webhook dead letters, roll out or roll back a new image and handle Galera/Redis — with the grants each task needs and the rules that keep WhatsApp sessions from being corrupted. Use when the request is about the production QuePasa service itself (is it up, why a number stopped sending, deploy/rollback, failover), not just calling its API. Version 0.1.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/production",
+      "tags": [
+        "quepasa",
+        "whatsapp",
+        "producao",
+        "operacao",
+        "kubernetes",
+        "diagnostico"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "bc66f99860e125d203b68aa1e1f51da516d89da028290088007dc99d0cfe8b22"
+    },
+    {
       "id": "software-development",
       "name": "software-development",
       "description": "Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization. Version 1.1.1.",
@@ -2442,5 +2460,5 @@
       "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6"
     }
   ],
-  "catalogEntries": 170
+  "catalogEntries": 171
 }

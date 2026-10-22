@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 170,
+  "catalogEntries": 171,
   "sources": [
     {
       "id": "android",
@@ -1682,6 +1682,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
       "path": "skills/quepasa/api",
       "contentSha256": "d09c8662c1df0b9caeaedb836167047ab588f121b20d4a134819546bd3268319"
+    },
+    {
+      "id": "quepasa-production",
+      "name": "quepasa-production",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/production",
+      "path": "skills/quepasa/production",
+      "contentSha256": "bc66f99860e125d203b68aa1e1f51da516d89da028290088007dc99d0cfe8b22"
     },
     {
       "id": "software-development",

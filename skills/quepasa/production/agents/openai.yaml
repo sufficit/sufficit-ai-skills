@@ -1,0 +1,4 @@
+interface:
+  display_name: QuePasa Production
+  short_description: Operate and diagnose Sufficit's production QuePasa safely
+  default_prompt: Use $quepasa-production to check whether production QuePasa is healthy and diagnose a session.

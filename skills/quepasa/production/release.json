@@ -1,0 +1,7 @@
+{
+  "name": "quepasa-production",
+  "version": "0.1.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/quepasa/production",
+  "license": "MIT-0"
+}
