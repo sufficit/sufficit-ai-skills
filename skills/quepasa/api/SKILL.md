@@ -2,7 +2,7 @@
 name: quepasa-api
 description: "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa."
 metadata:
-  version: "0.1.2"
+  version: "0.1.3"
 ---
 
 # QuePasa API
@@ -53,7 +53,9 @@ QuePasa exposes a WhatsApp session (one number) per token. This skill teaches th
 - `action` is `pin` (default) or `unpin`. `duration` is in seconds and must be `86400` (24 h), `604800` (7 days, default) or `2592000` (30 days); it is ignored when unpinning.
 - Only `messageid` identifies the message: it must be in this session's cache (sent or received). The chat and the author come from the cache.
 - In groups the session may need to be an admin, depending on the group's settings; WhatsApp's refusal comes back as `success: false`.
-- The route exists only in builds newer than `5.26.1016.2016`. An older gateway answers a plain `404 page not found`: report that the gateway needs an update, not that the message or group is missing. Check `GET /api/v5/system/version` when in doubt.
+- **List pins:** `GET $QUEPASA_URL/api/v5/messages/pin?chatid=<chat>` returns `pins[]` (`messageid`, `pinnedby`, `eventat`, `expiresat`), newest first, only those still in force. WhatsApp has no query for pins: the list is what this session recorded from pin/unpin events since the gateway started tracking them, so an older pin can be missing. Say so when the list is empty.
+- **Pins by others:** a pin/unpin made by anyone arrives on the webhook as `type: "system"` with `inreply` = target and `pin` = `{action, messageid, duration, expiresat}`.
+- These routes exist only in builds newer than `5.26.1016.2016`. An older gateway answers a plain `404 page not found`: report that the gateway needs an update, not that the message or group is missing. Check `GET /api/v5/system/version` when in doubt.
 
 ## Administer groups
 

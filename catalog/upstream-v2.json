@@ -2307,7 +2307,7 @@
     {
       "id": "quepasa-api",
       "name": "quepasa-api",
-      "description": "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa. Version 0.1.2.",
+      "description": "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa. Version 0.1.3.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
       "tags": [
         "quepasa",
@@ -2320,7 +2320,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "c5ed5f64e79318473a298852c4815e523e634069d9d24033ad7c93b235d73a61"
+      "contentSha256": "f8587b18782d10290015a3c1437396edd5b501c2de5c6327cd515e5c69fcafb2"
     },
     {
       "id": "quepasa-production",
