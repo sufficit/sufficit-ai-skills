@@ -1,0 +1,9 @@
+# Paths exempt from scripts/markdown_coverage.py (reachability from README.md
+# and missing-link checks). Third-party skill package internals are exempted
+# in code from catalog/import-manifest.json; do not list them here.
+#
+# "dir/" exempts a directory; other lines are glob patterns ("*" stays within
+# one path segment).
+
+# Completed-work records: historical evidence, not navigation.
+docs/activities/

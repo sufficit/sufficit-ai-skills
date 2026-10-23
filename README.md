@@ -33,6 +33,8 @@ As skills ficam em [`skills/android`](skills/android),
 snapshot importado está em [`catalog/upstream-v2.json`](catalog/upstream-v2.json)
 e a correspondência verificável em
 [`catalog/import-manifest.json`](catalog/import-manifest.json).
+O [índice de skills](catalog/SKILLS.md) lista cada pacote com link para o
+seu `SKILL.md`.
 
 O catálogo distribuído pelo Genius fixa cada pacote em um commit completo.
 Alterações em `main` não substituem silenciosamente uma versão já revisada ou

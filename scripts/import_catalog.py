@@ -9,6 +9,7 @@ import json
 import re
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
@@ -184,6 +185,8 @@ def main() -> None:
         json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
         encoding="utf-8",
     )
+    # The skill index is the documentation parent of every SKILL.md.
+    subprocess.run([sys.executable, str(ROOT / "scripts/build_skill_index.py")], check=True)
     print(f"Imported and recorded {len(entries)} skill packages.")
 
 
