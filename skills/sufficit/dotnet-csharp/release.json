@@ -1,6 +1,6 @@
 {
   "name": "dotnet-csharp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/sufficit/dotnet-csharp",
   "license": "MIT-0"

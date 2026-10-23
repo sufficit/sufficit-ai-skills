@@ -1701,7 +1701,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/dotnet-csharp",
       "path": "skills/sufficit/dotnet-csharp",
-      "contentSha256": "e1916c730594b2b9db2170e10d695a9b2dbdc44b014917b943f31799431dbe3c"
+      "contentSha256": "79bfcec2ed1431da89810d24be4041f19ee05589294b9e0e4ad9d5b226b141cd"
     },
     {
       "id": "software-development",
