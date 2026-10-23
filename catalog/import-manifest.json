@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 171,
+  "catalogEntries": 172,
   "sources": [
     {
       "id": "android",
@@ -1692,6 +1692,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/production",
       "path": "skills/quepasa/production",
       "contentSha256": "bc66f99860e125d203b68aa1e1f51da516d89da028290088007dc99d0cfe8b22"
+    },
+    {
+      "id": "dotnet-csharp",
+      "name": "dotnet-csharp",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/dotnet-csharp",
+      "path": "skills/sufficit/dotnet-csharp",
+      "contentSha256": "e1916c730594b2b9db2170e10d695a9b2dbdc44b014917b943f31799431dbe3c"
     },
     {
       "id": "software-development",

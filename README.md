@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 171 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 172 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -15,7 +15,7 @@ conteúdo importado.
 | Refero | 1 | `referodesign/refero_skill`, MIT |
 | Matt Pocock | 1 | `mattpocock/skills`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
-| Sufficit | 8 | Sufficit, MIT-0 |
+| Sufficit | 9 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Instagram | 3 | Sufficit, MIT-0 |
 | Videos | 1 | Sufficit, MIT-0 |
@@ -43,6 +43,10 @@ autoria e licenças.
 
 A skill `software-development` possui instalação vinculada para Codex e conferência
 de versão remota: [pacote](skills/sufficit/software-development/SKILL.md).
+
+A skill [`dotnet-csharp`](skills/sufficit/dotnet-csharp/SKILL.md) orienta mudanças em C#/.NET
+para passar no CI na primeira vez: compilar os projetos de teste afetados, manter testes
+vermelhos compiláveis, rodar os gates do repositório e alinhar versões de pacotes.
 
 A skill [`clear-technical-writing`](skills/sufficit/clear-technical-writing/SKILL.md) orienta escrita técnica
 clara, com adaptação em português e distinção entre revisão editorial e conformidade

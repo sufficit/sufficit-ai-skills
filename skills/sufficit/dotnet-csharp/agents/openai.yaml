@@ -1,0 +1,4 @@
+interface:
+  display_name: C# and .NET
+  short_description: Change C#/.NET code so it builds and passes CI the first time
+  default_prompt: Use $dotnet-csharp to make this .NET change and verify it builds and passes before pushing.

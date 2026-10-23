@@ -2341,6 +2341,24 @@
       "contentSha256": "bc66f99860e125d203b68aa1e1f51da516d89da028290088007dc99d0cfe8b22"
     },
     {
+      "id": "dotnet-csharp",
+      "name": "dotnet-csharp",
+      "description": "Change C#/.NET code (ASP.NET Core, Blazor/Razor, xUnit/bUnit, NuGet) so it builds and passes CI the first time — build every project that references what you touched, keep red tests compilable, run the repository's own gates, align package versions, follow current library APIs and read CI logs from the first error. Use for any edit to .cs, .razor, .csproj, .props or test projects in a .NET repository, and when a .NET CI job failed. Version 1.0.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/dotnet-csharp",
+      "tags": [
+        "dotnet",
+        "csharp",
+        "blazor",
+        "nuget",
+        "ci",
+        "desenvolvimento"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "e1916c730594b2b9db2170e10d695a9b2dbdc44b014917b943f31799431dbe3c"
+    },
+    {
       "id": "software-development",
       "name": "software-development",
       "description": "Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization. Version 1.1.1.",
@@ -2460,5 +2478,5 @@
       "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6"
     }
   ],
-  "catalogEntries": 171
+  "catalogEntries": 172
 }
