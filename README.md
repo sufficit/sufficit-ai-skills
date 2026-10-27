@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 172 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 173 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -15,7 +15,7 @@ conteúdo importado.
 | Refero | 1 | `referodesign/refero_skill`, MIT |
 | Matt Pocock | 1 | `mattpocock/skills`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
-| Sufficit | 9 | Sufficit, MIT-0 |
+| Sufficit | 10 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Instagram | 3 | Sufficit, MIT-0 |
 | Videos | 1 | Sufficit, MIT-0 |
@@ -66,6 +66,12 @@ client; [`quepasa-production`](skills/quepasa/production/SKILL.md) operates Suff
 production QuePasa (health, session diagnosis, re-pair, dead-letter replay, rollout and
 rollback) and lists the grant each task needs.
 
+
+The [seo-geo](skills/sufficit/seo-geo/SKILL.md) skill diagnoses
+incorrect shared-link images and improves landing-page identity, conventional SEO
+and AI search eligibility (SEO, GEO and AEO) using dated primary sources.
+Execution record: [landing discovery delivery](docs/activities/202610262106-landing-discovery.md).
+
 ## Skill language
 
 Write all skill instructions, supporting documentation, cards, and agent metadata
@@ -73,3 +79,5 @@ in English. Catalog descriptions must also be English. Preserve API identifiers,
 commands, and exact UI labels or provider messages when translating would make
 instructions inaccurate; explain those literals in English. This package-language
 rule does not override a user's requested response language.
+
+Refinement record: [SEO/GEO naming and scope](docs/activities/202610271100-seo-geo.md).

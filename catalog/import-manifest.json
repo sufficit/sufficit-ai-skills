@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 172,
+  "catalogEntries": 173,
   "sources": [
     {
       "id": "android",
@@ -1772,6 +1772,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-manage",
       "path": "skills/instagram/instagram-profile-manage",
       "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6"
+    },
+    {
+      "id": "seo-geo",
+      "name": "seo-geo",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "contentSha256": "be79715c9d3e293e0e02676e24362414d0bfac310cf78c439f4a25410addbaea",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/seo-geo",
+      "path": "skills/sufficit/seo-geo"
     }
   ]
 }

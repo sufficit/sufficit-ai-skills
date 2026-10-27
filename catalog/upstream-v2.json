@@ -51,7 +51,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-10-19T17:33:35.275061+00:00",
+  "updatedAt": "2026-10-27T13:59:51.349178+00:00",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2476,7 +2476,27 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6"
+    },
+    {
+      "id": "seo-geo",
+      "name": "seo-geo",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "contentSha256": "be79715c9d3e293e0e02676e24362414d0bfac310cf78c439f4a25410addbaea",
+      "description": "Audit and improve landing-page SEO (Search Engine Optimization), GEO (Generative Engine Optimization), AEO (Answer Engine Optimization), and Open Graph previews. Use for Google/Bing visibility, AI answer discovery and citations, structured data, or wrong WhatsApp images, favicons and brand logos. Version 1.0.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/seo-geo",
+      "tags": [
+        "seo",
+        "geo",
+        "aeo",
+        "landing-page",
+        "open-graph",
+        "favicon",
+        "ai-search",
+        "structured-data"
+      ]
     }
   ],
-  "catalogEntries": 172
+  "catalogEntries": 173
 }
