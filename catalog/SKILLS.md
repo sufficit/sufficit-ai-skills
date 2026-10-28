@@ -41,6 +41,12 @@ inside the repository's documentation hierarchy.
 | [asaas-invoices](../skills/asaas/invoices/SKILL.md) | [card](../skills/asaas/invoices/skill-card.md) | Sufficit | Query and schedule production ASAAS NFS-e invoices with asaas\_invoices\_list, asaas\_services\_list, and asaas\_invoices\_create; cancel with asaas\_invoices\_cance... |
 | [asaas-payments](../skills/asaas/payments/SKILL.md) | [card](../skills/asaas/payments/skill-card.md) | Sufficit | List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas\_payments\_list in Sufficit AI... |
 
+## asterisk
+
+| Skill | Card | Source | Description |
+| --- | --- | --- | --- |
+| [asterisk-dialplan](../skills/asterisk/dialplan/SKILL.md) |  | Sufficit | Write, review and format traditional Asterisk dialplan with consistent conventions for context comments, TAB indentation, English text and change headers. Us... |
+
 ## google
 
 | Skill | Card | Source | Description |

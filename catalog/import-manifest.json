@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 173,
+  "catalogEntries": 174,
   "sources": [
     {
       "id": "android",
@@ -1611,7 +1611,7 @@
       "license": "MIT",
       "upstreamSource": "https://github.com/referodesign/refero_skill/tree/a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d/skills/refero-design",
       "path": "skills/refero/refero-design",
-      "contentSha256": "1693726e46efc472f342fe4cd8652d6c226d8c42f63bd47487ccaecb4ac9f960"
+      "contentSha256": "ff4f0420059f8ce6ff13317f8fe8ab7f66be2e83c4938cf4a03d3e251efc9037"
     },
     {
       "id": "routeros-management",
@@ -1641,7 +1641,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
       "path": "skills/sufficit/sufficit-frontend",
-      "contentSha256": "f5e3f089267e4decd73c70bd38a1b57bb185d0f7c7619351cf0da4ce2dd9c05c"
+      "contentSha256": "a55a575ef0fe5422162fe2cdc3e633c443389a798a4807714ade8febed713664"
     },
     {
       "id": "svg-vectorization",
@@ -1721,7 +1721,7 @@
       "license": "MIT",
       "upstreamSource": "https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/engineering/prototype",
       "path": "skills/mattpocock/prototype",
-      "contentSha256": "4ac7c70101242825c659a6d4ca6cdefb67c893661f67695d1303490659fe76fd"
+      "contentSha256": "8f6833ee4dddb2fb8817ec2c9c405775611b6d7e654be35ce7db8e511dc742fe"
     },
     {
       "id": "clear-technical-writing",
@@ -1782,6 +1782,16 @@
       "contentSha256": "be79715c9d3e293e0e02676e24362414d0bfac310cf78c439f4a25410addbaea",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/seo-geo",
       "path": "skills/sufficit/seo-geo"
+    },
+    {
+      "id": "asterisk-dialplan",
+      "name": "asterisk-dialplan",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asterisk/dialplan",
+      "path": "skills/asterisk/dialplan",
+      "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
     }
   ]
 }

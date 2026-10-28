@@ -2496,6 +2496,23 @@
         "ai-search",
         "structured-data"
       ]
+    },
+    {
+      "id": "asterisk-dialplan",
+      "name": "asterisk-dialplan",
+      "description": "Write, review and format traditional Asterisk dialplan with consistent conventions for context comments, TAB indentation, English text and change headers. Use for extensions.conf and dialplan includes, contexts, exten, same, priorities and subroutines; not for AEL, Lua or SIP/PJSIP peer configuration. Version 1.0.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asterisk/dialplan",
+      "tags": [
+        "asterisk",
+        "dialplan",
+        "sip",
+        "pjsip",
+        "code-style"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
     }
   ],
   "catalogEntries": 173

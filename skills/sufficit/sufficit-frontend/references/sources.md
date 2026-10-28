@@ -4,11 +4,15 @@ References consulted on 2026-09-08. Sufficit's own synthesis and criteria; no pa
 
 | Source | What to Watch | How to use in this skill |
 | --- | --- | --- |
+| [Dribbble Search](https://dribbble.com/search) | Visual hierarchy, density, typography and dashboard composition | Mandatory dashboard research using domain/task queries; record shot URLs and adapted decisions. Static shots do not prove behavior or accessibility. |
+| [Lovable dashboard templates](https://lovable.dev/templates/apps/dashboards) | Dashboard hierarchy, KPI grouping, filters and chart/table composition | Mandatory research for dashboard development; record relevant examples and adaptations while preserving DESIGN.md and SUI. |
 | [Open Props](https://open-props.style/) and [official repository](https://github.com/argyleink/open-props) | Custom properties for space, typography, colors, shadows and motion; adoption by sets | Take advantage of a token base if the project needs to; map semantic roles to the local theme. Check values, not numerical suffix equivalence. |
 | [ VibePrompts](https://vibeprompts.dev/) | Interface compositions and examples; [table with toolbar](https://vibeprompts.dev/dashboards/dashboards-data-table-with-toolbar/) includes search, sorting and state without results | Extract task, hierarchy and states. Write the implementation in the project stack and check semantics/keyboard; a preview does not prove accessibility. |
 | [REUI: introduction](https://reui.io/docs) and [styles](https://reui.io/docs/styling) | Composition of primitives in examples and blocks; state semantic roles | Check API and infrastructure before adopting. React/shadcn examples are not Blazor components. Open components/examples and materials Pro have different conditions. |
 | [DesignSystems.one: foundations](https://www.designsystems.one/foundations) and [spacing](https://www.designsystems.one/foundations/spacing) | Relationships between fundamentals, density and consistent application | Use comparison to justify choices; preserve local scale and identity. The catalogue is an editorial reference, not a compliance standard. |
 | [Design System Checklist](https://github.com/ardakaracizmeli/design-system-checklist) | Organisation in language, fundamentals, components and maintenance, available in [src/data](https://github.com/ardakaracizmeli/design-system-checklist/tree/master/src/data) | Select applicable criteria and register evidence. Do not require completing an entire design system to fix a screen. |
+
+Lovable dashboard collection and Dribbble Search entry checked on 2026-10-28. Dribbble Search redirected to the home page with a search field; use a contextual query to find dashboard references. For dashboard work, consultation is mandatory before implementation; follow the research and evidence requirements in [the skill](../SKILL.md#required-dashboard-research-sufficit).
 
 ## Choose without hoarding dependencies
 

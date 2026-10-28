@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 173 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 174 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -16,6 +16,7 @@ conteúdo importado.
 | Matt Pocock | 1 | `mattpocock/skills`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
 | Sufficit | 10 | Sufficit, MIT-0 |
+| Asterisk | 1 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Instagram | 3 | Sufficit, MIT-0 |
 | Videos | 1 | Sufficit, MIT-0 |
@@ -81,3 +82,6 @@ instructions inaccurate; explain those literals in English. This package-languag
 rule does not override a user's requested response language.
 
 Refinement record: [SEO/GEO naming and scope](docs/activities/202610271100-seo-geo.md).
+
+The [Asterisk dialplan skill](skills/asterisk/dialplan/SKILL.md) defines English authoring, literal TAB indentation, context comments and change headers.
+Delivery: [dialplan skill](docs/activities/20261028-asterisk-dialplan-skill.md).

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Asterisk Dialplan"
+  short_description: "Write clear dialplan with consistent style and headers"
+  default_prompt: "Use $asterisk-dialplan to write or review this Asterisk dialplan with consistent formatting and change headers."

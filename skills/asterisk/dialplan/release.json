@@ -1,0 +1,7 @@
+{
+  "name": "asterisk-dialplan",
+  "version": "1.0.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/asterisk/dialplan",
+  "license": "MIT-0"
+}

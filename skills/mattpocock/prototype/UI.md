@@ -31,6 +31,29 @@ Before committing to sub-shape B, sanity-check: is there really no existing page
 
 In both sub-shapes the floating bottom bar is identical.
 
+## Required dashboard research (Sufficit)
+
+Before developing, redesigning or prototyping a dashboard for Sufficit, consult
+[Lovable dashboard templates](https://lovable.dev/templates/apps/dashboards) and
+[Dribbble Search](https://dribbble.com/search) as mandatory research sources,
+alongside the other relevant references. On Dribbble, search for dashboards using
+the product domain or task (for example, telecom operations or financial analytics);
+if the search entry redirects to the home page, use its search field. Inspect
+examples suited to the user's task before choosing the layout or implementing it.
+Record the search terms, consulted template/Dribbble shot URLs and concrete observations (information hierarchy,
+KPI grouping, filters, charts/tables and responsive behavior where observable),
+then state what to adapt or reject and why in the existing decision ledger/checkpoint.
+Treat Dribbble shots as visual references, not proof of working interactions,
+accessibility or responsiveness. Do not infer behavior from a preview that does
+not demonstrate it.
+
+The project's approved `DESIGN.md` and Sufficit.Blazor.UI components/tokens remain
+authoritative. Research does not require adopting Lovable, copying a template or
+adding dependencies. If the source cannot be accessed, record the attempted URL
+and limitation, use available project/user references, and do not claim the required
+consultation succeeded. Keep research proportional for small dashboard corrections;
+reuse relevant evidence already gathered for the same task.
+
 ## Process
 
 ### 1. State the question and pick N
