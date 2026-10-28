@@ -2,7 +2,7 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, vouchers and contacts. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.3"
+  version: "1.0.4"
 ---
 
 # Sufficit API
@@ -34,6 +34,8 @@ The connected user credentials are attached outside the prompt. Do not request a
 - Do not expand an operation to another context because the initial query returned empty. Confirm context identity in any multi-tenant writing.
 
 ## Domains
+
+- For queues, extensions, voicemail, inbound numbers and telephone support conversations, read [references/telephony.md](references/telephony.md).
 
 - For balances, transactions, top-ups, and voucher management, read [references/credits.md](references/credits.md).
 - To search, create, update, mark or delete contacts, read [references/contacts.md](references/contacts.md).
