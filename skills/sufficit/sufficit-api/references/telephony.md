@@ -62,7 +62,7 @@ controla o encaminhamento da ligação, não o WhatsApp destinatário.
 
 A listagem de caixas não contém os contatos inscritos. Para dizer qual WhatsApp
 recebe uma caixa específica, consulte `whatsapp destinations`: contatos de
-notificação trazem no label "(avisos de 6100)" as caixas que recebem. Sem caixa
+notificação trazem no label "(recados da caixa 6100)" as caixas que recebem. Sem caixa
 no label, diga que não há WhatsApp inscrito nela e oriente os Contatos de
 notificação no painel. Não deduza números do ramal nem use envio de WhatsApp
 como teste para descobrir destinatários.
@@ -75,13 +75,16 @@ verificar a operação disponível. Enfileiramento não comprova entrega.
 
 ## Gravações de chamadas e envio por WhatsApp
 
-Para enviar uma gravação do histórico: consulte `history` (itens com
-`hasRecording=true`) e confirme a chamada com a pessoa pela hora e número.
+Para enviar uma gravação do histórico: consulte `history` com limit 20 e use
+itens com `hasRecording=true`. Sem gravação em last24hours, consulte last7days
+ANTES de dizer que não há; só então pergunte por outro período. Confirme a
+chamada com a pessoa pela data, hora e número.
 Depois descubra `whatsapp destinations` e execute o GET encontrado. Os destinos
 vêm do usuário identificado (telefone do cadastro, celular do contato) e dos
 contatos de notificação da empresa; NÃO peça o número nem aceite número falado
-para gravação. Com um destino, confirme pelo final ("final 6105"); com vários,
-pergunte qual. Sem destino, explique que falta cadastrar o celular no perfil
+para gravação. Com um destino, confirme pelo campo spoken ("final 6 1 0 5", dígito a dígito);
+com vários, pergunte qual. "Meu número" é o destino de source identity_profile
+ou user_contact, nunca um contato de notificação de outra pessoa. Sem destino, explique que falta cadastrar o celular no perfil
 ou um contato de notificação.
 
 Envie com `whatsapp/call-recording` (body `callId`, `destinationId`) somente após
