@@ -76,8 +76,8 @@ verificar a operação disponível. Enfileiramento não comprova entrega.
 ## Gravações de chamadas e envio por WhatsApp
 
 Para enviar uma gravação do histórico: consulte `history` com `recordedOnly=true`
-(somente chamadas com gravação) e use o `callId` retornado. Sem gravação em last24hours, consulte last7days
-ANTES de dizer que não há; só então pergunte por outro período. Confirme a
+e `period=last7days` (somente chamadas com gravação) e use o `callId` retornado.
+Não pergunte antes de ampliar para sete dias; sem resultado, peça a data. Confirme a
 chamada com a pessoa pela data, hora e número.
 Depois descubra `whatsapp destinations` e execute o GET encontrado. Os destinos
 vêm do usuário identificado (telefone do cadastro, celular do contato) e dos

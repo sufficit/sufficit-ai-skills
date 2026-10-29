@@ -1631,7 +1631,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "path": "skills/sufficit/sufficit-api",
-      "contentSha256": "7bb4e471e0a6b74fe63afa75544030244dd132b77fcd3b402210da926c0258fe"
+      "contentSha256": "17cb8a7d5827557575813b4665b90e1192a814f50465387058a75a67f166e61c"
     },
     {
       "id": "sufficit-frontend",
