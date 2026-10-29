@@ -61,13 +61,31 @@ nas notificações daquela caixa, inclusive WhatsApp com áudio quando configura
 controla o encaminhamento da ligação, não o WhatsApp destinatário.
 
 A listagem de caixas não contém os contatos inscritos. Para dizer qual WhatsApp
-recebe uma caixa específica, consulte uma operação autorizada de notificações
-se disponível. Se não estiver integrada, explique essa limitação e oriente a
-consulta aos Contatos de notificação no painel. Não deduza números do ramal nem
-use envio de WhatsApp como teste para descobrir destinatários.
+recebe uma caixa específica, consulte `whatsapp destinations`: contatos de
+notificação trazem no label "(avisos de 6100)" as caixas que recebem. Sem caixa
+no label, diga que não há WhatsApp inscrito nela e oriente os Contatos de
+notificação no painel. Não deduza números do ramal nem use envio de WhatsApp
+como teste para descobrir destinatários.
 
 Para ouvir um recado recebido por WhatsApp, reproduza o áudio da notificação.
 Não recomende discar o título/número da caixa ou um código para ouvir mensagens:
 uma entrada para gravar não comprova menu de reprodução, e esse menu não está
 confirmado. Não prometa consulta de recados novos ou reprodução no painel sem
 verificar a operação disponível. Enfileiramento não comprova entrega.
+
+## Gravações de chamadas e envio por WhatsApp
+
+Para enviar uma gravação do histórico: consulte `history` (itens com
+`hasRecording=true`) e confirme a chamada com a pessoa pela hora e número.
+Depois descubra `whatsapp destinations` e execute o GET encontrado. Os destinos
+vêm do usuário identificado (telefone do cadastro, celular do contato) e dos
+contatos de notificação da empresa; NÃO peça o número nem aceite número falado
+para gravação. Com um destino, confirme pelo final ("final 6105"); com vários,
+pergunte qual. Sem destino, explique que falta cadastrar o celular no perfil
+ou um contato de notificação.
+
+Envie com `whatsapp/call-recording` (body `callId`, `destinationId`) somente após
+pedido explícito. `queued` não confirma entrega: diga que foi enviado para a
+fila e pode levar alguns instantes. Não repita o envio; se a pessoa disser que
+não chegou, consulte de novo os destinos e pergunte antes de reenviar.
+Mensagem de texto por WhatsApp também aceita `destinationId` da mesma lista.
