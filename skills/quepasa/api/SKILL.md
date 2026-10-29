@@ -2,7 +2,7 @@
 name: quepasa-api
 description: "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa."
 metadata:
-  version: "0.1.4"
+  version: "0.1.5"
 ---
 
 # QuePasa API
@@ -30,6 +30,8 @@ QuePasa exposes a WhatsApp session (one number) per token. This skill teaches th
 - LID (new WhatsApp opaque identifier): `<number>@lid`. Convert with `GET /api/v5/contacts/identifier?phone=…` or `?lid=…` when needed.
 
 ## Send message
+
+Before an authorized text send to a person, apply [human-readable notification guidance](../../sufficit/clear-technical-writing/references/notifications.md) when drafting an incident notice or support request. Use WhatsApp `*bold*` titles, real newlines, blank lines and short blocks; do not send a dense diagnostic dump. Review the exact `text` payload before sending. A request to improve future formatting does not authorize resending or editing an existing message.
 
 `POST $QUEPASA_URL/api/v5/messages` with `X-QUEPASA-TOKEN`:
 

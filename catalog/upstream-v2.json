@@ -2307,7 +2307,7 @@
     {
       "id": "quepasa-api",
       "name": "quepasa-api",
-      "description": "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa. Version 0.1.4.",
+      "description": "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa. Version 0.1.5.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
       "tags": [
         "quepasa",
@@ -2320,7 +2320,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "659eb73c2f95fc0b878044efa012b304db2192319cb12fee7dd5bbd2a4d1ed45"
+      "contentSha256": "147ff8cc770fbeef7878de9e633e85c6b60737db626754e64a3e43ff0be067ae"
     },
     {
       "id": "quepasa-production",
@@ -2394,7 +2394,7 @@
     {
       "id": "clear-technical-writing",
       "name": "clear-technical-writing",
-      "description": "Write and revise documentation, procedures and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Do not automatically apply this style to creative writing or any future conversation.",
+      "description": "Write and revise documentation, procedures, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Do not automatically apply this style to creative writing or any future conversation.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
       "tags": [
         "sufficit",
@@ -2407,7 +2407,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "ec9a9aa585e051c02312b1c00cf105359b5810468194b6c2d78e0c4c30cb5cad"
+      "contentSha256": "74c8a18ccb9dba5dd664c2bdcfc285393a29c64d27d8ef612a75913b93f3e326"
     },
     {
       "id": "instagram-video-download",

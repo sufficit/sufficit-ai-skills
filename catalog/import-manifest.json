@@ -1681,7 +1681,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
       "path": "skills/quepasa/api",
-      "contentSha256": "659eb73c2f95fc0b878044efa012b304db2192319cb12fee7dd5bbd2a4d1ed45"
+      "contentSha256": "147ff8cc770fbeef7878de9e633e85c6b60737db626754e64a3e43ff0be067ae"
     },
     {
       "id": "quepasa-production",
@@ -1731,7 +1731,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
       "path": "skills/sufficit/clear-technical-writing",
-      "contentSha256": "ec9a9aa585e051c02312b1c00cf105359b5810468194b6c2d78e0c4c30cb5cad"
+      "contentSha256": "74c8a18ccb9dba5dd664c2bdcfc285393a29c64d27d8ef612a75913b93f3e326"
     },
     {
       "id": "instagram-video-download",

@@ -1,8 +1,8 @@
 ---
 name: clear-technical-writing
-description: "Write and revise documentation, procedures and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Do not automatically apply this style to creative writing or any future conversation."
+description: "Write and revise documentation, procedures, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Do not automatically apply this style to creative writing or any future conversation."
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: "Sufficit"
 ---
 
@@ -33,6 +33,10 @@ Do not impose arbitrary word count, fixed number of paragraphs or a single respo
 - Maintain API identifiers, commands, flags, paths, configuration names, URLs, and literal messages. Simplifying the prose does not allow changing code or translating labels that the reader needs to locate on the interface.
 - Preserve details necessary for the execution and recovery of failures. Conciseness does not justify removing a safety step or a prerequisite.
 - Do not add features, guarantees, test results or operational instructions that are not supported by the material provided.
+
+## Notifications for people
+
+For incident notices, support messages and status updates sent by WhatsApp or email, read [notification writing and channel formatting](references/notifications.md). Lead with the recipient’s task; use a short title, readable sections and blank lines. Keep detailed diagnostic evidence separate from the message body.
 
 ## Delivery
 
