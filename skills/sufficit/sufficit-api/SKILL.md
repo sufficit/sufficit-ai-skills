@@ -2,7 +2,7 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, vouchers and contacts. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.13"
+  version: "1.0.14"
 ---
 
 # Sufficit API
@@ -39,6 +39,6 @@ The connected user credentials are attached outside the prompt. Do not request a
 
 - For balances, transactions, top-ups, and voucher management, read [references/credits.md](references/credits.md).
 - To search, create, update, mark or delete contacts, read [references/contacts.md](references/contacts.md).
-- For sales representatives, their customer portfolio, active customer counts and monthly service renewal, read [references/sales.md](references/sales.md).
+- For sales representatives, their customer portfolio, active customer counts, the monthly collection routine and service renewal, read [references/sales.md](references/sales.md).
 
 New domains can be added as references without turning this skill into a static copy of OpenAPI.
