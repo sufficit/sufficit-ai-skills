@@ -26,3 +26,32 @@ The representative itself may read its own portfolio; managers and administrator
 ## Customer contact data
 
 The portfolio returns aggregates only, never the customers' e-mail or phone. A representative's permission does not extend to its customers' records. Do not try to obtain them by passing a customer GUID as `contextId` or `contactId` to `POST /Contact/Search`; the server refuses it (`403`) and it is outside the authorised scope. When a campaign needs contact data, report that it requires an export authorised by Sufficit management.
+
+## Renewing a customer's monthly services
+
+Legacy postpaid services (renewal `NotConfigured`, `canManagePrepaid = false`) are renewed one service at a time; there is no batch call and no "launch the month" call. Renewing creates the next monthly period and its charge, so only do it when the user explicitly asked to renew that customer and month.
+
+These endpoints do not renew anything — do not use them for this:
+
+- `ServiceCollections`, `PlanPreview`, `PlanCommand`: prepaid plan changes only. On a legacy service `PlanPreview` answers `409 plan_selection_conflict` because the service has no prepaid binding.
+- `ServiceCollections/PeriodHistory` and `PeriodContact`: a log that the customer was contacted about a month. An empty `items` is normal.
+- `Representatives/Release`: releases commission for periods already paid.
+- `Customers/{contextId}/Status/Change`: commercial classification only.
+
+Renewal flow:
+
+1. List the customer's services: `GET /Sales/Record/Search?contextId=<customer>&renewed=false`. Each row's `id` is the service id; check `description`, `value` and `end` against the request.
+2. Read the authority: `GET /Sales/LegacyService/Session` returns `epoch`, `snapshotId` and `cutoverId`.
+3. Open the service: `GET /Sales/LegacyService?id=<service id>` (the service id, never the customer id) with the headers `X-Sufficit-Sales-Epoch: <epoch>` and `X-Sufficit-Sales-Snapshot: <snapshotId>`. It returns `contractId`, `revision` and `service`. No `contractId` means the service is historical and cannot be renewed.
+4. Renew: `POST /Sales/LegacyService` with the same headers and body `{"operationId": "<new GUID>", "cutoverId": "<cutoverId>", "action": "renew", "serviceId": "<service id>", "contractId": "<contractId>", "expectedRevision": <revision>}` (no `desired`). Keep the same `operationId` if you must retry after an ambiguous failure; the server replays the receipt.
+5. Confirm with an independent read (step 1 or 3) that a new period exists, and report the services, values and new end date.
+
+`409 "Commercial authority changed; reload before submitting."` means the headers are missing or stale: repeat step 2 and resend. `"Service revision changed; reload before submitting."` means re-read step 3. If the API tool cannot send request headers, renewal is not possible through it: say so and point the user to the Renovar button on the service page of the Sufficit panel. Do not try other endpoints as a substitute.
+
+### "customer_not_active" in ServiceCollections
+
+`ServiceCollections` flags a legacy service `customer_not_active` when the customer's commercial status is not `Active`, including when it was never classified. The representative portfolio counts a customer as active by service dates instead, so both answers can disagree for the same customer. This flag does not block renewal; to fix it, read `GET /Sales/Customers/{contextId}/Status` and, when the user confirms the customer is active, change it with `POST /Sales/Customers/{contextId}/Status/Change`.
+
+### Representative's whole portfolio
+
+There is no single call. List the active customers (`Representative/Customers` with `onlyActive=true&includeRepresentative=false`, paged), then run the flow above per customer and service. Before renewing, show the user the list of customers, services and values to be renewed and get confirmation; then report each result, including failures.
