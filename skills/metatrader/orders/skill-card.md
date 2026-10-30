@@ -6,4 +6,4 @@ Version: **0.1.0** · Sufficit · MIT-0
 
 Read [SKILL.md](SKILL.md) to use this skill.
 
-Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/metatrader5-orders).
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/metatrader/orders).

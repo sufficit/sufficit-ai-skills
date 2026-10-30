@@ -1799,9 +1799,9 @@
       "sourceId": "sufficit-genius",
       "author": "Sufficit",
       "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/metatrader5-orders",
-      "path": "skills/sufficit/metatrader5-orders",
-      "contentSha256": "8a6900f17b1f7242942a316f127b51462c1dced501fc867992fd7bdd71e17329"
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/metatrader/orders",
+      "path": "skills/metatrader/orders",
+      "contentSha256": "ea59022124eb03d27b7d74eeed63e35647a858d0f7c55fcefb000ee17f842868"
     }
   ]
 }

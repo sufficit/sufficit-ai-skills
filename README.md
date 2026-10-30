@@ -27,6 +27,7 @@ As skills ficam em [`skills/android`](skills/android),
 [`skills/asaas`](skills/asaas),
 [`skills/google`](skills/google), [`skills/images`](skills/images),
 [`skills/instagram`](skills/instagram),
+[`skills/metatrader`](skills/metatrader),
 [`skills/mikrotik`](skills/mikrotik), [`skills/quepasa`](skills/quepasa),
 [`skills/refero`](skills/refero),
 [`skills/videos`](skills/videos) e

@@ -1,6 +1,6 @@
 # MetaTrader 5 own-account orders skill
 
-Added `metatrader5-orders` 0.1.0 under `skills/sufficit`. It records what was learned while
+Added `metatrader5-orders` 0.1.0 under `skills/metatrader/orders` (generic, not company-specific). It records what was learned while
 connecting MetaTrader 5 under Wine (Linux cloud executor) to a real XP Investimentos account
 (`XPMT5-PRD`) with the password kept only in the Sufficit Identity Vault.
 
