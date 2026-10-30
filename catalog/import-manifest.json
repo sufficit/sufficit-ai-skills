@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 174,
+  "catalogEntries": 175,
   "sources": [
     {
       "id": "android",
@@ -1792,6 +1792,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asterisk/dialplan",
       "path": "skills/asterisk/dialplan",
       "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
+    },
+    {
+      "id": "metatrader5-orders",
+      "name": "metatrader5-orders",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/metatrader5-orders",
+      "path": "skills/sufficit/metatrader5-orders",
+      "contentSha256": "8a6900f17b1f7242942a316f127b51462c1dced501fc867992fd7bdd71e17329"
     }
   ]
 }
