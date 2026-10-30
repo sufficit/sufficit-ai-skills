@@ -34,6 +34,18 @@ Customers are moving from the legacy service manager to native contracts. Before
 - **Native** contracts with automation on renew by themselves: the recurring automation opens each monthly period and debits it to the customer's balance. Nobody renews them by hand; a negative balance is how a debtor shows up. Do not try the legacy renewal below on them.
 - **Legacy** contracts (`source` LegacySales, renewal `NotConfigured`) are still renewed by hand, one service at a time, until the customer is migrated.
 
+## Migrating a legacy service to the new system
+
+One contract at a time, never in bulk. Migration is irreversible, so only do it when the user asked to migrate that customer's service, and confirm the contract and service type before calling.
+
+1. Read the contract: `GET /Sales/Contract?id=<contractId>`. It must be `source` LegacySales, status Active and `automationEnabled` false; keep its `updatedAtUtc`.
+2. Choose the native service type: `GET /Sales/ServiceCatalog`, never a retired item. If the contract already has a `catalogItemId`, use that one. When the right type is unclear, ask.
+3. Migrate: `POST /Sales/Contract/{contractId}/AdoptNative` with `{"operationId": "<new GUID>", "catalogItemId": "...", "expectedUpdatedAtUtc": "<updatedAtUtc>", "reason": "<why>"}`. Reuse the same `operationId` to retry after an ambiguous failure. `409` means the contract changed or is not eligible: read it again.
+4. Turn automation on so the next periods open by themselves: read `GET /Sales/Contract/Automation?id=<contractId>`, then `POST /Sales/Contract/Automation` with `{"contractId": "...", "enabled": true, "expectedEnabled": false}`.
+5. Confirm by reading the contract again (`source` Native, automation on).
+
+The current period stays as already charged; the new system charges the following ones. Managers holding `serviceupdate` for the customer may migrate; the same action is the "Migrar para o sistema novo" panel on the service page (`/pages/sales/services/item`).
+
 ## The manager's monthly routine (new system)
 
 - Collections to follow up: `GET /Sales/ServiceCollections` (reference month, optional customer or responsible). Read-only.

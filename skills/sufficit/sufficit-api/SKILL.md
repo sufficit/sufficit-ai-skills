@@ -39,6 +39,6 @@ The connected user credentials are attached outside the prompt. Do not request a
 
 - For balances, transactions, top-ups, and voucher management, read [references/credits.md](references/credits.md).
 - To search, create, update, mark or delete contacts, read [references/contacts.md](references/contacts.md).
-- For sales representatives, their customer portfolio, active customer counts, the monthly collection routine and service renewal, read [references/sales.md](references/sales.md).
+- For sales representatives, their customer portfolio, active customer counts, the monthly collection routine, service renewal and migration to the new system, read [references/sales.md](references/sales.md).
 
 New domains can be added as references without turning this skill into a static copy of OpenAPI.
