@@ -1,0 +1,7 @@
+{
+  "name": "metatrader5-orders",
+  "version": "0.1.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/metatrader/orders",
+  "license": "MIT-0"
+}

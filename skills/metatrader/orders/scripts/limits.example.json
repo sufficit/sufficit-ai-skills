@@ -1,0 +1,5 @@
+{
+  "allowed_symbols": ["PETR4", "PETR4F", "VALE3", "VALE3F", "BOVA11", "BOVA11F"],
+  "max_value_per_order": 200.0,
+  "confirmation_seconds": 300
+}

@@ -199,6 +199,12 @@ inside the repository's documentation hierarchy.
 | --- | --- | --- | --- |
 | [prototype](../skills/mattpocock/prototype/SKILL.md) |  | Matt Pocock | Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what... |
 
+## metatrader
+
+| Skill | Card | Source | Description |
+| --- | --- | --- | --- |
+| [metatrader5-orders](../skills/metatrader/orders/SKILL.md) | [card](../skills/metatrader/orders/skill-card.md) | Sufficit | Set up MetaTrader 5 with the Python MetaTrader5 library (natively on Windows or under Wine on Linux), connect it to the user's own brokerage account with the... |
+
 ## mikrotik
 
 | Skill | Card | Source | Description |
