@@ -88,7 +88,9 @@ ou user_contact, nunca um contato de notificação de outra pessoa. Sem destino,
 ou um contato de notificação.
 
 Envie com `whatsapp/call-recording` (body `callId`, `destinationId`) somente após
-pedido explícito. `queued` não confirma entrega: diga que foi enviado para a
-fila e pode levar alguns instantes. Não repita o envio; se a pessoa disser que
-não chegou, consulte de novo os destinos e pergunte antes de reenviar.
+pedido explícito. `queued` não confirma entrega. Consulte `whatsapp/status/{requestId}`
+alguns segundos depois e relate o estado: `delivered`/`read` = entregue,
+`sent` = enviado e aguardando o aparelho, `pending` = ainda na fila, `failed` =
+recusado. Só diga "entregue" com delivered ou read. Não repita o envio; se a
+pessoa disser que não chegou, consulte o status e pergunte antes de reenviar.
 Mensagem de texto por WhatsApp também aceita `destinationId` da mesma lista.
