@@ -2,7 +2,7 @@
 
 ## Identity and discovery
 
-Contacts are identified exclusively by GUID. Search the live OpenAPI by `contact search`, `contact attribute`, `contact important` or `contact delete` before calling. Use the default authenticated user context; inform `contextId` only when the user has clearly chosen another context he is allowed to manage.
+Contacts are identified exclusively by GUID. Search the live OpenAPI by `contact search`, `contact attribute`, `contact important` or `contact delete` before calling. Use the default authenticated user context; inform `contextId` only when the user has clearly chosen another context he is allowed to manage. The server only answers for the caller's own context, contexts granted to it by entitlement, and any context for managers; `403` means that context is not accessible, so report it instead of trying other contexts or GUIDs.
 
 The usual attribute keys are:
 
@@ -34,7 +34,7 @@ Prefer `POST /Contact/Search` as it accepts filters and attribute projection. A 
 }
 ```
 
-For a known GUID, use `contactId` and limit 1. Answer `204` means that nothing was found in the scope consulted. Do not conclude that contact does not exist in all contexts and does not extend the search without authorization.
+For a known GUID, use `contactId` and limit 1. Reading one contact by GUID (card, attribute, important flag) also requires access to it through its owner or group; changing it requires being its owner or a manager. Answer `204` means that nothing was found in the scope consulted. Do not conclude that contact does not exist in all contexts and does not extend the search without authorization.
 
 Before changing, mark or delete, recover the contact and confirm GUID, title and relevant attribute. If name, phone number or email matches multiple people, present the options and do not choose by yourself.
 

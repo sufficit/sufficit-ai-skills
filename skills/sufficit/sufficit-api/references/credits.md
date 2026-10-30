@@ -14,7 +14,7 @@ Before any call, search the live OpenAPI by `credits`, `voucher`, `rules`, `prod
 - `GET /Finance/Credits/Account?contextId=...&productId=...`: wallet, consumption capacity, active benefits, up to 50 top-ups and up to 50 transactions.
 - `GET /Finance/Credits/Vouchers`: up to 200 vouchers, including deactivated.
 
-First resolve the product by GUID returned by API. Never save name or title as key. Financial `contextId` is exactly the `id` GUID of the contact; there is no other financial identifier. When the user appoints a person or company, use `POST /Contact/Search` with `titulo`, `cadastro`, `email` and `phone`. Continue without asking when there is a single unambiguous match; if there is more than one, present title and GUID for the user to choose. Absent account is not zero balance: it means that the wallet has not yet been opened after joining the service.
+First resolve the product by GUID returned by API. Never save name or title as key. Financial `contextId` is exactly the `id` GUID of the contact; there is no other financial identifier. When the user appoints a person or company, use `POST /Contact/Search` with `titulo`, `cadastro`, `email` and `phone`. Customers outside the caller's own context are only found by managers or users granted that context; on `403` or no match, ask for the customer GUID instead of guessing a context. Continue without asking when there is a single unambiguous match; if there is more than one, present title and GUID for the user to choose. Absent account is not zero balance: it means that the wallet has not yet been opened after joining the service.
 
 Wallet values and movements use high-precision integer units:
 

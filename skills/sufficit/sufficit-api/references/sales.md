@@ -25,4 +25,4 @@ The representative itself may read its own portfolio; managers and administrator
 
 ## Customer contact data
 
-The portfolio returns aggregates only, never the customers' e-mail or phone. A representative's permission does not extend to its customers' records. Do not try to obtain them by passing a customer GUID as `contextId` or `contactId` to `POST /Contact/Search`; that is outside the authorised scope even if the server answers. When a campaign needs contact data, report that it requires an export authorised by Sufficit management.
+The portfolio returns aggregates only, never the customers' e-mail or phone. A representative's permission does not extend to its customers' records. Do not try to obtain them by passing a customer GUID as `contextId` or `contactId` to `POST /Contact/Search`; the server refuses it (`403`) and it is outside the authorised scope. When a campaign needs contact data, report that it requires an export authorised by Sufficit management.
