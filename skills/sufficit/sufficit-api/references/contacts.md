@@ -12,6 +12,7 @@ The usual attribute keys are:
 | Email | `email` | `value` address; optional `description` label |
 | Telephone | `phone` | `value`; type as `cellular` or `business` in `description` |
 | CPF/CNPJ | `cadastro` | `value` document |
+| Social network | `social` | `value` = @handle or profile URL; network name (`instagram`, `facebook`, `linkedin`...) in `description`. Shown in the "Redes Sociais" field of the Blazor contact page; do not use the network name as `key` |
 | Tag | `marcador` | category in `value`; tag label in `description` |
 | Owner | `idproprietario` | link managed by server in creation |
 
