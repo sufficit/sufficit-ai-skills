@@ -52,6 +52,7 @@ vermelhos compiláveis, rodar os gates do repositório e alinhar versões de pac
 A skill [`clear-technical-writing`](skills/sufficit/clear-technical-writing/SKILL.md) orienta escrita técnica
 clara, com adaptação em português e distinção entre revisão editorial e conformidade
 com o padrão inglês. É uma adaptação independente da Sufficit.
+Delivery: [support chat readability](docs/activities/20261030-chat-readability.md).
 
 The [`instagram-video-download`](skills/instagram/instagram-video-download/SKILL.md) skill saves Instagram
 videos locally with yt-dlp and verifies the resulting media streams. The

@@ -4,13 +4,13 @@ Use for incident notices, support requests and status updates sent to people by 
 
 ## Build around the recipient's task
 
-- Start with a short, specific title and a personal greeting. State the problem and requested help early.
+- For a standalone notice, use a short, specific title and a greeting when appropriate. In an ongoing support conversation, answer directly; do not restart with a greeting or title on every message. State the problem or result early.
 - Put the impact and main finding before diagnostic details. A contact who forwards the case needs a different level of detail from the engineer who investigates it.
 - Separate context, key findings and requested action with blank lines. Use short section labels when they help scanning. Do not send a report compressed into one paragraph.
 - Highlight only the few values or conclusions that determine the next action. Use bullets for parallel findings; do not bold whole paragraphs.
 - Keep essential identifiers (affected endpoints, time window, reference) together in a compact block. Move packet counts, full routes, interface counters, hashes, logs and reproduction commands to a report or attachment unless the recipient needs them immediately.
 - Explain unfamiliar terms on first use, or use everyday language: “packets did not arrive” instead of a sequence of NIC/UDP/RTT/pcap acronyms. Retain exact technical identifiers in the supporting evidence.
-- End with an answerable request: what to check, who should coordinate, and whether a protocol or expected response time is needed. Do not invent a deadline or demand an SLA not agreed with the recipient.
+- When action from the recipient is needed, end with an answerable request: what to check, who should coordinate, and whether a protocol or expected response time is needed. Do not add a request to a completed answer only to satisfy this format. Do not invent a deadline or demand an SLA not agreed with the recipient.
 - Keep measurement date/time and uncertainty visible. Historical measurements must not read as a live outage. Distinguish the affected route from proven responsibility.
 
 ## Match the channel

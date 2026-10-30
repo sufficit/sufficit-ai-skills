@@ -1,8 +1,8 @@
 ---
 name: clear-technical-writing
-description: "Write and revise documentation, procedures, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Do not automatically apply this style to creative writing or any future conversation."
+description: "Write and revise documentation, procedures, support chat replies, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Use for ongoing support conversations when explicitly assigned to the agent; do not impose this style on creative writing."
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: "Sufficit"
 ---
 
@@ -33,6 +33,31 @@ Do not impose arbitrary word count, fixed number of paragraphs or a single respo
 - Maintain API identifiers, commands, flags, paths, configuration names, URLs, and literal messages. Simplifying the prose does not allow changing code or translating labels that the reader needs to locate on the interface.
 - Preserve details necessary for the execution and recovery of failures. Conciseness does not justify removing a safety step or a prerequisite.
 - Do not add features, guarantees, test results or operational instructions that are not supported by the material provided.
+
+## Readable support chat replies
+
+These rules belong in the main skill body so an agent can apply them without opening a reference on every turn.
+
+- Lead with the answer or current conclusion. Separate independent ideas with real blank lines, even when replying inside one chat bubble or one JSON reply field.
+- Use short paragraphs, each developing one idea. Brevity means removing repetition, not squeezing several findings into one long sentence or an unbroken block. Do not impose a two-sentence cap on a multi-part diagnosis.
+- When there are several findings, use simple bullets, one item per affected endpoint or independent result. For a longer reply, short standalone labels such as *Findings* and *Next step* help scanning; omit headings for a simple one-line answer. Do not repeat the agent's signature supplied by the channel.
+- Separate the conclusion, supporting findings, limits of the evidence and any necessary next action. Keep identifiers, times, statuses and confidence attached to the finding they qualify. Registration success is not proof that calls work; preserve such distinctions when reformatting.
+- Match the reader: internal support needs useful technical identifiers and status details. Do not hide those just to sound simple. Move only bulky logs or secondary evidence to an available document; never invent an attachment or link.
+- In WhatsApp, use single-asterisk emphasis, short labels, blank lines and simple bullets; avoid tables, HTML and Markdown # headings. Serialize real newlines correctly in JSON; do not double-escape them into visible backslash-n text. In Markdown-capable chats use that channel's supported syntax.
+- Before returning the exact outgoing reply, check that a person on a phone can distinguish the main answer, separate findings and next action at a glance. Keep uncertainty and facts intact. Do not append a generic offer or ask a question unless it advances the current request.
+
+Example (fictional support facts, not a live diagnostic):
+
+```text
+No authentication failure or IP ban appeared in the security log between 10:20 and 10:42.
+
+*Endpoint status*
+- 1001: received authentication challenges but did not authenticate; still UNKNOWN.
+- 1002: authenticated at 10:30 and renewed registration; OK, 32 ms.
+
+*Evidence limit*
+This only covers the current host and log. Successful registration does not confirm that calls work.
+```
 
 ## Notifications for people
 

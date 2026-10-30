@@ -2394,7 +2394,7 @@
     {
       "id": "clear-technical-writing",
       "name": "clear-technical-writing",
-      "description": "Write and revise documentation, procedures, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Do not automatically apply this style to creative writing or any future conversation.",
+      "description": "Write and revise documentation, procedures, support chat replies, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Use for ongoing support conversations when explicitly assigned to the agent; do not impose this style on creative writing.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
       "tags": [
         "sufficit",
@@ -2407,7 +2407,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "74c8a18ccb9dba5dd664c2bdcfc285393a29c64d27d8ef612a75913b93f3e326"
+      "contentSha256": "01a09a1851eacc8d0bdf5fc88e3e3c3cf1be7ee409616f979eb60fecb58d03bc"
     },
     {
       "id": "instagram-video-download",
