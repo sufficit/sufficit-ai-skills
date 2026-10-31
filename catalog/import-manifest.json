@@ -1681,7 +1681,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/api",
       "path": "skills/hermes/api",
-      "contentSha256": "78267ef8bbc3e11ed2a314dfe8abcf8626660d1d3deaa32eb9f1f1ddb64deca7"
+      "contentSha256": "f687f80b47556348ba5b0a558e93d420a04cfe7e0451177678ef133a7809c46f"
     },
     {
       "id": "quepasa-api",

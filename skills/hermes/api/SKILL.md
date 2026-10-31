@@ -2,7 +2,7 @@
 name: hermes-api
 description: "Use the Hermes HTTP API (Sufficit's Chatwoot-based helpdesk) as your own user: discover the live API from the server's OpenAPI document instead of memorizing routes, authenticate with your personal token (Authorization Bearer), confirm who and which account you are, update your own profile and avatar, read conversations and post private notes. Use when a request mentions Hermes, Chatwoot, helpdesk profile/avatar, conversations, inboxes, contacts or notes, in production or development."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Hermes API
@@ -47,6 +47,19 @@ Below, `$HERMES_URL` / `$HERMES_TOKEN` stand for the pair of the instance you ar
    jq '.paths["/api/v1/profile"].put.requestBody' /tmp/hermes.json
    ```
 
+   Without `jq`, the same search in Python:
+
+   ```bash
+   python3 - <<'PY'
+   import json
+   d = json.load(open('/tmp/hermes.json'))
+   for path, ops in d['paths'].items():
+       for method, op in ops.items():
+           if isinstance(op, dict) and 'profile' in (path + str(op.get('summary'))).lower():
+               print(method.upper(), path, '-', op.get('summary'), op.get('tags'))
+   PY
+   ```
+
    Resolve `$ref` values under `.components.schemas` to see payload fields.
 4. Only then build the request. If a route is missing from the spec, it probably does not
    exist in this version. Report that instead of trying variations against production.
@@ -77,7 +90,9 @@ instance:
 
   Use a square JPG/PNG/WebP. Unless someone gives you another image, use your official
   Sufficit avatar: `SUFFICIT_AVATAR_URL` when set. Download it to a local file first
-  (`curl -fsSL "$SUFFICIT_AVATAR_URL" -o avatar.img`, then check the type with `file`).
+  (`curl -fsSL -D headers.txt "$SUFFICIT_AVATAR_URL" -o avatar.img`) and take the type
+  from `Content-Type` in `headers.txt` (or `file avatar.img`); name the file with the matching
+  extension (`.jpg`, `.png`, `.webp`) and pass that `type=` to curl.
 - Verify: the response, or a new `GET /api/v1/profile`, must show a new `avatar_url`.
   Report success only after this check, per instance.
 
