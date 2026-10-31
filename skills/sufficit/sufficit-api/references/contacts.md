@@ -18,6 +18,14 @@ The usual attribute keys are:
 
 Do not invent keys for known data. Preserve the received spelling in existing custom attributes.
 
+## Resolve a customer's name from a known context GUID
+
+For an authorized customer lookup, use the known customer/context GUID as `contactid` in `GET /Contact/Title?contactid=<GUID>`. Discover the operation in the live OpenAPI first. HTTP `200` returns an object with `title`; use that value as the customer display name. This lookup returns only the title, not a full commercial record or proof of active services.
+
+`GET /Sales/Customer?id=<GUID>` reads a separate commercial customer record. Its `204` does not establish that the contact is absent, that the customer is legacy, or that the name cannot be obtained. Similarly, an empty `Sales/Clients` result is not proof that the contact has no title. Keep the same GUID and query `Contact/Title` before reporting that the name is unavailable. Do not label the customer as legacy without separate evidence.
+
+If `Contact/Title` also returns `204`, report that this lookup returned no title; do not infer that the customer does not exist. Treat authentication and authorization errors as errors, not missing data. If the route is not available through the connected tools, report that limitation rather than bypassing authentication or switching to a database.
+
 ## Search and check
 
 Prefer `POST /Contact/Search` as it accepts filters and attribute projection. A typical text search has this form, adapted to the context and request:
