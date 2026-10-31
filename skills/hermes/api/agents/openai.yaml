@@ -1,0 +1,4 @@
+interface:
+  display_name: Hermes API
+  short_description: Discover and call the Hermes helpdesk API as your own user
+  default_prompt: Use $hermes-api to discover the Hermes API from its OpenAPI document and update your profile or post a private note.

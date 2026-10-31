@@ -179,6 +179,12 @@ inside the repository's documentation hierarchy.
 | [finding-google-skills](../skills/google/developers/finding-google-skills/SKILL.md) |  | Google LLC | Locates and loads the right Google product skill on demand from a remote catalog index, instead of preloading every skill. Use at the START of any request to... |
 | [retrieving-developer-knowledge](../skills/google/developers/retrieving-developer-knowledge/SKILL.md) |  | Google LLC | Searches, retrieves, and synthesizes official Google developer documentation across Google Cloud, AI/Gemini, Android, Chrome, Web, Flutter, Go, Firebase, and... |
 
+## hermes
+
+| Skill | Card | Source | Description |
+| --- | --- | --- | --- |
+| [hermes-api](../skills/hermes/api/SKILL.md) | [card](../skills/hermes/api/skill-card.md) | Sufficit | Use the Hermes HTTP API (Sufficit's Chatwoot-based helpdesk) as your own user: discover the live API from the server's OpenAPI document instead of memorizing... |
+
 ## images
 
 | Skill | Card | Source | Description |

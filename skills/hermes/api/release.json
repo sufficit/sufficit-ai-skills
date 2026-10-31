@@ -1,0 +1,7 @@
+{
+  "name": "hermes-api",
+  "version": "0.1.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/hermes/api",
+  "license": "MIT-0"
+}

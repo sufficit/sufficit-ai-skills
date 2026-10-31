@@ -2305,6 +2305,24 @@
       "contentSha256": "431de963038e25afb0ecb44f98d1df1085873b23b5db7737d8640edc389305d6"
     },
     {
+      "id": "hermes-api",
+      "name": "hermes-api",
+      "description": "Use the Hermes HTTP API (Sufficit's Chatwoot-based helpdesk) as your own user: discover the live API from the server's OpenAPI document instead of memorizing routes, authenticate with your personal token (Authorization Bearer), confirm who and which account you are, update your own profile and avatar, read conversations and post private notes. Use when a request mentions Hermes, Chatwoot, helpdesk profile/avatar, conversations, inboxes, contacts or notes, in production or development. Version 0.1.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/api",
+      "tags": [
+        "hermes",
+        "chatwoot",
+        "helpdesk",
+        "atendimento",
+        "openapi",
+        "api"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "78267ef8bbc3e11ed2a314dfe8abcf8626660d1d3deaa32eb9f1f1ddb64deca7"
+    },
+    {
       "id": "quepasa-api",
       "name": "quepasa-api",
       "description": "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa. Version 0.1.5.",

@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 174 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 175 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -25,7 +25,7 @@ conteúdo importado.
 
 As skills ficam em [`skills/android`](skills/android),
 [`skills/asaas`](skills/asaas),
-[`skills/google`](skills/google), [`skills/images`](skills/images),
+[`skills/google`](skills/google), [`skills/hermes`](skills/hermes), [`skills/images`](skills/images),
 [`skills/instagram`](skills/instagram),
 [`skills/mikrotik`](skills/mikrotik), [`skills/quepasa`](skills/quepasa),
 [`skills/refero`](skills/refero),
@@ -62,6 +62,10 @@ Markdown transcript with Whisper and ffmpeg. The
 searchable, converting Instagram business profiles and covers a new account's first steps;
 [`instagram-profile-manage`](skills/instagram/instagram-profile-manage/SKILL.md) reads the live profile and
 applies approved changes through the cheapest working channel.
+
+The [`hermes-api`](skills/hermes/api/SKILL.md) skill discovers the Hermes helpdesk API from the
+server's own OpenAPI document and calls it as the agent's own user (profile, avatar,
+conversations, private notes).
 
 The [`quepasa-api`](skills/quepasa/api/SKILL.md) skill calls the QuePasa API as a
 client; [`quepasa-production`](skills/quepasa/production/SKILL.md) operates Sufficit's

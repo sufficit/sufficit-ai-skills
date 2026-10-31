@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 174,
+  "catalogEntries": 175,
   "sources": [
     {
       "id": "android",
@@ -1672,6 +1672,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
       "path": "skills/sufficit/playwright-mcp",
       "contentSha256": "431de963038e25afb0ecb44f98d1df1085873b23b5db7737d8640edc389305d6"
+    },
+    {
+      "id": "hermes-api",
+      "name": "hermes-api",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/api",
+      "path": "skills/hermes/api",
+      "contentSha256": "78267ef8bbc3e11ed2a314dfe8abcf8626660d1d3deaa32eb9f1f1ddb64deca7"
     },
     {
       "id": "quepasa-api",
