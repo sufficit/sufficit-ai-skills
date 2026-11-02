@@ -199,6 +199,7 @@ inside the repository's documentation hierarchy.
 | [instagram-caption](../skills/instagram/instagram-caption/SKILL.md) |  | Jake Schincariol / Sufficit | Write and lint an Instagram caption in Portuguese or English: the line that survives the feed cut, the body, one call to action, search terms and up to five... |
 | [instagram-profile-manage](../skills/instagram/instagram-profile-manage/SKILL.md) |  | Sufficit | Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) through the cheapest working... |
 | [instagram-profile-setup](../skills/instagram/instagram-profile-setup/SKILL.md) |  | Sufficit | Score and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: accoun... |
+| [instagram-reel](../skills/instagram/instagram-reel/SKILL.md) |  | Jake Schincariol / Sufficit | Write an Instagram Reel from one raw idea in Portuguese or English: hook options, spoken script, separate on-screen text and a timed beat sheet, in the brand... |
 | [instagram-video-download](../skills/instagram/instagram-video-download/SKILL.md) |  | Sufficit | Download Instagram Reels and videos from user-supplied Instagram post URLs to local files with yt-dlp and verify their media streams. Use for saving Instagra... |
 
 ## mattpocock

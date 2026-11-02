@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 177,
+  "catalogEntries": 178,
   "sources": [
     {
       "id": "android",
@@ -1778,7 +1778,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-setup",
       "path": "skills/instagram/instagram-profile-setup",
-      "contentSha256": "cd0a1e3467b6a39c8f5dd16773b01b210997a9c313bb2f9e28b7fcb675d160cc"
+      "contentSha256": "3cb5adf6ef19b4b9377ff2eb87304cbfd55dc5cb04dc61887fffc7fde5663f5b"
     },
     {
       "id": "instagram-profile-manage",
@@ -1798,7 +1798,7 @@
       "license": "MIT",
       "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-caption",
       "path": "skills/instagram/instagram-caption",
-      "contentSha256": "24ea0c4e23c9e4923f10926562f06dce1b885cc89b2ae8a8f3e81c2f5324b81c"
+      "contentSha256": "60536af7dfba452da630e8633d409c49bd03ed0edbfbb574bd6bed2cffd9c698"
     },
     {
       "id": "instagram-audit",
@@ -1809,6 +1809,16 @@
       "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-audit",
       "path": "skills/instagram/instagram-audit",
       "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be"
+    },
+    {
+      "id": "instagram-reel",
+      "name": "instagram-reel",
+      "sourceId": "schincariol-instagram",
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-reel",
+      "path": "skills/instagram/instagram-reel",
+      "contentSha256": "947a582d2909f3abfc22a358ca941627814307c18089dff042aeed4706cf9178"
     },
     {
       "id": "seo-geo",

@@ -2,7 +2,7 @@
 name: instagram-profile-setup
 description: "Score and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: account type, name field, bio, link, highlights, pinned posts and first content. Use when the user asks to create, score, review or improve an Instagram profile or bio; does not post, run ads or automate the account."
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -119,6 +119,7 @@ login page as if it were a sales page.
   stories keep existing followers warm. Mix them instead of relying on one format.
 - Hook in the first seconds, captions on video (many watch muted), one idea per
   post, one call to action per post. Use
+  [instagram-reel](../instagram-reel/SKILL.md) for Reel scripts and
   [instagram-caption](../instagram-caption/SKILL.md) for captions and hashtags
   (up to five, since December 2025).
 - Comment-keyword calls to action ("comment STARTUP and I send you...") raise

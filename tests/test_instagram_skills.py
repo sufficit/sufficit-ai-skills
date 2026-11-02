@@ -1,6 +1,6 @@
 """Behaviour tests for the Instagram skill scripts and profile rubric.
 
-Purpose: keep the caption linter, post audit and rubric correct for Portuguese input.
+Purpose: keep the caption linter, post audit, beat sheet and rubric correct for Portuguese input.
 Usage: python3 -B -m unittest tests.test_instagram_skills -v
 Last modified: 2026-11-02
 """
@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INSTAGRAM = ROOT / "skills/instagram"
 CAPTION = INSTAGRAM / "instagram-caption/scripts/caption_lint.py"
 AUDIT = INSTAGRAM / "instagram-audit/scripts/audit_posts.py"
+BEATS = INSTAGRAM / "instagram-reel/scripts/beat_sheet.py"
 RUBRIC = INSTAGRAM / "instagram-profile-setup/references/rubric.json"
 
 
@@ -129,6 +130,37 @@ class AuditTests(unittest.TestCase):
             done = run(AUDIT, str(path))
         self.assertNotEqual(done.returncode, 0)
         self.assertIn("views is not a number", done.stderr.replace("column ", ""))
+
+
+class BeatSheetTests(unittest.TestCase):
+    def sheet(self, script: str, *arguments: str) -> dict:
+        done = run(BEATS, "-", "--json", *arguments, stdin=script)
+        self.assertEqual(done.returncode, 0, done.stderr)
+        return json.loads(done.stdout)
+
+    def test_portuguese_loop_ignores_accents_and_counts_amount_once(self) -> None:
+        result = self.sheet("Perdi R$ 18.000 na gestão.\nHoje a gestao mudou.", "--wpm", "120")
+        self.assertEqual(result["beats"][0]["words"], 5)
+        self.assertEqual(result["beats"][0]["seconds"], 2.5)
+        self.assertTrue(any("echoes the hook: gestao" in note for note in result["notes"]))
+
+    def test_long_hook_and_beat_are_flagged(self) -> None:
+        line = " ".join(["palavra"] * 12)
+        result = self.sheet(line, "--wpm", "120")
+        self.assertTrue(result["beats"][0]["flags"])
+        self.assertTrue(any("Cut the hook" in note for note in result["notes"]))
+
+    def test_lone_dash_is_not_a_word(self) -> None:
+        self.assertEqual(self.sheet("um - dois")["totalWords"], 2)
+
+    def test_abstract_run_and_uncalibrated_rate_are_reported(self) -> None:
+        result = self.sheet("tudo muda sempre\nnada fica igual\nsiga em frente")
+        self.assertFalse(result["calibrated"])
+        self.assertTrue(any("--wpm" in note for note in result["notes"]))
+        self.assertTrue(any("Beats 1-3" in note for note in result["notes"]))
+
+    def test_empty_script_is_rejected(self) -> None:
+        self.assertEqual(run(BEATS, "-", stdin="  \n").returncode, 2)
 
 
 class RubricTests(unittest.TestCase):

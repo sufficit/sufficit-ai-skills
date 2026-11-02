@@ -58,7 +58,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-11-02T18:43:07.588991+00:00",
+  "updatedAt": "2026-11-02T18:57:57.129283+00:00",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2483,7 +2483,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "cd0a1e3467b6a39c8f5dd16773b01b210997a9c313bb2f9e28b7fcb675d160cc"
+      "contentSha256": "3cb5adf6ef19b4b9377ff2eb87304cbfd55dc5cb04dc61887fffc7fde5663f5b"
     },
     {
       "id": "instagram-profile-manage",
@@ -2517,7 +2517,7 @@
       "author": "Jake Schincariol / Sufficit",
       "license": "MIT",
       "sourceId": "schincariol-instagram",
-      "contentSha256": "24ea0c4e23c9e4923f10926562f06dce1b885cc89b2ae8a8f3e81c2f5324b81c"
+      "contentSha256": "60536af7dfba452da630e8633d409c49bd03ed0edbfbb574bd6bed2cffd9c698"
     },
     {
       "id": "instagram-audit",
@@ -2535,6 +2535,23 @@
       "license": "MIT",
       "sourceId": "schincariol-instagram",
       "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be"
+    },
+    {
+      "id": "instagram-reel",
+      "name": "instagram-reel",
+      "description": "Write an Instagram Reel from one raw idea in Portuguese or English: hook options, spoken script, separate on-screen text and a timed beat sheet, in the brand's own voice. Use when the user asks for a Reel, short video script, hook or voiceover, or to create a brand voice file; it does not record, edit or publish, and captions belong to instagram-caption.",
+      "source": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-reel",
+      "tags": [
+        "instagram",
+        "social-media",
+        "reels",
+        "copywriting",
+        "video"
+      ],
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "sourceId": "schincariol-instagram",
+      "contentSha256": "947a582d2909f3abfc22a358ca941627814307c18089dff042aeed4706cf9178"
     },
     {
       "id": "seo-geo",
@@ -2574,5 +2591,5 @@
       "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
     }
   ],
-  "catalogEntries": 177
+  "catalogEntries": 178
 }

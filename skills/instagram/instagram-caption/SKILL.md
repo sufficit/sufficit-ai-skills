@@ -2,7 +2,7 @@
 name: instagram-caption
 description: "Write and lint an Instagram caption in Portuguese or English: the line that survives the feed cut, the body, one call to action, search terms and up to five hashtags. Use when the user asks for a caption, post description or hashtags; it does not publish, and profile copy belongs to instagram-profile-setup."
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   author: "Jake Schincariol / Sufficit"
   source: "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-caption"
 ---
@@ -32,8 +32,8 @@ Say which job you chose, and why.
 ## Gather facts
 
 Ask for what is missing: the post's single idea, the audience, the one action wanted,
-and two or three terms customers would type. Read the brand's voice notes when they
-exist. Never invent numbers, clients or results. When a number is needed and unknown,
+and two or three terms customers would type. Read the brand's voice file when it
+exists (see [instagram-reel](../instagram-reel/SKILL.md)). Never invent numbers, clients or results. When a number is needed and unknown,
 leave `{{your number}}` in the draft and flag it. Get consent before naming a client.
 
 ## Shape
