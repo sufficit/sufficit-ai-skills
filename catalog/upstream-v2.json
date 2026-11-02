@@ -49,9 +49,16 @@
       "revision": "d81f3a183412e71a5b1e84ca21bc1a35eea03a60",
       "author": "Matt Pocock",
       "license": "MIT"
+    },
+    {
+      "id": "schincariol-instagram",
+      "repository": "https://github.com/Jakeschincariol/instagram-agent-skill",
+      "revision": "d03c56bb598be770c60b201f94237e5d1a4268a6",
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT"
     }
   ],
-  "updatedAt": "2026-10-27T13:59:51.349178+00:00",
+  "updatedAt": "2026-11-02T18:43:07.588991+00:00",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2464,7 +2471,7 @@
     {
       "id": "instagram-profile-setup",
       "name": "instagram-profile-setup",
-      "description": "Audit and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: account type, name field, bio, link, highlights, pinned posts and first content. Use when the user asks to create, review or improve an Instagram profile or bio; does not post, run ads or automate the account.",
+      "description": "Score and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: account type, name field, bio, link, highlights, pinned posts and first content. Use when the user asks to create, score, review or improve an Instagram profile or bio; does not post, run ads or automate the account.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-setup",
       "tags": [
         "sufficit",
@@ -2476,7 +2483,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "5376ab58d9c85160f6f65c1bae82bf74c75cf427cbf585259b1b59ea28a82c93"
+      "contentSha256": "cd0a1e3467b6a39c8f5dd16773b01b210997a9c313bb2f9e28b7fcb675d160cc"
     },
     {
       "id": "instagram-profile-manage",
@@ -2494,6 +2501,40 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6"
+    },
+    {
+      "id": "instagram-caption",
+      "name": "instagram-caption",
+      "description": "Write and lint an Instagram caption in Portuguese or English: the line that survives the feed cut, the body, one call to action, search terms and up to five hashtags. Use when the user asks for a caption, post description or hashtags; it does not publish, and profile copy belongs to instagram-profile-setup.",
+      "source": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-caption",
+      "tags": [
+        "instagram",
+        "social-media",
+        "copywriting",
+        "captions",
+        "hashtags"
+      ],
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "sourceId": "schincariol-instagram",
+      "contentSha256": "24ea0c4e23c9e4923f10926562f06dce1b885cc89b2ae8a8f3e81c2f5324b81c"
+    },
+    {
+      "id": "instagram-audit",
+      "name": "instagram-audit",
+      "description": "Audit an Instagram account's published posts from their insights: rank each post against the account's own median, compare per-reach rates, separate hook problems from profile problems and say what to stop and repeat. Use when the user asks what is working, why a post flopped or to read Instagram analytics; it does not write posts or change the profile.",
+      "source": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-audit",
+      "tags": [
+        "instagram",
+        "social-media",
+        "analytics",
+        "insights",
+        "reels"
+      ],
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "sourceId": "schincariol-instagram",
+      "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be"
     },
     {
       "id": "seo-geo",
@@ -2533,5 +2574,5 @@
       "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
     }
   ],
-  "catalogEntries": 173
+  "catalogEntries": 177
 }

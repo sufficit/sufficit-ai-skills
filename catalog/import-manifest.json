@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 175,
+  "catalogEntries": 177,
   "sources": [
     {
       "id": "android",
@@ -49,6 +49,13 @@
       "repository": "https://github.com/mattpocock/skills",
       "revision": "d81f3a183412e71a5b1e84ca21bc1a35eea03a60",
       "author": "Matt Pocock",
+      "license": "MIT"
+    },
+    {
+      "id": "schincariol-instagram",
+      "repository": "https://github.com/Jakeschincariol/instagram-agent-skill",
+      "revision": "d03c56bb598be770c60b201f94237e5d1a4268a6",
+      "author": "Jake Schincariol / Sufficit",
       "license": "MIT"
     }
   ],
@@ -1771,7 +1778,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-setup",
       "path": "skills/instagram/instagram-profile-setup",
-      "contentSha256": "5376ab58d9c85160f6f65c1bae82bf74c75cf427cbf585259b1b59ea28a82c93"
+      "contentSha256": "cd0a1e3467b6a39c8f5dd16773b01b210997a9c313bb2f9e28b7fcb675d160cc"
     },
     {
       "id": "instagram-profile-manage",
@@ -1782,6 +1789,26 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-manage",
       "path": "skills/instagram/instagram-profile-manage",
       "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6"
+    },
+    {
+      "id": "instagram-caption",
+      "name": "instagram-caption",
+      "sourceId": "schincariol-instagram",
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-caption",
+      "path": "skills/instagram/instagram-caption",
+      "contentSha256": "24ea0c4e23c9e4923f10926562f06dce1b885cc89b2ae8a8f3e81c2f5324b81c"
+    },
+    {
+      "id": "instagram-audit",
+      "name": "instagram-audit",
+      "sourceId": "schincariol-instagram",
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-audit",
+      "path": "skills/instagram/instagram-audit",
+      "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be"
     },
     {
       "id": "seo-geo",

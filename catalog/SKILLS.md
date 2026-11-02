@@ -195,8 +195,10 @@ inside the repository's documentation hierarchy.
 
 | Skill | Card | Source | Description |
 | --- | --- | --- | --- |
+| [instagram-audit](../skills/instagram/instagram-audit/SKILL.md) |  | Jake Schincariol / Sufficit | Audit an Instagram account's published posts from their insights: rank each post against the account's own median, compare per-reach rates, separate hook pro... |
+| [instagram-caption](../skills/instagram/instagram-caption/SKILL.md) |  | Jake Schincariol / Sufficit | Write and lint an Instagram caption in Portuguese or English: the line that survives the feed cut, the body, one call to action, search terms and up to five... |
 | [instagram-profile-manage](../skills/instagram/instagram-profile-manage/SKILL.md) |  | Sufficit | Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) through the cheapest working... |
-| [instagram-profile-setup](../skills/instagram/instagram-profile-setup/SKILL.md) |  | Sufficit | Audit and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: accoun... |
+| [instagram-profile-setup](../skills/instagram/instagram-profile-setup/SKILL.md) |  | Sufficit | Score and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: accoun... |
 | [instagram-video-download](../skills/instagram/instagram-video-download/SKILL.md) |  | Sufficit | Download Instagram Reels and videos from user-supplied Instagram post URLs to local files with yt-dlp and verify their media streams. Use for saving Instagra... |
 
 ## mattpocock

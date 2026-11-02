@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 175 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 177 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -19,6 +19,7 @@ conteúdo importado.
 | Asterisk | 1 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Instagram | 3 | Sufficit, MIT-0 |
+| Instagram (adaptação) | 2 | `Jakeschincariol/instagram-agent-skill` (adaptação Sufficit), MIT |
 | Videos | 1 | Sufficit, MIT-0 |
 | Asaas | 4 | Sufficit, MIT-0 |
 | QuePasa | 2 | Sufficit, MIT-0 |
@@ -61,7 +62,10 @@ Markdown transcript with Whisper and ffmpeg. The
 [`instagram-profile-setup`](skills/instagram/instagram-profile-setup/SKILL.md) skill audits and writes
 searchable, converting Instagram business profiles and covers a new account's first steps;
 [`instagram-profile-manage`](skills/instagram/instagram-profile-manage/SKILL.md) reads the live profile and
-applies approved changes through the cheapest working channel.
+applies approved changes through the cheapest working channel;
+[`instagram-caption`](skills/instagram/instagram-caption/SKILL.md) writes and lints captions in Portuguese or
+English; [`instagram-audit`](skills/instagram/instagram-audit/SKILL.md) ranks published posts against the
+account's own median and separates hook problems from profile problems.
 
 The [`hermes-api`](skills/hermes/api/SKILL.md) skill discovers the Hermes helpdesk API from the
 server's own OpenAPI document and calls it as the agent's own user (profile, avatar,

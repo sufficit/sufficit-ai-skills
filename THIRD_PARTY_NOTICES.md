@@ -32,6 +32,15 @@ Genius. A origem e o digest de cada pacote estão em
 - Revisão consultada: `c9802a8713927a6851f5540efe93b95f2b0637b8`
 - Licença: [MIT](skills/mikrotik/routeros-management/LICENSE)
 
+## Instagram Agent Skill
+
+- Autor: Jake Schincariol; adaptação por Sufficit
+- Origem: <https://github.com/Jakeschincariol/instagram-agent-skill>
+- Revisão consultada: `d03c56bb598be770c60b201f94237e5d1a4268a6`
+- Licença: [MIT](skills/instagram/instagram-caption/LICENSE)
+- Pacotes: `instagram-caption` e `instagram-audit`. A rubrica de
+  `instagram-profile-setup` usa a mesma ideia de pontuação, com texto e pesos próprios.
+
 ## Skills Sufficit
 
 - Autor: Sufficit

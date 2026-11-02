@@ -1,0 +1,91 @@
+{
+  "version": "1.0",
+  "total": 100,
+  "note": "Weights are Sufficit's editorial judgement for business profiles, not a measured model. Use the score to order fixes and show progress; it does not predict results. visibility: 'public' can be read without login; 'owner' needs a screenshot from the user or a logged-in view.",
+  "items": [
+    {
+      "id": "name_field",
+      "points": 14,
+      "visibility": "public",
+      "fullMarks": "Brand plus what it does, using a term customers search, with the keyword inside the first 30 characters.",
+      "commonFail": "Brand name alone, or a slogan nobody types."
+    },
+    {
+      "id": "bio_outcome",
+      "points": 14,
+      "visibility": "public",
+      "fullMarks": "The first line says who it serves and the result they get, in the customer's words. With several products, each has one line.",
+      "commonFail": "A list of services, adjectives or a slogan."
+    },
+    {
+      "id": "bio_proof_and_cta",
+      "points": 10,
+      "visibility": "public",
+      "fullMarks": "One real proof (number, client or result) and one next step pointing to the link, within 150 characters.",
+      "commonFail": "No proof, no next step, or an invented claim."
+    },
+    {
+      "id": "link",
+      "points": 10,
+      "visibility": "public",
+      "fullMarks": "The primary link delivers what the bio promised: a WhatsApp link with a prefilled message, booking page or landing page. The list stays short.",
+      "commonFail": "No link, a login page, a broken URL or a long menu."
+    },
+    {
+      "id": "pinned_posts",
+      "points": 10,
+      "visibility": "owner",
+      "fullMarks": "Three pins doing three jobs: how it works, a client case and who is behind it.",
+      "commonFail": "Nothing pinned, or pins chosen by views instead of what they sell."
+    },
+    {
+      "id": "highlights",
+      "points": 10,
+      "visibility": "public",
+      "fullMarks": "Named for buyer questions (results, testimonials, offer, how it works, FAQ), with consistent covers and current content.",
+      "commonFail": "Old events, personal stories or vague titles."
+    },
+    {
+      "id": "category_and_contact",
+      "points": 8,
+      "visibility": "owner",
+      "fullMarks": "Professional account, the category closest to what customers search and working contact buttons that someone answers.",
+      "commonFail": "Personal account, wrong category or an unmonitored contact."
+    },
+    {
+      "id": "recent_activity",
+      "points": 7,
+      "visibility": "public",
+      "fullMarks": "Regular recent posts that reinforce the promise in the bio, and recent comments answered.",
+      "commonFail": "Weeks of silence, or questions left unanswered."
+    },
+    {
+      "id": "grid_legibility",
+      "points": 6,
+      "visibility": "public",
+      "fullMarks": "The first two rows show what the business does at thumbnail size, with chosen covers and short readable text.",
+      "commonFail": "Generic art or frames that say nothing at small size."
+    },
+    {
+      "id": "photo",
+      "points": 5,
+      "visibility": "public",
+      "fullMarks": "A logo readable in a tiny circle or, for founder-led brands, a clear face; consistent with other channels.",
+      "commonFail": "Long logo with unreadable text, or a dark distant photo."
+    },
+    {
+      "id": "handle",
+      "points": 3,
+      "visibility": "public",
+      "fullMarks": "Short, easy to say and spell, and the same on other networks where possible.",
+      "commonFail": "Stacked underscores, numbers or a handle nobody can spell."
+    },
+    {
+      "id": "stories",
+      "points": 3,
+      "visibility": "public",
+      "fullMarks": "Active stories when viewed, or a routine the user confirms.",
+      "commonFail": "No stories for months."
+    }
+  ]
+}

@@ -42,7 +42,7 @@ slots; ask for the missing facts instead.
 ## Profile audit
 
 > Audit this Instagram profile: photo `<description>`, name field `<text>`, bio
-> `<text>`, link `<url>`, highlights `<titles>`, pinned posts `<topics>`. Rate each
-> element against: searchable keyword, clear outcome, proof, next step, trust
-> material. Say which step of the ladder it reaches (photo → name → bio → link →
-> highlights → pinned → content) and list the 3 highest-impact fixes.
+> `<text>`, link `<url>`, highlights `<titles>`, pinned posts `<topics>`. Score each
+> item in `rubric.json`, marking what you cannot see as `unknown`. Say which step of
+> the ladder it reaches (photo → name → bio → link → highlights → pinned → content)
+> and list the 3 fixes that recover the most points.

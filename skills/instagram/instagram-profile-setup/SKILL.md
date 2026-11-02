@@ -1,8 +1,8 @@
 ---
 name: instagram-profile-setup
-description: Audit and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: account type, name field, bio, link, highlights, pinned posts and first content. Use when the user asks to create, review or improve an Instagram profile or bio; does not post, run ads or automate the account.
+description: "Score and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: account type, name field, bio, link, highlights, pinned posts and first content. Use when the user asks to create, score, review or improve an Instagram profile or bio; does not post, run ads or automate the account."
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -63,6 +63,25 @@ this order and report which step the profile reaches.
 7. **Top step: consistent content.** A feed that keeps reinforcing the promise in
    the bio, with clear calls to action, so new visitors keep converting.
 
+## Score the profile
+
+The ladder says where the profile stops; the score shows what each fix is worth. Score
+every item in [references/rubric.json](references/rubric.json) (12 items, 100 points):
+
+- Give full points only when the item meets `fullMarks`, and be strict: a generous
+  score hides the next fix.
+- Mark an item `unknown` when you cannot see it, instead of scoring zero. Items with
+  `visibility: owner` are not visible in a logged-out read, so ask for a screenshot.
+  Report the result as points over the points you could check, for example `41/82`, and
+  list what is unknown.
+- Order the fixes by points lost, not by rubric order.
+- After writing the copy, rescore only what the copy changes and show the delta. Say
+  which points still need work the copy cannot do, such as real proof or a posting
+  routine. Do not count a fix until it is applied and verified.
+
+The score orders fixes and shows progress; it does not predict results. To test whether
+the fixes worked, use [instagram-audit](../instagram-audit/SKILL.md) on later posts.
+
 ## Profiles with more than one product
 
 Keep one umbrella promise in the name field (the two terms customers search,
@@ -91,14 +110,17 @@ login page as if it were a sales page.
 7. Turn on two-factor authentication and keep recovery email/phone owned by the
    company, not a former employee or agency.
 8. After two to four weeks, review insights (profile visits, link taps, follows
-   by source) and adjust the name field keyword, bio and pinned posts.
+   by source) and adjust the name field keyword, bio and pinned posts. Use
+   [instagram-audit](../instagram-audit/SKILL.md) once there are posts to compare.
 
 ## Content and engagement basics
 
 - Reels reach non-followers; carousels and saves build trust with followers;
   stories keep existing followers warm. Mix them instead of relying on one format.
 - Hook in the first seconds, captions on video (many watch muted), one idea per
-  post, one call to action per post.
+  post, one call to action per post. Use
+  [instagram-caption](../instagram-caption/SKILL.md) for captions and hashtags
+  (up to five, since December 2025).
 - Comment-keyword calls to action ("comment STARTUP and I send you...") raise
   engagement, but only promise what you will actually deliver. Sending replies
   automatically requires an official Meta-approved tool; never use unofficial
@@ -112,7 +134,7 @@ login page as if it were a sales page.
 
 Produce a short report in the user's language:
 
-1. Current step on the ladder and the top three fixes, highest impact first.
+1. Score table, current step on the ladder and the top three fixes by points lost.
 2. Ready-to-paste copy: two or three name-field options, two bio options (with
    character counts), the link text, highlight list with titles, and the three
    pinned-post briefs.
