@@ -13,6 +13,7 @@ The usual attribute keys are:
 | Telephone | `phone` | `value`; type as `cellular` or `business` in `description` |
 | CPF/CNPJ | `cadastro` | `value` document |
 | Social network | `social` | `value` = @handle or profile URL; network name (`instagram`, `facebook`, `linkedin`...) in `description`. Shown in the "Redes Sociais" field of the Blazor contact page; do not use the network name as `key` |
+| Campaign note | `campanha_<campaign>` | outcome or summary in `value`; label such as `aceite`, `recusa`, `retorno` in `description` — the same `key` may repeat with different labels, one attribute per outcome. Custom keys like this do not appear in the standard Blazor contact fields; read them through the attribute API |
 | Tag | `marcador` | category in `value`; tag label in `description` |
 | Owner | `idproprietario` | link managed by server in creation |
 
