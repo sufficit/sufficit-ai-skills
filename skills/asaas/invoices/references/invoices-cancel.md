@@ -24,7 +24,7 @@ The `asaas_invoices_cancel` tool requests cancellation of a NFS-e in the product
 | `already_canceled` | The bill's already canceled. | Inform the user; nothing to do. |
 | `cancellation_in_progress` | Cancellation is already in processing. | Wait for the result; do not repeat. |
 | `cancellation_denied` | The city has already denied this cancellation. | Explain it's up to the city. |
-| `not_cancellable` | Status does not allow to cancel (e.g. `ERROR`). | Inform the user of the actual status. |
+| `not_cancellable` | Status does not allow to cancel. An invoice in `ERROR` can be canceled, usually after its replacement is authorized. | Inform the user of the actual status. |
 
 ## Success result
 

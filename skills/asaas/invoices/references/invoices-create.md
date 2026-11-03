@@ -50,8 +50,9 @@ Result with `scheduled: false` and `writesPerformed: false` is refusal, not erro
 
 | `reason` | Cause | Conduct |
 | --- | --- | --- |
-| `duplicate_payment` | The billing already has a tax bill. | Use the existing invoice returned. Never insist, not even with `confirmedDistinct`. |
-| `possible_duplicate` | Same customer, value and date of existing invoice. | Present the existing invoice; only repeat with `confirmedDistinct: true` if the user confirms that it is another invoice. |
+| `customer_address_incomplete` | The recipient lacks a field listed in `addressMissing`; the prefeitura would reject the invoice. | Ask the user for the data, complete it with `asaas_customers_update`, and issue again. |
+| `duplicate_payment` | The billing already has a live tax bill (`ERROR` and `CANCELED` do not count). | Use the existing invoice returned. Never insist, not even with `confirmedDistinct`. |
+| `possible_duplicate` | Same customer, value and date of a live invoice (`ERROR` and `CANCELED` do not count; other dates never collide). | Present the existing invoice; only repeat with `confirmedDistinct: true` if the user confirms that it is another invoice. |
 
 ## Success result
 
@@ -60,6 +61,7 @@ Result with `scheduled: false` and `writesPerformed: false` is refusal, not erro
 | `scheduled` | `true` |
 | `writesPerformed` | `true` |
 | `emissionIsAsync` | `true` — Schedule starts the flow; authorization comes later |
+| `addressCheck` | `complete`, or `unverified` when the payer of a charge or installment could not be looked up |
 | `invoice` | Sanitized invoice (`id`, `status` SCHEDULED, `value`, `effectiveDate`, linked ids; no URLs) |
 | `dedupPerformed` | `true` |
 
@@ -87,6 +89,7 @@ resolve origin (payment/installment/customer)
         ▼
 asaas_invoices_create (origin, amount, description, date)
         │
+        ├─ customer_address_incomplete ──► asaas_customers_update, then issue again
         ├─ duplicate_payment ──► use the existing invoice
         ├─ possible_duplicate ──► confirm with the user
         │                             └─ confirmed? confirmedDistinct=true

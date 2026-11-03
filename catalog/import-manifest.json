@@ -308,7 +308,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers",
       "path": "skills/asaas/customers",
-      "contentSha256": "86d390c01c4f3bb9039bbdab7d9f21ea3fec6ed729f67c75ce8803ca383adb2b"
+      "contentSha256": "0439c7f501cd89c210c86dca4907b111ac795c95ea3e39bc9d91568c69085b84"
     },
     {
       "id": "asaas-invoices",
@@ -318,7 +318,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "path": "skills/asaas/invoices",
-      "contentSha256": "77ec0a41ffb9608810e9e3f87289d719d7d8c8e53933cfe40b02d5b891bc3443"
+      "contentSha256": "f37f0b52fa6992c77ea981fae8ae2bf3b4ff4c9d82e3c343d28d1146b70d4803"
     },
     {
       "id": "github-cli",

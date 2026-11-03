@@ -8,7 +8,7 @@ The `asaas_invoices_list` tool consults `/v3/invoices` in the production account
 | --- | --- | --- | --- |
 | `customer` | string | (None) | Filter by client id (`cus_...`); up to 64 characters. |
 | `payment` | string | (None) | Filter by the collection id (`pay_...`). |
-| `status` | string | (None) | One between SCHEDULED, SYNCHRONIZED, AUTHORIZED, PROCESSING_CANCELLATION, CANCELED, CANCELLATION_DENIED, ERROR. |
+| `status` | string | (None) | One between SCHEDULED, SYNCHRONIZED, AUTHORIZED, PROCESSING_CANCELLATION, CANCELED, CANCELLATION_DENIED, ERROR. When the filtered page comes back empty the tool reads the page without the filter and applies it locally (`filterValidation: status_enforced_locally`); keep paging with `nextOffset`. |
 | `effectiveDateGe` | string | (None) | Start of the period of issue (YYYY-MM-DD). |
 | `effectiveDateLe` | string | (None) | End of period of issue (YYYY-MM-DD). |
 | `limit` | integer | `10` | Between 1 and 30. |

@@ -73,10 +73,11 @@ Explain statuses plainly: SCHEDULED = scheduled, SYNCHRONIZED = sent to the muni
 Issue only when explicitly requested. `asaas_invoices_create` schedules the NFS-e and enforces these protections:
 
 1. Exactly one origin: charge (`payment`), installment plan (`installment`), or customer (`customer`, standalone invoice). Resolve `pay_...` for a charge or `cus_...` for a customer before writing.
-2. Automatic deduplication: a charge with an existing invoice is always rejected. The same customer + amount + date is rejected until the user confirms (`confirmedDistinct`). Rejection is not a failure; present the existing invoice.
+2. Automatic deduplication: a charge with an existing invoice is always rejected. The same customer + amount + date is rejected until the user confirms (`confirmedDistinct`). Invoices in `ERROR` or `CANCELED` do not block. Rejection is not a failure; present the existing invoice.
 3. Municipal service fields are omitted by default; the account supplies the municipal code, ISS, and tax name. Send only one of `municipalServiceId` or `municipalServiceCode` when the user explicitly chooses a specific service. If the provider rejects missing service details, present the actual reason, report the discrepancy, and never guess a code.
-4. Explicit approval: issuance writes to production and displays an approval card in the conversation.
-5. Accurate processing status: scheduling starts the flow, but municipal authorization is asynchronous. Say "invoice scheduled; issuance is being processed", not that authorization is immediate. Query by ID to confirm the later status.
+4. Recipient address: a customer without street, number, neighborhood, or a valid CEP is refused with `customer_address_incomplete`, because the prefeitura would reject the invoice. Ask for the data, complete it with `asaas_customers_update`, and issue again.
+5. Explicit approval: issuance writes to production and displays an approval card in the conversation.
+6. Accurate processing status: scheduling starts the flow, but municipal authorization is asynchronous. Say "invoice scheduled; issuance is being processed", not that authorization is immediate. Query by ID to confirm the later status.
 
 Details: [references/invoices-create.md](references/invoices-create.md).
 

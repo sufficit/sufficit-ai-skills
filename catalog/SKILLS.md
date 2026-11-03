@@ -37,7 +37,7 @@ inside the repository's documentation hierarchy.
 | Skill | Card | Source | Description |
 | --- | --- | --- | --- |
 | [asaas-connection](../skills/asaas/connection/SKILL.md) | [card](../skills/asaas/connection/skill-card.md) | Sufficit | Securely connect and test the ASAAS production account using the key stored in the user's Sufficit Identity Vault and the asaas\_connection\_test tool in Suffi... |
-| [asaas-customers](../skills/asaas/customers/SKILL.md) | [card](../skills/asaas/customers/skill-card.md) | Sufficit | Query, search, and register customers in the ASAAS production account using asaas\_customers\_list and asaas\_customers\_create in Sufficit AI Genius. Exposes na... |
+| [asaas-customers](../skills/asaas/customers/SKILL.md) | [card](../skills/asaas/customers/skill-card.md) | Sufficit | Query, search, register, and update customers in the ASAAS production account using asaas\_customers\_list, asaas\_customers\_create, and asaas\_customers\_update... |
 | [asaas-invoices](../skills/asaas/invoices/SKILL.md) | [card](../skills/asaas/invoices/skill-card.md) | Sufficit | Query and schedule production ASAAS NFS-e invoices with asaas\_invoices\_list, asaas\_services\_list, and asaas\_invoices\_create; cancel with asaas\_invoices\_cance... |
 | [asaas-payments](../skills/asaas/payments/SKILL.md) | [card](../skills/asaas/payments/skill-card.md) | Sufficit | List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas\_payments\_list in Sufficit AI... |
 

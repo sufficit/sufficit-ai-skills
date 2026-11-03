@@ -460,7 +460,7 @@
     {
       "id": "asaas-customers",
       "name": "asaas-customers",
-      "description": "Query, search, and register customers in the ASAAS production account using asaas_customers_list and asaas_customers_create in Sufficit AI Genius. Exposes name, email, person type, full CNPJ, or only the first three CPF digits. Queries are read-only; registration requires user confirmation and checks duplicates before writing. Version 0.3.1.",
+      "description": "Query, search, register, and update customers in the ASAAS production account using asaas_customers_list, asaas_customers_create, and asaas_customers_update in Sufficit AI Genius. Exposes name, email, person type, full CNPJ, or only the first three CPF digits. Queries are read-only; registration and updates require user confirmation. Registers the address the prefeitura requires on an NFS-e. Version 0.4.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers",
       "tags": [
         "asaas",
@@ -472,12 +472,12 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "86d390c01c4f3bb9039bbdab7d9f21ea3fec6ed729f67c75ce8803ca383adb2b"
+      "contentSha256": "0439c7f501cd89c210c86dca4907b111ac795c95ea3e39bc9d91568c69085b84"
     },
     {
       "id": "asaas-invoices",
       "name": "asaas-invoices",
-      "description": "Query and schedule production ASAAS NFS-e invoices with asaas_invoices_list, asaas_services_list, and asaas_invoices_create; cancel with asaas_invoices_cancel when available. Omit municipal service fields by default so account configuration supplies them. Never ask the user for a municipal code or invent one. Invoice descriptions come from the user. Municipal fields can create service entries or change existing invoice associations. Consult official documentation before assuming requirements, report discrepancies, query before writing, and obtain approval. Version 0.6.1.",
+      "description": "Query and schedule production ASAAS NFS-e invoices with asaas_invoices_list, asaas_services_list, and asaas_invoices_create; cancel with asaas_invoices_cancel when available. Omit municipal service fields by default so account configuration supplies them. Never ask the user for a municipal code or invent one. Invoice descriptions come from the user. Municipal fields can create service entries or change existing invoice associations. Consult official documentation before assuming requirements, report discrepancies, query before writing, and obtain approval. Version 0.7.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "tags": [
         "asaas",
@@ -489,7 +489,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "77ec0a41ffb9608810e9e3f87289d719d7d8c8e53933cfe40b02d5b891bc3443"
+      "contentSha256": "f37f0b52fa6992c77ea981fae8ae2bf3b4ff4c9d82e3c343d28d1146b70d4803"
     },
     {
       "id": "github-cli",

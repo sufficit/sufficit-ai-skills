@@ -13,9 +13,16 @@ Only when the user explicitly asked to register a new client. Do not offer the r
 | `name` | string | yes | Client name; 1 to 80 characters. |
 | `cpfCnpj` | string | no | CPF (11 digits) or CNPJ (14 digits); punctuation is ignored. |
 | `email` | string | no | E-mail; up to 64 characters. |
+| `address` | string | no | Street name, up to 200 characters. |
+| `addressNumber` | string | no | Number or `S/N`, up to 20 characters. |
+| `complement` | string | no | Up to 200 characters. |
+| `province` | string | no | Neighborhood, up to 100 characters. |
+| `postalCode` | string | no | CEP with 8 digits; punctuation is ignored. |
+| `phone` / `mobilePhone` | string | no | Area code plus number (10 or 11 digits); punctuation and a leading `55` are ignored. |
+| `externalReference` | string | no | Id in the source system, up to 100 characters. |
 | `confirmedDistinct` | boolean | no | `true` only when the user has confirmed that the name/e-mail collision is another client. Never overrides a document match. |
 
-Sending to the provider takes only `name`, `cpfCnpj` (digits) and `email` — nothing more. Address, telephone and supplement are for the ASAAS panel.
+Only the fields provided are sent. Send the street, number, neighborhood, and CEP whenever an NFS-e will be issued: without them the prefeitura rejects the invoice. ASAAS may fill the street and neighborhood from the CEP, so judge the result by `addressMissing`. Address and phone values never come back into the conversation.
 
 ## Refusals (no write performed)
 
@@ -32,7 +39,8 @@ The result with `created: false` and `writesPerformed: false` is a refusal, not 
 | --- | --- |
 | `created` | `true` |
 | `writesPerformed` | `true` |
-| `customer` | Client created sanitized (`id`, `name`, `personType`, `email`, `document` under the identification policy) |
+| `customer` | Client created sanitized (`id`, `name`, `personType`, `email`, `document` under the identification policy, `addressComplete`, `addressMissing`) |
+| `guidance` | Present when the address is incomplete; complete it with `asaas_customers_update` before issuing an invoice. |
 | `dedupPerformed` | `true` — the duplicate query ran before writing |
 | `credentialReference` | `personal/asaas/production/api-key` |
 
@@ -40,7 +48,7 @@ The result with `created: false` and `writesPerformed: false` is a refusal, not 
 
 | Code | Meaning | Action |
 | --- | --- | --- |
-| `asaas_customers_create_invalid_arguments` | Empty/long name, document out of 11/14 digits, long email. | Correct arguments and repeat; nothing has been called. |
+| `asaas_customers_create_invalid_arguments` | Empty/long name, document out of 11/14 digits, long email, CEP without 8 digits, invalid phone, long address field. | Correct arguments and repeat; nothing has been called. |
 | `asaas_customers_create_rejected` | ASAAS refused registration (e.g. invalid CPF). | The message brings code and description of the provider; correct with the user and try again. |
 | `asaas_customers_create_unexpected` | Creation confirmed, but response in unexpected format. | See the client list to confirm the actual status. |
 | `asaas_timeout` | Time limit exceeded. | See if the client has been created before repeating; writing may have happened. |
