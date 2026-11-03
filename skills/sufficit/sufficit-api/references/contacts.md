@@ -66,6 +66,33 @@ This operation identifies an attribute by combining `key` and `description`. Rea
 
 When full update by `POST /Contact` is required, preserve existing attributes that are not part of the request. The endpoint adds or changes the attributes sent, but the agent should not treat a short answer as proof that the entire record remains correct; rereads the contact after writing.
 
+## Record a social network handle
+
+Use `POST /Contact/Attribute?contactid=<GUID>` through `sufficit_api_call`, one attribute per network:
+
+```json
+{
+  "key": "social",
+  "value": "@handle",
+  "description": "instagram"
+}
+```
+
+Read the contact's `social` attributes first and update only with the same `description`. The description names the network and is part of the attribute's identity, so never place evidence, sources or notes there: each different text creates another attribute. Keep match evidence outside the contact. For a batch, write one contact, confirm it with `GET /Contact/Attribute/Value?contactid=<GUID>&key=social&description=instagram`, and only then continue.
+
+## When a contact write is refused
+
+Writing does not depend on an OAuth scope of its own, so a successful read says nothing about a refused write. The server allows a change to the contact's owner (`idproprietario`), and to managers and administrators. `GET /Contact/CanUpdate?contactid=<GUID>` answers `true` or `false` without changing anything: use it before a batch and when a refusal needs explaining.
+
+Read the status together with the body:
+
+- `POST /Contact` answers `403` and `POST /Contact/Attribute` answers `401`, both with `you cannot update this contact`, when the user lacks permission on that contact. Report the refusal; reconnecting the account does not change it.
+- `authentication_required` from an `mcp__sufficit_api__*` tool, or a `401` without that message, does not prove a permission problem. The MCP session lives in one API node and is lost when the node restarts or traffic fails over, which also happens during deploys.
+
+After an MCP failure, call `mcp_refresh` once `nextRetryAt` has passed. An earlier call returns the previous error without reaching the server. Then read the attribute to learn whether the write took effect, and repeat it only if it did not. The attribute routes are not published as MCP tools, so `sufficit_api_call` still reaches them while MCP is disconnected.
+
+Do not report that the session lacks write permission, or ask the user to reconnect, until a call made after that recovery was refused. The notice that a sign-in predates the API scopes is unreliable on opaque tokens: treat it as a hint until a call confirms it.
+
 ## Importance and deletion
 
 `POST /Contact/Important` receives `contactid`, `status` and an optional description. Marking as important protects contact against ordinary deletion. When removing the important flag, use the same description when it exists and validate the state afterwards.
