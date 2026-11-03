@@ -29,12 +29,15 @@ For the display name of a known customer/context GUID, follow [the contact-title
 
 The portfolio returns aggregates only, never the customers' e-mail or phone. A representative's permission does not extend to its customers' records. Do not try to obtain them by passing a customer GUID as `contextId` or `contactId` to `POST /Contact/Search`; the server refuses it (`403`) and it is outside the authorised scope. When a campaign needs contact data, report that it requires an export authorised by Sufficit management.
 
-## Monthly services: which system owns the customer
+## Monthly services: which system owns each service
 
 Customers are moving from the legacy service manager to native contracts. Before acting, read the customer's contracts (`GET /Sales/Contract/Search`): `source` tells which system owns each one.
 
 - **Native** contracts with automation on renew by themselves: the recurring automation opens each monthly period and debits it to the customer's balance. Nobody renews them by hand; a negative balance is how a debtor shows up. Do not try the legacy renewal below on them.
-- **Legacy** contracts (`source` LegacySales, renewal `NotConfigured`) are still renewed by hand, one service at a time, until the customer is migrated.
+- **Legacy** contracts (`source` LegacySales) are still renewed by hand, one service at a time, until migrated. A renewal value such as `NotConfigured` describes the native automation, not whether the legacy renewal is allowed.
+- A customer may have both sources. Handle each requested service separately. Neither an expired date nor an Active status selects the renewal engine. Native contracts with automation off require investigation of their native setup; do not send them through the legacy writer.
+
+A request to renew does not authorize migration, enabling automation, marking payment or renewing other services. If two inbound services match a request for all inbound services, handle those two and report each result; leave unrelated service types untouched.
 
 ## Migrating a legacy service to the new system
 
@@ -70,7 +73,7 @@ These endpoints do not renew anything — do not use them for this:
 - `ServiceCollections/PeriodHistory` and `PeriodContact`: contact log.
 - `Representatives/Release`: commission for periods already paid.
 - `Customers/{contextId}/Status/Change`: commercial classification only.
-- `Contract/RenewMonthly` and `RenewBilled`: only for customers enabled for the writer handoff; their `...RenewalAvailability` answers `canRenew = false` for everyone else.
+The `Contract/RenewMonthly` and `RenewBilled` routes are a separate writer handoff for eligible legacy contracts. Their availability applies only to that route. `canRenew=false`, even with “A renovação deste serviço ainda não está habilitada no sistema novo”, does not establish that the legacy service is blocked. Use the legacy editor flow below when the contract is still LegacySales; do not try both handoff routes repeatedly or ask to migrate just to renew.
 
 Renewal flow:
 
@@ -80,7 +83,11 @@ Renewal flow:
 4. Renew: `POST /Sales/LegacyService` with the same headers and body `{"operationId": "<new GUID>", "cutoverId": "<cutoverId>", "action": "renew", "serviceId": "<service id>", "contractId": "<contractId>", "expectedRevision": <revision>}` (no `desired`). Keep the same `operationId` if you must retry after an ambiguous failure; the server replays the receipt.
 5. Confirm with an independent read (step 1 or 3) that a new period exists, and report the services, values and new end date.
 
-`409 "Commercial authority changed; reload before submitting."` means the headers are missing or stale: repeat step 2 and resend. `"Service revision changed; reload before submitting."` means re-read step 3. If the API tool in use cannot send request headers, say so and point the user to the Renovar button on the service page of the Sufficit panel. Do not try other endpoints as a substitute.
+`409 "Commercial authority changed; reload before submitting."` means the request did not match the server's current authority; it is not proof of missing renewal capability or permission. Read Session again and supply BOTH headers in the tool's `headers` object (not in the JSON body or query), then reopen the service. On a changed cutover, reconstruct the command from that fresh editor state rather than patching an old command blindly. After an ambiguous write, inspect the state and preserve its operation ID/payload when replaying a receipt; never create a fresh renewal to compensate for an unknown outcome.
+
+`"Service revision changed; reload before submitting."` requires reopening the service and checking whether the requested period already exists before writing again. If a fresh Session and correctly supplied headers still fail, stop and report the exact call and response; do not loop or waive the authority checks.
+
+Current `sufficit_api_call` accepts `headers`. Inspect the available tool schema before claiming that it cannot send them. If an older installed client lacks this argument, report that specific limitation and point the operator to the Renovar button on the Sufficit service page; do not claim that the customer needs migration or that renewal itself is disabled.
 
 ### "customer_not_active" in ServiceCollections
 

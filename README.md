@@ -102,3 +102,5 @@ provides a scenario-based manual for internet-provider service teams, including
 repeat faults, disputed visits, installation checks and invoice delivery.
 
 Delivery: [ISP support manual and artifact cleanup](docs/activities/202611031032-isp-customer-support.md).
+
+Current work: [legacy renewal guidance](docs/PLAN-LEGACY-RENEWAL-GUIDANCE.md).
