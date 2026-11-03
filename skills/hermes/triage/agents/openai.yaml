@@ -1,0 +1,4 @@
+interface:
+  display_name: Hermes Triage
+  short_description: Route Hermes conversations to the right team with private notes, never replying to customers
+  default_prompt: Use $hermes-triage to decide which team should handle this Hermes conversation and propose a private note.

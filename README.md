@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 179 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 180 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -71,7 +71,8 @@ a per-brand voice file.
 
 The [`hermes-api`](skills/hermes/api/SKILL.md) skill discovers the Hermes helpdesk API from the
 server's own OpenAPI document and calls it as the agent's own user (profile, avatar,
-conversations, private notes).
+conversations, private notes); [`hermes-triage`](skills/hermes/triage/SKILL.md) routes
+conversations to the right team with private notes, never replying to customers.
 
 The [`quepasa-api`](skills/quepasa/api/SKILL.md) skill calls the QuePasa API as a
 client; [`quepasa-production`](skills/quepasa/production/SKILL.md) operates Sufficit's

@@ -2330,6 +2330,23 @@
       "contentSha256": "f687f80b47556348ba5b0a558e93d420a04cfe7e0451177678ef133a7809c46f"
     },
     {
+      "id": "hermes-triage",
+      "name": "hermes-triage",
+      "description": "Triage Hermes helpdesk (Chatwoot-based) conversations as an internal assistant: decide which team should handle a conversation, separate noise from real requests, and help human agents with private notes, without ever talking to the customer. Covers when there is not enough substance to decide, conversations a human already owns, automation side effects, untrusted customer text, the note format, the training phases and how to measure accuracy. Use when asked to triage, route, classify or direct Hermes conversations, to suggest a team or label, or to train or review a triage agent. Pair with hermes-api for the calls. Version 0.1.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/triage",
+      "tags": [
+        "hermes",
+        "chatwoot",
+        "helpdesk",
+        "triagem",
+        "atendimento"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "f24a26d7e93747fcea523da76a46e76dc81c561364c4fa772de4691e19c58c87"
+    },
+    {
       "id": "quepasa-api",
       "name": "quepasa-api",
       "description": "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa. Version 0.1.5.",

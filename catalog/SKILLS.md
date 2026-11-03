@@ -184,6 +184,7 @@ inside the repository's documentation hierarchy.
 | Skill | Card | Source | Description |
 | --- | --- | --- | --- |
 | [hermes-api](../skills/hermes/api/SKILL.md) | [card](../skills/hermes/api/skill-card.md) | Sufficit | Use the Hermes HTTP API (Sufficit's Chatwoot-based helpdesk) as your own user: discover the live API from the server's OpenAPI document instead of memorizing... |
+| [hermes-triage](../skills/hermes/triage/SKILL.md) | [card](../skills/hermes/triage/skill-card.md) | Sufficit | Triage Hermes helpdesk (Chatwoot-based) conversations as an internal assistant: decide which team should handle a conversation, separate noise from real requ... |
 
 ## images
 
