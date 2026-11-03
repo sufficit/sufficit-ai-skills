@@ -2589,7 +2589,23 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
+    },
+    {
+      "id": "isp-customer-support",
+      "name": "isp-customer-support",
+      "description": "Draft ISP support responses, train service agents and review handling of connectivity faults, repeat contacts, disputed visits, installation feasibility and invoice delivery. Includes a scenario manual and evidence-based handoff guidance.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/isp-customer-support",
+      "tags": [
+        "isp",
+        "customer-support",
+        "internet",
+        "service-quality"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577"
     }
   ],
-  "catalogEntries": 178
+  "catalogEntries": 179
 }

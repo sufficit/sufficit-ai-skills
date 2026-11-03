@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 178,
+  "catalogEntries": 179,
   "sources": [
     {
       "id": "android",
@@ -1839,6 +1839,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asterisk/dialplan",
       "path": "skills/asterisk/dialplan",
       "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
+    },
+    {
+      "id": "isp-customer-support",
+      "name": "isp-customer-support",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/isp-customer-support",
+      "path": "skills/sufficit/isp-customer-support",
+      "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577"
     }
   ]
 }

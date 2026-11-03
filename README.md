@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 178 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 179 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -15,7 +15,7 @@ conteúdo importado.
 | Refero | 1 | `referodesign/refero_skill`, MIT |
 | Matt Pocock | 1 | `mattpocock/skills`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
-| Sufficit | 10 | Sufficit, MIT-0 |
+| Sufficit | 11 | Sufficit, MIT-0 |
 | Asterisk | 1 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Instagram | 3 | Sufficit, MIT-0 |
@@ -96,3 +96,9 @@ Refinement record: [SEO/GEO naming and scope](docs/activities/202610271100-seo-g
 
 The [Asterisk dialplan skill](skills/asterisk/dialplan/SKILL.md) defines English authoring, literal TAB indentation, context comments and change headers.
 Delivery: [dialplan skill](docs/activities/20261028-asterisk-dialplan-skill.md).
+
+The [ISP customer support skill](skills/sufficit/isp-customer-support/SKILL.md)
+provides a scenario-based manual for internet-provider service teams, including
+repeat faults, disputed visits, installation checks and invoice delivery.
+
+Active delivery plan: [ISP support](docs/PLAN-ISP-CUSTOMER-SUPPORT.md).
