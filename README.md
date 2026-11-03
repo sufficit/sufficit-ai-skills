@@ -103,4 +103,4 @@ repeat faults, disputed visits, installation checks and invoice delivery.
 
 Delivery: [ISP support manual and artifact cleanup](docs/activities/202611031032-isp-customer-support.md).
 
-Current work: [legacy renewal guidance](docs/PLAN-LEGACY-RENEWAL-GUIDANCE.md).
+Delivery: [legacy renewal guidance](docs/activities/20261103-legacy-renewal-guidance.md).

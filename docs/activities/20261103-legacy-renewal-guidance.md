@@ -6,4 +6,4 @@ Published guidance changes in sufficit-api 1.0.20: prominent routing by each con
 
 Validation: all 179 package digests and references validated; generated index current; Markdown coverage passed; 38 managed skill installation tests passed. This is instruction validation, not a live renewal or a behavioral replay of Nilza's session. No customer data or financial records were changed.
 
-Delivery: pending skills CI and immutable Genius catalog publication. The live plan tracks completion.
+Delivery: main commit `ca7c06b3d77448c805d1a5a80ca941335f5fe28a`. Skills CI 41665058266 passed. Genius catalog sync 41665171359 passed and the public v2 catalog independently returned this exact revision; its pinned release.json is version 1.0.20. Existing installed skills can retain an older revision: inspect Extensions → Skills and install the new revision through the normal client flow. No Genius binary release was needed. Nilza's installed package and a renewed service in her session remain unverified.
