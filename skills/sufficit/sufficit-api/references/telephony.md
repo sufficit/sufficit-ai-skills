@@ -94,3 +94,14 @@ alguns segundos depois e relate o estado: `delivered`/`read` = entregue,
 recusado. Só diga "entregue" com delivered ou read. Não repita o envio; se a
 pessoa disser que não chegou, consulte o status e pergunte antes de reenviar.
 Mensagem de texto por WhatsApp também aceita `destinationId` da mesma lista.
+
+## Password requests identified by email
+
+For agents assigned exclusively to telephone support, an email accompanying a password-reset request is a lookup key for linked telephone extensions. It is not a request to reset the Sufficit Identity account password. Do not initiate Identity password recovery or offer it as a fallback in this support role.
+
+1. Discover the supported authenticated API operations and resolve the exact email to the user. Read Identity information only if needed for identification, then verify actual user-to-extension links through the supported APIs. Never infer a personal association from a shared customer context, similar name or notification email alone.
+2. Identify the verified extensions and their customer context, then offer to change their SIP passwords. An email-only request does not select the target extensions: obtain the technician's choice or confirmation before changing any credentials. A request that already explicitly identifies and authorizes the target extensions does not require redundant confirmation.
+3. If the user match or links are ambiguous, ask which user or extension is intended. If a successful lookup finds no links, report that no linked extension was found in the queried scope. A failed or unavailable lookup is a limitation, not proof that no links exist. Do not invent routes or bypass the API with direct database access.
+4. After the target extensions are confirmed, use the supported telephony API to change only their SIP credentials, preserving unrelated settings. Follow the available secure credential-delivery flow; never publish passwords, tokens or recovery links in the group. If secure delivery is unavailable, resolve that limitation before rotating credentials. Verify the outcome without exposing secrets, and explain any required device reconfiguration based on the actual operation.
+
+This distinction is specific to the telephone-support role; it does not redefine the scope of agents explicitly assigned to Identity account administration.

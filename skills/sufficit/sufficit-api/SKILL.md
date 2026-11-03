@@ -2,7 +2,7 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, vouchers and contacts. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.20"
+  version: "1.0.21"
 ---
 
 # Sufficit API
@@ -39,7 +39,7 @@ For a service renewal request, read [the sales renewal flow](references/sales.md
 
 ## Domains
 
-- For queues, extensions, voicemail, inbound numbers and telephone support conversations, read [references/telephony.md](references/telephony.md).
+- For queues, extensions, SIP password requests identified by email, voicemail, inbound numbers and telephone support conversations, read [references/telephony.md](references/telephony.md).
 
 - For balances, transactions, top-ups, and voucher management, read [references/credits.md](references/credits.md).
 - To resolve a customer name from a known context GUID, or search, create, update, mark or delete contacts, record a social network handle or diagnose a refused contact write, read [references/contacts.md](references/contacts.md).
