@@ -2,7 +2,7 @@
 name: instagram-profile-manage
 description: Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) and send a direct message from the account, through the cheapest working channel - public read, Graph API or the user's logged-in browser - with a confirmed change set and post-change verification. Use when the user asks to apply, update or check Instagram profile items; for deciding what to write use instagram-profile-setup.
 metadata:
-  version: "1.3.0"
+  version: "1.3.1"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -115,16 +115,30 @@ reading it back in the thread.
      the recipient's side; that does not change the sender's thread id.
 2. Confirm the open thread before typing: the header shows the recipient's handle
    and the URL carries the thread id. If either is missing, stop and resolve again.
-3. Type into the thread's `div[role='textbox']` (placeholder "Mensagem..."), not a
-   `textarea`. Send with **Enter** in that box. Do not click a generic nested
+3. Draft the text for a person reading on a phone, not as one dense line. Follow
+   [human-readable notification guidance](../../sufficit/clear-technical-writing/references/notifications.md):
+   - Short: a greeting line, one or two sentences on why you are writing, one
+     sentence on the offer, then an easy yes/no question. Cut anything the
+     recipient does not need to answer it.
+   - Line breaks between blocks and a blank line before the closing question;
+     a link goes on its own line. Instagram DMs show no Markdown, so no `*bold*`,
+     headings or bullet syntax; one emoji at most.
+   - Read the exact text back before sending: if it is a single paragraph or
+     longer than about six short lines, rewrite it.
+4. Type into the thread's `div[role='textbox']` (placeholder "Mensagem..."), not a
+   `textarea`. In that box **Enter sends**: never put the whole message in one
+   typed string with `\n` or Enter between blocks, or each block goes out as a
+   separate message. Insert each line break with **Shift+Enter** (type a block,
+   press Shift+Enter, type the next), check the box shows the broken lines, then
+   send once with **Enter** in that box. Do not click a generic nested
    `div` guessed as the Send button: it can be a navigation element that drops
    back to the inbox without sending, and the text is lost.
-4. Verify: take a screenshot or read the page and confirm the sent bubble (and any
+5. Verify: take a screenshot or read the page and confirm the sent bubble (and any
    link preview card) in the thread. If it is not there, reopen the thread by id
    and check again before retyping, so the message is never sent twice. The web
    shows "Seen/Visto" only after the recipient reads it; absence of a read mark is
    not a failure, but do not claim delivery or reading without seeing it.
-5. Only the recipient can open a conversation for a business inbox tool such as
+6. Only the recipient can open a conversation for a business inbox tool such as
    Chatwoot/Hermes; a DM started here is the account's first contact.
 
 ## Verify

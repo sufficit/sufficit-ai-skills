@@ -1798,7 +1798,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-manage",
       "path": "skills/instagram/instagram-profile-manage",
-      "contentSha256": "ae8e3f808007a31c77a323c592485307000f4931efa19dc384e333e117a128bb"
+      "contentSha256": "a9750a44d22f28bb3ad1b0c92ae7ffc009ae0cb8b642fbcb4422317a324ed049"
     },
     {
       "id": "instagram-caption",
