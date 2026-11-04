@@ -2,7 +2,7 @@
 name: hermes-api
 description: "Use the Hermes HTTP API (Sufficit's Chatwoot-based helpdesk) as your own user: discover the live API from the server's OpenAPI document instead of memorizing routes, authenticate with your personal token (Authorization Bearer), confirm who and which account you are, update your own profile and avatar, read conversations and post private notes. Use when a request mentions Hermes, Chatwoot, helpdesk profile/avatar, conversations, inboxes, contacts or notes, in production or development."
 metadata:
-  version: "0.1.1"
+  version: "0.2.0"
 ---
 
 # Hermes API
@@ -11,6 +11,43 @@ Hermes is Sufficit's helpdesk, built on Chatwoot and extended. Routes change bet
 releases, so **this skill teaches how to discover the API, not a frozen list of routes**.
 The server's own OpenAPI document is the source of truth; when it disagrees with this
 text, follow the document.
+
+## Genius: use the connected Hermes tools first
+
+When running inside Genius with `hermes_*` tools, the plugin resolves the personal
+API token from Identity Vault (`personal/hermes/production/api-token`). The absence
+of `HERMES_*` environment variables does not mean the connected account is missing.
+Do not extract the Vault token or fall back to shell to bypass a missing tool.
+Use `hermes_connection_test` to obtain the authenticated account IDs.
+
+For an existing contact that needs a conversation or a different responsible agent:
+
+1. Resolve the contact with `hermes_contacts_search`. When names are ambiguous,
+   confirm the intended contact before writing.
+2. Use `hermes_contact_conversations_list(account_id, contact_id)` directly instead
+   of walking account-wide pages. It returns up to 20 recent conversations visible
+   to the authenticated user, not a complete history; an empty result is not proof
+   that no older or inaccessible conversation exists.
+3. Resolve the intended inbox with `hermes_inboxes_list`. If multiple inboxes fit
+   and the request does not identify one, ask which to use.
+4. On an explicit request to open an attendance, call `hermes_conversation_create`
+   with `account_id`, `contact_id`, `inbox_id`. The provider can reuse an existing
+   conversation according to inbox policy; use the returned conversation ID.
+   Creation does not send a message. Omit `source_id` unless the actual contact/inbox
+   source identifier is known; never invent it. Unsupported channels may refuse
+   creation and require resolving the contact's channel identity first.
+5. Resolve the responsible agent by `hermes_agents_list`, then use
+   `hermes_conversation_assign(account_id, conversation_id, assignee_id)` only when
+   requested. Account membership does not guarantee eligibility for every inbox.
+6. Creating and assigning use the same external-write approval metadata as
+   `hermes_messages_send`; respect the host's configured confirmation policy and
+   the user's explicit authorization. The tools verify the conversation afterward.
+   If the result is unconfirmed, read it again before repeating a write.
+7. Sending a customer message is a separate authorized action through
+   `hermes_messages_send`, after reading the conversation history. Do not treat
+   creating or assigning an attendance as permission to send a message.
+
+For direct API use outside Genius, follow the discovery and credential workflow below.
 
 ## Address, instances and credentials
 
