@@ -72,6 +72,7 @@ Keep answering machine detection off unless asked: it leaves seconds of silence 
 
 - Targets are called in import order, so sort before importing, for example by value.
 - A repeated address in the same campaign is ignored; the response says how many were added.
+- The `instrucao` variable customizes the prompt for one target, for example how to say goodbye. It shares the 480-character limit, and commas and double quotes are removed.
 - `variables` reach the agent, up to 480 characters in total, so it does not ask for what is already known. Do not put secrets or sensitive data there.
 - Never import a number without a reason to believe it belongs to that target.
 
