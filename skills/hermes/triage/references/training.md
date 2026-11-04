@@ -34,6 +34,7 @@ Confirm with real calls on the development instance, and report each one:
 
 - a private note never reaches the customer's channel;
 - setting a team sends no automatic message and assigns no person;
+- setting a team keeps an assignee who is a member, and clears one who is not;
 - labels trigger no automation;
 - a note does not reopen a resolved conversation or count as a first reply.
 

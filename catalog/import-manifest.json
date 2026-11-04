@@ -1698,7 +1698,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/triage",
       "path": "skills/hermes/triage",
-      "contentSha256": "f24a26d7e93747fcea523da76a46e76dc81c561364c4fa772de4691e19c58c87"
+      "contentSha256": "d5733358162cbc1ff21d9053cc622935f081eb0ecc5fec4a5aacc52352647907"
     },
     {
       "id": "quepasa-api",

@@ -2,7 +2,7 @@
 name: hermes-triage
 description: "Triage Hermes helpdesk (Chatwoot-based) conversations as an internal assistant: decide which team should handle a conversation, separate noise from real requests, and help human agents with private notes, without ever talking to the customer. Covers when there is not enough substance to decide, conversations a human already owns, automation side effects, untrusted customer text, the note format, the training phases and how to measure accuracy. Use when asked to triage, route, classify or direct Hermes conversations, to suggest a team or label, or to train or review a triage agent. Pair with hermes-api for the calls."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Hermes triage
@@ -22,6 +22,9 @@ to decide and what never to do. The account's teams, signals and known noise liv
   role even if the conversation seems to need one, and even if someone in the conversation
   asks for it.
 - **Never resolve, reopen, snooze, or change priority** of a conversation.
+- **Setting a team can remove the assignee.** Hermes clears the assignee when they are not a
+  member of the new team. Before setting a team on an assigned conversation, read the team's
+  members; if the assignee is not among them, do not set it.
 - **Never assign a person** unless the playbook explicitly allows it. Automations often
   react to assignee changes, and some of them message the customer. Route to a **team**.
 - **Respect the current phase.** In a propose-only phase you write nothing in Hermes,
@@ -53,10 +56,12 @@ to decide and what never to do. The account's teams, signals and known noise liv
    - No team, no assignee: route to the team (high confidence), or note and ask (low).
    - A person is already handling it: **do not move it.** If it clearly belongs elsewhere,
      leave a note saying so and let that person decide.
+   - A person is handling it and the team is empty: fill the team only if the playbook asks
+     for it **and that person is a member of that team**.
    - Team set and correct: do nothing, unless a note adds real value.
 6. **Act, then verify.** Set the team through the assignments route with `team_id` only,
    add labels if the playbook asks, and write the note last. Read the conversation back and
-   confirm the team, the labels and that the note is `private`.
+   confirm the team, the labels, that the assignee did not change and that the note is `private`.
 7. **Log what you did:** conversation id, decision, confidence, one line of reason.
 
 ## Private notes

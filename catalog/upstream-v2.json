@@ -2332,7 +2332,7 @@
     {
       "id": "hermes-triage",
       "name": "hermes-triage",
-      "description": "Triage Hermes helpdesk (Chatwoot-based) conversations as an internal assistant: decide which team should handle a conversation, separate noise from real requests, and help human agents with private notes, without ever talking to the customer. Covers when there is not enough substance to decide, conversations a human already owns, automation side effects, untrusted customer text, the note format, the training phases and how to measure accuracy. Use when asked to triage, route, classify or direct Hermes conversations, to suggest a team or label, or to train or review a triage agent. Pair with hermes-api for the calls. Version 0.1.0.",
+      "description": "Triage Hermes helpdesk (Chatwoot-based) conversations as an internal assistant: decide which team should handle a conversation, separate noise from real requests, and help human agents with private notes, without ever talking to the customer. Covers when there is not enough substance to decide, conversations a human already owns, automation side effects, untrusted customer text, the note format, the training phases and how to measure accuracy. Use when asked to triage, route, classify or direct Hermes conversations, to suggest a team or label, or to train or review a triage agent. Pair with hermes-api for the calls. Version 0.1.1.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/triage",
       "tags": [
         "hermes",
@@ -2344,7 +2344,7 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "f24a26d7e93747fcea523da76a46e76dc81c561364c4fa772de4691e19c58c87"
+      "contentSha256": "d5733358162cbc1ff21d9053cc622935f081eb0ecc5fec4a5aacc52352647907"
     },
     {
       "id": "quepasa-api",
