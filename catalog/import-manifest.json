@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 180,
+  "catalogEntries": 181,
   "sources": [
     {
       "id": "android",
@@ -1859,6 +1859,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/isp-customer-support",
       "path": "skills/sufficit/isp-customer-support",
       "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577"
+    },
+    {
+      "id": "sufficit-campaigns",
+      "name": "sufficit-campaigns",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-campaigns",
+      "path": "skills/sufficit/sufficit-campaigns",
+      "contentSha256": "4ac7475d31ad5927c0097e405175721954a401ae0bf4eacd2227880d1c2fc7b6"
     }
   ]
 }

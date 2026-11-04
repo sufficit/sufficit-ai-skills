@@ -2622,7 +2622,23 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577"
+    },
+    {
+      "id": "sufficit-campaigns",
+      "name": "sufficit-campaigns",
+      "description": "Create, inspect and run Sufficit outreach campaigns through the corporate API: objective, script, targets, contact window, attempts, results and CRM review. Use when asked to prepare a campaign, import targets, check progress or read what a campaign collected. Activating a voice campaign places real phone calls.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-campaigns",
+      "tags": [
+        "campaigns",
+        "outreach",
+        "voice",
+        "api"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "4ac7475d31ad5927c0097e405175721954a401ae0bf4eacd2227880d1c2fc7b6"
     }
   ],
-  "catalogEntries": 179
+  "catalogEntries": 180
 }

@@ -242,6 +242,7 @@ inside the repository's documentation hierarchy.
 | [seo-geo](../skills/sufficit/seo-geo/SKILL.md) |  | Sufficit | Audit and improve landing-page SEO (Search Engine Optimization), GEO (Generative Engine Optimization), AEO (Answer Engine Optimization), and Open Graph previ... |
 | [software-development](../skills/sufficit/software-development/SKILL.md) |  | Sufficit | Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fix... |
 | [sufficit-api](../skills/sufficit/sufficit-api/SKILL.md) | [card](../skills/sufficit/sufficit-api/skill-card.md) | Sufficit | Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, voucher... |
+| [sufficit-campaigns](../skills/sufficit/sufficit-campaigns/SKILL.md) |  | Sufficit | Create, inspect and run Sufficit outreach campaigns through the corporate API: objective, script, targets, contact window, attempts, results and CRM review.... |
 | [sufficit-frontend](../skills/sufficit/sufficit-frontend/SKILL.md) | [card](../skills/sufficit/sufficit-frontend/skill-card.md) | Sufficit | Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when reque... |
 
 ## videos

@@ -105,3 +105,5 @@ repeat faults, disputed visits, installation checks and invoice delivery.
 Delivery: [ISP support manual and artifact cleanup](docs/activities/202611031032-isp-customer-support.md).
 
 Delivery: [legacy renewal guidance](docs/activities/20261103-legacy-renewal-guidance.md).
+
+The [campaigns skill](skills/sufficit/sufficit-campaigns/SKILL.md) operates outreach campaigns through the corporate API, which has no management screen. Activating a voice campaign places real calls, so it requires an explicit request and confirmation.
