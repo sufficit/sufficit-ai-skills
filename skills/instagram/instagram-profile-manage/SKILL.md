@@ -1,8 +1,8 @@
 ---
 name: instagram-profile-manage
-description: Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) through the cheapest working channel - public read, Graph API or the user's logged-in browser - with a confirmed change set and post-change verification. Use when the user asks to apply, update or check Instagram profile items; for deciding what to write use instagram-profile-setup.
+description: Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) and send a direct message from the account, through the cheapest working channel - public read, Graph API or the user's logged-in browser - with a confirmed change set and post-change verification. Use when the user asks to apply, update or check Instagram profile items; for deciding what to write use instagram-profile-setup.
 metadata:
-  version: "1.2.1"
+  version: "1.3.0"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -94,6 +94,38 @@ Rules that keep it from leaking:
    `https://wa.me/<country+number>?text=<url-encoded message>`.
 5. Do not delete posts or highlights unless the user names them; prefer archive,
    which is reversible.
+
+## Send a direct message (logged-in web)
+
+Sending a DM is outbound and visible to a third party: send only when the user
+asked for that recipient and text, send it once, and report it as sent only after
+reading it back in the thread.
+
+1. Resolve the thread id first. A DM is addressed to a numeric thread, never to a
+   handle: `instagram.com/direct/t/<handle>/` is not a valid route and silently
+   lands on the inbox, where typing and clicking reach the wrong place.
+   - Known recipient: open the thread from the inbox list or a saved
+     `https://www.instagram.com/direct/t/<thread-id>/`.
+   - Unknown thread id: on `instagram.com/direct/inbox/` use the new-message
+     (compose) control, type the handle in the **Pesquisar/Search** field, pick
+     the exact handle from the results (check name and avatar, never a lookalike)
+     and press **Chat/Conversar**. The URL then shows `/direct/t/<thread-id>/`;
+     record that id for later turns. The profile's **Enviar mensagem/Message**
+     button also opens it. A first contact may live under **Pedidos/Requests** on
+     the recipient's side; that does not change the sender's thread id.
+2. Confirm the open thread before typing: the header shows the recipient's handle
+   and the URL carries the thread id. If either is missing, stop and resolve again.
+3. Type into the thread's `div[role='textbox']` (placeholder "Mensagem..."), not a
+   `textarea`. Send with **Enter** in that box. Do not click a generic nested
+   `div` guessed as the Send button: it can be a navigation element that drops
+   back to the inbox without sending, and the text is lost.
+4. Verify: take a screenshot or read the page and confirm the sent bubble (and any
+   link preview card) in the thread. If it is not there, reopen the thread by id
+   and check again before retyping, so the message is never sent twice. The web
+   shows "Seen/Visto" only after the recipient reads it; absence of a read mark is
+   not a failure, but do not claim delivery or reading without seeing it.
+5. Only the recipient can open a conversation for a business inbox tool such as
+   Chatwoot/Hermes; a DM started here is the account's first contact.
 
 ## Verify
 
