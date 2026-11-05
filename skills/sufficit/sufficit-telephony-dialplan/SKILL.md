@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -24,6 +24,11 @@ never assume a method, path or parameter from memory.
   [sufficit-api](../sufficit-api/SKILL.md).
 - Editing literal Asterisk `extensions.conf` in a repository is the
   `asterisk-dialplan` skill; this skill never edits raw dialplan files.
+
+- Helpdesk agents (Hermes/Chatwoot users, agent API tokens) are
+  administered with
+  [sufficit-hermes-agents](../sufficit-hermes-agents/SKILL.md); queues
+  route calls to extensions, not to agents.
 
 ## Routing model
 
