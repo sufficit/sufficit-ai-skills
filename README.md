@@ -117,3 +117,8 @@ Device evidence: [tablet acceptance](docs/activities/20261105-low-balance-tablet
 Open acceptance blockers: [tablet test plan](docs/PLAN-LOW-BALANCE-TABLET-TEST.md).
 
 A [skill de relatórios de telefonia](skills/sufficit/sufficit-telephony-reports/SKILL.md) orienta geração por cliente via API, exportação Excel e validação dos resultados.
+
+Declared package versions are copied into the reviewed catalog by
+`scripts/catalog_versions.py`; CI checks that they match `SKILL.md` metadata.
+Packages without a declared version stay unversioned; a Git revision is provenance,
+not a substitute for a semantic version.

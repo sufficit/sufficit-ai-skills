@@ -506,7 +506,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
+      "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d",
+      "version": "1.0.0"
     },
     {
       "id": "clear-technical-writing",
@@ -524,7 +525,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "01a09a1851eacc8d0bdf5fc88e3e3c3cf1be7ee409616f979eb60fecb58d03bc"
+      "contentSha256": "01a09a1851eacc8d0bdf5fc88e3e3c3cf1be7ee409616f979eb60fecb58d03bc",
+      "version": "1.2.0"
     },
     {
       "id": "device-ui-android",
@@ -560,7 +562,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "79bfcec2ed1431da89810d24be4041f19ee05589294b9e0e4ad9d5b226b141cd"
+      "contentSha256": "79bfcec2ed1431da89810d24be4041f19ee05589294b9e0e4ad9d5b226b141cd",
+      "version": "1.0.1"
     },
     {
       "id": "github-cli",
@@ -982,7 +985,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.1"
     },
     {
       "id": "google-data-manager-api-event-ingestion",
@@ -995,7 +999,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.1"
     },
     {
       "id": "google-data-manager-api-setup",
@@ -1008,7 +1013,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.0"
     },
     {
       "id": "google-datalineage-bigquery-asset-impact-analysis",
@@ -1619,7 +1625,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.0"
     },
     {
       "id": "google-google-ads-api-mcp-setup",
@@ -1632,7 +1639,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.0"
     },
     {
       "id": "google-google-ads-api-quickstart",
@@ -1645,7 +1653,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.0"
     },
     {
       "id": "google-google-agents-cli-onboarding",
@@ -2048,7 +2057,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.1.0"
     },
     {
       "id": "google-google-mobile-ads-banner",
@@ -2061,7 +2071,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.1.0"
     },
     {
       "id": "google-google-mobile-ads-get-started",
@@ -2074,7 +2085,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.2.0"
     },
     {
       "id": "google-google-mobile-ads-interstitial",
@@ -2087,7 +2099,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.1.0"
     },
     {
       "id": "google-google-mobile-ads-rewarded",
@@ -2100,7 +2113,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.1.0"
     },
     {
       "id": "google-iam-helper-for-policy-simulator",
@@ -2139,7 +2153,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.0.0"
     },
     {
       "id": "google-ima-sdk-client-side",
@@ -2152,7 +2167,8 @@
       ],
       "author": "Google LLC",
       "license": "Apache-2.0",
-      "sourceId": "google"
+      "sourceId": "google",
+      "version": "1.0.2"
     },
     {
       "id": "google-managed-airflow-dag-authoring",
@@ -2248,7 +2264,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "f687f80b47556348ba5b0a558e93d420a04cfe7e0451177678ef133a7809c46f"
+      "contentSha256": "f687f80b47556348ba5b0a558e93d420a04cfe7e0451177678ef133a7809c46f",
+      "version": "0.3.0"
     },
     {
       "id": "hermes-triage",
@@ -2265,7 +2282,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "d5733358162cbc1ff21d9053cc622935f081eb0ecc5fec4a5aacc52352647907"
+      "contentSha256": "d5733358162cbc1ff21d9053cc622935f081eb0ecc5fec4a5aacc52352647907",
+      "version": "0.1.1"
     },
     {
       "id": "instagram-audit",
@@ -2282,7 +2300,8 @@
       "author": "Jake Schincariol / Sufficit",
       "license": "MIT",
       "sourceId": "schincariol-instagram",
-      "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be"
+      "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be",
+      "version": "1.0.0"
     },
     {
       "id": "instagram-caption",
@@ -2299,7 +2318,8 @@
       "author": "Jake Schincariol / Sufficit",
       "license": "MIT",
       "sourceId": "schincariol-instagram",
-      "contentSha256": "60536af7dfba452da630e8633d409c49bd03ed0edbfbb574bd6bed2cffd9c698"
+      "contentSha256": "60536af7dfba452da630e8633d409c49bd03ed0edbfbb574bd6bed2cffd9c698",
+      "version": "1.0.1"
     },
     {
       "id": "instagram-profile-manage",
@@ -2316,7 +2336,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6"
+      "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6",
+      "version": "1.3.1"
     },
     {
       "id": "instagram-profile-setup",
@@ -2333,7 +2354,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "3cb5adf6ef19b4b9377ff2eb87304cbfd55dc5cb04dc61887fffc7fde5663f5b"
+      "contentSha256": "3cb5adf6ef19b4b9377ff2eb87304cbfd55dc5cb04dc61887fffc7fde5663f5b",
+      "version": "1.2.1"
     },
     {
       "id": "instagram-reel",
@@ -2350,7 +2372,8 @@
       "author": "Jake Schincariol / Sufficit",
       "license": "MIT",
       "sourceId": "schincariol-instagram",
-      "contentSha256": "947a582d2909f3abfc22a358ca941627814307c18089dff042aeed4706cf9178"
+      "contentSha256": "947a582d2909f3abfc22a358ca941627814307c18089dff042aeed4706cf9178",
+      "version": "1.0.0"
     },
     {
       "id": "instagram-video-download",
@@ -2367,7 +2390,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "cde99811c20b620fbc072ebbae98ce584be7fd442cd617bb78efc27c05c136ae"
+      "contentSha256": "cde99811c20b620fbc072ebbae98ce584be7fd442cd617bb78efc27c05c136ae",
+      "version": "1.0.0"
     },
     {
       "id": "isp-customer-support",
@@ -2383,7 +2407,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577"
+      "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577",
+      "version": "1.0.0"
     },
     {
       "id": "mattpocock-prototype",
@@ -2417,7 +2442,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "3b8bc88b85d1aed6efc8b793be84c9c133cc83d0e16e89d119cb691b1e04e45f"
+      "contentSha256": "3b8bc88b85d1aed6efc8b793be84c9c133cc83d0e16e89d119cb691b1e04e45f",
+      "version": "1.0.7"
     },
     {
       "id": "playwright-mcp",
@@ -2455,7 +2481,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "147ff8cc770fbeef7878de9e633e85c6b60737db626754e64a3e43ff0be067ae"
+      "contentSha256": "147ff8cc770fbeef7878de9e633e85c6b60737db626754e64a3e43ff0be067ae",
+      "version": "0.1.5"
     },
     {
       "id": "quepasa-production",
@@ -2473,7 +2500,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "bc66f99860e125d203b68aa1e1f51da516d89da028290088007dc99d0cfe8b22"
+      "contentSha256": "bc66f99860e125d203b68aa1e1f51da516d89da028290088007dc99d0cfe8b22",
+      "version": "0.1.0"
     },
     {
       "id": "refero-design",
@@ -2532,7 +2560,8 @@
         "favicon",
         "ai-search",
         "structured-data"
-      ]
+      ],
+      "version": "1.0.0"
     },
     {
       "id": "software-development",
@@ -2550,7 +2579,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "2da3540eb30929aa13b2c8875acdbf3e9b4de57cdb00a4c48aace3ea06a688ec"
+      "contentSha256": "2da3540eb30929aa13b2c8875acdbf3e9b4de57cdb00a4c48aace3ea06a688ec",
+      "version": "1.1.1"
     },
     {
       "id": "sufficit-api",
@@ -2571,7 +2601,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "46a98170036187e00dd1205927b4688f825ed08ef6ca5d7f6061ab8095c58589"
+      "contentSha256": "46a98170036187e00dd1205927b4688f825ed08ef6ca5d7f6061ab8095c58589",
+      "version": "1.0.24"
     },
     {
       "id": "sufficit-campaigns",
@@ -2587,7 +2618,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "11a59a1df099a4d9c343687ad18f19fe21315de3fe5439355ee453bf5eccbb1f"
+      "contentSha256": "11a59a1df099a4d9c343687ad18f19fe21315de3fe5439355ee453bf5eccbb1f",
+      "version": "1.0.0"
     },
     {
       "id": "sufficit-frontend",
@@ -2605,7 +2637,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-ui",
-      "contentSha256": "f5e3f089267e4decd73c70bd38a1b57bb185d0f7c7619351cf0da4ce2dd9c05c"
+      "contentSha256": "f5e3f089267e4decd73c70bd38a1b57bb185d0f7c7619351cf0da4ce2dd9c05c",
+      "version": "1.0.3"
     },
     {
       "id": "sufficit-hermes-agents",
@@ -2623,7 +2656,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "64a32fcd94fc779b4f8dd187a985499ea75a609697f197d96258d8a2a9b1185b"
+      "contentSha256": "64a32fcd94fc779b4f8dd187a985499ea75a609697f197d96258d8a2a9b1185b",
+      "version": "0.1.0"
     },
     {
       "id": "sufficit-telephony-dialplan",
@@ -2644,7 +2678,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "926e06187ba53afbb38c53f3822120175347da96ba20c4ad04d4af22505790a7"
+      "contentSha256": "926e06187ba53afbb38c53f3822120175347da96ba20c4ad04d4af22505790a7",
+      "version": "0.1.1"
     },
     {
       "id": "sufficit-telephony-extensions",
@@ -2663,7 +2698,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "c60648e4ea2625ec99f045d5adaa2b5ec4630ec496e437eebc85147751aa4fcf"
+      "contentSha256": "c60648e4ea2625ec99f045d5adaa2b5ec4630ec496e437eebc85147751aa4fcf",
+      "version": "0.2.0"
     },
     {
       "id": "svg-vectorization",
@@ -2681,7 +2717,8 @@
       ],
       "author": "Sufficit",
       "license": "MIT-0",
-      "sourceId": "sufficit-genius"
+      "sourceId": "sufficit-genius",
+      "version": "1.0.0"
     },
     {
       "id": "video-transcribe",
@@ -2698,7 +2735,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
+      "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc",
+      "version": "1.0.0"
     },
     {
       "id": "sufficit-telephony-reports",
@@ -2715,7 +2753,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "d0f6d41bd168b9fac9eee96bb7ed0b7e57b9b595be18c9c5d222d523483e91bb"
+      "contentSha256": "d0f6d41bd168b9fac9eee96bb7ed0b7e57b9b595be18c9c5d222d523483e91bb",
+      "version": "1.0.0"
     }
   ],
   "catalogEntries": 185

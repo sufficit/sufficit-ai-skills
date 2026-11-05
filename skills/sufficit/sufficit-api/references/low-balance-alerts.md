@@ -101,7 +101,8 @@ Independently read back the event, customer context, destination, channel,
 threshold and validity. If the write is unavailable, denied, or read-back fails,
 report exactly what remains unconfigured or unverified. Do not claim activation
 from a calculated value or a successful contact write alone. Do not force a test
-notification as part of setup. Configuration, enqueue acceptance, delivery and
+notification merely as part of setup. When explicitly requested, follow the
+optional official test flow below. Configuration, enqueue acceptance, delivery and
 reading are different outcomes.
 
 After verified configuration, respond in the customer's language with the amount,
@@ -148,3 +149,40 @@ Use fictional data without live side effects. Evaluate decisions, not exact word
 | Write timed out; read-back finds the requested subscription | Report verified configuration without a second write. |
 | Balance BRL 15; calculated threshold BRL 40 | Keep BRL 40, disclose current low balance, do not force a test or claim delivery. |
 | Subscriber lookup denied, or no published subscription writer | Report the actual blocker; do not call it an empty list or claim the alert was enabled. |
+
+## Optional official test message
+
+When the user asks to test or force a simulated alert to the selected destination,
+use the official notification test flow. A test sends a real message; it does not
+need a genuinely low balance. The request authorizes one test to that destination,
+not tests to every subscriber. Do not require a second approval for the same
+explicitly requested destination.
+
+1. Read back the selected notification contact, its channel/destination and the
+   low-balance subscription's customer context. Preserve the exact GUIDs from
+   those records and any user selection; similarly named contacts are not interchangeable.
+2. Discover a published, recipient-scoped notification test operation and inspect
+   its live request contract. If it is not exposed, use the authenticated official
+   web screen `Notification/Subscriptions.aspx` for that contact, select the
+   `Saldo atual para chamadas` subscription and invoke **Enviar teste** once.
+   Discover browser/device capabilities through `catalog` when needed. Navigate
+   the actual screen; do not fabricate an HTTP postback or an unpublished API route.
+3. Record the result, destination and timestamp, then inspect available queue or
+   transport evidence. Report test requested, queued, delivered or read according
+   to actual evidence. An ambiguous response requires checking before another send.
+   If neither supported API nor authenticated official screen is available, report
+   that access blocker instead of substituting a generic WhatsApp send.
+
+Verified source path: `sufficit-web/src/Notification/Subscriptions.aspx.cs`
+handles `CommandName == "Test"`, loads the selected contact and invokes the event's
+`Test(subscriber)`. `src/Notification/Extensions.cs` handles the balance event by
+reading the subscription context's real balance and calling the normal notification
+pipeline for that contact. The event trigger is simulated; the balance payload is
+real, and the implementation does not guarantee a "TEST" label. Do not promise
+synthetic amounts or a label that the official path does not produce.
+
+Do not lower a balance, alter thresholds, clear deduplication records, unblock a
+destination or change subscriptions merely to test. `HEAD /Telephony/Billing/Balance`
+with `Force` is **not** this recipient-scoped test: it still evaluates the real
+threshold, skips deduplication and may notify every eligible subscriber in the
+context. Do not use it as a substitute for **Enviar teste**.
