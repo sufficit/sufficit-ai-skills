@@ -2638,7 +2638,47 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "4ac7475d31ad5927c0097e405175721954a401ae0bf4eacd2227880d1c2fc7b6"
+    },
+    {
+      "id": "sufficit-telephony-extensions",
+      "description": "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Use when a request mentions ramais, provisioning de ramal, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
+      "tags": [
+        "sufficit",
+        "telephony",
+        "ramais",
+        "extensions",
+        "sip",
+        "preferences",
+        "provisioning"
+      ],
+      "name": "sufficit-telephony-extensions",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "7c9e1a17e1dd22c20fa8e1507930db88d5ed5f7b1419f512119d2438d2fb0ba6"
+    },
+    {
+      "id": "sufficit-telephony-dialplan",
+      "description": "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-dialplan",
+      "tags": [
+        "sufficit",
+        "telephony",
+        "dialplan",
+        "fluxos",
+        "filas",
+        "queues",
+        "did",
+        "trunk",
+        "voicemail"
+      ],
+      "name": "sufficit-telephony-dialplan",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "cb892516602c2198d62e58f4fa42213cea81ba36e6413bddee5df4b8e1429e72"
     }
   ],
-  "catalogEntries": 180
+  "catalogEntries": 183
 }

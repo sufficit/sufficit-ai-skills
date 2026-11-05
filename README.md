@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 180 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 183 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -15,6 +15,7 @@ conteúdo importado.
 | Refero | 1 | `referodesign/refero_skill`, MIT |
 | Matt Pocock | 1 | `mattpocock/skills`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
+| Hermes | 2 | `Sufficit`, MIT-0 |
 | Sufficit | 11 | Sufficit, MIT-0 |
 | Asterisk | 1 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
