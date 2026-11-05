@@ -2555,7 +2555,7 @@
     {
       "id": "sufficit-api",
       "name": "sufficit-api",
-      "description": "Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, vouchers and contacts. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI. Version 1.0.3.",
+      "description": "Query and manage Sufficit corporate API resources as the authenticated user: telephony low-balance alerts, wallets, credits, vouchers and contacts. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI. Version 1.0.22.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "tags": [
         "sufficit",
@@ -2563,12 +2563,15 @@
         "credits",
         "vouchers",
         "contacts",
-        "management"
+        "management",
+        "telephony",
+        "notifications",
+        "low-balance"
       ],
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "5b65a413c8623aba3c154f969fadec7440eb8b59ce1d64335ef32a25964dd4e6"
+      "contentSha256": "46a98170036187e00dd1205927b4688f825ed08ef6ca5d7f6061ab8095c58589"
     },
     {
       "id": "sufficit-campaigns",

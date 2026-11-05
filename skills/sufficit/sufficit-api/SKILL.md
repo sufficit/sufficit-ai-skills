@@ -1,8 +1,8 @@
 ---
 name: sufficit-api
-description: "Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, vouchers and contacts. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
+description: "Query and manage Sufficit corporate API resources as the authenticated user: telephony low-balance alerts, wallets, credits, vouchers and contacts. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.21"
+  version: "1.0.22"
 ---
 
 # Sufficit API
@@ -19,7 +19,7 @@ The connected user credentials are attached outside the prompt. Do not request a
 
 1. Determine the area, context and desired result. Relationships use GUID; titles and names are only for presentation.
 2. Discover the OpenAPI operation and check method, path and parameters.
-3. Before writing, read the current resource and resolve the target without ambiguity. An explicit request to create, alter, disable or delete already authorizes this mutation; missing material details do not authorize guessing.
+3. Before writing, read the current resource and resolve the target without ambiguity. An explicit request to create, alter, disable or delete already authorizes this mutation; missing material details do not authorize guessing. For low-balance alerts, omitted amount/channel preferences can be resolved by the evidence-based defaults in the domain workflow.
 4. Make one call per logical effect. After network failure or ambiguous response, consult the state before repeating. Preserve idempotency keys when the contract offers them.
 5. Check the effect by an independent reading and report the target, change and final state. Do not dump complete answers with personal data when a summary answers the request.
 
@@ -38,6 +38,8 @@ For a service renewal request, read [the sales renewal flow](references/sales.md
 - Do not expand an operation to another context because the initial query returned empty. Confirm context identity in any multi-tenant writing.
 
 ## Domains
+
+- For requests to enable a low-balance alert, read [the telephony low-balance workflow](references/low-balance-alerts.md). Inspect existing alerts, derive the initial amount from recharge-cycle consumption, select an available primary destination, configure and verify before inviting preference changes.
 
 - For queues, extensions, SIP password requests identified by email, voicemail, inbound numbers and telephone support conversations, read [references/telephony.md](references/telephony.md).
 

@@ -108,3 +108,8 @@ Delivery: [ISP support manual and artifact cleanup](docs/activities/202611031032
 Delivery: [legacy renewal guidance](docs/activities/20261103-legacy-renewal-guidance.md).
 
 The [campaigns skill](skills/sufficit/sufficit-campaigns/SKILL.md) operates outreach campaigns through the corporate API, which has no management screen. Activating a voice campaign places real calls, so it requires an explicit request and confirmation.
+
+The [telephony low-balance alert workflow](skills/sufficit/sufficit-api/references/low-balance-alerts.md)
+resolves an initial threshold and primary notification destination from customer
+evidence before asking optional preference questions.
+Delivery: [low-balance alert training](docs/activities/20261105-low-balance-alert-training.md).
