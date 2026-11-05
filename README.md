@@ -113,5 +113,7 @@ The [telephony low-balance alert workflow](skills/sufficit/sufficit-api/referenc
 resolves an initial threshold and primary notification destination from customer
 evidence before asking optional preference questions.
 Delivery: [low-balance alert training](docs/activities/20261105-low-balance-alert-training.md).
+Device evidence: [tablet acceptance](docs/activities/20261105-low-balance-tablet-acceptance.md).
+Open acceptance blockers: [tablet test plan](docs/PLAN-LOW-BALANCE-TABLET-TEST.md).
 
 A [skill de relatórios de telefonia](skills/sufficit/sufficit-telephony-reports/SKILL.md) orienta geração por cliente via API, exportação Excel e validação dos resultados.
