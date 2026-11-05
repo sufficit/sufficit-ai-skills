@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 183,
+  "catalogEntries": 184,
   "sources": [
     {
       "id": "android",
@@ -291,16 +291,6 @@
       "contentSha256": "2abf9853d881d371ae87b3f04d23f46ce5942136e38b795e5ca3e5291f62cbf0"
     },
     {
-      "id": "asaas-payments",
-      "name": "asaas-payments",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
-      "path": "skills/asaas/payments",
-      "contentSha256": "3ec75df6c737d39850d687ddc670940bf692634ea973d6503b92e0dd5fe79411"
-    },
-    {
       "id": "asaas-customers",
       "name": "asaas-customers",
       "sourceId": "sufficit-genius",
@@ -319,6 +309,56 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "path": "skills/asaas/invoices",
       "contentSha256": "f37f0b52fa6992c77ea981fae8ae2bf3b4ff4c9d82e3c343d28d1146b70d4803"
+    },
+    {
+      "id": "asaas-payments",
+      "name": "asaas-payments",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
+      "path": "skills/asaas/payments",
+      "contentSha256": "3ec75df6c737d39850d687ddc670940bf692634ea973d6503b92e0dd5fe79411"
+    },
+    {
+      "id": "asterisk-dialplan",
+      "name": "asterisk-dialplan",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asterisk/dialplan",
+      "path": "skills/asterisk/dialplan",
+      "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
+    },
+    {
+      "id": "clear-technical-writing",
+      "name": "clear-technical-writing",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
+      "path": "skills/sufficit/clear-technical-writing",
+      "contentSha256": "01a09a1851eacc8d0bdf5fc88e3e3c3cf1be7ee409616f979eb60fecb58d03bc"
+    },
+    {
+      "id": "device-ui-android",
+      "name": "device-ui-android",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android",
+      "path": "skills/sufficit/device-ui-android",
+      "contentSha256": "427e57166fce10d3478671f8e89deb4c7ec30b5d3967a73c9fc47c6886949505"
+    },
+    {
+      "id": "dotnet-csharp",
+      "name": "dotnet-csharp",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/dotnet-csharp",
+      "path": "skills/sufficit/dotnet-csharp",
+      "contentSha256": "79bfcec2ed1431da89810d24be4041f19ee05589294b9e0e4ad9d5b226b141cd"
     },
     {
       "id": "github-cli",
@@ -1601,86 +1641,6 @@
       "contentSha256": "b8b703fdd3672f7d1aef1b92b476bcd67202ced5bb9b0c54174d3da3347f8bac"
     },
     {
-      "id": "meta-app-review",
-      "name": "meta-app-review",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review",
-      "path": "skills/sufficit/meta-app-review",
-      "contentSha256": "3b8bc88b85d1aed6efc8b793be84c9c133cc83d0e16e89d119cb691b1e04e45f"
-    },
-    {
-      "id": "refero-design",
-      "name": "refero-design",
-      "sourceId": "refero",
-      "author": "Refero",
-      "license": "MIT",
-      "upstreamSource": "https://github.com/referodesign/refero_skill/tree/a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d/skills/refero-design",
-      "path": "skills/refero/refero-design",
-      "contentSha256": "ff4f0420059f8ce6ff13317f8fe8ab7f66be2e83c4938cf4a03d3e251efc9037"
-    },
-    {
-      "id": "routeros-management",
-      "name": "routeros-management",
-      "sourceId": "mikrotik",
-      "author": "tikoci / Sufficit",
-      "license": "MIT",
-      "upstreamSource": "https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8/routeros-fundamentals",
-      "path": "skills/mikrotik/routeros-management",
-      "contentSha256": "25deb9836eaa15909979f2ea8c8c819fbaf9e4486d423ee382638783cd76aaee"
-    },
-    {
-      "id": "sufficit-api",
-      "name": "sufficit-api",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
-      "path": "skills/sufficit/sufficit-api",
-      "contentSha256": "5b65a413c8623aba3c154f969fadec7440eb8b59ce1d64335ef32a25964dd4e6"
-    },
-    {
-      "id": "sufficit-frontend",
-      "name": "sufficit-frontend",
-      "sourceId": "sufficit-ui",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
-      "path": "skills/sufficit/sufficit-frontend",
-      "contentSha256": "a55a575ef0fe5422162fe2cdc3e633c443389a798a4807714ade8febed713664"
-    },
-    {
-      "id": "svg-vectorization",
-      "name": "svg-vectorization",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/images/svg-vectorization",
-      "path": "skills/images/svg-vectorization",
-      "contentSha256": "e0eafeb27de08d0bacf2f382b6292f0f58ea0517c9a05ad02f5b0f02a3a74720"
-    },
-    {
-      "id": "device-ui-android",
-      "name": "device-ui-android",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android",
-      "path": "skills/sufficit/device-ui-android",
-      "contentSha256": "427e57166fce10d3478671f8e89deb4c7ec30b5d3967a73c9fc47c6886949505"
-    },
-    {
-      "id": "playwright-mcp",
-      "name": "playwright-mcp",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
-      "path": "skills/sufficit/playwright-mcp",
-      "contentSha256": "431de963038e25afb0ecb44f98d1df1085873b23b5db7737d8640edc389305d6"
-    },
-    {
       "id": "hermes-api",
       "name": "hermes-api",
       "sourceId": "sufficit-genius",
@@ -1699,6 +1659,106 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/triage",
       "path": "skills/hermes/triage",
       "contentSha256": "d5733358162cbc1ff21d9053cc622935f081eb0ecc5fec4a5aacc52352647907"
+    },
+    {
+      "id": "instagram-audit",
+      "name": "instagram-audit",
+      "sourceId": "schincariol-instagram",
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-audit",
+      "path": "skills/instagram/instagram-audit",
+      "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be"
+    },
+    {
+      "id": "instagram-caption",
+      "name": "instagram-caption",
+      "sourceId": "schincariol-instagram",
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-caption",
+      "path": "skills/instagram/instagram-caption",
+      "contentSha256": "60536af7dfba452da630e8633d409c49bd03ed0edbfbb574bd6bed2cffd9c698"
+    },
+    {
+      "id": "instagram-profile-manage",
+      "name": "instagram-profile-manage",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-manage",
+      "path": "skills/instagram/instagram-profile-manage",
+      "contentSha256": "a9750a44d22f28bb3ad1b0c92ae7ffc009ae0cb8b642fbcb4422317a324ed049"
+    },
+    {
+      "id": "instagram-profile-setup",
+      "name": "instagram-profile-setup",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-setup",
+      "path": "skills/instagram/instagram-profile-setup",
+      "contentSha256": "3cb5adf6ef19b4b9377ff2eb87304cbfd55dc5cb04dc61887fffc7fde5663f5b"
+    },
+    {
+      "id": "instagram-reel",
+      "name": "instagram-reel",
+      "sourceId": "schincariol-instagram",
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-reel",
+      "path": "skills/instagram/instagram-reel",
+      "contentSha256": "947a582d2909f3abfc22a358ca941627814307c18089dff042aeed4706cf9178"
+    },
+    {
+      "id": "instagram-video-download",
+      "name": "instagram-video-download",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-video-download",
+      "path": "skills/instagram/instagram-video-download",
+      "contentSha256": "cde99811c20b620fbc072ebbae98ce584be7fd442cd617bb78efc27c05c136ae"
+    },
+    {
+      "id": "isp-customer-support",
+      "name": "isp-customer-support",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/isp-customer-support",
+      "path": "skills/sufficit/isp-customer-support",
+      "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577"
+    },
+    {
+      "id": "mattpocock-prototype",
+      "name": "prototype",
+      "sourceId": "mattpocock",
+      "author": "Matt Pocock",
+      "license": "MIT",
+      "upstreamSource": "https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/engineering/prototype",
+      "path": "skills/mattpocock/prototype",
+      "contentSha256": "8f6833ee4dddb2fb8817ec2c9c405775611b6d7e654be35ce7db8e511dc742fe"
+    },
+    {
+      "id": "meta-app-review",
+      "name": "meta-app-review",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/meta-app-review",
+      "path": "skills/sufficit/meta-app-review",
+      "contentSha256": "3b8bc88b85d1aed6efc8b793be84c9c133cc83d0e16e89d119cb691b1e04e45f"
+    },
+    {
+      "id": "playwright-mcp",
+      "name": "playwright-mcp",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
+      "path": "skills/sufficit/playwright-mcp",
+      "contentSha256": "431de963038e25afb0ecb44f98d1df1085873b23b5db7737d8640edc389305d6"
     },
     {
       "id": "quepasa-api",
@@ -1721,114 +1781,24 @@
       "contentSha256": "bc66f99860e125d203b68aa1e1f51da516d89da028290088007dc99d0cfe8b22"
     },
     {
-      "id": "dotnet-csharp",
-      "name": "dotnet-csharp",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/dotnet-csharp",
-      "path": "skills/sufficit/dotnet-csharp",
-      "contentSha256": "79bfcec2ed1431da89810d24be4041f19ee05589294b9e0e4ad9d5b226b141cd"
-    },
-    {
-      "id": "software-development",
-      "name": "software-development",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
-      "path": "skills/sufficit/software-development",
-      "contentSha256": "2da3540eb30929aa13b2c8875acdbf3e9b4de57cdb00a4c48aace3ea06a688ec"
-    },
-    {
-      "id": "mattpocock-prototype",
-      "name": "prototype",
-      "sourceId": "mattpocock",
-      "author": "Matt Pocock",
+      "id": "refero-design",
+      "name": "refero-design",
+      "sourceId": "refero",
+      "author": "Refero",
       "license": "MIT",
-      "upstreamSource": "https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/engineering/prototype",
-      "path": "skills/mattpocock/prototype",
-      "contentSha256": "8f6833ee4dddb2fb8817ec2c9c405775611b6d7e654be35ce7db8e511dc742fe"
+      "upstreamSource": "https://github.com/referodesign/refero_skill/tree/a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d/skills/refero-design",
+      "path": "skills/refero/refero-design",
+      "contentSha256": "ff4f0420059f8ce6ff13317f8fe8ab7f66be2e83c4938cf4a03d3e251efc9037"
     },
     {
-      "id": "clear-technical-writing",
-      "name": "clear-technical-writing",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
-      "path": "skills/sufficit/clear-technical-writing",
-      "contentSha256": "01a09a1851eacc8d0bdf5fc88e3e3c3cf1be7ee409616f979eb60fecb58d03bc"
-    },
-    {
-      "id": "instagram-video-download",
-      "name": "instagram-video-download",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-video-download",
-      "path": "skills/instagram/instagram-video-download",
-      "contentSha256": "cde99811c20b620fbc072ebbae98ce584be7fd442cd617bb78efc27c05c136ae"
-    },
-    {
-      "id": "video-transcribe",
-      "name": "video-transcribe",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-transcribe",
-      "path": "skills/videos/video-transcribe",
-      "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
-    },
-    {
-      "id": "instagram-profile-setup",
-      "name": "instagram-profile-setup",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-setup",
-      "path": "skills/instagram/instagram-profile-setup",
-      "contentSha256": "3cb5adf6ef19b4b9377ff2eb87304cbfd55dc5cb04dc61887fffc7fde5663f5b"
-    },
-    {
-      "id": "instagram-profile-manage",
-      "name": "instagram-profile-manage",
-      "sourceId": "sufficit-genius",
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-manage",
-      "path": "skills/instagram/instagram-profile-manage",
-      "contentSha256": "a9750a44d22f28bb3ad1b0c92ae7ffc009ae0cb8b642fbcb4422317a324ed049"
-    },
-    {
-      "id": "instagram-caption",
-      "name": "instagram-caption",
-      "sourceId": "schincariol-instagram",
-      "author": "Jake Schincariol / Sufficit",
+      "id": "routeros-management",
+      "name": "routeros-management",
+      "sourceId": "mikrotik",
+      "author": "tikoci / Sufficit",
       "license": "MIT",
-      "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-caption",
-      "path": "skills/instagram/instagram-caption",
-      "contentSha256": "60536af7dfba452da630e8633d409c49bd03ed0edbfbb574bd6bed2cffd9c698"
-    },
-    {
-      "id": "instagram-audit",
-      "name": "instagram-audit",
-      "sourceId": "schincariol-instagram",
-      "author": "Jake Schincariol / Sufficit",
-      "license": "MIT",
-      "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-audit",
-      "path": "skills/instagram/instagram-audit",
-      "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be"
-    },
-    {
-      "id": "instagram-reel",
-      "name": "instagram-reel",
-      "sourceId": "schincariol-instagram",
-      "author": "Jake Schincariol / Sufficit",
-      "license": "MIT",
-      "upstreamSource": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-reel",
-      "path": "skills/instagram/instagram-reel",
-      "contentSha256": "947a582d2909f3abfc22a358ca941627814307c18089dff042aeed4706cf9178"
+      "upstreamSource": "https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8/routeros-fundamentals",
+      "path": "skills/mikrotik/routeros-management",
+      "contentSha256": "25deb9836eaa15909979f2ea8c8c819fbaf9e4486d423ee382638783cd76aaee"
     },
     {
       "id": "seo-geo",
@@ -1841,24 +1811,24 @@
       "path": "skills/sufficit/seo-geo"
     },
     {
-      "id": "asterisk-dialplan",
-      "name": "asterisk-dialplan",
+      "id": "software-development",
+      "name": "software-development",
       "sourceId": "sufficit-genius",
       "author": "Sufficit",
       "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asterisk/dialplan",
-      "path": "skills/asterisk/dialplan",
-      "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
+      "path": "skills/sufficit/software-development",
+      "contentSha256": "2da3540eb30929aa13b2c8875acdbf3e9b4de57cdb00a4c48aace3ea06a688ec"
     },
     {
-      "id": "isp-customer-support",
-      "name": "isp-customer-support",
+      "id": "sufficit-api",
+      "name": "sufficit-api",
       "sourceId": "sufficit-genius",
       "author": "Sufficit",
       "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/isp-customer-support",
-      "path": "skills/sufficit/isp-customer-support",
-      "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577"
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
+      "path": "skills/sufficit/sufficit-api",
+      "contentSha256": "5b65a413c8623aba3c154f969fadec7440eb8b59ce1d64335ef32a25964dd4e6"
     },
     {
       "id": "sufficit-campaigns",
@@ -1871,14 +1841,24 @@
       "contentSha256": "11a59a1df099a4d9c343687ad18f19fe21315de3fe5439355ee453bf5eccbb1f"
     },
     {
-      "id": "sufficit-telephony-extensions",
-      "name": "sufficit-telephony-extensions",
+      "id": "sufficit-frontend",
+      "name": "sufficit-frontend",
+      "sourceId": "sufficit-ui",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
+      "path": "skills/sufficit/sufficit-frontend",
+      "contentSha256": "a55a575ef0fe5422162fe2cdc3e633c443389a798a4807714ade8febed713664"
+    },
+    {
+      "id": "sufficit-hermes-agents",
+      "name": "sufficit-hermes-agents",
       "sourceId": "sufficit-genius",
       "author": "Sufficit",
       "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
-      "path": "skills/sufficit/sufficit-telephony-extensions",
-      "contentSha256": "7c9e1a17e1dd22c20fa8e1507930db88d5ed5f7b1419f512119d2438d2fb0ba6"
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-hermes-agents",
+      "path": "skills/sufficit/sufficit-hermes-agents",
+      "contentSha256": "64a32fcd94fc779b4f8dd187a985499ea75a609697f197d96258d8a2a9b1185b"
     },
     {
       "id": "sufficit-telephony-dialplan",
@@ -1888,7 +1868,37 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-dialplan",
       "path": "skills/sufficit/sufficit-telephony-dialplan",
-      "contentSha256": "cb892516602c2198d62e58f4fa42213cea81ba36e6413bddee5df4b8e1429e72"
+      "contentSha256": "926e06187ba53afbb38c53f3822120175347da96ba20c4ad04d4af22505790a7"
+    },
+    {
+      "id": "sufficit-telephony-extensions",
+      "name": "sufficit-telephony-extensions",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
+      "path": "skills/sufficit/sufficit-telephony-extensions",
+      "contentSha256": "c60648e4ea2625ec99f045d5adaa2b5ec4630ec496e437eebc85147751aa4fcf"
+    },
+    {
+      "id": "svg-vectorization",
+      "name": "svg-vectorization",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/images/svg-vectorization",
+      "path": "skills/images/svg-vectorization",
+      "contentSha256": "e0eafeb27de08d0bacf2f382b6292f0f58ea0517c9a05ad02f5b0f02a3a74720"
+    },
+    {
+      "id": "video-transcribe",
+      "name": "video-transcribe",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-transcribe",
+      "path": "skills/videos/video-transcribe",
+      "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
     }
   ]
 }

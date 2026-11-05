@@ -1,0 +1,7 @@
+{
+  "name": "sufficit-hermes-agents",
+  "version": "0.1.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/sufficit/sufficit-hermes-agents",
+  "license": "MIT-0"
+}
