@@ -58,7 +58,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-11-02T18:57:57.129283+00:00",
+  "updatedAt": "2026-11-05T20:10:30.939990+00:00",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2699,7 +2699,24 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
+    },
+    {
+      "id": "sufficit-telephony-reports",
+      "description": "Generate and deliver customer-scoped Sufficit telephony reports through the corporate API, including billed calls, operators, lost calls, hourly traffic and extension usage. Use for relatorio de chamadas tarifadas, exportacao Excel de telefonia, report verification, and reports requested while the legacy website is unavailable. Does not change tariffs, billing or call routing.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-reports",
+      "tags": [
+        "sufficit",
+        "telephony",
+        "reports",
+        "billing",
+        "excel"
+      ],
+      "name": "sufficit-telephony-reports",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "d0f6d41bd168b9fac9eee96bb7ed0b7e57b9b595be18c9c5d222d523483e91bb"
     }
   ],
-  "catalogEntries": 184
+  "catalogEntries": 185
 }

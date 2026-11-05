@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 184,
+  "catalogEntries": 185,
   "sources": [
     {
       "id": "android",
@@ -1899,6 +1899,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-transcribe",
       "path": "skills/videos/video-transcribe",
       "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
+    },
+    {
+      "id": "sufficit-telephony-reports",
+      "name": "sufficit-telephony-reports",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-reports",
+      "path": "skills/sufficit/sufficit-telephony-reports",
+      "contentSha256": "d0f6d41bd168b9fac9eee96bb7ed0b7e57b9b595be18c9c5d222d523483e91bb"
     }
   ]
 }

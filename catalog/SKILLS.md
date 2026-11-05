@@ -247,6 +247,7 @@ inside the repository's documentation hierarchy.
 | [sufficit-hermes-agents](../skills/sufficit/sufficit-hermes-agents/SKILL.md) | [card](../skills/sufficit/sufficit-hermes-agents/skill-card.md) | Sufficit | Administer helpdesk agents in Hermes (Chatwoot) through the live corporate API: create an agent user in an account (conta) with name, e-mail and role, manage... |
 | [sufficit-telephony-dialplan](../skills/sufficit/sufficit-telephony-dialplan/SKILL.md) | [card](../skills/sufficit/sufficit-telephony-dialplan/skill-card.md) | Sufficit | Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound D... |
 | [sufficit-telephony-extensions](../skills/sufficit/sufficit-telephony-extensions/SKILL.md) | [card](../skills/sufficit/sufficit-telephony-extensions/skill-card.md) | Sufficit | Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a ne... |
+| [sufficit-telephony-reports](../skills/sufficit/sufficit-telephony-reports/SKILL.md) |  | Sufficit | Generate and deliver customer-scoped Sufficit telephony reports through the corporate API, including billed calls, operators, lost calls, hourly traffic and... |
 
 ## videos
 
