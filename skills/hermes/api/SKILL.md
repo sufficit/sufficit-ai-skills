@@ -1,8 +1,8 @@
 ---
 name: hermes-api
-description: "Use the Hermes HTTP API (Sufficit's Chatwoot-based helpdesk) as your own user: discover the live API from the server's OpenAPI document instead of memorizing routes, authenticate with your personal token (Authorization Bearer), confirm who and which account you are, update your own profile and avatar, read conversations and post private notes. Use when a request mentions Hermes, Chatwoot, helpdesk profile/avatar, conversations, inboxes, contacts or notes, in production or development."
+description: "Complete authorized Hermes helpdesk requests from ordinary language: locate the customer or WhatsApp group, open an attendance, send text and PDF attachments, and verify the result. Discover the live API and use the connected user's Identity Vault token when a ready-made tool is missing. Also manage your own profile/avatar and private notes. Do not infer lack of access from missing tools or environment variables."
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Hermes API
@@ -17,8 +17,17 @@ text, follow the document.
 When running inside Genius with `hermes_*` tools, the plugin resolves the personal
 API token from Identity Vault (`personal/hermes/production/api-token`). The absence
 of `HERMES_*` environment variables does not mean the connected account is missing.
-Do not extract the Vault token or fall back to shell to bypass a missing tool.
-Use `hermes_connection_test` to obtain the authenticated account IDs.
+Use `hermes_connection_test` to obtain the authenticated account IDs. A successful
+check is evidence that credentials work; preserve that evidence for subsequent steps.
+Missing specialized tools do not mean missing API access. Discover/activate the exact
+`hermes_*` tool first; if unavailable or lacking a required field, continue through
+[the API/Vault fallback](references/connected-execution.md). This fallback is also
+for Genius, not only external scripts. Respect actual permission denials.
+
+The user supplies the business outcome, not API paths, token locations, inbox IDs or
+commands. Resolve technical details yourself from the account and contact evidence.
+A request to open an attendance **and send the supplied message/PDF** authorizes both
+steps; do not require the user to open it manually or repeat that instruction.
 
 For an existing contact that needs a conversation or a different responsible agent:
 
@@ -29,7 +38,7 @@ For an existing contact that needs a conversation or a different responsible age
    to the authenticated user, not a complete history; an empty result is not proof
    that no older or inaccessible conversation exists.
 3. Resolve the intended inbox with `hermes_inboxes_list`. If multiple inboxes fit
-   and the request does not identify one, ask which to use.
+   use the contact's channel bindings and recent history to resolve the intended one. Ask only if materially different destinations still fit.
 4. On an explicit request to open an attendance, call `hermes_conversation_create`
    with `account_id`, `contact_id`, `inbox_id`. The provider can reuse an existing
    conversation according to inbox policy; use the returned conversation ID.
@@ -47,7 +56,9 @@ For an existing contact that needs a conversation or a different responsible age
    `hermes_messages_send`, after reading the conversation history. Do not treat
    creating or assigning an attendance as permission to send a message.
 
-For direct API use outside Genius, follow the discovery and credential workflow below.
+For file delivery, read [attendance and PDF delivery](references/attendance-pdf.md).
+For direct API use, including a Genius fallback, follow the discovery workflow below.
+Environment variables are one credential source outside Genius, not a prerequisite.
 
 ## Address, instances and credentials
 
@@ -98,8 +109,10 @@ Below, `$HERMES_URL` / `$HERMES_TOKEN` stand for the pair of the instance you ar
    ```
 
    Resolve `$ref` values under `.components.schemas` to see payload fields.
-4. Only then build the request. If a route is missing from the spec, it probably does not
-   exist in this version. Report that instead of trying variations against production.
+4. Only then build the request. Missing documentation is not proof of missing access.
+   Check relevant official server documentation or available source for an omitted field
+   (such as attachments), recording the evidence. Never brute-force routes. If no
+   supported contract can be found, report the precise documentation gap.
 
 ## Who am I
 

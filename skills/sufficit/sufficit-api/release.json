@@ -1,6 +1,6 @@
 {
   "name": "sufficit-api",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/sufficit/sufficit-api",
   "license": "MIT-0"

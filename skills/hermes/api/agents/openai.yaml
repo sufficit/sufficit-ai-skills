@@ -1,4 +1,4 @@
 interface:
   display_name: Hermes API
   short_description: Discover and call the Hermes helpdesk API as your own user
-  default_prompt: Use $hermes-api to discover the Hermes API from its OpenAPI document and update your profile or post a private note.
+  default_prompt: Use $hermes-api to complete the requested attendance and message/PDF delivery using the live API and connected Vault credentials, verifying each outcome.

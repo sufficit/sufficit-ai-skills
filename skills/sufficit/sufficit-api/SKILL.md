@@ -1,8 +1,8 @@
 ---
 name: sufficit-api
-description: "Query and manage Sufficit corporate API resources as the authenticated user: telephony low-balance alerts, wallets, credits, vouchers and contacts. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
+description: "Query and manage Sufficit corporate API resources as the authenticated user: bank slips, telephony low-balance alerts, wallets, credits, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.22"
+  version: "1.0.23"
 ---
 
 # Sufficit API
@@ -13,7 +13,21 @@ Operate the real system as intended by the user and account permissions already 
 
 Use `sufficit_api_search` to discover the operation in the live OpenAPI and then `sufficit_api_call` to run it. Search in English when a query in Portuguese does not find results. Never assume a method, path, or parameter from memory, even when a reference of this skill shows the known route.
 
-The connected user credentials are attached outside the prompt. Do not request a token, API key or second login and do not place authentication on the body or URL. If the tools are not available, please inform that the Sufficit API integration needs to be enabled or that the Genius must be updated; do not bypass with `curl`, browser, database, or manual credentials.
+The connected user credentials are attached outside the prompt. Do not request a token, API key or second login and do not place authentication on the body or URL. If the tools are not attached, discover/activate them through the host catalog before
+claiming they are unavailable. If discovery or a connection attempt fails, report the
+actual failure; do not infer it from an empty business search. Do not bypass Sufficit
+API authentication with manual credentials or database access. Hermes is a separate
+service: its own API and Vault workflow in `hermes-api` remains available when a
+Hermes plugin operation is missing. Do not search Sufficit OpenAPI for all Hermes routes.
+
+## Ordinary-language requests
+
+Resolve the user's business outcome without requiring technical instructions. Load the
+relevant domain reference, discover the live tools and read existing state. Track each
+requested outcome until verified or blocked by a concrete attempted operation. Before
+saying "I cannot access" or "the tool cannot do this", distinguish an unactivated tool,
+a missing plugin wrapper, an API rejection and an unavailable credential. Report only
+what was actually observed, with the affected step; do not hand the whole task back.
 
 ## Operation flow
 
@@ -38,6 +52,10 @@ For a service renewal request, read [the sales renewal flow](references/sales.md
 - Do not expand an operation to another context because the initial query returned empty. Confirm context identity in any multi-tenant writing.
 
 ## Domains
+
+- For boleto issuance, due dates, PDF retrieval and collection messages sent through
+  Hermes, read [bank slips and delivery](references/bank-slips.md). Emission is only
+  one milestone when the user also asked to open an attendance and send the PDF.
 
 - For requests to enable a low-balance alert, read [the telephony low-balance workflow](references/low-balance-alerts.md). Inspect existing alerts, derive the initial amount from recharge-cycle consumption, select an available primary destination, configure and verify before inviting preference changes.
 
