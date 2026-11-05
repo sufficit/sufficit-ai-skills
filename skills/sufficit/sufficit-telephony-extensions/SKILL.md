@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Use when a request mentions ramais, provisioning de ramal, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -26,6 +26,9 @@ or parameter from memory.
   [sufficit-telephony-dialplan](../sufficit-telephony-dialplan/SKILL.md).
   Attendant-style reads (recordings, listing voicemail boxes) start at
   [sufficit-api](../sufficit-api/SKILL.md).
+- Helpdesk agents (Hermes/Chatwoot users, agent API tokens, agent-to-extension
+  links) are administered with
+  [sufficit-hermes-agents](../sufficit-hermes-agents/SKILL.md).
 - Editing literal Asterisk `extensions.conf` or PJSIP peer files inside a
   repository is a different task (`asterisk-dialplan` skill); do not run dialplan
   recipes against the managed telephony API and do not treat this skill as peer
@@ -43,16 +46,24 @@ second login: the connected credential already carries the roles.
 ## Operation flow
 
 1. Resolve the target company explicitly (for example via `companies current`)
-   and confirm it matches the request. Keep that company selected across the
-   follow-up questions of the same task.
+   and confirm it matches the request. When the scenario names a **PBX central**
+   (host:port) instead of the company, first resolve which company owns that
+   central — see the pre-flight of
+   [references/provisioning.md](references/provisioning.md) — and never assume
+   the mapping. Keep the company selected across the follow-up questions of the
+   same task.
 2. Read before writing: list the company's extensions and inspect the target
    one. An extension number is an identifier, not a quantity; keep it exact.
-3. Provisioning a new extension follows
+3. Mirror the house format: before creating a new extension, inspect two or more
+   existing extensions of the same company and replicate their field patterns
+   (user/login format, transport, codecs, context). Never invent a login or
+   secret format — when in doubt, ask the authorizing user.
+4. Provisioning a new extension follows
    [references/provisioning.md](references/provisioning.md): one call per logical
    effect, verification by independent reading, safe delivery of credentials.
-4. Changing per-extension settings follows
+5. Changing per-extension settings follows
    [references/preferences.md](references/preferences.md).
-5. Disabling or removing an extension changes live call handling: confirm the
+6. Disabling or removing an extension changes live call handling: confirm the
    exact target (company + extension number), check what references it (queue
    membership, flows, voicemail notification) and report what was and was not
    verified.
@@ -61,6 +72,9 @@ second login: the connected credential already carries the roles.
 
 - SIP secrets and API tokens are issued to be delivered once: do not print them
   in logs, chats, summaries or committed files.
+- When the API lets you choose a SIP secret, never invent a patterned default
+  (`1234`, shared prefixes): generate a proper random secret or let the system
+  issue one. A patterned default is a security defect, not a convention.
 - Deliver credentials only to the person who will use them, through a channel
   the authorizing user explicitly authorized. Sending credentials to a third
   party (another company, an external address) is a separate decision that only
@@ -81,6 +95,8 @@ report the limitation and do not invent a route or simulate success.
 ## Sources and provenance
 
 Authored by Sufficit from the `Sufficit.Telephony` guides (wiki) and the
-corporate API workflow. Release 0.1.0 teaches the flow; the exact provisioning
+corporate API workflow. Release 0.1.0 taught the flow; 0.2.0 adds the
+house-format rule, central-to-company resolution, secret policy and
+disabled-number handling from the first dry-run review. The exact provisioning
 calls must be confirmed against the live OpenAPI on first real use and recorded
 in [references/provisioning.md](references/provisioning.md) in that same change.

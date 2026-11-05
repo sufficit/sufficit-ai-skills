@@ -441,23 +441,6 @@
       "contentSha256": "2abf9853d881d371ae87b3f04d23f46ce5942136e38b795e5ca3e5291f62cbf0"
     },
     {
-      "id": "asaas-payments",
-      "name": "asaas-payments",
-      "description": "List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas_payments_list in Sufficit AI Genius. Use when the user asks to view, check, or calculate totals for ASAAS charges. Read-only; does not create or modify anything. Version 0.1.1.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
-      "tags": [
-        "asaas",
-        "cobrancas",
-        "financeiro",
-        "producao",
-        "somente-leitura"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "3ec75df6c737d39850d687ddc670940bf692634ea973d6503b92e0dd5fe79411"
-    },
-    {
       "id": "asaas-customers",
       "name": "asaas-customers",
       "description": "Query, search, register, and update customers in the ASAAS production account using asaas_customers_list, asaas_customers_create, and asaas_customers_update in Sufficit AI Genius. Exposes name, email, person type, full CNPJ, or only the first three CPF digits. Queries are read-only; registration and updates require user confirmation. Registers the address the prefeitura requires on an NFS-e. Version 0.4.0.",
@@ -490,6 +473,94 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "f37f0b52fa6992c77ea981fae8ae2bf3b4ff4c9d82e3c343d28d1146b70d4803"
+    },
+    {
+      "id": "asaas-payments",
+      "name": "asaas-payments",
+      "description": "List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas_payments_list in Sufficit AI Genius. Use when the user asks to view, check, or calculate totals for ASAAS charges. Read-only; does not create or modify anything. Version 0.1.1.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
+      "tags": [
+        "asaas",
+        "cobrancas",
+        "financeiro",
+        "producao",
+        "somente-leitura"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "3ec75df6c737d39850d687ddc670940bf692634ea973d6503b92e0dd5fe79411"
+    },
+    {
+      "id": "asterisk-dialplan",
+      "name": "asterisk-dialplan",
+      "description": "Write, review and format traditional Asterisk dialplan with consistent conventions for context comments, TAB indentation, English text and change headers. Use for extensions.conf and dialplan includes, contexts, exten, same, priorities and subroutines; not for AEL, Lua or SIP/PJSIP peer configuration. Version 1.0.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asterisk/dialplan",
+      "tags": [
+        "asterisk",
+        "dialplan",
+        "sip",
+        "pjsip",
+        "code-style"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
+    },
+    {
+      "id": "clear-technical-writing",
+      "name": "clear-technical-writing",
+      "description": "Write and revise documentation, procedures, support chat replies, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Use for ongoing support conversations when explicitly assigned to the agent; do not impose this style on creative writing.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
+      "tags": [
+        "sufficit",
+        "writing",
+        "documentation",
+        "ste",
+        "technical-english",
+        "portuguese"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "01a09a1851eacc8d0bdf5fc88e3e3c3cf1be7ee409616f979eb60fecb58d03bc"
+    },
+    {
+      "id": "device-ui-android",
+      "name": "device-ui-android",
+      "description": "Use the built-in browser_* tools for Android websites and device_ui for native apps or the user's signed-in Chrome session. Operate Sufficit AI Genius Android accessibility controls with read_screen, click_element, and set_text rather than desktop shortcuts or raw coordinates. Use for Android interaction, device_ui/android_device_control, printing, saving PDFs, sharing, or ineffective key actions. Discover description=/role= selectors for unlabeled icons and verify the final effect of every Save/Download/Send action. Version 0.3.1.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android",
+      "tags": [
+        "android",
+        "accessibility",
+        "device-ui",
+        "chrome",
+        "touch",
+        "mobile"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "427e57166fce10d3478671f8e89deb4c7ec30b5d3967a73c9fc47c6886949505"
+    },
+    {
+      "id": "dotnet-csharp",
+      "name": "dotnet-csharp",
+      "description": "Change C#/.NET code (ASP.NET Core, Blazor/Razor, xUnit/bUnit, NuGet) so it builds and passes CI the first time — build every project that references what you touched, keep red tests compilable, run the repository's own gates, align package versions, follow current library APIs and read CI logs from the first error. Use for any edit to .cs, .razor, .csproj, .props or test projects in a .NET repository, and when a .NET CI job failed. Version 1.0.1.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/dotnet-csharp",
+      "tags": [
+        "dotnet",
+        "csharp",
+        "blazor",
+        "nuget",
+        "ci",
+        "desenvolvimento"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "79bfcec2ed1431da89810d24be4041f19ee05589294b9e0e4ad9d5b226b141cd"
     },
     {
       "id": "github-cli",
@@ -2162,6 +2233,174 @@
       "sourceId": "google"
     },
     {
+      "id": "hermes-api",
+      "name": "hermes-api",
+      "description": "Use the Hermes HTTP API (Sufficit's Chatwoot-based helpdesk) as your own user: discover the live API from the server's OpenAPI document instead of memorizing routes, authenticate with your personal token (Authorization Bearer), confirm who and which account you are, update your own profile and avatar, read conversations and post private notes. Use when a request mentions Hermes, Chatwoot, helpdesk profile/avatar, conversations, inboxes, contacts or notes, in production or development. Version 0.2.0. In Genius, use Vault-backed tools for contact conversations, creating attendance and assigning responsible agents.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/api",
+      "tags": [
+        "hermes",
+        "chatwoot",
+        "helpdesk",
+        "atendimento",
+        "openapi",
+        "api"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "f687f80b47556348ba5b0a558e93d420a04cfe7e0451177678ef133a7809c46f"
+    },
+    {
+      "id": "hermes-triage",
+      "name": "hermes-triage",
+      "description": "Triage Hermes helpdesk (Chatwoot-based) conversations as an internal assistant: decide which team should handle a conversation, separate noise from real requests, and help human agents with private notes, without ever talking to the customer. Covers when there is not enough substance to decide, conversations a human already owns, automation side effects, untrusted customer text, the note format, the training phases and how to measure accuracy. Use when asked to triage, route, classify or direct Hermes conversations, to suggest a team or label, or to train or review a triage agent. Pair with hermes-api for the calls. Version 0.1.1.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/triage",
+      "tags": [
+        "hermes",
+        "chatwoot",
+        "helpdesk",
+        "triagem",
+        "atendimento"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "d5733358162cbc1ff21d9053cc622935f081eb0ecc5fec4a5aacc52352647907"
+    },
+    {
+      "id": "instagram-audit",
+      "name": "instagram-audit",
+      "description": "Audit an Instagram account's published posts from their insights: rank each post against the account's own median, compare per-reach rates, separate hook problems from profile problems and say what to stop and repeat. Use when the user asks what is working, why a post flopped or to read Instagram analytics; it does not write posts or change the profile.",
+      "source": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-audit",
+      "tags": [
+        "instagram",
+        "social-media",
+        "analytics",
+        "insights",
+        "reels"
+      ],
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "sourceId": "schincariol-instagram",
+      "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be"
+    },
+    {
+      "id": "instagram-caption",
+      "name": "instagram-caption",
+      "description": "Write and lint an Instagram caption in Portuguese or English: the line that survives the feed cut, the body, one call to action, search terms and up to five hashtags. Use when the user asks for a caption, post description or hashtags; it does not publish, and profile copy belongs to instagram-profile-setup.",
+      "source": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-caption",
+      "tags": [
+        "instagram",
+        "social-media",
+        "copywriting",
+        "captions",
+        "hashtags"
+      ],
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "sourceId": "schincariol-instagram",
+      "contentSha256": "60536af7dfba452da630e8633d409c49bd03ed0edbfbb574bd6bed2cffd9c698"
+    },
+    {
+      "id": "instagram-profile-manage",
+      "name": "instagram-profile-manage",
+      "description": "Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) through the cheapest working channel - public read, Graph API or the user's logged-in browser - with a confirmed change set and post-change verification. Use when the user asks to apply, update or check Instagram profile items; for deciding what to write use instagram-profile-setup.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-manage",
+      "tags": [
+        "sufficit",
+        "instagram",
+        "social-media",
+        "browser",
+        "automation"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6"
+    },
+    {
+      "id": "instagram-profile-setup",
+      "name": "instagram-profile-setup",
+      "description": "Score and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: account type, name field, bio, link, highlights, pinned posts and first content. Use when the user asks to create, score, review or improve an Instagram profile or bio; does not post, run ads or automate the account.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-setup",
+      "tags": [
+        "sufficit",
+        "instagram",
+        "marketing",
+        "social-media",
+        "copywriting"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "3cb5adf6ef19b4b9377ff2eb87304cbfd55dc5cb04dc61887fffc7fde5663f5b"
+    },
+    {
+      "id": "instagram-reel",
+      "name": "instagram-reel",
+      "description": "Write an Instagram Reel from one raw idea in Portuguese or English: hook options, spoken script, separate on-screen text and a timed beat sheet, in the brand's own voice. Use when the user asks for a Reel, short video script, hook or voiceover, or to create a brand voice file; it does not record, edit or publish, and captions belong to instagram-caption.",
+      "source": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-reel",
+      "tags": [
+        "instagram",
+        "social-media",
+        "reels",
+        "copywriting",
+        "video"
+      ],
+      "author": "Jake Schincariol / Sufficit",
+      "license": "MIT",
+      "sourceId": "schincariol-instagram",
+      "contentSha256": "947a582d2909f3abfc22a358ca941627814307c18089dff042aeed4706cf9178"
+    },
+    {
+      "id": "instagram-video-download",
+      "name": "instagram-video-download",
+      "description": "Download Instagram Reels and videos from user-supplied Instagram post URLs to local files with yt-dlp and verify their media streams. Use for saving Instagram videos; does not perform transcription, editing or publishing.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-video-download",
+      "tags": [
+        "sufficit",
+        "video",
+        "download",
+        "yt-dlp",
+        "instagram"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "cde99811c20b620fbc072ebbae98ce584be7fd442cd617bb78efc27c05c136ae"
+    },
+    {
+      "id": "isp-customer-support",
+      "name": "isp-customer-support",
+      "description": "Draft ISP support responses, train service agents and review handling of connectivity faults, repeat contacts, disputed visits, installation feasibility and invoice delivery. Includes a scenario manual and evidence-based handoff guidance.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/isp-customer-support",
+      "tags": [
+        "isp",
+        "customer-support",
+        "internet",
+        "service-quality"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577"
+    },
+    {
+      "id": "mattpocock-prototype",
+      "name": "prototype",
+      "sourceId": "mattpocock",
+      "author": "Matt Pocock",
+      "license": "MIT",
+      "source": "https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/engineering/prototype",
+      "description": "Build a throwaway prototype to answer a design question about state, logic, or UI.",
+      "tags": [
+        "prototyping",
+        "design",
+        "ui",
+        "engineering"
+      ]
+    },
+    {
       "id": "meta-app-review",
       "name": "meta-app-review",
       "description": "Prepare Meta apps (WhatsApp, Messenger, Instagram) for App Review and operate Business Manager. Use to create or configure app in a portfolio, request advanced access to permissions like whatsapp_business_management, whatsapp_business_messaging, pages_messaging and business_management, record required screencasts, connect Page or WhatsApp Business account to a platform, or diagnose webhooks, Facebook Login for Business, WhatsApp numbers and Graph API errors in these streams. Version 1.0.7.",
@@ -2179,6 +2418,62 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "3b8bc88b85d1aed6efc8b793be84c9c133cc83d0e16e89d119cb691b1e04e45f"
+    },
+    {
+      "id": "playwright-mcp",
+      "name": "playwright-mcp",
+      "description": "Configure and use Playwright MCP as an optional Sufficit AI Genius browser automation path, with isolated --headless mode or --extension bridge mode. Desktop uses local stdio; mobile/tablet requires http to a hosted server. Manage registration directly with mcp_server_add, mcp_server_set_enabled, and mcp_server_remove. Use for Playwright, MCP Bridge, isolated scraping, or capabilities missing from native browser_* tools, such as network/console capture, PDF, multiple tabs, file upload, or accessibility snapshots. Version 0.3.1.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
+      "tags": [
+        "playwright",
+        "mcp",
+        "browser",
+        "automation",
+        "headless",
+        "chrome-extension",
+        "mobile",
+        "http"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "431de963038e25afb0ecb44f98d1df1085873b23b5db7737d8640edc389305d6"
+    },
+    {
+      "id": "quepasa-api",
+      "name": "quepasa-api",
+      "description": "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa. Version 0.1.5.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
+      "tags": [
+        "quepasa",
+        "whatsapp",
+        "mensageria",
+        "grupos",
+        "webhook",
+        "api"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "147ff8cc770fbeef7878de9e633e85c6b60737db626754e64a3e43ff0be067ae"
+    },
+    {
+      "id": "quepasa-production",
+      "name": "quepasa-production",
+      "description": "Operate Sufficit's production QuePasa (WhatsApp gateway) on Kubernetes — check health, diagnose a session or a failed send, read logs and metrics, re-pair or restart a session, replay webhook dead letters, roll out or roll back a new image and handle Galera/Redis — with the grants each task needs and the rules that keep WhatsApp sessions from being corrupted. Use when the request is about the production QuePasa service itself (is it up, why a number stopped sending, deploy/rollback, failover), not just calling its API. Version 0.1.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/production",
+      "tags": [
+        "quepasa",
+        "whatsapp",
+        "producao",
+        "operacao",
+        "kubernetes",
+        "diagnostico"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "bc66f99860e125d203b68aa1e1f51da516d89da028290088007dc99d0cfe8b22"
     },
     {
       "id": "refero-design",
@@ -2220,357 +2515,6 @@
       "contentSha256": "25deb9836eaa15909979f2ea8c8c819fbaf9e4486d423ee382638783cd76aaee"
     },
     {
-      "id": "sufficit-api",
-      "name": "sufficit-api",
-      "description": "Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, vouchers and contacts. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI. Version 1.0.3.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
-      "tags": [
-        "sufficit",
-        "api",
-        "credits",
-        "vouchers",
-        "contacts",
-        "management"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "5b65a413c8623aba3c154f969fadec7440eb8b59ce1d64335ef32a25964dd4e6"
-    },
-    {
-      "id": "sufficit-frontend",
-      "name": "sufficit-frontend",
-      "description": "Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when requested to turn visual references into functional screens, fix layout/themes or evolve a design system. It does not apply to the isolated backend or the native UI Android/iOS. Version 1.0.2.",
-      "source": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
-      "tags": [
-        "sufficit",
-        "frontend",
-        "blazor",
-        "design-system",
-        "css",
-        "accessibility"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-ui",
-      "contentSha256": "f5e3f089267e4decd73c70bd38a1b57bb185d0f7c7619351cf0da4ce2dd9c05c"
-    },
-    {
-      "id": "svg-vectorization",
-      "name": "svg-vectorization",
-      "description": "Vectorizes transparent-background PNG icons and logos into faithful two-layer SVGs (gradient silhouette + brand accent), traced from real pixels and validated by IoU against the original image before deployment. Version 1.0.0.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/images/svg-vectorization",
-      "tags": [
-        "svg",
-        "vectorization",
-        "png",
-        "icon",
-        "logo",
-        "image-tracing",
-        "iou"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius"
-    },
-    {
-      "id": "device-ui-android",
-      "name": "device-ui-android",
-      "description": "Use the built-in browser_* tools for Android websites and device_ui for native apps or the user's signed-in Chrome session. Operate Sufficit AI Genius Android accessibility controls with read_screen, click_element, and set_text rather than desktop shortcuts or raw coordinates. Use for Android interaction, device_ui/android_device_control, printing, saving PDFs, sharing, or ineffective key actions. Discover description=/role= selectors for unlabeled icons and verify the final effect of every Save/Download/Send action. Version 0.3.1.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/device-ui-android",
-      "tags": [
-        "android",
-        "accessibility",
-        "device-ui",
-        "chrome",
-        "touch",
-        "mobile"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "427e57166fce10d3478671f8e89deb4c7ec30b5d3967a73c9fc47c6886949505"
-    },
-    {
-      "id": "playwright-mcp",
-      "name": "playwright-mcp",
-      "description": "Configure and use Playwright MCP as an optional Sufficit AI Genius browser automation path, with isolated --headless mode or --extension bridge mode. Desktop uses local stdio; mobile/tablet requires http to a hosted server. Manage registration directly with mcp_server_add, mcp_server_set_enabled, and mcp_server_remove. Use for Playwright, MCP Bridge, isolated scraping, or capabilities missing from native browser_* tools, such as network/console capture, PDF, multiple tabs, file upload, or accessibility snapshots. Version 0.3.1.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/playwright-mcp",
-      "tags": [
-        "playwright",
-        "mcp",
-        "browser",
-        "automation",
-        "headless",
-        "chrome-extension",
-        "mobile",
-        "http"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "431de963038e25afb0ecb44f98d1df1085873b23b5db7737d8640edc389305d6"
-    },
-    {
-      "id": "hermes-api",
-      "name": "hermes-api",
-      "description": "Use the Hermes HTTP API (Sufficit's Chatwoot-based helpdesk) as your own user: discover the live API from the server's OpenAPI document instead of memorizing routes, authenticate with your personal token (Authorization Bearer), confirm who and which account you are, update your own profile and avatar, read conversations and post private notes. Use when a request mentions Hermes, Chatwoot, helpdesk profile/avatar, conversations, inboxes, contacts or notes, in production or development. Version 0.2.0. In Genius, use Vault-backed tools for contact conversations, creating attendance and assigning responsible agents.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/api",
-      "tags": [
-        "hermes",
-        "chatwoot",
-        "helpdesk",
-        "atendimento",
-        "openapi",
-        "api"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "f687f80b47556348ba5b0a558e93d420a04cfe7e0451177678ef133a7809c46f"
-    },
-    {
-      "id": "hermes-triage",
-      "name": "hermes-triage",
-      "description": "Triage Hermes helpdesk (Chatwoot-based) conversations as an internal assistant: decide which team should handle a conversation, separate noise from real requests, and help human agents with private notes, without ever talking to the customer. Covers when there is not enough substance to decide, conversations a human already owns, automation side effects, untrusted customer text, the note format, the training phases and how to measure accuracy. Use when asked to triage, route, classify or direct Hermes conversations, to suggest a team or label, or to train or review a triage agent. Pair with hermes-api for the calls. Version 0.1.1.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/triage",
-      "tags": [
-        "hermes",
-        "chatwoot",
-        "helpdesk",
-        "triagem",
-        "atendimento"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "d5733358162cbc1ff21d9053cc622935f081eb0ecc5fec4a5aacc52352647907"
-    },
-    {
-      "id": "quepasa-api",
-      "name": "quepasa-api",
-      "description": "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa. Version 0.1.5.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/api",
-      "tags": [
-        "quepasa",
-        "whatsapp",
-        "mensageria",
-        "grupos",
-        "webhook",
-        "api"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "147ff8cc770fbeef7878de9e633e85c6b60737db626754e64a3e43ff0be067ae"
-    },
-    {
-      "id": "quepasa-production",
-      "name": "quepasa-production",
-      "description": "Operate Sufficit's production QuePasa (WhatsApp gateway) on Kubernetes — check health, diagnose a session or a failed send, read logs and metrics, re-pair or restart a session, replay webhook dead letters, roll out or roll back a new image and handle Galera/Redis — with the grants each task needs and the rules that keep WhatsApp sessions from being corrupted. Use when the request is about the production QuePasa service itself (is it up, why a number stopped sending, deploy/rollback, failover), not just calling its API. Version 0.1.0.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/production",
-      "tags": [
-        "quepasa",
-        "whatsapp",
-        "producao",
-        "operacao",
-        "kubernetes",
-        "diagnostico"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "bc66f99860e125d203b68aa1e1f51da516d89da028290088007dc99d0cfe8b22"
-    },
-    {
-      "id": "dotnet-csharp",
-      "name": "dotnet-csharp",
-      "description": "Change C#/.NET code (ASP.NET Core, Blazor/Razor, xUnit/bUnit, NuGet) so it builds and passes CI the first time — build every project that references what you touched, keep red tests compilable, run the repository's own gates, align package versions, follow current library APIs and read CI logs from the first error. Use for any edit to .cs, .razor, .csproj, .props or test projects in a .NET repository, and when a .NET CI job failed. Version 1.0.1.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/dotnet-csharp",
-      "tags": [
-        "dotnet",
-        "csharp",
-        "blazor",
-        "nuget",
-        "ci",
-        "desenvolvimento"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "79bfcec2ed1431da89810d24be4041f19ee05589294b9e0e4ad9d5b226b141cd"
-    },
-    {
-      "id": "software-development",
-      "name": "software-development",
-      "description": "Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization. Version 1.1.1.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
-      "tags": [
-        "software",
-        "development",
-        "implementation",
-        "testing",
-        "planning",
-        "codex"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "2da3540eb30929aa13b2c8875acdbf3e9b4de57cdb00a4c48aace3ea06a688ec"
-    },
-    {
-      "id": "mattpocock-prototype",
-      "name": "prototype",
-      "sourceId": "mattpocock",
-      "author": "Matt Pocock",
-      "license": "MIT",
-      "source": "https://github.com/mattpocock/skills/tree/d81f3a183412e71a5b1e84ca21bc1a35eea03a60/skills/engineering/prototype",
-      "description": "Build a throwaway prototype to answer a design question about state, logic, or UI.",
-      "tags": [
-        "prototyping",
-        "design",
-        "ui",
-        "engineering"
-      ]
-    },
-    {
-      "id": "clear-technical-writing",
-      "name": "clear-technical-writing",
-      "description": "Write and revise documentation, procedures, support chat replies, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Use for ongoing support conversations when explicitly assigned to the agent; do not impose this style on creative writing.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
-      "tags": [
-        "sufficit",
-        "writing",
-        "documentation",
-        "ste",
-        "technical-english",
-        "portuguese"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "01a09a1851eacc8d0bdf5fc88e3e3c3cf1be7ee409616f979eb60fecb58d03bc"
-    },
-    {
-      "id": "instagram-video-download",
-      "name": "instagram-video-download",
-      "description": "Download Instagram Reels and videos from user-supplied Instagram post URLs to local files with yt-dlp and verify their media streams. Use for saving Instagram videos; does not perform transcription, editing or publishing.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-video-download",
-      "tags": [
-        "sufficit",
-        "video",
-        "download",
-        "yt-dlp",
-        "instagram"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "cde99811c20b620fbc072ebbae98ce584be7fd442cd617bb78efc27c05c136ae"
-    },
-    {
-      "id": "video-transcribe",
-      "name": "video-transcribe",
-      "description": "Transcribe the speech of a local video or audio file into a Markdown document with Whisper and ffmpeg. Use when the user asks to transcribe a video, Reel or audio file to text or *.md; does not download, translate or edit media.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-transcribe",
-      "tags": [
-        "sufficit",
-        "video",
-        "transcription",
-        "whisper",
-        "ffmpeg"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
-    },
-    {
-      "id": "instagram-profile-setup",
-      "name": "instagram-profile-setup",
-      "description": "Score and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: account type, name field, bio, link, highlights, pinned posts and first content. Use when the user asks to create, score, review or improve an Instagram profile or bio; does not post, run ads or automate the account.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-setup",
-      "tags": [
-        "sufficit",
-        "instagram",
-        "marketing",
-        "social-media",
-        "copywriting"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "3cb5adf6ef19b4b9377ff2eb87304cbfd55dc5cb04dc61887fffc7fde5663f5b"
-    },
-    {
-      "id": "instagram-profile-manage",
-      "name": "instagram-profile-manage",
-      "description": "Read and change the elements of an Instagram profile (name field, bio, link, contact buttons, highlights, pinned posts, stories) through the cheapest working channel - public read, Graph API or the user's logged-in browser - with a confirmed change set and post-change verification. Use when the user asks to apply, update or check Instagram profile items; for deciding what to write use instagram-profile-setup.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/instagram/instagram-profile-manage",
-      "tags": [
-        "sufficit",
-        "instagram",
-        "social-media",
-        "browser",
-        "automation"
-      ],
-      "author": "Sufficit",
-      "license": "MIT-0",
-      "sourceId": "sufficit-genius",
-      "contentSha256": "fa3c46040fc25437fa42cbaf73cbc5009567bc0e5ac3ef8969976926a44f68a6"
-    },
-    {
-      "id": "instagram-caption",
-      "name": "instagram-caption",
-      "description": "Write and lint an Instagram caption in Portuguese or English: the line that survives the feed cut, the body, one call to action, search terms and up to five hashtags. Use when the user asks for a caption, post description or hashtags; it does not publish, and profile copy belongs to instagram-profile-setup.",
-      "source": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-caption",
-      "tags": [
-        "instagram",
-        "social-media",
-        "copywriting",
-        "captions",
-        "hashtags"
-      ],
-      "author": "Jake Schincariol / Sufficit",
-      "license": "MIT",
-      "sourceId": "schincariol-instagram",
-      "contentSha256": "60536af7dfba452da630e8633d409c49bd03ed0edbfbb574bd6bed2cffd9c698"
-    },
-    {
-      "id": "instagram-audit",
-      "name": "instagram-audit",
-      "description": "Audit an Instagram account's published posts from their insights: rank each post against the account's own median, compare per-reach rates, separate hook problems from profile problems and say what to stop and repeat. Use when the user asks what is working, why a post flopped or to read Instagram analytics; it does not write posts or change the profile.",
-      "source": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-audit",
-      "tags": [
-        "instagram",
-        "social-media",
-        "analytics",
-        "insights",
-        "reels"
-      ],
-      "author": "Jake Schincariol / Sufficit",
-      "license": "MIT",
-      "sourceId": "schincariol-instagram",
-      "contentSha256": "83a2e2f506e0288727c04dc07a99b717dbc92e0bd6ec900b4e76dc8ca54052be"
-    },
-    {
-      "id": "instagram-reel",
-      "name": "instagram-reel",
-      "description": "Write an Instagram Reel from one raw idea in Portuguese or English: hook options, spoken script, separate on-screen text and a timed beat sheet, in the brand's own voice. Use when the user asks for a Reel, short video script, hook or voiceover, or to create a brand voice file; it does not record, edit or publish, and captions belong to instagram-caption.",
-      "source": "https://github.com/Jakeschincariol/instagram-agent-skill/tree/d03c56bb598be770c60b201f94237e5d1a4268a6/skills/ig-reel",
-      "tags": [
-        "instagram",
-        "social-media",
-        "reels",
-        "copywriting",
-        "video"
-      ],
-      "author": "Jake Schincariol / Sufficit",
-      "license": "MIT",
-      "sourceId": "schincariol-instagram",
-      "contentSha256": "947a582d2909f3abfc22a358ca941627814307c18089dff042aeed4706cf9178"
-    },
-    {
       "id": "seo-geo",
       "name": "seo-geo",
       "sourceId": "sufficit-genius",
@@ -2591,37 +2535,40 @@
       ]
     },
     {
-      "id": "asterisk-dialplan",
-      "name": "asterisk-dialplan",
-      "description": "Write, review and format traditional Asterisk dialplan with consistent conventions for context comments, TAB indentation, English text and change headers. Use for extensions.conf and dialplan includes, contexts, exten, same, priorities and subroutines; not for AEL, Lua or SIP/PJSIP peer configuration. Version 1.0.0.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asterisk/dialplan",
+      "id": "software-development",
+      "name": "software-development",
+      "description": "Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization. Version 1.1.1.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
       "tags": [
-        "asterisk",
-        "dialplan",
-        "sip",
-        "pjsip",
-        "code-style"
+        "software",
+        "development",
+        "implementation",
+        "testing",
+        "planning",
+        "codex"
       ],
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "6c6c37733aa0ace8d0332579eac9b749a8117b14bc54665b044ea324bcb4f75d"
+      "contentSha256": "2da3540eb30929aa13b2c8875acdbf3e9b4de57cdb00a4c48aace3ea06a688ec"
     },
     {
-      "id": "isp-customer-support",
-      "name": "isp-customer-support",
-      "description": "Draft ISP support responses, train service agents and review handling of connectivity faults, repeat contacts, disputed visits, installation feasibility and invoice delivery. Includes a scenario manual and evidence-based handoff guidance.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/isp-customer-support",
+      "id": "sufficit-api",
+      "name": "sufficit-api",
+      "description": "Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, vouchers and contacts. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI. Version 1.0.3.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "tags": [
-        "isp",
-        "customer-support",
-        "internet",
-        "service-quality"
+        "sufficit",
+        "api",
+        "credits",
+        "vouchers",
+        "contacts",
+        "management"
       ],
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "d9badde7d52b7f6fd43939e5dbfe699e32e84bfd281e1024e8db1eb361286577"
+      "contentSha256": "5b65a413c8623aba3c154f969fadec7440eb8b59ce1d64335ef32a25964dd4e6"
     },
     {
       "id": "sufficit-campaigns",
@@ -2640,23 +2587,40 @@
       "contentSha256": "11a59a1df099a4d9c343687ad18f19fe21315de3fe5439355ee453bf5eccbb1f"
     },
     {
-      "id": "sufficit-telephony-extensions",
-      "description": "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Use when a request mentions ramais, provisioning de ramal, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
+      "id": "sufficit-frontend",
+      "name": "sufficit-frontend",
+      "description": "Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when requested to turn visual references into functional screens, fix layout/themes or evolve a design system. It does not apply to the isolated backend or the native UI Android/iOS. Version 1.0.2.",
+      "source": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
       "tags": [
         "sufficit",
-        "telephony",
-        "ramais",
-        "extensions",
-        "sip",
-        "preferences",
+        "frontend",
+        "blazor",
+        "design-system",
+        "css",
+        "accessibility"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-ui",
+      "contentSha256": "f5e3f089267e4decd73c70bd38a1b57bb185d0f7c7619351cf0da4ce2dd9c05c"
+    },
+    {
+      "id": "sufficit-hermes-agents",
+      "description": "Administer helpdesk agents in Hermes (Chatwoot) through the live corporate API: create an agent user in an account (conta) with name, e-mail and role, manage availability, issue and rotate agent API tokens, link an agent to a telephony extension (ramal) and offboard agents. Use when a request mentions criar usuario/agente no Chatwoot ou Hermes, conta/instance, token de API do agente, vincular ramal ao agente or desativar agente. Not for self-service agent reads (hermes-api) and not for the ramal itself (sufficit-telephony-extensions).",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-hermes-agents",
+      "tags": [
+        "sufficit",
+        "hermes",
+        "chatwoot",
+        "agents",
+        "tokens",
         "provisioning"
       ],
-      "name": "sufficit-telephony-extensions",
+      "name": "sufficit-hermes-agents",
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "7c9e1a17e1dd22c20fa8e1507930db88d5ed5f7b1419f512119d2438d2fb0ba6"
+      "contentSha256": "64a32fcd94fc779b4f8dd187a985499ea75a609697f197d96258d8a2a9b1185b"
     },
     {
       "id": "sufficit-telephony-dialplan",
@@ -2677,8 +2641,62 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "cb892516602c2198d62e58f4fa42213cea81ba36e6413bddee5df4b8e1429e72"
+      "contentSha256": "926e06187ba53afbb38c53f3822120175347da96ba20c4ad04d4af22505790a7"
+    },
+    {
+      "id": "sufficit-telephony-extensions",
+      "description": "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Use when a request mentions ramais, provisioning de ramal, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
+      "tags": [
+        "sufficit",
+        "telephony",
+        "ramais",
+        "extensions",
+        "sip",
+        "preferences",
+        "provisioning"
+      ],
+      "name": "sufficit-telephony-extensions",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "c60648e4ea2625ec99f045d5adaa2b5ec4630ec496e437eebc85147751aa4fcf"
+    },
+    {
+      "id": "svg-vectorization",
+      "name": "svg-vectorization",
+      "description": "Vectorizes transparent-background PNG icons and logos into faithful two-layer SVGs (gradient silhouette + brand accent), traced from real pixels and validated by IoU against the original image before deployment. Version 1.0.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/images/svg-vectorization",
+      "tags": [
+        "svg",
+        "vectorization",
+        "png",
+        "icon",
+        "logo",
+        "image-tracing",
+        "iou"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius"
+    },
+    {
+      "id": "video-transcribe",
+      "name": "video-transcribe",
+      "description": "Transcribe the speech of a local video or audio file into a Markdown document with Whisper and ffmpeg. Use when the user asks to transcribe a video, Reel or audio file to text or *.md; does not download, translate or edit media.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-transcribe",
+      "tags": [
+        "sufficit",
+        "video",
+        "transcription",
+        "whisper",
+        "ffmpeg"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "8f1ecb251141d736f867913b6057589adca86b8b971f96ee77298254f56d2acc"
     }
   ],
-  "catalogEntries": 183
+  "catalogEntries": 184
 }

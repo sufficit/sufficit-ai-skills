@@ -1,0 +1,4 @@
+interface:
+  display_name: Sufficit Hermes Agents
+  short_description: Administer Hermes/Chatwoot agents, roles and API tokens
+  default_prompt: Use $sufficit-hermes-agents to create or manage a helpdesk agent (Hermes/Chatwoot user), its roles, API token and extension link.
