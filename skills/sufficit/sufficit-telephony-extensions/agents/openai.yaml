@@ -1,0 +1,4 @@
+interface:
+  display_name: Sufficit Telephony Extensions
+  short_description: Provision ramais and manage per-extension preferences
+  default_prompt: Use $sufficit-telephony-extensions to create or manage a telephony extension (ramal) and its preferences.

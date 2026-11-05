@@ -1,0 +1,9 @@
+# sufficit-telephony-extensions
+
+Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Use when a request mentions ramais, provisioning de ramal, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files.
+
+Version: **0.1.0** · Sufficit · MIT-0
+
+Read [SKILL.md](SKILL.md) to use this skill.
+
+Source: [sufficit-ai-skills](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions).

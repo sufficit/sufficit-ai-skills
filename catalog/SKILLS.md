@@ -244,6 +244,8 @@ inside the repository's documentation hierarchy.
 | [sufficit-api](../skills/sufficit/sufficit-api/SKILL.md) | [card](../skills/sufficit/sufficit-api/skill-card.md) | Sufficit | Query and manage Sufficit corporate API resources as the authenticated user. Use to locate and operate business data, starting with wallets, credits, voucher... |
 | [sufficit-campaigns](../skills/sufficit/sufficit-campaigns/SKILL.md) |  | Sufficit | Create, inspect and run Sufficit outreach campaigns through the corporate API: objective, script, targets, contact window, attempts, results and CRM review.... |
 | [sufficit-frontend](../skills/sufficit/sufficit-frontend/SKILL.md) | [card](../skills/sufficit/sufficit-frontend/skill-card.md) | Sufficit | Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when reque... |
+| [sufficit-telephony-dialplan](../skills/sufficit/sufficit-telephony-dialplan/SKILL.md) | [card](../skills/sufficit/sufficit-telephony-dialplan/skill-card.md) | Sufficit | Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound D... |
+| [sufficit-telephony-extensions](../skills/sufficit/sufficit-telephony-extensions/SKILL.md) | [card](../skills/sufficit/sufficit-telephony-extensions/skill-card.md) | Sufficit | Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a ne... |
 
 ## videos
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: Sufficit Telephony Dialplan
+  short_description: Attendance flows, applications, destinations, queues, DIDs and trunks
+  default_prompt: Use $sufficit-telephony-dialplan to design or change telephony attendance flows, destinations, queues, DIDs or trunks.
