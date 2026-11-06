@@ -12,3 +12,9 @@ WhatsApp gateway. No real message was sent during this failed acceptance attempt
 Version metadata, release.json and reviewed catalog are aligned at 1.0.26.
 Validation: 185 packages, version/index/Markdown checks, 40 installation tests.
 The complete layperson workflow remains pending device acceptance.
+
+Device result: the agent installed and verified 1.0.26. After assistance to retain
+the unique customer returned by Sales/Clients and distinguish notification
+contacts from general contacts, it created the valid destination and issued one
+official test. The exchange worker confirmed successful dispatch. No duplicate
+was sent. The layperson scenario remains failed; do not report it as accepted.

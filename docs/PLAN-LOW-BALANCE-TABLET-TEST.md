@@ -9,4 +9,6 @@ Scope: session 01a1acef-9b0e-7333-a48f-3c0f3e6b75b1. Test the low-balance workfl
 
 Do not edit the conversation database or seed the expected answer. Do not select another customer or message unrelated recipients. Preserve existing alerts. Store sensitive raw evidence outside the public repository; publish only redacted observations.
 
-5. In progress — harden customer/contact lookup after the event-test run asked for internal GUIDs without querying by supplied name/number; validate and publish the skill, then retry the still-unsent official test. The unrelated native crash and original setup acceptance remain open.
+5. Completed (assisted test only) — harden customer/contact lookup after the event-test run asked for internal GUIDs without querying by supplied name/number; validate and publish the skill, then retry the still-unsent official test. The unrelated native crash and original setup acceptance remain open.
+
+Package 1.0.26 was updated and verified by the tablet agent. Exactly one official Notification/Test call was queued and dispatched to the authorized destination. The unassisted acceptance in step 4 remains failed: the model mixed general contacts with the unique customer directory result and required guidance. Two native Android SIGSEGV crashes were recorded; dispatch success does not close them.
