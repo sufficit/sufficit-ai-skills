@@ -2638,7 +2638,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-ui",
       "contentSha256": "f5e3f089267e4decd73c70bd38a1b57bb185d0f7c7619351cf0da4ce2dd9c05c",
-      "version": "1.0.3"
+      "version": "1.0.4"
     },
     {
       "id": "sufficit-hermes-agents",

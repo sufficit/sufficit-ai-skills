@@ -2,7 +2,7 @@
 name: sufficit-frontend
 description: "Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when requested to turn visual references into functional screens, fix layout/themes or evolve a design system. It does not apply to the isolated backend or the native UI Android/iOS."
 metadata:
-  version: "1.0.3"
+  version: "1.0.4"
 ---
 
 # Sufficit Frontend
@@ -73,6 +73,7 @@ Read only relevant guides:
 | --- | --- |
 | Tokens, themes, spacing, responsiveness and movement | [Visual system](references/visual-system.md) |
 | Standards, components, states and library evolution | [Composition and contracts](references/components.md) |
+| Loading states, spinners, progress bars and wait estimates | [Loading indicator rules](references/loading-indicators.md) |
 | Project Blazor or Sufficit.Blazor.UI | [Blazor/SUI integration](references/blazor-sui.md) |
 | Visual or interactive change to validate | [Browser evidence](references/verification.md) |
 
@@ -96,4 +97,4 @@ To maintain or evaluate this skill, use [validation scenarios](references/evalua
 
 ## Distribution and version
 
-Skill version: 1.0.3. Canonical source: `sufficit/sufficit-ai-skills`, folder `skills/sufficit/sufficit-frontend`. To install, check integrity or update, read [installation and versions](references/installation.md). The skill version is independent of the Blazor library.
+Skill version: 1.0.4. Canonical source: `sufficit/sufficit-ai-skills`, folder `skills/sufficit/sufficit-frontend`. To install, check integrity or update, read [installation and versions](references/installation.md). The skill version is independent of the Blazor library.
