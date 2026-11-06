@@ -161,9 +161,16 @@ explicitly requested destination.
 1. Read back the selected notification contact, its channel/destination and the
    low-balance subscription's customer context. Preserve the exact GUIDs from
    those records and any user selection; similarly named contacts are not interchangeable.
-2. Discover a published, recipient-scoped notification test operation and inspect
-   its live request contract. If it is not exposed, use the authenticated official
-   web screen `Notification/Subscriptions.aspx` for that contact, select the
+2. Search the exact known operation `POST /Notification/Test` in the live OpenAPI
+   and inspect its request contract. The API accepts `eventId`, `contextId` and
+   `contactId` (the saved notification contact); it uses that contact's stored
+   channel and destination. It requires access to both the customer and contact
+   owner contexts, rejects blocked/invalid contacts, and does not require or create
+   a subscription. Do not request another browser login when this API is available.
+   A `202` receipt with `messageId` and `status=queued` confirms enqueue only;
+   inspect Exchange evidence before claiming delivery or retrying an ambiguous call.
+   If the operation is not published, use the authenticated official
+   web screen `https://eveo-web.sufficit.com.br/Notification/Subscriptions.aspx` for that contact, select the
    `Saldo atual para chamadas` subscription and invoke **Enviar teste** once.
    Discover browser/device capabilities through `catalog` when needed. Navigate
    the actual screen; do not fabricate an HTTP postback or an unpublished API route.
