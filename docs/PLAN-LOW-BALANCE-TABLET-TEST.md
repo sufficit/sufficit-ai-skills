@@ -8,3 +8,5 @@ Scope: session 01a1acef-9b0e-7333-a48f-3c0f3e6b75b1. Test the low-balance workfl
 4. Blocked acceptance — selected customer identity and threshold policy are not reliably followed in the live default-preset run; personal WhatsApp gateway credential is rejected. Preserve these failures for the next implementation decision; do not claim the customer setup complete.
 
 Do not edit the conversation database or seed the expected answer. Do not select another customer or message unrelated recipients. Preserve existing alerts. Store sensitive raw evidence outside the public repository; publish only redacted observations.
+
+5. In progress — harden customer/contact lookup after the event-test run asked for internal GUIDs without querying by supplied name/number; validate and publish the skill, then retry the still-unsent official test. The unrelated native crash and original setup acceptance remain open.

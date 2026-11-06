@@ -14,6 +14,23 @@ available for calls. Do not ask which balance unless the conversation contradict
 that interpretation. Resolve the customer/context from the conversation and
 supported API reads. Ask for identification only if the target remains ambiguous.
 
+Internal GUIDs are lookup results, not information a layperson must provide.
+When the user names a customer, discover the exact `/Sales/Clients` operation
+with `sufficit_api_search`, inspect its live filter contract, then execute the
+name lookup and inspect returned identities. A broad search missing this route
+is not proof that lookup is unavailable. For an informed phone/destination,
+discover `/Notification/Contact/Search`, inspect its contract and query the
+existing matching contact/channel. Use `/Notification/Events` to identify the
+event. Keep the selected customer identity fixed across subsequent calls.
+If several customer records genuinely match, ask a short identity question using
+recognizable names/details; never ask the user to supply a GUID instead of doing
+these reads. No subscription is required for the recipient-scoped test.
+
+A service-generated notification uses the Sufficit notification delivery channel.
+The recipient's WhatsApp number does not require pairing the user's personal
+WhatsApp with Genius. A failed `whatsapp_status` concerns that separate personal
+messaging gateway and does not establish a failure of the notification service.
+
 Discover live operations for telephony balance, recharge history, billed call
 usage, notification events, subscribers and notification contacts. Read all
 relevant pages. A failed or truncated lookup is not evidence of no alerts or zero
