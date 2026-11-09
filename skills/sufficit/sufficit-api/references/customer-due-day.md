@@ -1,107 +1,81 @@
 # Customer preferred payment day
 
-Use this flow for "dia preferencial", "dia de vencimento do cliente" or changing
-the customer's preferred day each month. Discover the live OpenAPI operations
-before calling: search `BillingCheckout Link`, `billing checkout`, `customer due
-day` and `preferred payment day`. An empty search for `RenewalPolicy` does not
-establish that a customer preference is unavailable.
+For "dia preferencial", "dia de vencimento do cliente" or changing the
+customer's preferred day each month, discover `PaymentPreferences` in the live
+OpenAPI. The dedicated customer operation is independent of checkout availability
+and monthly-service eligibility. Search `customer payment preferences` or the
+exact path if a Portuguese search finds nothing.
 
-## Separate the requested effects
+## Read, change, verify
 
-| Resource | Meaning | Known API surface |
+1. Resolve the customer's context GUID and discover `GET` and `POST
+   `/Sales/Customers/{contextId}/PaymentPreferences`. Inspect the deployed schemas.
+2. GET that customer's preference. The response is `{"contextId":"...",
+   "dueDay":4}`; `dueDay: null` means no saved preference. Confirm the returned
+   context matches the target. Do not infer the customer day from contract dates.
+3. For day 09, POST `{"dueDay":9,"expectedDueDay":4}`, using the exact saved day
+   from step 2 as `expectedDueDay`. Both fields must be explicitly present; use
+   `expectedDueDay: null` when the read returned no preference. Days are integers
+   1–31. Send `dueDay: null` only when the user requests clearing the preference.
+4. GET again and verify the requested day before reporting success. On a network
+   failure or unknown write outcome, read first: do not blindly resend. On 409
+   `customer_payment_preference_changed`, reread and check the requested outcome;
+   do not overwrite another operator's change with an obsolete expectation.
+
+Known authorization: authenticated administrator/manager or scoped `clientadmin`
+for writes; reading also accepts scoped `balanceview`. Internal service callers
+need the corresponding context permission. A 403 is a concrete permission
+refusal, not evidence that the preference is unsupported. A 404 means the contact
+identity was not found. No eligible monthly contract or checkout activation is
+required by this dedicated operation.
+
+## Separate the effects
+
+| Resource | Meaning | Effect of the preference-only operation |
 | --- | --- | --- |
-| Customer `DueDay` (JSON `dueday`) | Saved customer preference, integer 1–31 | Written by consolidated `POST /Sales/BillingCheckout/Link` |
-| Billing checkout link `dueDay` | Due day for the configured billing group | `GET` and `POST /Sales/BillingCheckout/Link` |
-| Contract `dueDay`, `start`, `nextDueDate` | Service coverage and recurring calendar | Contract operations; inspect each contract independently |
-| Customer `RenewalPolicy` | Whether renewal requires payment | Separate policy; not a preferred-day writer |
-| Issued charge `dueDate` | Frozen due date of an existing charge | Not rescheduled by saving the preference |
+| Customer `DueDay` | Saved customer preference, 1–31 or null | Changed |
+| Existing checkout link `dueDay` | Configured day of a billing group | Preserved |
+| Contract `dueDay`, `start`, `nextDueDate` | Service coverage and recurring calendar | Preserved |
+| Issued charge `dueDate` | Frozen date of an existing charge | Preserved |
+| Customer `RenewalPolicy` | Whether renewal requires payment | Preserved; unrelated to preferred day |
 
-Do not replace a request for the general customer preference with edits to every
-contract. A contract's explicit day can differ from the customer preference;
-saving the preference does not rewrite its coverage, next cycle or historical
-charges. For consolidated billing, the saved link day takes precedence over the
-customer day proposed when there is no link; standalone billing uses its own group.
-Do not describe contract-day precedence as a universal rule for all billing.
+Report that the **customer preference** was saved. Do not claim that all services
+or existing checkout links now use that day. The saved link day takes precedence
+over the proposed customer day when a consolidated link already exists; a
+standalone group has its own configuration. If the user asks to align existing
+billing as well, inspect and handle those requested resources separately.
 
-## Read, preserve, change, verify
+`"An aligned schedule requires a reviewed correction before changing its dates."`
+comes from the contract writer. It blocks the attempted calendar edit, not the
+separate preference-only operation. Do not remove alignment metadata or repeatedly
+resubmit date edits. Complete the authorized preference change when available and
+report any separately requested calendar correction as its own outcome.
 
-1. Resolve the customer's context GUID. Discover `GET` and `POST
-   /Sales/BillingCheckout/Link` and inspect their current schemas. Read the
-   consolidated group with `contextId=<customer GUID>` and **no contractId**.
-   A contract GUID selects a standalone group and does not update `Customer.DueDay`.
-2. Retain the returned `enabled`, `recurringCardEnabled`,
-   `preferredPaymentMethod` and `allowedPaymentMethods`. `availablePaymentMethods`
-   is eligibility information, not a replacement for the saved allowed methods.
-   This is a configuration write, not a one-field patch: omitted booleans or
-   payment preference can change other settings. If the installed schema cannot
-   preserve the current settings, report that limitation before writing.
-3. For a request such as day 09, send integer `9` as `dueDay`, `contextId` as the
-   customer GUID and `contractId: null`, preserving the settings read above. Do
-   not send `nextDueDate`, enable billing or recurring card, or change payment
-   methods merely to save the day.
-4. Read the consolidated link again and verify the requested `dueDay` and the
-   preserved settings. The successful consolidated configuration transaction
-   saves both `Customer.DueDay` and the link day; its independent GET verifies
-   the persisted link. A GET alone, before any write, may return an existing
-   link's day or a proposed fallback and does not prove the raw customer value.
-   Report "customer preference and consolidated billing day saved" only after
-   the successful write and verification; distinguish any separately requested
-   contract changes and their outcomes.
+## Older deployments and checkout configuration
 
-Payload illustration **only when the preceding GET returned these exact settings**
-(enabled, recurring-card offering off, PIX and card allowed, no preferred method):
+If `PaymentPreferences` is absent from the deployed OpenAPI, report the missing
+operation. Do not invent routes. The historical consolidated `POST
+/Sales/BillingCheckout/Link` with `contractId: null` writes both `Customer.DueDay`
+and the link's configuration. It is appropriate for a requested billing-link
+change; it is not a substitute for a preference-only request. In particular, do
+not activate checkout, enable recurring card, alter payment methods or cancel a
+card agreement to make a preference change possible. A contract GUID on that
+route selects a standalone group and does not update the customer preference.
 
-```json
-{
-  "contextId": "<resolved customer GUID>",
-  "contractId": null,
-  "enabled": true,
-  "dueDay": 9,
-  "recurringCardEnabled": false,
-  "preferredPaymentMethod": null,
-  "allowedPaymentMethods": [0, 1]
-}
-```
-
-Never copy those configuration values as defaults. This operation configures the
-link and customer preference; it does not itself issue a charge or collect payment.
-
-## Concrete blockers and discovery limits
-
-- The billing checkout feature and unified billing must already be enabled for
-  this customer. `409 "Checkout consolidado ainda não está habilitado."` is a
-  concrete configuration blocker. A GET `404` can mean no eligible service and
-  no existing link. Do not activate checkout or create an arbitrary configuration
-  as a workaround for a preference-only request.
-- `recurringLocked=true` signals frozen card terms. A changed day is rejected with
-  `"Encerre e reconcilie a autorização de cartão antes de alterar o vencimento."`.
-  Report the required reconciliation; changing the preference does not authorize
-  canceling a card agreement. Preserve any other validation failure as observed.
-- `"An aligned schedule requires a reviewed correction before changing its dates."`
-  comes from the contract writer. It blocks the attempted contract calendar edit;
-  it does not prove that the separate customer preference write is forbidden.
-  Do not remove alignment metadata or repeatedly resubmit date edits. If the user
-  requested both effects, complete the authorized preference operation when
-  available and report the contract correction separately.
-- The known raw preference reader is `GET /Sales/Customer?id=<customer GUID>`,
-  whose `Customer` response uses **`dueday`**. This controller is hidden from
-  production OpenAPI in the reviewed source. Do not invent a `POST /Sales/Customer`
-  or bypass tool discovery to call a hidden route. Its absence from search is not
-  proof that the stored preference does not exist.
-- A `503` on `Customers/{contextId}/RenewalPolicy` describes that call's
-  availability. It says nothing about the due-day configuration route. If the
-  actual billing operation is missing from deployed OpenAPI, report that specific
-  discovery limitation rather than declaring that customers have no preference.
+`GET /Sales/Customer?id=<customer GUID>` is a historical raw reader whose response
+uses lowercase **`dueday`**; it is hidden from production OpenAPI in the reviewed
+source. Its absence from search does not prove the preference does not exist.
+Do not invent a `POST /Sales/Customer` or bypass tool discovery for hidden routes.
+A 503 on `Customers/{contextId}/RenewalPolicy` describes only that unrelated call.
 
 ## Source evidence
 
-Reviewed on 2026-11-09; these sources explain semantics, while the deployed
-OpenAPI remains the calling contract:
-
-- [Customer JSON field and range](https://github.com/sufficit/sufficit-base/blob/05c0023d88c07d1be94af918c5d9e2520aba29bd/src/Sales/Customer.cs).
-- [Billing routes and management roles](https://github.com/sufficit/sufficit-endpoints/blob/a9b0bdcd8840522132f4f2f8da2f6e59b513706b/src/Controllers/Sales/BillingCheckoutController.cs),
-  [request and response fields](https://github.com/sufficit/sufficit-endpoints/blob/a9b0bdcd8840522132f4f2f8da2f6e59b513706b/src/Sales/BillingCheckoutModels.cs),
-  [Configure transaction, GetLink fallback and feature/card guards](https://github.com/sufficit/sufficit-endpoints/blob/a9b0bdcd8840522132f4f2f8da2f6e59b513706b/src/Sales/BillingCheckoutService.cs).
-- [Hidden customer reader](https://github.com/sufficit/sufficit-endpoints/blob/a9b0bdcd8840522132f4f2f8da2f6e59b513706b/src/Controllers/Sales/CustomerController.cs),
-  [renewal policy](https://github.com/sufficit/sufficit-base/blob/05c0023d88c07d1be94af918c5d9e2520aba29bd/src/Sales/CustomerRenewalPolicy.cs),
+- [Dedicated API and concurrency contract](https://github.com/sufficit/sufficit-endpoints/blob/152e7f9f8981e35a68bbe38d36d71236d787a662/docs/CUSTOMER-PAYMENT-PREFERENCES.md),
+  [controller and authorization](https://github.com/sufficit/sufficit-endpoints/blob/152e7f9f8981e35a68bbe38d36d71236d787a662/src/Controllers/Sales/CustomerPaymentPreferencesController.cs),
+  [customer-only transaction](https://github.com/sufficit/sufficit-endpoints/blob/152e7f9f8981e35a68bbe38d36d71236d787a662/src/Sales/CustomerPaymentPreferencesStore.cs).
+- [Historical customer JSON field](https://github.com/sufficit/sufficit-base/blob/05c0023d88c07d1be94af918c5d9e2520aba29bd/src/Sales/Customer.cs),
+  [checkout precedence and guards](https://github.com/sufficit/sufficit-endpoints/blob/a9b0bdcd8840522132f4f2f8da2f6e59b513706b/src/Sales/BillingCheckoutService.cs),
   [contract alignment guard](https://github.com/sufficit/sufficit-efdata/blob/74d30d6145175d3aa577dab8d3e67f8bd13c7299/src/Sales/EFSalesProvider.Recurring.cs).
+
+Source reviewed on 2026-11-09. The deployed OpenAPI remains the calling contract;
+repository publication alone does not establish deployment readiness.

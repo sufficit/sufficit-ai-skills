@@ -31,7 +31,7 @@ The portfolio returns aggregates only, never the customers' e-mail or phone. A r
 
 ## Customer preferred due day
 
-For "dia preferencial" or a customer-wide payment-day change, follow [the customer due-day flow](customer-due-day.md) before editing contract dates. It identifies the consolidated billing writer, settings to preserve, verification and the separate contract alignment guard.
+For "dia preferencial" or a customer-wide payment-day change, follow [the customer due-day flow](customer-due-day.md) before editing contract dates. It identifies the dedicated customer preference writer, concurrency expectation, independent verification and the separate contract alignment guard.
 
 ## Initial zero-price period requested by a manager
 
