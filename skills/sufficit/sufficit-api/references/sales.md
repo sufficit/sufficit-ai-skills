@@ -29,6 +29,10 @@ For the display name of a known customer/context GUID, follow [the contact-title
 
 The portfolio returns aggregates only, never the customers' e-mail or phone. A representative's permission does not extend to its customers' records. Do not try to obtain them by passing a customer GUID as `contextId` or `contactId` to `POST /Contact/Search`; the server refuses it (`403`) and it is outside the authorised scope. When a campaign needs contact data, report that it requires an export authorised by Sufficit management.
 
+## Customer preferred due day
+
+For "dia preferencial" or a customer-wide payment-day change, follow [the customer due-day flow](customer-due-day.md) before editing contract dates. It identifies the consolidated billing writer, settings to preserve, verification and the separate contract alignment guard.
+
 ## Monthly services: which system owns each service
 
 Customers are moving from the legacy service manager to native contracts. Before acting, read the customer's contracts (`GET /Sales/Contract/Search`): `source` tells which system owns each one.

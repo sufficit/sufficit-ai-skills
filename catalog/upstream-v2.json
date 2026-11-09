@@ -526,7 +526,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "7c762fefceefaf0f589b2113f7f3e166098e4664a7d4a95564175cb5e899724e",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     {
       "id": "device-ui-android",
@@ -2501,7 +2501,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "69d13c1a494510d6751bc9d7cb58766710320fa71412c280440ff2028816090f",
-      "version": "0.1.0"
+      "version": "0.1.1"
     },
     {
       "id": "refero-design",
@@ -2585,7 +2585,7 @@
     {
       "id": "sufficit-api",
       "name": "sufficit-api",
-      "description": "Query and manage Sufficit corporate API resources as the authenticated user: bank slips, telephony low-balance alerts, wallets, credits, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI. Version 1.0.23.",
+      "description": "Query and manage Sufficit corporate API resources as the authenticated user: customer preferred due days, service billing, bank slips, telephony low-balance alerts, wallets, credits, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "tags": [
         "sufficit",
@@ -2596,13 +2596,16 @@
         "management",
         "telephony",
         "notifications",
-        "low-balance"
+        "low-balance",
+        "customers",
+        "billing",
+        "due-day"
       ],
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "7cd9334b4920e8d624fafba2e9d6f0df4e4a1ecfc5aee834df0a8a56cdbe2d8c",
-      "version": "1.0.26"
+      "contentSha256": "6cb8880dbd813c01a0306ea71f5b24a7722708f575b0b2100829055df2f81136",
+      "version": "1.0.29"
     },
     {
       "id": "sufficit-campaigns",

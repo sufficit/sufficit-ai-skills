@@ -128,3 +128,5 @@ Delivery: [inbound route lookup guidance and retest](docs/activities/20261109-in
 Delivery: [chronology in support replies](docs/activities/20261109-support-chronology.md).
 
 Delivery: [customer WhatsApp number diagnostics](docs/activities/20261109-quepasa-number-diagnostics.md).
+
+Delivery: [customer preferred due-day guidance](docs/activities/202611091706-customer-preferred-due-day.md).
