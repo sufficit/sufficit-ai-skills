@@ -33,6 +33,28 @@ The portfolio returns aggregates only, never the customers' e-mail or phone. A r
 
 For "dia preferencial" or a customer-wide payment-day change, follow [the customer due-day flow](customer-due-day.md) before editing contract dates. It identifies the consolidated billing writer, settings to preserve, verification and the separate contract alignment guard.
 
+## Initial zero-price period requested by a manager
+
+For a new service, interpret “leave the value at0 initially” as free initial
+coverage only until the customer's next preferred due date, followed by the
+agreed normal price from that date onward. The free coverage ends the day before
+the boundary. This is the default unless the manager explicitly specifies a
+different arrangement; do not ask them to reconfirm this meaning. It does not
+mean a permanently zero-priced service or a full free month from activation.
+
+Read the saved preference and agreed recurring price. Ask only for a material
+missing value, not for confirmation of the default. For example, activation on
+9November with preferred day21 and monthly price30 means0 for9–20November and30
+for cycles starting21November. For days29–31 absent in a month, use the last
+valid day while preserving the original preferred day for later months.
+
+Apply the initial waiver only to the first service period using an operation
+supported by the live API, and keep the following periods at the agreed price.
+Verify both periods and the next renewal. Do not create a separate financial
+bonus, permanently set the recurring price to0, or post a future debit now. If
+no deployed operation supports a period-scoped waiver, report that specific
+limitation rather than inventing a route or broadening the discount.
+
 ## Monthly services: which system owns each service
 
 Customers are moving from the legacy service manager to native contracts. Before acting, read the customer's contracts (`GET /Sales/Contract/Search`): `source` tells which system owns each one.
