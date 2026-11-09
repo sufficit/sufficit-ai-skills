@@ -124,3 +124,5 @@ Packages without a declared version stay unversioned; a Git revision is provenan
 not a substitute for a semantic version.
 
 Delivery: [inbound route lookup guidance and retest](docs/activities/20261109-inbound-route-guidance.md).
+
+Delivery: [chronology in support replies](docs/activities/20261109-support-chronology.md).

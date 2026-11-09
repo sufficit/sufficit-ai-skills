@@ -2,7 +2,7 @@
 name: clear-technical-writing
 description: "Write and revise documentation, procedures, support chat replies, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Use for ongoing support conversations when explicitly assigned to the agent; do not impose this style on creative writing."
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   author: "Sufficit"
 ---
 
@@ -33,6 +33,13 @@ Do not impose arbitrary word count, fixed number of paragraphs or a single respo
 - Maintain API identifiers, commands, flags, paths, configuration names, URLs, and literal messages. Simplifying the prose does not allow changing code or translating labels that the reader needs to locate on the interface.
 - Preserve details necessary for the execution and recovery of failures. Conciseness does not justify removing a safety step or a prerequisite.
 - Do not add features, guarantees, test results or operational instructions that are not supported by the material provided.
+
+## Evidence and chronology in support conclusions
+
+- Before saying "before", "after", "since", "still" or "resolved", compare the actual event timestamps against the referenced report, deployment or test. Normalize dates and time zones first; keep the query time separate from the event time. Do not infer chronology from row order, a shared day or a recent query.
+- When the distinction matters, make the comparison explicit: an event at 10:19 precedes a report at 10:28 on the same date and time zone; it cannot establish behavior after that report. If an event lacks a date or offset that changes the ordering, preserve that uncertainty.
+- A successful event before a reported failure does not disprove the later symptom or show recovery. Evidence from another number, endpoint or interval does not validate the affected path. State what the observed interval supports and what remains untested.
+- Before finalizing, audit each temporal or causal claim against its cited observations. Delete or qualify conclusions that outrun the evidence. Different registration IPs do not by themselves establish different physical devices, and SIP registration does not prove call delivery.
 
 ## Readable support chat replies
 
