@@ -122,3 +122,5 @@ Declared package versions are copied into the reviewed catalog by
 `scripts/catalog_versions.py`; CI checks that they match `SKILL.md` metadata.
 Packages without a declared version stay unversioned; a Git revision is provenance,
 not a substitute for a semantic version.
+
+Delivery: [inbound route lookup guidance and retest](docs/activities/20261109-inbound-route-guidance.md).

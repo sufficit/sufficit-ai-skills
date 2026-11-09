@@ -13,6 +13,16 @@ de espera configurado em segundos, não média nem espera ao vivo. Quando a pess
 corrigir "quais ramais ... na verdade, qual tempo de espera?", responda SOMENTE o
 tempo. Não enumere membros que deixaram de ser a pergunta atual.
 
+## Inbound number routing
+
+When asked to check inbound routes, keep the selected customer context and the numbers from the conversation. Read the DID configuration, not just SIP registration, the destination catalog or call history. Those sources answer different questions.
+
+- Discover the DID search operation in the deployed API. The known read-only lookup is `POST /Telephony/DID/Search` with JSON `{"contextId":"<customer GUID>","limit":100}`. `POST /Telephony/DID/FullSearch` adds count metadata when needed. These are searches, not changes. `GET /Telephony/DID` is not the list operation; a `405` there calls for checking the documented method, not declaring access unavailable. An invented `/Telephony/Route` returning `404` says nothing about the DID search.
+- Match each returned `extension` to the requested public number, normalizing presentation to digits with country code. Preserve the customer's context and check pagination/limits before concluding a number is absent.
+- Read the DID's `asterisk` destination. For `sufficit-app-directcall,<endpoint GUID>,1`, resolve that GUID against the customer's endpoints and report its extension title. Do not assume the destination argument is the SIP extension number. Resolve other destination types through the relevant API catalog.
+- Report the observed public-number-to-destination mapping. Configuration is not proof of the executed call path: if a call reaches a different extension, correlate its actual DID, time and execution evidence. SIP `OK`, an answered history row, or a valid destination alone cannot prove which inbound number led there. Absence from FreePBX dialplan output does not prove absence of a route handled by the current platform.
+- If discovery or a call fails, state the actual method/path/status or transport failure. Do not infer insufficient permission from `404`/`405` or an empty catalog. Never ask the technician for an endpoint when the supported DID search can answer the request.
+
 ## Conversa e conferência
 
 Mantenha a empresa e a fila já selecionadas nas perguntas seguintes. Uma frase
