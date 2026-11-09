@@ -2,7 +2,7 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user: bank slips, telephony low-balance alerts, wallets, credits, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.27"
+  version: "1.0.28"
 ---
 
 # Sufficit API
@@ -59,6 +59,7 @@ For a service renewal request, read [the sales renewal flow](references/sales.md
 
 - For requests to enable a low-balance alert, read [the telephony low-balance workflow](references/low-balance-alerts.md). Inspect existing alerts, derive the initial amount from recharge-cycle consumption, select an available primary destination, configure and verify before inviting preference changes. The same reference covers explicitly requested simulated messages through the official recipient-scoped test flow.
 
+- For customer WhatsApp/QuePasa call-session diagnostics, read [references/whatsapp-gateway.md](references/whatsapp-gateway.md).
 - For inbound DID-to-destination routing, queues, extensions, SIP password requests identified by email, voicemail, inbound numbers and telephone support conversations, read [references/telephony.md](references/telephony.md).
 
 - For balances, transactions, top-ups, and voucher management, read [references/credits.md](references/credits.md).

@@ -126,3 +126,5 @@ not a substitute for a semantic version.
 Delivery: [inbound route lookup guidance and retest](docs/activities/20261109-inbound-route-guidance.md).
 
 Delivery: [chronology in support replies](docs/activities/20261109-support-chronology.md).
+
+Delivery: [customer WhatsApp number diagnostics](docs/activities/20261109-quepasa-number-diagnostics.md).

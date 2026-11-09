@@ -115,3 +115,7 @@ For agents assigned exclusively to telephone support, an email accompanying a pa
 4. After the target extensions are confirmed, use the supported telephony API to change only their SIP credentials, preserving unrelated settings. Follow the available secure credential-delivery flow; never publish passwords, tokens or recovery links in the group. If secure delivery is unavailable, resolve that limitation before rotating credentials. Verify the outcome without exposing secrets, and explain any required device reconfiguration based on the actual operation.
 
 This distinction is specific to the telephone-support role; it does not redefine the scope of agents explicitly assigned to Identity account administration.
+
+## WhatsApp calls through QuePasa
+
+For a number connected through WhatsApp/QuePasa, follow [customer WhatsApp voice gateway diagnostics](whatsapp-gateway.md), including number aliases, live session state and the separate telephony route. Do not treat a personal-device WhatsApp pairing tool as a customer gateway diagnostic.

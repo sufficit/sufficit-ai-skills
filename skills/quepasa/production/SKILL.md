@@ -2,7 +2,7 @@
 name: quepasa-production
 description: "Operate Sufficit's production QuePasa (WhatsApp gateway) on Kubernetes — check health, diagnose a session or a failed send, read logs and metrics, re-pair or restart a session, replay webhook dead letters, roll out or roll back a new image and handle Galera/Redis — with the grants each task needs and the rules that keep WhatsApp sessions from being corrupted. Use when the request is about the production QuePasa service itself (is it up, why a number stopped sending, deploy/rollback, failover), not just calling its API."
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # QuePasa in production (Sufficit)
@@ -82,3 +82,11 @@ Tell their owners before maintenance and check them afterwards:
 - **Sufficit AI Genius.** The WhatsApp tools use v5 and an OAuth exchange.
 - **Hermes/Chatwoot `channel-quepasa`.** Inbound arrives through a per-inbox webhook, plus the Cable websocket, which lives only on the pod that owns the session.
 - **Sufficit endpoints/Blazor and Asterisk routing.** These go through the Sufficit QuePasa gateway library. Asterisk WhatsApp routes reference session ids or tokens; trace a live call before "fixing" a mismatch.
+
+## Customer number lookup and voice routing
+
+When a support request names a customer number, inspect that customer's authorized session, not the agent device's own WhatsApp connection. Never invoke pairing or create a new session just to check an existing number. Resolve Brazilian ninth-digit aliases against the actual WID and keep record IDs distinct from phone numbers and tokens.
+
+A session-scoped operator can provision [scripts/session-status.py](scripts/session-status.py) with a private JSON configuration containing `baseUrl`, `sessionId`, explicit `phones` aliases and a `tokenFile` path. Optional `sufficitContextId` enables route/diagnostic reads through the existing authenticated Sufficit API helper. That context must come from a verified route/session link. A route query refusal remains visible as HTTP 403; the helper does not widen access. The script exposes only whitelisted fields from live health, session and authorized gateway reads; it never sends, pairs or changes a session. Pass the configuration path through `QUEPASA_SESSION_DIAGNOSTIC_CONFIG` or `--config`. Provision the credential only for the explicitly authorized target; do not give an agent a system-wide masterkey to inspect one number.
+
+Use the current `quepasa-prod` Galera/runtime and public router. Historical databases left on retired hosts can contain stale sessions and tokens; an old `UnVerified` record is not a current diagnosis. Distinguish connection `Ready` from calls policy, VoIP mode, tenant assignment and the downstream telephony route; see [the Sufficit gateway workflow](../../sufficit/sufficit-api/references/whatsapp-gateway.md).
