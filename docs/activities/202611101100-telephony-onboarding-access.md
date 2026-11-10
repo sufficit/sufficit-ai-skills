@@ -81,8 +81,10 @@ and dependencies preserved. Only the intended deployment/transfer PIDs were stop
 
 ## Remaining publication
 
-The training and primary deployment are active. castrum-apps still needs the same
-reviewed artifact. config.json explicitly declares secondary hosts manual-only:
+The training and primary deployment are active. A final independent check found
+that castrum-apps received the parallel creation-policy update: preview 409 and
+unused creation status 204. Its DID QueueDestination still returns 403, while the
+primary passes authorization. castrum-apps needs this task's reviewed DID artifact. config.json explicitly declares secondary hosts manual-only:
 "Outros servidores requerem aprovação manual do usuário." No secondary was
 published under automatic primary-only authorization. The candidate remains at
 /mnt/sufficit/sufficit-endpoints/publish-onboarding-20261110105000 until that decision.
