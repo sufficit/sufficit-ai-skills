@@ -133,6 +133,6 @@ Delivery: [customer preferred due-day guidance](docs/activities/202611091706-cus
 
 Delivery: [customer preference without checkout](docs/activities/202611091743-independent-customer-payment-preference.md).
 
-Active work: [telephony onboarding](docs/PLAN-TELEPHONY-ONBOARDING.md).
+Training: [customer telephony onboarding](skills/sufficit/sufficit-telephony-extensions/references/customer-onboarding.md).
 
 Delivery: [telephony onboarding and domain access](docs/activities/202611101100-telephony-onboarding-access.md).

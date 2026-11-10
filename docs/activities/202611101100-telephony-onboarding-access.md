@@ -79,14 +79,22 @@ and dependencies preserved. Only the intended deployment/transfer PIDs were stop
   data or send WhatsApp messages. The first parallel REST probes hit transport/lock
   errors; serialized reads succeeded and the final guidance addresses that behavior.
 
-## Remaining publication
+## Secondary completion
 
-The training and primary deployment are active. A final independent check found
-that castrum-apps received the parallel creation-policy update: preview 409 and
-unused creation status 204. Its DID QueueDestination still returns 403, while the
-primary passes authorization. castrum-apps needs this task's reviewed DID artifact. config.json explicitly declares secondary hosts manual-only:
-"Outros servidores requerem aprovação manual do usuário." No secondary was
-published under automatic primary-only authorization. The candidate remains at
-/mnt/sufficit/sufficit-endpoints/publish-onboarding-20261110105000 until that decision.
-The active [plan](../PLAN-TELEPHONY-ONBOARDING.md) retains this remaining checkpoint.
-The original customer's actual onboarding was not executed during training.
+On 2026-11-10 the owner approved castrum-apps publication and standing authorization
+("sim, sempre"). EndPoints config.json and its deployment guide now allow routine
+authorized publication on eveo-apps and castrum-apps without another host confirmation;
+apoint-apps stays manual and subject to availability.
+
+The standard protected transaction published the identical reviewed candidate on
+castrum-apps. Only the API DLL differed before promotion; runtime dependencies
+matched. Independent installed hash equals the primary/candidate hash above.
+With Rafael's actual identity: health 200, creation preview 409 (initial setup
+missing), unused creation status 204, and nonexistent-DID routing 404 after
+authorization, replacing its prior 403. The 27 deployment tests passed. No customer
+onboarding or WhatsApp test message was executed. The local candidate was removed
+after both hosts were confirmed; standard server rollback copies were preserved.
+
+All implementation, training activation, validation, commits and publication steps
+are complete. The permanent [customer onboarding contract](../../skills/sufficit/sufficit-telephony-extensions/references/customer-onboarding.md)
+retains the reusable workflow and boundaries.
