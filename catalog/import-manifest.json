@@ -1778,7 +1778,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/quepasa/production",
       "path": "skills/quepasa/production",
-      "contentSha256": "69d13c1a494510d6751bc9d7cb58766710320fa71412c280440ff2028816090f"
+      "contentSha256": "08dd46b301df9216814952fe57316163c933e47b70a29eae2268758bf6b740a9"
     },
     {
       "id": "refero-design",
@@ -1828,7 +1828,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "path": "skills/sufficit/sufficit-api",
-      "contentSha256": "88c027dbf7bd632e8113efb9a458326a795f26024362c4bc7cbf344baf7cfd48"
+      "contentSha256": "d87ec472b14fc1bc0f8d301f47081e841be51b3ccf3d1ff13b87ce1ea064677e"
     },
     {
       "id": "sufficit-campaigns",

@@ -2,7 +2,7 @@
 name: quepasa-production
 description: "Operate Sufficit's production QuePasa (WhatsApp gateway) on Kubernetes — check health, diagnose a session or a failed send, read logs and metrics, re-pair or restart a session, replay webhook dead letters, roll out or roll back a new image and handle Galera/Redis — with the grants each task needs and the rules that keep WhatsApp sessions from being corrupted. Use when the request is about the production QuePasa service itself (is it up, why a number stopped sending, deploy/rollback, failover), not just calling its API."
 metadata:
-  version: "0.1.1"
+  version: "0.1.2"
 ---
 
 # QuePasa in production (Sufficit)
@@ -65,6 +65,7 @@ Each procedure needs the grants listed in [references/grants.md](references/gran
 
 | Task | Procedure |
 | --- | --- |
+| Ready session misses some calls (linked-device limit) | [runbooks › calls missing](references/runbooks.md#calls-missing-on-a-ready-session) |
 | Re-pair a number (QR or pairing code) | [runbooks › re-pair](references/runbooks.md#re-pair-a-session) |
 | Restart / enable / disable one session | [runbooks › session control](references/runbooks.md#session-control) |
 | Replay webhook dead letters | [runbooks › DLQ](references/runbooks.md#webhook-dead-letters) |

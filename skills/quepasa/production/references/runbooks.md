@@ -23,6 +23,14 @@ Use this when one number stopped sending or receiving.
    - **Disconnected or reconnecting loops.** Look at the owning pod's logs. A pod-wide problem shows on many sessions at once; one session alone points to that account.
 4. **If several sessions are affected,** check the pods, then [Galera](#galera) and [Redis](#redis).
 
+## Calls missing on a ready session
+
+Use this when a `Ready` session with calls enabled receives some calls but not others, for example calls from some callers or from phones never arrive while others do.
+
+1. **Count the linked devices.** With the session token, call QuePasa's `GET /api/server/{token}/linked-devices` (a live WhatsApp query), or use the Sufficit API: `GET /Gateway/WhatsApp/Quepasa/devices?sessionid=...`, or item `quepasa_linked_devices_count` in `GET /Gateway/WhatsApp/diagnostics?sessionid=...`.
+2. **More than four companions** (every non-primary device, including a coexistence `:99@hosted` device) means WhatsApp delivers call notifications unpredictably among them. The missing attempts leave no call event in the owning pod's logs. Report it with the device list and ask the customer to unlink unused devices on the primary phone, keeping this session.
+3. **Four or fewer:** check the session's position among companions (the rank in ascending device number, not the `:device` value) and then the owning pod's call logs (`call_offer`, `VoipManager`) for the attempt.
+
 ## Re-pair a session
 
 This needs the session token and a person with the phone in hand.
