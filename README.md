@@ -136,3 +136,5 @@ Delivery: [customer preference without checkout](docs/activities/202611091743-in
 Training: [customer telephony onboarding](skills/sufficit/sufficit-telephony-extensions/references/customer-onboarding.md).
 
 Delivery: [telephony onboarding and domain access](docs/activities/202611101100-telephony-onboarding-access.md).
+
+Delivery: [onboarding defaults](docs/activities/202611101144-onboarding-defaults.md).

@@ -11,6 +11,8 @@ the customer's approved onboarding policy.
 
 - Keep the supplied customer context GUID. Resolve the display name with
   GET `/Contact/Title?contactid=<GUID>`; Customer 204 is not proof of absence.
+  An explicit GUID identifies the customer: report the returned title when the
+  supplied name has a typo, without blocking for cosmetic reconfirmation.
 - List extensions, contracted services, DIDs and catalog queues first. On an
   empty customer, the approved four-extension onboarding pattern is 6001–6004;
   when numbers were explicitly specified, preserve them. Names are optional in
@@ -19,12 +21,31 @@ the customer's approved onboarding policy.
 - Select only the DID actually owned by this context. A single unambiguous inbound
   DID can be selected from the API; several candidates require the requester to
   select one. Do not ask again for a GUID or DID already provided or discoverable.
-- Obtain required technology, recording and queue distribution settings from an
-  approved customer/house preset or the request. Do not silently invent defaults
-  for SIP/PJSIP, recording, commercial terms, queue media or overflow destinations.
-  Ask one compact question for genuinely missing decisions, after completing reads.
+- Apply the approved new-extension standard: both SIP and PJSIP enabled,
+  recording=true. Do not ask technology or whether to record again.
+- All intended onboarding extensions go into the queue named **Principal** in
+  this customer. Reuse the exact same-customer Principal if present; otherwise
+  create it. A differently named existing queue (for example atendimento) is not
+  the default target. Do not rename, delete or empty other queues.
+- No custom audio: no greeting, periodic or agent announcement, spoken queue
+  position/estimated wait or wait-menu recording. Play only the system's default
+  hold music. Do not require audio uploads or choose an arbitrary media catalog item.
+- For unspecified distribution/time/capacity options, use the current product's
+  new-queue defaults, preserving the explicit owner overrides above. Do not turn
+  routine onboarding into a questionnaire about every optional field. A genuinely
+  ambiguous target or a genuinely conflicting instruction still requires
+  clarification; names, both protocols, recording and Principal/default music do not.
+  An existing DID announcement/different destination alone is not a new approval
+  requirement when the authorized onboarding explicitly points the DID to Principal:
+  report before/after, preserve unrelated properties and use compare-and-set.
 
 ## Prepare customer telephony
+
+GET `/Telephony/CheckUp/Preflight?contextId=<GUID>` checks the actor and domain
+authorization without starting setup. Current setup accepts the normal Identity
+`sub` as well as browser NameIdentifier. A legacy 400 `invalid user id` is an API
+identity-extraction defect to report, not evidence that another manager grant or
+a user-provided credential is needed.
 
 GET Creation/Preview for the first desired extension resolves the prefix.
 If it returns 409 for missing initial configuration, use the supported customer
@@ -37,6 +58,11 @@ inside an authorized customer onboarding/setup request and the applicable
 operational policy; a training test never starts it. Do not substitute global
 checkup methods. On uncertainty, query the original process before another POST.
 After successful setup, re-read preview; do not construct the prefix locally.
+The authorized onboarding includes this API setup step; do not ask for a second
+authorization solely because CheckUp mutates the customer. A read-only test is
+restricted independently and never starts it. A 409 does not prove the extension
+list is empty: read it before creating anything. Do not say everything is ready
+when prerequisite reads or actual setup are still pending.
 
 ## Create extensions
 
@@ -55,7 +81,18 @@ EndPoints. The supported contract from QueueClient.cs and ARI ManagementApi.cs i
 - PUT `/api/queue/contexts/<context:N>/queues/<queueId:N>` creates a new UUIDv7
   resource with `If-None-Match: *`; updates use the returned strong `If-Match`.
   Body: title, maxWaitSeconds, maxWaiting, enabled, destination and options from
-  the approved policy. An empty destination is allowed; never invent a fallback.
+  the approved policy. Use title=`"Principal"`. New-queue defaults from
+  QueueChange/QueueOptions.ForNewQueue are maxWaitSeconds=45, maxWaiting=20,
+  enabled=true, destination="", strategy="linear", agentTimeoutSeconds=45,
+  retrySeconds=1 (unless an explicit customer policy says otherwise). Keep the
+  other product defaults. An empty destination is allowed; never invent a fallback.
+  Override media options: greeting="", periodicAnnouncement="", agentAnnouncement="",
+  musicClass="", announcementIntervalSeconds=0, announcePosition=false,
+  announceEstimatedWait=false, ringingOnly=false and ringInsteadOfMusic=false.
+  Empty musicClass uses system-default music on hold; ringingOnly=true or
+  ringInsteadOfMusic=true would contradict the owner's requested hold music.
+  Keep queue recording inherited from the recording-enabled endpoints; do not
+  set a policy that suppresses recording.
 - GET `/api/queue/contexts/<context:N>/queues/<queueId:N>/members` returns current
   members and authorized destinations. Use the returned full extension identity.
 - PUT the same path plus `/<memberId:N>` creates each membership with a stable

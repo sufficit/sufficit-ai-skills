@@ -7,10 +7,12 @@ in this file as part of the change that first validated it.
 
 ## Pre-flight
 
-1. Confirm the authorizing user, the target company and the person who will use
-   the extension (name; e-mail when applicable).
-2. Resolve the company through the API. When several companies are visible,
-   confirm the identity (name or GUID) back to the requester before writing.
+1. Identify the requester's authority and target company. A person's name/e-mail
+   is needed for credential handover when applicable, not as a prerequisite for
+   creating generic onboarding extensions.
+2. Resolve the company through the API and verify it matches the supplied GUID
+   or unambiguous name. Ask only if the target is ambiguous or contradictory;
+   an exact customer GUID does not need another permission question.
 3. When the scenario arrives as a **PBX central address** (host:port, for
    example `35.198.6.30:26499`) instead of a company: that address is not an
    identifier. List the companies visible to the authenticated user and find
@@ -18,8 +20,10 @@ in this file as part of the change that first validated it.
    match the numbering pattern given (for example 6011/6012). If more than one
    candidate remains, stop and ask the authorizing user which company owns the
    central; never guess the mapping.
-4. List the company's existing extensions and confirm the intended number is
-   free. **If the number already exists disabled or inactive, do not create a
+4. List GET `/Telephony/EndPoint?ContextId=<GUID>&Limit=100` (singular EndPoint)
+   and confirm the intended number is free. A list at its limit may be incomplete;
+   narrow or paginate with the supported search contract. Do not guess plural
+   `/Telephony/EndPoints` or stop on that guessed path's 404. **If the number already exists disabled or inactive, do not create a
    duplicate and do not silently enable it**: re-read and report its state
    (owner, last data, preferences) and let the authorizing user decide between
    re-enabling it and removing and recreating it.
@@ -51,15 +55,23 @@ in sufficit-endpoints; the product client is EndPointCreationClient.cs in suffic
    it is not a duplicate-number or authorization failure. Read the onboarding reference.
 2. POST `/Telephony/EndPoint/Create` with JSON:
    `requestId` (new stable GUID per intended extension), `contextId`, `number`,
-   `description` (may be empty), `technology` (SIP or PJSIP), `recording` (boolean),
+   `description` (may be empty), `technology` (standard: `"SIP+PJSIP"`), `recording` (standard: `true`),
    and `expectedTitle` exactly from preview. Retain requestId and the request
-   before sending. The API generates the password; do not send a SIP secret.
+   before sending. Both protocols must be enabled and recording must be on for
+   normal new extensions. Do not ask these choices again. The current API also
+   preserves explicit single-protocol requests from other supported workflows;
+   do not use a single protocol as the onboarding default. Omitted creation
+   technology/recording now default to dual/true. The API generates the password;
+   do not send a SIP secret.
 3. GET `/Telephony/EndPoint/Creation/Status?contextId=<GUID>&requestId=<GUID>`
    reconciles a timeout or uncertain POST. Also re-read the customer's extension
    list. Never change requestId/number just because a request failed. Existing
    disabled endpoints, 409 conflicts and 503 storage failures require distinct
    handling; none authorizes an upsert or overwriting existing credentials.
-4. Creation is insert-only and requestId identifies the created row. Read the
+4. Re-read GET `/Telephony/EndPoint/ById?id=<returnedId>` (or the scoped list)
+   and confirm `tech_sip=true`, `tech_pjsip=true`, `recording=true` for the normal
+   onboarding request. Do not infer both protocols from a generic success response.
+   Creation is insert-only and requestId identifies the created row. Read the
    response id/contextId/number/title/alreadyCreated; the API does not return the
    password. `runtimeApplicationConfirmed=null` means application is unconfirmed,
    not failure and not proof of registration or working audio.
