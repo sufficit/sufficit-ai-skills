@@ -61,6 +61,9 @@ If checkup reports no current telephony service while a native contract is activ
 do not invent another zero-price service. The legacy checkup reads legacy services;
 an empty legacy list does not invalidate the native contract. Discover operations
 in the live versioned OpenAPI (currently `/swagger/v2/swagger.json`, not only v1).
+If the business helper rejects the full schema at 1 MiB, use the provisioned
+`python3 /data/support/api-schema QueueDestination` for paths and referenced DTOs;
+it reads public metadata only, without exposing credentials.
 GET `/Sales/LegacyService/Session` supplies epoch/snapshotId. Send them as headers
 `X-Sufficit-Sales-Epoch` and `X-Sufficit-Sales-Snapshot` in subsequent calls.
 GET `/Sales/LegacyService/Initialization?contextid=<GUID>` distinguishes
@@ -138,8 +141,10 @@ The canonical queue ingress is `sufficit-app-queue,<queueId:N>,1`, without conte
 The queue's own destination field is its exit/fallback, not its ingress.
 Use the authorized DID routing operation selected by the product contract;
 `POST /Telephony/DID/QueueDestination?id=<didId>` is the compare-and-set operation.
-Body: contextId, queueId, ringingOnly, expectedAsterisk, expectedDestinationId,
-expectedTypeName, expectedAnswer, expectedBilled, copied from the fresh read.
+First GET that path with `id=<didId>&contextId=<customerId>` for its routing snapshot.
+Body: contextId, queueId, ringingOnly and all expected* fields copied from that
+snapshot, preserving null/false. DID/ById and search omit legacy CAS columns;
+do not guess their defaults or repeatedly retry a 409 from an incomplete snapshot.
 Do not alter billing or use SQL/CLI as fallback. Confirm authorization for the
 actual operation before writing; a read grant does not prove write access.
 After a conflict re-read instead of overwriting concurrent routing. After a

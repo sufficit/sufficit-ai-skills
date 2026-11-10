@@ -2701,8 +2701,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "15870f0ea166b9e0cdf3025f44ea19b5237af66037098716bc1ff8bab9035a9d",
-      "version": "0.5.0"
+      "contentSha256": "77dc075676ace95d6180f1d5c024e5d59eac97a219dd07141227c67085d75115",
+      "version": "0.5.1"
     },
     {
       "id": "svg-vectorization",

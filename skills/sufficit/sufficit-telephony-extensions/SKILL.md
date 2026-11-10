@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Use when a request mentions ramais, provisioning de ramal, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -115,7 +115,7 @@ report the limitation and do not invent a route or simulate success.
 Authored by Sufficit from the `Sufficit.Telephony` guides (wiki) and the
 corporate API workflow. Release 0.1.0 taught the flow; 0.2.0 adds the
 house-format rule, central-to-company resolution, secret policy and
-disabled-number handling from the first dry-run review. Release 0.5.0 adds the owner-defined dual-protocol/recording creation standard and
+disabled-number handling from the first dry-run review. Release 0.5.1 adds the owner-defined dual-protocol/recording creation standard and
 Principal/default-hold-music onboarding policy. Release 0.3.0 documents the current insert-only creation contract and full
 customer onboarding, including limited discovery, initial setup and reconciliation.
 OpenAPI v1 may omit telephony; a v2 document exceeding a helper limit is a
