@@ -2,13 +2,13 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Use when a request mentions ramais, provisioning de ramal, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.2.0"
+  version: "0.3.0"
 ---
 
 # Sufficit Telephony: extensions and preferences
 
 Operate the real telephony system as the authenticated user, within the roles the
-API already enforces. The deployed OpenAPI is the authority on paths, parameters
+API already enforces. Use the current domain contracts and deployed behavior to confirm paths, parameters
 and formats; this skill adds the flow and the business semantics of extension
 (ramal) management. Routes change between releases: never assume a method, path
 or parameter from memory.
@@ -34,13 +34,22 @@ or parameter from memory.
   recipes against the managed telephony API and do not treat this skill as peer
   configuration.
 
+## Customer onboarding
+
+For initial setup (extensions, a waiting queue and the incoming DID), read
+[references/customer-onboarding.md](references/customer-onboarding.md). Keep one
+customer-scoped checklist across the whole workflow; creating extensions alone
+does not complete onboarding.
+
 ## Tools and discovery
 
 Inside Genius, discover each operation with `sufficit_api_search` and run it with
 `sufficit_api_call`; search in English when a Portuguese query finds nothing
 (`extension`, `telephony`, `endpoint`, `preference`). Outside Genius, follow the
-discovery workflow of the `sufficit-api` skill. Do not bypass missing tools with
-`curl`, shell or database access, and never ask the user for a token, API key or
+discovery workflow of the `sufficit-api` skill. A provisioned authenticated domain helper (such as Fleet's
+`dotnet /data/support/api-client/api-helper.dll endpoints METHOD /path [json-file]`)
+is a supported API transport when discovery tools are unavailable. Never bypass
+a refused API with database writes, FreePBX CLI or generated-file edits, and never ask the user for a token, API key or
 second login: the connected credential already carries the roles.
 
 ## Operation flow
@@ -54,10 +63,11 @@ second login: the connected credential already carries the roles.
    same task.
 2. Read before writing: list the company's extensions and inspect the target
    one. An extension number is an identifier, not a quantity; keep it exact.
-3. Mirror the house format: before creating a new extension, inspect two or more
-   existing extensions of the same company and replicate their field patterns
-   (user/login format, transport, codecs, context). Never invent a login or
-   secret format — when in doubt, ask the authorizing user.
+3. Inspect existing extensions when available, but an empty customer is a normal
+   onboarding case. Resolve the canonical login through Creation/Preview and let
+   the server generate credentials. Do not demand existing extensions or invent
+   a customer prefix. Preserve explicit technology/recording choices; ask only
+   for missing choices that have no approved customer/house default.
 4. Provisioning a new extension follows
    [references/provisioning.md](references/provisioning.md): one call per logical
    effect, verification by independent reading, safe delivery of credentials.
@@ -97,6 +107,20 @@ report the limitation and do not invent a route or simulate success.
 Authored by Sufficit from the `Sufficit.Telephony` guides (wiki) and the
 corporate API workflow. Release 0.1.0 taught the flow; 0.2.0 adds the
 house-format rule, central-to-company resolution, secret policy and
-disabled-number handling from the first dry-run review. The exact provisioning
-calls must be confirmed against the live OpenAPI on first real use and recorded
-in [references/provisioning.md](references/provisioning.md) in that same change.
+disabled-number handling from the first dry-run review. Release 0.3.0 documents the current insert-only creation contract and full
+customer onboarding, including limited discovery, initial setup and reconciliation.
+OpenAPI v1 may omit telephony; a v2 document exceeding a helper limit is a
+discovery failure, not proof that creation is unsupported. Use the maintained
+contract in [references/provisioning.md](references/provisioning.md), then verify
+live preflight authorization. A generic insufficient_scope header on 403 does
+not identify which scope or business entitlement is missing.
+
+## Restricted Fleet catalog bridge
+
+[scripts/queue_catalog_bridge.py](scripts/queue_catalog_bridge.py) is installed only
+on the trusted Queue portal behind an SSH forced command whose actor GUID is fixed
+by deployment. It never accepts a host, key or audit actor from the agent request.
+The agent invokes its existing queue-catalog wrapper. Creation uses UUIDv7 plus
+If-None-Match; updates require a strong revision. The domain API still validates
+member ownership and queue options. Do not execute this server helper locally to
+bypass the provisioned connection.

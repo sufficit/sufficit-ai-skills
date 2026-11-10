@@ -1868,7 +1868,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-dialplan",
       "path": "skills/sufficit/sufficit-telephony-dialplan",
-      "contentSha256": "926e06187ba53afbb38c53f3822120175347da96ba20c4ad04d4af22505790a7"
+      "contentSha256": "f1ede7539f2d1c2c70c8a8a642d2b633b15c703d47bc3d9947e341052f186bf5"
     },
     {
       "id": "sufficit-telephony-extensions",
@@ -1878,7 +1878,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
       "path": "skills/sufficit/sufficit-telephony-extensions",
-      "contentSha256": "c60648e4ea2625ec99f045d5adaa2b5ec4630ec496e437eebc85147751aa4fcf"
+      "contentSha256": "4e87d9a74007e0947735c25cd30d369102ea5446b33a279ceb8cf9dac7046380"
     },
     {
       "id": "svg-vectorization",

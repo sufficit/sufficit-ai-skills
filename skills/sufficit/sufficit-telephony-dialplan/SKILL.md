@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.1.1"
+  version: "0.2.0"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -57,6 +57,14 @@ never assume a method, path or parameter from memory.
 5. Removing or disabling a flow or destination changes live call handling:
    check what still references it (other flows, queues, voicemail notification)
    before removing, and report what was and was not verified.
+
+## Customer onboarding
+
+For a complete initial setup (extensions, waiting queue, members and DID), follow
+[customer onboarding](../sufficit-telephony-extensions/references/customer-onboarding.md).
+Use the configured catalog with conditional creation/update; the queue ingress is
+`sufficit-app-queue,<queueId:N>,1`, never queueId-contextId. A queue fallback is not
+its ingress. Historical helper restrictions must not be mistaken for absent APIs.
 
 ## References
 

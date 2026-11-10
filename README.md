@@ -132,3 +132,7 @@ Delivery: [customer WhatsApp number diagnostics](docs/activities/20261109-quepas
 Delivery: [customer preferred due-day guidance](docs/activities/202611091706-customer-preferred-due-day.md).
 
 Delivery: [customer preference without checkout](docs/activities/202611091743-independent-customer-payment-preference.md).
+
+Active work: [telephony onboarding](docs/PLAN-TELEPHONY-ONBOARDING.md).
+
+Delivery: [telephony onboarding and domain access](docs/activities/202611101100-telephony-onboarding-access.md).
