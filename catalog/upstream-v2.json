@@ -2585,7 +2585,7 @@
     {
       "id": "sufficit-api",
       "name": "sufficit-api",
-      "description": "Query and manage Sufficit corporate API resources as the authenticated user: customer preferred due days, service billing, bank slips, telephony low-balance alerts, wallets, credits, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI.",
+      "description": "Query and manage Sufficit corporate API resources as the authenticated user: telephony credit purchases (lançar saldo), commitments, customer preferred due days, service billing, bank slips, low-balance alerts, wallets, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "tags": [
         "sufficit",
@@ -2599,13 +2599,15 @@
         "low-balance",
         "customers",
         "billing",
-        "due-day"
+        "due-day",
+        "telephony-credit",
+        "commitments"
       ],
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "172825ea2cdbf6fefcebfdd1638ad2da0b0133b9cbd42282249d44e1bdf4d246",
-      "version": "1.0.33"
+      "contentSha256": "88c027dbf7bd632e8113efb9a458326a795f26024362c4bc7cbf344baf7cfd48",
+      "version": "1.0.34"
     },
     {
       "id": "sufficit-campaigns",

@@ -2,6 +2,11 @@
 
 For a call-balance warning request, use [the telephony alert workflow](low-balance-alerts.md). Telephony balance and its notification subscriptions are not interchangeable with this generic credits wallet.
 
+For “lançar saldo”, telephony top-ups, commitments and tariffed service history,
+use [the telephony credit workflow](telephony-credit.md). “Lançar saldo” means
+buying call credit; it does not mean a financial receipt or a generic wallet voucher.
+The limits and wallet operations below belong to this generic product-credit domain.
+
 ## Domain limit
 
 Endpoints is the real source of product, wallet, balance, top-up, benefit, voucher and ledger. The management agent can consult this data, administer vouchers and apply a published voucher to a wallet according to the user’s roles. There is no management route to delete movements, transfer or convert balance, change paid balance or confirm payment. Recharge only becomes balance after receipt confirmed by Checkout.

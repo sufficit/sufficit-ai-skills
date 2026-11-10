@@ -1,13 +1,22 @@
 ---
 name: sufficit-api
-description: "Query and manage Sufficit corporate API resources as the authenticated user: customer preferred due days, service billing, bank slips, telephony low-balance alerts, wallets, credits, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
+description: "Query and manage Sufficit corporate API resources as the authenticated user: telephony credit purchases (lançar saldo), commitments, customer preferred due days, service billing, bank slips, low-balance alerts, wallets, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.33"
+  version: "1.0.34"
 ---
 
 # Sufficit API
 
 Operate the real system as intended by the user and account permissions already connected to Genius. The deployed API is the authority on paths, parameters and formats; this skill adds secure flow and business semantics.
+
+## Telephony balance and purchases
+
+At Sufficit, **“lançar saldo” means buying telephony credit**. Read [the telephony
+credit workflow](references/telephony-credit.md) before purchasing, configuring
+recurring purchases, recording a commitment or correcting tariffed service history.
+Financial receipts belong exclusively to integrations; agents do not record them.
+A commitment alone does not buy credit or create a service. Do not route this
+request to the generic credits/vouchers wallet or ask whether it means a receipt.
 
 ## Tools and discovery
 

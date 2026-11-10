@@ -1,4 +1,4 @@
 interface:
   display_name: Sufficit API
-  short_description: Manage Sufficit credits, vouchers, and contacts
-  default_prompt: Use $sufficit-api to query or manage my credits, vouchers, and contacts.
+  short_description: Buy telephony credit and manage Sufficit API resources
+  default_prompt: Use $sufficit-api to buy telephony credit, manage commitments, or query other Sufficit API resources.

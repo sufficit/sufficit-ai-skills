@@ -138,3 +138,5 @@ Training: [customer telephony onboarding](skills/sufficit/sufficit-telephony-ext
 Delivery: [telephony onboarding and domain access](docs/activities/202611101100-telephony-onboarding-access.md).
 
 Delivery: [onboarding defaults](docs/activities/202611101144-onboarding-defaults.md).
+
+The [telephony credit workflow plan](docs/PLAN-TELEPHONY-CREDIT-WORKFLOW.md) tracks the agent guidance for credit purchases, commitments and service-history preservation.

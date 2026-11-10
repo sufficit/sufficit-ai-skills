@@ -1,5 +1,9 @@
 # Sales representatives
 
+For “lançar saldo”, tariffed credit purchases, monthly commitments and their service
+history, read [the telephony credit workflow](telephony-credit.md). A credit purchase,
+a commitment and an automatic purchase schedule are distinct operations.
+
 Representatives are contacts identified by GUID. Discover the routes in the live OpenAPI by `representative customers`, `representative list` or `representatives` before calling.
 
 ## Customer portfolio
