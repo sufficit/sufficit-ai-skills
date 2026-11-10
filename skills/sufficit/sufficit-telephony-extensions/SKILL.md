@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Use when a request mentions ramais, provisioning de ramal, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.5.1"
+  version: "0.6.0"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -41,6 +41,27 @@ Use `technology="SIP+PJSIP"` and `recording=true` on creation; one protocol alon
 not the default. Do not ask the user to choose technology or whether to record.
 Never turn off an existing endpoint or reset its password to apply new defaults.
 
+## Customer default password
+
+A customer usually keeps **one password for all its extensions**, so installing
+phones is easier. The API stores that preferred password per customer and uses
+it whenever an extension is created without a password. It is a facilitator,
+not an imposition:
+
+- Before creating extensions for a customer, make sure the default exists with
+  POST `/Telephony/EndPoint/DefaultPassword/Ensure?contextId=<GUID>`. It generates
+  one only when there is none, never replaces an existing one and does not return
+  the value. Then create the extensions without a `password`.
+- The requester may always ask for a different password on one extension, a
+  generated one, or no shared password at all. Follow that request; do not
+  argue for the default and do not rewrite it to match.
+- Never change existing extensions to "align" them with the default, and never
+  replace or remove a customer's default unless the requester asks for exactly that.
+- You do not need to read the value to do onboarding. Read it (GET
+  `/Telephony/EndPoint/DefaultPassword?contextId=<GUID>`) only when the person who
+  will configure the devices asks for it, and deliver it under the rules of
+  "Credentials and secrets" below.
+
 ## Customer onboarding
 
 For initial setup (extensions, a waiting queue and the incoming DID), read
@@ -72,7 +93,8 @@ second login: the connected credential already carries the roles.
    one. An extension number is an identifier, not a quantity; keep it exact.
 3. Inspect existing extensions when available, but an empty customer is a normal
    onboarding case. Resolve the canonical login through Creation/Preview and let
-   the server generate credentials. Do not demand existing extensions or invent
+   the server assign credentials: the customer's default password when one is set
+   (see "Customer default password"), otherwise a generated one. Do not demand existing extensions or invent
    a customer prefix. New extensions default to both SIP and PJSIP enabled
    (`technology="SIP+PJSIP"`) and recording=true. These are approved house defaults;
    do not ask the requester to choose a protocol or recording for normal onboarding.
@@ -90,9 +112,14 @@ second login: the connected credential already carries the roles.
 
 - SIP secrets and API tokens are issued to be delivered once: do not print them
   in logs, chats, summaries or committed files.
-- When the API lets you choose a SIP secret, never invent a patterned default
-  (`1234`, shared prefixes): generate a proper random secret or let the system
-  issue one. A patterned default is a security defect, not a convention.
+- Never invent a SIP secret yourself, and never a patterned one (`1234`, the
+  company name, shared prefixes): a patterned secret is a security defect, not a
+  convention. Let the system issue it. The customer's stored default password is
+  different: it is a random secret the customer chose to share across its own
+  extensions, kept by the API, and using it for that customer is approved.
+- A secret the requester dictates for an extension must fit the API rule (exactly
+  10 characters: letters, digits or `! $ & *`; never `@`). If it does not, report
+  the rule instead of adjusting the value yourself.
 - Deliver credentials only to the person who will use them, through a channel
   the authorizing user explicitly authorized. Sending credentials to a third
   party (another company, an external address) is a separate decision that only
@@ -115,7 +142,7 @@ report the limitation and do not invent a route or simulate success.
 Authored by Sufficit from the `Sufficit.Telephony` guides (wiki) and the
 corporate API workflow. Release 0.1.0 taught the flow; 0.2.0 adds the
 house-format rule, central-to-company resolution, secret policy and
-disabled-number handling from the first dry-run review. Release 0.5.1 adds the owner-defined dual-protocol/recording creation standard and
+disabled-number handling from the first dry-run review. Release 0.6.0 adds the customer default password as an onboarding step that runs before extension creation (a facilitator, never an imposition), plus update, password, alias, user-link and removal operations. Release 0.5.1 adds the owner-defined dual-protocol/recording creation standard and
 Principal/default-hold-music onboarding policy. Release 0.3.0 documents the current insert-only creation contract and full
 customer onboarding, including limited discovery, initial setup and reconciliation.
 OpenAPI v1 may omit telephony; a v2 document exceeding a helper limit is a

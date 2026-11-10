@@ -87,10 +87,32 @@ restricted independently and never starts it. A 409 does not prove the extension
 list is empty: read it before creating anything. Do not say everything is ready
 when prerequisite reads or actual setup are still pending.
 
+## Ensure the customer default password
+
+Do this **before creating any extension**, once per customer:
+POST `/Telephony/EndPoint/DefaultPassword/Ensure?contextId=<GUID>` answers
+`{ contextId, created }`. `created=true` means a random compatible password was
+just stored as the customer's default; `created=false` means one already existed
+and was kept. The value is never returned and you do not need it: extensions
+created afterwards without a `password` receive it automatically, so all the
+customer's phones can be installed with the same secret.
+
+This is a facilitator, not an imposition. If the requester asks for individual
+passwords, a specific password on one extension, or no shared password, do that
+instead: send the explicit `password` on creation, or skip this step when they
+decline a shared one. Never rewrite existing extensions to match the default,
+and never replace an existing default on your own initiative. Track this item in
+the onboarding checklist as ensured/kept/declined, without the value.
+
+A 403 here is the same customer authorization as creation (manager or
+`dialplanupdate` for that customer); a 404 means the deployed API predates this
+operation: report it and continue with server-generated passwords.
+
 ## Create extensions
 
 Follow [provisioning.md](provisioning.md) once per intended number. Reuse correct
-existing endpoints without changing their passwords. Keep stable request IDs,
+existing endpoints without changing their passwords, even when they differ from
+the customer default. Keep stable request IDs,
 confirm reads after each effect, and stop on a concrete failure. A partial result
 is resumable, not a reason to delete/recreate everything. Never post SIP passwords
 in the group, shared summary or audit.
@@ -152,7 +174,7 @@ timeout read the DID instead of blindly repeating POST.
 
 ## Consolidate and report
 
-Track each extension, queue, membership, DID destination and runtime verification
+Track the default password step, each extension, queue, membership, DID destination and runtime verification
 as existing/created/confirmed/pending/blocked. Re-read independently. A saved
 catalog or API HTTP 200 does not prove loaded dialplan, registered phones or audio.
 Runtime checks must be non-destructive; disruptive server operations still follow
