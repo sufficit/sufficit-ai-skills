@@ -57,6 +57,26 @@ provision contracted services and update runtime configuration. Execute only
 inside an authorized customer onboarding/setup request and the applicable
 operational policy; a training test never starts it. Do not substitute global
 checkup methods. On uncertainty, query the original process before another POST.
+If checkup reports no current telephony service while a native contract is active,
+do not invent another zero-price service. The legacy checkup reads legacy services;
+an empty legacy list does not invalidate the native contract. Discover operations
+in the live versioned OpenAPI (currently `/swagger/v2/swagger.json`, not only v1).
+GET `/Sales/LegacyService/Session` supplies epoch/snapshotId. Send them as headers
+`X-Sufficit-Sales-Epoch` and `X-Sufficit-Sales-Snapshot` in subsequent calls.
+GET `/Sales/LegacyService/Initialization?contextid=<GUID>` distinguishes
+hasCurrentService, currentNativeContractId and telephonyPrepared. A 409 authority
+message means refresh these headers, not unavailable permission or missing route.
+For an active native contract and telephonyPrepared=false, discover and use POST
+`/Sales/LegacyService/Preparation` with `{contextId,contractId}` using that exact
+contract. This prepares the existing PBX bridge without creating or changing any
+commercial service, price, period or charge. The authorized onboarding includes
+this operational preparation. Re-read Initialization and preview afterwards.
+An unknown POST outcome requires a state read; do not recreate a service as fallback.
+If the route is absent/refused, report its actual HTTP result and preserve this stage.
+Only the absence of any current contract leads to the separately reviewed initial
+service-creation flow; never infer authorization to create paid/free service coverage
+from a request to create extensions alone.
+
 After successful setup, re-read preview; do not construct the prefix locally.
 The authorized onboarding includes this API setup step; do not ask for a second
 authorization solely because CheckUp mutates the customer. A read-only test is
@@ -136,3 +156,11 @@ progress and decisions, keeping confidential identifiers/credentials out of publ
 summaries. State exactly what is working and what remains; do not send a generic
 "cannot create" when only one stage is blocked. Training/permission maintenance
 does not retroactively execute the customer's original request.
+
+Fleet conversations retain old mission identifiers in history. Every workspace
+call must use the current `# Missão` from this turn's host instructions. If a call
+reports that the mission is not running for this agent, check that current ID
+before claiming missing write permission; do not retry the same stale ID or ask
+for broader access. Read the current document, preserve its existing content and
+write updates through the group's workspace tool. A failed read is not proof
+that the file is empty or that a write was refused.

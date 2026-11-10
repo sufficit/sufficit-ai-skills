@@ -2604,8 +2604,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "a3394a8fc332b9428471f3bc08f8ee97b40860163c4b8f2a1badd25072d6f585",
-      "version": "1.0.31"
+      "contentSha256": "172825ea2cdbf6fefcebfdd1638ad2da0b0133b9cbd42282249d44e1bdf4d246",
+      "version": "1.0.32"
     },
     {
       "id": "sufficit-campaigns",
@@ -2701,8 +2701,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "c60648e4ea2625ec99f045d5adaa2b5ec4630ec496e437eebc85147751aa4fcf",
-      "version": "0.4.0"
+      "contentSha256": "15870f0ea166b9e0cdf3025f44ea19b5237af66037098716bc1ff8bab9035a9d",
+      "version": "0.5.0"
     },
     {
       "id": "svg-vectorization",

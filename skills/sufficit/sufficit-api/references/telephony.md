@@ -1,5 +1,15 @@
 # Atendimento de telefonia
 
+## Initial customer setup
+
+For extensions plus queue/DID onboarding, follow the linked
+[customer onboarding workflow](../../sufficit-telephony-extensions/references/customer-onboarding.md).
+An active native contract and an empty legacy service list can coexist. Read the
+initialization state and prepare the existing contract through the supported API;
+do not create a duplicate free service or hand the task to the panel merely because
+the legacy checkup did nothing. Load the current sales session epoch/snapshot headers
+after an authority 409. Discover the operation in the deployed versioned OpenAPI.
+
 ## Escolha do recurso
 
 Caixa postal é VOICEMAIL. Para consultar caixas postais, descubra `voicemail` com
