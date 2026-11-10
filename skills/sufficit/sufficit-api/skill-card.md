@@ -2,7 +2,7 @@
 
 Query and manage Sufficit corporate API resources as the authenticated user: telephony credit purchases (lançar saldo), commitments, customer preferred due days, service billing, bank slips, low-balance alerts, wallets, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI.
 
-Version: **1.0.35** · Sufficit · MIT-0
+Version: **1.0.36** · Sufficit · MIT-0
 
 Read [SKILL.md](SKILL.md) to use this skill.
 

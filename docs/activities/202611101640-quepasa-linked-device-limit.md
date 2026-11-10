@@ -10,4 +10,6 @@ The account had five companion devices besides the phone (IDs 4, 6, 7, 8 and a M
 - `sufficit-api` 1.0.35: [WhatsApp gateway reference](../../skills/sufficit/sufficit-api/references/whatsapp-gateway.md) explains the limit, symptom and customer action.
 - `quepasa-production` 0.1.2: [runbook for calls missing on a ready session](../../skills/quepasa/production/references/runbooks.md#calls-missing-on-a-ready-session).
 
+Follow-up (`sufficit-endpoints` `ee8f39b`): the calls and messages policy items now read the live session instead of fixed warnings. By the owner's decision, the device-count item is a `Warning`, not an `Error`.
+
 No customer session, device or route was changed.

@@ -2606,8 +2606,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "d87ec472b14fc1bc0f8d301f47081e841be51b3ccf3d1ff13b87ce1ea064677e",
-      "version": "1.0.35"
+      "contentSha256": "b7064f3a84887256bdda761f391660d6b0a01fc1f9876711254ced64ec0236b7",
+      "version": "1.0.36"
     },
     {
       "id": "sufficit-campaigns",
