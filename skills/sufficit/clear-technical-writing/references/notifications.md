@@ -1,12 +1,12 @@
 # Human-readable operational notifications
 
-Use for incident notices, support requests and status updates sent to people by chat or email. This is writing guidance, not authorization to send or resend.
+Use for incident notices, support requests and status updates sent to people by chat or email. This is writing guidance, not authorization to send or resend. In WhatsApp and other chat apps, ordinary messages use at most two short text lines and about 30 words total. A longer technical assessment requires an explicit request; a diagnostic task alone does not authorize a long outgoing chat message. This limit does not apply to email.
 
 ## Build around the recipient's task
 
 - For a standalone notice, use a short, specific title and a greeting when appropriate. In an ongoing support conversation, answer directly; do not restart with a greeting or title on every message. State the problem or result early.
 - Put the impact and main finding before diagnostic details. A contact who forwards the case needs a different level of detail from the engineer who investigates it.
-- Separate context, key findings and requested action with blank lines. Use short section labels when they help scanning. Do not send a report compressed into one paragraph.
+- For email or an explicitly requested technical assessment, separate context, key findings and requested action with blank lines and short labels when useful. For ordinary chat, select the main finding and next action within the short-message limit; do not compress a report into it.
 - Highlight only the few values or conclusions that determine the next action. Use bullets for parallel findings; do not bold whole paragraphs.
 - Keep essential identifiers (affected endpoints, time window, reference) together in a compact block. Move packet counts, full routes, interface counters, hashes, logs and reproduction commands to a report or attachment unless the recipient needs them immediately.
 - Explain unfamiliar terms on first use, or use everyday language: “packets did not arrive” instead of a sequence of NIC/UDP/RTT/pcap acronyms. Retain exact technical identifiers in the supporting evidence.
@@ -15,7 +15,7 @@ Use for incident notices, support requests and status updates sent to people by 
 
 ## Match the channel
 
-WhatsApp: use a standalone `*Short title*`, optional `*Section labels*`, real line breaks, blank lines and simple `- ` bullets. Avoid Markdown `#` headings, tables, HTML, or `**double-asterisk**` formatting. Use emphasis sparingly. The JSON serializer encodes real newlines; do not put literal backslash-n text in the message. Do not send screenshots of text to simulate formatting.
+WhatsApp: ordinary replies are at most two short lines, about 30 words total, usually without a title. For an explicitly requested technical assessment, use optional `*Section labels*`, blank lines and simple `- ` bullets. Avoid Markdown `#` headings, tables, HTML, or `**double-asterisk**` formatting. Use emphasis sparingly. The JSON serializer encodes real newlines; do not put literal backslash-n text in the message. Do not send screenshots of text to simulate formatting.
 
 Email: use a meaningful subject and a readable plain-text body with short labels and blank lines; if HTML is supported, keep the plain-text alternative. Attach detailed evidence and mention what each attachment contains. Do not claim an attachment was sent unless it actually accompanies the message.
 
@@ -26,14 +26,14 @@ Do not split a notification into several sends merely to create sections. Prefer
 Read the exact outgoing text after templating and before the authorized send:
 
 1. Can the recipient identify the problem, timing and requested action at a glance?
-2. Are there visible paragraph breaks and a clear title for a multi-part notice?
+2. For ordinary chat, is the text within two short lines and about 30 words total? If longer, was a technical assessment explicitly requested? For email or that assessment, are sections easy to scan?
 3. Are the numbers, direction, units and confidence faithful to the evidence?
 4. Does the first block work without specialist knowledge? Are necessary technical details accessible separately?
 5. Does the channel support the formatting used? Is the final request easy to answer?
 
 For a screenshot complaint, identify the visible defect and repair the reusable template/instructions. Do not edit or resend an existing external message unless requested. A preview is not proof of rendering on the recipient's device; say which validation was actually performed.
 
-## Example (fictional, formatting preview only)
+## Example — explicitly requested technical assessment (fictional)
 
 ```text
 *Network issue — Site A → Site B*
