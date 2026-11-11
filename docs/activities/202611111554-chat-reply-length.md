@@ -9,3 +9,5 @@ Referência notifications.md alinhada: títulos/seções longas e exemplo extens
 Validação: quick_validate aprovado; scripts/validate.py aprovou os 185 pacotes; catalog_versions.py --check e build_skill_index.py --check aprovados; digest do pacote recalculado e catálogo atualizado; git diff --check aprovado. Entrega na main após revisão dos arquivos desta tarefa.
 
 Entrega: skill 1.2.2 e catálogo publicados na main em 47d9820. Exemplo revisado com duas linhas e 26 palavras.
+
+Refinamento posterior do mesmo pedido: limite pode ser excedido para parecer técnico **ou resposta mais explicada**, quando explicitamente solicitado. Aplicado na skill 1.2.3 e referência, com catálogo/digest atualizados.

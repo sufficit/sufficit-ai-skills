@@ -2,7 +2,7 @@
 name: clear-technical-writing
 description: "Write and revise documentation, procedures, support chat replies, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Use for ongoing support conversations when explicitly assigned to the agent; do not impose this style on creative writing."
 metadata:
-  version: "1.2.2"
+  version: "1.2.3"
   author: "Sufficit"
 ---
 
@@ -45,12 +45,12 @@ Use the structure that facilitates the reader's task. Apply the channel-specific
 
 Apply these rules when drafting or sending messages in WhatsApp and other chat apps:
 
-- By default, use **at most two short text lines and about 30 words total per message**. Longer messages are appropriate only when the user explicitly requests a technical assessment (parecer técnico). Multiple findings or an internal diagnosis do not by themselves create that exception.
+- By default, use **at most two short text lines and about 30 words total per message**. Longer messages are appropriate only when the user explicitly requests a technical assessment (parecer técnico) or a more detailed explanation (resposta mais explicada). Multiple findings or an internal diagnosis do not by themselves create that exception.
 - Lead with the current answer or verified conclusion, then include only the next useful action or question. Preserve uncertainty and the essential identifier; keep detailed logs and secondary findings out of the ordinary chat reply.
 - Do not split a long answer into several messages to evade the limit, or compress a report into two oversized lines. Line wrapping depends on the app and screen; keep the text short as well as limiting deliberate line breaks.
-- For an explicitly requested technical assessment, separate findings, evidence limits and necessary next actions with short paragraphs or simple bullets. Keep identifiers, dates and confidence attached to the findings they qualify; registration success is not proof that calls work.
+- When a technical assessment or a more detailed explanation is explicitly requested, separate findings, evidence limits and necessary next actions with short paragraphs or simple bullets. Keep identifiers, dates and confidence attached to the findings they qualify; registration success is not proof that calls work.
 - In WhatsApp, use single-asterisk emphasis sparingly and real newlines; avoid tables, HTML and Markdown # headings. Serialize newlines correctly in JSON, without visible backslash-n sequences. Other chat apps use their supported formatting. Do not repeat a signature supplied by the channel.
-- Before sending, check the exact text for the two-line/about-30-word default, or verify that a longer technical assessment was explicitly requested. Do not append a generic offer or question that does not advance the current request. This writing skill does not authorize an external send or resend.
+- Before sending, check the exact text for the two-line/about-30-word default, or verify that a technical assessment or a more detailed explanation was explicitly requested. Do not append a generic offer or question that does not advance the current request. This writing skill does not authorize an external send or resend.
 
 Example (fictional ordinary chat reply, not a live diagnostic):
 
@@ -61,7 +61,7 @@ Qual equipamento está usando nesse ramal? Precisamos acompanhar uma chamada com
 
 ## Notifications for people
 
-For incident notices, support messages and status updates sent by WhatsApp or email, read [notification writing and channel formatting](references/notifications.md). Lead with the recipient’s task and keep detailed diagnostic evidence separate. For chat, retain the two-line/about-30-word default unless a technical assessment was explicitly requested; use longer sections when appropriate for email or that requested assessment.
+For incident notices, support messages and status updates sent by WhatsApp or email, read [notification writing and channel formatting](references/notifications.md). Lead with the recipient’s task and keep detailed diagnostic evidence separate. For chat, retain the two-line/about-30-word default unless a technical assessment or a more detailed explanation was explicitly requested; use longer sections when appropriate for email or the requested detail.
 
 ## Delivery
 

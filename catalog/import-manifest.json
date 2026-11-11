@@ -338,7 +338,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
       "path": "skills/sufficit/clear-technical-writing",
-      "contentSha256": "38d33f55dbab283e0c7d221bc4bdae2e5ebf4bafc5ac1f2415bd97b181dff635"
+      "contentSha256": "8c27dd8b78888d2ab7177474ba04cfd09d2c00850cf3aebf39ac0d05b8d73bd0"
     },
     {
       "id": "device-ui-android",
