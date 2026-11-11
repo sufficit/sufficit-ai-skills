@@ -35,6 +35,11 @@ For an intercom/extension that dials a queue number:
    `sip show peer <caller>` or `pjsip show endpoint <caller-id>`, then
    `dialplan show <full-number>@<actual-caller-context>`.
    Validate identifiers as alphanumeric/dash/underscore before substituting them.
+   If the account has both SIP and PJSIP records, inspect both registrations and
+   use the context of the device's actual active technology. An unavailable PJSIP
+   endpoint with no contacts is not the context of a device registered on chan_sip.
+   If both are active, use call execution evidence or state the ambiguity; never
+   choose a context from a catalog record or old memory alone.
 3. Inspect the numeric projection with
    `dialplan show <full-number>@sufficit-freepbx-queue-numbers`.
    The installed source is `sufficit-freepbx/generated/queue-number-routes.conf`;
