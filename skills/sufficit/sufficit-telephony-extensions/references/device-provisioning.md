@@ -53,9 +53,14 @@ customer's scope returns 404, which is not proof that the MAC is unknown.
 - `GET /api/management/v1/devices/{MAC}`: vendor, model, displayName and the
   properties `context_id`, `extension_id`, `extension_number`, `enabled`,
   `match`. Secret properties are never returned.
-- `GET /api/management/v1/diagnostics/requests?mac=<MAC>&take=20`
-  (optional `delivered`): download attempts with `requestedFile`, `client`,
-  `matched`, `delivered`, `timestamp` (UTC).
+- `GET /api/management/v1/diagnostics/requests?mac=<MAC>&take=20`: download
+  attempts of registered devices with `requestedFile`, `client` (device public
+  IP), `transport` (`tftp`/`http`/`https`), `outcome`, `detail`, `matched`,
+  `delivered`, `timestamp` (UTC). Filters: `mac`, `client=<IP>`,
+  `outcome=<slug>`, `transport=<tftp|http|https>`, `since=<UTC ISO time>`,
+  `delivered`. Add `unregistered=true` to see requests with no registered
+  device (unknown MAC, wrong path, static files). Rows written before
+  2026-11-11 18:20 UTC have no transport/outcome.
 - `GET /api/management/v1/diagnostics/summary?window_hours=24`: totals.
 - `GET /api/management/v1/discoveries?window_hours=24`: physical MACs that
   requested a file but are not registered, and Linphone installations without
@@ -70,20 +75,56 @@ customer's scope returns 404, which is not proof that the MAC is unknown.
   and re-read the device afterwards. Never move a MAC already linked to
   another customer; report it instead.
 
-## Interpreting evidence
+## Acting for the technician
 
-- `matched=true, delivered=true` means the server generated and sent the file.
-  The log does not record the transport or port. Do not infer HTTPS, HTTP or
-  TFTP from it, and do not say "the HTTPS settings work" from a TFTP download.
-- A request from a MAC proves only that device. Resolve the MAC to its customer
-  and extension before attributing it to the technician's device.
-- Status codes on the device path: 200 file delivered; 204 MAC not registered
-  or file not generated; 500 server failure, which is an engineering incident,
-  not a configuration error.
+When a technician installs or configures a device, do the provisioning work
+for them instead of asking them to operate the server:
+
+1. **Find the device.** Ask for nothing you can read. List what appeared
+   recently: `GET .../discoveries?window_hours=24` (unregistered MACs with
+   model, public IP, first/last seen and request count) and
+   `GET .../diagnostics/requests?unregistered=true&since=<UTC>&take=50`.
+   Correlate by the time the technician says they configured it and by the
+   site's public IP (the `client` of the customer's other devices, or the
+   address its registered SIP extensions come from). Several candidates or no
+   candidate: show what you saw (model, MAC, IP, time) and ask which one, or
+   ask for the MAC on the label. Never pick one by guess.
+2. **Register it** (authorized business write, see the PUT contract above):
+   resolve the target extension through the EndPoints API of the same
+   customer (GUID, full number), confirm no other device is linked to that
+   extension and the MAC is not linked to another customer, PUT, re-read.
+3. **Ask for one action only:** reboot the device or force provisioning.
+4. **Verify:** `GET .../diagnostics/requests?mac=<MAC>&since=<UTC>` and report
+   transport, outcome and time. Then check the SIP registration of the
+   extension separately. Report each step as verified or not verified.
+
+## Diagnosing failures
+
+Read the requests for the MAC, then for the site IP (`client=<IP>` with and
+without `unregistered=true`) in the window of the test. Map what you see:
+
+| Evidence | Meaning | Next step |
+|----------|---------|-----------|
+| No request at all from the device or site IP | The device is not reaching the server: wrong server name, protocol/port, path field empty, provisioning disabled on the device, DNS or firewall at the site | Ask for the exact values on the device screen and compare with the table above; HTTPS 443 is the safest choice |
+| `outcome=no-model` | Path does not match any model (typo, wrong folder or file name; letter case does not matter) | Show the `requestedFile` received next to the expected pattern |
+| `outcome=device-unresolved` | MAC not registered, disabled or without extension | Register or fix the link (Acting for the technician, step 2) |
+| `outcome=policy-blocked` | Credentials withheld: the device came from a network outside the one learned for it (`detail`) | Do not change the policy yourself; report MAC, old and new IP to an administrator |
+| `outcome=credential-error` / `credential-missing` | The extension secret could not be read | Check the extension exists and is enabled; otherwise engineering |
+| `outcome=empty` | The model produced no document | Engineering |
+| `outcome=delivered` then `transfer-failed` (tftp) | File generated but the device never acknowledged it, typically NAT/firewall on UDP | Switch the device to HTTPS 443 |
+| `outcome=delivered` over http/https, extension not registered | Provisioning worked; the problem is SIP registration | Diagnose registration (credentials, network), not provisioning |
+| Many `static`/204 rows for generic files (e.g. `tip125system.xml`) | Normal model housekeeping | Ignore |
+| 5xx on device or management routes | Server failure | Report status and time; engineering |
+
+General rules:
+
+- A request from a MAC proves only that device; resolve MAC to customer and
+  extension before attributing it to the technician's device.
+- `delivered=true` alone, on rows without `transport`, says nothing about the
+  protocol or port the device used.
 - Delivered configuration is not SIP registration, and registration is not a
-  working call. Check registration separately with the telephony tools.
-- TFTP through customer NAT can retry and time out partially; a final
-  `delivered=true` after retries is still a successful download.
+  working call. Check each separately.
+- Times in the API are UTC; convert to Brasília when talking to people.
 
 ## Boundaries
 
