@@ -47,5 +47,6 @@ jobs:
           gh workflow run skill-catalog-sync.yml \
             --repo sufficit/sufficit-ai-genius \
             --ref main \
-            -f revision="$REVISION"
+            -f revision="$REVISION" \
+            -f automatic=true
           echo "Dispatched Genius skill catalog sync for $REVISION"
