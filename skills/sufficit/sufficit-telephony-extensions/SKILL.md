@@ -1,8 +1,8 @@
 ---
 name: sufficit-telephony-extensions
-description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Use when a request mentions ramais, provisioning de ramal, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
+description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.6.0"
+  version: "0.7.0"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -103,6 +103,10 @@ second login: the connected credential already carries the roles.
    effect, verification by independent reading, safe delivery of credentials.
 5. Changing per-extension settings follows
    [references/preferences.md](references/preferences.md).
+   Configuring a physical phone or softphone to download its settings (server,
+   protocol, port, path, MAC registration, download evidence) follows
+   [references/device-provisioning.md](references/device-provisioning.md);
+   it is a different system from extension creation.
 6. Disabling or removing an extension changes live call handling: confirm the
    exact target (company + extension number), check what references it (queue
    membership, flows, voicemail notification) and report what was and was not
