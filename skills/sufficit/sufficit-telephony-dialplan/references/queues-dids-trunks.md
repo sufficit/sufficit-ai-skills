@@ -24,6 +24,13 @@ For an intercom/extension that dials a queue number:
 1. Preserve the supplied digits exactly. Resolve the caller's customer and actual
    authenticated SIP/PJSIP context. Do not drop/add digits or guess a `-custom`
    suffix. A registered device only proves registration, not working calls.
+   Check both the supplied number and supported short-code normalization. In the
+   installed FreePBX integration, `_6XXX` can resolve the authenticated customer's
+   prefix and Goto `<prefix><short-code>` in that customer's context. Recognition
+   of the short-code pattern is not proof the normalized destination is reachable.
+   Do not require full-number dialing or reconfigure the device merely because
+   the numeric map lists full prefixed numbers. Never invent an intermediate
+   five-digit form by arbitrarily stripping leading zeros.
 2. Use the authorized PBX **read-only diagnostic connector** to inspect:
    `sip show peer <caller>` or `pjsip show endpoint <caller-id>`, then
    `dialplan show <full-number>@<actual-caller-context>`.
@@ -51,7 +58,13 @@ For an intercom/extension that dials a queue number:
 Queue/member policy changes use the supported catalog API. Numeric projection or
 include repairs belong to the maintained FreePBX integration/publication path;
 never write business tables, generated dialplan or the legacy database ad hoc.
-A shared production reload follows the owner's approval rule. A real missing
+Database read-only rules prohibit direct business SQL writes; they do not prohibit
+preparing a source-controlled dialplan fix or a reviewed publication. Treat these
+as separate boundaries: business writes through APIs, maintained PBX source/config
+publication, and operational approval for disruptive commands. For google-voip,
+request the owner's explicit approval for the concrete command/impact before a
+shared production reload. Do not claim a database rule forbids all file edits or
+reloads, or that approval permits direct SQL or ad-hoc generated-file changes. A real missing
 management operation should become a concrete engineering issue with caller
 context, exact number, expected queue GUID and runtime evidence, not a request
 for the user to discover the API. Do not claim the intercom is repaired from
