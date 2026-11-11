@@ -89,6 +89,8 @@ for them instead of asking them to operate the server:
    address its registered SIP extensions come from). Several candidates or no
    candidate: show what you saw (model, MAC, IP, time) and ask which one, or
    ask for the MAC on the label. Never pick one by guess.
+   MACs made of zeros or other obvious placeholders (`000000000000`,
+   `0000000000AA`) are test requests, not devices: mention them only as such.
 2. **Register it** (authorized business write, see the PUT contract above):
    resolve the target extension through the EndPoints API of the same
    customer (GUID, full number), confirm no other device is linked to that
