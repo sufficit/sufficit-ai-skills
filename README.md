@@ -51,6 +51,8 @@ A skill [`dotnet-csharp`](skills/sufficit/dotnet-csharp/SKILL.md) orienta mudan�
 para passar no CI na primeira vez: compilar os projetos de teste afetados, manter testes
 vermelhos compiláveis, rodar os gates do repositório e alinhar versões de pacotes.
 
+O [plano de respostas curtas](docs/PLAN-CHAT-REPLY-LENGTH.md) registra a política de mensagens de chat.
+
 A skill [`clear-technical-writing`](skills/sufficit/clear-technical-writing/SKILL.md) orienta escrita técnica
 clara, com adaptação em português e distinção entre revisão editorial e conformidade
 com o padrão inglês. É uma adaptação independente da Sufficit.

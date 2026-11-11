@@ -2,7 +2,7 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user: telephony credit purchases (lançar saldo), commitments, customer preferred due days, service billing, bank slips, low-balance alerts, wallets, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.36"
+  version: "1.0.37"
 ---
 
 # Sufficit API
@@ -51,6 +51,14 @@ what was actually observed, with the affected step; do not hand the whole task b
 ## Customer preferred due day
 
 For a request to change the customer's preferred payment day ("dia preferencial"), read [the customer due-day flow](references/customer-due-day.md). Use the dedicated `PaymentPreferences` read/write operation with the saved day as the concurrency expectation; it works without checkout or monthly contracts. Verify the customer preference separately from contract calendars and existing billing links. A contract alignment rejection or an unavailable `RenewalPolicy` call does not establish that the customer preference cannot be changed.
+
+## One-off performed work
+
+Before creating or correcting an ordinary service performed once (serviço avulso),
+read [one-off validity and billing](references/one-off-services.md). Such work has
+validity with equal start/end instants; non-recurrence, separate billing and payment
+are independent facts. Do not hide validity or retain unified billing by default
+when the user requested a separate charge.
 
 ## Initial free service period
 

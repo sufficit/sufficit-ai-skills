@@ -1,5 +1,9 @@
 # Sales representatives
 
+For ordinary work performed once, read [one-off validity and billing](one-off-services.md)
+before setting dates, recurrence or charge grouping. Validity exists with equal
+start/end instants; standalone billing is a separate choice from non-recurrence.
+
 For “lançar saldo”, tariffed credit purchases, monthly commitments and their service
 history, read [the telephony credit workflow](telephony-credit.md). A credit purchase,
 a commitment and an automatic purchase schedule are distinct operations.
