@@ -152,3 +152,5 @@ Delivery: [PJSIP registration guidance](docs/activities/202611121037-pjsip-regis
 Delivery: [FreePBX extension reload](docs/activities/202611121045-freepbx-extension-reload.md).
 
 Registro de entrega: [validade de contratos recorrentes](docs/activities/202611121436-recurring-contract-validity.md).
+
+Delivery: [Rafael device-model and call-evidence review](docs/activities/202611121506-rafael-model-and-call-evidence.md).
