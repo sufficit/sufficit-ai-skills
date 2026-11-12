@@ -146,3 +146,5 @@ Delivery: [onboarding defaults](docs/activities/202611101144-onboarding-defaults
 The [telephony credit workflow plan](docs/PLAN-TELEPHONY-CREDIT-WORKFLOW.md) tracks the agent guidance for credit purchases, commitments and service-history preservation.
 
 The [commercial session handoff plan](docs/PLAN-COMMERCIAL-SESSION-HANDOFF.md) tracks the November 2026 reconciliation guidance and verified delivery.
+
+Delivery: [PJSIP registration guidance](docs/activities/202611121037-pjsip-registration-guidance.md).
