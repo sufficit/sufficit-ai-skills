@@ -25,6 +25,11 @@ one retry returned synced for version 5639b6f5-d213-4553-80f6-2f79bca98f55, conf
 by provider read-back. No new WhatsApp message, device write or call was sent.
 
 Runtime renderers were implemented separately in sufficit-provisioning ca43d34:
-all 77 modern tests passed, eveo-apps is deployed; castrum-apps publication still
-requires the specific approval documented in that repository. This record closes
-only the skill/training work; it does not claim every node or phone was migrated.
+all 77 modern tests passed and eveo-apps was deployed first. The owner then
+permanently authorized castrum-apps provisioning publications; the same reviewed
+release 20261112T182828Z-pjsip-first was deployed there successfully. Both hosts
+confirmed identical Core hashes and Healthy. The completed service execution plan
+was incorporated into its production activity and removed; no physical phone
+registration/audio acceptance or blanket retirement of SIP is claimed. The
+service README/config now carry the permanent authorization within authorized
+changes, preserving validation, configuration and rollback requirements.
