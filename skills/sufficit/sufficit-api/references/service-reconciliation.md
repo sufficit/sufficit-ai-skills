@@ -32,7 +32,12 @@ expiry nor a special per-minute tariff establishes its amount or recurrence.
   prepaid service debit, including its time. Verify both transfer legs and the
   debit identity; equal timestamps do not establish the required order. An ended
   current representative link does not erase historical funding obligations.
-- For scheduled entries with no explicit time, the manager's convention is 06:00
+- Scheduled internal funding uses 05:59:00 GMT-3, before the ordinary 06:00
+  activation. Apply this convention only when it keeps funding strictly earlier;
+  preserve explicit real-payment timestamps and report historical/timezone cases
+  that would require a different safe boundary. Do not postpone money already
+  consumed by earlier debits merely to standardize the clock.
+- For scheduled service entries with no explicit time, the manager's convention is 06:00
   in America/Sao_Paulo (convert to UTC for that date). This is not authority to
   rewrite timestamps of actual payments or move money into the future.
 - Financial reconciliation and delivered call credit are separate. A matched
@@ -49,6 +54,26 @@ establish the payer from evidence. Conditional instructions, barter and canceled
 relationships are exceptions to investigate, not authority to invent a payer or
 reactivate a former representative. A business successor is not automatically the
 current responsible party for every former represented customer.
+
+## Erroneous internal resource transfers
+
+The manager's rule is that erroneous internal transfers can simply be removed,
+including a compensating return that exists only because of those errors. Remove
+the identified matching sides together and verify the expected balances. Do not
+create a refund, reversal, replacement credit or customer audit entry merely to
+keep these internal mistakes in the statement. No extra business audit or repeated
+approval is required when this correction is already authorized.
+
+Preserve the provenance and actual dates of movements originating in external
+systems, such as banks and payment providers; internal-transfer cleanup does not
+authorize deleting or fabricating those receipts. Keep backend-required technical
+idempotency/concurrency controls, without adding financial statement entries.
+This rule concerns internal transfers, not deletion of commercial contract history.
+
+For a canceled customer, read the explicit cancellation date before touching
+billing. Check the formal classification, active financial assignment and all
+later transfers even if their net balance is zero. An exactly compensating return
+does not by itself complete the reconciliation or justify a new service debit.
 
 ## Restore and correct without recreating history
 
