@@ -1,8 +1,8 @@
 ---
 name: sufficit-voice-agents
-description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls and training proposals. Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
+description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Sufficit voice agents
@@ -71,6 +71,20 @@ All paths are relative to `https://fleet.sufficit.com.br/api/fleet/v1`. Ids are 
 9. **Test.** `POST agents/{id}/voice/calls` with a new `requestId`, `number` (an internal extension of your company
    first) and `purpose`. Then call the agent's extension from an allowed extension.
 
+## Tools for your own systems (HTTP tools)
+
+Agents can call your own APIs (ERP, CRM, billing; for example IXC) through **HTTP tools** you declare. They are
+declarations, not code: Fleet builds each request from the parameters the agent fills in, adds your credential, calls
+your system and returns only the response fields you chose. Full contract and an IXC example:
+[HTTP tools](references/http-tools.md).
+
+1. Store the secret once: `POST credentials?contextId={contextId}` (write-only, kept in the Sufficit Vault).
+2. Declare the tool: `PUT contexts/{contextId}/http-tools/{toolId}` with method, HTTPS address, typed parameters,
+   credential and `responseFields`.
+3. Test it: `POST contexts/{contextId}/http-tools/{toolId}/test` with sample parameters. This calls your real system.
+4. Grant it: `PUT agents/{agentId}/http-tools`. Tools that change data (`effect: "write"`) need `allowWrite: true`.
+5. Voice agents receive tool changes on the next `voice/publish`.
+
 ## Safety
 
 - **`voice/calls` rings a real phone.** Call only numbers the user asked for, with a stated purpose. Test on an
@@ -82,6 +96,8 @@ All paths are relative to `https://fleet.sufficit.com.br/api/fleet/v1`. Ids are 
 - Never put passwords, tokens, card numbers or personal data in persona or instructions: they are published to the
   phone agent.
 - Only change agents of your own company. Never reuse an ElevenLabs agent id you did not get from step 3.
+- HTTP tools: prefer `effect: "read"`; grant write tools only to agents that need them and describe in the tool what
+  must be confirmed with the caller. Keep `responseFields` minimal: whatever is returned may be spoken aloud.
 
 ## Operating
 
