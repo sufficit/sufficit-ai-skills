@@ -1828,7 +1828,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "path": "skills/sufficit/sufficit-api",
-      "contentSha256": "165ed12e45b34d643388fe40d5ab04b10c6498597f767a5352e672976965c927"
+      "contentSha256": "97d6eae2194d10ec532f4241385d9ffd348aff7e2df200e44aae8a6c6eb39324"
     },
     {
       "id": "sufficit-campaigns",
@@ -1878,7 +1878,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
       "path": "skills/sufficit/sufficit-telephony-extensions",
-      "contentSha256": "75cb54389d31e81b7224c15a1ea1916bec6f4e8ac49d4e2ca189012e48d07e89"
+      "contentSha256": "78ffaaa881d08dd9900f66c32ed298c159f05bd9a487a811a5c404b0f34adaad"
     },
     {
       "id": "svg-vectorization",

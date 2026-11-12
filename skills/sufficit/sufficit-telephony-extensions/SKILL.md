@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.7.2"
+  version: "0.7.3"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -40,6 +40,16 @@ The owner-defined standard is SIP **and** PJSIP together, with recording enabled
 Use `technology="SIP+PJSIP"` and `recording=true` on creation; one protocol alone is
 not the default. Do not ask the user to choose technology or whether to record.
 Never turn off an existing endpoint or reset its password to apply new defaults.
+
+## Registering a device
+
+PJSIP uses the ENDPOINT `id` without hyphens for account/auth/AOR, not the numeric
+extension title or customer GUID. New-device profile: `voip.sufficit.com.br:26498`,
+TCP, existing endpoint password through the secure portal/provisioning flow.
+Port26499 is legacy chan_sip. GUID AORs are expected; a numeric-user404 does not
+prove broken generation. Masked helper fields cannot establish a password mismatch.
+Read [registration diagnostics](references/registration.md) before diagnosing a
+registration failure or proposing a credential reset.
 
 ## Customer default password
 

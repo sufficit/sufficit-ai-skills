@@ -119,7 +119,8 @@ Apply per-extension preferences (for example recording — see
 
 ## Handover
 
-1. Deliver the SIP credentials — extension number, secret, host, **port and
+1. Deliver the verified [device profile](registration.md) — PJSIP endpoint GUID
+   without hyphens as account/auth login, existing secret, host, **port and
    transport** — to the named user through the channel the authorizing user
    explicitly authorized. Port and transport are required by most softphones;
    omitting them is a common cause of failed registrations.

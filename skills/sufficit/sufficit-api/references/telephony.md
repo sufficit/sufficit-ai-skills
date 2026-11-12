@@ -10,6 +10,15 @@ do not create a duplicate free service or hand the task to the panel merely beca
 the legacy checkup did nothing. Load the current sales session epoch/snapshot headers
 after an authority 409. Discover the operation in the deployed versioned OpenAPI.
 
+## Extension registration
+
+For device registration failures, read the extension skill's
+[registration diagnostics](../../sufficit-telephony-extensions/references/registration.md).
+PJSIP account/auth/AOR is endpoint `id` without hyphens, not the numeric title or
+contextId. Use the native profile `voip.sufficit.com.br:26498`/TCP. A masked helper
+password is not a comparable credential; verify account/driver before blaming a
+password or AOR generator. Do not rotate a secret to work around a wrong login.
+
 ## Escolha do recurso
 
 Caixa postal é VOICEMAIL. Para consultar caixas postais, descubra `voicemail` com
