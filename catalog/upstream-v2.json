@@ -2704,7 +2704,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "77dc075676ace95d6180f1d5c024e5d59eac97a219dd07141227c67085d75115",
-      "version": "0.7.6"
+      "version": "0.7.7"
     },
     {
       "id": "svg-vectorization",

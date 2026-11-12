@@ -1,6 +1,6 @@
 {
   "name": "sufficit-telephony-extensions",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/sufficit/sufficit-telephony-extensions",
   "license": "MIT-0"

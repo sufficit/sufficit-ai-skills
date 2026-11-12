@@ -8,6 +8,35 @@ mentions provisionamento/autoprovisionamento, MAC, TFTP, "servidor de
 provisionamento", a phone model (Intelbras TIP 125i, Grandstream, Cisco) or a
 Linphone QR code.
 
+## Preferred registration stack
+
+Prefer PJSIP for provisioning whenever the authoritative endpoint has tech_pjsip
+(or Pjsip) enabled and the deployed device renderer supports it. Do not ask the
+technician to choose SIP versus PJSIP for routine supported provisioning.
+Account/User AND authentication Login use endpoint id in GUID N format; host
+voip.sufficit.com.br, port26498, default TCP. Use the actual configured PjsipServer
+if it differs. Keep the existing extension secret and friendly dial number.
+HTTP/HTTPS/TFTP download transport is separate from the SIP account transport.
+
+The maintained physical profiles (Intelbras TIP125, Grandstream V1, Cisco SEP)
+now select this PJSIP profile; Linphone already did. They must not combine a GUID
+account with a legacy SipServerSecondary/26499 fallback. A secondary is allowed
+only when explicitly configured as another compatible PJSIP server.
+
+If PJSIP is not enabled, preserve the supported legacy numeric SIP profile instead
+of inventing a GUID registration or changing technology flags behind the request.
+New extensions retain the approved SIP+PJSIP/recording standard, but the phone
+should use PJSIP first. This preference is preparation for retiring legacy SIP,
+not authorization to disable SIP globally, rotate passwords or migrate unrelated
+devices. Any actual technology activation must use a supported authorized domain
+operation, never direct SQL or generated-file edits.
+
+Verify provisioning download and actual GUID/PJSIP registration separately. A
+saved device, enabled checkbox or delivered document alone does not prove which
+stack the phone used. Do not fetch a customer's credential-bearing configuration
+to inspect it. If the serving node still runs an old SIP-only renderer, report
+that publication gap instead of blaming the device or changing its password.
+
 ## Server
 
 - Public host: `provisioning.sufficit.com.br`. The same service runs on the
