@@ -55,6 +55,21 @@ relationships are exceptions to investigate, not authority to invent a payer or
 reactivate a former representative. A business successor is not automatically the
 current responsible party for every former represented customer.
 
+## Cancellation preserves the representative relationship
+
+Canceling a customer or service does not automatically end its representative or
+financial-responsible assignment. Preserve that relationship for history and
+navigation unless the manager explicitly ends or transfers the relationship itself.
+An active assignment on a canceled customer is not, by itself, an inconsistency.
+Check service activity and actual later charges/transfers instead; keeping a link
+must not reactivate services, direct billing, renewals or commissions.
+
+For an assignment incorrectly ended only because of cancellation, preserve its
+history and restore continuity with the same representative, roles, share and
+policy through the supported assignment operation. Verify the displayed link,
+absence of a gap/overlap and unchanged canceled services and financial records.
+Do not create a referral/commission role merely to restore a financial link.
+
 ## Erroneous internal resource transfers
 
 The manager's rule is that erroneous internal transfers can simply be removed,
