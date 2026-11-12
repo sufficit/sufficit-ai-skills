@@ -42,6 +42,12 @@ When asked to check inbound routes, keep the selected customer context and the n
 - Report the observed public-number-to-destination mapping. Configuration is not proof of the executed call path: if a call reaches a different extension, correlate its actual DID, time and execution evidence. SIP `OK`, an answered history row, or a valid destination alone cannot prove which inbound number led there. Absence from FreePBX dialplan output does not prove absence of a route handled by the current platform.
 - If discovery or a call fails, state the actual method/path/status or transport failure. Do not infer insufficient permission from `404`/`405` or an empty catalog. Never ask the technician for an endpoint when the supported DID search can answer the request.
 
+## Trace a particular call
+
+For "which channel/trunk did my call enter through?", follow
+[call correlation](call-correlation.md). SuccessfulAuth, AccountID, IP and a nearby
+time are clues, not a confirmed channel or linked call.
+
 ## Conversa e conferência
 
 Mantenha a empresa e a fila já selecionadas nas perguntas seguintes. Uma frase

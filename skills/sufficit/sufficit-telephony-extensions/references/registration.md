@@ -57,3 +57,12 @@ from a transport label alone. New setup follows the native TCP profile.
 Do not solicit or repeat plaintext secrets in a group or summary. A secret already
 posted there is not authorization to rotate it. Follow the existing scoped
 password-change request and secure-delivery rules when a change is requested.
+
+## Current state and historical claims
+
+A current endpoint/auth/AOR read proves current configuration only. A failed lookup
+using the numeric legacy title does not prove that the canonical GUID endpoint
+was absent at that time. Do not date a repair or attribute it to a person without
+an actual change/audit record. SuccessfulAuth alone does not prove REGISTER
+completion; correlate the correct account, time and current contact evidence.
+Qualify state, registration/contact state and working calls remain distinct.

@@ -70,10 +70,37 @@ customer's scope returns 404, which is not proof that the MAC is unknown.
   "extension_id","extension_number","enabled":"true"}}`. Properties are merged,
   not replaced. This is a business write: do it only when an authorized person
   asked for that MAC and that extension, after confirming the extension belongs
-  to the same customer and no other device is linked to it. Follow the
+  to the same customer and resolving existing device links as described below. Follow the
   existing naming (Intelbras / "TIP 125", displayName = full extension number)
   and re-read the device afterwards. Never move a MAC already linked to
   another customer; report it instead.
+
+## Identify the model and resolve existing links before a write
+
+A MAC OUI/prefix is a manufacturer hint, not an exact phone model. A previously
+configured device with the same prefix does not establish this device's model.
+Use an exact-MAC management record, a correlated discovery/request path matching
+the model catalog, or the technician's explicit model/label. A request path shows
+the profile requested; it is not proof of hardware identity. An extension's SIP
+User-Agent can support a hypothesis, but is not tied to a physical MAC merely
+because the extension or public NAT address matches.
+
+If the model is unresolved, ask only for it and pause the device writes. An answer
+that authorizes replacing the MAC but does not answer the model question leaves
+the model unresolved. Do not register a guessed profile or disable the old device
+and then ask the technician to correct the guess afterwards. Keep already confirmed
+targets/authorization; do not repeat questions that were actually answered.
+
+The current properties-based management contract permits multiple devices linked
+to one extension; the historical unique extension_id index was removed. Do not
+claim "one device per extension" as a system restriction. Inspect all existing
+links, enabled flags and pagination. If the request does not distinguish addition
+from replacement and an active device exists, ask that one decision. Addition
+keeps existing links. For an authorized replacement, first create/update the new
+MAC with a confirmed model and re-read its customer/extension/enabled state, then
+disable only the explicitly replaced old MAC; retain its record. If either step
+fails or its reply is lost, re-read both records before another write and report
+the partial state. Never disable all devices found on that extension.
 
 ## Acting for the technician
 
@@ -93,8 +120,9 @@ for them instead of asking them to operate the server:
    `0000000000AA`) are test requests, not devices: mention them only as such.
 2. **Register it** (authorized business write, see the PUT contract above):
    resolve the target extension through the EndPoints API of the same
-   customer (GUID, full number), confirm no other device is linked to that
-   extension and the MAC is not linked to another customer, PUT, re-read.
+   customer (GUID, full number), inspect existing links and confirm the MAC is not
+   linked to another customer. Resolve model and replacement/addition below before
+   PUT, then re-read.
 3. **Ask for one action only:** reboot the device or force provisioning.
 4. **Verify:** `GET .../diagnostics/requests?mac=<MAC>&since=<UTC>` and report
    transport, outcome and time. Then check the SIP registration of the
