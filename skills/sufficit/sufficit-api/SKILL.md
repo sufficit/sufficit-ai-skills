@@ -2,7 +2,7 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user: telephony credit purchases (lançar saldo), commitments, customer preferred due days, service billing, bank slips, low-balance alerts, wallets, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.39"
+  version: "1.0.40"
 ---
 
 # Sufficit API
@@ -76,6 +76,8 @@ Use comments and original receipts, distinguish financial settlement from call
 credit delivery, and keep historical decisions separate from currently active services.
 
 ## Renewing services during the migration
+
+Before renewing or changing expiry, read [contract validity versus period ends](references/recurring-contract-validity.md). An indefinite native recurring contract keeps `end: null`; each monthly period has its own finite end. Never copy that period end into the contract to record a renewal. Preserve explicit fixed terms and handle LegacySales through its own writer.
 
 For a service renewal request, read [the sales renewal flow](references/sales.md#renewing-a-legacy-monthly-service) before deciding that renewal is unavailable. Customers can have legacy and native services together: route each requested service using its contract `source`, not the screen, expiry date or customer name. `canRenew=false` on the native writer handoff is not a ban on legacy renewal. A legacy authority `409` is a request-state problem; recover the session headers as documented, rather than sending the operator to the old system or proposing migration.
 

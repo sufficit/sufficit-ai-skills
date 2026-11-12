@@ -52,6 +52,11 @@ current responsible party for every former represented customer.
 
 ## Restore and correct without recreating history
 
+For a recurring service with an unexpected end, read [contract validity versus
+period ends](recurring-contract-validity.md). Correct only a proven unintended
+native contract cap; keep monthly period ends and existing financial effects.
+Do not bulk-clear legacy coverage, fixed terms or cancellations.
+
 Restore missing historical services only with their original identities, prices,
 coverage and status. Resolve a retired legacy label to the appropriate current
 catalog item, not just a new display name. Preserve already consolidated/retired

@@ -150,3 +150,5 @@ The [commercial session handoff plan](docs/PLAN-COMMERCIAL-SESSION-HANDOFF.md) t
 Delivery: [PJSIP registration guidance](docs/activities/202611121037-pjsip-registration-guidance.md).
 
 Delivery: [FreePBX extension reload](docs/activities/202611121045-freepbx-extension-reload.md).
+
+Registro de entrega: [validade de contratos recorrentes](docs/activities/202611121436-recurring-contract-validity.md).

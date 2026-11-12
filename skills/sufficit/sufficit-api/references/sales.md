@@ -68,6 +68,8 @@ limitation rather than inventing a route or broadening the discount.
 
 ## Monthly services: which system owns each service
 
+First distinguish [contract validity from monthly period ends](recurring-contract-validity.md). For an indefinite native recurring agreement, `Contract.End` stays null; a finite period end or next due date must not become a contractual stop. An explicit fixed term is a separate agreement.
+
 Customers are moving from the legacy service manager to native contracts. Before acting, read the customer's contracts (`GET /Sales/Contract/Search`): `source` tells which system owns each one.
 
 - **Native** contracts with automation on renew by themselves: the recurring automation opens each monthly period and debits it to the customer's balance. Nobody renews them by hand; a negative balance is how a debtor shows up. Do not try the legacy renewal below on them.
