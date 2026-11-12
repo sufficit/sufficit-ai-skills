@@ -156,3 +156,5 @@ Registro de entrega: [validade de contratos recorrentes](docs/activities/2026111
 Delivery: [Rafael device-model and call-evidence review](docs/activities/202611121506-rafael-model-and-call-evidence.md).
 
 Delivery: [Provisioning with an inferred model](docs/activities/202611121511-provisioning-model-inference.md).
+
+Delivery: [PJSIP-first provisioning training](docs/activities/202611121537-pjsip-first-training.md).
