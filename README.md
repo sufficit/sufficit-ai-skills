@@ -154,3 +154,5 @@ Delivery: [FreePBX extension reload](docs/activities/202611121045-freepbx-extens
 Registro de entrega: [validade de contratos recorrentes](docs/activities/202611121436-recurring-contract-validity.md).
 
 Delivery: [Rafael device-model and call-evidence review](docs/activities/202611121506-rafael-model-and-call-evidence.md).
+
+Delivery: [Provisioning with an inferred model](docs/activities/202611121511-provisioning-model-inference.md).

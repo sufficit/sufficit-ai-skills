@@ -79,3 +79,7 @@ read-back/delivery record) are complete. This activity replaces the completed
 PLAN-RAFAEL-SUPPORT-EVIDENCE.md; no runtime repair checkpoint was included.
 Private evidence: workspace tmp/rafael-review-20261112. The transcript is not
 committed because it can contain confidential support content.
+
+Owner policy update: the model-confirmation gate above is superseded by
+[provisioning with informed inference](202611121511-provisioning-model-inference.md).
+The agent registers the plausible model first and asks confirmation afterwards.
