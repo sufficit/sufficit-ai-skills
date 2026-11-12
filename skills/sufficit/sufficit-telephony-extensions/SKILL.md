@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.7.3"
+  version: "0.7.4"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -40,6 +40,9 @@ The owner-defined standard is SIP **and** PJSIP together, with recording enabled
 Use `technology="SIP+PJSIP"` and `recording=true` on creation; one protocol alone is
 not the default. Do not ask the user to choose technology or whether to record.
 Never turn off an existing endpoint or reset its password to apply new defaults.
+After a FreePBX-backed creation batch, apply `fwconsole reload` once and verify
+legacy SIP peers and PJSIP endpoints before handover; follow the
+[application step](references/provisioning.md#apply-the-freepbx-batch-before-handover).
 
 ## Registering a device
 

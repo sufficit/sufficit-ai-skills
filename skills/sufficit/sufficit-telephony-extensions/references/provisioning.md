@@ -87,6 +87,34 @@ verify the domain entitlement. Never guess alternative POST paths on 404.
 OpenAPI v1 contains mainly gateways; v2 may exceed an older helper's 1 MiB limit.
 Use these maintained routes instead of concluding that creation does not exist.
 
+## Apply the FreePBX batch before handover
+
+After creating the intended extensions through the API and confirming their
+FreePBX-backed records, run `fwconsole reload` on the owning PBX through the
+provisioned server connection, once after the batch rather than once per extension.
+This is the required configuration-application step, not a substitute for API
+creation. Use it within the authorized provisioning scope and existing server
+approval policy; do not request another approval solely for this routine step.
+It regenerates/reloads shared PBX configuration, so report its actual scope and
+result. Do not restart Asterisk or promise zero call impact.
+
+Verify the command exit/output and then check each enabled protocol independently:
+`asterisk -rx 'sip show peer <canonical-title>'` for legacy SIP and
+`asterisk -rx 'pjsip show endpoint <endpoint-id:N>'` for PJSIP. Both must exist
+for SIP+PJSIP onboarding. A valid PJSIP endpoint does not compensate for a missing
+legacy SIP peer. Legacy SIP remains supported: numeric canonical title as account
+and auth login, voip.sufficit.com.br:26499, transport from the actual published
+legacy profile. PJSIP uses the endpoint GUID profile from [registration.md](registration.md).
+Never rotate a password or migrate a phone merely to bypass missing SIP generation.
+
+A saved FreePBX row, HTTP200, pending=true or runtimeApplicationConfirmed=null
+is not proof of loaded peers. If reload fails, times out or loses its reply,
+inspect current peers and the application result before considering another run;
+do not blindly loop reloads. Report created-but-not-applied when still missing,
+preserve successful creations and continue investigation without SQL writes,
+generated-file edits or duplicate creations. Even successful reload and peer
+presence do not prove device registration or working audio.
+
 ## Customer default password and later changes
 
 Maintained routes in EndPointController.Management.cs (sufficit-endpoints), with

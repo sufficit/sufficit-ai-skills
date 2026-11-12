@@ -117,6 +117,11 @@ confirm reads after each effect, and stop on a concrete failure. A partial resul
 is resumable, not a reason to delete/recreate everything. Never post SIP passwords
 in the group, shared summary or audit.
 
+After the FreePBX-backed creation batch, apply `fwconsole reload` once and verify
+each SIP peer and PJSIP endpoint as required by the
+[application step](provisioning.md#apply-the-freepbx-batch-before-handover).
+Do not declare onboarding ready while legacy SIP peers are missing.
+
 ## Create the waiting queue and members
 
 Use the configured Queue catalog API, not guessed `/Telephony/Queue` routes on
