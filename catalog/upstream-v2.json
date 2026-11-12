@@ -2627,6 +2627,24 @@
       "version": "1.0.0"
     },
     {
+      "id": "sufficit-voice-agents",
+      "name": "sufficit-voice-agents",
+      "description": "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls and training proposals. Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-voice-agents",
+      "tags": [
+        "voice",
+        "agents",
+        "elevenlabs",
+        "telephony",
+        "api"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "47b66b5e4c40dfc16f4bf36e30d2c1d4058e440c3dac5a08f5a1690d791d6a01",
+      "version": "1.0.0"
+    },
+    {
       "id": "sufficit-frontend",
       "name": "sufficit-frontend",
       "description": "Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when requested to turn visual references into functional screens, fix layout/themes or evolve a design system. It does not apply to the isolated backend or the native UI Android/iOS. Version 1.0.2.",

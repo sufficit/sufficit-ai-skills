@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 185,
+  "catalogEntries": 186,
   "sources": [
     {
       "id": "android",
@@ -1839,6 +1839,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-campaigns",
       "path": "skills/sufficit/sufficit-campaigns",
       "contentSha256": "11a59a1df099a4d9c343687ad18f19fe21315de3fe5439355ee453bf5eccbb1f"
+    },
+    {
+      "id": "sufficit-voice-agents",
+      "name": "sufficit-voice-agents",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-voice-agents",
+      "path": "skills/sufficit/sufficit-voice-agents",
+      "contentSha256": "47b66b5e4c40dfc16f4bf36e30d2c1d4058e440c3dac5a08f5a1690d791d6a01"
     },
     {
       "id": "sufficit-frontend",

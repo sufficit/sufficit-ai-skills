@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 185 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 186 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -16,7 +16,7 @@ conteúdo importado.
 | Matt Pocock | 1 | `mattpocock/skills`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
 | Hermes | 2 | `Sufficit`, MIT-0 |
-| Sufficit | 13 | Sufficit, MIT-0 |
+| Sufficit | 14 | Sufficit, MIT-0 |
 | Asterisk | 1 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Instagram | 3 | Sufficit, MIT-0 |
@@ -110,6 +110,8 @@ Delivery: [ISP support manual and artifact cleanup](docs/activities/202611031032
 Delivery: [legacy renewal guidance](docs/activities/20261103-legacy-renewal-guidance.md).
 
 The [campaigns skill](skills/sufficit/sufficit-campaigns/SKILL.md) operates outreach campaigns through the corporate API, which has no management screen. Activating a voice campaign places real calls, so it requires an explicit request and confirmation.
+
+The [voice agents skill](skills/sufficit/sufficit-voice-agents/SKILL.md) lets a customer company build and operate its own Sufficit voice agents through the APIs (ElevenLabs agent, SIP number, virtual extension, training publication, test calls), including how to check for and apply updates of the skill itself.
 
 The [telephony low-balance alert workflow](skills/sufficit/sufficit-api/references/low-balance-alerts.md)
 resolves an initial threshold and primary notification destination from customer
