@@ -91,6 +91,10 @@ one-off service into recurring merely to show the commitment in service history.
 If the required recurring configuration is not exposed, report that limitation;
 do not synthesize future purchases or backfill a series of services.
 
+For historical settlement without new call credit, billing pauses or mismatched
+financial dates, read [service reconciliation](service-reconciliation.md). A
+matched debit alone does not prove that credit was delivered.
+
 ## Preserve service history
 
 Keep original purchase IDs, values, timestamps, delivered credits and financial

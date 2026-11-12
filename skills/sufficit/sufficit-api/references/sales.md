@@ -1,5 +1,8 @@
 # Sales representatives
 
+For service-history restoration, reconciliation, pauses or inconsistent ledger
+dates, read [service reconciliation](service-reconciliation.md) before writing.
+
 For ordinary work performed once, read [one-off validity and billing](one-off-services.md)
 before setting dates, recurrence or charge grouping. Validity exists with equal
 start/end instants; standalone billing is a separate choice from non-recurrence.

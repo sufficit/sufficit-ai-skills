@@ -2607,7 +2607,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "c198d2c00bb34dfb36524f9ad4695b8747395a5bf8d8af853376f6246149a457",
-      "version": "1.0.37"
+      "version": "1.0.38"
     },
     {
       "id": "sufficit-campaigns",
@@ -2643,7 +2643,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-ui",
       "contentSha256": "f5e3f089267e4decd73c70bd38a1b57bb185d0f7c7619351cf0da4ce2dd9c05c",
-      "version": "1.0.4"
+      "version": "1.0.5"
     },
     {
       "id": "sufficit-hermes-agents",

@@ -2,7 +2,7 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user: telephony credit purchases (lançar saldo), commitments, customer preferred due days, service billing, bank slips, low-balance alerts, wallets, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.37"
+  version: "1.0.38"
 ---
 
 # Sufficit API
@@ -67,6 +67,13 @@ coverage only until the next preferred due date, then the agreed normal price,
 unless the manager explicitly says otherwise. Read [the initial free-period
 flow](references/sales.md#initial-zero-price-period-requested-by-a-manager) before
 applying it; missing regular price or preference still needs resolution.
+
+## Reconciling services and financial history
+
+For missing services, inconsistent dates, represented-customer transfers, billing
+pauses or portfolio reviews, read [service reconciliation](references/service-reconciliation.md).
+Use comments and original receipts, distinguish financial settlement from call
+credit delivery, and keep historical decisions separate from currently active services.
 
 ## Renewing services during the migration
 

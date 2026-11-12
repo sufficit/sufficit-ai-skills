@@ -1828,7 +1828,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "path": "skills/sufficit/sufficit-api",
-      "contentSha256": "c198d2c00bb34dfb36524f9ad4695b8747395a5bf8d8af853376f6246149a457"
+      "contentSha256": "165ed12e45b34d643388fe40d5ab04b10c6498597f767a5352e672976965c927"
     },
     {
       "id": "sufficit-campaigns",
@@ -1848,7 +1848,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
       "path": "skills/sufficit/sufficit-frontend",
-      "contentSha256": "8e8db736e1cc079ed8879873f4b3e4f537540830e067d703d9b675326cde55ce"
+      "contentSha256": "a51234e577f1cf96fb563d6e8ec1ca2d00ed5118a13be14706127393f4566231"
     },
     {
       "id": "sufficit-hermes-agents",
