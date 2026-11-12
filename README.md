@@ -148,3 +148,5 @@ The [telephony credit workflow plan](docs/PLAN-TELEPHONY-CREDIT-WORKFLOW.md) tra
 The [commercial session handoff plan](docs/PLAN-COMMERCIAL-SESSION-HANDOFF.md) tracks the November 2026 reconciliation guidance and verified delivery.
 
 Delivery: [PJSIP registration guidance](docs/activities/202611121037-pjsip-registration-guidance.md).
+
+Delivery: [FreePBX extension reload](docs/activities/202611121045-freepbx-extension-reload.md).
