@@ -5,8 +5,8 @@ pendências preservados; atualizar skills e integrar somente trabalho desta revi
 
 1. Concluído: recuperar transcript e inventariar documentação, Git e worktrees.
 2. Concluído: consolidar handoff e atualizar referências das skills comerciais.
-3. Em andamento: validar documentos/skills e integrar alterações nas mains remotas.
-4. Pendente: remover worktrees concluídas desta revisão, preservar trabalho paralelo
+3. Concluído: validar documentos/skills e integrar alterações nas mains remotas.
+4. Concluído: remover worktrees concluídas desta revisão, preservar trabalho paralelo
    e registrar o estado final e as pendências reais.
 
 Validação: links locais, validação da skill, diff sem erros, commits remotos e
@@ -20,3 +20,8 @@ Validação:185 pacotes, catálogo/índice/Markdown e47 testes aprovados emcópi
 validação individual das duas skills também passou. Foram removidas duas
 worktrees integradas e branchfeature/fop-backdating, semforce; evidências e
 trabalho paralelo preservados. Conferência deorigin nos oito repositórios passou.
+
+Integração publicada: AI Skills6a3b917 eEFData529562e nas respectivas mains.
+
+Conferência final: oito mains sincronizadas; duas worktrees ausentes; alteração
+paralela deescrita preservada byte a byte. Inventáriofinal salvo junto às evidências.
