@@ -2,7 +2,7 @@
 name: sufficit-notifications
 description: "Manage Sufficit notification contacts and event subscriptions through the corporate API: find, validate, create, block or remove contacts (e-mail, WhatsApp, SMS, Telegram), subscribe a contact to an event such as voicemail (caixa postal) or low balance, choose the delivery format (formatted text or JSON) per contact or per subscription, list and remove subscribers, and send an official test. Use for gestao de notificacoes, inscrever contato, contatos de notificacao, formato JSON da notificacao, quem recebe a caixa postal. Does not send free-form messages."
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   author: "Sufficit"
 ---
 
@@ -40,9 +40,9 @@ to make a call pass; report the authorization gap.
 2. **Resolve the event** with `GET /Notification/Events` (id, title, subscribe method).
    Methods: `key` needs a key, `context` must not send one, `both` uses both. Never
    guess an event id from memory when the catalog is reachable.
-3. **Resolve the key** when the event needs one (for voicemail it is the mailbox id).
-   Read existing subscribers of a sibling key or the owning resource to confirm the
-   expected key format; the API normalizes and validates keys.
+3. **Resolve the key** when the event needs one (for voicemail it is the mailbox id,
+   which must belong to the same customer). The API normalizes Guid keys and rejects
+   legacy numbers; for other events read an existing subscription to confirm the format.
 4. **Find or create the contact.** Search the customer's contacts first
    (`POST /Notification/Contact/Search`); reuse an existing one with the same channel
    and destination. Validate new destinations with `POST /Notification/Contact/Validate`.
