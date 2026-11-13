@@ -2,7 +2,7 @@
 name: sufficit-voice-agents
 description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
 ---
 
 # Sufficit voice agents
@@ -57,9 +57,10 @@ All paths are relative to `https://fleet.sufficit.com.br/api/fleet/v1`. Ids are 
    idempotent: after any error or timeout, call it again; it never creates a second agent or number.
 4. **Free extension.** `GET agents/{id}/voice/setup` returns your telephony context and a suggested free extension.
 5. **Voice binding, disabled.** `PUT agents/{id}/voice` with `telephonyContextId` (your company id), `templateId`,
-   `providerAgentId` and `phoneNumberId` from step 3, `extension` from step 4, `allowedExtensions` (extensions allowed
-   to call the agent; empty = nobody calls in), `mode: "synchronized"`, `memoryAccess` (`none` or `read`; `write`
-   only when the user asks), `enabled: false`, `expectedRevision: null` on creation.
+   `providerAgentId` and `phoneNumberId` from step 3, `extension` from step 4 (optional: the agent's Id always
+   identifies its virtual extension; a number only makes it dialable by number), `allowedExtensions` (your extensions
+   treated as trusted staff), `mode: "synchronized"`, `memoryAccess` (`none` or `read`; `write` only when the user
+   asks), `publicAccess` (see below), `enabled: false`, `expectedRevision: null` on creation.
 6. **Virtual extension.** `POST agents/{id}/voice/provision` with `telephonyContextId`, `number` (the extension) and
    the binding `revision`. The extension appears in your PBX pointing at the agent.
 7. **Publish training.** `POST agents/{id}/voice/publish`. It turns persona and instructions into an immutable
@@ -84,6 +85,21 @@ your system and returns only the response fields you chose. Full contract and an
 3. Test it: `POST contexts/{contextId}/http-tools/{toolId}/test` with sample parameters. This calls your real system.
 4. Grant it: `PUT agents/{agentId}/http-tools`. Tools that change data (`effect: "write"`) need `allowWrite: true`.
 5. Voice agents receive tool changes on the next `voice/publish`.
+
+## Callers from outside (queues, DIDs, IVR)
+
+The agent is a virtual extension of your PBX (Id, optional number) and shows in the telephony panel, where calls can
+be followed, listened to and whispered. Anyone who reaches it through a queue, DID or IVR, or from an extension not in
+`allowedExtensions`, is a **public caller**: the number is not authenticated. `publicAccess` on the binding decides
+what such a call may trigger:
+
+| Value | Public caller gets |
+|---|---|
+| `none` | training only, no tool |
+| `read` (default) | call context and HTTP tools with `effect: "read"` |
+| `full` | also the agent's Fleet task, memory and write HTTP tools granted with `allowWrite` |
+
+Write in the persona how the agent confirms identity (for example CPF) before giving personal or financial data.
 
 ## Safety
 
