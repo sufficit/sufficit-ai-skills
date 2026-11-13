@@ -24,7 +24,7 @@ Admission and the support contact are set by Sufficit; the write route answers 4
 | Template | `PUT catalog/templates/{templateId}` | `{ contextId, expectedRevision: null, reason, configuration: { id, contextId, name, profileId, brief } }` |
 | Create | `POST agents` | `{ contextId, profileId, name, runtimeMode, reason }` — `name` is a slug: `^[a-z0-9][a-z0-9-]{1,79}$` (e.g. `atendimento-voz`); the spoken name goes in the persona |
 | Read | `GET agents/{id}`, `GET agents?contextId=` | |
-| Persona | `GET` then `PUT agents/{id}/persona` | `{ profile, expectedRevision }` |
+| Persona | `GET` then `PUT agents/{id}/persona` | `{ profile, expectedRevision }` — a new voice agent has no executor: the persona is kept by Fleet (`source: "fleet"`), the first `GET` returns `profile: ""` and `revision: "initial"`; send that revision on the first `PUT` |
 | Instructions | `GET` then `PUT agents/{id}/instructions` | `{ instructions, tools: null, expectedRevision }` |
 
 Catalog responses return `{ revision, configuration }`; keep `revision` for the next edit.

@@ -2,7 +2,7 @@
 name: sufficit-voice-agents
 description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.5.0"
+  version: "1.6.0"
 ---
 
 # Sufficit voice agents
@@ -52,7 +52,8 @@ All paths are relative to `https://fleet.sufficit.com.br/api/fleet/v1`. Ids are 
 2. **Persona and instructions.** Follow [writing the training](references/prompting.md): say each rule once,
    start with the goal, no tool or closing rules in the persona (Fleet adds the phone and critical-rule sections),
    never edit the prompt in the ElevenLabs dashboard. Use `PUT agents/{id}/persona` (who the agent is, tone, what it may and may not say) and
-   `PUT agents/{id}/instructions`. Read first and send the current `expectedRevision`. This is the training source.
+   `PUT agents/{id}/instructions`. Read first and send the current `expectedRevision` (`"initial"` on the first
+   persona save). This is the training source.
 3. **ElevenLabs agent and SIP number.** `POST agents/{id}/voice/provider` with optional `firstMessage`, `voiceId`,
    and `voicemailDetection` (only for agents that call out). Language (Portuguese, Brazil), timezone (São Paulo) and
    the provider name (the agent Id) are set by Sufficit and kept on every publication. It creates the ElevenLabs agent
@@ -63,7 +64,7 @@ All paths are relative to `https://fleet.sufficit.com.br/api/fleet/v1`. Ids are 
    `providerAgentId` and `phoneNumberId` from step 3, `extension` from step 4 (optional: the agent's Id always
    identifies its virtual extension; a number only makes it dialable by number), `allowedExtensions` (your extensions
    treated as trusted staff), `mode: "synchronized"`, `memoryAccess` (`none` or `read`; `write` only when the user
-   asks), `publicAccess` (see below), `whisperApproval` (`manual` default or `auto`, see "Training by whisper"), `enabled: false`, `expectedRevision: null` on creation.
+   asks; ignored for voice-only agents, see below), `publicAccess` (see below), `whisperApproval` (`manual` default or `auto`, see "Training by whisper"), `enabled: false`, `expectedRevision: null` on creation.
 6. **Virtual extension.** `POST agents/{id}/voice/provision` with `telephonyContextId`, `number` (the extension) and
    the binding `revision`. The extension appears in your PBX pointing at the agent.
 7. **Publish training.** `POST agents/{id}/voice/publish`. It turns persona and instructions into an immutable
@@ -74,6 +75,14 @@ All paths are relative to `https://fleet.sufficit.com.br/api/fleet/v1`. Ids are 
    step to redo.
 9. **Test.** `POST agents/{id}/voice/calls` with a new `requestId`, `number` (an internal extension of your company
    first) and `purpose`. Then call the agent's extension from an allowed extension.
+
+## Voice-only agents
+
+Agents you create through this API are voice-only: they have no executor (the Sufficit runtime that carries out
+internal tasks and keeps memories). Their persona lives in Fleet, and on the phone they use only the call context,
+training proposals, `end_call` and the HTTP tools you grant. They do not get the Fleet task or memory tools, and the
+published prompt does not mention them; `memoryAccess` and `publicAccess: "full"` have no extra effect. To give an
+agent memory or internal tasks, ask support for an executor.
 
 ## Tools for your own systems (HTTP tools)
 

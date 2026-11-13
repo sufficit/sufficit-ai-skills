@@ -2,6 +2,11 @@
 
 Newest first. **required** marks updates to apply before the next voice operation.
 
+## 1.6.0 — 2026-11-13
+
+- Voice-only agents (no executor): persona kept by Fleet (`source: "fleet"`, first revision `"initial"`); no task or
+  memory tools on the phone. Previously the persona of such agents could not be saved.
+
 ## 1.5.0 — 2026-11-13
 
 - Training by panel whisper: per-agent `whisperApproval` (`manual` default, `auto`).
