@@ -33,7 +33,7 @@ Catalog responses return `{ revision, configuration }`; keep `revision` for the 
 
 | Step | Route | Body / result |
 |---|---|---|
-| Create provider | `POST agents/{id}/voice/provider` | `{ firstMessage?, voiceId?, language?, voicemailDetection? }` → `{ providerAgentId, phoneNumberId, sipUri, toolIds, created }` |
+| Create provider | `POST agents/{id}/voice/provider` | `{ firstMessage?, voiceId?, voicemailDetection? }` (language pt-br and timezone America/Sao_Paulo are fixed) → `{ providerAgentId, phoneNumberId, sipUri, toolIds, created }` |
 | Read provider | `GET agents/{id}/voice/provider` | same shape, or empty when not created |
 | Setup | `GET agents/{id}/voice/setup` | `{ telephonyContextId, customerName, number, providerAgentId, phoneNumberId, ready }` |
 | Binding | `GET` / `PUT agents/{id}/voice` | see below |

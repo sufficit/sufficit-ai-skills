@@ -2,6 +2,11 @@
 
 Newest first. **required** marks updates to apply before the next voice operation.
 
+## 1.3.1 — 2026-11-13
+
+- `voice/provider` no longer takes `language`: every agent speaks Portuguese (Brazil) with the São Paulo timezone, and
+  its provider name is the agent Id.
+
 ## 1.3.0 — 2026-11-13
 
 - A request to put an agent in a queue means overflow (queue exit destination) by default; confirm with the user and

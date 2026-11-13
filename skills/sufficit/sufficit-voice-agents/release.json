@@ -1,6 +1,6 @@
 {
   "name": "sufficit-voice-agents",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/sufficit/sufficit-voice-agents",
   "license": "MIT-0"

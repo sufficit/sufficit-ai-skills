@@ -2,7 +2,7 @@
 name: sufficit-voice-agents
 description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.3.0"
+  version: "1.3.1"
 ---
 
 # Sufficit voice agents
@@ -52,7 +52,8 @@ All paths are relative to `https://fleet.sufficit.com.br/api/fleet/v1`. Ids are 
 2. **Persona and instructions.** `PUT agents/{id}/persona` (who the agent is, tone, what it may and may not say) and
    `PUT agents/{id}/instructions`. Read first and send the current `expectedRevision`. This is the training source.
 3. **ElevenLabs agent and SIP number.** `POST agents/{id}/voice/provider` with optional `firstMessage`, `voiceId`,
-   `language` (default `pt`) and `voicemailDetection` (only for agents that call out). It creates the ElevenLabs agent
+   and `voicemailDetection` (only for agents that call out). Language (Portuguese, Brazil), timezone (São Paulo) and
+   the provider name (the agent Id) are set by Sufficit and kept on every publication. It creates the ElevenLabs agent
    from the Sufficit-tuned template, its SIP number and its tools, and registers them to your company. It is
    idempotent: after any error or timeout, call it again; it never creates a second agent or number.
 4. **Free extension.** `GET agents/{id}/voice/setup` returns your telephony context and a suggested free extension.
@@ -130,7 +131,7 @@ Write in the persona how the agent confirms identity (for example CPF) before gi
   `POST agents/{id}/voice/proposals/{proposalId}` with `{ "approve": true|false }`. Approved training enters the next
   publication (step 7), never the live agent directly.
 - **Pause.** `PUT agents/{id}/voice` with `enabled: false`. Calls stop reaching it; nothing is deleted.
-- **Voice, greeting and language** are chosen in step 3. Changing them on an existing agent is not in the API yet;
+- **Voice and greeting** are chosen in step 3; language and timezone are fixed by Sufficit. Changing them on an existing agent is not in the API yet;
   ask support. Everything the agent says comes from persona and instructions, so most changes are step 2 + step 7.
 - **Diagnose.** Read `GET agents/{id}/voice`, `GET agents/{id}/voice/provider` and `GET agents/{id}/voice/setup`
   before changing anything. Report the exact route and status that failed.
