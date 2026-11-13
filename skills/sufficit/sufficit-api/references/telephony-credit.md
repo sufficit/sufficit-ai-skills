@@ -2,13 +2,14 @@
 
 ## Interpret the business request
 
-Keep two concepts strictly apart. A **call-credit purchase** buys credit for calls: a
-financial debit plus credit in the call balance. A **financial payment** is money
-received through a boleto, card, PIX or TED; it is a ledger credit with no telephony
-effect. Both are called "recarga" today. The ledger, for example, writes "Recarga por
-Boleto Bancário" for payments. Always say which one you mean: "compra de créditos para
-chamadas" or "pagamento". Never treat a payment as delivered call credit, or a
-purchase as money received.
+Keep two concepts strictly apart. A **call-credit purchase** ("compra de créditos para
+chamadas") buys credit for calls: a financial debit plus credit in the "saldo de créditos
+para chamadas". A **payment** ("pagamento": boleto, card, PIX, TED) is money received; it
+is a ledger credit with no telephony effect. The screens and new ledger descriptions
+follow these terms since 13/11/2026: "Pagamento por boleto bancário" and "Limite de
+créditos". Older rows and the kind codes `recb`/`recc`/`rect` still read "recarga" for
+payments. Never treat a payment as delivered call credit, or a purchase as money
+received.
 
 
 At Sufficit, **“lançar saldo” means buying telephony credit**. The same applies to
@@ -58,7 +59,7 @@ prices consumption; it is not the purchase amount or monthly commitment.
    identity to escape a conflict.
 5. There is no "trust recharge" (owner, 13/11/2026). A customer who must keep making
    calls, or receiving 0800 calls, without credit gets a negative call limit, set by a
-   manager ("Limite extra"). Never issue a recharge without funds to cover that need.
+   manager ("Limite de créditos"). Never issue a recharge without funds to cover that need.
    Follow the live writer's payer/funding policy. Do not set `allowWithoutBalance`
    merely because the caller is a manager; purchasing without balance requires
    an explicit authorized exception. Do not invent a payment or financial bonus.
