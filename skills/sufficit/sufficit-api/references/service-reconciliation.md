@@ -118,6 +118,21 @@ Preserve a confirmed external subscription when the manager explicitly requests
 it; do not claim that changing service dates reprogrammed the card. A first free
 period ends at the confirmed boundary, not an inferred full free month.
 
+## Unissued duplicate projections
+
+A generated period without its own debit can duplicate an already paid original
+purchase. Establish the exact receipt identity, owner, historical price and covered
+dates before using a supported reconciliation operation. Preserve the paid receipt
+and original debit; do not charge the projection again or deliver replacement call
+credit. A full-price receipt does not automatically prove a partial period or a
+period starting a day earlier. Issued operations, differing prices and ambiguous
+ownership require their own review rather than relaxing those checks.
+
+Preserve inactive bank/provider receipts with their provenance and actual state;
+they are not disposable internal-transfer records. Their presence alone need not
+block independent, fully proved internal metadata corrections. An unknown inactive
+internal record still needs evidence before removal.
+
 ## Audit evidence and completion
 
 Compare native immutable PostingDate receipts to actual linked ledger movements
