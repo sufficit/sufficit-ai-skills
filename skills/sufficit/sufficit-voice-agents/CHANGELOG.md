@@ -2,6 +2,12 @@
 
 Newest first. **required** marks updates to apply before the next voice operation.
 
+## 1.4.0 — 2026-11-13
+
+- New `references/prompting.md`: how to write persona and instructions for the phone (structure, each rule once,
+  goal first, trust on calls, tools that match the prompt, provider standards, skeleton). Never edit the prompt in
+  the ElevenLabs dashboard; fix it in Fleet and publish.
+
 ## 1.3.1 — 2026-11-13
 
 - `voice/provider` no longer takes `language`: every agent speaks Portuguese (Brazil) with the São Paulo timezone, and

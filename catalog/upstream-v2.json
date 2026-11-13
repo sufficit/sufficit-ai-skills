@@ -2641,8 +2641,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "2cf9a46014c15412aaa73ab6a8c92d901aee9d41f9595285173eb13eaa6a3dbf",
-      "version": "1.3.1"
+      "contentSha256": "6678a984825c7f8cecf41f7167cf6e42fac8e507f0a4abed6004508917912423",
+      "version": "1.4.0"
     },
     {
       "id": "sufficit-frontend",

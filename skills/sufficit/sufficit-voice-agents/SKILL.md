@@ -2,7 +2,7 @@
 name: sufficit-voice-agents
 description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.3.1"
+  version: "1.4.0"
 ---
 
 # Sufficit voice agents
@@ -49,7 +49,9 @@ All paths are relative to `https://fleet.sufficit.com.br/api/fleet/v1`. Ids are 
 1. **Agent.** Create a public-only privilege profile and a mission template in your context
    (`PUT catalog/profiles/{id}`, `PUT catalog/templates/{id}`), then `POST agents` (it starts paused). Reuse an
    existing agent when the user names one.
-2. **Persona and instructions.** `PUT agents/{id}/persona` (who the agent is, tone, what it may and may not say) and
+2. **Persona and instructions.** Follow [writing the training](references/prompting.md): say each rule once,
+   start with the goal, no tool or closing rules in the persona (Fleet adds the phone and critical-rule sections),
+   never edit the prompt in the ElevenLabs dashboard. Use `PUT agents/{id}/persona` (who the agent is, tone, what it may and may not say) and
    `PUT agents/{id}/instructions`. Read first and send the current `expectedRevision`. This is the training source.
 3. **ElevenLabs agent and SIP number.** `POST agents/{id}/voice/provider` with optional `firstMessage`, `voiceId`,
    and `voicemailDetection` (only for agents that call out). Language (Portuguese, Brazil), timezone (São Paulo) and
