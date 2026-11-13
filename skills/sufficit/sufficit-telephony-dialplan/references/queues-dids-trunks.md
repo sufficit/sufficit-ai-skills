@@ -8,6 +8,9 @@
   adding membership is a queue update, not an extension creation.
 - `configuredWaitSeconds` is the queue's **configured wait limit in seconds**,
   not a live or average wait time; report it as configured.
+- Members can be added by extension number or by **extension Id** (any extension, including an AI voice agent).
+  A member takes one call at a time. An AI agent is normally the queue's **overflow** destination instead (see the
+  skill section "AI voice agents and queues"), where it answers many calls at once.
 - Membership changes are live: after changing members, re-read the queue and
   confirm the final member list before reporting.
 

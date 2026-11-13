@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.4.2"
+  version: "0.5.0"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -76,6 +76,24 @@ choices again or choose a differently named existing queue as the default.
 Use the configured catalog with conditional creation/update; the queue ingress is
 `sufficit-app-queue,<queueId:N>,1`, never queueId-contextId. A queue fallback is not
 its ingress. Historical helper restrictions must not be mistaken for absent APIs.
+
+## AI voice agents and queues: overflow by default
+
+When someone asks to "put agent X in queue Y" (coloque o agente na fila), they almost always mean **overflow**
+(transbordo): calls the people in the queue could not take go to the AI. Do this by default:
+
+1. Set the queue's exit destination (`queue.destination`, used when the configured wait ends or nobody can answer)
+   to the agent: `sufficit-app-directcall,<agentIdN>,1` (agent Id from the Fleet agent / destination search). The
+   queue keeps only humans as members.
+2. Before writing, tell the user, in plain words: "Vou colocar o agente como transbordo da fila: quando ninguém
+   atender dentro do tempo configurado, a ligação vai para ele, e ele atende várias ligações ao mesmo tempo. Se eu o
+   colocar como membro da fila, junto com as pessoas, ele vai atender **uma ligação por vez**, como um atendente
+   humano." Ask which they want; proceed with overflow unless they explicitly choose membership.
+3. Only on explicit confirmation, add the agent as a queue member (by its Id, like any extension). Say again that it
+   then takes one call at a time.
+4. Read the queue back and report the configured wait and the final destination or member list.
+
+The same applies to a DID or IVR option: routing it straight to the agent has no one-call limit.
 
 ## References
 

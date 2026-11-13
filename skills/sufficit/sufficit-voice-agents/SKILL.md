@@ -2,7 +2,7 @@
 name: sufficit-voice-agents
 description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
 ---
 
 # Sufficit voice agents
@@ -85,6 +85,15 @@ your system and returns only the response fields you chose. Full contract and an
 3. Test it: `POST contexts/{contextId}/http-tools/{toolId}/test` with sample parameters. This calls your real system.
 4. Grant it: `PUT agents/{agentId}/http-tools`. Tools that change data (`effect: "write"`) need `allowWrite: true`.
 5. Voice agents receive tool changes on the next `voice/publish`.
+
+## Putting an agent in a queue: overflow by default
+
+A request like "coloque o agente na fila de atendimento" means **overflow** (transbordo) unless the user says
+otherwise: point the queue's exit destination to the agent (`sufficit-app-directcall,<agentIdN>,1`) so it takes the
+calls the people could not, many at the same time. Before changing anything, explain and confirm: as a **queue
+member**, mixed with the people, the agent takes **one call at a time**, like a human attendant; as overflow or as a
+DID/IVR destination, there is no such limit. Add it as a member only if the user explicitly chooses that. Queue and
+destination changes follow the skill `sufficit-telephony-dialplan`.
 
 ## Callers from outside (queues, DIDs, IVR)
 

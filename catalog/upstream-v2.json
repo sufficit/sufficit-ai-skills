@@ -2641,8 +2641,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "cf4b28257bdc4d784e5bcd3e41c9ec09c349a4a378d6b06e22dc3f7af7fc84c5",
-      "version": "1.2.0"
+      "contentSha256": "028d6dabd13b732fab3f6a8d74ef1f2b6138ec09eb4139ebb992a5ea20f25b45",
+      "version": "1.3.0"
     },
     {
       "id": "sufficit-frontend",
@@ -2701,8 +2701,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "926e06187ba53afbb38c53f3822120175347da96ba20c4ad04d4af22505790a7",
-      "version": "0.4.2"
+      "contentSha256": "991744cd5494c15e6964c2d291610bd226d09f7abb012d3fa7aa23681804356b",
+      "version": "0.5.0"
     },
     {
       "id": "sufficit-telephony-extensions",
