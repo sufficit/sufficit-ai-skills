@@ -116,9 +116,14 @@ monthly schedule, periods and commitment stay unchanged. Each extra recharge is
 listed in the contract parameter `billing.extra-call-credits.v1` (id, amount,
 start, expiration). The services table then shows a second value line: "Neste
 ciclo: R$ X do compromisso + R$ Y a mais". The engineering command is
-`EFSalesProvider.PurchaseExtraRecurringCallCredit`. If the deployed API does not
-expose an equivalent writer, report that limitation; do not convert the service to
-a one-off purchase or create a second tariffed service to get around it.
+`EFSalesProvider.PurchaseExtraRecurringCallCredit`, exposed for managers as
+`POST /Sales/CallCreditPurchase/Extra`. Confirm the route in the deployed OpenAPI.
+The body has `contractId`, `catalogId` (the contract's catalog), `operationId`,
+`cutoverId`, `expectedUpdatedUtc` (the contract revision), `amount` (equal to the
+monthly value), `startUtc` (now, whole seconds) and `reason`. Send it with the
+commercial epoch header. Keep the same `operationId` and body on retry. If the
+route is not deployed, report that limitation; do not convert the service to a
+one-off purchase or create a second tariffed service to get around it.
 
 The extra purchase is funded from the shared balance and posted on the Brasília
 civil day. It is delivered by the same funded outbox as the monthly cycle.
