@@ -93,5 +93,10 @@ audio attached where the channel supports it; `JSON` sends the voicemail JSON do
 
 Since 2026-11-13 `POST /Notification/Subscribe` requires authentication. Non-managers
 must send a `contextid` they are authorized for; the contact and the key (for example
-the mailbox) must belong to that context. Earlier the operation was anonymous; legacy
-rows with numeric voicemail keys (about 200) and 3 empty keys remain and never fire.
+the mailbox) must belong to that context. Earlier the operation was anonymous.
+
+On 2026-11-13 every voicemail key was moved to the native mailbox id (legacy numbers and
+legacy endpoint ids converted or removed). Some keys still name mailboxes that no longer
+exist; they never fire. A few subscriptions keep a contact registered under another
+customer than the mailbox owner (a person receiving the company's mailbox); they remain
+valid but cannot be recreated through the API.

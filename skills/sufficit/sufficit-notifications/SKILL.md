@@ -2,7 +2,7 @@
 name: sufficit-notifications
 description: "Manage Sufficit notification contacts and event subscriptions through the corporate API: find, validate, create, block or remove contacts (e-mail, WhatsApp, SMS, Telegram), subscribe a contact to an event such as voicemail (caixa postal) or low balance, choose the delivery format (formatted text or JSON) per contact or per subscription, list and remove subscribers, and send an official test. Use for gestao de notificacoes, inscrever contato, contatos de notificacao, formato JSON da notificacao, quem recebe a caixa postal. Does not send free-form messages."
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
   author: "Sufficit"
 ---
 
