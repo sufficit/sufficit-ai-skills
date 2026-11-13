@@ -47,7 +47,10 @@ prices consumption; it is not the purchase amount or monthly commitment.
    not from the user. Supply headers as headers. On authority/revision conflict,
    read fresh state and reconcile before another write; never change operation
    identity to escape a conflict.
-5. Follow the live writer's payer/funding policy. Do not set `allowWithoutBalance`
+5. There is no "trust recharge" (owner, 13/11/2026). A customer who must keep making
+   calls, or receiving 0800 calls, without credit gets a negative call limit, set by a
+   manager ("Limite extra"). Never issue a recharge without funds to cover that need.
+   Follow the live writer's payer/funding policy. Do not set `allowWithoutBalance`
    merely because the caller is a manager; purchasing without balance requires
    an explicit authorized exception. Do not invent a payment or financial bonus.
    The ordinary writer needs a previous tariffed service. If it reports that the
