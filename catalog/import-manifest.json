@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 186,
+  "catalogEntries": 187,
   "sources": [
     {
       "id": "android",
@@ -1919,6 +1919,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-reports",
       "path": "skills/sufficit/sufficit-telephony-reports",
       "contentSha256": "d0f6d41bd168b9fac9eee96bb7ed0b7e57b9b595be18c9c5d222d523483e91bb"
+    },
+    {
+      "id": "sufficit-notifications",
+      "name": "sufficit-notifications",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-notifications",
+      "path": "skills/sufficit/sufficit-notifications",
+      "contentSha256": "b4a6fd9c8d4768db5eb190db7ee506d0387058b2decce0301a8069dea0b4aec3"
     }
   ]
 }

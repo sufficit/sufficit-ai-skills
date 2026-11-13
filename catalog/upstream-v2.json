@@ -2607,7 +2607,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "c198d2c00bb34dfb36524f9ad4695b8747395a5bf8d8af853376f6246149a457",
-      "version": "1.0.43"
+      "version": "1.0.44"
     },
     {
       "id": "sufficit-campaigns",
@@ -2777,6 +2777,24 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "d0f6d41bd168b9fac9eee96bb7ed0b7e57b9b595be18c9c5d222d523483e91bb",
+      "version": "1.0.0"
+    },
+    {
+      "id": "sufficit-notifications",
+      "description": "Manage Sufficit notification contacts and event subscriptions through the corporate API: find, validate, create, block or remove contacts (e-mail, WhatsApp, SMS, Telegram), subscribe a contact to an event such as voicemail (caixa postal) or low balance, choose the delivery format (formatted text or JSON) per contact or per subscription, list and remove subscribers, and send an official test. Use for gestao de notificacoes, inscrever contato, contatos de notificacao, formato JSON da notificacao, quem recebe a caixa postal. Does not send free-form messages.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-notifications",
+      "tags": [
+        "sufficit",
+        "notifications",
+        "contacts",
+        "subscriptions",
+        "voicemail"
+      ],
+      "name": "sufficit-notifications",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "b4a6fd9c8d4768db5eb190db7ee506d0387058b2decce0301a8069dea0b4aec3",
       "version": "1.0.0"
     }
   ],
