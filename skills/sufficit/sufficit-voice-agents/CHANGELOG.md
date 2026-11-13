@@ -1,0 +1,25 @@
+# Changelog
+
+Newest first. **required** marks updates to apply before the next voice operation.
+
+## 1.3.0 — 2026-11-13
+
+- A request to put an agent in a queue means overflow (queue exit destination) by default; confirm with the user and
+  explain that a queue member takes one call at a time.
+
+## 1.2.0 — 2026-11-13
+
+- The extension number is optional; the agent Id always identifies its virtual extension.
+- New `publicAccess` on the voice binding (`none`, `read` default, `full`) for callers from queues, DIDs and IVR.
+
+## 1.1.0 — 2026-11-12
+
+- New: HTTP tools so agents can call your own systems (ERP, CRM; IXC example) through
+  `contexts/{contextId}/http-tools` and `agents/{agentId}/http-tools`. See `references/http-tools.md`.
+- Voice agents receive tool changes on `voice/publish`.
+
+## 1.0.0 — 2026-11-12
+
+- First release: build, publish, test and operate voice agents through the Fleet API (`voice/provider`,
+  `voice/setup`, `voice`, `voice/provision`, `voice/publish`, `voice/calls`, `voice/proposals`).
+- Update check against `release.json` and folder replacement procedure.
