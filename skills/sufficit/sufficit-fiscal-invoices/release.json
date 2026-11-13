@@ -1,0 +1,7 @@
+{
+  "name": "sufficit-fiscal-invoices",
+  "version": "1.0.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/sufficit/sufficit-fiscal-invoices",
+  "license": "MIT-0"
+}

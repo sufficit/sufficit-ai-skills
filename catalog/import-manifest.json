@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 187,
+  "catalogEntries": 188,
   "sources": [
     {
       "id": "android",
@@ -308,7 +308,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "path": "skills/asaas/invoices",
-      "contentSha256": "f37f0b52fa6992c77ea981fae8ae2bf3b4ff4c9d82e3c343d28d1146b70d4803"
+      "contentSha256": "9e70b56ff7c8287917a58896ba51a846c988c1f8a6c3afe48ba2f153135341be"
     },
     {
       "id": "asaas-payments",
@@ -1929,6 +1929,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-notifications",
       "path": "skills/sufficit/sufficit-notifications",
       "contentSha256": "f30a28636e207500637f654a14da6445c7659088226da93f0f16f06663ecf7e3"
+    },
+    {
+      "id": "sufficit-fiscal-invoices",
+      "name": "sufficit-fiscal-invoices",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-fiscal-invoices",
+      "path": "skills/sufficit/sufficit-fiscal-invoices",
+      "contentSha256": "1496b09a73099772818ef29dd6e82a926d670b7824863fe1bb241446a3f9c963"
     }
   ]
 }

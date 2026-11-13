@@ -7,6 +7,12 @@ description: "Query and schedule production ASAAS NFS-e invoices with asaas_invo
 
 Use when the user asks to issue, schedule, view, check, or cancel ASAAS service invoices (NFS-e). Use plain language with the user. Query existing records and configuration rather than asking for IDs or codes you can retrieve.
 
+**Sufficit customers:** when a Sufficit manager asks for an invoice of a Sufficit customer, use the
+[`sufficit-fiscal-invoices`](../../sufficit/sufficit-fiscal-invoices/SKILL.md) skill instead. It issues
+through the Sufficit API with the company credential, binds the invoice to the received payment, uses
+the official service catalog and imports the authorized document automatically. This skill remains for
+the user's own Asaas account (personal key in the Vault).
+
 ## Official sources and updates
 
 - Complete index, including future changes: [official Asaas API documentation](https://docs.asaas.com/llms.txt).
