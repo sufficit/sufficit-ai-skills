@@ -100,3 +100,13 @@ legacy endpoint ids converted or removed). Some keys still name mailboxes that n
 exist; they never fire. A few subscriptions keep a contact registered under another
 customer than the mailbox owner (a person receiving the company's mailbox); they remain
 valid but cannot be recreated through the API.
+
+## Telephony purge
+
+Purging a telephony tenant also removes, in the notification database, the subscriptions
+keyed by its mailboxes and queues, its own subscriptions to telephony events (voicemail,
+queue abandon, DID, call state, dial-out, balance) and the notification contacts left
+without any subscription, except contacts with a block cause (kept as opt-out). The
+billed calls report, finance, on-demand reports and Sufficit contacts are not touched.
+The purge dry-run reports these counts as `table:notf_subscriptions` and
+`table:notf_contacts`.
