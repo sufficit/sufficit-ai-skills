@@ -65,6 +65,20 @@ refusal with the provider reason in `detail` and `code`.
 - `GET Finance/Fiscal/Takers/{contextId}` and `POST Finance/Fiscal/Takers/{contextId}/Sync`: taker at
   Asaas; sync copies the CRM address, and the CRM e-mail when Asaas has none.
 
+## Cancel
+
+`POST Finance/Fiscal/Invoices/{providerId}/Cancel?contextId=<guid>`
+
+```json
+{ "reason": "Valor emitido errado; nova nota será emitida." }
+```
+
+Allowed for `SCHEDULED`, `SYNCHRONIZED`, `AUTHORIZED` and `CANCELLATION_DENIED`. Answer: the invoice
+(`providerid`, `status` `CANCELED` or `PROCESSING_CANCELLATION`, …). Errors: 400 reason missing or
+outside 5..500 characters; 422 with a pt-BR `detail` (invoice of another customer, already cancelled,
+cancellation in progress, failed invoice); 502 Asaas refusal. The reason is kept in Sufficit's activity
+log (Asaas has no reason field). The final state arrives by webhook.
+
 ## Import and synchronization (automatic)
 
 Asaas webhooks (all NFS-e events) import authorized invoices with XML/PDF into the customer's

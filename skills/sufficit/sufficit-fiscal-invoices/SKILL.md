@@ -1,8 +1,8 @@
 ---
 name: sufficit-fiscal-invoices
-description: "Issue and consult service invoices (NFS-e) for Sufficit customers through the Sufficit API, without opening the Asaas panel: list a customer's received payments split by invoice type, see which invoices are pending, processing, issued or failed (with the provider reason), issue an invoice bound to the received payment, check the taker registration (address and e-mail copied from the CRM) and reprocess invoices after fixing the CRM. Use for emitir nota fiscal, NFS-e de cliente, notas a emitir, consolidacao fiscal, consultar nota, nota falhou, nota nao importou. Internal managers only."
+description: "Issue and consult service invoices (NFS-e) for Sufficit customers through the Sufficit API, without opening the Asaas panel: list a customer's received payments split by invoice type, see which invoices are pending, processing, issued or failed (with the provider reason), issue an invoice bound to the received payment, cancel an issued invoice, check the taker registration (address and e-mail copied from the CRM) and reprocess invoices after fixing the CRM. Use for emitir nota fiscal, NFS-e de cliente, notas a emitir, consolidacao fiscal, consultar nota, cancelar nota, nota falhou, nota nao importou. Internal managers only."
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: "Sufficit"
 ---
 
@@ -46,8 +46,10 @@ only. Do not grant roles or entitlements to make a call pass; report the gap.
 - **Authorization is asynchronous.** A new invoice is `SCHEDULED`; the municipality
   authorizes it later and the Asaas webhook imports the XML/PDF automatically. Say
   "nota agendada; a autorização chega em seguida", never "emitida" before `AUTHORIZED`.
-- Cancelling an invoice is not available in this API: tell the user it must be done in
-  the Asaas panel and that the import follows automatically.
+- **Cancelling is also a real tax act.** Show the invoice (number, value, date, customer),
+  ask for the reason and wait for an explicit confirmation ("pode cancelar"). The
+  municipality may refuse it (deadline, rules of the city); never promise it.
+- **Automatic issuing is not enabled.** Every invoice is issued by a person's request.
 
 ## Workflow: which invoices are pending
 
@@ -67,6 +69,18 @@ only. Do not grant roles or entitlements to make a call pass; report the gap.
    `description`, `value`, `payment` and `reference` from the line.
 5. Report `providerid` (`inv_...`) and the status. To follow up, read the line again in
    `Receipts` or `GET Finance/Fiscal/Invoices/{providerid}?contextId=<id>`.
+
+## Workflow: cancel an invoice
+
+1. Find the invoice: the line in `Receipts` (`invoice.providerid`) or
+   `GET Finance/Fiscal/Invoices?contextId=<id>`.
+2. Only `SCHEDULED`, `SYNCHRONIZED`, `AUTHORIZED` or `CANCELLATION_DENIED` can be cancelled.
+3. Confirm with the user, with the reason (5 to 500 characters), then
+   `POST Finance/Fiscal/Invoices/{providerid}/Cancel?contextId=<id>` with `{"reason": "…"}`.
+4. Answer `CANCELED` = done; `PROCESSING_CANCELLATION` = "cancelamento solicitado; a prefeitura
+   confirma em seguida". The webhook applies the result to the customer's documents; a
+   `CANCELLATION_DENIED` comes back with the municipality's reason in `statusdescription`.
+5. To issue a corrected invoice afterwards, issue again from the receipt line.
 
 ## Troubleshooting
 

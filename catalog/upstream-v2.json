@@ -2799,7 +2799,7 @@
     },
     {
       "id": "sufficit-fiscal-invoices",
-      "description": "Issue and consult service invoices (NFS-e) for Sufficit customers through the Sufficit API, without opening the Asaas panel: list a customer's received payments split by invoice type, see which invoices are pending, processing, issued or failed (with the provider reason), issue an invoice bound to the received payment, check the taker registration (address and e-mail copied from the CRM) and reprocess invoices after fixing the CRM. Use for emitir nota fiscal, NFS-e de cliente, notas a emitir, consolidacao fiscal, consultar nota, nota falhou, nota nao importou. Internal managers only.",
+      "description": "Issue and consult service invoices (NFS-e) for Sufficit customers through the Sufficit API, without opening the Asaas panel: list a customer's received payments split by invoice type, see which invoices are pending, processing, issued or failed (with the provider reason), issue an invoice bound to the received payment, cancel an issued invoice, check the taker registration (address and e-mail copied from the CRM) and reprocess invoices after fixing the CRM. Use for emitir nota fiscal, NFS-e de cliente, notas a emitir, consolidacao fiscal, consultar nota, cancelar nota, nota falhou, nota nao importou. Internal managers only.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-fiscal-invoices",
       "tags": [
         "sufficit",
@@ -2812,8 +2812,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "1496b09a73099772818ef29dd6e82a926d670b7824863fe1bb241446a3f9c963",
-      "version": "1.0.0"
+      "contentSha256": "9497f44218f005d3853f87766bb56cd48fd980649fb71ef255f361147679702e",
+      "version": "1.1.0"
     }
   ],
   "catalogEntries": 185
