@@ -2,6 +2,10 @@
 
 Newest first. **required** marks updates to apply before the next voice operation.
 
+## 1.5.0 — 2026-11-13
+
+- Training by panel whisper: per-agent `whisperApproval` (`manual` default, `auto`).
+
 ## 1.4.0 — 2026-11-13
 
 - New `references/prompting.md`: how to write persona and instructions for the phone (structure, each rule once,

@@ -2,7 +2,7 @@
 name: sufficit-voice-agents
 description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.4.0"
+  version: "1.5.0"
 ---
 
 # Sufficit voice agents
@@ -63,7 +63,7 @@ All paths are relative to `https://fleet.sufficit.com.br/api/fleet/v1`. Ids are 
    `providerAgentId` and `phoneNumberId` from step 3, `extension` from step 4 (optional: the agent's Id always
    identifies its virtual extension; a number only makes it dialable by number), `allowedExtensions` (your extensions
    treated as trusted staff), `mode: "synchronized"`, `memoryAccess` (`none` or `read`; `write` only when the user
-   asks), `publicAccess` (see below), `enabled: false`, `expectedRevision: null` on creation.
+   asks), `publicAccess` (see below), `whisperApproval` (`manual` default or `auto`, see "Training by whisper"), `enabled: false`, `expectedRevision: null` on creation.
 6. **Virtual extension.** `POST agents/{id}/voice/provision` with `telephonyContextId`, `number` (the extension) and
    the binding `revision`. The extension appears in your PBX pointing at the agent.
 7. **Publish training.** `POST agents/{id}/voice/publish`. It turns persona and instructions into an immutable
@@ -97,6 +97,13 @@ calls the people could not, many at the same time. Before changing anything, exp
 member**, mixed with the people, the agent takes **one call at a time**, like a human attendant; as overflow or as a
 DID/IVR destination, there is no such limit. Add it as a member only if the user explicitly chooses that. Queue and
 destination changes follow the skill `sufficit-telephony-dialplan`.
+
+## Training by whisper
+
+A supervisor who whispers to the agent from the telephony panel is authenticated by the panel. While the whisper
+lasts, training the agent proposes is tagged with that supervisor. `whisperApproval` on the voice binding decides:
+`manual` (default) keeps it pending in `voice/proposals` for approval; `auto` approves it at once when the agent has a
+single live call. Approved training applies from the next calls. Anyone else on the line cannot train the agent.
 
 ## Callers from outside (queues, DIDs, IVR)
 

@@ -30,8 +30,9 @@ and published as a pinned version. Fleet adds two sections itself: `# Voz` (phon
 ## Channels and trust
 
 - The same persona serves phone and chat. On the phone the caller's identity is not proven: nobody trains the agent
-  by voice, not even someone who says they are the owner. Corrections become proposals for the manager
-  (`voice/proposals`). Write "aceite treinamento" rules only for authenticated chat channels.
+  by voice, not even someone who says they are the owner. Corrections become proposals; the only authenticated voice
+  source is a supervisor whispering from the panel (see `whisperApproval`). Write "aceite treinamento" rules only for
+  authenticated chat channels.
 - Callers from queues, DIDs or IVR are public: ask the agent to confirm identity by registered data (for example CPF)
   before giving personal or financial information, and never to talk about another customer.
 
