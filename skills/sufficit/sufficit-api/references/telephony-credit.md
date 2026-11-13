@@ -95,6 +95,38 @@ For historical settlement without new call credit, billing pauses or mismatched
 financial dates, read [service reconciliation](service-reconciliation.md). A
 matched debit alone does not prove that credit was delivered.
 
+## Advance renewal for a paid customer without call balance
+
+Owner rule (12/11/2026). When a customer has already paid, the call balance is at or
+below zero and the financial balance is positive:
+
+1. Renew the most recent fixed recurring services in advance, on the customer's
+   preferred-day calendar. Use whole cycles with no proration, charge or bonus. Never
+   debit an already paid competence again.
+2. Put the remaining financial balance into call credit on the tariffed service, but
+   only when the tariffed recharges have always had the same value. Buy whole
+   recharges of that value.
+3. If the recharge values differ, or the leftover is not a whole multiple of that
+   value, do not choose an amount. Warn the manager with the balance, the past
+   values and the services already renewed.
+
+For a tariffed service that is already monthly (a commitment with automatic
+renewal), the leftover becomes an **extra recharge** on the same contract. The
+monthly schedule, periods and commitment stay unchanged. Each extra recharge is
+listed in the contract parameter `billing.extra-call-credits.v1` (id, amount,
+start, expiration). The services table then shows a second value line: "Neste
+ciclo: R$ X do compromisso + R$ Y a mais". The engineering command is
+`EFSalesProvider.PurchaseExtraRecurringCallCredit`. If the deployed API does not
+expose an equivalent writer, report that limitation; do not convert the service to
+a one-off purchase or create a second tariffed service to get around it.
+
+The extra purchase is funded from the shared balance and posted on the Brasília
+civil day. It is delivered by the same funded outbox as the monthly cycle.
+Delivery can be refused while the posting date is still in the future. In that
+case, resume the same suspended event after it becomes due; never issue a new
+purchase. Verify the financial debit, the delivered credit and the call balance
+independently.
+
 ## Preserve service history
 
 Keep original purchase IDs, values, timestamps, delivered credits and financial

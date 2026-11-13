@@ -19,6 +19,8 @@ customer commercial status. A manager's belief that current services are prepaid
 does not reclassify expired historical agreements. Keep explicit later corrections
 ahead of earlier instructions; do not blend superseded calendar proposals.
 
+For a paid customer without call balance, follow the [advance renewal rule](telephony-credit.md#advance-renewal-for-a-paid-customer-without-call-balance): renew fixed services first, then turn the leftover into same-value recharges, or warn the manager.
+
 Credit expiry of up to six months is not a purchase cadence. Evidence of monthly
 payments/comments can establish an agreed monthly service, but neither credit
 expiry nor a special per-minute tariff establishes its amount or recurrence.
