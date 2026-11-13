@@ -142,10 +142,10 @@ the authority; source hints are not permission to call unpublished routes.
   Notification occurs for balance strictly below the threshold, with deduplication
   per recharge/contact/key. Do not promise immediate delivery when subscribing.
 - `sufficit-endpoints/src/Controllers/Notification/NotificationController.cs`:
-  event/subscriber discovery and subscription handling. `Subscribe` is hidden
-  from OpenAPI in non-DEBUG builds in this snapshot. If no published writer is
-  available, report that concrete integration limitation; do not invent a route
-  or bypass through direct database access.
+  event/subscriber discovery and subscription handling. `POST /Notification/Subscribe`
+  is hidden from OpenAPI in non-DEBUG builds but is the supported writer: it requires
+  authentication and, for non-managers, an authorized `contextid`. Its contract is in
+  the `sufficit-notifications` skill. Never bypass it through direct database access.
 - `sufficit-endpoints/src/Controllers/Notification/ContactController.cs`:
   notification contact search, validity and update operations. Read their live
   contracts and permissions before use.

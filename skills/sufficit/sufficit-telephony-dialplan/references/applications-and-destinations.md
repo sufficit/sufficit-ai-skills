@@ -24,6 +24,10 @@ guides. The deployed API is the authority on names and values.
 - For a box to receive messages, the company needs the box enabled, a flow that
   actually routes calls to it and valid notification contacts. Routing a flow to
   voicemail without those does not deliver anything.
+- Each recipient gets formatted text by default; JSON is an opt-in per contact or
+  per subscription, meant for integrations. Managing those recipients (subscribe,
+  remove, format, pending or blocked contacts) belongs to the `sufficit-notifications`
+  skill; the subscription key is the box id.
 
 ## Editing a flow
 
