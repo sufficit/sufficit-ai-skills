@@ -2,6 +2,15 @@
 
 ## Interpret the business request
 
+Keep two concepts strictly apart. A **call-credit purchase** buys credit for calls: a
+financial debit plus credit in the call balance. A **financial payment** is money
+received through a boleto, card, PIX or TED; it is a ledger credit with no telephony
+effect. Both are called "recarga" today. The ledger, for example, writes "Recarga por
+Boleto Bancário" for payments. Always say which one you mean: "compra de créditos para
+chamadas" or "pagamento". Never treat a payment as delivered call credit, or a
+purchase as money received.
+
+
 At Sufficit, **“lançar saldo” means buying telephony credit**. The same applies to
 “colocar saldo” or “adicionar crédito para ligações”. Do not ask whether this
 means recording a financial receipt or granting a promotional benefit. An explicit
