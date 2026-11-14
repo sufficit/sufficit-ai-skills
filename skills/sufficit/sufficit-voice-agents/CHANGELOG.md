@@ -2,6 +2,10 @@
 
 Newest first. **required** marks updates to apply before the next voice operation.
 
+## 1.7.3 — 2026-11-14
+
+- HTTP tools: IXC tool pack link follows the `ixc-api` move to `skills/ixc/api`.
+
 ## 1.7.2 — 2026-11-14
 
 - HTTP tools: point IXC integrations to the `ixc-api` skill's Fleet tool pack.

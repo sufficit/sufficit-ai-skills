@@ -1858,7 +1858,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-voice-agents",
       "path": "skills/sufficit/sufficit-voice-agents",
-      "contentSha256": "c4060ffe0b2867755c8ae07b605caf22c1649fc5b820dbc9b91b90ea5821d5b6"
+      "contentSha256": "eca2fdf2d032b3d7333da11e919c263de0ab1dfdf6355d6dca93a695ef8b6e8f"
     },
     {
       "id": "sufficit-frontend",
@@ -1976,9 +1976,9 @@
       "sourceId": "sufficit-genius",
       "author": "Sufficit",
       "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/gateways/ixc",
-      "path": "skills/gateways/ixc",
-      "contentSha256": "6ae785a7b753fefe4a18fa758b019e0b076828b4166896a21330eb24e631177f"
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/ixc/api",
+      "path": "skills/ixc/api",
+      "contentSha256": "2e33fb5b272d8e36471d89bf15e3c524e6f8fafba3f0ca51d1996ca41d815641"
     }
   ]
 }

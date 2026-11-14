@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1 — 2026-11-14
+
+- Package moved to `skills/ixc/api`, matching the vendor-named collections.
+
 ## 1.0.0 — 2026-11-14
 
 - First release: request mechanics (auth, search, operators, `grid_param`, update and error rules) and module

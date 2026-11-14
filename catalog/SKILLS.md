@@ -47,12 +47,6 @@ inside the repository's documentation hierarchy.
 | --- | --- | --- | --- |
 | [asterisk-dialplan](../skills/asterisk/dialplan/SKILL.md) |  | Sufficit | Write, review and format traditional Asterisk dialplan with consistent conventions for context comments, TAB indentation, English text and change headers. Us... |
 
-## gateways
-
-| Skill | Card | Source | Description |
-| --- | --- | --- | --- |
-| [ixc-api](../skills/gateways/ixc/SKILL.md) | [card](../skills/gateways/ixc/skill-card.md) | Sufficit | Call the IXC Provedor (IXCSoft ISP management ERP) REST webservice correctly for every module — customers, contracts and plans, receivables (boleto, PIX, ren... |
-
 ## google
 
 | Skill | Card | Source | Description |
@@ -208,6 +202,12 @@ inside the repository's documentation hierarchy.
 | [instagram-profile-setup](../skills/instagram/instagram-profile-setup/SKILL.md) |  | Sufficit | Score and set up an Instagram business or startup profile so it gets found in search and converts visitors, covering the first steps of a new account: accoun... |
 | [instagram-reel](../skills/instagram/instagram-reel/SKILL.md) |  | Jake Schincariol / Sufficit | Write an Instagram Reel from one raw idea in Portuguese or English: hook options, spoken script, separate on-screen text and a timed beat sheet, in the brand... |
 | [instagram-video-download](../skills/instagram/instagram-video-download/SKILL.md) |  | Sufficit | Download Instagram Reels and videos from user-supplied Instagram post URLs to local files with yt-dlp and verify their media streams. Use for saving Instagra... |
+
+## ixc
+
+| Skill | Card | Source | Description |
+| --- | --- | --- | --- |
+| [ixc-api](../skills/ixc/api/SKILL.md) | [card](../skills/ixc/api/skill-card.md) | Sufficit | Call the IXC Provedor (IXCSoft ISP management ERP) REST webservice correctly for every module — customers, contracts and plans, receivables (boleto, PIX, ren... |
 
 ## mattpocock
 
