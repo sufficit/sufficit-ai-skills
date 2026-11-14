@@ -58,7 +58,7 @@
       "license": "MIT"
     }
   ],
-  "updatedAt": "2026-11-05T20:10:30.939990+00:00",
+  "updatedAt": "2026-11-14T21:52:56.085276+00:00",
   "skills": [
     {
       "id": "android-adaptive",
@@ -2606,8 +2606,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "d0184350644b18492c3aaf7c673e4fcfee057b248c804ce820bc72eb93351244",
-      "version": "1.1.0"
+      "contentSha256": "1f036e81f989ceffa55844269ef34baeb0253329f344d753581e5a418595759f",
+      "version": "1.1.1"
     },
     {
       "id": "sufficit-campaigns",
@@ -2848,7 +2848,27 @@
       "sourceId": "sufficit-genius",
       "contentSha256": "3cf978e087321ea492c560c885066c47eae14e33532ceb9bf078aea286b6bdeb",
       "version": "1.0.0"
+    },
+    {
+      "id": "sufficit-service-reconciliation",
+      "name": "sufficit-service-reconciliation",
+      "description": "Reconcile Sufficit customer service cycles and financial history: consolidation, false renewal gaps, preferred due days, prepaid posting, representative funding, cancellations and future charges. Use for revisar cliente, consolidar serviços, vigência, conciliação or cobrança de representante. Requires evidence and independent before/after validation; does not authorize new payments, call credit or unrelated code changes.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-service-reconciliation",
+      "tags": [
+        "sufficit",
+        "services",
+        "reconciliation",
+        "billing",
+        "representatives",
+        "calendar",
+        "consolidation"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "version": "1.0.0",
+      "contentSha256": "a7afa72231fce82fab855050391ddb559a0abde7b378a94dab513fbeefbfc297"
     }
   ],
-  "catalogEntries": 186
+  "catalogEntries": 191
 }

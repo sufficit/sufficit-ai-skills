@@ -156,3 +156,12 @@ repair is not a reason to add customer-specific permanent product methods.
 A handoff records exact scope, latest decisions, already executed operation IDs,
 private evidence paths, remaining decisions and delivery state. Do not rerun a
 previous apply command or treat a saved memory as proof of a database update.
+
+## Complete the continuity check
+
+Use [the reconciliation skill](../../sufficit-service-reconciliation/SKILL.md)
+for the acceptance gates and read-only capture verifier. A financial tag alone
+does not detect a false one-day gap. Respect an explicit cycle day separately
+from the preferred due day; preserve raw original purchase dates. Future periods
+with an existing internal debit need producer/consumer reconciliation, not merely
+a later ledger timestamp.

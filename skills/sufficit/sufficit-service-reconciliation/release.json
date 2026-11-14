@@ -1,0 +1,7 @@
+{
+  "name": "sufficit-service-reconciliation",
+  "version": "1.0.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/sufficit/sufficit-service-reconciliation",
+  "license": "MIT-0"
+}

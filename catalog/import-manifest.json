@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 190,
+  "catalogEntries": 191,
   "sources": [
     {
       "id": "android",
@@ -1828,7 +1828,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "path": "skills/sufficit/sufficit-api",
-      "contentSha256": "f5b1494e0c6f403d723a7c7fddce13a7534ea966c5d24cc19d46b2ba08c30c5a"
+      "contentSha256": "1f036e81f989ceffa55844269ef34baeb0253329f344d753581e5a418595759f"
     },
     {
       "id": "sufficit-campaigns",
@@ -1959,6 +1959,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-financial-records",
       "path": "skills/sufficit/sufficit-financial-records",
       "contentSha256": "3cf978e087321ea492c560c885066c47eae14e33532ceb9bf078aea286b6bdeb"
+    },
+    {
+      "id": "sufficit-service-reconciliation",
+      "name": "sufficit-service-reconciliation",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-service-reconciliation",
+      "path": "skills/sufficit/sufficit-service-reconciliation",
+      "contentSha256": "a7afa72231fce82fab855050391ddb559a0abde7b378a94dab513fbeefbfc297"
     }
   ]
 }
