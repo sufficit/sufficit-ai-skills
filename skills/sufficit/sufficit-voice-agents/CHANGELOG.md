@@ -2,6 +2,11 @@
 
 Newest first. **required** marks updates to apply before the next voice operation.
 
+## 1.7.0 — 2026-11-14
+
+- **required**: two-way support threads at `endpoints.sufficit.com.br/Support/Threads`, same Fleet token. Check
+  threads waiting for you each session; report issues and improvements there instead of e-mail.
+
 ## 1.6.0 — 2026-11-13
 
 - Voice-only agents (no executor): persona kept by Fleet (`source: "fleet"`, first revision `"initial"`); no task or

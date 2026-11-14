@@ -1848,7 +1848,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-voice-agents",
       "path": "skills/sufficit/sufficit-voice-agents",
-      "contentSha256": "339047a1fff5a78d103e56617fb98acd07f7d480206f77063b49748eba43fe4c"
+      "contentSha256": "c3862b6ba17157c5234fd64c36686e38641b771ca104bc7f05e6644dccc2925c"
     },
     {
       "id": "sufficit-frontend",

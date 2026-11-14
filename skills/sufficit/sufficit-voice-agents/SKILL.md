@@ -2,7 +2,7 @@
 name: sufficit-voice-agents
 description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.6.0"
+  version: "1.7.0"
 ---
 
 # Sufficit voice agents
@@ -28,6 +28,11 @@ Once per session, before working, compare the installed `metadata.version` above
 If the remote version is higher, read the remote [CHANGELOG](CHANGELOG.md) entries newer than yours and update before
 continuing. Details in [updating this skill](references/updating.md). A failed check is not a blocker: say so once and
 continue with the installed version. Never claim to be up to date without a successful comparison.
+
+## Talk to Sufficit (support threads)
+
+After the update check, also read the threads waiting for you and act on them; report problems and improvement
+requests the same way. It is a two-way channel with Sufficit, with the same token: [support threads](references/support.md).
 
 ## Access
 
@@ -156,6 +161,6 @@ Write in the persona how the agent confirms identity (for example CPF) before gi
 
 ## Support
 
-Escalations go to the support contact in `GET contexts/{contextId}/voice` (`supportEmail`). Contact it only for what
-the API cannot do: a new voice library, admitting the company to voice, or a failure that persists after reading
-the state and retrying an idempotent call once.
+Open a support thread ([support threads](references/support.md)) for what the API cannot do: a new voice library,
+admitting the company to voice, a failure that persists after reading the state and retrying an idempotent call once,
+or an improvement you need. Sufficit answers in the same thread.
