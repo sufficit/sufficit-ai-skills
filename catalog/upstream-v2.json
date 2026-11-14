@@ -2814,7 +2814,24 @@
       "sourceId": "sufficit-genius",
       "contentSha256": "082df40c094c13786bea209c208f3871c6337daebd811feb0ac76cb1ab754915",
       "version": "1.1.1"
+    },
+    {
+      "id": "sufficit-financial-records",
+      "description": "Write, review and query the text of Sufficit financial ledger records (customer statement lines in fina_financial_records): the description shown to people and the machine document. Applies the house convention of correct Portuguese with fixed delimiters (: ; [competência] {referência} (ORIGEM) · Rótulo: valor) so lines stay readable and can be filtered with regex. Use when creating or correcting a credit, debit, bonus, transfer, refund or commission line, when designing a new ledger producer in code, when a description is vague (\"Pagamento de comissões: 1 período(s)\"), and when searching the statement by origin, competence or reference. Use for descricao de lancamento, extrato financeiro, registro financeiro, padrao de descricao, filtrar extrato, regex no extrato.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-financial-records",
+      "tags": [
+        "sufficit",
+        "finance",
+        "ledger",
+        "regex"
+      ],
+      "name": "sufficit-financial-records",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "3cf978e087321ea492c560c885066c47eae14e33532ceb9bf078aea286b6bdeb",
+      "version": "1.0.0"
     }
   ],
-  "catalogEntries": 185
+  "catalogEntries": 186
 }

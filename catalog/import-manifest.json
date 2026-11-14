@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 188,
+  "catalogEntries": 189,
   "sources": [
     {
       "id": "android",
@@ -1939,6 +1939,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-fiscal-invoices",
       "path": "skills/sufficit/sufficit-fiscal-invoices",
       "contentSha256": "082df40c094c13786bea209c208f3871c6337daebd811feb0ac76cb1ab754915"
+    },
+    {
+      "id": "sufficit-financial-records",
+      "name": "sufficit-financial-records",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-financial-records",
+      "path": "skills/sufficit/sufficit-financial-records",
+      "contentSha256": "3cf978e087321ea492c560c885066c47eae14e33532ceb9bf078aea286b6bdeb"
     }
   ]
 }
