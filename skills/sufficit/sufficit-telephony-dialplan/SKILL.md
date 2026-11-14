@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.5.1"
+  version: "0.6.0"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -116,3 +116,11 @@ notification, per-extension recording, individual trunk rules — and the corpor
 API workflow. Release 0.1.0 teaches the flow; the exact routing calls must be
 confirmed against the live OpenAPI on first real use and recorded in the
 references in that same change.
+
+## Talk to Sufficit
+
+Report to Sufficit, as a support thread, what still fails after reading the state and retrying once, a capability you
+need that is missing, or a question the API cannot answer: `POST /Support/Threads` with the same credential, `source:
+"skill:sufficit-telephony-dialplan"`. Once per session, also read the threads waiting for the company
+(`GET /Support/Threads?contextId={contextId}&waitingFor=customer`) and act on them within this skill's rules. Full
+contract: skill [`sufficit-support`](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support).

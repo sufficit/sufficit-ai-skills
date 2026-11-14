@@ -2,7 +2,7 @@
 name: sufficit-telephony-reports
 description: "Generate and deliver customer-scoped Sufficit telephony reports through the corporate API, including billed calls, operators, lost calls, hourly traffic and extension usage. Use for relatorio de chamadas tarifadas, exportacao Excel de telefonia, report verification, and reports requested while the legacy website is unavailable. Does not change tariffs, billing or call routing."
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: "Sufficit"
 ---
 
@@ -99,3 +99,11 @@ Para falhas de geração/exportação, leia o
 Uma consulta JSON bem-sucedida não comprova que Excel funciona. Health saudável,
 commit ou push não comprovam instalação nem funcionamento da tela Blazor.
 Distinga o relatório realmente gerado, a exportação validada e o estado de deploy.
+
+## Talk to Sufficit
+
+Report to Sufficit, as a support thread, what still fails after reading the state and retrying once, a capability you
+need that is missing, or a question the API cannot answer: `POST /Support/Threads` with the same credential, `source:
+"skill:sufficit-telephony-reports"`. Once per session, also read the threads waiting for the company
+(`GET /Support/Threads?contextId={contextId}&waitingFor=customer`) and act on them within this skill's rules. Full
+contract: skill [`sufficit-support`](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support).

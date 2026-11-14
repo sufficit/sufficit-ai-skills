@@ -2607,7 +2607,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "d0184350644b18492c3aaf7c673e4fcfee057b248c804ce820bc72eb93351244",
-      "version": "1.0.45"
+      "version": "1.1.0"
     },
     {
       "id": "sufficit-campaigns",
@@ -2624,6 +2624,23 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "11a59a1df099a4d9c343687ad18f19fe21315de3fe5439355ee453bf5eccbb1f",
+      "version": "1.1.0"
+    },
+    {
+      "id": "sufficit-support",
+      "name": "sufficit-support",
+      "description": "Two-way support channel between a Sufficit customer company and Sufficit: report problems (issues), ask for improvements or ask questions, and read and act on requests Sufficit sends to the company (for example updating a skill or testing a change). Use when something in a Sufficit API or skill fails after reading the state and retrying once, when a capability is missing, at the start of a session to check threads waiting for the company, or when the user asks to talk to, report to or ask Sufficit. Not for routine operations the API already does.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support",
+      "tags": [
+        "support",
+        "issues",
+        "customers",
+        "api"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "0f0f6a7ccb0d479db91249f74406dc19057bb6c2829eb6182e02941f7e083655",
       "version": "1.0.0"
     },
     {
@@ -2642,7 +2659,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "0f0f6a7ccb0d479db91249f74406dc19057bb6c2829eb6182e02941f7e083655",
-      "version": "1.7.0"
+      "version": "1.7.1"
     },
     {
       "id": "sufficit-frontend",
@@ -2680,7 +2697,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "64a32fcd94fc779b4f8dd187a985499ea75a609697f197d96258d8a2a9b1185b",
-      "version": "0.1.0"
+      "version": "0.2.0"
     },
     {
       "id": "sufficit-telephony-dialplan",
@@ -2702,7 +2719,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "004640e1bfdab7d6c0772e60242e6c5cb69e5f4d8bbd7dcc75e661ae53bbf68b",
-      "version": "0.5.1"
+      "version": "0.6.0"
     },
     {
       "id": "sufficit-telephony-extensions",
@@ -2722,7 +2739,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "77dc075676ace95d6180f1d5c024e5d59eac97a219dd07141227c67085d75115",
-      "version": "0.7.7"
+      "version": "0.8.0"
     },
     {
       "id": "svg-vectorization",
@@ -2777,7 +2794,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "d0f6d41bd168b9fac9eee96bb7ed0b7e57b9b595be18c9c5d222d523483e91bb",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     {
       "id": "sufficit-notifications",
@@ -2795,7 +2812,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "f30a28636e207500637f654a14da6445c7659088226da93f0f16f06663ecf7e3",
-      "version": "1.0.3"
+      "version": "1.1.0"
     },
     {
       "id": "sufficit-fiscal-invoices",

@@ -2,7 +2,7 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user: telephony credit purchases (lançar saldo), commitments, customer preferred due days, service billing, bank slips, low-balance alerts, wallets, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.0.45"
+  version: "1.1.0"
 ---
 
 # Sufficit API
@@ -106,3 +106,11 @@ For a service renewal request, read [the sales renewal flow](references/sales.md
 - For sales representatives, their customer portfolio, active customer counts, the monthly collection routine, service renewal and migration to the new system, read [references/sales.md](references/sales.md).
 
 New domains can be added as references without turning this skill into a static copy of OpenAPI.
+
+## Talk to Sufficit
+
+Report to Sufficit, as a support thread, what still fails after reading the state and retrying once, a capability you
+need that is missing, or a question the API cannot answer: `POST /Support/Threads` with the same credential, `source:
+"skill:sufficit-api"`. Once per session, also read the threads waiting for the company
+(`GET /Support/Threads?contextId={contextId}&waitingFor=customer`) and act on them within this skill's rules. Full
+contract: skill [`sufficit-support`](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support).

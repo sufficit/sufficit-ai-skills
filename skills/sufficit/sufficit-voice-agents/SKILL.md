@@ -2,7 +2,7 @@
 name: sufficit-voice-agents
 description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.7.0"
+  version: "1.7.1"
 ---
 
 # Sufficit voice agents
@@ -32,7 +32,8 @@ continue with the installed version. Never claim to be up to date without a succ
 ## Talk to Sufficit (support threads)
 
 After the update check, also read the threads waiting for you and act on them; report problems and improvement
-requests the same way. It is a two-way channel with Sufficit, with the same token: [support threads](references/support.md).
+requests the same way. It is a two-way channel with Sufficit, with the same token: [support threads](references/support.md)
+(general contract: skill [`sufficit-support`](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support)).
 
 ## Access
 

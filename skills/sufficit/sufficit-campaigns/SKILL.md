@@ -2,7 +2,7 @@
 name: sufficit-campaigns
 description: "Create, inspect and run Sufficit outreach campaigns through the corporate API: objective, script, targets, contact window, attempts, results and CRM review. Use when asked to prepare a campaign, import targets, check progress or read what a campaign collected. Activating a voice campaign places real phone calls."
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Sufficit campaigns
@@ -103,3 +103,11 @@ A conflict is never overwritten: tell the user so a person can check with the cu
 ## Live events
 
 Optional. SignalR hub at `/ws`: call `JoinCampaigns(contextId)` and listen to `CampaignEvent`. Delivery is best effort, so reconcile through `/summary` and `/targets`. The API is the source of truth.
+
+## Talk to Sufficit
+
+Report to Sufficit, as a support thread, what still fails after reading the state and retrying once, a capability you
+need that is missing, or a question the API cannot answer: `POST /Support/Threads` with the same credential, `source:
+"skill:sufficit-campaigns"`. Once per session, also read the threads waiting for the company
+(`GET /Support/Threads?contextId={contextId}&waitingFor=customer`) and act on them within this skill's rules. Full
+contract: skill [`sufficit-support`](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support).

@@ -2,7 +2,7 @@
 name: sufficit-notifications
 description: "Manage Sufficit notification contacts and event subscriptions through the corporate API: find, validate, create, block or remove contacts (e-mail, WhatsApp, SMS, Telegram), subscribe a contact to an event such as voicemail (caixa postal) or low balance, choose the delivery format (formatted text or JSON) per contact or per subscription, list and remove subscribers, and send an official test. Use for gestao de notificacoes, inscrever contato, contatos de notificacao, formato JSON da notificacao, quem recebe a caixa postal. Does not send free-form messages."
 metadata:
-  version: "1.0.3"
+  version: "1.1.0"
   author: "Sufficit"
 ---
 
@@ -87,3 +87,11 @@ replaces the record: read it first and send every field back, including `format`
 Report the read-back, not the request: contact id, channel, destination, cause, the
 subscription (event, key, format) and the effective format. A 2xx without read-back,
 a commit or a deploy is not proof that a person will receive the next notification.
+
+## Talk to Sufficit
+
+Report to Sufficit, as a support thread, what still fails after reading the state and retrying once, a capability you
+need that is missing, or a question the API cannot answer: `POST /Support/Threads` with the same credential, `source:
+"skill:sufficit-notifications"`. Once per session, also read the threads waiting for the company
+(`GET /Support/Threads?contextId={contextId}&waitingFor=customer`) and act on them within this skill's rules. Full
+contract: skill [`sufficit-support`](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support).

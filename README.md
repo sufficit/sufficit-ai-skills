@@ -111,6 +111,8 @@ Delivery: [legacy renewal guidance](docs/activities/20261103-legacy-renewal-guid
 
 The [campaigns skill](skills/sufficit/sufficit-campaigns/SKILL.md) operates outreach campaigns through the corporate API, which has no management screen. Activating a voice campaign places real calls, so it requires an explicit request and confirmation.
 
+The [support skill](skills/sufficit/sufficit-support/SKILL.md) is the two-way channel between a customer company and Sufficit (issues, improvements, questions and Sufficit's requests); every customer skill points to it.
+
 The [voice agents skill](skills/sufficit/sufficit-voice-agents/SKILL.md) lets a customer company build and operate its own Sufficit voice agents through the APIs (ElevenLabs agent, SIP number, virtual extension, training publication, test calls), including how to check for and apply updates of the skill itself.
 
 The [telephony low-balance alert workflow](skills/sufficit/sufficit-api/references/low-balance-alerts.md)

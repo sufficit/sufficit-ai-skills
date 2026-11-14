@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 189,
+  "catalogEntries": 190,
   "sources": [
     {
       "id": "android",
@@ -1828,7 +1828,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-api",
       "path": "skills/sufficit/sufficit-api",
-      "contentSha256": "dfccbdd5a7eb35730991435115631ddb91f205330fcad7298660eb2db22d95d7"
+      "contentSha256": "f5b1494e0c6f403d723a7c7fddce13a7534ea966c5d24cc19d46b2ba08c30c5a"
     },
     {
       "id": "sufficit-campaigns",
@@ -1838,7 +1838,17 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-campaigns",
       "path": "skills/sufficit/sufficit-campaigns",
-      "contentSha256": "11a59a1df099a4d9c343687ad18f19fe21315de3fe5439355ee453bf5eccbb1f"
+      "contentSha256": "44b8e1b595f955432dff2de227cb666a85651bfbc09e3c28884e9f8d519599d0"
+    },
+    {
+      "id": "sufficit-support",
+      "name": "sufficit-support",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support",
+      "path": "skills/sufficit/sufficit-support",
+      "contentSha256": "93dc1a0d8de4cb16957f7790dc5c2800a846c345df12a9bfcfce518b5b767bd8"
     },
     {
       "id": "sufficit-voice-agents",
@@ -1848,7 +1858,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-voice-agents",
       "path": "skills/sufficit/sufficit-voice-agents",
-      "contentSha256": "c3862b6ba17157c5234fd64c36686e38641b771ca104bc7f05e6644dccc2925c"
+      "contentSha256": "6da4ffddb6c5ac0a1dc09574752ddbe29fc92a3170149d7ab1164e6dc95a8e74"
     },
     {
       "id": "sufficit-frontend",
@@ -1868,7 +1878,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-hermes-agents",
       "path": "skills/sufficit/sufficit-hermes-agents",
-      "contentSha256": "64a32fcd94fc779b4f8dd187a985499ea75a609697f197d96258d8a2a9b1185b"
+      "contentSha256": "d9f06d96a20543b8980ead94899412c1cbf9b4c9ad6430d0f1df1500ff1933cb"
     },
     {
       "id": "sufficit-telephony-dialplan",
@@ -1878,7 +1888,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-dialplan",
       "path": "skills/sufficit/sufficit-telephony-dialplan",
-      "contentSha256": "004640e1bfdab7d6c0772e60242e6c5cb69e5f4d8bbd7dcc75e661ae53bbf68b"
+      "contentSha256": "15043a2ade16333ee0544ce0a56396505fe3f5f274366ce76f5cb5593395a3fe"
     },
     {
       "id": "sufficit-telephony-extensions",
@@ -1888,7 +1898,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
       "path": "skills/sufficit/sufficit-telephony-extensions",
-      "contentSha256": "2806c6d392c3a8e0c3c295c74677dc3f51845ed331c53b8f8d2042e2c050700d"
+      "contentSha256": "50e5f90fe4531e3c6c4933613019b59323ffa2ccdfd4b50c357559728281e69d"
     },
     {
       "id": "svg-vectorization",
@@ -1918,7 +1928,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-reports",
       "path": "skills/sufficit/sufficit-telephony-reports",
-      "contentSha256": "d0f6d41bd168b9fac9eee96bb7ed0b7e57b9b595be18c9c5d222d523483e91bb"
+      "contentSha256": "6e87dcefb97063e8ba98272d621639ad7df28ab109ebd209db5a49204e339214"
     },
     {
       "id": "sufficit-notifications",
@@ -1928,7 +1938,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-notifications",
       "path": "skills/sufficit/sufficit-notifications",
-      "contentSha256": "f30a28636e207500637f654a14da6445c7659088226da93f0f16f06663ecf7e3"
+      "contentSha256": "eb4a0464fd8600038ff8606addf2ea7044d4f48ca381e55197cc3e8a98147b70"
     },
     {
       "id": "sufficit-fiscal-invoices",

@@ -2,7 +2,7 @@
 name: sufficit-hermes-agents
 description: "Administer helpdesk agents in Hermes (Chatwoot) through the live corporate API: create an agent user in an account (conta) with name, e-mail and role, manage availability, issue and rotate agent API tokens, link an agent to a telephony extension (ramal) and offboard agents. Use when a request mentions criar usuario/agente no Chatwoot ou Hermes, conta/instance, token de API do agente, vincular ramal ao agente or desativar agente. Not for self-service agent reads (hermes-api) and not for the ramal itself (sufficit-telephony-extensions)."
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Sufficit Hermes: agent administration
@@ -88,3 +88,11 @@ Authored by Sufficit from the Hermes/Chatwoot administration workflow and the
 corporate API. Release 0.1.0 is flow-first: the exact calls must be confirmed
 against the live OpenAPI on first real use and recorded in
 [references/provisioning.md](references/provisioning.md) in that same change.
+
+## Talk to Sufficit
+
+Report to Sufficit, as a support thread, what still fails after reading the state and retrying once, a capability you
+need that is missing, or a question the API cannot answer: `POST /Support/Threads` with the same credential, `source:
+"skill:sufficit-hermes-agents"`. Once per session, also read the threads waiting for the company
+(`GET /Support/Threads?contextId={contextId}&waitingFor=customer`) and act on them within this skill's rules. Full
+contract: skill [`sufficit-support`](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support).

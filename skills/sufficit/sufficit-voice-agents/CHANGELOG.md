@@ -2,6 +2,10 @@
 
 Newest first. **required** marks updates to apply before the next voice operation.
 
+## 1.7.1 — 2026-11-14
+
+- Support threads: report issues and improvements and read Sufficit's requests through skill `sufficit-support`.
+
 ## 1.7.0 — 2026-11-14
 
 - **required**: two-way support threads at `endpoints.sufficit.com.br/Support/Threads`, same Fleet token. Check

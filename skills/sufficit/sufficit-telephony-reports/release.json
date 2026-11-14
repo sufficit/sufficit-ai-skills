@@ -1,6 +1,6 @@
 {
   "name": "sufficit-telephony-reports",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/sufficit/sufficit-telephony-reports",
   "license": "MIT-0"
