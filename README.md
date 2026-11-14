@@ -24,10 +24,11 @@ conteúdo importado.
 | Videos | 1 | Sufficit, MIT-0 |
 | Asaas | 4 | Sufficit, MIT-0 |
 | QuePasa | 2 | Sufficit, MIT-0 |
+| Gateways (IXC) | 1 | Sufficit, MIT-0 |
 
 As skills ficam em [`skills/android`](skills/android),
 [`skills/asaas`](skills/asaas),
-[`skills/google`](skills/google), [`skills/hermes`](skills/hermes), [`skills/images`](skills/images),
+[`skills/gateways`](skills/gateways), [`skills/google`](skills/google), [`skills/hermes`](skills/hermes), [`skills/images`](skills/images),
 [`skills/instagram`](skills/instagram),
 [`skills/mikrotik`](skills/mikrotik), [`skills/quepasa`](skills/quepasa),
 [`skills/refero`](skills/refero),
@@ -76,6 +77,10 @@ The [`hermes-api`](skills/hermes/api/SKILL.md) skill discovers the Hermes helpde
 server's own OpenAPI document and calls it as the agent's own user (profile, avatar,
 conversations, private notes); [`hermes-triage`](skills/hermes/triage/SKILL.md) routes
 conversations to the right team with private notes, never replying to customers.
+
+The [`ixc-api`](skills/gateways/ixc/SKILL.md) skill calls an ISP's IXC Provedor (IXCSoft) webservice across
+every module — customers and contracts, receivables, tickets and service orders, Radius and fiber, inventory and
+administration — with safe write rules, plus a tool pack for Sufficit Fleet voice and chat agents.
 
 The [`quepasa-api`](skills/quepasa/api/SKILL.md) skill calls the QuePasa API as a
 client; [`quepasa-production`](skills/quepasa/production/SKILL.md) operates Sufficit's

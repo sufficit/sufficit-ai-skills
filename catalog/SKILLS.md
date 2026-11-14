@@ -47,6 +47,12 @@ inside the repository's documentation hierarchy.
 | --- | --- | --- | --- |
 | [asterisk-dialplan](../skills/asterisk/dialplan/SKILL.md) |  | Sufficit | Write, review and format traditional Asterisk dialplan with consistent conventions for context comments, TAB indentation, English text and change headers. Us... |
 
+## gateways
+
+| Skill | Card | Source | Description |
+| --- | --- | --- | --- |
+| [ixc-api](../skills/gateways/ixc/SKILL.md) | [card](../skills/gateways/ixc/skill-card.md) | Sufficit | Call the IXC Provedor (IXCSoft ISP management ERP) REST webservice correctly for every module — customers, contracts and plans, receivables (boleto, PIX, ren... |
+
 ## google
 
 | Skill | Card | Source | Description |

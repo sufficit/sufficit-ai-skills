@@ -2,7 +2,7 @@
 name: sufficit-voice-agents
 description: "Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP number, virtual extension, training publication, test calls, training proposals and HTTP tools that call your own systems (for example an ERP such as IXC). Use when asked to set up, change, publish, test or diagnose a voice agent of a Sufficit telephony customer. Includes how to check for and apply updates of this skill."
 metadata:
-  version: "1.7.1"
+  version: "1.7.2"
 ---
 
 # Sufficit voice agents

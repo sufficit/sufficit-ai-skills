@@ -1,0 +1,4 @@
+interface:
+  display_name: IXC Provedor API
+  short_description: Query and operate an ISP's IXC Provedor through its webservice
+  default_prompt: Use $ixc-api to look up a customer, contract, invoice, ticket or login in IXC.

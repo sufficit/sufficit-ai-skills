@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 191,
+  "catalogEntries": 192,
   "sources": [
     {
       "id": "android",
@@ -1858,7 +1858,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-voice-agents",
       "path": "skills/sufficit/sufficit-voice-agents",
-      "contentSha256": "6da4ffddb6c5ac0a1dc09574752ddbe29fc92a3170149d7ab1164e6dc95a8e74"
+      "contentSha256": "c4060ffe0b2867755c8ae07b605caf22c1649fc5b820dbc9b91b90ea5821d5b6"
     },
     {
       "id": "sufficit-frontend",
@@ -1969,6 +1969,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-service-reconciliation",
       "path": "skills/sufficit/sufficit-service-reconciliation",
       "contentSha256": "a7afa72231fce82fab855050391ddb559a0abde7b378a94dab513fbeefbfc297"
+    },
+    {
+      "id": "ixc-api",
+      "name": "ixc-api",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/gateways/ixc",
+      "path": "skills/gateways/ixc",
+      "contentSha256": "6ae785a7b753fefe4a18fa758b019e0b076828b4166896a21330eb24e631177f"
     }
   ]
 }

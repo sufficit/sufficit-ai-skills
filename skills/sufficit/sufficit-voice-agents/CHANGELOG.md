@@ -2,6 +2,10 @@
 
 Newest first. **required** marks updates to apply before the next voice operation.
 
+## 1.7.2 — 2026-11-14
+
+- HTTP tools: point IXC integrations to the `ixc-api` skill's Fleet tool pack.
+
 ## 1.7.1 — 2026-11-14
 
 - Support threads: report issues and improvements and read Sufficit's requests through skill `sufficit-support`.

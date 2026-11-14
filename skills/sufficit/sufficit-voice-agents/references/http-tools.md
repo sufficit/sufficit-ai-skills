@@ -77,6 +77,10 @@ Rules enforced by Fleet:
 }
 ```
 
+For a full IXC integration (contracts, connection status, open invoices, PIX, tickets, trust unblock and the
+persona block), use the tested tool pack in the
+[IXC skill](../../../gateways/ixc/references/fleet-tools.md).
+
 IXC searches are `POST` with header `ixcsoft: listar`; other tables follow the same pattern (`/cliente_contrato`,
 `/fn_areceber`, `/su_oss_chamado`). Check the format of `query` (punctuation, zeros) with `test` before granting the
 tool. A tool that opens a ticket uses `effect: "write"`, no `ixcsoft` header, and is granted with `allowWrite: true`.
