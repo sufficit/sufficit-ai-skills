@@ -2872,7 +2872,7 @@
     {
       "id": "ixc-api",
       "name": "ixc-api",
-      "description": "Call the IXC Provedor (IXCSoft ISP management ERP) REST webservice correctly for every module — customers, contracts and plans, receivables (boleto, PIX, renegotiation), payables, tickets and service orders, Radius logins, connection status, trust unblock, fiber ONU/OLT, inventory, purchasing, sales, CRM, VoIP and administration — with Basic auth (user id + token), the ixcsoft: listar search header, grid_param filters and safe write rules. Also ships a tested-pattern tool pack for Sufficit Fleet voice and chat agents. Use when a request involves IXC, IXCSoft, IXC Provedor, webservice/v1 or an ISP's customer, contract, invoice, ticket, OS or login data. Version 1.0.1.",
+      "description": "Call the IXC Provedor (IXCSoft ISP management ERP) REST webservice correctly for every module — customers, contracts and plans, receivables (boleto, PIX, renegotiation), payables, tickets and service orders, Radius logins, connection status, trust unblock, fiber ONU/OLT, inventory, purchasing, sales, CRM, VoIP and administration — with Basic auth (user id + token), the ixcsoft: listar search header, grid_param filters and safe write rules. Also ships a tested-pattern tool pack for Sufficit Fleet voice and chat agents. Use when a request involves IXC, IXCSoft, IXC Provedor, webservice/v1 or an ISP's customer, contract, invoice, ticket, OS or login data. Version 1.0.2.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/ixc/api",
       "tags": [
         "ixc",
@@ -2886,8 +2886,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "2e33fb5b272d8e36471d89bf15e3c524e6f8fafba3f0ca51d1996ca41d815641",
-      "version": "1.0.1"
+      "contentSha256": "41d81ecef47d4b22aac218886c6a396cf78e07228faed3f576c93b5a0b0885ea",
+      "version": "1.0.2"
     }
   ],
   "catalogEntries": 191

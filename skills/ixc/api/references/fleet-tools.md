@@ -7,7 +7,9 @@ grants and publication are in the
 Request mechanics are in [requests](requests.md).
 
 Status: field names and bodies come from IXC's official collection and from flows a Sufficit customer runs in
-production. **Run `POST …/http-tools/{toolId}/test` against the customer's IXC for every tool before granting it**,
+production. On 2026-11-14 the bodies of every read tool except `ixc_pix_fatura` were run against a production IXC
+(read-only): all `responseFields` exist, each call took 0.45–1.6 s, and a CPF search with digits only returned
+nothing while the masked form matched. Write tools and `get_pix` were not exercised. **Run `POST …/http-tools/{toolId}/test` against the customer's IXC for every tool before granting it**,
 and adjust `responseFields` to what that installation returns.
 
 ## Before creating the tools
@@ -124,7 +126,7 @@ Never add `senha` (the PPPoE password) to `responseFields`. See [network](networ
   "headers": { "ixcsoft": "listar" },
   "body": { "qtype": "fn_areceber.id_cliente", "query": "{{id_cliente}}", "oper": "=", "page": "1", "rp": "6",
     "sortname": "fn_areceber.data_vencimento", "sortorder": "asc",
-    "grid_param": "[{\"TB\":\"fn_areceber.status\",\"OP\":\"IN\",\"P\":\"A,P\"},{\"TB\":\"fn_areceber.liberado\",\"OP\":\"=\",\"P\":\"S\"}]" },
+    "grid_param": "[{\"TB\":\"fn_areceber.status\",\"OP\":\"!=\",\"P\":\"R\"},{\"TB\":\"fn_areceber.status\",\"OP\":\"!=\",\"P\":\"C\"},{\"TB\":\"fn_areceber.liberado\",\"OP\":\"=\",\"P\":\"S\"}]" },
   "parameters": [ { "name": "id_cliente", "type": "integer", "required": true, "description": "id do cliente no IXC" } ],
   "credentialId": "<read credential>",
   "responseFields": [ "type", "message", "total", "registros.id", "registros.data_vencimento", "registros.valor",

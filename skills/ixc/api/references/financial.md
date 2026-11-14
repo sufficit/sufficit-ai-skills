@@ -87,12 +87,13 @@ Fields read: `id`, `nn_boleto`, `status`, `data_emissao`, `data_vencimento`, `da
 
 Open titles only (official flow): `grid_param` with `fn_areceber.liberado = S` and status not received/cancelled.
 The official example uses `{"TB":"fn_areceber.status","OP":"!=","P":"R","P2":"C"}` and a due-date range with
-`"OP":"BE"` (between) and `P`/`P2`. The `P2` on `!=` is undocumented; the safe portable form is
-`status IN A,P` or `status = A` (plus a second call for `P`), and checking `status` client-side.
+`"OP":"BE"` (between) and `P`/`P2`. The `P2` on `!=` is undocumented. Use two `!=` conditions
+(`status != R` and `status != C`), checked on a production IXC on 2026-11-14. **Do not use `IN` on
+`fn_areceber.status`**: that IXC answered `IN A,P` with HTTP 200 and a non-JSON "Ocorreu um erro ao processar".
 ```json
 { "qtype": "fn_areceber.id_cliente", "query": "<id_cliente>", "oper": "=", "page": "1", "rp": "50",
   "sortname": "fn_areceber.data_vencimento", "sortorder": "asc",
-  "grid_param": "[{\"TB\":\"fn_areceber.liberado\",\"OP\":\"=\",\"P\":\"S\"},{\"TB\":\"fn_areceber.status\",\"OP\":\"IN\",\"P\":\"A,P\"}]" }
+  "grid_param": "[{\"TB\":\"fn_areceber.liberado\",\"OP\":\"=\",\"P\":\"S\"},{\"TB\":\"fn_areceber.status\",\"OP\":\"!=\",\"P\":\"R\"},{\"TB\":\"fn_areceber.status\",\"OP\":\"!=\",\"P\":\"C\"}]" }
 ```
 Overdue = `status` A/P and `data_vencimento` < today.
 
@@ -418,7 +419,7 @@ month and customer.
 ### Open invoices by CPF/CNPJ → PIX copy-paste or linha digitável
 1. Mask the document (`000.000.000-00` / `00.000.000/0000-00`), list `cliente` with
    `qtype: cliente.cnpj_cpf`, `oper: =`, `rp: 1`; take `id` (several matches → ask which). See [customers](customers.md).
-2. List `fn_areceber` by `id_cliente` with `grid_param` `liberado = S` and `status IN A,P`, sorted by
+2. List `fn_areceber` by `id_cliente` with `grid_param` `liberado = S`, `status != R` and `status != C`, sorted by
    `fn_areceber.data_vencimento asc`. Check `type` for errors; `total: 0` → "no open invoices".
 3. Present each title: `id`, `data_vencimento` (overdue?), `valor_aberto` (fallback `valor`), `data_inicial`–`data_final`.
 4. For the chosen title:

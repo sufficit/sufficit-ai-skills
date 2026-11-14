@@ -2,7 +2,7 @@
 name: ixc-api
 description: "Call the IXC Provedor (IXCSoft ISP management ERP) REST webservice correctly for every module — customers, contracts and plans, receivables (boleto, PIX, renegotiation), payables, tickets and service orders, Radius logins, connection status, trust unblock, fiber ONU/OLT, inventory, purchasing, sales, CRM, VoIP and administration — with Basic auth (user id + token), the ixcsoft: listar search header, grid_param filters and safe write rules. Also ships a tested-pattern tool pack for Sufficit Fleet voice and chat agents. Use when a request involves IXC, IXCSoft, IXC Provedor, webservice/v1 or an ISP's customer, contract, invoice, ticket, OS or login data."
 metadata:
-  version: "1.0.1"
+  version: "1.0.2"
 ---
 
 # IXC Provedor API

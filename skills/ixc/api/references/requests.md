@@ -7,7 +7,8 @@ module references list the tables, fields and actions.
 Sources: the official Postman collection "API - IXC Provedor" (published by IXCSoft's API support), the official
 wiki (`https://wikiapiprovedor.ixcsoft.com.br/`, one page per form with fields and allowed values) and the support
 wiki pages "Configuração Webservice" and "Erros comuns API". Items marked *(observed)* come from Sufficit
-production flows; *(inferred)* items are not documented and must be confirmed with a read before relying on them.
+production flows. The mechanics in this file (POST and GET search, `grid_param` with `IN` and `BE`, empty-result
+shape, error shapes, 401) were checked read-only against a production IXC on 2026-11-14; *(inferred)* items are not documented and must be confirmed with a read before relying on them.
 
 ## Base URL and authentication
 
@@ -78,7 +79,7 @@ Operators (official list):
 | `=` `!=` | equal / different | |
 | `>` `<` `>=` `<=` | comparisons | numbers and dates |
 | `L` / `NL` | contains / does not contain | text (SQL `LIKE`) |
-| `IN` / `NI` | in / not in a comma-separated list (`"1,3,5"`) | numbers / codes |
+| `IN` / `NI` | in / not in a comma-separated list (`"1,3,5"`) | numbers (official rule). On text codes it works for some fields (`cliente_contrato.status_internet IN CA,CM,FA`) and breaks on others (`fn_areceber.status`); prefer `!=` chains or `=` for text |
 | `BE` / `NBE` | between / not between `P` and `P2` | needs both bounds; only inside `grid_param` |
 
 To list a whole table, use `"qtype": "<table>.id", "query": "1", "oper": ">="` (or `"0"` with `>`) and page.
@@ -130,8 +131,11 @@ Common official filters, all as `grid_param` entries:
 - **Errors usually come back as HTTP 200** with `{ "type": "error", "message": "…" }`. Always check `type` before
   reading `registros` or `id`; never report an error as "no records" or "done". `message` is Portuguese and may
   contain HTML (`<br />`); relay the real reason in plain words.
+- A filter IXC cannot process can return HTTP 200 with a **non-JSON** body such as "Ocorreu um erro ao processar.
+  Contate o suporte IXC Soft." Treat a non-JSON 200 as an error of the request (usually the filter), not as data.
 - HTTP status codes (official "Erros comuns API"):
   - `401 Authorization Required` — the user's token changed or the user was deleted (or webservice access is off).
+    The body is an nginx HTML page, not JSON.
   - `404 Not Found` from nginx — the server lacks `try_files $uri $uri /webservice/index.php?$query_string;`;
     a customer-side fix. A 404 on one table only means a wrong table or action name.
   - `400 Bad Request` — `http://` used where the server requires `https://`.
@@ -150,7 +154,8 @@ Common official filters, all as `grid_param` entries:
 - Booleans: `"S"` (sim) / `"N"` (não).
 - Money: decimal with a dot, as a string (`"99.90"`).
 - `cliente.cnpj_cpf` is stored **with punctuation**: CPF `000.000.000-00`, CNPJ `00.000.000/0000-00`. Mask what
-  the person typed or said before an `=` search (11 digits → CPF mask, 14 digits → CNPJ mask).
+  the person typed or said before an `=` search (11 digits → CPF mask, 14 digits → CNPJ mask). Checked on a
+  production IXC: the digits-only search finds nothing.
 - Phones (`telefone_celular`, `fone`, `whatsapp`) are free text, usually `(DD) 9XXXX-XXXX` *(observed)*. Search with
   the same mask; when unsure, use `L` with the last 8 digits and confirm the match with a second datum.
 - Field names keep IXC's spelling, including typos: `su_ticket.menssagem`, table `sub_grupo_produdos`.
