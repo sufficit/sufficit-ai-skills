@@ -1938,7 +1938,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-fiscal-invoices",
       "path": "skills/sufficit/sufficit-fiscal-invoices",
-      "contentSha256": "082df40c094c13786bea209c208f3871c6337daebd811feb0ac76cb1ab754915"
+      "contentSha256": "7458562805701ef46820a5a84a7591d02f0a731deb92d07e1ecc2fffd5527c53"
     },
     {
       "id": "sufficit-financial-records",

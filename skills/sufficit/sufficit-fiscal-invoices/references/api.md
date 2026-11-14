@@ -65,6 +65,16 @@ refusal with the provider reason in `detail` and `code`.
 - `GET Finance/Fiscal/Takers/{contextId}` and `POST Finance/Fiscal/Takers/{contextId}/Sync`: taker at
   Asaas; sync copies the CRM address, and the CRM e-mail when Asaas has none.
 
+## Decision queue
+
+`GET Finance/Fiscal/Pending?days=30` (global finance access): `groups`, `customers` (per customer counts,
+`dismissed`) and `lines` (each with `contextid` and `customer`; pending and failed first, oldest first, then
+dismissed). Payments received only at Asaas are included (placed by imported invoices or by CPF/CNPJ).
+
+`POST Finance/Fiscal/Dismiss` with `{ "contextid": "<guid>", "reference": "<line.reference>", "reason": "…" }`:
+decides not to issue (answer `reason`, `userid`, `timestamp`). `DELETE Finance/Fiscal/Dismiss?contextId=&reference=`
+puts it back (404 when it was not dismissed). A dismissed line issued later keeps the invoice status.
+
 ## Cancel
 
 `POST Finance/Fiscal/Invoices/{providerId}/Cancel?contextId=<guid>`

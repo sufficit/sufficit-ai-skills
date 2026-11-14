@@ -1,8 +1,8 @@
 ---
 name: sufficit-fiscal-invoices
-description: "Issue and consult service invoices (NFS-e) for Sufficit customers through the Sufficit API, without opening the Asaas panel: list a customer's received payments split by invoice type, see which invoices are pending, processing, issued or failed (with the provider reason), issue an invoice bound to the received payment, cancel an issued invoice, check the taker registration (address and e-mail copied from the CRM) and reprocess invoices after fixing the CRM. Use for emitir nota fiscal, NFS-e de cliente, notas a emitir, consolidacao fiscal, consultar nota, cancelar nota, nota falhou, nota nao importou. Internal managers only."
+description: "Issue and consult service invoices (NFS-e) for Sufficit customers through the Sufficit API, without opening the Asaas panel: list a customer's received payments split by invoice type, see which invoices are pending, processing, issued or failed (with the provider reason), issue an invoice bound to the received payment, cancel an issued invoice, check the taker registration (address and e-mail copied from the CRM) and reprocess invoices after fixing the CRM. Use for emitir nota fiscal, NFS-e de cliente, notas a emitir, consolidacao fiscal, consultar nota, cancelar nota, notas a decidir, nao emitir nota, nota falhou, nota nao importou. Internal managers only."
 metadata:
-  version: "1.1.1"
+  version: "1.2.0"
   author: "Sufficit"
 ---
 
@@ -50,6 +50,19 @@ only. Do not grant roles or entitlements to make a call pass; report the gap.
   ask for the reason and wait for an explicit confirmation ("pode cancelar"). The
   municipality may refuse it (deadline, rules of the city); never promise it.
 - **Automatic issuing is not enabled.** Every invoice is issued by a person's request.
+
+## Workflow: decision queue across customers
+
+The screen without a customer is the manager's decision queue (tab "A decidir"). By API:
+
+1. `GET Finance/Fiscal/Pending?days=30` (1–90). `lines[]` are the receipts still without invoice of every
+   customer (`contextid`, `customer`), including payments received only at Asaas (`source` `ASAAS`); dismissed
+   lines come last with `status` `dismissed` and `dismissal.reason`.
+2. Report count and value per type; list lines without type (`servicekey` empty) and `failed` ones first.
+3. For each line the manager decides: issue (workflow below, explicit confirmation; several lines may be
+   confirmed together, issue one at a time), or not issue: `POST Finance/Fiscal/Dismiss`
+   `{"contextid","reference","reason"}` (reason 5..500 characters, e.g. refund, invoice already issued outside
+   the system). To undo: `DELETE Finance/Fiscal/Dismiss?contextId=&reference=`.
 
 ## Workflow: which invoices are pending
 
