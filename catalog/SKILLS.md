@@ -268,4 +268,4 @@ inside the repository's documentation hierarchy.
 | Skill | Card | Source | Description |
 | --- | --- | --- | --- |
 | [video-transcribe](../skills/videos/video-transcribe/SKILL.md) |  | Sufficit | Transcribe the speech of a local video or audio file into a Markdown document with Whisper and ffmpeg. Use when the user asks to transcribe a video, Reel or... |
-| [video-understand](../skills/videos/video-understand/SKILL.md) |  | Sufficit | Understand YouTube or local videos using full timestamped transcripts and visual inspection at specific times. Use for learning from a video, explaining demo... |
+| [youtube-video-understand](../skills/videos/youtube-video-understand/SKILL.md) |  | Sufficit | Understand YouTube or local videos using full timestamped transcripts and visual inspection at specific times. Use for learning from a video, explaining demo... |

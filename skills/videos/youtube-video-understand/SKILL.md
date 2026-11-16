@@ -1,13 +1,13 @@
 ---
-name: video-understand
+name: youtube-video-understand
 description: Understand YouTube or local videos using full timestamped transcripts and visual inspection at specific times. Use for learning from a video, explaining demonstrations, finding a passage or viewing any minute; excludes channel administration and publishing.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
 
-# Understand a video
+# Understand YouTube and local videos
 
 Produce evidence from speech **and** images before explaining what a video teaches
 or demonstrates. A title, description, thumbnail or transcript alone does not prove
