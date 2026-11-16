@@ -4,8 +4,8 @@ Scope: current session 01a1e58f-baad-7cb3-b3f6-7ed2f273f701. Add YouTube to the 
 
 1. COMPLETED — Inspect naming/catalog identity and available tablet controls; isolate own changes.
 2. COMPLETED — Rename package and discovery metadata, preserve catalog identity for updates, validate and publish to main/catalog.
-3. IN PROGRESS — Implement and validate a tablet-native workflow using Genius tools, without remote computer delegation or Python/ffmpeg prerequisites on Android. Test full transcript and requested timestamp on the actual tablet.
-4. PENDING — Record delivery; convert plan to activity only when all checkpoints are proven; commit/push own changes and preserve parallel work.
+3. COMPLETED — Implement and validate a tablet-native workflow using Genius tools, without remote computer delegation or Python/ffmpeg prerequisites on Android. Test full transcript and requested timestamp on the actual tablet.
+4. COMPLETED — Record delivery; convert plan to activity only when all checkpoints are proven; commit/push own changes and preserve parallel work.
 
 Acceptance: query YouTube finds the named skill; tablet agent uses the package for the requested video and timestamp. Local helper tests alone do not prove tablet acceptance. No changes to unrelated conversations or device configuration.
 
@@ -21,4 +21,12 @@ Unassisted execution NOT PASSED: agent did not load the skill, chose browser/sub
 
 Owner clarification: workflow must execute from the tablet itself. Desktop delegation is excluded. The interrupted remote draft was still unsent and was removed after fresh UI inspection. Guided tablet installation passed (id video-understand, name youtube-video-understand, version 1.1.0). Local shell checks proved Python/yt-dlp/ffmpeg/ffprobe and Termux/proot are unavailable; pure desktop instructions do not meet mobile acceptance. No mobile success is claimed.
 
-Native implementation is tracked in Genius issue #1519 and docs/PLAN-YOUTUBE-NATIVE-TABLET.md in the corresponding Genius session worktree. Package 1.2.0 now prefers tablet-native tools and explicitly excludes silent desktop delegation. Guided install of 1.1.0 succeeded; execution failed because Android lacks desktop dependencies. Thirteen native Core tests passed; APK build/physical acceptance pending.
+Native implementation and physical acceptance are recorded in [Genius delivery](https://github.com/sufficit/sufficit-ai-genius/blob/main/docs/activities/202611161610-youtube-native-tablet.md), issue #1519. Package 1.2.0 prefers the native tools and excludes silent desktop delegation. The initial desktop-dependency failure was resolved by adding a native capability to Genius.
+
+Final physical acceptance PASS on Lenovo HA1NP62H, profile 10, Genius 0.170.0-dev.34 (1003548), source [38304d7](https://github.com/sufficit/sufficit-ai-genius/commit/38304d713f77aafc3f2e4fc320ec9a15e0d46b57). Fresh session ca889135-577b-4d1e-af90-dbc27673403a persisted/read all 401 available Portuguese automatic-caption segments in pages 0/200/400 and returned distinct actual video images at 600 and 150 seconds. No remote executor, shell helper or subagent appeared in that flow. The complete Markdown has 30713 bytes; the 600-second source image is 1280x720.
+
+The tablet read back the official installed skill as youtube-video-understand 1.2.0, Enabled/Available, immutable source [4254d89](https://github.com/sufficit/sufficit-ai-skills/commit/4254d89593224808e83b6a5d8b6e0a97b6c00455). Upstream validation 43936440895 and public catalog sync 43937303425 succeeded. The stable id remains video-understand. Android uses native video_transcript/video_frame; desktop Python helpers remain optional. This completes the earlier unsuccessful desktop-dependency attempt rather than treating it as mobile acceptance.
+
+Genius validation: full local CI passed (5619 Core tests, four environment skips, plugin/script suites); final focused run passed 22 tests, including 14 evidence tests and eight Markdown tests. Android Release compiled and was installed with the same signing identity and existing data preserved. Remote implementation CI is separately tracked in the [Genius delivery](https://github.com/sufficit/sufficit-ai-genius/blob/main/docs/activities/202611161610-youtube-native-tablet.md), along with the redacted physical receipt. No binary release or wider rollout is claimed.
+
+Limits: this physical test uses automatic captions, not independently verified verbatim speech. Captionless audio-provider fallback is unit-tested only. Native decoding returns the closest source frame and does not expose its exact PTS. Raw acceptance exports/screenshots remain outside Git in /tmp/youtube-tablet-01a1e58f.

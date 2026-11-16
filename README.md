@@ -183,4 +183,4 @@ The [youtube-video-understand](skills/videos/youtube-video-understand/SKILL.md) 
 timestamped YouTube/local transcripts with frame inspection at arbitrary times.
 Delivery: [video understanding](docs/activities/202611161526-video-understanding.md).
 
-Execution tracking: [YouTube naming and tablet acceptance](docs/PLAN-YOUTUBE-TABLET.md).
+Delivery: [YouTube naming and tablet acceptance](docs/activities/202611161700-youtube-tablet-acceptance.md).
