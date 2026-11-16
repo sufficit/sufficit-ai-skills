@@ -36,6 +36,13 @@ look like a failed line to its user. Trace the affected customer's actual path.
    calls. Record event/call identifiers, times, transport and terminal outcomes.
    Missing capability is a concrete limitation; do not claim a test was run.
 6. Correlate an actual failed customer call by origin, DID, time and LinkedId.
+   In the deployed consolidated Call/Search contract, each result's `key` is its
+   LinkedId (verify the current schema/response). Pass that returned value to
+   GET /Telephony/Call/Channels with the same `contextid` and `linkedid=key`.
+   A missing `linkedid` query parameter calls for resolving the call identity,
+   not abandoning correlation. These authenticated API reads are independent
+   of PBX SSH and should be completed while a live-registration read is blocked.
+   Never manufacture a LinkedId from a channel name, timestamp or customer GUID.
    Separate customer calls from known internal tests. A time gap before Dial may
    be IVR, announcement or waiting; read that configuration before blaming delay.
 
