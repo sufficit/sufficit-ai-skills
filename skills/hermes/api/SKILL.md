@@ -2,7 +2,7 @@
 name: hermes-api
 description: "Complete authorized Hermes helpdesk requests from ordinary language: locate the customer or WhatsApp group, open an attendance, send text and PDF attachments, and verify the result. Discover the live API and use the connected user's Identity Vault token when a ready-made tool is missing. Also manage your own profile/avatar and private notes. Do not infer lack of access from missing tools or environment variables."
 metadata:
-  version: "0.3.0"
+  version: "0.4.0"
 ---
 
 # Hermes API
@@ -23,6 +23,15 @@ Missing specialized tools do not mean missing API access. Discover/activate the 
 `hermes_*` tool first; if unavailable or lacking a required field, continue through
 [the API/Vault fallback](references/connected-execution.md). This fallback is also
 for Genius, not only external scripts. Respect actual permission denials.
+
+If the connection test or Vault metadata proves the personal token is missing or
+invalid, read [connect your own Hermes account](references/token-onboarding.md)
+before stopping. Prefer retrieving the current user's existing token through an
+available authenticated browser and saving it to their personal Vault when that
+connection is authorized and the tools can keep secrets out of the transcript.
+Otherwise provide **both** the direct Hermes token-page link and the actual link
+returned by `vault_prepare_entry`, with brief steps for a beginner. A Vault link
+alone does not tell the user where to find the Hermes token.
 
 The user supplies the business outcome, not API paths, token locations, inbox IDs or
 commands. Resolve technical details yourself from the account and contact evidence.
@@ -73,8 +82,8 @@ Environment variables are one credential source outside Genius, not a prerequisi
   header is deprecated and some proxies reject it with 401.
 - Never print, echo, log, commit or send the token. Pass it through an environment variable
   or a file, never inside a URL. When quoting it, mask it (`abcd…`).
-- If no token is configured for the instance, say so plainly. Do not ask a person to paste
-  one into a chat.
+- If no token is configured for the instance, follow [token onboarding](references/token-onboarding.md).
+  Do not ask a person to paste one into a chat or end with only a Vault path.
 
 ## Discover before you call
 

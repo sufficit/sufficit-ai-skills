@@ -77,6 +77,7 @@ The [`hermes-api`](skills/hermes/api/SKILL.md) skill discovers the Hermes helpde
 server's own OpenAPI document and calls it as the agent's own user (profile, avatar,
 conversations, private notes); [`hermes-triage`](skills/hermes/triage/SKILL.md) routes
 conversations to the right team with private notes, never replying to customers.
+The [Hermes connection plan](docs/PLAN-HERMES-TOKEN-ONBOARDING.md) tracks token onboarding and tablet acceptance.
 
 The [`ixc-api`](skills/ixc/api/SKILL.md) skill calls an ISP's IXC Provedor (IXCSoft) webservice across
 every module — customers and contracts, receivables, tickets and service orders, Radius and fiber, inventory and

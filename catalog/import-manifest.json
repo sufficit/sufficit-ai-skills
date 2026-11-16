@@ -1648,7 +1648,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/api",
       "path": "skills/hermes/api",
-      "contentSha256": "ac8aed40b78ebd65cadd7ec436806cc705d9506bfc598ed941eb1566ae975d11"
+      "contentSha256": "9fd6a61821bb6806d9cda3d427f82601b89cf5a79cc2b0e8b20aacbaff7aa950"
     },
     {
       "id": "hermes-triage",

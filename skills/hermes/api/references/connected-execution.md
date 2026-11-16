@@ -15,6 +15,10 @@ are a discovery problem, not proof that the account cannot perform the operation
    `personal/hermes/production/api-token` in the current user's personal vault.
    A missing environment variable says nothing about this entry. A prior successful
    `hermes_connection_test` already proves the plugin resolved this credential.
+   If metadata proves it missing, or authentication proves it invalid, follow
+   [token onboarding](token-onboarding.md): try the authorized personal browser
+   session or provide the Hermes token-page link together with a prepared Vault
+   entry link. A denied metadata request is not evidence of an absent entry.
 4. Prefer a host HTTP/secret bridge that resolves the Vault reference at execution
    time without returning the value to the conversation. Inspect the actual tool
    schema: `vault:` is not automatically supported in arbitrary headers or shell.
