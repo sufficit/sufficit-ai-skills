@@ -176,4 +176,4 @@ Entrega: [skill de reconciliação e aceite independente](docs/activities/202611
 
 Training delivery: [inbound diagnostic update](docs/activities/202611160844-rafael-inbound-diagnostic-training.md).
 
-Diagnostic follow-up: [call correlation](docs/PLAN-RAFAEL-CALL-CORRELATION.md).
+Diagnostic follow-up: [call correlation](docs/activities/202611160924-rafael-call-correlation.md).
