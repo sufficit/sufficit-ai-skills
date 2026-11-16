@@ -2928,7 +2928,28 @@
       "sourceId": "sufficit-genius",
       "contentSha256": "5bfef804c4841f4b06528918cb3857e8bb3a1dea9aea38c04b6403bb8ec9ab48",
       "version": "1.0.0"
+    },
+    {
+      "id": "video-understand",
+      "name": "video-understand",
+      "description": "Understand YouTube and local videos with full timestamped transcripts and visual inspection at any requested minute.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-understand",
+      "tags": [
+        "sufficit",
+        "video",
+        "youtube",
+        "transcription",
+        "frames",
+        "timestamp",
+        "ffmpeg",
+        "whisper"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "97a0b92ab94633cf978aef748683ca2819ad8d2faaf5a600f5ca4bcfa02a2c23",
+      "version": "1.0.0"
     }
   ],
-  "catalogEntries": 194
+  "catalogEntries": 195
 }

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 194,
+  "catalogEntries": 195,
   "sources": [
     {
       "id": "android",
@@ -1999,6 +1999,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/customer-equipment-access",
       "path": "skills/sufficit/customer-equipment-access",
       "contentSha256": "5bfef804c4841f4b06528918cb3857e8bb3a1dea9aea38c04b6403bb8ec9ab48"
+    },
+    {
+      "id": "video-understand",
+      "name": "video-understand",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-understand",
+      "path": "skills/videos/video-understand",
+      "contentSha256": "97a0b92ab94633cf978aef748683ca2819ad8d2faaf5a600f5ca4bcfa02a2c23"
     }
   ]
 }
