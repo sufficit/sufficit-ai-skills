@@ -181,4 +181,4 @@ Diagnostic follow-up: [call correlation](docs/activities/202611160924-rafael-cal
 
 The [video-understand](skills/videos/video-understand/SKILL.md) skill combines complete
 timestamped YouTube/local transcripts with frame inspection at arbitrary times.
-Execution tracking: [video understanding](docs/PLAN-VIDEO-UNDERSTANDING.md).
+Delivery: [video understanding](docs/activities/202611161526-video-understanding.md).
