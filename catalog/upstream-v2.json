@@ -2932,7 +2932,7 @@
     {
       "id": "video-understand",
       "name": "youtube-video-understand",
-      "description": "Understand YouTube and local videos with full timestamped transcripts and visual inspection at any requested minute.",
+      "description": "Understand YouTube videos on Android tablets with native full-transcript and timestamp-frame tools; also supports a desktop helper for local media.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/youtube-video-understand",
       "tags": [
         "sufficit",
@@ -2947,8 +2947,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "560a45a37cbf691b4c5c1de42518fbf6cb69a99b89b26c50af4a6bc59acd953a",
-      "version": "1.1.0"
+      "contentSha256": "5b927588f02313e232377cf40a1a4344e838f5ab6bcdf2c39854ed3f4f0c6a4e",
+      "version": "1.2.0"
     }
   ],
   "catalogEntries": 195
