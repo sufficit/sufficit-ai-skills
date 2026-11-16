@@ -45,7 +45,7 @@ Use the structure that facilitates the reader's task. Apply the channel-specific
 
 Apply these rules when drafting or sending messages in WhatsApp and other chat apps:
 
-- By default, use **at most two short text lines and about 30 words total per message**. Longer messages are appropriate only when the user explicitly requests a technical assessment (parecer técnico) or a more detailed explanation (resposta mais explicada). Multiple findings or an internal diagnosis do not by themselves create that exception.
+- By default, use **at most two short text lines and about 30 words total per message**. Longer messages are appropriate only when the user explicitly requests a technical assessment or a more detailed explanation. Multiple findings or an internal diagnosis do not by themselves create that exception.
 - Lead with the current answer or verified conclusion, then include only the next useful action or question. Preserve uncertainty and the essential identifier; keep detailed logs and secondary findings out of the ordinary chat reply.
 - Do not split a long answer into several messages to evade the limit, or compress a report into two oversized lines. Line wrapping depends on the app and screen; keep the text short as well as limiting deliberate line breaks.
 - When a technical assessment or a more detailed explanation is explicitly requested, separate findings, evidence limits and necessary next actions with short paragraphs or simple bullets. Keep identifiers, dates and confidence attached to the findings they qualify; registration success is not proof that calls work.
