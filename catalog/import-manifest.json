@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 192,
+  "catalogEntries": 193,
   "sources": [
     {
       "id": "android",
@@ -1839,6 +1839,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-campaigns",
       "path": "skills/sufficit/sufficit-campaigns",
       "contentSha256": "44b8e1b595f955432dff2de227cb666a85651bfbc09e3c28884e9f8d519599d0"
+    },
+    {
+      "id": "sufficit-prospect-qualify",
+      "name": "sufficit-prospect-qualify",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-prospect-qualify",
+      "path": "skills/sufficit/sufficit-prospect-qualify",
+      "contentSha256": "6de297cf43f21fc44ac2b1aa5009d04c1d28cc04c479431309972ec65346ffa6"
     },
     {
       "id": "sufficit-support",

@@ -2627,6 +2627,23 @@
       "version": "1.1.0"
     },
     {
+      "id": "sufficit-prospect-qualify",
+      "name": "sufficit-prospect-qualify",
+      "description": "Find and qualify B2B prospects for Sufficit products (WhatsApp calls answered on Sufficit VoIP, Hermes omnichannel, after-hours AI) from public evidence only, score them 0-100 and draft a first message for approval. Use when asked to find leads, qualify providers (ISPs) or prepare a prospecting round. Research only: it never sends, follows, likes or comments.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-prospect-qualify",
+      "tags": [
+        "prospecting",
+        "sales",
+        "leads",
+        "research"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "6de297cf43f21fc44ac2b1aa5009d04c1d28cc04c479431309972ec65346ffa6",
+      "version": "1.0.0"
+    },
+    {
       "id": "sufficit-support",
       "name": "sufficit-support",
       "description": "Two-way support channel between a Sufficit customer company and Sufficit: report problems (issues), ask for improvements or ask questions, and read and act on requests Sufficit sends to the company (for example updating a skill or testing a change). Use when something in a Sufficit API or skill fails after reading the state and retrying once, when a capability is missing, at the start of a session to check threads waiting for the company, or when the user asks to talk to, report to or ask Sufficit. Not for routine operations the API already does.",
