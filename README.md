@@ -173,3 +173,5 @@ orienta consolidação, continuidade das competências e emissão financeira, co
 verificação somente leitura de capturas reais antes/depois.
 
 Entrega: [skill de reconciliação e aceite independente](docs/activities/202611141900-service-reconciliation-skill.md).
+
+Training delivery: [inbound diagnostic update](docs/activities/202611160844-rafael-inbound-diagnostic-training.md).
