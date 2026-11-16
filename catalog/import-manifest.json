@@ -2002,13 +2002,13 @@
     },
     {
       "id": "video-understand",
-      "name": "video-understand",
+      "name": "youtube-video-understand",
       "sourceId": "sufficit-genius",
       "author": "Sufficit",
       "license": "MIT-0",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-understand",
-      "path": "skills/videos/video-understand",
-      "contentSha256": "97a0b92ab94633cf978aef748683ca2819ad8d2faaf5a600f5ca4bcfa02a2c23"
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/youtube-video-understand",
+      "path": "skills/videos/youtube-video-understand",
+      "contentSha256": "560a45a37cbf691b4c5c1de42518fbf6cb69a99b89b26c50af4a6bc59acd953a"
     }
   ]
 }

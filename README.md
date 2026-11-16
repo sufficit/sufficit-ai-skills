@@ -179,6 +179,8 @@ Training delivery: [inbound diagnostic update](docs/activities/202611160844-rafa
 
 Diagnostic follow-up: [call correlation](docs/activities/202611160924-rafael-call-correlation.md).
 
-The [video-understand](skills/videos/video-understand/SKILL.md) skill combines complete
+The [youtube-video-understand](skills/videos/youtube-video-understand/SKILL.md) skill combines complete
 timestamped YouTube/local transcripts with frame inspection at arbitrary times.
 Delivery: [video understanding](docs/activities/202611161526-video-understanding.md).
+
+Execution tracking: [YouTube naming and tablet acceptance](docs/PLAN-YOUTUBE-TABLET.md).

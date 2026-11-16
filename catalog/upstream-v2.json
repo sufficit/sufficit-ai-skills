@@ -2931,9 +2931,9 @@
     },
     {
       "id": "video-understand",
-      "name": "video-understand",
+      "name": "youtube-video-understand",
       "description": "Understand YouTube and local videos with full timestamped transcripts and visual inspection at any requested minute.",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/video-understand",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/youtube-video-understand",
       "tags": [
         "sufficit",
         "video",
@@ -2947,8 +2947,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "97a0b92ab94633cf978aef748683ca2819ad8d2faaf5a600f5ca4bcfa02a2c23",
-      "version": "1.0.0"
+      "contentSha256": "560a45a37cbf691b4c5c1de42518fbf6cb69a99b89b26c50af4a6bc59acd953a",
+      "version": "1.1.0"
     }
   ],
   "catalogEntries": 195

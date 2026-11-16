@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-SCRIPT = Path(__file__).resolve().parents[1] / 'skills/videos/video-understand/scripts/video.py'
+SCRIPT = Path(__file__).resolve().parents[1] / 'skills/videos/youtube-video-understand/scripts/video.py'
 spec = importlib.util.spec_from_file_location('video_understand', SCRIPT)
 video = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(video)
