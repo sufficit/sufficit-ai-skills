@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.6.0"
+  version: "0.7.0"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -50,6 +50,13 @@ For an intercom or extension calling a queue number, read the internal-number
 section in [queues, DIDs and trunks](references/queues-dids-trunks.md). Numeric
 compatibility routing is separate from the GUID-based queue catalog. Inspect the
 actual caller context and loaded map before declaring an API or number missing.
+
+## Incoming-call diagnosis
+
+For “the line only makes calls” or calls not reaching attendants, read
+[inbound diagnostics](references/inbound-diagnostics.md). Trace arrival, the
+active time/IVR/queue path and the affected terminals. Keep attempted dialing,
+ringing signaling, PBX answer and human/audio acceptance as separate evidence.
 
 ## Operation flow
 
