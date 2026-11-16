@@ -2,7 +2,7 @@
 name: customer-equipment-access
 description: "First-level (N1) remote access to a customer's own equipment — ONT/router web interface, VoIP line (ATA/FXS) settings, customer-supplied VPN — to diagnose and fix a SIP extension that does not register, with evidence and without touching routes or other services. Use when support must reach a customer's Huawei ONT or similar CPE by IP, read or correct its SIP line, bring up a customer VPN or confirm a registration with the N2/PBX team. Not for PBX, dialplan or carrier changes."
 metadata:
-  version: "1.0.0"
+  version: "1.0.1"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
