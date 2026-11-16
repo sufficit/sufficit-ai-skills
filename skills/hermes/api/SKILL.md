@@ -1,8 +1,8 @@
 ---
 name: hermes-api
-description: "Connect your own Hermes (Chatwoot) account with a personal token and Identity Vault, guide beginners to their token page, and complete authorized helpdesk requests: locate contacts or groups, open an attendance, send text/PDF and verify delivery. Discover the live API when a tool is missing. Also manage your profile/avatar and private notes. Missing tools or environment variables do not prove missing access."
+description: "Connect your own Hermes (Chatwoot) account: conectar Hermes, pegar token de acesso, onde obter e salvar token no Vault, configurar ou verificar conexao. Guide beginners with direct Hermes and Vault links; retrieve an existing personal token through a safe authenticated browser when authorized. Also complete authorized helpdesk work: locate contacts/groups, open attendance, send text/PDF and verify delivery; discover the live API when tools are missing."
 metadata:
-  version: "0.4.1"
+  version: "0.4.2"
 ---
 
 # Hermes API
@@ -24,14 +24,33 @@ Missing specialized tools do not mean missing API access. Discover/activate the 
 [the API/Vault fallback](references/connected-execution.md). This fallback is also
 for Genius, not only external scripts. Respect actual permission denials.
 
-If the connection test or Vault metadata proves the personal token is missing or
-invalid, read [connect your own Hermes account](references/token-onboarding.md)
-before stopping. Prefer retrieving the current user's existing token through an
-available authenticated browser and saving it to their personal Vault when that
-connection is authorized and the tools can keep secrets out of the transcript.
-Otherwise provide **both** the direct Hermes token-page link and the actual link
-returned by `vault_prepare_entry`, with brief steps for a beginner. A Vault link
-alone does not tell the user where to find the Hermes token.
+## Connect Hermes / pegar e salvar o token
+
+For a missing/invalid personal token **or a beginner asking where to get and save
+it**, provide these two destinations before ending the reply:
+
+1. [Seus tokens no Hermes](https://chatwoot.sufficit.com.br/app/profile/access-tokens).
+   This is the direct production token page, not a guessed settings menu. Ask the
+   user to sign in if needed, choose **Meus tokens**, and **Revelar/Copiar** an
+   existing active personal token. Do not tell everyone to create or rotate one.
+2. Discover and call `vault_prepare_entry` with
+   `name: "hermes/production/api-token"`; show its **actual returned URL** as
+   **Salvar no Vault**. Tell the user to paste the token there and save, never in
+   chat. Preparing this link does not save or overwrite a credential, so it is
+   appropriate for guidance even when the user asks to preserve their connection.
+   If preparation fails, explain that failure; never invent a replacement URL.
+
+A Vault path alone, a Hermes home/profile link, or “open the connection settings”
+is insufficient. For old Hermes versions without that page, the verified fallback
+is [profile settings](https://chatwoot.sufficit.com.br/app/profile/settings).
+After the user saves, check Vault metadata and `hermes_connection_test` before
+claiming connection success or resuming the original task.
+
+Prefer completing the authorized connection through the current user's existing
+browser session when the available tools can transfer the token safely. Before
+retrieving/revealing a token, read [personal browser-to-Vault connection](references/token-onboarding.md)
+for identity verification, secret-safe transfer, login/MFA and token creation
+boundaries. Do not require this extra read just to provide the two guided links.
 
 The user supplies the business outcome, not API paths, token locations, inbox IDs or
 commands. Resolve technical details yourself from the account and contact evidence.
