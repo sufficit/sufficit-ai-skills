@@ -2740,7 +2740,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "004640e1bfdab7d6c0772e60242e6c5cb69e5f4d8bbd7dcc75e661ae53bbf68b",
-      "version": "0.7.1"
+      "version": "0.7.2"
     },
     {
       "id": "sufficit-telephony-extensions",

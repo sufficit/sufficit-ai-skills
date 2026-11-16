@@ -82,3 +82,19 @@ missing. Report the failed operation and exact diagnostic. Do not print key/toke
 contents, try another identity, change permissions or widen grants unless that
 maintenance is authorized. Continue supported API reads while the connector is
 blocked. Report completed checks, blocked checks and the precise resume condition.
+
+## Carrier and interconnection comparison
+
+For a reproducible complaint, including a case where an internal test succeeds,
+coordinate mobile-origin calls with the managers through the agent's established
+private WhatsApp channel. Ask them to call the confirmed DID from their own
+mobile phones and report the carrier for each test; compare different carriers
+when available. Collect origin, timestamp/timezone, audible result and correlated
+PBX/endpoint evidence. Do not infer the current carrier from a mobile prefix.
+Do not publish the private coordination to the customer or claim a sent request
+without a delivery receipt. Preserve pending human responses as pending.
+
+Use the [first-contact and manager-test training](first-contact.md) for the
+customer follow-up and the private request wording. If messaging is not equipped,
+return the private request and actual capability limit for human execution;
+training does not add a sending tool, select arbitrary recipients or create groups.
