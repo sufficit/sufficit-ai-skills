@@ -9,6 +9,21 @@ L2TP/IPsec, OpenVPN, WireGuard), user and password. Read it with OCR; if OCR
 fails, open the image and read it visually. A masked password (dots) is **not**
 a password — ask for it in the conversation, never in a group.
 
+### Password policy (owner decision)
+
+Customer VPN credentials are **temporary credentials the customer gives us for
+quick support access**. Treat them accordingly:
+
+- Use the password exactly as the customer sent it, in plain text, from the
+  support conversation of that case. That conversation is its only source.
+- Do **not** look for it in, or save it to, Vault or any other secret store,
+  and do not ask N2 to provision it there.
+- Ask the customer to **type** the password in the conversation instead of
+  sending a screenshot, so it is not masked or misread.
+- Do not repeat it in group chats, public notes, skills or reports, and do not
+  reuse it in another case. If it fails, ask the customer to confirm or
+  re-issue it rather than guessing variations.
+
 ## Create a route-only profile
 
 One profile per customer, routing only the device address:
@@ -41,5 +56,5 @@ them; do not loop.
 ## Clean up
 
 `nmcli connection down "cust-<name>"` when finished, and delete the profile
-(`nmcli connection delete`) unless the customer agreed to keep access. Never
-store the VPN password anywhere else.
+(`nmcli connection delete`) unless the customer agreed to keep access. The
+password stays only in the case conversation; never copy it anywhere else.

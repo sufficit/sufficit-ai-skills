@@ -1998,7 +1998,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/customer-equipment-access",
       "path": "skills/sufficit/customer-equipment-access",
-      "contentSha256": "5bfef804c4841f4b06528918cb3857e8bb3a1dea9aea38c04b6403bb8ec9ab48"
+      "contentSha256": "ee95646ac941b5df3019c8bf33559fc9c4430ff8b26af056ee07e3fd24876d44"
     },
     {
       "id": "video-understand",
