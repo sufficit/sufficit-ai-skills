@@ -59,8 +59,12 @@ connecting alone does not authorize customer messages.
 
 Discover `vault_prepare_entry` and call it with
 `name: "hermes/production/api-token"` for the personal production credential. This
-prepares a link, not a saved secret. Present the exact returned URL as a clickable
-link; never invent an Identity URL or replace it with just a secret path.
+prepares a link, not a saved secret. Its `saved: false` describes this call, not
+whether a credential was previously stored: `exists: true` and `status: Active`
+indicate an existing entry. Do not tell the user their active entry is unsaved or
+ask them to replace it for a hypothetical tutorial. Use `vault_get_info` when the
+actual state matters. Present the exact returned URL as a clickable link; never
+invent an Identity URL or replace it with just a secret path.
 
 The reply must include both destinations and the actual remaining action, e.g.:
 

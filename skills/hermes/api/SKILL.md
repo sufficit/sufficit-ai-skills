@@ -2,7 +2,7 @@
 name: hermes-api
 description: "Connect your own Hermes (Chatwoot) account: conectar Hermes, pegar token de acesso, onde obter e salvar token no Vault, configurar ou verificar conexao. Guide beginners with direct Hermes and Vault links; retrieve an existing personal token through a safe authenticated browser when authorized. Also complete authorized helpdesk work: locate contacts/groups, open attendance, send text/PDF and verify delivery; discover the live API when tools are missing."
 metadata:
-  version: "0.4.2"
+  version: "0.4.3"
 ---
 
 # Hermes API
@@ -38,7 +38,11 @@ it**, provide these two destinations before ending the reply:
    **Salvar no Vault**. Tell the user to paste the token there and save, never in
    chat. Preparing this link does not save or overwrite a credential, so it is
    appropriate for guidance even when the user asks to preserve their connection.
-   If preparation fails, explain that failure; never invent a replacement URL.
+   In the result, `saved: false` means **this preparation call saved nothing**;
+   `exists: true` means an entry already exists. Do not say an existing active
+   credential is unsaved or needs replacement. Check `vault_get_info` if its
+   actual state matters. If preparation fails, explain that failure; never invent
+   a replacement URL.
 
 A Vault path alone, a Hermes home/profile link, or “open the connection settings”
 is insufficient. For old Hermes versions without that page, the verified fallback

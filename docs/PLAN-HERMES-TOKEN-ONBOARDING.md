@@ -34,3 +34,6 @@ Genius 0.166.0-dev.42, preset Sufficit AI - Default, conversa nova 35120cde-1e96
 
 ## Correção orientada pelo tablet — 0.4.2
 Genius 0.170.0 também não carregou espontaneamente a skill retornada como install_required. Solicitação técnica explícita de catalog load carregou a 0.4.1, mas a resposta ignorou a referência complementar e ainda disse não haver endereço direto; não preparou Vault. Correção: procedimento mínimo com link direto, nome exato de vault_prepare_entry e cópia de token ativo promovido ao SKILL.md. A referência fica para recuperação autônoma; descrição/tags incorporam termos leigos em português para descoberta. Esse teste foi assistido e falhou; não equivale a aceite espontâneo.
+
+## Links confirmados e semântica de preparação — 0.4.3
+Continuação da sessão 8a9d3bb0-7734-40c6-9d13-df2c206d3f95 no tablet: leu references/token-onboarding.md e chamou vault_prepare_entry com nome correto; retornou os dois links reais. Export /tmp/hermes-tablet-guided-links-041.json. Resultado de preparação: exists=true, status=Active, saved=false. O agente interpretou saved=false como entrada existente ainda não salva. A 0.4.3 distingue explicitamente preparação sem escrita de ausência de segredo; não pedir substituição em tutorial hipotético. Ainda pendente novo aceite após distribuição.
