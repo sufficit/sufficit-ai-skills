@@ -239,6 +239,7 @@ inside the repository's documentation hierarchy.
 | Skill | Card | Source | Description |
 | --- | --- | --- | --- |
 | [clear-technical-writing](../skills/sufficit/clear-technical-writing/SKILL.md) |  | Sufficit | Write and revise documentation, procedures, support chat replies, operational notifications and technical explanations with clear language inspired by ASD-ST... |
+| [customer-equipment-access](../skills/sufficit/customer-equipment-access/SKILL.md) |  | Sufficit | First-level (N1) remote access to a customer's own equipment — ONT/router web interface, VoIP line (ATA/FXS) settings, customer-supplied VPN — to diagnose an... |
 | [device-ui-android](../skills/sufficit/device-ui-android/SKILL.md) | [card](../skills/sufficit/device-ui-android/skill-card.md) | Sufficit | Use the built-in browser\_\* tools for Android websites and device\_ui for native apps or the user's signed-in Chrome session. Operate Sufficit AI Genius Androi... |
 | [dotnet-csharp](../skills/sufficit/dotnet-csharp/SKILL.md) | [card](../skills/sufficit/dotnet-csharp/skill-card.md) | Sufficit | Change C#/.NET code (ASP.NET Core, Blazor/Razor, xUnit/bUnit, NuGet) so it builds and passes CI the first time — build every project that references what you... |
 | [github-cli](../skills/sufficit/github-cli/SKILL.md) | [card](../skills/sufficit/github-cli/skill-card.md) | Sufficit | Operate GitHub repositories and CI through the structured github\_cli tool in Sufficit AI Genius. Use to query or modify issues, pull requests, and reviews; d... |

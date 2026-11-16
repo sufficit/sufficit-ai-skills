@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 193,
+  "catalogEntries": 194,
   "sources": [
     {
       "id": "android",
@@ -1908,7 +1908,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
       "path": "skills/sufficit/sufficit-telephony-extensions",
-      "contentSha256": "50e5f90fe4531e3c6c4933613019b59323ffa2ccdfd4b50c357559728281e69d"
+      "contentSha256": "1e77197f56f0eba22d3d071b62e02adc08ae1f5851ee24391d89273e36658b90"
     },
     {
       "id": "svg-vectorization",
@@ -1989,6 +1989,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/ixc/api",
       "path": "skills/ixc/api",
       "contentSha256": "41d81ecef47d4b22aac218886c6a396cf78e07228faed3f576c93b5a0b0885ea"
+    },
+    {
+      "id": "customer-equipment-access",
+      "name": "customer-equipment-access",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/customer-equipment-access",
+      "path": "skills/sufficit/customer-equipment-access",
+      "contentSha256": "5bfef804c4841f4b06528918cb3857e8bb3a1dea9aea38c04b6403bb8ec9ab48"
     }
   ]
 }

@@ -2759,8 +2759,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "77dc075676ace95d6180f1d5c024e5d59eac97a219dd07141227c67085d75115",
-      "version": "0.8.0"
+      "contentSha256": "1e77197f56f0eba22d3d071b62e02adc08ae1f5851ee24391d89273e36658b90",
+      "version": "0.8.1"
     },
     {
       "id": "svg-vectorization",
@@ -2909,7 +2909,26 @@
       "sourceId": "sufficit-genius",
       "contentSha256": "41d81ecef47d4b22aac218886c6a396cf78e07228faed3f576c93b5a0b0885ea",
       "version": "1.0.2"
+    },
+    {
+      "id": "customer-equipment-access",
+      "name": "customer-equipment-access",
+      "description": "First-level (N1) remote access to a customer's own equipment — ONT/router web interface, VoIP line (ATA/FXS) settings, customer-supplied VPN — to diagnose and fix a SIP extension that does not register, with evidence and without touching routes or other services. Use when support must reach a customer's Huawei ONT or similar CPE by IP, read or correct its SIP line, bring up a customer VPN or confirm a registration with the N2/PBX team. Not for PBX, dialplan or carrier changes.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/customer-equipment-access",
+      "tags": [
+        "support",
+        "telephony",
+        "sip",
+        "ont",
+        "vpn",
+        "huawei"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "5bfef804c4841f4b06528918cb3857e8bb3a1dea9aea38c04b6403bb8ec9ab48",
+      "version": "1.0.0"
     }
   ],
-  "catalogEntries": 191
+  "catalogEntries": 194
 }

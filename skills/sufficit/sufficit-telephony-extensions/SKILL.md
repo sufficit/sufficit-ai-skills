@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.8.0"
+  version: "0.8.1"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -53,6 +53,10 @@ Port26499 is legacy chan_sip. GUID AORs are expected; a numeric-user404 does not
 prove broken generation. Masked helper fields cannot establish a password mismatch.
 Read [registration diagnostics](references/registration.md) before diagnosing a
 registration failure or proposing a credential reset.
+When the registering device is the customer's own ONT/ATA and its SIP line must
+be read or corrected remotely (direct IP or customer VPN), follow
+[customer-equipment-access](../customer-equipment-access/SKILL.md); that device
+work is first-level support, the PBX confirmation stays with N2.
 
 ## Customer default password
 

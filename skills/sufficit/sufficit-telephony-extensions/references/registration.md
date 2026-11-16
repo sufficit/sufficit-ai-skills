@@ -66,3 +66,11 @@ was absent at that time. Do not date a repair or attribute it to a person withou
 an actual change/audit record. SuccessfulAuth alone does not prove REGISTER
 completion; correlate the correct account, time and current contact evidence.
 Qualify state, registration/contact state and working calls remain distinct.
+
+## Device identity sent as the domain
+
+If chan_sip REGISTERs arrive with `AccountID="<server host>"` (for example the
+PBX domain) and `InvalidPassword`, the device is sending the domain as its
+user. On Huawei ONTs this is the SIP line **URI** field. Set URI, register user
+and auth user to the extension number and expect `SuccessfulAuth` with the
+numeric AccountID on the next REGISTER; do not reset the password first.
