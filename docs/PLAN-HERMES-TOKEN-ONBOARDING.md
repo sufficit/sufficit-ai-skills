@@ -20,3 +20,6 @@ Tablet Lenovo HA1NP62H disponível via ADB. Fonte Hermes confirma rota pessoal /
 
 ## Validação da implementação
 hermes-api 0.4.0 com referência token-onboarding, roteamento no entrypoint/fallback e versões/digests/índice atualizados. quick_validate aprovado. Snapshot isolado /tmp/hermes-skills-validation-c7rxriei: 193 pacotes válidos, índice/versões/cobertura Markdown corretos, 60 testes aprovados. Árvore compartilhada tem digest divergente somente da alteração paralela preservada em clear-technical-writing. O snapshot foi inicializado como repositório Git para o inventário Markdown.
+
+## Primeira execução no tablet
+Genius 0.166.0-dev.42, preset Sufficit AI - Default, conversa nova 35120cde-1e96-4e01-a801-04b0c52c48b8. Pedido leigo de conectar a própria conta sem mensagens a clientes: hermes_connection_test teve sucesso; credencial já existe. Esse teste não cobre ausência de token. CI 43888102108 aprovado e sync 43888176969 iniciado. Revisão 0.4.1 também explicita conexão na descrição de descoberta e atualiza cartão/metadados de interface.

@@ -1,8 +1,8 @@
 ---
 name: hermes-api
-description: "Complete authorized Hermes helpdesk requests from ordinary language: locate the customer or WhatsApp group, open an attendance, send text and PDF attachments, and verify the result. Discover the live API and use the connected user's Identity Vault token when a ready-made tool is missing. Also manage your own profile/avatar and private notes. Do not infer lack of access from missing tools or environment variables."
+description: "Connect your own Hermes (Chatwoot) account with a personal token and Identity Vault, guide beginners to their token page, and complete authorized helpdesk requests: locate contacts or groups, open an attendance, send text/PDF and verify delivery. Discover the live API when a tool is missing. Also manage your profile/avatar and private notes. Missing tools or environment variables do not prove missing access."
 metadata:
-  version: "0.4.0"
+  version: "0.4.1"
 ---
 
 # Hermes API
