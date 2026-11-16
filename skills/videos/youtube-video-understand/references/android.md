@@ -2,6 +2,15 @@
 
 Use the current tablet's native Genius tools. Do not probe for or install desktop
 Python/ffmpeg before checking `video_transcript` and `video_frame` in `catalog`.
+If these tools are absent, use `plugin_runtime` with `action: "list"` to discover
+`youtube-video`, then `action: "install", id: "youtube-video"`. The host verifies
+the signed catalog, package hash and detached package signature, and loads the
+plugin without restarting the session. Discover the newly installed tool schemas
+before calling them. The plugin runs on this tablet; downloading its package does
+not delegate video processing to another computer. It is cached for later use and
+can be removed with `plugin_runtime` action `uninstall`. If the installer itself
+is missing, update Genius rather than attempting desktop dependencies.
+
 These tools run acquisition and Android media decoding on the tablet; no remote
 agent/session or separate computer is required.
 
@@ -43,8 +52,8 @@ decoder. The exact returned presentation timestamp is unavailable; do not claim
 millisecond accuracy. Native decoding currently selects compatible H.264/MP4 up to
 720p and uses HTTP range reads rather than downloading the entire video.
 
-If the exact native tool names are absent, report the missing Genius capability
-and required app update. If a tool reports an access/codec/decoder failure, retain
+If both native tools and plugin_runtime are absent, report the missing Genius
+capability and required app update. If a tool reports an access/codec/decoder failure, retain
 the real error and completed artifacts. Do not claim success from metadata or a
 saved file that was never decoded/seen, and do not change machines to hide the
 failure. The desktop Python helper remains available when the user actually asks

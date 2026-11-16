@@ -184,3 +184,5 @@ timestamped YouTube/local transcripts with frame inspection at arbitrary times.
 Delivery: [video understanding](docs/activities/202611161526-video-understanding.md).
 
 Delivery: [YouTube naming and tablet acceptance](docs/activities/202611161700-youtube-tablet-acceptance.md).
+
+Execution tracking: [YouTube runtime plugin](docs/PLAN-YOUTUBE-RUNTIME-PLUGIN.md).
