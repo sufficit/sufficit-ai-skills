@@ -6,6 +6,15 @@ canal. Trabalhe no contexto do cliente validado para o atendimento e com as
 permissões efetivamente disponíveis. Não use SSH, SQL, arquivos do PBX nem
 comandos do FreePBX como alternativa.
 
+Se a ferramenta hermes_telephony estiver disponível neste atendimento, use-a
+diretamente no N1: overview consulta filas/classes e retorna snapshot; attachment
+obtém o original e retorna sha256; add_hold_music recebe snapshot, sha256 e o
+classId confirmado. O cliente e o contato vêm do vínculo aprovado, não do texto
+da conversa. Não conclua que faltam APIs porque não há shell/helper disponível.
+Se queueAssociationConfirmed=false, mantenha a pendência de associação: o arquivo
+salvo não prova que a fila o utiliza. Não chame limitação de integração de tarefa
+que necessariamente depende de atendente humano.
+
 Consulte as filas solicitadas e suas classes de música. Se o pedido abrange todas
 as filas do cliente e elas já compartilham uma classe dele, use essa classe sem
 perguntar novamente quais filas. Um pedido para uma fila não autoriza afetar
