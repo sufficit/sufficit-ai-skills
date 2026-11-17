@@ -1,8 +1,8 @@
 ---
 name: sufficit-telephony-dialplan
-description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
+description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers, carrier SIP line onboarding and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.7.6"
+  version: "0.7.7"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -80,6 +80,13 @@ the managers over WhatsApp, read [first-contact training](references/first-conta
 5. Removing or disabling a flow or destination changes live call handling:
    check what still references it (other flows, queues, voicemail notification)
    before removing, and report what was and was not verified.
+
+## Carrier SIP line onboarding
+
+For “cadastrar linha SIP” with carrier credentials or a request to repeat
+the Datora workflow for another carrier, read
+[carrier SIP line onboarding](references/carrier-sip-line-onboarding.md).
+Identify the interconnection and registration mode before choosing the API.
 
 ## Customer onboarding
 
