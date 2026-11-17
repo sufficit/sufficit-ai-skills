@@ -2,7 +2,7 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user: telephony credit purchases (lançar saldo), commitments, customer preferred due days, service billing, bank slips, low-balance alerts, wallets, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.1.1"
+  version: "1.1.2"
 ---
 
 # Sufficit API
@@ -17,6 +17,16 @@ recurring purchases, recording a commitment or correcting tariffed service histo
 Financial receipts belong exclusively to integrations; agents do not record them.
 A commitment alone does not buy credit or create a service. Do not route this
 request to the generic credits/vouchers wallet or ask whether it means a receipt.
+
+## Customer context before every write
+
+Before any customer-scoped mutation, follow the
+[customer-write context contract and Python recipes](references/customer-write-context.md).
+Require a nonempty validated contextId, read ownership of every affected/linked
+resource, preserve the same context through the request and readback, and stop
+on conflicting scope. This includes ID-only APIs; typed tools can enforce the
+context server-side without accepting a caller override. Scripts prepare/check
+requests and do not replace API authorization or confer new product capabilities.
 
 ## Tools and discovery
 

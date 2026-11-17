@@ -15,6 +15,15 @@ Se queueAssociationConfirmed=false, mantenha a pendência de associação: o arq
 salvo não prova que a fila o utiliza. Não chame limitação de integração de tarefa
 que necessariamente depende de atendente humano.
 
+Música de espera vai na classe de MOH e em options.musicClass. Saudação é
+options.greeting; agentAnnouncement fala ao atendente e periodicAnnouncement é
+um anúncio periódico. Não envie o áudio de espera apenas ao cadastro de sons,
+nem altere esses anúncios para simular música. Preserve as demais opções da fila.
+Extensão de arquivo e API200 não provam codec reproduzível. O helper atual não
+converte OGG/Opus: se faltar conversão/validação pela API, registre essa lacuna;
+não use SSH nem apague música funcionando para testar. WAV PCM16 mono8kHz é a
+receita conservadora quando o arquivo for preparado; renomear não converte.
+
 Consulte as filas solicitadas e suas classes de música. Se o pedido abrange todas
 as filas do cliente e elas já compartilham uma classe dele, use essa classe sem
 perguntar novamente quais filas. Um pedido para uma fila não autoriza afetar

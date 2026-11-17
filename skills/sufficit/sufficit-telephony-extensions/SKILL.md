@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.8.1"
+  version: "0.8.2"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -12,6 +12,13 @@ API already enforces. Use the current domain contracts and deployed behavior to 
 and formats; this skill adds the flow and the business semantics of extension
 (ramal) management. Routes change between releases: never assume a method, path
 or parameter from memory.
+
+## Customer-bound writes
+
+For every creation, password/preferences change, provisioning, link, disable or
+delete, follow the [customer-write guard](../sufficit-api/references/customer-write-context.md).
+Require the validated context GUID and resource/preview ownership. A bare endpoint
+ID or numeric prefix is insufficient; typed tools may bind context server-side.
 
 ## Scope and boundaries
 

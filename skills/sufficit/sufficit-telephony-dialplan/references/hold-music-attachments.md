@@ -1,5 +1,44 @@
 # Original audio for queue hold music
 
+## Hold music is not a greeting
+
+| Requested effect | Resource and queue field | Correct verification |
+| --- | --- | --- |
+| Music while the caller waits | Music-on-hold class, queue options.musicClass | Owned class, its track listing and the effective queue class |
+| One greeting when entering the queue | Sound/announcement, options.greeting | Greeting resource/destination; this does not configure hold music |
+| Message played to the answering agent | Sound, options.agentAnnouncement | Agent announcement; it is not the caller's hold music |
+| Announcement repeated during waiting | Sound, options.periodicAnnouncement | Its interval/policy; it does not replace the music class |
+
+For “música de espera”, upload through the music-on-hold API to the verified
+customer-owned class. Do not register the attachment only as a sound/greeting,
+point an announcement destination at it or change greeting/agentAnnouncement/
+periodicAnnouncement to simulate music. An audio ID and a music-class ID are
+separate identities even though both may be GUIDs. Do not assume classId equals
+contextId: confirm the actual class owner and queue association from the API.
+A greeting upload receipt is not evidence of a music-on-hold upload. Preserve
+existing greeting, announcement, destinations and other queue options.
+
+Read [the customer-write context guard](../../sufficit-api/references/customer-write-context.md)
+before any mutation, including an upload whose endpoint accepts only classId.
+
+## Format and playback
+
+A container, filename extension or successful upload does not prove playback.
+A reported live incident involved WhatsApp OGG/Opus accepted by the upload API but
+not playable as OGG by that PBX; WAV conversion was followed by a successful
+caller test. Treat this as evidence to check the actual codec/deployed support,
+not a claim that every PBX rejects every OGG. Renaming .ogg to.wav is not conversion.
+
+Prefer the supported API's validated/converted telephony artifact. A conservative
+prepared-file recipe uses uncompressed PCM16 WAV, mono8kHz. Preserve the source
+identity/hash and record conversion and the upload artifact's separate hash.
+Do not claim that the current additive helper converts: it validates the file's
+signature/hash and uploads bytes; it does not transcode. If a necessary conversion
+or codec check is absent from N1 APIs, name that integration gap and retain the
+request; do not use SSH/Asterisk commands, upload a greeting instead, ask for the
+same original again or declare playback from an API200. Never delete a working
+track as a diagnostic experiment. Replacement/removal needs its own request.
+
 ## N1 API-only procedure
 
 Adding customer-provided queue hold music is first-level telephony support when
