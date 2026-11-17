@@ -1,6 +1,6 @@
 {
   "name": "sufficit-telephony-dialplan",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
   "path": "skills/sufficit/sufficit-telephony-dialplan",
   "license": "MIT-0"

@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.7.2"
+  version: "0.7.3"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -85,6 +85,14 @@ choices again or choose a differently named existing queue as the default.
 Use the configured catalog with conditional creation/update; the queue ingress is
 `sufficit-app-queue,<queueId:N>,1`, never queueId-contextId. A queue fallback is not
 its ingress. Historical helper restrictions must not be mistaken for absent APIs.
+
+## Hold music supplied as an attachment
+
+For an authorized request to add music sent in chat, use the original attachment,
+not its transcription. Read [original audio and additive uploads](references/hold-music-attachments.md)
+when an attachment path exists. Preserve current tracks for “adicionar”; do not
+invent a recording-catalog approval or ask for a second portal upload. Existing
+queue-to-class mappings determine scope; an audio upload alone is not live playback.
 
 ## AI voice agents and queues: overflow by default
 
