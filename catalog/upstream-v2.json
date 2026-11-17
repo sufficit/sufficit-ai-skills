@@ -426,7 +426,7 @@
     {
       "id": "asaas-connection",
       "name": "asaas-connection",
-      "description": "Securely connect and test the ASAAS production account using the key stored in the user's Sufficit Identity Vault and the asaas_connection_test tool in Sufficit AI Genius. Use when the user asks to connect, continue, check, or test ASAAS. The test is read-only and creates no charge, payment, or customer. Version 0.1.2.",
+      "description": "Securely connect and test the ASAAS production account using the key stored in the user's Sufficit Identity Vault and the asaas_connection_test tool in Sufficit AI Genius. Use when the user asks to connect, continue, check, or test ASAAS. The test is read-only and creates no charge, payment, or customer. Version 0.1.3.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/connection",
       "tags": [
         "asaas",
@@ -438,12 +438,13 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "a959d095c9204f42fca379ffab07ecdc0b74d9e08f3c520c5d15a98d9d5ae504"
+      "contentSha256": "fb29aee619423f5279fecb30fb3d5c9e006a3c95a3f3a484e3a7b5e03973c494",
+      "version": "0.1.3"
     },
     {
       "id": "asaas-customers",
       "name": "asaas-customers",
-      "description": "Query, search, register, and update customers in the ASAAS production account using asaas_customers_list, asaas_customers_create, and asaas_customers_update in Sufficit AI Genius. Exposes name, email, person type, full CNPJ, or only the first three CPF digits. Queries are read-only; registration and updates require user confirmation. Registers the address the prefeitura requires on an NFS-e. Version 0.4.1.",
+      "description": "Query, search, register, and update customers in the ASAAS production account using asaas_customers_list, asaas_customers_create, and asaas_customers_update in Sufficit AI Genius. Exposes name, email, person type, full CNPJ, or only the first three CPF digits. Queries are read-only; registration and updates require user confirmation. Registers the address the prefeitura requires on an NFS-e. Version 0.4.2.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers",
       "tags": [
         "asaas",
@@ -455,7 +456,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "37bf078058c616a91b248a6e9441a564a4356369ddfd9396e0a2fd6113de7d9c"
+      "contentSha256": "f233d546cb1595d63143763b22236a5ad400acac5b378f54e9824f6cc84c9eec",
+      "version": "0.4.2"
     },
     {
       "id": "asaas-invoices",
@@ -472,12 +474,13 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "83f47110d82b3093d37af541b9b2b9a32f3fb75dd3be4f3b3f7376b1e7bcfef3"
+      "contentSha256": "3a2de5ad6725e45224f21cf44729160aee5a9bfcd49b40b903b0f835db22f962",
+      "version": "0.8.2"
     },
     {
       "id": "asaas-payments",
       "name": "asaas-payments",
-      "description": "List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas_payments_list in Sufficit AI Genius. Use when the user asks to view, check, or calculate totals for ASAAS charges. Read-only; does not create or modify anything. Version 0.1.2.",
+      "description": "List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas_payments_list in Sufficit AI Genius. Use when the user asks to view, check, or calculate totals for ASAAS charges. Read-only; does not create or modify anything. Version 0.1.3.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
       "tags": [
         "asaas",
@@ -489,7 +492,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "ae4ce140f35b081ecfc8b9ae452ef7e86a301ceec381365ac3c6ab4292ef17e5"
+      "contentSha256": "de3c8ebdba4f2321bea1031be661f955c3cb164ba143e8ada3b58a85f6013a94",
+      "version": "0.1.3"
     },
     {
       "id": "asterisk-dialplan",
@@ -2529,7 +2533,7 @@
     {
       "id": "routeros-management",
       "name": "routeros-management",
-      "description": "Administer MikroTik RouterOS v7 and CHR with CLI, SSH and REST; diagnose interfaces, IP, DHCP, DNS, routing, firewall, NAT, VPN, Wi-Fi, services, scripts, backup and updates, with controlled change and validation. Use when the user mentions MikroTik, RouterOS, WinBox, CHR, /ip, /interface or /system. Version 1.0.2.",
+      "description": "Administer MikroTik RouterOS v7 and CHR with CLI, SSH and REST; diagnose interfaces, IP, DHCP, DNS, routing, firewall, NAT, VPN, Wi-Fi, services, scripts, backup and updates, with controlled change and validation. Use when the user mentions MikroTik, RouterOS, WinBox, CHR, /ip, /interface or /system. Version 1.0.3.",
       "source": "https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8/routeros-fundamentals",
       "tags": [
         "mikrotik",
@@ -2544,7 +2548,8 @@
       "author": "tikoci / Sufficit",
       "license": "MIT",
       "sourceId": "mikrotik",
-      "contentSha256": "b53cf7fac3f4622855b98487f61c585e67fe87ef790ef17bffc9dc8d5d019155"
+      "contentSha256": "0faa1abff3f7ebe37d1edb9e0edb61d02e4fcc333b71f89c51cbe66a91c41c45",
+      "version": "1.0.3"
     },
     {
       "id": "seo-geo",

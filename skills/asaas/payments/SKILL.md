@@ -1,6 +1,8 @@
 ---
 name: asaas-payments
 description: "List and query charges in the ASAAS production account, including payments, invoices, overdue and received amounts, using asaas_payments_list in Sufficit AI Genius. Use when the user asks to view, check, or calculate totals for ASAAS charges. Read-only; does not create or modify anything."
+metadata:
+  version: "0.1.3"
 ---
 
 # ASAAS production charges

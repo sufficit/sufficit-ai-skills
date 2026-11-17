@@ -1,6 +1,8 @@
 ---
 name: routeros-management
 description: "Administer MikroTik RouterOS v7 and CHR with CLI, SSH and REST; diagnose interfaces, IP, DHCP, DNS, routing, firewall, NAT, VPN, Wi-Fi, services, scripts, backup and updates, with controlled change and validation. Use when the user mentions MikroTik, RouterOS, WinBox, CHR, /ip, /interface or /system."
+metadata:
+  version: "1.0.3"
 ---
 
 # Operation MikroTik RouterOS v7

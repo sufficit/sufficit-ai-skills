@@ -288,7 +288,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/connection",
       "path": "skills/asaas/connection",
-      "contentSha256": "a959d095c9204f42fca379ffab07ecdc0b74d9e08f3c520c5d15a98d9d5ae504"
+      "contentSha256": "fb29aee619423f5279fecb30fb3d5c9e006a3c95a3f3a484e3a7b5e03973c494"
     },
     {
       "id": "asaas-customers",
@@ -298,7 +298,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers",
       "path": "skills/asaas/customers",
-      "contentSha256": "37bf078058c616a91b248a6e9441a564a4356369ddfd9396e0a2fd6113de7d9c"
+      "contentSha256": "f233d546cb1595d63143763b22236a5ad400acac5b378f54e9824f6cc84c9eec"
     },
     {
       "id": "asaas-invoices",
@@ -308,7 +308,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "path": "skills/asaas/invoices",
-      "contentSha256": "83f47110d82b3093d37af541b9b2b9a32f3fb75dd3be4f3b3f7376b1e7bcfef3"
+      "contentSha256": "3a2de5ad6725e45224f21cf44729160aee5a9bfcd49b40b903b0f835db22f962"
     },
     {
       "id": "asaas-payments",
@@ -318,7 +318,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
       "path": "skills/asaas/payments",
-      "contentSha256": "ae4ce140f35b081ecfc8b9ae452ef7e86a301ceec381365ac3c6ab4292ef17e5"
+      "contentSha256": "de3c8ebdba4f2321bea1031be661f955c3cb164ba143e8ada3b58a85f6013a94"
     },
     {
       "id": "asterisk-dialplan",
@@ -1798,7 +1798,7 @@
       "license": "MIT",
       "upstreamSource": "https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8/routeros-fundamentals",
       "path": "skills/mikrotik/routeros-management",
-      "contentSha256": "b53cf7fac3f4622855b98487f61c585e67fe87ef790ef17bffc9dc8d5d019155"
+      "contentSha256": "0faa1abff3f7ebe37d1edb9e0edb61d02e4fcc333b71f89c51cbe66a91c41c45"
     },
     {
       "id": "seo-geo",

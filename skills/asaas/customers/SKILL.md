@@ -1,6 +1,8 @@
 ---
 name: asaas-customers
 description: "Query, search, register, and update customers in the ASAAS production account using asaas_customers_list, asaas_customers_create, and asaas_customers_update in Sufficit AI Genius. Exposes name, email, person type, full CNPJ, or only the first three CPF digits. Queries are read-only; registration and updates require user confirmation. Registers the address the prefeitura requires on an NFS-e."
+metadata:
+  version: "0.4.2"
 ---
 
 # ASAAS production customers

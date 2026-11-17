@@ -1,6 +1,8 @@
 ---
 name: asaas-connection
 description: "Securely connect and test the ASAAS production account using the key stored in the user's Sufficit Identity Vault and the asaas_connection_test tool in Sufficit AI Genius. Use when the user asks to connect, continue, check, or test ASAAS. The test is read-only and creates no charge, payment, or customer."
+metadata:
+  version: "0.1.3"
 ---
 
 # ASAAS production connection
