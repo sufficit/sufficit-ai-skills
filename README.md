@@ -187,4 +187,4 @@ Delivery: [YouTube naming and tablet acceptance](docs/activities/202611161700-yo
 
 Delivery: [YouTube runtime plugin](docs/activities/202611161915-youtube-runtime-plugin.md).
 
-- [Optional native integration plugins](docs/PLAN-OPTIONAL-INTEGRATION-PLUGINS.md) — installation/discovery updates for Genius.
+- [Optional native integration plugins](docs/activities/202611162231-optional-integration-plugins.md) — installation/discovery updates for Genius.
