@@ -2,7 +2,7 @@
 name: hermes-api
 description: "Connect your own Hermes (Chatwoot) account: conectar Hermes, pegar token de acesso, onde obter e salvar token no Vault, configurar ou verificar conexao. Guide beginners with direct Hermes and Vault links; retrieve an existing personal token through a safe authenticated browser when authorized. Also complete authorized helpdesk work: locate contacts/groups, open attendance, send text/PDF and verify delivery; discover the live API when tools are missing."
 metadata:
-  version: "0.4.3"
+  version: "0.4.4"
 ---
 
 # Hermes API
@@ -12,6 +12,18 @@ releases, so **this skill teaches how to discover the API, not a frozen list of 
 The server's own OpenAPI document is the source of truth; when it disagrees with this
 text, follow the document.
 
+## Optional native plugin in Genius
+
+Discover the required native tool first. If it is absent and `plugin_runtime` is
+available, call `action: "list"`, then `action: "install", id: "sufficit.hermes"`
+from the compatible official signed catalog. Re-query the tool catalog after
+installation; the tools load on this device in the current session. Reuse an
+already available plugin. A deliberately disabled plugin needs re-enabling through
+Genius's plugin controls; preserve the user's setting. An older app without the
+manager, or a catalog without a compatible package, needs an app update to install
+native packages. Installation does not authorize
+provider operations or moving the task to another computer.
+
 ## Genius: use the connected Hermes tools first
 
 When running inside Genius with `hermes_*` tools, the plugin resolves the personal
@@ -20,7 +32,7 @@ of `HERMES_*` environment variables does not mean the connected account is missi
 Use `hermes_connection_test` to obtain the authenticated account IDs. A successful
 check is evidence that credentials work; preserve that evidence for subsequent steps.
 Missing specialized tools do not mean missing API access. Discover/activate the exact
-`hermes_*` tool first; if unavailable or lacking a required field, continue through
+`hermes_*` tool first and apply the optional-plugin installation above when absent; if the installed tools still lack a required field, continue through
 [the API/Vault fallback](references/connected-execution.md). This fallback is also
 for Genius, not only external scripts. Respect actual permission denials.
 

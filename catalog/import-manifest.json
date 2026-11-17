@@ -288,7 +288,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/connection",
       "path": "skills/asaas/connection",
-      "contentSha256": "2abf9853d881d371ae87b3f04d23f46ce5942136e38b795e5ca3e5291f62cbf0"
+      "contentSha256": "a959d095c9204f42fca379ffab07ecdc0b74d9e08f3c520c5d15a98d9d5ae504"
     },
     {
       "id": "asaas-customers",
@@ -298,7 +298,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/customers",
       "path": "skills/asaas/customers",
-      "contentSha256": "0439c7f501cd89c210c86dca4907b111ac795c95ea3e39bc9d91568c69085b84"
+      "contentSha256": "37bf078058c616a91b248a6e9441a564a4356369ddfd9396e0a2fd6113de7d9c"
     },
     {
       "id": "asaas-invoices",
@@ -308,7 +308,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/invoices",
       "path": "skills/asaas/invoices",
-      "contentSha256": "9e70b56ff7c8287917a58896ba51a846c988c1f8a6c3afe48ba2f153135341be"
+      "contentSha256": "83f47110d82b3093d37af541b9b2b9a32f3fb75dd3be4f3b3f7376b1e7bcfef3"
     },
     {
       "id": "asaas-payments",
@@ -318,7 +318,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/asaas/payments",
       "path": "skills/asaas/payments",
-      "contentSha256": "3ec75df6c737d39850d687ddc670940bf692634ea973d6503b92e0dd5fe79411"
+      "contentSha256": "ae4ce140f35b081ecfc8b9ae452ef7e86a301ceec381365ac3c6ab4292ef17e5"
     },
     {
       "id": "asterisk-dialplan",
@@ -1648,7 +1648,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/hermes/api",
       "path": "skills/hermes/api",
-      "contentSha256": "91dbc83027875b2bac67e34540db0645708a6ba09ffa276e888fee781d46fa01"
+      "contentSha256": "fc02c1766f0761fed109b3c968b76a6e913f475557ae83be072bb679295905bb"
     },
     {
       "id": "hermes-triage",
@@ -1798,7 +1798,7 @@
       "license": "MIT",
       "upstreamSource": "https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8/routeros-fundamentals",
       "path": "skills/mikrotik/routeros-management",
-      "contentSha256": "25deb9836eaa15909979f2ea8c8c819fbaf9e4486d423ee382638783cd76aaee"
+      "contentSha256": "b53cf7fac3f4622855b98487f61c585e67fe87ef790ef17bffc9dc8d5d019155"
     },
     {
       "id": "seo-geo",

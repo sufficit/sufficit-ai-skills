@@ -7,6 +7,18 @@ description: "Securely connect and test the ASAAS production account using the k
 
 Use this guidance when the user asks to connect, continue, verify, or test the real ASAAS account.
 
+## Optional native plugin in Genius
+
+Discover the required native tool first. If it is absent and `plugin_runtime` is
+available, call `action: "list"`, then `action: "install", id: "sufficit.asaas"`
+from the compatible official signed catalog. Re-query the tool catalog after
+installation; the tools load on this device in the current session. Reuse an
+already available plugin. A deliberately disabled plugin needs re-enabling through
+Genius's plugin controls; preserve the user's setting. An older app without the
+manager, or a catalog without a compatible package, needs an app update to install
+native packages. Installation does not authorize
+provider operations or moving the task to another computer.
+
 ## Credential
 
 - The canonical reference is `personal/asaas/production/api-key` in the user's Sufficit Identity Vault.
@@ -23,4 +35,4 @@ On failure, identify the returned code and follow [references/connection-test.md
 
 ## Tool unavailable
 
-If `asaas_connection_test` is unavailable, the ASAAS plugin is disabled or this version of Genius does not provide it yet. Ask the user to enable the ASAAS plugin in Genius extensions or update the application. Do not bypass the tool by calling the ASAAS API through a shell, script, or another tool: the production key must not enter the prompt.
+If `asaas_connection_test` remains unavailable after the native-plugin discovery above, report the installation/disabled-state failure and use the Genius plugin controls or application update as indicated. Do not bypass the tool by calling the ASAAS API through a shell, script, or another tool: the production key must not enter the prompt.

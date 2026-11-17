@@ -7,6 +7,20 @@ description: "Administer MikroTik RouterOS v7 and CHR with CLI, SSH and REST; di
 
 Scope: RouterOS 7.x; before applying syntax, confirm version, architecture, packages and features available (`/system/resource/print`, `/system/package/print`, `/system/device-mode/print`). RouterOS v6 has different menus and behaviors: do not run v7 recipes blindly. This document teaches operation; does not provide connection, credentials or authorization to administer any device.
 
+## Optional native plugin in Genius
+
+Discover the required native tool first. If it is absent and `plugin_runtime` is
+available, call `action: "list"`, then `action: "install", id: "sufficit.routeros"`
+from the compatible official signed catalog. Re-query the tool catalog after
+installation; the tools load on this device in the current session. Reuse an
+already available plugin. A deliberately disabled plugin needs re-enabling through
+Genius's plugin controls; preserve the user's setting. An older app without the
+manager, or a catalog without a compatible package, needs an app update to install
+native packages. Installation does not authorize
+provider operations or moving the task to another computer. The native RouterOS
+package exposes read-only diagnostics; configuration changes still follow the
+operation contract below.
+
 ## Operation contract
 
 1. Identify device, environment, administration interface, out-of-band access, window and target. Read state first; do not assume interface names, WAN/LAN assignments, addresses, or factory defaults. Do not perform on third party equipment without permission.

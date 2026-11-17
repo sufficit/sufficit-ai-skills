@@ -7,6 +7,18 @@ description: "List and query charges in the ASAAS production account, including 
 
 Use this guidance when the user asks to view, check, list, or total ASAAS charges, payments, invoices, or overdue amounts.
 
+## Optional native plugin in Genius
+
+Discover the required native tool first. If it is absent and `plugin_runtime` is
+available, call `action: "list"`, then `action: "install", id: "sufficit.asaas"`
+from the compatible official signed catalog. Re-query the tool catalog after
+installation; the tools load on this device in the current session. Reuse an
+already available plugin. A deliberately disabled plugin needs re-enabling through
+Genius's plugin controls; preserve the user's setting. An older app without the
+manager, or a catalog without a compatible package, needs an app update to install
+native packages. Installation does not authorize
+provider operations or moving the task to another computer.
+
 ## Credential
 
 - The tool resolves the key at `personal/asaas/production/api-key` in the user's Sufficit Identity Vault.
@@ -28,4 +40,4 @@ Explain statuses in plain language: PENDING = awaiting payment, RECEIVED = recei
 
 ## Tool unavailable
 
-If `asaas_payments_list` is unavailable, the ASAAS plugin is disabled or this version of Genius does not provide it yet. Ask the user to enable the plugin in Genius extensions or update the application. Do not bypass it through a shell, script, or another tool: the production key must not enter the prompt.
+If `asaas_payments_list` remains unavailable after the native-plugin discovery above, report the installation/disabled-state failure and use the Genius plugin controls or application update as indicated. Do not bypass it through a shell, script, or another tool: the production key must not enter the prompt.

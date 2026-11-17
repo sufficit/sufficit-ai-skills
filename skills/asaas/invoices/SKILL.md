@@ -13,6 +13,18 @@ through the Sufficit API with the company credential, binds the invoice to the r
 the official service catalog and imports the authorized document automatically. This skill remains for
 the user's own Asaas account (personal key in the Vault).
 
+## Optional native plugin in Genius
+
+Discover the required native tool first. If it is absent and `plugin_runtime` is
+available, call `action: "list"`, then `action: "install", id: "sufficit.asaas"`
+from the compatible official signed catalog. Re-query the tool catalog after
+installation; the tools load on this device in the current session. Reuse an
+already available plugin. A deliberately disabled plugin needs re-enabling through
+Genius's plugin controls; preserve the user's setting. An older app without the
+manager, or a catalog without a compatible package, needs an app update to install
+native packages. Installation does not authorize
+provider operations or moving the task to another computer.
+
 ## Official sources and updates
 
 - Complete index, including future changes: [official Asaas API documentation](https://docs.asaas.com/llms.txt).

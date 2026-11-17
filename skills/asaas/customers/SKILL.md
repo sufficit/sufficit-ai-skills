@@ -7,6 +7,18 @@ description: "Query, search, register, and update customers in the ASAAS product
 
 Use when the user asks to view, list, search, check, register, or update ASAAS customers.
 
+## Optional native plugin in Genius
+
+Discover the required native tool first. If it is absent and `plugin_runtime` is
+available, call `action: "list"`, then `action: "install", id: "sufficit.asaas"`
+from the compatible official signed catalog. Re-query the tool catalog after
+installation; the tools load on this device in the current session. Reuse an
+already available plugin. A deliberately disabled plugin needs re-enabling through
+Genius's plugin controls; preserve the user's setting. An older app without the
+manager, or a catalog without a compatible package, needs an app update to install
+native packages. Installation does not authorize
+provider operations or moving the task to another computer.
+
 ## Credential
 
 - The tool resolves `personal/asaas/production/api-key` in the user's Sufficit Identity Vault.
