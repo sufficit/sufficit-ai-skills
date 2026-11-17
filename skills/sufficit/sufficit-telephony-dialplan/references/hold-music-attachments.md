@@ -1,5 +1,23 @@
 # Original audio for queue hold music
 
+## N1 API-only procedure
+
+Adding customer-provided queue hold music is first-level telephony support when
+the agent has the deployed API operation and authority for that validated customer.
+Use only authenticated APIs and original-attachment export through the channel
+integration. No SSH, SQL, direct PBX files or FreePBX commands belong to this
+procedure. The same recipe applies to N1 and N2 agents; their actual customer
+scope, audience and permissions remain distinct.
+
+The [N1 agent briefing](../agents/n1-hold-music.md) is a compact Portuguese
+training payload for customer-facing agents. Install it through managed training;
+a public package update does not replace an already-pinned executor version.
+
+If API synchronization or playback cannot be verified with available API tools,
+report the exact pending evidence and use the configured private specialist
+consultation. Missing equipment does not turn routine API work into a database
+or infrastructure task, and a training installation grants no API privilege.
+
 Start with an authorized request and the explicit customer context. Inspect the
 requested queues and their current music class before writing. When the request
 covers the customer's queues without exceptions and all share one customer-owned
