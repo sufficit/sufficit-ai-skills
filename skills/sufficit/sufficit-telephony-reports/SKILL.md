@@ -1,16 +1,37 @@
 ---
 name: sufficit-telephony-reports
-description: "Generate and deliver customer-scoped Sufficit telephony reports through the corporate API, including billed calls, operators, lost calls, hourly traffic and extension usage. Use for relatorio de chamadas tarifadas, exportacao Excel de telefonia, report verification, and reports requested while the legacy website is unavailable. Does not change tariffs, billing or call routing."
+description: "Direct customers to Sufficit portal telephony reports and generate customer-scoped reports through the corporate API. Use for relatorio de chamadas tarifadas, customer access to a restricted report spreadsheet, exportacao Excel de telefonia, and report verification."
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: "Sufficit"
 ---
 
 # Relatórios de telefonia Sufficit
 
+## Acesso do cliente pelo portal
+
+Quando o pedido é dar ao cliente acesso a ligações tarifadas, indique o
+[Relatório de ligações tarifadas no portal Sufficit](https://blazor.sufficit.com.br/pages/reports/telephony?model=billed-calls).
+Use esse link também quando o gestor já enviou uma planilha e o cliente recebe
+um pedido de autorização ao abrir o arquivo.
+
+Oriente o cliente a entrar com a conta Sufficit, selecionar a empresa no
+seletor global, definir o período e clicar em **Carregar relatório**. O link
+seleciona o modelo `billed-calls`. A consulta usa as permissões da conta para
+a empresa. Se o cliente relatar erro de autorização no próprio portal, confira
+o contexto e o acesso `phonecalls` com o gestor responsável.
+
+Se o contexto e o período estiverem confirmados, personalize o link com
+`contextid`, `start` e `end` (datas `yyyy-MM-dd`), `offset` (minutos) e,
+quando necessário, `starttime` e `endtime` (`HH:mm:ss`). Se esses dados
+faltarem, use o link do modelo e indique os campos que o cliente deve escolher.
+Um pedido de acesso pede o link do portal. Alterar o compartilhamento de
+uma planilha ou gerar outro arquivo exige pedido específico.
+
+## Geração e exportação por solicitação
+
 Gere o relatório solicitado pela API, valide o resultado e entregue o arquivo
 ou a análise pedida. O motor funciona sem sessão ou processo do site WebForms.
-A tela Blazor correspondente é `/pages/reports/telephony`, no cliente selecionado.
 
 ## Descoberta e acesso
 

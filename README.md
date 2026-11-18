@@ -130,7 +130,9 @@ Delivery: [low-balance alert training](docs/activities/20261105-low-balance-aler
 Device evidence: [tablet acceptance](docs/activities/20261105-low-balance-tablet-acceptance.md).
 Open acceptance blockers: [tablet test plan](docs/PLAN-LOW-BALANCE-TABLET-TEST.md).
 
-A [skill de relatórios de telefonia](skills/sufficit/sufficit-telephony-reports/SKILL.md) orienta geração por cliente via API, exportação Excel e validação dos resultados.
+A [skill de relatórios de telefonia](skills/sufficit/sufficit-telephony-reports/SKILL.md)
+orienta o acesso do cliente pelo portal, a geração via API e a exportação Excel.
+[Acesso ao relatório de ligações tarifadas](docs/activities/202611181113-telephony-report-portal-link.md).
 
 Declared package versions are copied into the reviewed catalog by
 `scripts/catalog_versions.py`; CI checks that they match `SKILL.md` metadata.

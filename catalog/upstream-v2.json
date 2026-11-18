@@ -2811,7 +2811,7 @@
     },
     {
       "id": "sufficit-telephony-reports",
-      "description": "Generate and deliver customer-scoped Sufficit telephony reports through the corporate API, including billed calls, operators, lost calls, hourly traffic and extension usage. Use for relatorio de chamadas tarifadas, exportacao Excel de telefonia, report verification, and reports requested while the legacy website is unavailable. Does not change tariffs, billing or call routing.",
+      "description": "Direct customers to Sufficit portal telephony reports and generate customer-scoped reports through the corporate API. Use for relatorio de chamadas tarifadas, customer access to a restricted report spreadsheet, exportacao Excel de telefonia, and report verification.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-reports",
       "tags": [
         "sufficit",
@@ -2825,7 +2825,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "d0f6d41bd168b9fac9eee96bb7ed0b7e57b9b595be18c9c5d222d523483e91bb",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     {
       "id": "sufficit-notifications",

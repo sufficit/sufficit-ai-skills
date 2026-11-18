@@ -260,7 +260,7 @@ inside the repository's documentation hierarchy.
 | [sufficit-support](../skills/sufficit/sufficit-support/SKILL.md) |  | Sufficit | Two-way support channel between a Sufficit customer company and Sufficit: report problems (issues), ask for improvements or ask questions, and read and act o... |
 | [sufficit-telephony-dialplan](../skills/sufficit/sufficit-telephony-dialplan/SKILL.md) | [card](../skills/sufficit/sufficit-telephony-dialplan/skill-card.md) | Sufficit | Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound D... |
 | [sufficit-telephony-extensions](../skills/sufficit/sufficit-telephony-extensions/SKILL.md) | [card](../skills/sufficit/sufficit-telephony-extensions/skill-card.md) | Sufficit | Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a ne... |
-| [sufficit-telephony-reports](../skills/sufficit/sufficit-telephony-reports/SKILL.md) |  | Sufficit | Generate and deliver customer-scoped Sufficit telephony reports through the corporate API, including billed calls, operators, lost calls, hourly traffic and... |
+| [sufficit-telephony-reports](../skills/sufficit/sufficit-telephony-reports/SKILL.md) |  | Sufficit | Direct customers to Sufficit portal telephony reports and generate customer-scoped reports through the corporate API. Use for relatorio de chamadas tarifadas... |
 | [sufficit-voice-agents](../skills/sufficit/sufficit-voice-agents/SKILL.md) |  | Sufficit | Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP n... |
 
 ## videos
