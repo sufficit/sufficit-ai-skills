@@ -1,4 +1,4 @@
 interface:
   display_name: Hermes API
-  short_description: Connect your own Hermes account and use the helpdesk API
-  default_prompt: Use $hermes-api to connect my own Hermes account through personal token/Vault onboarding, or complete the requested attendance and message/PDF delivery, verifying each outcome.
+  short_description: Connect Hermes and use the helpdesk and Kanban APIs
+  default_prompt: Use $hermes-api to connect my own Hermes account through personal token/Vault onboarding, or complete the requested attendance, message/PDF delivery or Kanban operation and verify the result.

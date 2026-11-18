@@ -1,16 +1,16 @@
 ---
 name: hermes-api
-description: "Connect your own Hermes (Chatwoot) account: conectar Hermes, pegar token de acesso, onde obter e salvar token no Vault, configurar ou verificar conexao. Guide beginners with direct Hermes and Vault links; retrieve an existing personal token through a safe authenticated browser when authorized. Also complete authorized helpdesk work: locate contacts/groups, open attendance, send text/PDF and verify delivery; discover the live API when tools are missing."
+description: "Connect your own Hermes (Chatwoot) account: conectar Hermes, pegar token de acesso, onde obter e salvar token no Vault, configurar ou verificar conexao. Use the Hermes helpdesk API for contacts, attendances, messages/PDF and Kanban (funis, etapas, cartões, relatórios e operações em lote). Discover the native tools or use the authorized API."
 metadata:
-  version: "0.4.4"
+  version: "0.5.0"
 ---
 
 # Hermes API
 
 Hermes is Sufficit's helpdesk, built on Chatwoot and extended. Routes change between
 releases, so **this skill teaches how to discover the API, not a frozen list of routes**.
-The server's own OpenAPI document is the source of truth; when it disagrees with this
-text, follow the document.
+Follow the server's OpenAPI for documented operations. For plugin routes omitted from
+the spec, use the corresponding Hermes plugin source or supported client.
 
 ## Optional native plugin in Genius
 
@@ -35,6 +35,13 @@ Missing specialized tools do not mean missing API access. Discover/activate the 
 `hermes_*` tool first and apply the optional-plugin installation above when absent; if the installed tools still lack a required field, continue through
 [the API/Vault fallback](references/connected-execution.md). This fallback is also
 for Genius, not only external scripts. Respect actual permission denials.
+
+## Kanban cards, funnels and stages
+
+For cartões, itens, funis, etapas, bulk actions or board reports in Hermes, read
+[the Kanban Board API guide](references/kanban.md). It maps plugin routes and
+payloads, account permissions and checks for partial writes. Use the account
+resolved from the authorized credential, including when the request names Fleet Suporte.
 
 ## Connect Hermes / pegar e salvar o token
 

@@ -77,6 +77,8 @@ The [`hermes-api`](skills/hermes/api/SKILL.md) skill discovers the Hermes helpde
 server's own OpenAPI document and calls it as the agent's own user (profile, avatar,
 conversations, private notes); [`hermes-triage`](skills/hermes/triage/SKILL.md) routes
 conversations to the right team with private notes, never replying to customers.
+The [Hermes Kanban API guide](skills/hermes/api/references/kanban.md) covers board operations and the plugin routes omitted from the public OpenAPI.
+The [Kanban documentation activity](docs/activities/202611181054-hermes-kanban.md) records the contract review and validation.
 The [Hermes connection activity](docs/activities/202611161205-hermes-token-onboarding.md) records token onboarding and tablet acceptance.
 
 The [`ixc-api`](skills/ixc/api/SKILL.md) skill calls an ISP's IXC Provedor (IXCSoft) webservice across

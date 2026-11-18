@@ -11,6 +11,7 @@ are a discovery problem, not proof that the account cannot perform the operation
    upstream `servers` value from Swagger. Fetch `/api` and
    `/swagger/swagger.json` using available HTTP, browser read or shell tools.
    Search locally for the needed operation and resolve its request-body schemas.
+   For Kanban, use the [plugin contract](kanban.md) when the public spec omits it.
 3. Discover the connected Identity Vault tools. Inspect metadata for
    `personal/hermes/production/api-token` in the current user's personal vault.
    A missing environment variable says nothing about this entry. A prior successful

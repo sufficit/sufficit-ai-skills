@@ -183,7 +183,7 @@ inside the repository's documentation hierarchy.
 
 | Skill | Card | Source | Description |
 | --- | --- | --- | --- |
-| [hermes-api](../skills/hermes/api/SKILL.md) | [card](../skills/hermes/api/skill-card.md) | Sufficit | Connect your own Hermes (Chatwoot) account: conectar Hermes, pegar token de acesso, onde obter e salvar token no Vault, configurar ou verificar conexao. Guid... |
+| [hermes-api](../skills/hermes/api/SKILL.md) | [card](../skills/hermes/api/skill-card.md) | Sufficit | Connect your own Hermes (Chatwoot) account: conectar Hermes, pegar token de acesso, onde obter e salvar token no Vault, configurar ou verificar conexao. Use... |
 | [hermes-triage](../skills/hermes/triage/SKILL.md) | [card](../skills/hermes/triage/skill-card.md) | Sufficit | Triage Hermes helpdesk (Chatwoot-based) conversations as an internal assistant: decide which team should handle a conversation, separate noise from real requ... |
 
 ## images
