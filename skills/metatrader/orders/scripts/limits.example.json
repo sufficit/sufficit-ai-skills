@@ -1,5 +1,20 @@
 {
-  "allowed_symbols": ["PETR4", "PETR4F", "VALE3", "VALE3F", "BOVA11", "BOVA11F"],
+  "allowed_symbols": [
+    "PETR4",
+    "PETR4F",
+    "VALE3",
+    "VALE3F",
+    "BOVA11",
+    "BOVA11F"
+  ],
   "max_value_per_order": 200.0,
-  "confirmation_seconds": 300
+  "confirmation_seconds": 300,
+  "risk": {
+    "max_risk_per_trade": 20.0,
+    "require_stop_on_buy": true,
+    "require_reason": true,
+    "max_daily_loss": 30.0,
+    "losing_streak_n": 2,
+    "cooldown_hours": 24
+  }
 }

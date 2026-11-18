@@ -46,7 +46,11 @@ recommend assets, sizes or timing, and never trade on your own initiative.
 5. **Install the order lock** ([references/order-lock.md](references/order-lock.md),
    script [scripts/order_lock.py](scripts/order_lock.py)) and validate it before any real
    order.
-6. **Placing an order** (only when the user asks): `prepare` → show summary, estimated
+6. **Before an order**, optionally run `breaker` (daily loss / losing streak) and
+   `size SYMBOL ENTRY STOP` to suggest a quantity from the user's own risk limits
+   (Layer 3 in [references/order-lock.md](references/order-lock.md)).
+7. **Placing an order** (only when the user asks): `prepare` (with `--stop` and
+   `--reason` when the risk rules require them) → show summary, estimated
    value, simulation result and code → user confirms with the code → temporarily enable
    AutoTrading → `send` → disable AutoTrading again → report the result (ticket, price,
    retcode).

@@ -43,3 +43,39 @@ Run, and expect every line to be refused or only simulated:
 6. `send` with a wrong code → `BLOCKED`; the pending file must be gone afterwards.
 
 Report each result to the user. Only then offer real orders, small, after a deposit.
+
+## Layer 3: risk and discipline rules (optional, recommended)
+
+Optional `risk` block in `limits.json` (all keys optional; `null`/`false` disables a rule):
+
+```json
+"risk": {
+  "max_risk_per_trade": 20.0,
+  "require_stop_on_buy": true,
+  "require_reason": true,
+  "max_daily_loss": 30.0,
+  "losing_streak_n": 2,
+  "cooldown_hours": 24
+}
+```
+
+- `size SYMBOL ENTRY STOP`: suggests a quantity limited by `max_value_per_order` and by
+  `max_risk_per_trade / |entry - stop|`, rounded down to the symbol's volume step
+  (fixed-fractional sizing). Nothing is sent.
+- `prepare ... --stop S --reason TEXT`: refuses a buy without a planned stop, an order
+  without a written reason, or a risk to the stop above `max_risk_per_trade`. The stop is
+  only planned; it is not sent with the order.
+- `breaker`: reads realized P&L of closing deals in the MT5 history (last 30 days).
+  Blocks new orders when today's realized loss reached `max_daily_loss`, or for
+  `cooldown_hours` after `losing_streak_n` losing exits in a row (avoids revenge
+  trades). `prepare` and `send` both run it.
+- Each `prepared` and `sent` event is appended to `journal.jsonl` (with the reason), for
+  later review of what was done and why.
+
+These rules are recommendations the user configures; they never replace the user's
+explicit confirmation and never authorize an order by themselves.
+
+Credit: the ideas for this layer were adapted from the MIT-licensed
+[tradermonty/claude-trading-skills](https://github.com/tradermonty/claude-trading-skills)
+(`position-sizer`, `pre-trade-discipline-gate`, `drawdown-circuit-breaker`). The code here
+is an independent, minimal implementation for MT5/B3; no code was copied.
