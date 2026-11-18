@@ -2,7 +2,7 @@
 name: sufficit-telephony-reports
 description: "Direct customers to Sufficit portal telephony reports with customer and period prefilled, and generate reports through the corporate API. Use for ligacoes tarifadas, gasto desde a ultima recarga de tarifado ou 0800, restricted report spreadsheets, and Excel exports."
 metadata:
-  version: "1.3.1"
+  version: "1.4.0"
   author: "Sufficit"
 ---
 
@@ -22,8 +22,10 @@ consulta autorizada de clientes em `/Sales/Clients` e resolva seu `contextid`.
 Peça uma identificação reconhecível somente se houver ambiguidade entre
 clientes. Aproveite os filtros confirmados mesmo quando faltar outro campo.
 
-O cliente entra com a conta Sufficit e clica em **Carregar relatório**. Indique
-quais campos ele ainda precisa escolher quando a evidência for insuficiente.
+O cliente entra com a conta Sufficit. Com `load=true`, o portal abre a consulta
+automaticamente após confirmar o contexto. Para refazer um resultado já exibido,
+clique em **Carregar relatório**. Se o link estiver incompleto, indique quais
+campos o cliente precisa escolher antes de carregar.
 Se o próprio portal indicar erro de autorização, confira o contexto e o acesso
 `phonecalls` com o gestor responsável. Alterar o compartilhamento de uma
 planilha ou gerar outro arquivo exige pedido específico.
@@ -56,11 +58,19 @@ recarga, converta o horário UTC do crédito e o instante atual para o fuso do
 relatório antes de preencher datas e horários. Use Brasília (`offset=-180`)
 quando nenhum outro fuso tiver sido informado. Preserve a hora efetiva da
 recarga e informe o período e o fuso junto ao link. O fim é inclusivo.
+Inclua `load=true` quando modelo, cliente e datas estiverem confirmados. Com
+datas completas, o portal usa `00:00:00` e `23:59:59` se as horas forem omitidas.
+
+Exemplo com contexto fictício para um mês completo:
+
+```text
+https://blazor.sufficit.com.br/pages/reports/telephony?model=billed-calls&contextid=11111111-1111-1111-1111-111111111111&start=2026-10-01&end=2026-10-31&offset=-180&load=true
+```
 
 Use um link por período solicitado, mesmo para vigências longas. Os modelos
 de relatório aceitam o intervalo completo. O limite de datas do histórico de
-chamadas pertence àquela página. Se a consulta retornar HTTP 504, informe o
-tempo limite de processamento e preserve o período original.
+chamadas pertence àquela página. Em caso de HTTP 504, preserve o período
+original e consulte o diagnóstico da API antes de tentar novamente.
 
 ## Geração e exportação por solicitação
 
@@ -75,7 +85,8 @@ Prefira as ferramentas conectadas da API. No Genius, descubra operações com
 para os argumentos, sem inventar um nome de tool a partir de uma rota HTTP.
 
 O endereço público é `https://endpoints.sufficit.com.br`. As operações verificadas
-são `GET /Telephony/Reports/Catalog` e `POST /Telephony/Reports/{model}`.
+incluem `GET /Telephony/Reports/Catalog`, a fila `/Telephony/Reports/Jobs` e a
+geração síncrona em `POST /Telephony/Reports/{model}`.
 Se o ambiente oferece execução HTTP autorizada, use apenas a credencial configurada
 para a integração. Nunca imprima tokens nem os inclua em arquivos de relatório.
 Não procure credenciais em históricos de outras sessões. Se não houver acesso
@@ -110,11 +121,17 @@ Por exemplo, um dia em UTC-03 vai de `00:00:00-03:00` a `23:59:59-03:00`,
 com `offsetMinutes: -180`. Não aplique a conversão de fuso duas vezes.
 Colunas explicitamente marcadas UTC permanecem UTC, mesmo nesse relatório.
 
-Não envie DIDs, texto ou descarte para modelos que não aceitam esses filtros.
-Permita o tempo de geração: a versão validada tem timeout de 180 segundos;
-clientes HTTP devem comportá-lo (por exemplo, 200 segundos).
-A requisição é síncrona, cancelável e devolve um snapshot; não há job público
-para polling, identificador de download ou dependência de afinidade entre hosts.
+Envie somente os filtros que o modelo oferece. Quando o catálogo retornar
+`supportsBackgroundJobs: true` e as operações estiverem disponíveis, prefira a
+fila para gerar e acompanhar o relatório pelo ID. Reaproveite a execução
+existente com os mesmos filtros, inclusive após interrupção do acompanhamento.
+Leia o [contrato da fila](references/api-and-diagnostics.md#geração-em-segundo-plano)
+para consultar o estado, obter o resultado ou pedir uma nova geração.
+
+A rota síncrona devolve o mesmo contrato de resultado. Use-a quando a fila
+não estiver disponível e não houver execução já aceita. Configure o cliente
+HTTP para comportar a espera da API (por exemplo, 200 segundos para o prazo
+de geração de 180 segundos).
 
 A resposta deve ser sucesso HTTP e um contrato de resultado válido. Confira
 `schemaVersion`, `model`, `contextId`, intervalo e fuso contra a solicitação.

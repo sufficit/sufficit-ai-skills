@@ -135,6 +135,7 @@ orienta o acesso do cliente pelo portal, a geração via API e a exportação Ex
 [Acesso ao relatório de ligações tarifadas](docs/activities/202611181113-telephony-report-portal-link.md).
 [Período da última recarga no relatório](docs/activities/202611181121-telephony-report-recharge-link.md).
 [Contrato de datas dos relatórios](docs/activities/202611181157-report-range-contract.md).
+[Carregamento automático e geração em segundo plano](docs/activities/202611181905-telephony-report-jobs-skill.md).
 
 Declared package versions are copied into the reviewed catalog by
 `scripts/catalog_versions.py`; CI checks that they match `SKILL.md` metadata.
