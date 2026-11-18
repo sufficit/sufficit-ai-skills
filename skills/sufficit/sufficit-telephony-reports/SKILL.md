@@ -1,8 +1,8 @@
 ---
 name: sufficit-telephony-reports
-description: "Direct customers to Sufficit portal telephony reports and generate customer-scoped reports through the corporate API. Use for relatorio de chamadas tarifadas, customer access to a restricted report spreadsheet, exportacao Excel de telefonia, and report verification."
+description: "Direct customers to Sufficit portal telephony reports with customer and period prefilled, and generate reports through the corporate API. Use for ligacoes tarifadas, gasto desde a ultima recarga de tarifado ou 0800, restricted report spreadsheets, and Excel exports."
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
   author: "Sufficit"
 ---
 
@@ -15,18 +15,51 @@ Quando o pedido é dar ao cliente acesso a ligações tarifadas, indique o
 Use esse link também quando o gestor já enviou uma planilha e o cliente recebe
 um pedido de autorização ao abrir o arquivo.
 
-Oriente o cliente a entrar com a conta Sufficit, selecionar a empresa no
-seletor global, definir o período e clicar em **Carregar relatório**. O link
-seleciona o modelo `billed-calls`. A consulta usa as permissões da conta para
-a empresa. Se o cliente relatar erro de autorização no próprio portal, confira
-o contexto e o acesso `phonecalls` com o gestor responsável.
+Use os dados já confirmados na conversa. Envie de preferência o link com
+`contextid` e o período preenchidos. Se já houver um cliente selecionado,
+reaproveite esse contexto. Se houver apenas o nome da empresa, descubra a
+consulta autorizada de clientes em `/Sales/Clients` e resolva seu `contextid`.
+Peça uma identificação reconhecível somente se houver ambiguidade entre
+clientes. Aproveite os filtros confirmados mesmo quando faltar outro campo.
 
-Se o contexto e o período estiverem confirmados, personalize o link com
-`contextid`, `start` e `end` (datas `yyyy-MM-dd`), `offset` (minutos) e,
-quando necessário, `starttime` e `endtime` (`HH:mm:ss`). Se esses dados
-faltarem, use o link do modelo e indique os campos que o cliente deve escolher.
-Um pedido de acesso pede o link do portal. Alterar o compartilhamento de
-uma planilha ou gerar outro arquivo exige pedido específico.
+O cliente entra com a conta Sufficit e clica em **Carregar relatório**. Indique
+quais campos ele ainda precisa escolher quando a evidência for insuficiente.
+Se o próprio portal indicar erro de autorização, confira o contexto e o acesso
+`phonecalls` com o gestor responsável. Alterar o compartilhamento de uma
+planilha ou gerar outro arquivo exige pedido específico.
+
+### Consumo antes de uma nova recarga
+
+Preserve o período explícito já informado. Se o cliente pedir os gastos antes
+de uma nova recarga de tarifado ou 0800 e nenhum outro período tiver sido
+combinado, use a última recarga efetivada até o momento da consulta.
+
+1. Reaproveite o registro da última recarga quando a conversa já confirmar
+   a empresa e o instante do crédito. Se faltar essa informação, descubra
+   `GET /Telephony/Billing/Recharges` com `sufficit_api_search` e consulte
+   o histórico autorizado para o `contextId` com `sufficit_api_call`.
+2. Use o `timestamp` da compra de crédito mais recente efetivada até a hora
+   atual para aquele contexto. Desconsidere recargas futuras ou pendentes,
+   a validade do crédito e as datas da fatura ou do pagamento. O histórico
+   retorna compras de crédito do cliente. Use evidência de serviço quando
+   houver mais de um ciclo aplicável ou quando o pedido exigir isolar um 0800.
+   O modelo `billed-calls` cobre o cliente e não aceita filtro por DID.
+3. Se o histórico não estiver disponível ou não confirmar a última recarga,
+   explique a lacuna e use o link com o contexto conhecido. Peça apenas a
+   informação que faltar para preencher o período com segurança.
+
+### Montar o link
+
+Use `model=billed-calls`, `contextid`, `start` e `end` (datas `yyyy-MM-dd`),
+`starttime` e `endtime` (`HH:mm:ss`) e `offset` (minutos). No intervalo de
+recarga, converta o horário UTC do crédito e o instante atual para o fuso do
+relatório antes de preencher datas e horários. Use Brasília (`offset=-180`)
+quando nenhum outro fuso tiver sido informado. Preserve a hora efetiva da
+recarga e informe o período e o fuso junto ao link. O fim é inclusivo.
+
+O modelo aceita até 31 dias por consulta. Para uma vigência maior, envie links
+consecutivos no mesmo contexto e fuso. Inicie cada trecho um segundo depois
+do fim inclusivo anterior e preserve o início da recarga e o fim da consulta.
 
 ## Geração e exportação por solicitação
 
