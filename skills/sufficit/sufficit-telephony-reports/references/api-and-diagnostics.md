@@ -17,9 +17,10 @@ sufficit-standard, o transporte em sufficit-client e a superfície em sufficit-b
 | `billed-by-did` | Tarifadas por DID | Nenhum |
 | `usage-by-extension` | Uso por ramal e direção | `discardSeconds` |
 
-Limites iniciais: 31 dias, exceto `calls-by-hour` (48 horas); quatro execuções
-simultâneas por instância; 100.000 linhas (erro em vez de truncamento);
-até 100 DIDs de 40 caracteres, texto de 200 caracteres. Tags opcionais de telas
+O catálogo usa `maximumHours: 0` para indicar que o modelo aceita qualquer
+duração válida, inclusive em `calls-by-hour`. A geração aceita quatro execuções
+simultâneas por instância, até 100.000 linhas (excesso gera erro), até 100 DIDs de
+40 caracteres e texto de até 200 caracteres. Tags opcionais de telas
 legadas não são expostas nesse contrato. Não suponha que contagem de linhas
 seja contagem de chamadas em modelos agrupados: use os totais do modelo.
 
@@ -35,8 +36,9 @@ que resolveu o contexto; não o confunda com o GUID presente na aba.
 - **401/403:** diferencie credencial ausente/expirada de permissão por contexto.
   Não altere concessões como parte da geração do relatório.
 - **400:** confira modelo, período, segundos, fuso e capacidades de filtro.
-- **429/504:** respeite limite/timeout. Se for necessário reduzir o período,
-  informe isso; não apresente o intervalo menor como o relatório completo pedido.
+- **429:** aguarde o prazo indicado em `Retry-After`.
+- **504:** registre o tempo limite e identifique se a resposta veio da API ou
+  do gateway. Informe o período que falhou e mantenha o link original.
 - **500 na exportação:** registre a mensagem sem conteúdo sensível. Quando há
   acesso operacional autorizado, examine o erro interno e as dependências da
   aplicação instalada. JSON sem Excel pode ajudar a isolar o problema, mas é

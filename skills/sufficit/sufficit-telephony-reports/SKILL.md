@@ -2,7 +2,7 @@
 name: sufficit-telephony-reports
 description: "Direct customers to Sufficit portal telephony reports with customer and period prefilled, and generate reports through the corporate API. Use for ligacoes tarifadas, gasto desde a ultima recarga de tarifado ou 0800, restricted report spreadsheets, and Excel exports."
 metadata:
-  version: "1.3.0"
+  version: "1.3.1"
   author: "Sufficit"
 ---
 
@@ -57,9 +57,10 @@ relatório antes de preencher datas e horários. Use Brasília (`offset=-180`)
 quando nenhum outro fuso tiver sido informado. Preserve a hora efetiva da
 recarga e informe o período e o fuso junto ao link. O fim é inclusivo.
 
-O modelo aceita até 31 dias por consulta. Para uma vigência maior, envie links
-consecutivos no mesmo contexto e fuso. Inicie cada trecho um segundo depois
-do fim inclusivo anterior e preserve o início da recarga e o fim da consulta.
+Use um link por período solicitado, mesmo para vigências longas. Os modelos
+de relatório aceitam o intervalo completo. O limite de datas do histórico de
+chamadas pertence àquela página. Se a consulta retornar HTTP 504, informe o
+tempo limite de processamento e preserve o período original.
 
 ## Geração e exportação por solicitação
 
