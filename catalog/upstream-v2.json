@@ -2959,7 +2959,28 @@
       "sourceId": "sufficit-genius",
       "contentSha256": "1d9d22185061ba254b4ebce2b455b55bd183115963371609a5c39763ee41e007",
       "version": "1.3.0"
+    },
+    {
+      "id": "metatrader5-orders",
+      "name": "metatrader5-orders",
+      "description": "Set up MetaTrader 5 with the Python MetaTrader5 library (natively on Windows or under Wine on Linux), connect it to the user's own brokerage account with the password kept in the Sufficit Identity Vault, read quotes, and send orders only on the user's explicit, per-order confirmation behind a two-layer lock (terminal AutoTrading off plus value and symbol limits). Use when a user wants to operate their own account (for example XP Investimentos on B3) through Genius. Living guide, updated as lessons are learned. Version 0.2.0.",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/metatrader/orders",
+      "tags": [
+        "metatrader",
+        "mt5",
+        "xp",
+        "b3",
+        "ordens",
+        "trading",
+        "vault",
+        "wine"
+      ],
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "sourceId": "sufficit-genius",
+      "contentSha256": "dfa8594632f2cdbe1d49ef502d45aa4b161a3c69da0cb163a9378217e3064d51",
+      "version": "0.2.0"
     }
   ],
-  "catalogEntries": 195
+  "catalogEntries": 196
 }

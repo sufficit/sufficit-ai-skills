@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 195 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 196 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -25,12 +25,13 @@ conteúdo importado.
 | Asaas | 4 | Sufficit, MIT-0 |
 | QuePasa | 2 | Sufficit, MIT-0 |
 | IXC | 1 | Sufficit, MIT-0 |
+| MetaTrader | 1 | Sufficit, MIT-0 |
 
 As skills ficam em [`skills/android`](skills/android),
 [`skills/asaas`](skills/asaas),
 [`skills/google`](skills/google), [`skills/hermes`](skills/hermes), [`skills/images`](skills/images),
 [`skills/instagram`](skills/instagram), [`skills/ixc`](skills/ixc),
-[`skills/mikrotik`](skills/mikrotik), [`skills/quepasa`](skills/quepasa),
+[`skills/metatrader`](skills/metatrader), [`skills/mikrotik`](skills/mikrotik), [`skills/quepasa`](skills/quepasa),
 [`skills/refero`](skills/refero),
 [`skills/videos`](skills/videos) e
 [`skills/sufficit`](skills/sufficit). O
@@ -195,3 +196,5 @@ Delivery: [YouTube naming and tablet acceptance](docs/activities/202611161700-yo
 Delivery: [YouTube runtime plugin](docs/activities/202611161915-youtube-runtime-plugin.md).
 
 - [Optional native integration plugins](docs/activities/202611162231-optional-integration-plugins.md) — installation/discovery updates for Genius.
+
+[Consolidação em andamento](docs/PLAN-SKILLS-MAIN-CONSOLIDATION.md).

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 195,
+  "catalogEntries": 196,
   "sources": [
     {
       "id": "android",
@@ -2009,6 +2009,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/youtube-video-understand",
       "path": "skills/videos/youtube-video-understand",
       "contentSha256": "1d9d22185061ba254b4ebce2b455b55bd183115963371609a5c39763ee41e007"
+    },
+    {
+      "id": "metatrader5-orders",
+      "name": "metatrader5-orders",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/metatrader/orders",
+      "path": "skills/metatrader/orders",
+      "contentSha256": "dfa8594632f2cdbe1d49ef502d45aa4b161a3c69da0cb163a9378217e3064d51"
     }
   ]
 }

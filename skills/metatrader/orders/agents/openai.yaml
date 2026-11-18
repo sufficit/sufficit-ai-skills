@@ -1,0 +1,4 @@
+interface:
+  display_name: MetaTrader 5 Orders
+  short_description: Connect MT5 to your own account and place locked, confirmed orders
+  default_prompt: Connect MetaTrader 5 to my brokerage account in read-only mode and set up the order lock.
