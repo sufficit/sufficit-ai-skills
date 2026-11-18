@@ -2,7 +2,7 @@
 name: quepasa-api
 description: "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa."
 metadata:
-  version: "0.1.5"
+  version: "0.1.6"
 ---
 
 # QuePasa API
@@ -11,7 +11,7 @@ QuePasa exposes a WhatsApp session (one number) per token. This skill teaches th
 
 ## Address and credentials
 
-- `QUEPASA_URL` is the gateway base URL (without a trailing slash). Never invent another; use the configured one in the agent environment.
+- `QUEPASA_URL` is the gateway base URL without a trailing slash. Use the URL supplied for this task or the URL configured for this session. Verify the environment before sending credentials. A token marked active in Vault is a stored credential, with no proof that the selected gateway recognizes or can route the session.
 - `GET $QUEPASA_URL/api/v5/system/version` and `GET /api/v5/health` are public: use them to confirm that the gateway responds and which version is running.
 - Session token — header `X-QUEPASA-TOKEN: <token>`. Identifies one number. It is the default credential for everything: upload, groups, media, webhook.
 - User key — `X-QUEPASA-USERKEY: <key>` header. See several sessions (of various numbers/clients) and `GET /api/v5/sessions` even returns their tokens. It is powerful: use it only for the purpose and session for which it was delivered, never to read, send or change other sessions, and never to "discover" someone else's token.
@@ -19,9 +19,11 @@ QuePasa exposes a WhatsApp session (one number) per token. This skill teaches th
 
 ## Rules for reading answers
 
-- Every response has `success` (bool) and `status` (text). `success: false` is flawed even with HTTP 200 — read `status` and report the real reason.
-- 401 = missing/invalid token for route; 404 = missing route (check prefix); 405 = wrong method (e.g. `GET /api/v5/groups/get`, which is `POST`).
-- Successful delivery brings `message.id`: store it to respond (`inreply`), react, edit or revoke.
+- Read the HTTP status, the safe error fields in the body and `X-QuePasa-Forward-Error` when present. Bodies vary by route. `success: false` means the operation failed even with HTTP 200.
+- For a session preflight, use `GET /api/v5/health` with the session token and check the returned session state and account. A public health or readiness check only proves service availability. Before a send, verify the intended account and destination with read-only calls to the same gateway.
+- HTTP 401 with `missing user id` means the route did not resolve an authenticated identity. Check the gateway, route and supported credential. HTTP 503 with `owner_unknown` means the gateway could not resolve a live owner for the session. That request stopped before reaching group or message handling. Neither result alone establishes that a token expired or that the account needs pairing. See the [production session runbook](https://github.com/sufficit/sufficit-ai-skills/blob/main/skills/quepasa/production/references/runbooks.md#session-not-ready) for operator diagnosis.
+- For 404 or 405, check the API prefix, route and HTTP method. For example, `/api/v5/groups/get` uses POST.
+- An accepted send returns a `message.id`. Keep it for replies (`inreply`), reactions, edits and reconciliation. A Fleet chat turn accepted for processing is a separate operation. For an agent reply to a group, look for the WhatsApp delivery receipt.
 
 ## Identifiers (JID)
 
@@ -42,7 +44,7 @@ Before an authorized text send to a person, apply [human-readable notification g
 - `chatid` is the group (`…@g.us`) or the person (`…@s.whatsapp.net`).
 - `trackid` identifies the system you sent; webhook returns this value and allows you to ignore the echo itself (prevents bot loops).
 - File: same endpoint with `url` (downloaded by the server) or `content` (`data:<mime>;base64,…`) and `fileName`; view fields `poll`, `location`, `contact`, `sticker`, `link` in reference.
-- Confirm `success: true` before telling the user it was sent.
+- Confirm `success: true` and a nonempty `message.id` before reporting that QuePasa accepted the send. The recipient’s read status requires separate evidence. If the outcome is uncertain, check the group history or delivery record before any retry.
 
 ## Pin a message
 
