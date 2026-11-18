@@ -1,9 +1,29 @@
 # Carrier SIP line onboarding
 
-“Cadastrar uma linha SIP como a Datora” normally calls for registering a carrier
-account on an existing interconnection. A DID controls ownership and inbound
-routing. A catalog trunk describes a SIP peer. Identify which outcome the
-request needs before choosing the API.
+Classify who contracted and manages the line before selecting the API. The
+carrier's name only identifies the upstream operator. Ask the requester or the
+person who forwarded the order for the customer name or sales record and who
+administers the line when those facts are missing.
+
+- **Sufficit-managed line sold directly to a customer.** Resolve the customer
+  and service in the commercial records. Use Sufficit's approved carrier
+  onboarding or activation flow, then handle the customer DID and destination
+  where requested. Infrastructure can be shared while the DID has a customer
+  owner. Reuse the verified managed carrier profile for that product.
+- **Externally managed line contracted by the customer.** Use **Telefonia →
+  Interconexões** in the selected customer's context. Discover
+  `GET /Telephony/interconnection?contextId=…` for its visible catalog and
+  `POST /Telephony/interconnection/single` for the customer-owned aggregate.
+  Confirm the record's own `contextId` because the list may also include shared
+  infrastructure. The writer requires an allowed telephony role and the
+  applicable customer entitlement. Verify which registration mode and runtime
+  steps the deployed API actually supports. Keep this line in the customer's
+  scope and preserve the existing state of any shared interconnection and
+  unrelated hosts, credentials, matches or registrations.
+
+“Como na Datora” describes a reference workflow. Confirm the operating model
+for the new line before choosing the equivalent operation. A DID controls
+ownership and inbound routing, while a catalog trunk describes a SIP peer.
 
 1. Resolve the DID and customer from the trusted conversation context and
    available DID, sales and carrier records. Normalize the number for lookup
@@ -12,8 +32,9 @@ request needs before choosing the API.
    prefix or a carrier name can narrow the search. Neither authorizes a write
    to a customer or implies a shared trunk. Ask one focused question only for
    the missing fact that blocks the operation.
-2. Identify the existing interconnection by its GUID and verified carrier
-   mapping. For TIP Brasil, legacy ingress channels named `in-tip` are a
+2. For a managed line, identify the existing carrier interconnection by its
+   GUID and verified mapping. For an externally managed line, resolve or
+   create the intended customer interconnection through its scoped API. For TIP Brasil, legacy ingress channels named `in-tip` are a
    confirmed carrier hint for call evidence. They do not establish the new line's
    registrar, credentials or node. Reuse the workflow from Datora and confirm
    TIP's own approved profile. Check whether the supplied IP is the remote
@@ -28,7 +49,7 @@ request needs before choosing the API.
    `/Telephony/trunk/single` and `provisioningsync` workflow generates peer,
    AOR, auth and identify objects. It does not create outbound registrations.
    Peer provisioning applies only if the verified carrier mode calls for it.
-4. In Endpoints, the shared catalog exposes
+4. For Sufficit-managed infrastructure, the shared catalog exposes
    `GET /Telephony/Routes/Interconnection?interconnectionId=…`,
    `POST /Telephony/Routes/Interconnection` and
    `GET /Telephony/Routes/RegistrationStatuses?interconnectionId=…`.
