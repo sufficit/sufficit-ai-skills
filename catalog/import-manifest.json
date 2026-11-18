@@ -1898,7 +1898,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-dialplan",
       "path": "skills/sufficit/sufficit-telephony-dialplan",
-      "contentSha256": "6aac12fe78a86b16f4436d04ddfb8762be5e7417a4c3b6c3b69d064f03338ad8"
+      "contentSha256": "ad2f141f4eb1bfbd22663cb2d9c43e68cbd0acec4e37928741d205663dd34337"
     },
     {
       "id": "sufficit-telephony-extensions",

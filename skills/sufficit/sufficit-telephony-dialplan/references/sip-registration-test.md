@@ -17,14 +17,30 @@ when requested.
    `GET /Telephony/interconnection/registration-test/targets?contextId=…&interconnectionId=…`
    to check the available node and registrar tuples. The POST requires the
    exact authorized node, host, port, transport and SIP username for that
-   customer and draft. An empty list or 403 requires resolving the specific
-   authorization with the operator before sending a test.
-3. Confirm that the registrar accepts a separate contact for 30 seconds without
-   replacing active contacts. Prefer an approved test account. If that behavior
-   is unknown, leave live accounts untouched and report what needs confirmation.
-   Send the password only through an approved private input path that keeps it
-   out of chat and saved tool history. If that path is unavailable, direct the
-   authorized person to the password field in the interconnection editor.
+   customer and draft. HTTP `200 []` confirms the scoped lookup passed but
+   returned no eligible destination. Check the matching
+   `Telephony:RegistrationTests:Authorizations` entry and node inventory with
+   the Sufficit configuration owner. A GET `403` means the context or
+   interconnection is outside the allowed scope for this caller. A POST
+   `403` can also indicate that the tuple or the exact username does not
+   match. Target listings omit usernames and do not authorize every user on
+   a listed host.
+3. Confirm that the registrar accepts a separate contact for up to 30 seconds
+   without replacing active contacts. Use an authorized account. For an
+   externally managed interconnection, get this evidence from the customer's
+   technical owner or their verified account configuration. Direct carrier
+   confirmation is not a prerequisite for that operating model. Leave
+   `AllowsIsolatedContact` unset or false until the behavior is verified.
+   When the evidence is missing, stop before POST.
+4. The POST and async status GET are excluded from the generated MCP tools.
+   Use authorized HTTPS with a private secret input path or use the
+   **Testar registro SIP** action in the interconnection editor. Keep the
+   password out of prompts, chat, tool arguments recorded in transcripts,
+   command-line arguments and diagnostics. If there is no secure route for
+   the agent to use the credential, ask the authorized person to enter it in
+   the editor. A test registration receipt alone does not attest to the
+   preservation of other contacts. If proof is requested, compare independent
+   before-and-after registrar evidence from the account owner.
 
 ## API response and timing
 
@@ -59,7 +75,7 @@ Read that location or use
   `result.cleanup` before reporting success.
 - Reuse the same key after an uncertain response. It identifies one run for
   that user and customer for 10 minutes, including across API instances.
-  Changed interconnection, node, registrar or username returns `409` for
+  Changing the interconnection, node, registrar, port, transport or username returns `409` for
   the same key. Generate a new key only for a deliberate new test, such as
   after changing credentials. The API does not compare passwords on replay.
 - An interrupted executor becomes `Interrupted` on the next status check
