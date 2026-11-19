@@ -1908,7 +1908,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
       "path": "skills/sufficit/sufficit-telephony-extensions",
-      "contentSha256": "2447e982b3b1d9b29d7cc420022f34a5ad7b59ab18aef689de51314b0205b245"
+      "contentSha256": "e3eae629ab1297929ba61dcfe14394616229202c605cc018e14a3387bcace638"
     },
     {
       "id": "svg-vectorization",

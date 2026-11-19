@@ -38,8 +38,10 @@ values on the deployed PBX; this note explains what to look for.
   is allowed.
 - Browser endpoints (`wss-<endpoint id>`, the Chrome softphone) stay audio only unless
   the extension explicitly allows VP8 or H.264; the default codec list never turns
-  video on for them (sufficit-standard `ApplyWebRTCVideo`). As of 2026-11-19 this is
-  deployed on apoint-voip only; the Chrome softphone (2.21 pilot) reaches it through
-  Settings › Diagnostics › Voice server.
+  video on for them (sufficit-standard `ApplyWebRTCVideo`), on all three voip nodes since
+  2026-11-19. The Chrome softphone (2.21+) offers "Vídeo" and "Atender com vídeo".
+- `voip.sufficit.com.br` is the default server name (DNS with failover and location). The
+  nodes are `apoint-voip`, `eveo-voip` and `google-voip`; the Chrome softphone can pin one in
+  Settings › Diagnostics › Voice server, for tests only.
 - A computer without a camera still receives the other side's video in the Chrome
   softphone; it just sends none.
