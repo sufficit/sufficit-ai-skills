@@ -124,8 +124,9 @@ Do not declare onboarding ready while legacy SIP peers are missing.
 
 ## Create the waiting queue and members
 
-Use the configured Queue catalog API, not guessed `/Telephony/Queue` routes on
-EndPoints. The supported contract from QueueClient.cs and ARI ManagementApi.cs is:
+Use the operator's authenticated EndPoints connection and confirm the
+[queue operations](../../sufficit-telephony-dialplan/references/queues-dids-trunks.md#queue-operations-through-endpoints)
+in OpenAPI v2. The shared catalog supports the following operations:
 
 - GET `/api/queue/contexts/<context:N>/queues`.
 - PUT `/api/queue/contexts/<context:N>/queues/<queueId:N>` creates a new UUIDv7
@@ -150,14 +151,8 @@ EndPoints. The supported contract from QueueClient.cs and ARI ManagementApi.cs i
   Bind only same-customer confirmed extensions; enabled=true/paused=false means
   eligible, not proof that a phone is registered. Preserve other members.
 
-Keys remain at the trusted BFF/bridge; never copy its Bearer into agent prompts.
-The provisioned Fleet bridge `/data/support/queue/queue-catalog REQUEST.json`
-accepts GET requests with contextId and optional queueId/members; PUT uses contextId,
-queueId, optional memberId and body. For creation add `create:true` and omit revision;
-for updates omit create and include the exact strong revision. Only use this form
-when that connection version is installed. A historical existing-member-only
-bridge is an access limitation; it does not prove missing queue creation support.
-No nodeId is required for catalog writes. Never choose the first online node.
+Catalog writes use the customer route without a node ID. EndPoints handles
+the private ARI credential and records the authenticated operator.
 After 409/412 or transport uncertainty, re-read the catalog by the SAME IDs before
 retrying. Reconcile exact state; do not mint another queue or member ID.
 

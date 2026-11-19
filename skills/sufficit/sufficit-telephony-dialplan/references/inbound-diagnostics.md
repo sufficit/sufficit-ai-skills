@@ -20,9 +20,9 @@ look like a failed line to its user. Trace the affected customer's actual path.
 3. Read the active destination chain: time condition/time zone/override, IVR
    options and timeout/default, then each queue's enabled state, members, pauses
    and overflow. Queue `destination` is an exit, not the entrance. Resolve every
-   referenced Id within its owning context. With a provisioned catalog bridge,
-   list the customer's queues and select the returned Id; per-queue GET may not
-   exist. A failed PBX read does not block independent API/catalog reads.
+   referenced ID within its owning context. List the customer's queues through
+   [EndPoints](queues-dids-trunks.md#queue-operations-through-endpoints) and
+   select the returned ID. A failed PBX read does not block the API reads.
 4. For the intended terminals, check current registration/contact and reachability
    using the actual SIP/PJSIP technology and authorized connector. Read all
    relevant members, not just the first page/printed portion. For TCP, a stored

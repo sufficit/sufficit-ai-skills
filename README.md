@@ -138,6 +138,8 @@ orienta o acesso do cliente pelo portal, a geração via API e a exportação Ex
 [Contrato de datas dos relatórios](docs/activities/202611181157-report-range-contract.md).
 [Carregamento automático e geração em segundo plano](docs/activities/202611181905-telephony-report-jobs-skill.md).
 
+[Gestão de filas pela API nas skills de telefonia](docs/PLAN-QUEUE-API-SKILLS.md).
+
 Declared package versions are copied into the reviewed catalog by
 `scripts/catalog_versions.py`; CI checks that they match `SKILL.md` metadata.
 Packages without a declared version stay unversioned; a Git revision is provenance,

@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.8.2"
+  version: "0.8.3"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -180,6 +180,10 @@ live preflight authorization. A generic insufficient_scope header on 403 does
 not identify which scope or business entitlement is missing.
 
 ## Restricted Fleet catalog bridge
+
+For operator onboarding, use the authenticated EndPoints API described in
+[customer onboarding](references/customer-onboarding.md#create-the-waiting-queue-and-members).
+The bridge below belongs to Fleet installations that explicitly provision it.
 
 [scripts/queue_catalog_bridge.py](scripts/queue_catalog_bridge.py) is installed only
 on the trusted Queue portal behind an SSH forced command whose actor GUID is fixed

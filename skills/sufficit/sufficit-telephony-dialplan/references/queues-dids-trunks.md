@@ -14,6 +14,30 @@
 - Membership changes are live: after changing members, re-read the queue and
   confirm the final member list before reporting.
 
+## Queue operations through EndPoints
+
+Discover the operations under `/api/queue/contexts/{contextId}` in the live
+EndPoints OpenAPI v2. Use the operator's authenticated Sufficit API connection.
+In .NET, use `APIClientService.Telephony.Queue` from Sufficit.Client
+1.26.1119.1451 or later.
+
+- `GET /queues` lists the shared catalog for the customer. Select the returned
+  queue ID and preserve the revision. `GET /queues/{queueId}/members` lists
+  members and authorized destinations.
+- To create a queue or member, use a stable UUIDv7 and `If-None-Match: *`.
+  Use the revision in `If-Match` for updates and member removal, and the
+  revision of each member for reordering. Re-read after an ambiguous write
+  or a revision conflict. For a change limited to the queue fallback,
+  preserve its main fields and omit `options` to keep its current options.
+- Catalog operations use the shared customer route. For live monitoring or
+  ingress verification, use `GET /nodes` to select the relevant authorized
+  node and use its explicit `/nodes/{nodeId}` route. An empty node list can
+  coexist with a working shared catalog.
+- Writes require `dialplanupdate` for the customer or global manager access.
+  Cross-customer agent search requires global manager access. A 403 is a
+  permission result from the selected operation. Report it with the affected
+  context and operation.
+
 ## Internal queue numbers and migrated FreePBX callers
 
 A native queue is addressed by GUID. Its short/internal dial number is a separate
@@ -50,10 +74,9 @@ For an intercom/extension that dials a queue number:
    may differ: discover actual includes rather than assuming checkout equals runtime.
    Report the exact target `sufficit-app-queue,<queueId:N>,1` if present.
 4. Read the customer's native queue catalog and match that GUID to its title,
-   enabled state and members. On the configured catalog bridge, GET the customer's
-   **queue list**, then select `items[id]`; a per-queue GET may return405 even when
-   listing and conditional PUT work. `queue.destination` is the exit/fallback,
-   not its entry number. Never infer queue identity from the title or fallback.
+   enabled state and members. Read the customer's **queue list** in EndPoints
+   and select the exact ID from `items`. `queue.destination` is the exit or
+   fallback. Use the dialplan lookup for its entry number.
 5. Separate **map exists** from **caller can reach it**. A route visible from
    `from-internal` may be absent from a tenant-specific context. Inspect the caller's
    real include/Goto path. If the exact map exists but that path falls through to
