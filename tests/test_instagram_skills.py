@@ -16,7 +16,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-INSTAGRAM = ROOT / "skills/instagram"
+INSTAGRAM = ROOT / "skills/meta/instagram"
 CAPTION = INSTAGRAM / "instagram-caption/scripts/caption_lint.py"
 AUDIT = INSTAGRAM / "instagram-audit/scripts/audit_posts.py"
 BEATS = INSTAGRAM / "instagram-reel/scripts/beat_sheet.py"

@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 196 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 212 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -10,17 +10,18 @@ conteúdo importado.
 
 | Coleção | Quantidade | Origem |
 | --- | ---: | --- |
-| Android | 22 | `android/skills`, Apache-2.0 |
+| Android | 37 | `android/skills`, Apache-2.0 |
 | Google | 127 | `google/skills`, Apache-2.0 |
 | Refero | 1 | `referodesign/refero_skill`, MIT |
 | Matt Pocock | 1 | `mattpocock/skills`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
 | Hermes | 2 | `Sufficit`, MIT-0 |
-| Sufficit | 22 | Sufficit, MIT-0 |
+| Sufficit | 23 | Sufficit, MIT-0 |
 | Asterisk | 1 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
-| Instagram | 3 | Sufficit, MIT-0 |
-| Instagram (adaptação) | 3 | `Jakeschincariol/instagram-agent-skill` (adaptação Sufficit), MIT |
+| Meta / Instagram | 3 | Sufficit, MIT-0 |
+| Meta / Instagram (adaptação) | 3 | `Jakeschincariol/instagram-agent-skill` (adaptação Sufficit), MIT |
+| Meta | 2 | Sufficit, MIT-0 |
 | Videos | 2 | Sufficit, MIT-0 |
 | Asaas | 4 | Sufficit, MIT-0 |
 | QuePasa | 2 | Sufficit, MIT-0 |
@@ -30,7 +31,8 @@ conteúdo importado.
 As skills ficam em [`skills/android`](skills/android),
 [`skills/asaas`](skills/asaas),
 [`skills/google`](skills/google), [`skills/hermes`](skills/hermes), [`skills/images`](skills/images),
-[`skills/instagram`](skills/instagram), [`skills/ixc`](skills/ixc),
+[`skills/ixc`](skills/ixc),
+[`skills/meta`](skills/meta),
 [`skills/metatrader`](skills/metatrader), [`skills/mikrotik`](skills/mikrotik), [`skills/quepasa`](skills/quepasa),
 [`skills/refero`](skills/refero),
 [`skills/videos`](skills/videos) e
@@ -60,18 +62,18 @@ clara, com adaptação em português e distinção entre revisão editorial e co
 com o padrão inglês. É uma adaptação independente da Sufficit.
 Delivery: [support chat readability](docs/activities/20261030-chat-readability.md).
 
-The [`instagram-video-download`](skills/instagram/instagram-video-download/SKILL.md) skill saves Instagram
+The [`instagram-video-download`](skills/meta/instagram/instagram-video-download/SKILL.md) skill saves Instagram
 videos locally with yt-dlp and verifies the resulting media streams. The
 [`video-transcribe`](skills/videos/video-transcribe/SKILL.md) skill turns local videos or audio into a
 Markdown transcript with Whisper and ffmpeg. The
-[`instagram-profile-setup`](skills/instagram/instagram-profile-setup/SKILL.md) skill audits and writes
+[`instagram-profile-setup`](skills/meta/instagram/instagram-profile-setup/SKILL.md) skill audits and writes
 searchable, converting Instagram business profiles and covers a new account's first steps;
-[`instagram-profile-manage`](skills/instagram/instagram-profile-manage/SKILL.md) reads the live profile and
+[`instagram-profile-manage`](skills/meta/instagram/instagram-profile-manage/SKILL.md) reads the live profile and
 applies approved changes through the cheapest working channel;
-[`instagram-caption`](skills/instagram/instagram-caption/SKILL.md) writes and lints captions in Portuguese or
-English; [`instagram-audit`](skills/instagram/instagram-audit/SKILL.md) ranks published posts against the
+[`instagram-caption`](skills/meta/instagram/instagram-caption/SKILL.md) writes and lints captions in Portuguese or
+English; [`instagram-audit`](skills/meta/instagram/instagram-audit/SKILL.md) ranks published posts against the
 account's own median and separates hook problems from profile problems;
-[`instagram-reel`](skills/instagram/instagram-reel/SKILL.md) writes Reel scripts with a timed beat sheet and
+[`instagram-reel`](skills/meta/instagram/instagram-reel/SKILL.md) writes Reel scripts with a timed beat sheet and
 a per-brand voice file.
 
 The [`hermes-api`](skills/hermes/api/SKILL.md) skill discovers the Hermes helpdesk API from the

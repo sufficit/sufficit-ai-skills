@@ -2,7 +2,7 @@
 name: routeros-management
 description: "Administer MikroTik RouterOS v7 and CHR with CLI, SSH and REST; diagnose interfaces, IP, DHCP, DNS, routing, firewall, NAT, VPN, Wi-Fi, services, scripts, backup and updates, with controlled change and validation. Use when the user mentions MikroTik, RouterOS, WinBox, CHR, /ip, /interface or /system."
 metadata:
-  version: "1.0.3"
+  version: "1.0.4"
 ---
 
 # Operation MikroTik RouterOS v7
@@ -72,6 +72,20 @@ REST: `GET /rest/ip/address` list; `PUT /rest/ip/address` creates, `PATCH /rest/
 
 Filter rules are evaluated from top to bottom; exceptions should come before drop. `action=log` and address-list actions can continue evaluation. `fasttrack-connection` can bypass mangle/queues: evaluate policy routing and QoS before activating. For port forwarding, check `dstnat` and permission from `forward`, IP of destination, return and hairpin if applicable; publish service increases attack surface. Never replace rules by generic template or mix `/ip/firewall` with `/ipv6/firewall`. Use unique comments from your automation and check the position of each rule before and after.
 
+## Checking an `.rsc` file before `/import`
+
+To check a file without changing the configuration, pass **both** flags; `verbose=yes` alone still applies the file:
+
+```routeros
+/import test.rsc verbose=yes dry-run
+```
+
+The behavior below was measured upstream on a stock CHR running RouterOS 7.24.5; treat other versions as unverified. A dry-run echoes each line as `#line N`, prints the error under the offending line, scans the whole file and ends with a count (`Script Error: found 1 error(s) in import file`). A clean dry-run ends with `No syntax errors found in the import file`.
+
+**A clean dry-run does not mean the import will apply.** It executes nothing, so it only finds what the parser finds. Faults decided by device state pass it and stop the real import: a duplicate (`failure: already have such entry`), including one created by an earlier line of the same file; a builtin object (`failure: cannot change builtin`); a mandatory value checked only on apply; a missing object (`no such item`).
+
+A real import stops at the first error and never rolls back. A syntax error runs nothing in a plain `/import`, but with `verbose=yes` the lines before it are already applied. A `bad command name` or an apply-time failure leaves the earlier lines applied in both modes. Run the dry-run first, then import under Safe Mode with the rollback plan from the operation contract.
+
 ## Reusable change plan
 
 ```text
@@ -87,4 +101,4 @@ Result: applied/partial/not applied, evidence without secrets
 
 ## Sources and technical provenance
 
-Adapted and expanded from [tikoci/routeros-skills (MIT, pinned revision)](https://github.com/tikoci/routeros-skills/tree/c9802a8713927a6851f5540efe93b95f2b0637b8), especially `routeros-fundamentals`, `routeros-firewall`, and `routeros-scripting`. Attribution and license are included in this package. Consult current MikroTik documentation for the actual version and menu: [manual](https://manual.mikrotik.com/docs/introduction/), [Configuration Management/Safe Mode](https://help.mikrotik.com/docs/spaces/ROS/pages/328155/Configuration+Management), [REST API](https://help.mikrotik.com/docs/spaces/ROS/pages/47579162/REST+API), and [Firewall](https://help.mikrotik.com/docs/display/ROS/Filter). The old `help.mikrotik.com` pages are frozen; prefer the new manual when they disagree.
+Adapted and expanded from [tikoci/routeros-skills (MIT, pinned revision)](https://github.com/tikoci/routeros-skills/tree/aa007fb1a1ba85433e1e8e7a368b939fde044eec), especially `routeros-fundamentals`, `routeros-firewall`, and `routeros-scripting`; the `/import` dry-run guidance comes from the 2026-11-01 lab note in `routeros-scripting`. Attribution and license are included in this package. Consult current MikroTik documentation for the actual version and menu: [manual](https://manual.mikrotik.com/docs/introduction/), [Configuration Management/Safe Mode](https://help.mikrotik.com/docs/spaces/ROS/pages/328155/Configuration+Management), [REST API](https://help.mikrotik.com/docs/spaces/ROS/pages/47579162/REST+API), and [Firewall](https://help.mikrotik.com/docs/display/ROS/Filter). The old `help.mikrotik.com` pages are frozen; prefer the new manual when they disagree.

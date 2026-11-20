@@ -10,6 +10,12 @@ if [[ -z "${PROJECT_ID}" ]]; then
     exit 1
 fi
 
+# This script writes core/project, and `gcloud ai *` refuses a numeric one.
+if [[ "${PROJECT_ID}" =~ ^[0-9]+$ ]]; then
+    echo "Error: PROJECT_ID is a project number; pass the alphanumeric Project ID."
+    exit 1
+fi
+
 if [[ -z "${USER_EMAIL}" ]]; then
     echo "Error: USER_EMAIL is not set (neither as an argument nor as an environment variable)."
     exit 1
@@ -24,12 +30,10 @@ if [[ -z "${REGION}" ]]; then
     exit 1
 fi
 
-
 echo "PROJECT_ID: ${PROJECT_ID}"
 echo "Account: ${USER_EMAIL}"
 echo "Env: ${ENV}"
 echo "Region: ${REGION}"
-
 if ! gcloud config configurations describe "${ENV}-cdmodel" > /dev/null 2>&1; then
   gcloud config configurations create "${ENV}-cdmodel"
   gcloud config set core/project "${PROJECT_ID}"

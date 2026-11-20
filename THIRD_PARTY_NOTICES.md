@@ -8,14 +8,14 @@ Genius. A origem e o digest de cada pacote estão em
 
 - Autor: Google LLC
 - Origem: <https://github.com/android/skills>
-- Revisão importada: `ea05a53683d1fb1fc701c3ad91f494d25d4fc7c6`
+- Revisão importada: `c72942584fff970dac86ced78b367fce0c441e52`
 - Licença: [Apache License 2.0](licenses/android-skills-Apache-2.0.txt)
 
 ## Google Skills
 
 - Autor: Google LLC
 - Origem: <https://github.com/google/skills>
-- Revisão importada: `f36c9ebe9658ee9f98bf83ad0fe97f747abb743c`
+- Revisão importada: `dbabd354ed3bba7ccd23c6be8261b24e3524d9a2`
 - Licença: [Apache License 2.0](licenses/google-skills-Apache-2.0.txt)
 
 ## Refero Skill
@@ -29,7 +29,7 @@ Genius. A origem e o digest de cada pacote estão em
 
 - Autor: tikoci; adaptação e ampliação por Sufficit
 - Origem: <https://github.com/tikoci/routeros-skills>
-- Revisão consultada: `c9802a8713927a6851f5540efe93b95f2b0637b8`
+- Revisão consultada: `aa007fb1a1ba85433e1e8e7a368b939fde044eec`
 - Licença: [MIT](skills/mikrotik/routeros-management/LICENSE)
 
 ## Instagram Agent Skill
@@ -37,7 +37,7 @@ Genius. A origem e o digest de cada pacote estão em
 - Autor: Jake Schincariol; adaptação por Sufficit
 - Origem: <https://github.com/Jakeschincariol/instagram-agent-skill>
 - Revisão consultada: `d03c56bb598be770c60b201f94237e5d1a4268a6`
-- Licença: [MIT](skills/instagram/instagram-caption/LICENSE)
+- Licença: [MIT](skills/meta/instagram/instagram-caption/LICENSE)
 - Pacotes: `instagram-caption`, `instagram-audit` e `instagram-reel`. A rubrica de
   `instagram-profile-setup` usa a mesma ideia de pontuação, com texto e pesos próprios.
 

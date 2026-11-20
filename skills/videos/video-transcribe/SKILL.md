@@ -12,7 +12,7 @@ metadata:
 Turn the speech in a local media file into a Markdown transcript. Use a local shell
 directly; an active editor terminal or terminal ID is unnecessary. If the media is
 not on disk yet, obtain it first (for Instagram, see
-[instagram-video-download](../../instagram/instagram-video-download/SKILL.md)).
+[instagram-video-download](../../meta/instagram/instagram-video-download/SKILL.md)).
 
 ## Check tools and models
 

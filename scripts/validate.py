@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 REPOSITORY = "https://github.com/sufficit/sufficit-ai-skills"
 LINK = re.compile(r"\[[^]]*\]\(([^)]+)\)")
+FENCE = re.compile(r"^[ \t]*(```|~~~).*?^[ \t]*\1[ \t]*$", re.MULTILINE | re.DOTALL)
 
 
 def digest(directory: Path) -> str:
@@ -36,8 +37,15 @@ def validate_document(directory: Path, expected_name: str) -> None:
     assert name and name.group(1) == expected_name, f"unexpected name in {document}"
     assert description and description.group(1).strip(), f"missing description in {document}"
 
-    for target in LINK.findall(text):
+    # Fenced blocks hold templates and sample output (placeholders such as
+    # `path/to/screenshot`), not links a reader can follow; upstream packages are
+    # verbatim copies, so the check must not demand that examples resolve.
+    for target in LINK.findall(FENCE.sub("", text)):
         target = target.split("#", 1)[0]
+        # A destination with spaces is not a valid CommonMark link; tree
+        # diagrams such as `[Operators](input = SourceNode)` render as text.
+        if " " in target:
+            continue
         if not target or "://" in target or target.startswith(("#", "mailto:")):
             continue
         resolved = (directory / target).resolve()

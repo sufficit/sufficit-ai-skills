@@ -67,14 +67,10 @@ assign the Vertex AI Service Agent role to it.
 
 #### 0.3.1 P4SA selection
 
--   Get project number ${PROJECT_NUMBER} from the output of the translator.
-    `/google/bin/releases/oneplatform/chemist/project_id_number_translator
-    --projects=${PROJECT_ID}`
--   Destination project P4SA ${P4SA} based on ${ENV} selection
-    -   **autopush** or **staging**:
-        `service-${PROJECT_NUMBER}@gcp-sa-${ENV}-aiplatform.iam.gserviceaccount.com`
-    -   **prod**:
-        `service-${PROJECT_NUMBER}@gcp-sa-aiplatform.iam.gserviceaccount.com`
+-   Get project number ${PROJECT_NUMBER} using gcloud:
+    `gcloud projects describe ${PROJECT_ID} --format="value(projectNumber)"`
+-   Destination project P4SA:
+    `service-${PROJECT_NUMBER}@gcp-sa-aiplatform.iam.gserviceaccount.com`
 
 #### 0.3.2 P4SA assignment
 
@@ -83,25 +79,26 @@ assign the Vertex AI Service Agent role to it.
 
 -   Get source project name `${SOURCE_PROJECT}` from the model to copy.
 
--   Check IAM binding: if destination project `${P4SA}` exist and have `Vertex
-    AI Service Agent` role. Sample command:
+-   Check IAM binding: if destination project `${P4SA}` exists and has
+    `Vertex AI Service Agent` role. Sample command:
+
     ```bash
-    gcloud projects get-iam-policy-binding ${SOURCE_PROJECT} \
-    --member="serviceAccount:service-${PROJECT_NUMBER}@gcp-sa-staging-aiplatform.iam.gserviceaccount.com"
+    gcloud projects get-iam-policy ${SOURCE_PROJECT} \
+    --flatten="bindings[].members" \
+    --format="table(bindings.role)" \
+    --filter="bindings.members:service-${PROJECT_NUMBER}@gcp-sa-aiplatform.iam.gserviceaccount.com"
     ```
 
 -   If not, add it with the sample command, save and wait for 2 minutes.
-    ```bash
-    gcloud projects add-iam-policy-binding ${SOURCE_PROJECT} \
-    --member="serviceAccount:service-${PROJECT_NUMBER}@gcp-sa-staging-aiplatform.iam.gserviceaccount.com" \
-    --role="roles/aiplatform.serviceAgent"
 
+    ```bash
     gcloud projects add-iam-policy-binding ${SOURCE_PROJECT} \
     --member="serviceAccount:service-${PROJECT_NUMBER}@gcp-sa-aiplatform.iam.gserviceaccount.com" \
     --role="roles/aiplatform.serviceAgent"
     ```
 
 -   If failed, try to add user's account to destination project.
+
     ```bash
     gcloud projects add-iam-policy-binding ${DEST_PROJECT_ID} \
     --member="user:${USER_EMAIL}" --role="roles/aiplatform.admin"
@@ -179,7 +176,7 @@ curl -X GET -H "Authorization: Bearer $(gcloud auth print-access-token)" ${ENDPO
 
 Prompt user `Creating a Public Shared endpoint in selected region: ${REGION}`.
 Ask the user desired endpoint display name ${NAME}, prefer
-`${<publisher_model_id>-tuned}` like "gemini-3-flash-tuned", default is
+`${<publisher_model_id>-tuned}` like "gemini-3.8-flash-tuned", default is
 `copy-tuned`. If user wants to create a Dedicated Endpoint, say function to be
 add.
 
@@ -194,10 +191,10 @@ Get the created endpoint id ${NEW_ENDPOINT}, it should be in format of
 ## Step 4: Deploy the model to the endpoint
 
 ```bash
-curl -X POST   -H "Content-Type: application/json"  \
- -H "Authorization: Bearer $(gcloud auth print-access-token)"  \
- "${ENDPOINT}/v1/projects/${NEW_ENDPOINT}:deployModel" \
- -d "{'deployedModel': {'model':'${MODEL_COPY}','displayName': '${NAME}'},}"
+curl -X POST -H "Content-Type: application/json" \
+ -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+ "${ENDPOINT}/v1/${NEW_ENDPOINT}:deployModel" \
+ -d "{\"deployedModel\": {\"model\": \"${MODEL_COPY}\", \"displayName\": \"${NAME}\"}}"
 ```
 
 Get the deploy model operation ${OPERATION} status.
@@ -217,6 +214,39 @@ gcloud ai endpoints describe ${NEW_ENDPOINT}
 curl -X POST -H "Authorization: Bearer $(gcloud auth print-access-token)"  -H "Content-Type: application/json" ${ENDPOINT}/v1/${NEW_ENDPOINT}:generateContent -d '{  "contents":  {    "role": "USER",   "parts" : { "text" : "Hello world" }  },}'
 ```
 
+## Workflow-Specific Safety Rules
+
+The system instruction's Tier M/D confirmation gates apply to every mutating
+command in this workflow. The rules below cover behaviors specific to the 1P
+tuned model copy-and-deploy flow that are not in the system instruction.
+
+1.  **Tier Assignments**: `gcloud ai models copy`, `gcloud ai endpoints create`,
+    and `gcloud ai endpoints deploy-model` are **Tier M** (mutating,
+    reversible). `gcloud ai endpoints delete` and `gcloud ai models delete` are
+    **Tier D** (destructive, irreversible). The Tier M dry-run preview card for
+    this workflow must include: development environment, source model ID,
+    destination project and region, endpoint display name, and exact proposed
+    commands.
+
+2.  **Hardware Renegotiation / Error Recovery**: If deployment fails with a 500
+    error or quota error, note that tuned Gemini models can only be deployed to
+    shared public endpoints (dedicated GPU hardware cannot host tuned Gemini
+    models).
+
+3.  **Verification with Test Prediction**: When requested to send a test
+    prediction:
+
+    -   If the endpoint is still provisioning or not yet serving, explain that
+        deployment is currently in progress and report the operation ID.
+    -   If ready, execute the test prediction request to the dedicated endpoint
+        DNS and return the response verbatim.
+
+4.  **In-Progress Operation Lock**: When the user requests cleanup while a
+    deployment is still provisioning, explicitly state that teardown is
+    **BLOCKED by the in-progress operation lock** on the endpoint until
+    provisioning completes. Present the Tier D confirmation prompt so the user
+    can approve cleanup for when the operation finishes.
+
 ## Clean Up
 
 Prompt asking whether or not user want to clean up each resources created during
@@ -228,8 +258,8 @@ If user want to delete the created endpoint, undeploy the model first, then
 delete the endpoint
 
 ```bash
-gcloud ai endpoints undeploy-model ${NEW_ENDPOINT} ${MODEL_COPY}
-gcloud ai endpoints delete
+gcloud ai endpoints undeploy-model ${NEW_ENDPOINT} --deployed-model-id=${DEPLOYED_MODEL_ID} --region=${REGION}
+gcloud ai endpoints delete ${NEW_ENDPOINT} --region=${REGION}
 ```
 
 ### 2. Model

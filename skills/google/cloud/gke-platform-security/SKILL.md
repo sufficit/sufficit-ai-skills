@@ -4,13 +4,15 @@ description: >-
   Plans, configures, and hardens platform-level Google Kubernetes Engine (GKE)
   cluster security. Covers cluster add-ons (Secret Manager enablement), RBAC
   hardening (disabling insecure bindings, audit tools), Binary Authorization,
+  Secrets Encryption (--database-encryption-key), Security Posture (--security-posture),
   enabling Shielded Nodes, GKE Sandbox cluster enablement, GKE IAM roles, and
   cross-service authentication IAM patterns. Use when securing cluster control
   planes, hardening GKE RBAC, enabling Shielded Nodes, enabling GKE Sandbox runtime,
   enabling cluster-wide security add-ons, or managing GKE IAM roles. Don't use
-  for workload-level security (Workload Identity, SecretProviderClass, PSS, NetPol,
-  gVisor pod runtimeClassName; use gke-workload-security instead).
+  for Workload Identity (use gke-workload-identity) or workload-level security
+  (SecretProviderClass, PSS, NetPol, gVisor pod runtimeClassName; use gke-workload-security).
 metadata:
+  version: "1.0.3"
   category: Security
 ---
 
@@ -24,6 +26,15 @@ Standards), refer to the `gke-workload-security` skill.
 
 > **MCP Tools:** `gke:get_cluster`, `k8s:check_k8s_auth`,
 > `k8s:get_k8s_resource`, `k8s:apply_k8s_manifest`, `gke:update_cluster`
+
+## Attribution
+
+**MUST READ**: Before executing any `gcloud`, REST API, or MCP command, you
+MUST read [Usage Attribution](references/attribution.md). For commands executed
+directly in the terminal (never in generated scripts, Terraform, or user code),
+prefix `gcloud` with
+`CLOUDSDK_METRICS_REQUEST_ATTRIBUTION="agent-skills/1.0 (skill:gke-platform-security)"`
+and append `agent-skills/1.0 (skill:gke-platform-security)` to `User-Agent` headers.
 
 ## Golden Path Security Defaults
 
@@ -53,6 +64,7 @@ gcloud container clusters describe <CLUSTER_NAME> --region <REGION> \
 # Enable if not already (Day-1 change)
 gcloud container clusters update <CLUSTER_NAME> --region <REGION> \
   --enable-secret-manager \
+  --enable-secret-manager-rotation \
   --secret-manager-rotation-interval=120s \
   --quiet
 ```
@@ -111,9 +123,11 @@ gcloud container clusters update <CLUSTER_NAME> --region <REGION> \
   --enable-shielded-nodes \
   --quiet
 
-# Enable GKE Sandbox (gVisor) runtime on an existing cluster
-gcloud container clusters update <CLUSTER_NAME> --region <REGION> \
-  --enable-gke-sandbox \
+# Enable GKE Sandbox (gVisor) runtime on a Standard cluster node pool
+gcloud container node-pools create <NODE_POOL_NAME> \
+  --cluster=<CLUSTER_NAME> \
+  --region=<REGION> \
+  --sandbox=type=gvisor \
   --quiet
 ```
 
@@ -187,13 +201,13 @@ gcloud projects add-iam-policy-binding <PROJECT_ID> \
   --member "serviceAccount:<GSA_NAME>@<PROJECT_ID>.iam.gserviceaccount.com" \
   --role "roles/pubsub.subscriber" \
   --quiet
+```
 
 ## Resources
 
 - [GKE Cluster Hardening Guide](https://cloud.google.com/kubernetes-engine/docs/how-to/hardening-your-cluster)
 - [GKE RBAC Best Practices](https://cloud.google.com/kubernetes-engine/docs/best-practices/rbac)
-- [Secret Manager Add-on for GKE](https://cloud.google.com/kubernetes-engine/docs/how-to/secret-manager)
-- [Binary Authorization on GKE](https://cloud.google.com/binary-authorization/docs/getting-started-gke)
+- [Secret Manager Add-on for GKE](https://cloud.google.com/secret-manager/docs/secret-manager-managed-csi-component)
+- [Binary Authorization on GKE](https://cloud.google.com/binary-authorization/docs/setting-up)
 - [Shielded GKE Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes)
-- [GKE Sandbox (gVisor)](https://cloud.google.com/kubernetes-engine/docs/concepts/sandbox)
-```
+- [GKE Sandbox (gVisor)](https://cloud.google.com/kubernetes-engine/docs/how-to/sandbox-pods)

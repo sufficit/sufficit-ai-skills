@@ -12,7 +12,7 @@ metadata:
 Find a few prospects with a real, recent, verifiable reason to buy, instead of
 long lists of look-alikes. Method adapted from the MIT-licensed
 first-customer-finder skill (github.com/carolinacherry/claude-first-customer-finder-skill).
-Sending a message belongs to [instagram-profile-manage](../../instagram/instagram-profile-manage/SKILL.md)
+Sending a message belongs to [instagram-profile-manage](../../meta/instagram/instagram-profile-manage/SKILL.md)
 and only after the user approves the draft.
 
 ## 1. Product card (write it before searching)

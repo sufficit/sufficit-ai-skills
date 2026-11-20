@@ -27,6 +27,7 @@ Here is other compatibility info:
 | SDK Build Tools | 36.0.0 | 36.0.0 | [Install](https://developer.android.com/studio/intro/update#sdk-manager) or [configure](https://developer.android.com/tools/releases/build-tools) SDK Build Tools. |
 | NDK | N/A | 28.2.13676358 | [Install](https://developer.android.com/studio/projects/install-ndk#specific-version) or [configure](https://developer.android.com/studio/projects/install-ndk#apply-specific-version) a different version of the NDK. |
 | JDK | 17 | 17 | To learn more, see [setting the JDK version](https://developer.android.com/studio/intro/studio-config#jdk). |
+| Kotlin Gradle plugin (KGP) | 2.2.10 | 2.2.10 | To learn more, see [Runtime dependency on Kotlin Gradle plugin](https://developer.android.com/build/releases/agp-9-0-0-release-notes#runtime-dependency-on-kotlin-gradle-plugin). |
 
 <br />
 
@@ -102,7 +103,9 @@ While doing this, the new interfaces are also available, and you can still
 update your own build logic to the new API. To opt out, include this line in
 your `gradle.properties` file:
 
-    android.newDsl=false
+```properties
+android.newDsl=false
+```
 
 Alternatively, for a more gradual migration, AGP 9.4 lets you opt out individual
 modules. To learn how, see [Variant API module opt-out](https://developer.android.com/build/releases/agp-9-4-0-release-notes#new-dsl-opt-out).
@@ -273,27 +276,31 @@ Android Gradle plugin 9.0 has the following breaking DSL changes:
 
   **AGP 8.13**
 
-      val commonExtension: CommonExtension<*, *, *, *, *, *> =
-              extensions.getByType(CommonExtension::class)
-      commonExtension.apply {
-          defaultConfig {
-              minSdk {
-                  version = release(28)
-              }
+  ```kotlin
+  val commonExtension: CommonExtension<*, *, *, *, *, *> =
+          extensions.getByType(CommonExtension::class)
+  commonExtension.apply {
+      defaultConfig {
+          minSdk {
+              version = release(28)
           }
       }
+  }
+  ```
 
   **AGP 9.0**
 
-      val commonExtension: CommonExtension =
-              extensions.getByType(CommonExtension::class)
-      commonExtension.apply {
-          defaultConfig.apply {
-              minSdk {
-                  version = release(28)
-              }
+  ```kotlin
+  val commonExtension: CommonExtension =
+          extensions.getByType(CommonExtension::class)
+  commonExtension.apply {
+      defaultConfig.apply {
+          minSdk {
+              version = release(28)
           }
       }
+  }
+  ```
 
   For plugins which target a range of AGP versions, using the getter directly
   is binary compatible with AGP versions lower than 9.0.

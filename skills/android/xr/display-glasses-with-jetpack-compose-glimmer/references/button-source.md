@@ -59,6 +59,10 @@ import androidx.compose.ui.unit.dp
  * button, [buttonSize] affects default values and values internal to the button.
  *
  * @sample androidx.xr.glimmer.samples.LargeButtonSample
+ *
+ * To customize focused state color of the Button:
+ *
+ * @sample androidx.xr.glimmer.samples.CustomFocusedColorButtonSample
  * @param onClick called when this button is clicked
  * @param modifier the [Modifier] to be applied to this button
  * @param enabled controls the enabled state of this button. When `false`, this button will not
@@ -77,8 +81,13 @@ import androidx.compose.ui.unit.dp
  * @param shape the [Shape] used to clip this button, and also used to draw the background and
  *   border
  * @param color background color of this button
+ * @param focusedColor background color of this button when focused. When providing a custom color,
+ *   ensure it is suitable for a focused button background or use
+ *   [ButtonDefaults.calculateFocusedColor] to adapt it.
  * @param contentColor content color used by components inside [content], [leadingIcon], and
  *   [trailingIcon].
+ * @param focusedContentColor content color used by components inside [content], [leadingIcon], and
+ *   [trailingIcon] when focused.
  * @param contentPadding the spacing values to apply internally between the container and the
  *   content
  * @param interactionSource an optional hoisted [MutableInteractionSource] for observing and
@@ -97,7 +106,9 @@ public fun Button(
     trailingIcon: @Composable (() -> Unit)? = null,
     shape: Shape = GlimmerTheme.shapes.large,
     color: Color = GlimmerTheme.colors.surface,
+    focusedColor: Color = ButtonDefaults.calculateFocusedColor(color),
     contentColor: Color = calculateContentColor(color),
+    focusedContentColor: Color = calculateContentColor(focusedColor),
     contentPadding: PaddingValues = ButtonDefaults.contentPadding(buttonSize),
     interactionSource: MutableInteractionSource? = null,
     content: @Composable RowScope.() -> Unit,
@@ -105,12 +116,6 @@ public fun Button(
     val iconSize = ButtonDefaults.iconSize
     val iconSpacing = ButtonDefaults.iconSpacing
     val minHeight = ButtonDefaults.minimumHeight(buttonSize)
-
-    val depth =
-        SurfaceDepthEffect(
-            depthEffect = null,
-            focusedDepthEffect = GlimmerTheme.depthEffectLevels.level1,
-        )
 
     val internalInteractionSource = interactionSource ?: remember { MutableInteractionSource() }
 
@@ -122,8 +127,10 @@ public fun Button(
                     enabled = enabled,
                     shape = shape,
                     color = color,
+                    focusedColor = focusedColor,
                     contentColor = contentColor,
-                    depthEffect = depth,
+                    focusedContentColor = focusedContentColor,
+                    depthEffect = null,
                     interactionSource = internalInteractionSource,
                 )
                 .clickable(
@@ -184,6 +191,16 @@ public object ButtonDefaults {
             PaddingValues(componentSpacingValues.large)
         }
     }
+
+    /**
+     * Derives a color suitable for use as the focused background color of a [Button] from the
+     * provided [seedColor].
+     *
+     * @param seedColor the base [Color] from which the focused background color will be derived
+     * @return a color to be used as the focused background [Color]
+     */
+    public fun calculateFocusedColor(seedColor: Color): Color =
+        SurfaceDefaults.calculateFocusedColor(seedColor)
 
     /** Default minimum height for [Button] and [ToggleButton] with the specified [buttonSize]. */
     internal fun minimumHeight(buttonSize: ButtonSize): Dp {
