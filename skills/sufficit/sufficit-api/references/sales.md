@@ -34,6 +34,18 @@ The representative itself may read its own portfolio; managers and administrator
 - `GET /Sales/Representative/List` (management only) counts every customer ever commissioned, including former ones.
 - `GET /Sales/Representatives/ById` shows `customers` and `commissionedCustomers` from the commission program registry. A representative whose portfolio was not yet registered there shows `0`; this is not the size of its customer base.
 
+## Managing representatives (management only)
+
+Registry, status and customer assignments live under `/Sales/Representatives`:
+
+- `GET /Sales/Representatives` lists them (`includeInactive=true` adds inactive ones); `GET /Sales/Representatives/ById?id=` reads one.
+- `PUT /Sales/Representatives` saves the registry entry, including `status` (`Active` = 1, `Inactive` = 2). Send the whole entry read from `ById` with only the status changed; an inactive representative cannot receive new assignments. Inactivate a representative only when it has no active assignment left.
+- `GET /Sales/Representatives/Assignments?customerId=` or `?representativeId=` lists assignments (`includeEnded=true` adds ended ones). `roles`: `1` referral (commissioned, `share` up to 100%), `2` financial responsible (payer), `3` both.
+- `POST /Sales/Representatives/Assignments` creates or replaces an assignment (`effectiveUtc` may be in the past, e.g. a historical payer).
+- `DELETE /Sales/Representatives/Assignments?id=&reason=` ends it now. To record a relationship that already ended before it was registered (for example, a per-customer commission replaced by a fixed contract at the start of the year), add `endUtc=YYYY-MM-DDT00:00:00Z`: it must be after the start and not in the future, and `reason` is then required. History is kept; nothing is charged or refunded.
+
+Show the user the customers and dates before ending assignments in bulk, then report each result.
+
 ## Customer contact data
 
 For the display name of a known customer/context GUID, follow [the contact-title lookup](contacts.md#resolve-a-customers-name-from-a-known-context-guid). An empty commercial customer record does not prove the contact is absent or legacy.
