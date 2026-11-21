@@ -80,10 +80,10 @@ ownership and inbound routing, while a catalog trunk describes a SIP peer.
    prove call delivery. After an uncertain write, query the exact registration
    and its status before retrying so a second registration is not created.
 
-For a temporary check of whether the registrar accepts the draft credentials,
-follow the [SIP REGISTER test](sip-registration-test.md). Treat its receipt as
-evidence of that temporary exchange. Use the onboarding workflow when asked to
-provision the permanent line.
+To verify the registrar and draft credentials, use the
+[SIP credential check](sip-registration-test.md). Its result confirms only
+the authentication exchange. Use the onboarding workflow to provision the
+permanent line.
 
 Check the deployed API contract and the executor's effective access before any
 operation. When a scoped TIP registration operation is absent or inaccessible,

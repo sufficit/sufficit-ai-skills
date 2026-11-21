@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers, carrier SIP line onboarding, SIP REGISTER tests and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, testar registro SIP, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.8.3"
+  version: "0.8.4"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -92,10 +92,9 @@ Sufficit-managed carrier activation and a customer-owned interconnection.
 ## Test SIP registration
 
 For “testar registro SIP” on a customer interconnection, use the
-[temporary REGISTER test](references/sip-registration-test.md). Verify the
-authorized node and registrar, use the synchronous result by default, and
-follow the idempotency key and WebSocket notification when using the optional
-asynchronous mode.
+[SIP credential check](references/sip-registration-test.md). Validate the
+registrar and credentials in the selected customer context before configuring
+the permanent registration.
 
 ## Customer onboarding
 
