@@ -34,6 +34,24 @@ The representative itself may read its own portfolio; managers and administrator
 - `GET /Sales/Representative/List` (management only) counts every customer ever commissioned, including former ones.
 - `GET /Sales/Representatives/ById` shows `customers` and `commissionedCustomers` from the commission program registry. A representative whose portfolio was not yet registered there shows `0`; this is not the size of its customer base.
 
+## Services of a customer: grouping and financial evidence (server rules)
+
+The services screen only displays what these routes answer (owner 21/11/2026); use them instead of reproducing rules:
+
+- `GET /Sales/Contract/HistoryOwners?contextId=` → `{ contractId: ownerId }` for every contract presented inside another
+  service's history (for example one-off tariffed credit purchases of the same caller id). Contracts absent from the answer
+  are the customer's services. Without `contextId`: every customer. Repeated monthly services were merged into one
+  contract on 21/11, and a product replaced by another is a canceled contract with `service.replaced-by.v1` (a renewal,
+  not a loss).
+- `GET /Sales/Contract/FinancialNotices?contextId=` → per service: `notice` (label, detail, danger: "Financeiro não
+  localizado", "Financeiro incoerente", "Aguardando saldo"), `rechargeNotice` (tariffed credit purchases) and
+  `extraCreditLine`. A debit carried by a payer's statement (same `SERVICO:<id>` document) counts as found. Evidence
+  only: never a payment status or a debt statement.
+- `GET /Sales/Contract/Reconciliation?contractId=&full=false|true&page=` → the service's history rows already evaluated:
+  `coverage` (Projected/Open/Closed), `financial` (Matched, Missing, Divergent, InactiveOnly, Future, Free,
+  Unavailable, AwaitingFunding; `Gap` for an interval without coverage), linked `records` with the balance before/after,
+  recharge period for tariffed services. `full=false`: the 5 rows around today; `true`: pages of 20, newest first.
+
 ## Managing representatives (management only)
 
 Registry, status and customer assignments live under `/Sales/Representatives`:
