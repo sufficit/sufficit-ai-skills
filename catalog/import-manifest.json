@@ -2128,7 +2128,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-extensions",
       "path": "skills/sufficit/sufficit-telephony-extensions",
-      "contentSha256": "e3eae629ab1297929ba61dcfe14394616229202c605cc018e14a3387bcace638"
+      "contentSha256": "ff51ac4bf3e787b6e5fb318f4b86cec8c73813d6b083cfdbbebc82d890c713fc"
     },
     {
       "id": "sufficit-telephony-reports",

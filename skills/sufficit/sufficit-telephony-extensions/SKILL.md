@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.8.5"
+  version: "0.8.6"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -69,6 +69,9 @@ work is first-level support, the PBX confirmation stays with N2.
 
 One-way audio or video, the CGNAT switch and video codecs (SIP devices and the Chrome
 softphone) are explained in [nat-and-video.md](references/nat-and-video.md).
+Silent or one-way audio only on calls forwarded between voice servers, and the per-extension
+channel variables (managers only: `pjsip.node_relay_media`, generic `pjsip.var.NAME`) are in
+[channel-variables.md](references/channel-variables.md).
 
 ## Customer default password
 

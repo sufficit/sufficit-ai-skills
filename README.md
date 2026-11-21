@@ -142,6 +142,7 @@ orienta o acesso do cliente pelo portal, a geração via API e a exportação Ex
 
 [Gestão de filas pela API nas skills de telefonia](docs/activities/202611191520-queue-api-skills.md).
 [Extension NAT and video](docs/activities/202611191545-extension-nat-and-video.md).
+[Extension channel variables](docs/activities/202611211500-extension-channel-variables.md).
 
 Declared package versions are copied into the reviewed catalog by
 `scripts/catalog_versions.py`; CI checks that they match `SKILL.md` metadata.
