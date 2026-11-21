@@ -1,7 +1,7 @@
 # Verify SIP credentials for a customer interconnection
 
 In **Telefonia → Interconexões**, enter the **Host**, **Usuário SIP** and
-**Segredo** with the customer's REGISTER authentication mode. Click
+**Segredo** in the customer interconnection editor. Click
 **Testar registro SIP** before saving. The receipt checks credentials through a
 REGISTER without Contact. The server's active bindings are unchanged.
 
