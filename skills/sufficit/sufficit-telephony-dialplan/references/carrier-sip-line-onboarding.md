@@ -65,11 +65,14 @@ ownership and inbound routing, while a catalog trunk describes a SIP peer.
    `GET /Telephony/trunk` only describes that request. An omitted context or
    empty GUID selects global scope there. Confirm the actual operation and
    permission before concluding that all carrier APIs are unavailable.
-5. Pass secrets through the approved private channel or server-side credential
-   mechanism. Keep the secret out of chat replies, notes, shell arguments,
-   logs and saved examples. If it appeared in a group, treat it as exposed
-   and have it rotated before using it for live enrollment. Check the approved
-   customer ownership and any destination before a separate DID/route change.
+5. For a customer-managed interconnection, use the SIP password supplied by
+   the customer for the authorized registration in their verified context.
+   Enter it in the interconnection's credential editor or pass it through
+   the scoped API's credential field, depending on the available access.
+   Receipt through the support conversation alone does not require rotation
+   or a separate Vault entry. Keep the secret out of replies, notes, shell
+   arguments, logs and saved examples. Check ownership and destination before
+   a separate DID or route change.
 6. Report the highest stage supported by evidence: persisted registration,
    registered on the expected PBX node, inbound call on the verified carrier
    channel, and delivery to the approved destination. Verify outbound service
