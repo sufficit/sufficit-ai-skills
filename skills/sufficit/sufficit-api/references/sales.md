@@ -51,6 +51,11 @@ The services screen only displays what these routes answer (owner 21/11/2026); u
   `coverage` (Projected/Open/Closed), `financial` (Matched, Missing, Divergent, InactiveOnly, Future, Free,
   Unavailable, AwaitingFunding; `Gap` for an interval without coverage), linked `records` with the balance before/after,
   recharge period for tariffed services. `full=false`: the 5 rows around today; `true`: pages of 20, newest first.
+- `GET /Sales/Contract/ValidityStarts?contextId=` (or `contractId=`) → `{ contractId: start }`: the date each service
+  has been valid since, counting its audited/inherited history (may predate the contract's own start; `null` when
+  unknown). Without filters: every service.
+- `GET /Sales/Contract/ServiceLabels?contextId=` (required) → `{ id: label }` where `id` is a contract, period or audited
+  purchase id: names the `SERVICO:<id>` debits of the customer's statement with the current service label.
 
 ## Managing representatives (management only)
 
