@@ -13,7 +13,7 @@ Linphone QR code.
 Prefer PJSIP for provisioning whenever the authoritative endpoint has tech_pjsip
 (or Pjsip) enabled and the deployed device renderer supports it. Do not ask the
 technician to choose SIP versus PJSIP for routine supported provisioning.
-Account/User AND authentication Login use endpoint id in GUID N format; host
+By default, Account/User and authentication Login use endpoint id in GUID N format; host
 voip.sufficit.com.br, port26498, default TCP. Use the actual configured PjsipServer
 if it differs. Keep the existing extension secret and friendly dial number.
 HTTP/HTTPS/TFTP download transport is separate from the SIP account transport.
@@ -31,7 +31,7 @@ not authorization to disable SIP globally, rotate passwords or migrate unrelated
 devices. Any actual technology activation must use a supported authorized domain
 operation, never direct SQL or generated-file edits.
 
-Verify provisioning download and actual GUID/PJSIP registration separately. A
+Cisco SEP has a 31-character account limit. Use the endpoint’s enabled short PJSIP login when it fits. Without one, the renderer falls back to the legacy profile. Verify provisioning download and registration on the selected stack separately. A
 saved device, enabled checkbox or delivered document alone does not prove which
 stack the phone used. Do not fetch a customer's credential-bearing configuration
 to inspect it. If the serving node still runs an old SIP-only renderer, report
@@ -158,7 +158,7 @@ for them instead of asking them to operate the server:
    customer (GUID, full number), inspect existing links and confirm the MAC is not
    linked to another customer. Resolve model and replacement/addition below before
    PUT, then re-read.
-3. **Ask for one action only:** reboot the device or force provisioning.
+3. **Trigger the authorized action.** Read the device command catalog and use the supported remote sync or reboot. Ask for local interaction only if remote execution is unavailable or the device requires it. Follow [device commands and firmware](device-commands-and-firmware.md).
 4. **Verify:** `GET .../diagnostics/requests?mac=<MAC>&since=<UTC>` and report
    transport, outcome and time. Then check the SIP registration of the
    extension separately. Report each step as verified or not verified.
@@ -176,7 +176,7 @@ without `unregistered=true`) in the window of the test. Map what you see:
 | `outcome=policy-blocked` | Credentials withheld: the device came from a network outside the one learned for it (`detail`) | Do not change the policy yourself; report MAC, old and new IP to an administrator |
 | `outcome=credential-error` / `credential-missing` | The extension secret could not be read | Check the extension exists and is enabled; otherwise engineering |
 | `outcome=empty` | The model produced no document | Engineering |
-| `outcome=delivered` then `transfer-failed` (tftp) | File generated but the device never acknowledged it, typically NAT/firewall on UDP | Switch the device to HTTPS 443 |
+| `outcome=delivered` then `transfer-failed` (tftp) | The generated file was handed to TFTP and the transfer failed | Check the error detail and service log. A static firmware transfer can produce a standalone transfer-failed row without a MAC. Correlate by time and path before attributing it to a device |
 | `outcome=delivered` over http/https, extension not registered | Provisioning worked; the problem is SIP registration | Diagnose registration (credentials, network), not provisioning |
 | Many `static`/204 rows for generic files (e.g. `tip125system.xml`) | Normal model housekeeping | Ignore |
 | 5xx on device or management routes | Server failure | Report status and time; engineering |

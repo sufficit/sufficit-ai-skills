@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.8.6"
+  version: "0.9.0"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -53,10 +53,10 @@ legacy SIP peers and PJSIP endpoints before handover; follow the
 
 ## Registering a device
 
-PJSIP uses the ENDPOINT `id` without hyphens for account/auth/AOR, not the numeric
+The standard PJSIP profile uses the ENDPOINT `id` without hyphens for account/auth/AOR, not the numeric
 extension title or customer GUID. New-device profile: `voip.sufficit.com.br:26498`,
 TCP, existing endpoint password through the secure portal/provisioning flow.
-Port26499 is legacy chan_sip. GUID AORs are expected; a numeric-user404 does not
+Cisco SEP uses the verified short login when the endpoint GUID exceeds its account limit (see the device provisioning reference). Port26499 is legacy chan_sip. GUID AORs are expected; a numeric-user404 does not
 prove broken generation. Masked helper fields cannot establish a password mismatch.
 Read [registration diagnostics](references/registration.md) before diagnosing a
 registration failure or proposing a credential reset.
@@ -110,7 +110,7 @@ discovery workflow of the `sufficit-api` skill. A provisioned authenticated doma
 `dotnet /data/support/api-client/api-helper.dll endpoints METHOD /path [json-file]`)
 is a supported API transport when discovery tools are unavailable. Never bypass
 a refused API with database writes, FreePBX CLI or generated-file edits, and never ask the user for a token, API key or
-second login: the connected credential already carries the roles.
+second login for the same connected API. For a separate provisioning management session, use the dedicated operator flow linked below.
 
 ## Operation flow
 
@@ -138,7 +138,7 @@ second login: the connected credential already carries the roles.
    Configuring a physical phone or softphone to download its settings (server,
    protocol, port, path, MAC registration, download evidence) follows
    [references/device-provisioning.md](references/device-provisioning.md);
-   it is a different system from extension creation.
+   it is a different system from extension creation. For remote sync/reboot, firmware advisories, HTTPS firmware downloads or operator device authorization, read [device commands and firmware](references/device-commands-and-firmware.md).
 6. Disabling or removing an extension changes live call handling: confirm the
    exact target (company + extension number), check what references it (queue
    membership, flows, voicemail notification) and report what was and was not
@@ -162,8 +162,7 @@ second login: the connected credential already carries the roles.
   the authorizing user can make explicitly in text; a provisioning request does
   not authorize it by itself.
 - On refusals: `403` means the authenticated roles do not allow the operation —
-  report which call was refused, do not ask for a new login. `401` means the
-  session must be reconnected once. `409` means re-read the state before
+  report which call was refused, do not ask for a new login. For `401`, verify the target API, token audience, format and expiry. Reconnect when the credential has expired. `409` means re-read the state before
   deciding. `422` means fix only the fields the contract named.
 
 ## Validation

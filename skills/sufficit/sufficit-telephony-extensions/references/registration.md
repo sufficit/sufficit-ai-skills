@@ -4,7 +4,7 @@
 
 The native `EndPointRegistrationProfile` in sufficit-blazor is the device setup
 contract; `PJSIPRuntimeId` in sufficit-base defines the same runtime identity.
-Current new-device defaults:
+Current new-device defaults (for physical models with account-length limits, see [device provisioning](device-provisioning.md#preferred-registration-stack)):
 
 - Host/domain: `voip.sufficit.com.br`, port `26498`, transport TCP.
 - Account/user and authentication login: the ENDPOINT `id` in GUID N format
