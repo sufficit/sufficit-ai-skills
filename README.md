@@ -207,4 +207,4 @@ Delivery: [YouTube runtime plugin](docs/activities/202611161915-youtube-runtime-
 
 [Registro da consolidação da main](docs/activities/202611182023-skills-main-consolidation.md).
 
-[Diagnóstico de filas por nó e confirmação do atendimento](docs/PLAN-QUEUE-DIAGNOSTIC-TRAINING.md).
+[Diagnóstico de filas por nó e confirmação do atendimento](docs/activities/202611231310-queue-diagnostic-training.md).
