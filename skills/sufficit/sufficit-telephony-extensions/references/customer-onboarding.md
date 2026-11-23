@@ -15,9 +15,13 @@ with an assigned first-level consultant, use `mcp__fleet_workspace__send` with
 `operation=support_ask`, the active `missionId`, the manager's `message_id`,
 `customerContextId` and a focused `question` with the case reference and date.
 The consultant can work privately even when absent from the WhatsApp group.
-Keep the returned `consultationId`. Read the reply with the same tool using
-`operation=support_status`, the current mission ID and that receipt. Report the
-actual state while pending. Cite the conversation supporting each customer request.
+Fleet resumes the host agent when the consultant finishes. Keep the receipt for
+status checks. During the return turn, ask for a specific clarification privately
+with the same tool, `operation=support_followup`, the current `missionId` and
+`question`. Fleet carries forward the customer, specialist and previous answer.
+For example, if the answer mentions a greeting, ask which conversation documents
+it. If the specialist reports that the source is inaccessible, report that limit.
+Give the requester the finding and its source when available.
 Missing evidence leaves the request unknown. A consultation only retrieves
 information; changes to the customer's PBX require their own authorized scope.
 
