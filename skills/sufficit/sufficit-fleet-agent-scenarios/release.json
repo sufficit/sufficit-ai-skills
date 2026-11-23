@@ -1,0 +1,7 @@
+{
+  "name": "sufficit-fleet-agent-scenarios",
+  "version": "1.0.0",
+  "repository": "https://github.com/sufficit/sufficit-ai-skills",
+  "path": "skills/sufficit/sufficit-fleet-agent-scenarios",
+  "license": "MIT-0"
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 213,
+  "catalogEntries": 214,
   "sources": [
     {
       "id": "android",
@@ -2066,6 +2066,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
       "path": "skills/sufficit/sufficit-frontend",
       "contentSha256": "83e3792bf5c737ebbe8ffa47eaabb85b97351d5ee634af0c4faadcbe529de0d1"
+    },
+    {
+      "id": "sufficit-fleet-agent-scenarios",
+      "name": "sufficit-fleet-agent-scenarios",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "contentSha256": "e33fc2ae0c94ae1a94c2783d78adcc98ff8157c5187102145356109b4ada3b14",
+      "path": "skills/sufficit/sufficit-fleet-agent-scenarios",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-fleet-agent-scenarios"
     },
     {
       "id": "sufficit-hermes-agents",

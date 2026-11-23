@@ -3092,6 +3092,26 @@
       "version": "1.0.6"
     },
     {
+      "id": "sufficit-fleet-agent-scenarios",
+      "name": "sufficit-fleet-agent-scenarios",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "contentSha256": "e33fc2ae0c94ae1a94c2783d78adcc98ff8157c5187102145356109b4ada3b14",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-fleet-agent-scenarios",
+      "description": "Manage reusable, agent-owned test scenarios in Sufficit Fleet and replay them against the agent's Genius executor. Use for cenários de teste, reproduction of a support case, or training regression checks.",
+      "tags": [
+        "sufficit",
+        "fleet",
+        "genius",
+        "agents",
+        "scenarios",
+        "regression",
+        "testes"
+      ],
+      "version": "1.0.0"
+    },
+    {
       "id": "sufficit-hermes-agents",
       "description": "Administer helpdesk agents in Hermes (Chatwoot) through the live corporate API: create an agent user in an account (conta) with name, e-mail and role, manage availability, issue and rotate agent API tokens, link an agent to a telephony extension (ramal) and offboard agents. Use when a request mentions criar usuario/agente no Chatwoot ou Hermes, conta/instance, token de API do agente, vincular ramal ao agente or desativar agente. Not for self-service agent reads (hermes-api) and not for the ramal itself (sufficit-telephony-extensions).",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-hermes-agents",
