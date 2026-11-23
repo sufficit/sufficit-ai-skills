@@ -495,7 +495,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/clear-technical-writing",
       "path": "skills/sufficit/clear-technical-writing",
-      "contentSha256": "6aa177ae74535663ec0dd14d2c5d92fc60622d0b8e12c1bca7a1f41bf49a292d"
+      "contentSha256": "3c25db6771cffa60f932f8100ca3063e0037dbc29c958b6fb79b8be0a6347c29"
     },
     {
       "id": "customer-equipment-access",
@@ -2135,7 +2135,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-telephony-dialplan",
       "path": "skills/sufficit/sufficit-telephony-dialplan",
-      "contentSha256": "5f6cbca108e359e10375a40230de626b762b25bf2bcaf737e10260c1ddc8e9b4"
+      "contentSha256": "c10c79addb18adccc635c5df4569d25a711111a2800f7826892d183b975b62ca"
     },
     {
       "id": "sufficit-telephony-extensions",

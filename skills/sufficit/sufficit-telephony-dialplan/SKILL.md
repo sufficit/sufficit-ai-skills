@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers, carrier SIP line onboarding, SIP REGISTER tests and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, testar registro SIP, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.8.8"
+  version: "0.8.9"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -90,6 +90,8 @@ On a live PBX, use only one-shot `asterisk -rx` reads or a log tail bounded by
    before removing, and report what was and was not verified.
 
 ## Carrier SIP line onboarding
+
+When reviewing an existing incident, recover the owner and context from the case history, then look up the existing interconnection in the customer catalogue with your own identity (GET /Telephony/interconnection/catalog with contextId). A 403 on the system catalogue describes that scope only. Check the matching resource ID and its authorized registration and call evidence before requesting credentials or proposing a new registration. A catalogue match confirms visibility; a dated Registered event confirms registration at that time. Trace inbound greeting, queue offers, human answer and two-way audio separately. Treat a reported credential exposure separately from service status and keep the secret out of summaries.
 
 For “cadastrar linha SIP” with carrier credentials or a request to repeat
 the Datora workflow for another carrier, read

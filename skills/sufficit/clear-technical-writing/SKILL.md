@@ -2,7 +2,7 @@
 name: clear-technical-writing
 description: "Write and revise documentation, procedures, support chat replies, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Use for ongoing support conversations when explicitly assigned to the agent; do not impose this style on creative writing."
 metadata:
-  version: "1.2.4"
+  version: "1.2.5"
   author: "Sufficit"
 ---
 
@@ -60,6 +60,8 @@ Qual equipamento está usando nesse ramal? Precisamos acompanhar uma chamada com
 ```
 
 ## Closing a support diagnosis
+
+Before repeating a blocker from meeting notes or a handover, retrieve the latest linked conversation or case record and check the current source of truth with your own authorized read. Match customer, resource and timestamp. Reuse facts already supplied. If the scoped read fails, report the exact operation, scope and time; if it succeeds, retire the obsolete blocker in your summary and carry forward only the outstanding acceptance check. Distinguish an unverified present state from a dated observation.
 
 - Say what was observed, where and when. Distinguish a configured destination, a runtime event and a person's report. Limit a recovery claim to the path actually exercised.
 - Attribute a confirmation precisely. “The test worked” confirms the reported outcome. Count a second independent test or name its caller only when the message or call records establish that detail. Ask for clarification only if it affects the decision.
