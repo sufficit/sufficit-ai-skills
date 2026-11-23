@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers, carrier SIP line onboarding, SIP REGISTER tests and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, testar registro SIP, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.8.6"
+  version: "0.8.7"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -64,7 +64,11 @@ For “the line only makes calls” or calls not reaching attendants, read
 [inbound diagnostics](references/inbound-diagnostics.md). Trace arrival, the
 active time/IVR/queue path and the affected terminals. Keep attempted dialing,
 ringing signaling, PBX answer and human/audio acceptance as separate evidence.
-When a caller reaches a queue but extensions do not ring, correlate the call with the queue visit and offers on the handling node as described in [queue dispatch diagnosis](references/inbound-diagnostics.md#queue-dispatch-by-node).
+The shared queue members catalog always returns a zero node ID and
+`dispatchEnabled=false`. These are expected catalog values. Determine actual
+dispatch from the visit and offers on the node that handled the call. A connected
+visit verifies that call on that node only. Check existing visits on an affected
+node before requesting another call. See [queue dispatch diagnosis](references/inbound-diagnostics.md#queue-dispatch-by-node).
 For customer-facing follow-up and mobile-origin tests requested privately from
 the managers over WhatsApp, read [first-contact training](references/first-contact.md).
 
