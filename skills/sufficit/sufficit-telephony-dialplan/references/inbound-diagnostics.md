@@ -123,3 +123,20 @@ does not enumerate ARI visits.
 After a change, compare the failed and successful visits with their respective
 nodes. Report which path recovered and which path still needs verification.
 Use an existing correlated visit before asking someone to call again.
+
+## Safe Asterisk console reads
+
+Live PBX reads run on a production host with shared memory. Use one-shot commands
+such as `asterisk -rx 'sip show peer <id>'` or `asterisk -rx 'core show channels concise'`.
+Do not attach the interactive remote console (`asterisk -r`, `-rvvv`) from a
+script, and never feed it an endless stdin such as `</dev/zero` or `yes`. The
+console keeps reading input without a newline and grows until the kernel kills
+it. It ignores the SIGTERM sent by `timeout`. On 2026-11-23 one such command
+used 13 GB on the main PBX and pushed memory to 95%. The host's memory guard
+kills the PBX itself at 98%.
+
+To follow a test call, read the log file with a hard limit:
+`timeout -s KILL 90 tail -F /var/log/asterisk/full | grep --line-buffered '<id>'`.
+A remote command keeps running after its SSH session closes. Confirm that the
+process exited, and stop only the process ID that you started.
+
