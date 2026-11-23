@@ -9,11 +9,16 @@ the customer's approved onboarding policy.
 
 ## Recover a prior customer request
 
-If a colleague asks what the customer requested during first-level support, resolve
-the customer's context UUID from the case or the group's history. In a Fleet group
+If a colleague asks what the customer requested during first-level support, check the case or group history for a verified customer context UUID. In a Fleet group
 with an assigned first-level consultant, use `mcp__fleet_workspace__send` with
 `operation=support_ask`, the active `missionId`, the manager's `message_id`,
-`customerContextId` and a focused `question` with the case reference and date.
+a focused `question` with the case reference and dates, and either the verified
+`customerContextId` or a specific `customerSearch` (name, phone or email).
+The specialist uses `conversation_search` on the active private mission with
+inclusive dates in São Paulo time. Cite confirmed conversations and dated public
+messages. Return probable matches as references to verify before using their
+contents to advise a customer. An empty or partial result describes only the
+configured inbox and search coverage.
 The consultant can work privately even when absent from the WhatsApp group.
 Fleet resumes the host agent when the consultant finishes. Keep the receipt for
 status checks. During the return turn, ask for a specific clarification privately
