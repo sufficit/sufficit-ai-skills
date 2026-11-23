@@ -159,7 +159,7 @@ for them instead of asking them to operate the server:
    linked to another customer. Resolve model and replacement/addition below before
    PUT, then re-read.
 3. **Trigger the authorized action.** Read the device command catalog and use the supported remote sync or reboot. Ask for local interaction only if remote execution is unavailable or the device requires it. Follow [device commands and firmware](device-commands-and-firmware.md).
-4. **Verify:** `GET .../diagnostics/requests?mac=<MAC>&since=<UTC>` and report
+4. **Verify:** start at the [Blazor diagnosis by MAC](device-commands-and-firmware.md#read-diagnostics-by-mac-in-blazor). Use `GET .../diagnostics/requests?mac=<MAC>&since=<UTC>` to inspect the configuration history and report
    transport, outcome and time. Then check the SIP registration of the
    extension separately. Report each step as verified or not verified.
 

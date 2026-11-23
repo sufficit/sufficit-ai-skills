@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal or ligar/desligar gravacao. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.9.0"
+  version: "0.9.1"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -138,7 +138,7 @@ second login for the same connected API. For a separate provisioning management 
    Configuring a physical phone or softphone to download its settings (server,
    protocol, port, path, MAC registration, download evidence) follows
    [references/device-provisioning.md](references/device-provisioning.md);
-   it is a different system from extension creation. For remote sync/reboot, firmware advisories, HTTPS firmware downloads or operator device authorization, read [device commands and firmware](references/device-commands-and-firmware.md).
+   it is a different system from extension creation. For per-MAC diagnostics in Blazor, remote sync/reboot, firmware downloads or operator device authorization, read [device commands and firmware](references/device-commands-and-firmware.md).
 6. Disabling or removing an extension changes live call handling: confirm the
    exact target (company + extension number), check what references it (queue
    membership, flows, voicemail notification) and report what was and was not
