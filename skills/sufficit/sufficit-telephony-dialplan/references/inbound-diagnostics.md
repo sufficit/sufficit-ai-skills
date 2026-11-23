@@ -98,3 +98,28 @@ Use the [first-contact and manager-test training](first-contact.md) for the
 customer follow-up and the private request wording. If messaging is not equipped,
 return the private request and actual capability limit for human execution;
 training does not add a sending tool, select arbitrary recipients or create groups.
+
+## Queue dispatch by node
+
+Start with an existing attempt. Identify the customer context, DID, local time
+and time zone, call LinkedId, queue ID and node that actually handled the queue.
+The phone can register on a different node. A shared catalog lists configuration.
+Its members response returns a zero node ID and `dispatchEnabled=false` by
+design. Member registration, ringall and absence of pause describe eligibility
+only in part. For dynamic members, also check login.
+
+For a Stasis/ARI queue, use the authorized node-scoped call history and visit
+events. Match queue, time and call channel to the visit ID. If the CDR is late,
+use the controller events available for that node. Read entry, offers, connection
+and final status for the same visit. An entry followed by abandonment proves
+the caller reached the queue. Claim zero offers only if the offer history is
+complete. A correlated `queue_connected` followed by `completed` confirms a
+connection. Name the answering extension only when the offer or channel identifies
+it. A voice test can independently report a greeting and a human response.
+For a scoped read returning 403 or 404, record the node and missing evidence
+and use the available authorized sources. A legacy Asterisk queue listing
+does not enumerate ARI visits.
+
+After a change, compare the failed and successful visits with their respective
+nodes. Report which path recovered and which path still needs verification.
+Use an existing correlated visit before asking someone to call again.

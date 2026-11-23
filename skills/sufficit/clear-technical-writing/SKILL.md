@@ -2,7 +2,7 @@
 name: clear-technical-writing
 description: "Write and revise documentation, procedures, support chat replies, operational notifications and technical explanations with clear language inspired by ASD-STE100. Use for requests involving STE, simplified technical English, or clearer technical prose; supports adaptation into Portuguese without claiming compliance with the English standard. Use for ongoing support conversations when explicitly assigned to the agent; do not impose this style on creative writing."
 metadata:
-  version: "1.2.3"
+  version: "1.2.4"
   author: "Sufficit"
 ---
 
@@ -58,6 +58,12 @@ Example (fictional ordinary chat reply, not a live diagnostic):
 Identificamos quedas após o atendimento no ramal 1002; a causa ainda precisa de confirmação.
 Qual equipamento está usando nesse ramal? Precisamos acompanhar uma chamada com falha.
 ```
+
+## Closing a support diagnosis
+
+- Say what was observed, where and when. Distinguish a configured destination, a runtime event and a person's report. Limit a recovery claim to the path actually exercised.
+- Attribute a confirmation precisely. “The test worked” confirms the reported outcome. Count a second independent test or name its caller only when the message or call records establish that detail. Ask for clarification only if it affects the decision.
+- Keep internal reminders, tool instructions and waiting messages out of the customer reply. Use the channel language. If a follow-up is needed, complete it before replying or schedule it with an available mechanism and verify the schedule before promising a time. Otherwise state the outstanding check and who can perform it.
 
 ## Notifications for people
 

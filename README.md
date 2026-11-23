@@ -206,3 +206,5 @@ Delivery: [YouTube runtime plugin](docs/activities/202611161915-youtube-runtime-
 - [Optional native integration plugins](docs/activities/202611162231-optional-integration-plugins.md) — installation/discovery updates for Genius.
 
 [Registro da consolidação da main](docs/activities/202611182023-skills-main-consolidation.md).
+
+[Diagnóstico de filas por nó e confirmação do atendimento](docs/PLAN-QUEUE-DIAGNOSTIC-TRAINING.md).
