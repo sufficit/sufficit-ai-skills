@@ -56,9 +56,16 @@
       "revision": "d03c56bb598be770c60b201f94237e5d1a4268a6",
       "author": "Jake Schincariol / Sufficit",
       "license": "MIT"
+    },
+    {
+      "id": "unslop",
+      "repository": "https://github.com/heydamir/unslop",
+      "revision": "620163eedb3529d9cd23a3994ed8d287d06f760d",
+      "author": "Damir Sokolovsky",
+      "license": "CC-BY-4.0"
     }
   ],
-  "updatedAt": "2026-11-20T03:23:16Z",
+  "updatedAt": "2026-11-23T00:00:00Z",
   "skills": [
     {
       "id": "android-adaptive",
@@ -3068,7 +3075,7 @@
     {
       "id": "sufficit-frontend",
       "name": "sufficit-frontend",
-      "description": "Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when requested to turn visual references into functional screens, fix layout/themes or evolve a design system. It does not apply to the isolated backend or the native UI Android/iOS. Version 1.0.2.",
+      "description": "Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when requested to turn visual references into functional screens, fix layout/themes or evolve a design system. It does not apply to the isolated backend or the native UI Android/iOS. Version 1.0.6.",
       "source": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
       "tags": [
         "sufficit",
@@ -3081,8 +3088,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-ui",
-      "contentSha256": "f5e3f089267e4decd73c70bd38a1b57bb185d0f7c7619351cf0da4ce2dd9c05c",
-      "version": "1.0.5"
+      "contentSha256": "83e3792bf5c737ebbe8ffa47eaabb85b97351d5ee634af0c4faadcbe529de0d1",
+      "version": "1.0.6"
     },
     {
       "id": "sufficit-hermes-agents",
@@ -3310,7 +3317,24 @@
       "sourceId": "sufficit-genius",
       "contentSha256": "1d9d22185061ba254b4ebce2b455b55bd183115963371609a5c39763ee41e007",
       "version": "1.3.0"
+    },
+    {
+      "id": "unslop",
+      "name": "unslop",
+      "description": "Turn vibecoded, AI-looking UI into a designed interface: audit slop signs, set a direction from the product, fix in nine ordered passes, and render an optional before/after story video. Version 1.0.0.",
+      "source": "https://github.com/heydamir/unslop/tree/620163eedb3529d9cd23a3994ed8d287d06f760d/skills/unslop",
+      "tags": [
+        "design",
+        "ui",
+        "anti-ai-slop",
+        "polish",
+        "video"
+      ],
+      "author": "Damir Sokolovsky",
+      "license": "CC-BY-4.0",
+      "sourceId": "unslop",
+      "contentSha256": "98317e109e3f3374303f9e69b47b89b45105c8e20e225ed443495486ca003148"
     }
   ],
-  "catalogEntries": 212
+  "catalogEntries": 213
 }

@@ -285,6 +285,12 @@ inside the repository's documentation hierarchy.
 | [sufficit-telephony-reports](../skills/sufficit/sufficit-telephony-reports/SKILL.md) |  | Sufficit | Direct customers to Sufficit portal telephony reports with customer and period prefilled, and generate reports through the corporate API. Use for ligacoes ta... |
 | [sufficit-voice-agents](../skills/sufficit/sufficit-voice-agents/SKILL.md) |  | Sufficit | Create and operate Sufficit AI voice agents (phone agents) for your company entirely through the Sufficit APIs: agent, persona, ElevenLabs voice agent, SIP n... |
 
+## unslop
+
+| Skill | Card | Source | Description |
+| --- | --- | --- | --- |
+| [unslop](../skills/unslop/unslop/SKILL.md) | [card](../skills/unslop/unslop/skill-card.md) | Damir Sokolovsky | Turns vibecoded, AI-looking UI into a designed interface with its own character. Finds a direction from the product itself, then fixes spacing, color, icons,... |
+
 ## videos
 
 | Skill | Card | Source | Description |

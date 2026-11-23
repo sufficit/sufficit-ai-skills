@@ -2,7 +2,7 @@
 name: sufficit-frontend
 description: "Implement and refine web interfaces with tokens, reusable components and browser validation. Use for Sufficit frontends, especially Blazor/SUI, or when requested to turn visual references into functional screens, fix layout/themes or evolve a design system. It does not apply to the isolated backend or the native UI Android/iOS."
 metadata:
-  version: "1.0.5"
+  version: "1.0.6"
 ---
 
 # Sufficit Frontend
@@ -76,6 +76,8 @@ Read only relevant guides:
 | Loading states, spinners, progress bars and wait estimates | [Loading indicator rules](references/loading-indicators.md) |
 | Project Blazor or Sufficit.Blazor.UI | [Blazor/SUI integration](references/blazor-sui.md) |
 | Visual or interactive change to validate | [Browser evidence](references/verification.md) |
+| Screen that looks AI-generated, or a request to polish/"unslop" it | [Anti-slop polish](references/anti-slop-polish.md) |
+| Short video of the change, before and after | [Before/after video](references/before-after-video.md) |
 
 Prefer public API of existing components. Translate the intention of an example to the local stack; do not transport JSX/Tailwind to Razor or add another library just to reproduce its appearance. Please refer to the actual code/API before using a property.
 
@@ -87,6 +89,12 @@ Choose cases linked to change. In spacing problem, measure distances and open ex
 
 Make a grouped visual round, correct the concrete defects found and confirm what changed. Do not prolong polishing without evidence. If infrastructure is missing or fails, register the limit and continue the necessary investigation; do not declare success by reaching a number of rounds. Close by informing real changes, evidence and limitations.
 
+## Remove slop and offer a before/after video
+
+When a screen shows generated-UI tells (colour blooms, glows, uppercase tracked pills, heavy weights, emoji, stock heroes, looping pulses), audit before editing, classify heavy/light/no slop, write the five-line direction and wait for approval, then fix in the ordered passes of [anti-slop polish](references/anti-slop-polish.md). The project's `DESIGN.md` and SUI win over any anti-slop rule; call out each conflict instead of silently overriding a documented decision.
+
+After a visible change, suggest a short [before/after video](references/before-after-video.md) rendered with the mirrored [unslop](../../unslop/unslop/SKILL.md) story script. Make it only if the user accepts, keep the author credit, and say when the video uses illustrative data because the real screen could not be rendered locally.
+
 ## Use with Impeccable
 
 This skill is self-sufficient. When Impeccable is available and helps the visual direction, read its installed entry point and follow only the relevant playbook, respecting its configuration. Use a single discovery, plan and validation round for the same work; take advantage of evidence already collected. Do not assume path, version, commands or agents of the installation.
@@ -97,4 +105,4 @@ To maintain or evaluate this skill, use [validation scenarios](references/evalua
 
 ## Distribution and version
 
-Skill version: 1.0.5. Canonical source: `sufficit/sufficit-ai-skills`, folder `skills/sufficit/sufficit-frontend`. To install, check integrity or update, read [installation and versions](references/installation.md). The skill version is independent of the Blazor library.
+Skill version: 1.0.6. Canonical source: `sufficit/sufficit-ai-skills`, folder `skills/sufficit/sufficit-frontend`. To install, check integrity or update, read [installation and versions](references/installation.md). The skill version is independent of the Blazor library.

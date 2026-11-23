@@ -25,6 +25,17 @@ Genius. A origem e o digest de cada pacote estão em
 - Revisão importada: `a9b54a3e62a6391f5f5ab7a20e4ddb32fb79a27d`
 - Licença: [MIT](licenses/refero-skill-MIT.txt)
 
+## Unslop
+
+- Autor: Damir Sokolovsky ([@heydamir](https://x.com/heydamir))
+- Origem: <https://github.com/heydamir/unslop>
+- Revisão importada: `620163eedb3529d9cd23a3994ed8d287d06f760d`
+- Licença: [CC BY 4.0](licenses/unslop-CC-BY-4.0.txt)
+- Pacote `unslop` espelhado sem alterar os arquivos do autor; `skill-card.md` e
+  `release.json` são metadados da Sufficit. As referências
+  `anti-slop-polish.md` e `before-after-video.md` do `sufficit-frontend` são uma
+  adaptação resumida do método, com crédito e link para a origem.
+
 ## MikroTik RouterOS Skills
 
 - Autor: tikoci; adaptação e ampliação por Sufficit

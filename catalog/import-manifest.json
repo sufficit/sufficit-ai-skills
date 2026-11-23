@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 212,
+  "catalogEntries": 213,
   "sources": [
     {
       "id": "android",
@@ -57,6 +57,13 @@
       "revision": "d03c56bb598be770c60b201f94237e5d1a4268a6",
       "author": "Jake Schincariol / Sufficit",
       "license": "MIT"
+    },
+    {
+      "id": "unslop",
+      "repository": "https://github.com/heydamir/unslop",
+      "revision": "620163eedb3529d9cd23a3994ed8d287d06f760d",
+      "author": "Damir Sokolovsky",
+      "license": "CC-BY-4.0"
     }
   ],
   "skills": [
@@ -2058,7 +2065,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-blazor-ui/tree/e42e6449659028625b8f6cf645e535ad95bdaa8b/skills/sufficit-frontend",
       "path": "skills/sufficit/sufficit-frontend",
-      "contentSha256": "a51234e577f1cf96fb563d6e8ec1ca2d00ed5118a13be14706127393f4566231"
+      "contentSha256": "83e3792bf5c737ebbe8ffa47eaabb85b97351d5ee634af0c4faadcbe529de0d1"
     },
     {
       "id": "sufficit-hermes-agents",
@@ -2179,6 +2186,16 @@
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/videos/youtube-video-understand",
       "path": "skills/videos/youtube-video-understand",
       "contentSha256": "1d9d22185061ba254b4ebce2b455b55bd183115963371609a5c39763ee41e007"
+    },
+    {
+      "id": "unslop",
+      "name": "unslop",
+      "sourceId": "unslop",
+      "author": "Damir Sokolovsky",
+      "license": "CC-BY-4.0",
+      "upstreamSource": "https://github.com/heydamir/unslop/tree/620163eedb3529d9cd23a3994ed8d287d06f760d/skills/unslop",
+      "path": "skills/unslop/unslop",
+      "contentSha256": "98317e109e3f3374303f9e69b47b89b45105c8e20e225ed443495486ca003148"
     }
   ]
 }
