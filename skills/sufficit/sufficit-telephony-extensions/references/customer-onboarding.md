@@ -7,6 +7,20 @@ A request to create four extensions alone does not implicitly authorize queue/DI
 changes; use the complete onboarding scope only when requested or established by
 the customer's approved onboarding policy.
 
+## Recover a prior customer request
+
+If a colleague asks what the customer requested during first-level support, resolve
+the customer's context UUID from the case or the group's history. In a Fleet group
+with an assigned first-level consultant, use `mcp__fleet_workspace__send` with
+`operation=support_ask`, the active `missionId`, the manager's `message_id`,
+`customerContextId` and a focused `question` with the case reference and date.
+The consultant can work privately even when absent from the WhatsApp group.
+Keep the returned `consultationId`. Read the reply with the same tool using
+`operation=support_status`, the current mission ID and that receipt. Report the
+actual state while pending. Cite the conversation supporting each customer request.
+Missing evidence leaves the request unknown. A consultation only retrieves
+information; changes to the customer's PBX require their own authorized scope.
+
 ## Resolve the intended state
 
 - Keep the supplied customer context GUID. Resolve the display name with
