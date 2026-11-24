@@ -47,14 +47,14 @@ Check the extension card on the telephony panel first:
 
 While an app keeps its own Do not disturb, queues wait the queue's
 "Espera após ramal ocupado" (default 10 s) before offering again, so other agents
-keep receiving calls. Recommend the Sufficit app status or the PBX Do not disturb
-instead of the app's local Do not disturb: then the PBX knows, and the panel shows
-**DND** (confirmed).
+keep receiving calls. Recommend the status of the Sufficit apps (Sufficit Phone,
+Chrome extension) instead of a third-party app's local Do not disturb: then the PBX
+knows, and the panel shows **DND** (confirmed). There are no dial codes for presence.
 
 ## Limits
 
 - Legacy SIP extension cards are keyed by number, so presence is not shown on them.
   The likely DND (busy-while-idle) still is.
-- Planned, not available yet: the Sufficit Phone status changing presence by
-  itself, feature codes for Do not disturb, and colleagues seeing presence on BLF
-  keys.
+- Planned, not available yet: the Sufficit Phone and Chrome extension status
+  changing presence by itself, and colleagues seeing presence on BLF keys.
+- There are no dial (feature) codes for presence, by decision.
