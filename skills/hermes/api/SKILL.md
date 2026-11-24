@@ -2,7 +2,7 @@
 name: hermes-api
 description: "Connect your own Hermes (Chatwoot) account: conectar Hermes, pegar token de acesso, onde obter e salvar token no Vault, configurar ou verificar conexao. Use the Hermes helpdesk API for contacts, attendances, messages/PDF and Kanban (funis, etapas, cartões, relatórios e operações em lote). Discover the native tools or use the authorized API."
 metadata:
-  version: "0.5.0"
+  version: "0.5.1"
 ---
 
 # Hermes API
@@ -11,6 +11,29 @@ Hermes is Sufficit's helpdesk, built on Chatwoot and extended. Routes change bet
 releases, so **this skill teaches how to discover the API, not a frozen list of routes**.
 Follow the server's OpenAPI for documented operations. For plugin routes omitted from
 the spec, use the corresponding Hermes plugin source or supported client.
+
+## Fleet helpdesk investigations and message handling
+
+Use the agent's configured identity, account and inboxes. For a delegated history
+request use `hermes_telephony` with `operation=conversation_search`, the current
+mission ID and inclusive local dates. The requester should supply the customer
+name as well as any verified context ID. Check both contact matches and message
+mentions. A staff thread often names a customer whose own contact has a different
+name. Report the conversation, date, speaker and inbox. An incoming message in a
+staff group can be a colleague's report. Attribute a request to the customer
+only when the participant and wording establish that. Report partial coverage.
+
+In a customer-facing attendance, inspect the account, conversation and channel
+before acting. Read text, caption and attachment metadata. Use the authorized
+original for contents; indicate when the file could not be interpreted. Use
+the connector's outgoing text or multipart attachment operation for the actual
+file (audio, image, video or document). A private note, a quoted message and
+a public reply have different audiences. Verify the returned message ID, inbox,
+recipient, visibility and attachment. Report delivery only when the provider
+confirms it. Interactive buttons, templates and other structured content depend
+on the channel and its current API. Never silently convert an unsupported format
+or resend after an ambiguous outcome. A private investigation returns evidence
+to the requesting agent; it does not initiate a customer-facing conversation.
 
 ## Optional native plugin in Genius
 
