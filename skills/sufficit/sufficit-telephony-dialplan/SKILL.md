@@ -2,7 +2,7 @@
 name: sufficit-telephony-dialplan
 description: "Design and manage Sufficit Telephony call routing: attendance flows, applications and destinations, queues and members, voicemail as a destination, inbound DID numbers, carrier SIP line onboarding, SIP REGISTER tests and outbound trunk selection, through the live corporate API and the product semantics. Use when a request mentions fluxo de atendimento, aplicacoes e destinos, filas, URA, IVR, tronco, testar registro SIP, DID, numero de entrada, horario de atendimento or caixa postal como destino. Not for editing raw Asterisk extensions.conf."
 metadata:
-  version: "0.8.10"
+  version: "0.8.11"
 ---
 
 # Sufficit Telephony: dialplan, applications and destinations
@@ -71,6 +71,7 @@ visit verifies that call on that node only. Check existing visits on an affected
 node before requesting another call. See [queue dispatch diagnosis](references/inbound-diagnostics.md#queue-dispatch-by-node).
 For customer-facing follow-up and mobile-origin tests requested privately from
 the managers over WhatsApp, read [first-contact training](references/first-contact.md).
+When agents never ring, check the extension card for **DND** (confirmed presence, queues skip it) or **DND?** (the app's own Do not disturb answering busy while free); see the extensions skill [presence reference](../sufficit-telephony-extensions/references/presence.md).
 On a live PBX, use only one-shot `asterisk -rx` reads or a log tail bounded by
 `timeout -s KILL`. Never feed the remote console endless input such as
 `asterisk -r </dev/zero`. See [safe console reads](references/inbound-diagnostics.md#safe-asterisk-console-reads).

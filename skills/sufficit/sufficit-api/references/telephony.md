@@ -32,6 +32,15 @@ de espera configurado em segundos, não média nem espera ao vivo. Quando a pess
 corrigir "quais ramais ... na verdade, qual tempo de espera?", responda SOMENTE o
 tempo. Não enumere membros que deixaram de ser a pergunta atual.
 
+## Extension presence
+
+Presence of an extension by GUID: `GET /telephony/endpoint/presence?contextId&id` and
+`PUT /telephony/endpoint/presence` (`state`: `available`, `chat`, `away` with optional
+`subtype: "busy"`, `xa`, `dnd`, `unavailable`, `not_set`; `message` up to 140 chars).
+Written on every voice node. Queues skip `dnd` and `unavailable`. Usage, access rules
+and the confirmed vs likely Do not disturb diagnosis are in the extensions skill
+[presence reference](../../sufficit-telephony-extensions/references/presence.md).
+
 ## Inbound number routing
 
 When asked to check inbound routes, keep the selected customer context and the numbers from the conversation. Read the DID configuration, not just SIP registration, the destination catalog or call history. Those sources answer different questions.
