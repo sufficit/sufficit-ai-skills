@@ -1,6 +1,6 @@
 ---
 name: sufficit-financial-records
-description: "Write, review and query the text of Sufficit financial ledger records (customer statement lines in fina_financial_records): the description shown to people and the machine document. Applies the house convention of correct Portuguese with fixed delimiters (: ; [competência] {referência} (ORIGEM) · Rótulo: valor) so lines stay readable and can be filtered with regex. Use when creating or correcting a credit, debit, bonus, transfer, refund or commission line, when designing a new ledger producer in code, when a description is vague (\"Pagamento de comissões: 1 período(s)\"), and when searching the statement by origin, competence or reference. Use for descricao de lancamento, extrato financeiro, registro financeiro, padrao de descricao, filtrar extrato, regex no extrato."
+description: "Write, review and query the text of Sufficit financial ledger records (customer statement lines in fina_financial_records): the description shown to people and the machine document. Applies the house convention of correct Portuguese with fixed delimiters (: ; [competência] {referência} (ORIGEM) · Rótulo: valor) so lines stay readable and can be filtered with regex. Use when creating or correcting a credit, debit, bonus, transfer, refund or commission line, when designing a new ledger producer in code, when a description is vague (\"Recebimento de comissões: 1 período(s)\"), and when searching the statement by origin, competence or reference. Use for descricao de lancamento, extrato financeiro, registro financeiro, padrao de descricao, filtrar extrato, regex no extrato."
 metadata:
   version: "1.0.0"
   author: "Sufficit"
@@ -28,8 +28,8 @@ item := <objeto>[ [<competência>]][ {<referência>}][ (<ORIGEM>)]
 
 | Piece | Use | Example |
 |---|---|---|
-| `Ação` | what happened, sentence case, with accents | `Pagamento de comissões` |
-| `: ` | ends the action (first colon only) | `Pagamento de comissões: ...` |
+| `Ação` | what happened, sentence case, with accents | `Recebimento de comissões` |
+| `: ` | ends the action (first colon only) | `Recebimento de comissões: ...` |
 | `; ` | separates items; never a comma, because titles contain commas | `TRONCO DE ENTRADA [10/2026] (A LTDA); TRONCO FLEXIVEL+ [11/2026] (B LTDA)` |
 | `[MM/AAAA]` | competence in the São Paulo calendar; several inside with `; ` | `[10/2026; 11/2026]` |
 | `{...}` | reference to another record or document | `{débito #213863}`, `{NFS-e 1101}` |
@@ -49,8 +49,8 @@ Rules:
    transfer `(CONTRAPARTE)`. The [convention reference](references/convention.md) lists every
    current producer.
 
-Good: `Pagamento de comissões: Suporte e assessoria do Chatwoot, n8n e API do WhatsApp [10/2026] (FORMATTA NEGÓCIOS LTDA)`
-Bad: `Pagamento de comissões: 1 período(s)` (no service, no competence, no origin)
+Good: `Recebimento de comissões: Suporte e assessoria do Chatwoot, n8n e API do WhatsApp [10/2026] (FORMATTA NEGÓCIOS LTDA)`
+Bad: `Recebimento de comissões: 1 período(s)` (no service, no competence, no origin)
 
 ## Writing or changing a row
 

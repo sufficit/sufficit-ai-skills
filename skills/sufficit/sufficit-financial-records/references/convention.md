@@ -21,7 +21,7 @@ MariaDB `REGEXP` uses PCRE: double the backslashes in SQL string literals (`'\\(
 | `kind` | Description | `document` |
 |---|---|---|
 | `ativ - ativacao` | `Ativação do serviço - TÍTULO[ · DID: 552125978975]` | `SERVICO:<serviço ou período>` |
-| `cmrb - comissao` (payout) | `Pagamento de comissões: SERVIÇO [10/2026] (CLIENTE); ...` | `COMISSAO:<payout>` |
+| `cmrb - comissao` (payout) | `Recebimento de comissões: SERVIÇO [10/2026] (CLIENTE); ...` | `COMISSAO:<payout>` |
 | `cmrb - comissao` (legacy, before 2026-10-06) | `Recebimento de comissão por ativação de serviço: TÍTULO (CLIENTE)` | `SERVICO:<serviço>` |
 | `trns`/`trne - transferencia` | `(CONTRAPARTE)` | `CENTRODECUSTO:<origem>:TRANSFERENCIA:<id>` |
 | `rect - recarga ted` | `PIX Asaas - serviço avulso: OBJETO {débito #213863}` | `ASAAS:<pay_id>` |
@@ -40,8 +40,8 @@ Older rows still contain free text (`BONUS`, `(débito 213863)`). New rows follo
 ## Examples
 
 ```
-Pagamento de comissões: TRONCO DE ENTRADA [10/2026] (BRUNNAS CONFECCOES LTDA)
-Pagamento de comissões: TRONCO FLEXIVEL+ [10/2026; 11/2026] (GF NET LTDA); TRONCO FLEXIVEL+ [11/2026] (LOPES TELECOM LTDA)
+Recebimento de comissões: TRONCO DE ENTRADA [10/2026] (BRUNNAS CONFECCOES LTDA)
+Recebimento de comissões: TRONCO FLEXIVEL+ [10/2026; 11/2026] (GF NET LTDA); TRONCO FLEXIVEL+ [11/2026] (LOPES TELECOM LTDA)
 Bônus por cobrança indevida: Suporte in loco terceirizado [10/2026] {débito #212345} (CLIENTE LTDA)
 Estorno de PIX enviado por chave {débito #214000} (EMILLY CAROLINE DA SILVA JULIAO)
 ```
