@@ -55,6 +55,7 @@ knows, and the panel shows **DND** (confirmed). There are no dial codes for pres
 
 - Legacy SIP extension cards are keyed by number, so presence is not shown on them.
   The likely DND (busy-while-idle) still is.
-- Planned, not available yet: the Sufficit Phone and Chrome extension status
-  changing presence by itself, and colleagues seeing presence on BLF keys.
+- Available: the Chrome extension (2.23.0+) stores its status as presence on every line
+  (Disponível → available, Ocupado → dnd, Offline → unavailable).
+- Planned: the Sufficit Phone desktop status (code ready, release pending). Deferred: colleagues seeing presence on BLF keys.
 - There are no dial (feature) codes for presence, by decision.
