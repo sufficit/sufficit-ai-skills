@@ -52,8 +52,8 @@ in sufficit-endpoints; the product client is EndPointCreationClient.cs in suffic
 1. GET `/Telephony/EndPoint/Creation/Preview?contextId=<GUID>&number=6001`:
    returns contextId, number and canonical title. Numbers are exactly four digits,
    6000–6999 excluding 6500–6599 (reserved for queues). A 409 saying initial
-   telephony setup is missing requires the customer-scoped setup/checkup flow;
-   it is not a duplicate-number or authorization failure. Read the onboarding reference.
+   telephony setup is missing calls for the customer-scoped
+   [preparation operation](customer-onboarding.md#prepare-customer-telephony).
 2. POST `/Telephony/EndPoint/Create` with JSON:
    `requestId` (new stable GUID per intended extension), `contextId`, `number`,
    `description` (may be empty), `technology` (standard: `"SIP+PJSIP"`), `recording` (standard: `true`),

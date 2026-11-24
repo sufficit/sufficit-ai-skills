@@ -36,12 +36,12 @@ information; changes to the customer's PBX require their own authorized scope.
   GET `/Contact/Title?contactid=<GUID>`; Customer 204 is not proof of absence.
   An explicit GUID identifies the customer: report the returned title when the
   supplied name has a typo, without blocking for cosmetic reconfirmation.
-- List extensions, contracted services, DIDs and catalog queues first. On an
+- List extensions, DIDs and catalog queues first. On an
   empty customer, the approved four-extension onboarding pattern is 6001–6004;
   when numbers were explicitly specified, preserve them. Names are optional in
   the current creation API; do not block solely because each extension lacks a
   person's name. Do not create Identity users or reset account passwords.
-- Select only the DID actually owned by this context. A single unambiguous inbound
+- If the authorized scope includes routing an inbound number, select only a DID actually owned by this context. A single unambiguous inbound
   DID can be selected from the API; several candidates require the requester to
   select one. Do not ask again for a GUID or DID already provided or discoverable.
 - Apply the approved new-extension standard: both SIP and PJSIP enabled,
@@ -64,51 +64,23 @@ information; changes to the customer's PBX require their own authorized scope.
 
 ## Prepare customer telephony
 
-GET `/Telephony/CheckUp/Preflight?contextId=<GUID>` checks the actor and domain
-authorization without starting setup. Current setup accepts the normal Identity
-`sub` as well as browser NameIdentifier. A legacy 400 `invalid user id` is an API
-identity-extraction defect to report, not evidence that another manager grant or
-a user-provided credential is needed.
+Read GET `/Telephony/EndPoint/Preparation?contextId=<GUID>` for the
+validated customer. Its response includes `contextId` and `telephonyPrepared`.
+A registered customer can be prepared with zero services. This operation uses
+the same customer-scoped `dialplanupdate` authorization as extension creation.
 
-GET Creation/Preview for the first desired extension resolves the prefix.
-If it returns 409 for missing initial configuration, use the supported customer
-setup/checkup, not direct database/FreePBX commands. Current legacy contract:
-POST `/Telephony/CheckUp?ClientID=<GUID>` starts a mutating customer setup process;
-202 returns its GUID. GET `/Telephony/CheckUp?CheckUpId=<GUID>` follows the process.
-CheckUpController.cs is the source. This is not a read-only diagnostic: it may
-provision contracted services and update runtime configuration. Execute only
-inside an authorized customer onboarding/setup request and the applicable
-operational policy; a training test never starts it. Do not substitute global
-checkup methods. On uncertainty, query the original process before another POST.
-If checkup reports no current telephony service while a native contract is active,
-do not invent another zero-price service. The legacy checkup reads legacy services;
-an empty legacy list does not invalidate the native contract. Discover operations
-in the live versioned OpenAPI (currently `/swagger/v2/swagger.json`, not only v1).
-If the business helper rejects the full schema at 1 MiB, use the provisioned
-`python3 /data/support/api-schema QueueDestination` for paths and referenced DTOs;
-it reads public metadata only, without exposing credentials.
-GET `/Sales/LegacyService/Session` supplies epoch/snapshotId. Send them as headers
-`X-Sufficit-Sales-Epoch` and `X-Sufficit-Sales-Snapshot` in subsequent calls.
-GET `/Sales/LegacyService/Initialization?contextid=<GUID>` distinguishes
-hasCurrentService, currentNativeContractId and telephonyPrepared. A 409 authority
-message means refresh these headers, not unavailable permission or missing route.
-For an active native contract and telephonyPrepared=false, discover and use POST
-`/Sales/LegacyService/Preparation` with `{contextId,contractId}` using that exact
-contract. This prepares the existing PBX bridge without creating or changing any
-commercial service, price, period or charge. The authorized onboarding includes
-this operational preparation. Re-read Initialization and preview afterwards.
-An unknown POST outcome requires a state read; do not recreate a service as fallback.
-If the route is absent/refused, report its actual HTTP result and preserve this stage.
-Only the absence of any current contract leads to the separately reviewed initial
-service-creation flow; never infer authorization to create paid/free service coverage
-from a request to create extensions alone.
+When `telephonyPrepared=false`, POST the same URL with no body, then re-read
+GET and confirm `telephonyPrepared=true` for the same context. This ensures the
+customer's FreePBX mapping, context and includes. It leaves contracts and billing
+outside the workflow. On timeout or 503, reconcile with GET before retrying.
+If the deployed API lacks this route, report the actual response and identify
+preparation as pending for that API version. A commercial service or a full
+legacy checkup is outside the scope of this operation.
 
-After successful setup, re-read preview; do not construct the prefix locally.
-The authorized onboarding includes this API setup step; do not ask for a second
-authorization solely because CheckUp mutates the customer. A read-only test is
-restricted independently and never starts it. A 409 does not prove the extension
-list is empty: read it before creating anything. Do not say everything is ready
-when prerequisite reads or actual setup are still pending.
+Re-read `GET /Telephony/EndPoint/Creation/Preview?contextId=<GUID>&number=<number>`
+to obtain the server-generated title before each extension creation. A 409 for
+missing configuration indicates pending preparation. Read the extension list
+before creating anything, even when preparation was missing.
 
 ## Ensure the customer default password
 
@@ -180,6 +152,8 @@ After 409/412 or transport uncertainty, re-read the catalog by the SAME IDs befo
 retrying. Reconcile exact state; do not mint another queue or member ID.
 
 ## Point the DID to the queue
+
+When the authorized scope includes inbound routing and the customer has an owned DID, continue here. If no DID is available, record inbound routing as pending and complete the authorized extensions and queue.
 
 Re-read the owned DID and preserve its billing, answer and other properties.
 The canonical queue ingress is `sufficit-app-queue,<queueId:N>,1`, without contextId.

@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal, ligar/desligar gravacao, presenca do ramal, nao perturbe (DND) or fila nao toca. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.10.3"
+  version: "0.10.4"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -106,7 +106,8 @@ not an imposition:
 For initial setup (extensions, a waiting queue and the incoming DID), read
 [references/customer-onboarding.md](references/customer-onboarding.md). Keep one
 customer-scoped checklist across the whole workflow; creating extensions alone
-does not complete onboarding.
+does not complete onboarding. Use the same reference when extension preview reports
+missing telephony preparation. A registered customer can be prepared before contracting services.
 
 ## Tools and discovery
 
