@@ -2,7 +2,7 @@
 name: hermes-api
 description: "Connect your own Hermes (Chatwoot) account: conectar Hermes, pegar token de acesso, onde obter e salvar token no Vault, configurar ou verificar conexao. Use the Hermes helpdesk API for contacts, attendances, messages/PDF and Kanban (funis, etapas, cartões, relatórios e operações em lote). Discover the native tools or use the authorized API."
 metadata:
-  version: "0.5.1"
+  version: "0.5.2"
 ---
 
 # Hermes API
@@ -11,6 +11,19 @@ Hermes is Sufficit's helpdesk, built on Chatwoot and extended. Routes change bet
 releases, so **this skill teaches how to discover the API, not a frozen list of routes**.
 Follow the server's OpenAPI for documented operations. For plugin routes omitted from
 the spec, use the corresponding Hermes plugin source or supported client.
+
+## Messages in a Fleet reply mission
+
+Read the conversation and identify its channel and authorized recipient. Use
+`receive_file` to retrieve an incoming original when its contents matter. For
+an outgoing document, image, audio or video, stage the file under
+`outbox/{missionId}/{filename}` in the assigned media workspace. Return
+`{"reply":"caption","replyFile":"filename"}`. The file limit is 16 MiB.
+For a structured QuePasa message, use the formats enabled in `richReplyKinds`
+and return `reply` with a `richReply` object using the provider schema for
+buttons, list, poll, contact or sticker. Choose a format supported by the
+recipient's channel. Confirm the returned message ID before reporting delivery
+to Hermes. Customer receipt requires its own delivery status.
 
 ## Fleet helpdesk investigations and message handling
 

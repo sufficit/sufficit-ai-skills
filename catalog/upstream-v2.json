@@ -2613,8 +2613,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "f7555358e4d2b5eeec54a32d1327986a8add41fd4215b4ad94950faf4d33f3c0",
-      "version": "0.5.1"
+      "contentSha256": "d03a6fe39303c9dc05eb5a143940a2d646e06578f4bd320661228421cf96551a",
+      "version": "0.5.2"
     },
     {
       "id": "hermes-triage",
