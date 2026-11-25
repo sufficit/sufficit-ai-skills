@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal, ligar/desligar gravacao, presenca do ramal, nao perturbe (DND) or fila nao toca. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.10.4"
+  version: "0.10.5"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -215,3 +215,5 @@ need that is missing, or a question the API cannot answer: `POST /Support/Thread
 "skill:sufficit-telephony-extensions"`. Once per session, also read the threads waiting for the company
 (`GET /Support/Threads?contextId={contextId}&waitingFor=customer`) and act on them within this skill's rules. Full
 contract: skill [`sufficit-support`](https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-support).
+
+For a request to disconnect a customer DID from its current destination, use the [scoped destination removal procedure](references/customer-onboarding.md#clear-a-did-destination).

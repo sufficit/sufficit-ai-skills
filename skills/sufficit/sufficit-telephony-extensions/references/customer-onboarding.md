@@ -169,6 +169,16 @@ actual operation before writing; a read grant does not prove write access.
 After a conflict re-read instead of overwriting concurrent routing. After a
 timeout read the DID instead of blindly repeating POST.
 
+## Clear a DID destination
+
+For an authorized disconnection, confirm the DID still belongs to the requested
+customer. Read GET /Telephony/DID/QueueDestination with its id and that contextId.
+Send the returned snapshot unchanged to POST /Telephony/DID/ClearDestination.
+On 204, read the snapshot again and verify the destination fields are empty.
+A 404 for the original context can mean ownership has changed. Stop and report
+the discrepancy. On 409, review the new route before any retry. A hangup route
+already disconnects incoming calls. Preserve that state when it meets the request.
+
 ## Consolidate and report
 
 Track the default password step, each extension, queue, membership, DID destination and runtime verification
