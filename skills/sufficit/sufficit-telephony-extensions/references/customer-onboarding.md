@@ -198,3 +198,14 @@ before claiming missing write permission; do not retry the same stale ID or ask
 for broader access. Read the current document, preserve its existing content and
 write updates through the group's workspace tool. A failed read is not proof
 that the file is empty or that a write was refused.
+
+## Customer default outbound caller ID
+
+Confirm the customer context and read `GET /Telephony/Outbound/CallerId?contextId={guid}`.
+For an owned Brazilian DID, use `PUT /Telephony/Outbound/CallerId` with the same
+`contextId` and `number` (55, area code and subscriber number, digits only).
+An explicit null restores automatic selection. Read the preference back.
+This changes presentation while preserving the selected route and explicit extension
+overrides. A 403 on outbound service assignments does not establish whether this
+operation is available. Report the actual operation and result. Only a call to an
+agreed test receiver can confirm which number the carrier presented.
