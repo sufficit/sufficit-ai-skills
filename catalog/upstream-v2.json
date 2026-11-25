@@ -3241,8 +3241,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "7e13ac18fe183a6a8b2d3a6a90c6776c3286137aa81957b837b205d639658cf6",
-      "version": "0.10.5"
+      "contentSha256": "b2d658b561611fc89a0c7a61c240956e15403762bdc6483ba8d09700255ff1d5",
+      "version": "0.10.6"
     },
     {
       "id": "sufficit-telephony-reports",
