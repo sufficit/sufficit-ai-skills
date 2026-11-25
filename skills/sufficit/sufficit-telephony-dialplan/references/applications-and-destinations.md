@@ -29,6 +29,24 @@ guides. The deployed API is the authority on names and values.
   remove, format, pending or blocked contacts) belongs to the `sufficit-notifications`
   skill; the subscription key is the box id.
 
+## WhatsApp call routes: no DTMF
+
+- Calls that arrive through a WhatsApp number (QuePasa or official Meta route)
+  carry no DTMF today: the caller cannot press keys. An IVR/URA, a menu, a
+  queue exit digit or any step that waits for a key strands the caller in the
+  greeting until timeout.
+- Point a WhatsApp route to a business-hours time condition whose open
+  destination is a queue (or an extension) directly, and whose closed
+  destination is an announcement and/or voicemail. Do not reuse the DID's IVR
+  just because it is the "main" entry; build or pick a key-free path.
+- If the company has no business-hours condition yet, create one for the
+  WhatsApp route (title such as "Expediente WhatsApp") rather than skipping it,
+  and state the hours you used so the requester can correct them. Check that
+  the queue itself has no wait menu or exit digit that relies on a key press.
+- Route destination changes go through `POST /Gateway/WhatsApp` with the same
+  session id and only the `Destination` section; the route's WhatsApp identity
+  and options are preserved.
+
 ## Editing a flow
 
 1. Read the DID and its flow end to end; list each step's application and

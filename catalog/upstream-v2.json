@@ -3018,7 +3018,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "b1b02890d63693ad8279a4748d53aa497857afc197780e853cc7ea6bbe64e2fb",
-      "version": "1.1.3"
+      "version": "1.1.6"
     },
     {
       "id": "sufficit-campaigns",
@@ -3222,7 +3222,7 @@
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
       "contentSha256": "081cdb7b0cf98ca624d1e78b9ae2899383771e5460674a03b117aea9329fe5b9",
-      "version": "0.8.11"
+      "version": "0.8.12"
     },
     {
       "id": "sufficit-telephony-extensions",
