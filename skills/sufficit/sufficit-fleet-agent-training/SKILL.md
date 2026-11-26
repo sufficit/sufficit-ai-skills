@@ -1,11 +1,13 @@
 ---
-name: sufficit-agent-training
-description: "Read and maintain your own durable Sufficit Run training blocks and their history using the executor-bound manage_own_training tool. Apply when an authorized operator asks you to inspect, correct, add, restore or remove a training block that applies to you."
+name: sufficit-fleet-agent-training
+description: "Manage the Fleet training blocks of the Sufficit Fleet agent running this skill. Use only on Fleet-managed service executors with selfManageTraining enabled when an authorized operator asks to inspect, add, correct, restore or remove one of the agent’s own blocks."
 metadata:
   version: "1.0.0"
 ---
 
-# Manage your own training
+# Manage a Fleet agent’s own training
+
+This workflow applies exclusively to agents managed by Sufficit Fleet.
 
 Use the connected tool named `manage_own_training`. Genius may prefix the name
 with the MCP server identifier. If the tool is missing, denied or revoked, tell

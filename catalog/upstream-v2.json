@@ -3356,16 +3356,17 @@
       "contentSha256": "98317e109e3f3374303f9e69b47b89b45105c8e20e225ed443495486ca003148"
     },
     {
-      "id": "sufficit-agent-training",
-      "name": "sufficit-agent-training",
+      "id": "sufficit-fleet-agent-training",
+      "name": "sufficit-fleet-agent-training",
       "sourceId": "sufficit-genius",
       "author": "Sufficit",
       "license": "MIT-0",
-      "contentSha256": "c3fe61fa2f8d4421a548176f69f6e2db2ca7ee33b9d3d702627b6adac167dfc5",
-      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-agent-training",
-      "description": "Read and maintain your own durable Sufficit Run training blocks and their history using the executor-bound manage_own_training tool. Apply when an authorized operator asks you to inspect, correct, add, restore or remove a training block that applies to you.",
+      "contentSha256": "5fc49494d10cb32789509ba306a89cb87512e4458739d3415dab348f52dc2112",
+      "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-fleet-agent-training",
+      "description": "Manage the Fleet training blocks of the Sufficit Fleet agent running this skill. Use only on Fleet-managed service executors with selfManageTraining enabled when an authorized operator asks to inspect, add, correct, restore or remove one of the agent’s own blocks.",
       "tags": [
         "sufficit",
+        "fleet",
         "genius",
         "training",
         "agents"
