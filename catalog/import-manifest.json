@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "catalogEntries": 214,
+  "catalogEntries": 215,
   "sources": [
     {
       "id": "android",
@@ -2206,6 +2206,16 @@
       "upstreamSource": "https://github.com/heydamir/unslop/tree/620163eedb3529d9cd23a3994ed8d287d06f760d/skills/unslop",
       "path": "skills/unslop/unslop",
       "contentSha256": "98317e109e3f3374303f9e69b47b89b45105c8e20e225ed443495486ca003148"
+    },
+    {
+      "id": "sufficit-agent-training",
+      "name": "sufficit-agent-training",
+      "sourceId": "sufficit-genius",
+      "author": "Sufficit",
+      "license": "MIT-0",
+      "contentSha256": "c3fe61fa2f8d4421a548176f69f6e2db2ca7ee33b9d3d702627b6adac167dfc5",
+      "path": "skills/sufficit/sufficit-agent-training",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-agent-training"
     }
   ]
 }
