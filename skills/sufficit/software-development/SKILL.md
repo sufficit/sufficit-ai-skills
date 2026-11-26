@@ -2,7 +2,7 @@
 name: software-development
 description: Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization.
 metadata:
-  version: "1.1.1"
+  version: "1.2.0"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -81,6 +81,27 @@ for missing information, authority or a decision that materially affects the res
 Use the communication mechanism actually supported by the current environment;
 never treat an empty tool response as consent. A real blocker records the failed
 operation, evidence and the safest next action, with remaining checkpoints intact.
+
+### File size and unit test integration
+
+- Use 400 physical lines as the default maximum for repository-maintained text
+  files. Follow an explicit limit set by the maintainer or repository. Split
+  files by responsibility. In C#, use partial classes with
+  `Type.Concern.cs` files when the code belongs to one type. In JavaScript,
+  use focused modules with explicit imports and exports, following the
+  project's module-loading convention.
+- When a file must exceed the limit, record its exact path, reason, and maximum
+  line count in the repository's exception list. Keep existing oversized files
+  at a recorded ceiling while splitting them incrementally. Remove an exception
+  when its file complies or is removed.
+- Integrate the line-count check and its regression cases into each applicable
+  language's existing unit test suite. For example, use the established .NET
+  runner for C# and the established JavaScript runner, such as `node:test`.
+  Keep a shared exception list when both suites enforce the same policy. Run
+  the normal suite commands in CI.
+- Test the limit boundary and the first line over it. Verify that an exception
+  passes within its ceiling, fails above it, and is flagged when it becomes
+  unnecessary.
 
 ### Blazor rendering and event-driven state
 

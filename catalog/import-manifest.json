@@ -2015,7 +2015,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
       "path": "skills/sufficit/software-development",
-      "contentSha256": "2da3540eb30929aa13b2c8875acdbf3e9b4de57cdb00a4c48aace3ea06a688ec"
+      "contentSha256": "0b50effee062bf31ec687bc2ed91a8da2a720bcf24529e9a99c9d09adc4d9dd8"
     },
     {
       "id": "sufficit-api",

@@ -2977,7 +2977,7 @@
     {
       "id": "software-development",
       "name": "software-development",
-      "description": "Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization. Version 1.1.1.",
+      "description": "Execute authorized software changes with a live plan, implementation checkpoints, proportionate validation and a delivery record. Use for implementation, fixes, refactoring and migrations; exclude read-only explanations, status checks and reviews without edit authorization. Version 1.2.0.",
       "source": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/software-development",
       "tags": [
         "software",
@@ -2990,8 +2990,8 @@
       "author": "Sufficit",
       "license": "MIT-0",
       "sourceId": "sufficit-genius",
-      "contentSha256": "2da3540eb30929aa13b2c8875acdbf3e9b4de57cdb00a4c48aace3ea06a688ec",
-      "version": "1.1.1"
+      "contentSha256": "0b50effee062bf31ec687bc2ed91a8da2a720bcf24529e9a99c9d09adc4d9dd8",
+      "version": "1.2.0"
     },
     {
       "id": "sufficit-api",
