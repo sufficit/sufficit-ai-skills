@@ -58,6 +58,14 @@ Genius. A origem e o digest de cada pacote estão em
 - Origem: repositórios Sufficit indicados no manifesto de importação
 - Licença: [MIT-0](licenses/sufficit-skills-MIT-0.txt)
 
+## Referência da API do QuePasa
+
+- Autor: projeto QuePasa (nocodeleaks); cópia integral, sem adaptação
+- Origem: <https://quepasa-axu.pages.dev/skills/quepasa-api/SKILL.md>, skill que o próprio QuePasa gera a partir do código
+- Revisão consultada: `1a8288484e56ed636f4c7eebe2a4ddbc4fdc33e9` (QuePasa `5.26.1125.1212`)
+- Licença: MIT No Attribution
+- Pacote: `quepasa-api`, arquivos em `references/api/`.
+
 Os nomes e conteúdos de terceiros permanecem atribuídos aos respectivos
 autores. A inclusão neste espelho não altera suas licenças.
 
