@@ -209,3 +209,22 @@ This changes presentation while preserving the selected route and explicit exten
 overrides. A 403 on outbound service assignments does not establish whether this
 operation is available. Report the actual operation and result. Only a call to an
 agreed test receiver can confirm which number the carrier presented.
+
+## DID assignment
+
+Resolve the exact DID and target customer. Read its current customer context:
+the stock owner, former customer, destination and quarantine date do not establish
+current customer ownership. For an unassigned DID, including one in quarantine,
+proceed on the assignment request. If it already belongs to the target, keep the
+binding and continue with the requested routing.
+
+When the current customer differs from the target, ask a current group administrator
+to confirm the specific number, source and target in the group. Verify the sender's
+administrator status from group membership and use the confirming message ID.
+If sender status or consent cannot be verified, hold the transfer.
+
+Use PUT /Telephony/DID/Context with id (DID GUID), contextId (target GUID),
+expectedContextId (observed GUID, all-zero for unassigned), and approvalMessageId
+for a transfer between customers. A 409 requires a fresh read and fresh consent
+if the source changed. After success, read back the DID, then use the queue routing
+operation for the verified destination in the same customer and read it back.
