@@ -248,7 +248,7 @@ inside the repository's documentation hierarchy.
 
 | Skill | Card | Source | Description |
 | --- | --- | --- | --- |
-| [quepasa-api](../skills/quepasa/api/SKILL.md) | [card](../skills/quepasa/api/skill-card.md) | Sufficit | Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and r... |
+| [quepasa-api](../skills/quepasa/api/SKILL.md) | [card](../skills/quepasa/api/skill-card.md) | Sufficit | Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, list conversations and groups, manage groups, read and set the options... |
 | [quepasa-production](../skills/quepasa/production/SKILL.md) | [card](../skills/quepasa/production/skill-card.md) | Sufficit | Operate Sufficit's production QuePasa (WhatsApp gateway) on Kubernetes — check health, diagnose a session or a failed send, read logs and metrics, re-pair or... |
 
 ## refero

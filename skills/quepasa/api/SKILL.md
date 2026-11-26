@@ -1,13 +1,34 @@
 ---
 name: quepasa-api
-description: "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, manage groups (create, attendees, name, description, invitations and requests for entry), download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa."
+description: "Use the QuePasa HTTP API (gateway WhatsApp in Go) the right way — send text and media, list conversations and groups, manage groups, read and set the options of a session, download shared media and contacts, check history and configure/interpret webhooks — with the session token (X-QUEPASA-TOKEN) and never the user key outside your scope. Use when the request involves QuePasa, WhatsApp via gateway, WhatsApp groups, Hermes/Chatwoot message or integration webhooks with QuePasa."
 metadata:
-  version: "0.1.6"
+  version: "0.2.0"
 ---
 
 # QuePasa API
 
-QuePasa exposes a WhatsApp session (one number) per token. This skill teaches the routes that work in production, correct authentication and the known production pitfalls. The complete route reference is in [references/endpoints.md](references/endpoints.md) and webhook format in [references/webhook-payload.md](references/webhook-payload.md).
+QuePasa exposes a WhatsApp session (one number) per token. This skill teaches the routes that work in production, correct authentication and the known production pitfalls. [references/endpoints.md](references/endpoints.md) is the short table of the routes used in Sufficit, with the legacy surface, and [references/webhook-payload.md](references/webhook-payload.md) has the webhook format.
+
+## Complete API reference
+
+QuePasa generates the description of its own API from its source. The twelve files below are that reference, copied unchanged for version `5.26.1125.1212`. Each lists the operations of one family, with the request fields and the response schema:
+
+- [Sessions and pairing](references/api/sessions.md)
+- [Chats and conversation history](references/api/chats.md)
+- [Joined groups and membership](references/api/groups.md)
+- [Messages and WhatsApp Status](references/api/messages.md)
+- [Media and profile pictures](references/api/media.md)
+- [Conversation lists](references/api/lists.md)
+- [WhatsApp channels](references/api/channels.md)
+- [Dispatches and dead letters](references/api/dispatches.md)
+- [Contacts and identity resolution](references/api/contacts.md)
+- [Authentication and accounts](references/api/auth.md)
+- [Gateway settings](references/api/settings.md)
+- [Health, capabilities, audit and jobs](references/api/system.md)
+
+Read only the family of the operation at hand. Every operation also has an unversioned alias (`/api/groups` beside `/api/v5/groups`) when the gateway enables the aliases.
+
+QuePasa publishes the current reference, with a machine-readable `contract.json`, at `https://quepasa-axu.pages.dev/skills/quepasa-api/SKILL.md`. When `GET /api/v5/system/version` reports a version other than `5.26.1125.1212`, prefer the published one.
 
 ## Address and credentials
 
@@ -30,6 +51,14 @@ QuePasa exposes a WhatsApp session (one number) per token. This skill teaches th
 - Person: `<digits-with-country-code>@s.whatsapp.net` (e.g. `5511999999999@s.whatsapp.net`).
 - Group: `<id>@g.us`.
 - LID (new WhatsApp opaque identifier): `<number>@lid`. Convert with `GET /api/v5/contacts/identifier?phone=…` or `?lid=…` when needed.
+
+## Conversations and groups
+
+- `GET /api/v5/chats` lists **direct chats only**. The gateway builds it from the stored messages and leaves groups out by design, whether or not their messages are stored. A group never appears there, and neither does a search made through it. Missing history can also leave a direct chat absent.
+- `GET /api/v5/groups` lists the groups the session joined: `{"success":true,"status":"groups","total":N,"groups":[…]}`, with `total` and `groups` omitted when there are none. Each group keeps the gateway's field casing: `JID` (a string ending in `@g.us`), `Name`, `Topic`, `ParticipantCount`, `Participants`, `OwnerJID`. `Participants` can be null or empty in this list; read one group with `POST /api/v5/groups/get?groupid=…` when member details are needed.
+- The group list may come from a ten-minute cache. Send `?refresh=1` to bypass it.
+- For one combined conversation list, merge `chats[].chat_id` with `groups[].JID`, treating a missing array as empty.
+- Read the messages of a group with `GET /api/v5/messages?chatid=<jid@g.us>`.
 
 ## Send message
 
@@ -95,6 +124,9 @@ All with `X-QUEPASA-TOKEN`; the session needs to be group admin to change. The g
 
 The old surface (without `v5`) remains active and uses other names: `GET /api/groups/getall`, `GET /api/groups/get?groupId=…`, `POST /api/groups/create`. Do not mix: `/api/v5/groups/getall` and `/api/v5/groups/create` do not exist (404).
 
+- **Create** answers HTTP 200 with `{"success":true,"groupinfo":{…}}`. The title is required and limited to 25 UTF-8 bytes (an accented letter counts as two), and at least one participant is required. WhatsApp adds each participant on its own: in `groupinfo.Participants[]`, `Error` equal to `0` means added and any other value is a refusal. **The group exists even when some participants were refused**: report the refusals instead of creating the group again.
+- Refusals answer `400` or `500` with `{"result":"…"}` and no `success` field: read the HTTP status and `result`.
+
 ### Invite people
 
 Direct Add (`action: add`) may fail for contact privacy. The preferred pattern is to send the invitation link in private to each person:
@@ -111,6 +143,16 @@ Never publish the link in a group of others or public channel; revoke it if it l
 - Shared contact (`type: "contact"`): the webhook text only brings the displayed name; the full vCard (`text/x-vcard`, with the phone) comes through the same media route.
 - See message/historical: `GET /api/v5/messages?messageid=<id>` (also accepted `chatid`, `type`, `fromme`, `search`, `page`, `limit`); an exact message: `POST /api/v5/messages/get?messageid=<id>`.
 
+## Session options
+
+`POST /api/v5/sessions/get` returns the session and its options under `session`. Groups, broadcasts and receipts each have three states: `true` and `false` are set on the session; `null` means inherited, so the default of the gateway applies. With groups disabled, group messages are neither stored nor delivered: no group shows up and none can be read.
+
+- The read names are `groups`, `broadcasts`, `readReceipts` and `deliveryReceipts`.
+- To change them, `PATCH /api/v5/sessions` with only the keys that should change, for example `{"groups":true}`. In the patch the receipts are lowercase: `readreceipts`, `deliveryreceipts`.
+- Send the number `0` to return an option to inherited. JSON `null` is read as "option not sent" and changes nothing.
+- Never use `POST /api/v5/session/option` to set a value. It takes the option name in the query, the body or the `X-QUEPASA-OPTION` header, and only cycles it: unset, true, false.
+- An option belongs to someone's number: change it only on an explicit request.
+
 ## Webhooks
 
 - Configure with session token: `POST $QUEPASA_URL/webhook` (legacy, without a prefix) with `{"url":"https://…","forwardinternal":false,"trackid":"…"}`; `GET /webhook` list and `DELETE /webhook` removes. There is no `/api/v5/webhooks`; the equivalent v5 is `/api/v5/dispatches/webhooks`.
@@ -126,3 +168,5 @@ Never publish the link in a group of others or public channel; revoke it if it l
 - Route v5 with legacy name (`getall`, `create`, `download`) → 404; check out the table before trying blind variations.
 - Do not create, delete, pair (`/session/pair`, QR code) or disable sessions without explicit request: this affects someone's production number.
 - Do not use the user key to bypass a 401 session token.
+- `GET /api/v5/chats` never lists a group, stored messages or not. That is by design, not a permission problem: read `GET /api/v5/groups`.
+- `POST /api/v5/session/option` does not set an option, it cycles it. Use `PATCH /api/v5/sessions`.
