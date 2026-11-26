@@ -2073,9 +2073,9 @@
       "sourceId": "sufficit-genius",
       "author": "Sufficit",
       "license": "MIT-0",
-      "contentSha256": "e33fc2ae0c94ae1a94c2783d78adcc98ff8157c5187102145356109b4ada3b14",
-      "path": "skills/sufficit/sufficit-fleet-agent-scenarios",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-fleet-agent-scenarios"
+      "contentSha256": "0af5c5e89eee505d33ed53d5654b8527af84137d3e97167ba907424e034449f0",
+      "path": "skills/sufficit/fleet/sufficit-fleet-agent-scenarios",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/fleet/sufficit-fleet-agent-scenarios"
     },
     {
       "id": "sufficit-hermes-agents",
@@ -2213,9 +2213,9 @@
       "sourceId": "sufficit-genius",
       "author": "Sufficit",
       "license": "MIT-0",
-      "contentSha256": "5fc49494d10cb32789509ba306a89cb87512e4458739d3415dab348f52dc2112",
-      "path": "skills/sufficit/sufficit-fleet-agent-training",
-      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/sufficit-fleet-agent-training"
+      "contentSha256": "9b5fd96919ede7ef7f925fe871781ea0592416088f8f509e4889e1b1123e67bb",
+      "path": "skills/sufficit/fleet/sufficit-fleet-agent-training",
+      "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/fleet/sufficit-fleet-agent-training"
     }
   ]
 }

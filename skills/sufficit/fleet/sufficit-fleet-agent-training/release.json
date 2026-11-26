@@ -2,6 +2,6 @@
   "name": "sufficit-fleet-agent-training",
   "version": "1.0.0",
   "repository": "https://github.com/sufficit/sufficit-ai-skills",
-  "path": "skills/sufficit/sufficit-fleet-agent-training",
+  "path": "skills/sufficit/fleet/sufficit-fleet-agent-training",
   "license": "MIT-0"
 }

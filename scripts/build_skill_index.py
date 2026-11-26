@@ -61,7 +61,10 @@ def render(root: Path = ROOT) -> str:
     ]
     by_collection: dict[str, list[dict]] = {}
     for skill in manifest["skills"]:
-        by_collection.setdefault(skill["path"].split("/")[1], []).append(skill)
+        parts = skill["path"].split("/")
+        # Show nested Sufficit product namespaces in the generated index.
+        collection = "/".join(parts[1:-1]) if parts[1] == "sufficit" else parts[1]
+        by_collection.setdefault(collection, []).append(skill)
     for collection in sorted(by_collection):
         lines += [f"## {collection}", "", "| Skill | Card | Source | Description |", "| --- | --- | --- | --- |"]
         for skill in sorted(by_collection[collection], key=lambda item: item["path"]):

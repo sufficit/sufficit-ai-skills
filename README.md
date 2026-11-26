@@ -1,6 +1,6 @@
 # Sufficit AI Skills
 
-Espelho público e versionado de 214 skills preparadas para o catálogo v2 do
+Espelho público e versionado de 215 skills preparadas para o catálogo v2 do
 Sufficit AI Genius. A publicação no Genius depende de sincronizar uma revisão
 imutável deste repositório. Os pacotes mantêm instruções e recursos sob demanda; o
 manifesto registra a origem, a revisão, a autoria, a licença e o digest de cada
@@ -17,7 +17,8 @@ conteúdo importado.
 | Matt Pocock | 1 | `mattpocock/skills`, MIT |
 | MikroTik | 1 | `tikoci/routeros-skills` (adaptação Sufficit), MIT |
 | Hermes | 2 | `Sufficit`, MIT-0 |
-| Sufficit | 24 | Sufficit, MIT-0 |
+| Sufficit | 23 | Sufficit, MIT-0 |
+| Sufficit / Fleet | 2 | Sufficit, MIT-0 |
 | Asterisk | 1 | Sufficit, MIT-0 |
 | Images | 1 | Sufficit, MIT-0 |
 | Meta / Instagram | 3 | Sufficit, MIT-0 |
@@ -38,8 +39,11 @@ As skills ficam em [`skills/android`](skills/android),
 [`skills/refero`](skills/refero),
 [`skills/unslop`](skills/unslop),
 [`skills/videos`](skills/videos) e
-[`skills/sufficit`](skills/sufficit). O
-snapshot importado está em [`catalog/upstream-v2.json`](catalog/upstream-v2.json)
+[`skills/sufficit`](skills/sufficit).
+As skills exclusivas do Fleet ficam em [`skills/sufficit/fleet`](skills/sufficit/fleet).
+[Registro da organização das skills do Fleet](docs/activities/202611261507-fleet-skill-namespace.md).
+
+O snapshot importado está em [`catalog/upstream-v2.json`](catalog/upstream-v2.json)
 e a correspondência verificável em
 [`catalog/import-manifest.json`](catalog/import-manifest.json).
 O [índice de skills](catalog/SKILLS.md) lista cada pacote com link para o
