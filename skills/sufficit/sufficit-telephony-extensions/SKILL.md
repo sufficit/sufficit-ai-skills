@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal, ligar/desligar gravacao, presenca do ramal, nao perturbe (DND) or fila nao toca. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.10.9"
+  version: "0.10.10"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -12,6 +12,25 @@ API already enforces. Use the current domain contracts and deployed behavior to 
 and formats; this skill adds the flow and the business semantics of extension
 (ramal) management. Routes change between releases: never assume a method, path
 or parameter from memory.
+
+
+## Who changed a resource? (quem fez a alteração?)
+
+For an authorized audit request, consult the audit trail even when the current
+resource omits the actor or time. With the agent's authenticated API helper, use
+GET /Logging/Events with contextId, reference, timestamp.start and timestamp.end
+(UTC ISO 8601), and a small positive limit. For DID assignment and queue routing,
+use the customer context GUID and the complete DID digits as reference. This
+production route can be absent from Swagger. A schema search alone does not
+establish that audit access is unavailable.
+
+Read each matching event's message, timestamp and userId. Verify the principal's
+identity using trusted account metadata. Report each operation and time in the
+requester's time zone. A service account identifies the credential used; attribute
+the human, initiating agent or interface only when independent evidence establishes
+it. An empty result is inconclusive; verify the reference format, context used by
+the writer and time zone. A denied query should be reported with its method,
+path and status. Avoid exposing unrelated records or raw event payloads.
 
 ## Customer-bound writes
 

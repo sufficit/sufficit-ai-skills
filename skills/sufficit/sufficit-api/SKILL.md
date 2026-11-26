@@ -2,12 +2,31 @@
 name: sufficit-api
 description: "Query and manage Sufficit corporate API resources as the authenticated user: telephony credit purchases (lançar saldo), commitments, customer preferred due days, service billing, bank slips, low-balance alerts, wallets, vouchers and contacts; coordinate requested Hermes attendance and PDF delivery. Resolve alert amount and primary channel from customer evidence before asking optional questions. Do not use to change source code, access the database directly or invent routes outside the deployed OpenAPI."
 metadata:
-  version: "1.1.6"
+  version: "1.1.7"
 ---
 
 # Sufficit API
 
 Operate the real system as intended by the user and account permissions already connected to Genius. The deployed API is the authority on paths, parameters and formats; this skill adds secure flow and business semantics.
+
+
+## Who changed a resource? (quem fez a alteração?)
+
+For an authorized audit request, consult the audit trail even when the current
+resource omits the actor or time. With the agent's authenticated API helper, use
+GET /Logging/Events with contextId, reference, timestamp.start and timestamp.end
+(UTC ISO 8601), and a small positive limit. For DID assignment and queue routing,
+use the customer context GUID and the complete DID digits as reference. This
+production route can be absent from Swagger. A schema search alone does not
+establish that audit access is unavailable.
+
+Read each matching event's message, timestamp and userId. Verify the principal's
+identity using trusted account metadata. Report each operation and time in the
+requester's time zone. A service account identifies the credential used; attribute
+the human, initiating agent or interface only when independent evidence establishes
+it. An empty result is inconclusive; verify the reference format, context used by
+the writer and time zone. A denied query should be reported with its method,
+path and status. Avoid exposing unrelated records or raw event payloads.
 
 ## Telephony balance and purchases
 
