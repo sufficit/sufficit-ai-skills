@@ -52,7 +52,7 @@ autoria e licenças.
 
 A skill `software-development` possui instalação vinculada para Codex e conferência
 de versão remota: [pacote](skills/sufficit/software-development/SKILL.md).
-See the [development guidance update plan](docs/PLAN-SOFTWARE-DEVELOPMENT-LINE-LIMIT.md).
+The [development guidance update](docs/activities/202611261500-software-development-line-limit.md) records the 400-line default and unit test integration.
 
 A skill [`dotnet-csharp`](skills/sufficit/dotnet-csharp/SKILL.md) orienta mudanças em C#/.NET
 para passar no CI na primeira vez: compilar os projetos de teste afetados, manter testes
