@@ -2,7 +2,7 @@
 name: sufficit-telephony-extensions
 description: "Manage Sufficit Telephony extensions (ramais) and their preferences through the live corporate API: list and inspect the extensions of a company, create a new extension with SIP credentials, change per-extension preferences such as call recording, and verify each change. Also covers device auto-provisioning by MAC (provisioning server, TFTP/HTTP/HTTPS, Intelbras TIP 125i, Grandstream, Cisco, Linphone QR). Use when a request mentions ramais, provisioning de ramal, provisionamento de aparelho, MAC, SIP extension credentials, preferencias do ramal, ligar/desligar gravacao, presenca do ramal, nao perturbe (DND) or fila nao toca. Not for raw Asterisk PJSIP peer files."
 metadata:
-  version: "0.10.8"
+  version: "0.10.9"
 ---
 
 # Sufficit Telephony: extensions and preferences
@@ -220,4 +220,4 @@ For a request to disconnect a customer DID from its current destination, use the
 
 For customer default outbound caller ID (BINA), follow the [customer onboarding reference](references/customer-onboarding.md#customer-default-outbound-caller-id).
 
-For N2 DID inventory assignments and customer-to-customer transfers, follow [DID assignment](references/customer-onboarding.md#did-assignment).
+For N2 DID assignment, use **PUT /Telephony/DID/Context** with the DID id, target contextId and observed expectedContextId (all-zero GUID for unassigned inventory, including quarantine). POST on that same path is the legacy manager operation: a 403 there is not evidence that N2 lacks PUT access. On that specific 403, reread ownership, follow [DID assignment](references/customer-onboarding.md#did-assignment) for any required group administrator confirmation, and use PUT. After success verify the binding, configure the requested queue and reread the route.
