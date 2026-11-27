@@ -1,34 +1,48 @@
 ---
 name: meta-business
-description: "Operate Sufficit assets on Meta (Facebook) Business Suite and Business Manager: businesses, ad accounts, pages, people and permissions. Use to grant or revoke a person's access to an ad account, invite or remove business users, resolve which ad account actually has spend, diagnose 'user cannot be added to business' and permission-save failures, and to set up system users with tokens for API-first operation. Prefers Graph API over clicking the Meta UI; the browser is the fallback. Version 1.0.0."
+description: "Manage Sufficit's Meta Business Suite assets and permissions, including Instagram content and insights access, ad account roles, business users, and system users. Use the authenticated Meta Graph API when its contract covers the exact asset and operation. Use targeted Business Suite evidence otherwise."
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Meta Business (Business Suite / Business Manager)
 
-Grant and manage access to Sufficit's Meta assets with the Graph API first and the
-browser only as fallback. Most breakage seen in the wild is UI automation failing
-on overlays and tooltips while a documented API call existed all along.
+## Choose the route for the asset
 
-## Decision order
+1. Identify the person, asset type, exact account, and requested access. Check the last confirmed state
+   and keep any alternative the requester already authorized.
+2. Use Graph API when an authenticated Meta tool or client exposes a verified operation for that asset.
+   Check the service, Graph version, operation and credential scope before calling. Fleet and Sufficit
+   API tools only cover their own services. A catalog match or a loaded skill establishes discovery,
+   while a usable route requires the authenticated contract.
+3. Use the Business Suite agent tab when the Meta API route is unavailable. Read the current tab
+   before navigating. Use the element reference and verify any change with evidence from that same
+   tab. A selected tab, an already-present result or a successful scroll receipt leaves the
+   permission unverified.
+4. Record an exhausted route with the concrete result and what must change to make a retry useful.
+   After a failed full-page read, use a targeted read such as the person's asset details instead of
+   fetching the same page again. When both routes are exhausted, use the authorized fallback or
+   report the specific missing evidence. Resume there on a short follow-up such as “faça”.
 
-1. **Read state via Graph API** before asking anyone anything. Which businesses
-   exist, which ad accounts they hold and which one has spend are facts, not
-   user questions.
-2. **Mutate via Graph API** when the authenticated context allows it (invite a
-   user, assign an ad account with tasks, promote to admin).
-3. **System user + token** when person invites are refused by Meta or when
-   operating headless (`business_management` scope, token kept in the Vault).
-4. **Browser UI (Genius extension)** only for what the API genuinely cannot do,
-   and after reading state with `browser_get_page`. Use the element `reference`,
-   never positional `nth-of-type` selectors; every click that changes state must
-   carry `wait_for_text`/`wait_for_selector`.
+## Instagram content and insights
 
-Escalation rule: after 2–3 failed UI attempts on the same step, stop clicking and
-return to the API/catalog search. The UI is the fallback, not the default.
+- Keep the business role and the Instagram asset permission distinct. To confirm access, look for
+  evidence that links the person, the specific Instagram account and the requested capabilities.
+  A name in the page text and full control over the business are insufficient evidence for the
+  effective permissions of a specific Instagram asset.
+- With a verified Meta API route, read the exact asset assignment before any change and read it
+  again afterward. Verify the provider's operation and permission names for Instagram. The
+  `act_` route and ad-account tasks below belong to ad accounts.
+- In Business Suite, inspect the person's assigned assets or the Instagram asset's person details.
+  Use the row or card for the matched person and the exact handle. A name-only accessibility match
+  does not identify the row's permissions, and `browser_find` matches actionable controls. When
+  another structured read can resolve the ambiguity, pick the specific row, details control or
+  container. Mark the task complete only with the linked permission evidence.
+- If the requester authorized an insights export and assignment cannot be verified, switch to the
+  export once its actual operation is available. Preserve the requested time range or post count
+  and metrics. Report any unavailable metrics or blocked export with the precise reason.
 
-## Reading state (facts, never questions)
+## Read business and ad account state
 
 - `GET /me/businesses` — businesses the token can see (id, name, verification).
 - `GET /{business-id}/owned_ad_accounts` and `GET /{business-id}/client_ad_accounts`
@@ -39,7 +53,7 @@ return to the API/catalog search. The UI is the fallback, not the default.
 - `GET /{business-id}/business_users` — current people and their roles.
 - `GET /act_{id}/assigned_users` — who is on the ad account today.
 
-## Granting a person access
+## Grant access to an ad account
 
 1. Resolve the target ad account and the wanted task level with the requester.
    Tasks on ad accounts: `MANAGE` (full), `ADVERTISE` (create/edit campaigns —
@@ -53,7 +67,7 @@ return to the API/catalog search. The UI is the fallback, not the default.
 4. Verify by reading `assigned_users` back; never trust the invite screen.
 5. The invited person must accept by email; the accept step is theirs.
 
-## System user track (when person invites fail)
+## System user track when person invites fail
 
 Meta refuses some person invites for account-state reasons no admin can fix
 ("O usuário não pode ser adicionado à empresa"). The durable route for a company

@@ -230,7 +230,7 @@ inside the repository's documentation hierarchy.
 | [instagram-reel](../skills/meta/instagram/instagram-reel/SKILL.md) |  | Jake Schincariol / Sufficit | Write an Instagram Reel from one raw idea in Portuguese or English: hook options, spoken script, separate on-screen text and a timed beat sheet, in the brand... |
 | [instagram-video-download](../skills/meta/instagram/instagram-video-download/SKILL.md) |  | Sufficit | Download Instagram Reels and videos from user-supplied Instagram post URLs to local files with yt-dlp and verify their media streams. Use for saving Instagra... |
 | [meta-app-review](../skills/meta/meta-app-review/SKILL.md) | [card](../skills/meta/meta-app-review/skill-card.md) | Sufficit | Prepare Meta apps (WhatsApp, Messenger, Instagram) for App Review and operate Business Manager. Use to create or configure app in a portfolio, request advanc... |
-| [meta-business](../skills/meta/meta-business/SKILL.md) | [card](../skills/meta/meta-business/skill-card.md) | Sufficit | Operate Sufficit assets on Meta (Facebook) Business Suite and Business Manager: businesses, ad accounts, pages, people and permissions. Use to grant or revok... |
+| [meta-business](../skills/meta/meta-business/SKILL.md) | [card](../skills/meta/meta-business/skill-card.md) | Sufficit | Manage Sufficit's Meta Business Suite assets and permissions, including Instagram content and insights access, ad account roles, business users, and system u... |
 
 ## metatrader
 

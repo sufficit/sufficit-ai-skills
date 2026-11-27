@@ -1,8 +1,8 @@
 # meta-business
 
-Operate Sufficit assets on Meta (Facebook) Business Suite and Business Manager: businesses, ad accounts, pages, people and permissions. Use to grant or revoke a person's access to an ad account, invite or remove business users, resolve which ad account actually has spend, diagnose 'user cannot be added to business' and permission-save failures, and to set up system users with tokens for API-first operation. Prefers Graph API over clicking the Meta UI; the browser is the fallback.
+Manage Sufficit's Meta Business Suite assets and permissions, including Instagram content and insights access, ad account roles, business users, and system users. Use the authenticated Meta Graph API when its contract covers the exact asset and operation. Use targeted Business Suite evidence otherwise.
 
-Version: **1.0.0** · Sufficit · MIT-0
+Version: **1.1.0** · Sufficit · MIT-0
 
 Read [SKILL.md](SKILL.md) to use this skill.
 

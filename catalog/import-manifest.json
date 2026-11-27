@@ -1935,7 +1935,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/meta/meta-business",
       "path": "skills/meta/meta-business",
-      "contentSha256": "b56f253b6afbd45ceb3eb89a0aca8f14c88d2186bb8333316dfe9dacc71968a0"
+      "contentSha256": "020339152fe58202bc9dd6affad6cca8b98013ad8da16ce90466433e95b9e1ac"
     },
     {
       "id": "metatrader5-orders",
