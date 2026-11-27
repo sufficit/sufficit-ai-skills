@@ -505,7 +505,7 @@
       "license": "MIT-0",
       "upstreamSource": "https://github.com/sufficit/sufficit-ai-skills/tree/main/skills/sufficit/customer-equipment-access",
       "path": "skills/sufficit/customer-equipment-access",
-      "contentSha256": "f1b6d192888e5379d7c76487dcabfc1158e150a4e9d58c7cc5ae8802fcca0194"
+      "contentSha256": "5b8e3f808720edf5cdb9be6fb7cc988a354cc1127f5758b9c588db812a875da2"
     },
     {
       "id": "device-ui-android",
