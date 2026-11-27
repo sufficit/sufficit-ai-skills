@@ -2,7 +2,7 @@
 name: customer-equipment-access
 description: "First-level (N1) remote access to a customer's own equipment — ONT/router web interface, VoIP line (ATA/FXS) settings, customer-supplied VPN — to diagnose and fix a SIP extension that does not register, with evidence and without touching routes or other services. Use when support must reach a customer's Huawei ONT or similar CPE by IP, read or correct its SIP line, bring up a customer VPN or confirm a registration with the N2/PBX team. Not for PBX, dialplan or carrier changes."
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: "Sufficit"
   source: "https://github.com/sufficit/sufficit-ai-skills"
 ---
@@ -35,13 +35,15 @@ and its password, the SIP server. Ask only for what is missing, in one message.
 2. Only if the direct path fails, use the customer's VPN following
    [VPN access](references/vpn-access.md): one profile per customer, route only
    the device `/32`, never the default route, and tear it down afterwards.
-3. If the device is only on the customer's LAN (private IP such as
-   `192.168.1.1`) and there is no customer VPN, use the
-   [support bridge](references/support-bridge.md): with the customer's go-ahead,
-   open a session with `http_support_bridge_open`, send the customer the `.exe`
-   link and the `bridgeCode`, connect with `agentCode` from your shell and close
-   the session at the end. The download link works; if a tool is missing, say so
-   instead of guessing.
+3. If the device is only on the customer's LAN (private IP, phone, ATA, ONT
+   behind the router) and there is no customer VPN, use the
+   [support bridge](references/support-bridge.md): check provisioning first,
+   get the customer's go-ahead, open a **full-network** session with
+   `http_support_bridge_open` (leave `target` empty), send the `.exe` link and
+   the `bridgeCode`, connect with `agentCode` from your shell, scan the networks
+   of every adapter to find the device (do **not** ask the customer for IPs),
+   update provisioning with what you found and close the session at the end.
+   If a tool is missing, say so instead of guessing.
 4. Report the path actually used. "VPN connected" requires an active tunnel
    read back from the system, not a created profile.
 
